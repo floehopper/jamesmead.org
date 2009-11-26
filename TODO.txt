@@ -1,7 +1,10 @@
-base sorting on created_at - and work out why this doesn't exist
-convert internal links
 export comments
-convert code snippets to gists?
 disqus or equivalent for comments?
 or abandon comments?
-import sidebar links
+import sidebar stuff
+rss feeds
+search
+tags
+categories
+year, month, day pages
+redirects from old URLs
