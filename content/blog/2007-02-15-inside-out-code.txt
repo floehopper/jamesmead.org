@@ -1,0 +1,30 @@
+--- 
+permalink: inside-out-code
+updated_at: 2007-02-15 04:06:26 +00:00
+guid: 82f70c6b-ba92-43b4-a6ab-b0b446e67294
+title: Inside-Out Code
+id: 166
+filter: 
+- erb
+- textile
+categories: []
+
+layout: blog
+created_at: 2007-02-15 03:50:51 +00:00
+keywords: ruby hash array set collection demeter tuple data encapsulation
+---
+I just read Tim Ottinger's post about "Tuple Madness":http://blog.objectmentor.com/articles/2007/02/13/tuple-madness. Coincidentally yesterday afternoon I wondered out loud whether Ruby's "rich":http://www.ruby-doc.org/core/classes/Array.html "collection":http://www.ruby-doc.org/core/classes/Hash.html "classes":http://www.ruby-doc.org/core/classes/Set.html encouraged more than the usual amount of what I call _inside-out_ code - where a client object queries another object for its internal data and manipulates that data into the required form.
+
+This works well in the small, but can quickly lead to similar manipulations happening in multiple client classes. Also unless you're careful, it can harm readability - e.g. where the meaning of a bit of data depends on its position within an array.
+
+As time marches on, I feel more and more like a "bear of very little brain":http://en.wikipedia.org/wiki/Winnie-the-Pooh who can keep less and less code in his head at any one time. As a defence against this I try to...
+
+ * write or extract small classes with clear and simple responsibilities
+ * limit low-level access to the internal data of the class
+ * write simple unit tests clearly expressing the intent of the code.
+
+I hope these tactics don't just help me, but help other developers who later need to understand and modify the code I've written.
+
+Tim has a nice summary...
+
+bq. I don’t think that “magic tuples” are always evil, only that they’re no substitute for proper objects and meaningful data structures.

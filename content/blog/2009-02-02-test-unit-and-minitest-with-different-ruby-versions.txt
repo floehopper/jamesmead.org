@@ -1,0 +1,141 @@
+--- 
+permalink: test-unit-and-minitest-with-different-ruby-versions
+updated_at: 2009-02-03 10:08:55 +00:00
+guid: 908e5794-c71e-4c1a-9f95-144c20a1f0f0
+title: Test::Unit and MiniTest with different Ruby versions
+id: 362
+filter: 
+- erb
+- textile
+categories: []
+
+layout: blog
+created_at: 2009-02-02 17:12:54 +00:00
+keywords: ruby testing testunit minitest miniunit version 1.8 1.9.0 1.9.1
+---
+h3. Introduction
+
+In recent weeks, I've been trying to ensure that "Mocha":http://mocha.rubyforge.org/ works with the new versions of Ruby as well as "MiniTest":http://blog.zenspider.com/minitest/, the "Test::Unit":http://www.ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html replacement. I started "getting very confused":http://twitter.com/floehopper/status/1155022088 with all the different ways to write/run tests, so I made some notes for myself. In the wake of the "release of Ruby 1.9.1":http://groups.google.com/group/ruby-talk-google/browse_thread/thread/35e963933f9d0b1a, I thought these notes might be useful to others - so here they are.
+
+I haven't got into the MiniTest::Spec or MiniTest::Mock side of things, nor have I looked at other testing libraries like "RSpec":http://rspec.info/, "Shoulda":http://thoughtbot.com/projects/shoulda/, "Test/Spec":http://test-spec.rubyforge.org/, etc. Please let me know if you see any errors or omissions and I'll update this article.
+
+I've included the information about Ruby 1.9.0 for completeness, but most people will only be interested in "the sections on 1.9.1":#vanilla-ruby1.9.1 which is the "first stable release of Ruby 1.9 series".
+
+As I mentioned in the "release notes":http://blog.floehopper.org/articles/2009/02/01/mocha-release-0-9-5, Mocha 0.9.5 should work with Test::Unit or MiniTest in Ruby 1.8.* or Ruby 1.9.1. It does not currently work in Ruby 1.9.0, but I won't be making this a priority unless I have specific requests to do so.
+
+Note that at some point MiniTest changed its name from MiniUnit.
+
+h3. Ruby 1.8 with Test::Unit standard library
+
+The basics.
+
+<typo:code lang="ruby">
+  require 'test/unit'
+
+  class Ruby18TestUnitTest < Test::Unit::TestCase
+</typo:code>
+
+h3. Ruby 1.8 with MiniTest gem
+
+If you can't upgrade to Ruby 1.9, you can still use MiniTest by installing the gem. Note that you have to install the autorun exit hook manually for MiniTest - this is done automatically for Test::Unit when you require 'test/unit' - if you want the tests to be executed when the file run as a Ruby script.
+
+<typo:code lang="ruby">
+  # gem install minitest
+
+  require 'rubygems'
+  gem 'minitest'
+  require 'minitest/unit'
+
+  MiniTest::Unit.autorun
+
+  class Ruby18MiniTestGemTest < MiniTest::Unit::TestCase
+</typo:code>
+
+h3(#minitest-tu-shim). Ruby 1.8 with MiniTest-Test::Unit shim
+
+This takes things a step further by installing a shim gem which makes requiring 'test/unit' behave the same way as it does in a "vanilla Ruby 1.9.1 installation":#vanilla-ruby1.9.1 i.e. Test::Unit becomes a thin wrapper around MiniTest. This means that you don't have to change your tests to inherit from MiniTest::Unit::TestCase in order to use MiniTest. However, you should note that some of Test::Unit's API (e.g. Test::Unit::TestResult) is no longer available. Note that you can reverse the effect of @use_minitest yes@ using @use_minitest no@.
+
+<typo:code lang="ruby">
+  # sudo gem install minitest_tu_shim
+  # sudo use_minitest yes
+
+  require 'rubygems'
+  gem 'minitest'
+  require 'test/unit'
+
+  class Ruby18MiniTestTUShimTest < Test::Unit::TestCase
+</typo:code>
+
+h3. Ruby 1.9.0 with Test::Unit standard library
+
+The Test::Unit standard library seems to be unchanged.
+
+<typo:code lang="ruby">
+  require 'test/unit'
+
+  class Ruby190TestUnitTest < Test::Unit::TestCase
+</typo:code>
+
+h3. Ruby 1.9.0 with Mini::Test standard library
+
+An earlier version of MiniTest (i.e. Mini::Test) is also available as a standard library. Note the different directory, file, class & module names.
+
+<typo:code lang="ruby">
+  require 'mini/test' # c.f. require 'minitest/unit' in Ruby 1.9.1
+
+  Mini::Test.autorun
+
+  class Ruby190MiniTestTest < Mini::Test::TestCase
+</typo:code>
+
+h3(#vanilla-ruby1.9.1). Ruby 1.9.1 with Test::Unit standard library
+
+Test::Unit is just a thin wrapper around MiniTest as described in "Ruby 1.8 with MiniTest-Test::Unit shim":#minitest-tu-shim
+
+<typo:code lang="ruby">
+  require 'test/unit'
+
+  class Ruby191TestUnitTest < Test::Unit::TestCase
+</typo:code>
+
+h3. Ruby 1.9.1 with MiniTest standard library
+
+MiniTest is intended to be the default standard library to use for testing.
+
+<typo:code lang="ruby">
+  require 'minitest/unit'
+
+  MiniTest::Unit.autorun
+
+  class Ruby191MiniTestTest < MiniTest::Unit::TestCase
+</typo:code>
+
+h3. Ruby 1.9.1 with Test::Unit gem
+
+It is possible to use the _classic_ Test::Unit by installing the gem. It looks like you need to specify version 1.2.3 to avoid picking up what appears to be some more significant changes in versions >= 2.0.
+
+<typo:code lang="ruby">
+  # sudo gem install test-unit -v 1.2.3
+
+  require 'rubygems'
+  gem 'test-unit'
+  require 'test/unit'
+
+  class Ruby19TestUnitGemTest < Test::Unit::TestCase
+</typo:code>
+
+h3. Versions used for testing
+
+* "OSX":http://www.apple.com/macosx/ Leopard 10.5.6
+* Ruby 1.8.6 (2008-08-11 patchlevel 287)
+* Ruby 1.9.0 (2008-10-04 revision 19669)
+* Ruby 1.9.1p0 (2009-01-30 revision 21907)
+* "minitest":http://blog.zenspider.com/2009/01/minitest-version-131-has-been.html gem 1.3.1
+* "minitest_tu_shim":http://blog.zenspider.com/2008/10/minitest-tu-shim-version-130-h.html gem 1.3.0
+* "test-unit":http://test-unit.rubyforge.org/ gem 1.2.3
+
+h3. References
+
+* "test/unit and minitest":http://markmail.org/message/zm5ocf3koijgrto2
+* "MiniTest & Test::Unit::TestResult in Ruby 1.9.1":http://groups.google.vg/group/ruby-talk-google/browse_thread/thread/317778a91b31f142/ac507e6ae948c5d3
+* "MiniTest / Test::Unit":http://groups.google.vg/group/ruby-talk-google/browse_thread/thread/212b92cc7df43b80/dbe74a7aa8b16ab5

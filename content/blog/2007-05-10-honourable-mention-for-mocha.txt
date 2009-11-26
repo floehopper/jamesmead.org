@@ -1,0 +1,16 @@
+--- 
+permalink: honourable-mention-for-mocha
+updated_at: 2007-05-10 16:03:08 +00:00
+guid: 439a505e-7e69-43a3-8e71-ffb789b99ca3
+title: Honourable Mention for Mocha
+id: 260
+filter: 
+- erb
+- textile
+categories: []
+
+layout: blog
+created_at: 2007-05-10 15:27:58 +00:00
+keywords: mocha mock stub agile pragmatic book
+---
+I just downloaded an updated version of the Pragmatic Bookshelf's "Agile Web Development with Rails":http://www.pragmaticprogrammer.com/titles/rails/ book. Maybe it's been there a while, but I just noticed "Mocha":http://mocha.rubyforge.org is mentioned at the end of the chapter on testing. :-)

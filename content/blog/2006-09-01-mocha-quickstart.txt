@@ -1,0 +1,65 @@
+--- 
+permalink: mocha-quickstart
+updated_at: 2006-09-01 14:46:41 +00:00
+guid: bcb447d0-e449-4fc0-8f14-c285d0b5e618
+title: Mocha Quickstart
+id: 71
+filter: 
+- erb
+- textile
+categories: []
+
+layout: blog
+created_at: 2006-09-01 14:14:32 +00:00
+keywords: ruby mock rails stub testing interception class instance quickstart tutorial
+---
+I really must get round to writing some better documentation for "Mocha":http://mocha.rubyforge.org, but in the meantime here's a quickstart guide[1].
+
+Mocha adds a couple of new methods to all objects and classes - <code>expects</code> which sets up auto-verified expectations and <code>stubs</code> which stubs the method allowing any number of calls.
+
+Both the <code>expects</code> and <code>stubs</code> methods actually return an "expectation":http://mocha.rubyforge.org/classes/Mocha/Expectation.html object. Relevant methods on an expectation are: <code>at_least, at_least_once, never, raises, returns, times, with, yields</code> which are hopefully fairly self-explanatory. If not there are some clues "here":http://mocha.rubyforge.org/classes/Mocha/Expectation.html
+
+*Mocking a class method*
+<typo:code lang="ruby">
+  product = Product.new
+  Product.expects(:find).with(1).returns(product)
+  assert_equal product, Product.find(1)
+</typo:code>
+
+*Mocking an instance method on a real object*
+<typo:code lang="ruby">
+  product = Product.new
+  product.expects(:save).returns(true)
+  assert product.save
+</typo:code>
+
+*Stubbing instance methods on real object*
+<typo:code lang="ruby">
+  prices = [stub(:pence => 1000), stub(:pence => 2000)]
+  product = Product.new
+  product.stubs(:prices).returns(prices)
+  assert_equal [1000, 2000], product.prices.collect {|p| p.pence}
+</typo:code>
+
+*Stubbing an instance method on all instances of a class*
+<typo:code lang="ruby">
+  Product.any_instance.stubs(:name).returns('stubbed_name')
+  product = Product.new
+  assert_equal 'stubbed_name', product.name
+</typo:code>
+
+*Traditional mocking*
+<typo:code lang="ruby">
+  object = mock()
+  object.expects(:expected_method).with(:p1, :p2).returns(:result)
+  assert_equal :result, object.expected_method(:p1, :p2)
+</typo:code>
+
+*Shortcuts*
+<typo:code lang="ruby">
+  object = stub(:method1 => :result1, :method2 => :result2)
+  assert_equal :result1, object.method1
+  assert_equal :result2, object.method2
+</typo:code>
+
+fn1. I wrote these examples without checking them, so there may be some typos.

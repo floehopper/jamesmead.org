@@ -1,0 +1,53 @@
+--- 
+permalink: rspec-adding-to-the-confusion
+updated_at: 2007-01-03 10:59:40 +00:00
+guid: cab57c0d-0849-4467-9ac5-0cce34476c68
+title: RSpec adding to the confusion?
+id: 143
+filter: 
+- erb
+- textile
+categories: []
+
+layout: blog
+created_at: 2007-01-02 18:48:42 +00:00
+keywords: mock objects tdd bdd rspec interaction behaviour state test
+---
+h3. Update:
+
+
+I’ve just read Aslak's article again in the cold light of day. I now realise I have put words in his mouth, for which I apologise.
+
+I posted the article late at night after being annoyed by the line on the caboose blog. In hindsight, I should have waited until morning and read it through again (and then not posted it in it’s current form).
+
+
+h3. Original Article:
+
+
+In a "recent article":http://blog.aslakhellesoy.com/articles/2006/12/11/the-bdd-cargo-cult Aslak Hellesoy seemed to imply one of the differences between RSpec and Test::Unit was that RSpec you could do interaction-based testing using Mock Objects. I don't think this implication was intentional, but this lack of clarity isn't helpful to those just getting to grips with automated testing.
+
+As I'm sure Aslak will acknowledge, interaction-based testing has been around a lot longer than RSpec and BDD. Most Ruby mocking frameworks (e.g. "FlexMock":http://onestepback.org/software/flexmock/, "Mocha":http://mocha.rubyforge.org/) were originally designed to work with Test::Unit. And as Nat Pryce recently "explained":http://www.mockobjects.com/2006/12/mock-objects-is-technique-not.html  ,"Mock Objects is a Technique Not a Technology".
+
+There is a similarly confusing statement in a "recent post":http://habtm.com/articles/2007/01/02/rspec-rocks from courtenay (of the caboose).
+
+bq. The counter-intuitive thing for you test::unit types is that you set up the expectations before calling the method.
+
+...thus perpetuating the myth that you can't do interaction-based testing without RSpec.
+
+Today, Martin Fowler published an "update":http://martinfowler.com/articles/mocksArentStubs.html to his excellent article "Mocks Aren't Stubs". I think he has added clarity by breaking
+
+bq. the old dichotomy of state based testing and interaction based testing into the state/behavior verification dichotomy and the classical/mockist TDD dichotomy.
+
+However, I fear people might incorrectly associate "behavior verification" with BDD.
+
+In a comment on Aslak's article, David Chelimsky "comments":http://blog.aslakhellesoy.com/articles/2006/12/11/the-bdd-cargo-cult#comment-1599 that
+
+bq. It helps at the very least by promoting this very conversation. How does it hurt?
+
+I don't think it hurts to have a debate (about whether BDD is more usefu than TDD), but we should avoid sowing confusion about what makes BDD different from TDD.
+
+Aslak talks about the "BDD buzzword". Quoting from "Wikipedia":http://en.wikipedia.org/wiki/Buzzword...
+
+bq. Buzzwords are typically intended to impress one's audience with the pretense of knowledge. For this reason, they are often universal. They typically make sentences difficult to dispute, on account of their cloudy meaning.
+
+I vote for more clarity and less cloudy meaning.

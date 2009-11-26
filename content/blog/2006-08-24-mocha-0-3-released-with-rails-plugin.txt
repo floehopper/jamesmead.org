@@ -1,0 +1,37 @@
+--- 
+permalink: mocha-0-3-released-with-rails-plugin
+updated_at: 2007-01-24 04:48:12 +00:00
+guid: 52de41a9-e88b-48cf-afdc-41da274d5b14
+title: Mocha 0.3 released with Rails plugin
+id: 50
+filter: 
+- erb
+- textile
+categories: 
+- mocha_release
+layout: blog
+created_at: 2006-08-24 18:17:19 +00:00
+keywords: rails plugin ruby test mock stub testing mocking stubbing fixtures expectation verify
+---
+A new version of the "Mocha":http://mocha.rubyforge.org mocking and stubbing library developed at "Reevoo":http://www.reevoo.com has been released.
+
+There is now a "Ruby on Rails":http://www.rubyonrails.com "plugin":http://www.agilewebdevelopment.com/plugins/mocha which can be installed like this...
+
+<typo:code>
+  $ script/plugin install svn://rubyforge.org/var/svn/mocha/trunk
+</typo:code>
+
+Here are the release notes...
+
+* Rails plugin.
+* Auto-verify for all expectations, including those on concrete classes.
+* Include each expectation verification in the test result assertion count.
+* Filter out noise from assertion backtraces.
+* Point assertion backtrace to line where failing expectation was created.
+* New yields method for expectations.
+* Create stubs which stub all method calls.
+* Mocks now respond_to? expected methods.
+
+Thanks for patches from "Chris":http://blog.seagul.co.uk.
+
+Enjoy!

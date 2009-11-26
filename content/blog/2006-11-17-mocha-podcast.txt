@@ -1,0 +1,17 @@
+--- 
+permalink: mocha-podcast
+updated_at: 2006-11-17 12:10:01 +00:00
+guid: 5b2cfadf-9f7f-4e9a-8d71-28580d2f65e4
+title: Mocha Podcast
+id: 108
+filter: 
+- erb
+- textile
+categories: []
+
+layout: blog
+created_at: 2006-11-17 12:10:01 +00:00
+keywords: ruby mocha podcast
+---
+"Kevin Clark":http://glu.ttono.us/ "demonstrates":http://podcast.sdruby.com/podcasts/013_mocha_stubba.m4v how to use "Mocha":http://mocha.rubyforge.org/ in a "presentation":http://podcast.sdruby.com/podcasts/013_mocha_stubba.m4v to the "San Diego RUG":http://www.sdruby.com/sdruby/show/HomePage.
+

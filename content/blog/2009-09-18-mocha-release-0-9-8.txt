@@ -1,0 +1,22 @@
+--- 
+permalink: mocha-release-0-9-8
+updated_at: 2009-09-18 11:17:45 +00:00
+guid: 61369f37-aabd-489b-b0df-12a07b6fc820
+title: Mocha Release 0.9.8
+id: 383
+filter: 
+- erb
+- textile
+categories: 
+- mocha_release
+layout: blog
+created_at: 2009-09-18 11:17:45 +00:00
+keywords: mocha mock stub ruby testing tdd
+---
+h3. Release Notes
+
+* Fixed bug "NameError raised when using Mocha as a Rails plug-in":http://floehopper.lighthouseapp.com/projects/22289/tickets/53. Since 0.9.6 the Rails plugin has been broken. See "bug report":http://floehopper.lighthouseapp.com/projects/22289/tickets/53 for details. You will need to explicitly load Mocha *after* the test framework has been loaded, e.g. by adding "require 'mocha'" at the bottom of test/test_helper.rb.
+* Make "Mocha::ParameterMatchers#regexp_matches":http://mocha.rubyforge.org/classes/Mocha/ParameterMatchers.html#M000024, "#includes":http://mocha.rubyforge.org/classes/Mocha/ParameterMatchers.html#M000018, "#has_value":http://mocha.rubyforge.org/classes/Mocha/ParameterMatchers.html#M000017, "#has_key":http://mocha.rubyforge.org/classes/Mocha/ParameterMatchers.html#M000016 more robust. Thanks to "Sander Hartlage":http://github.com/sander6.
+* Allow passing a block to "Mocha::Configuration":http://mocha.rubyforge.org/classes/Mocha/Configuration.html methods to only change configuration for the duration of the block. Thanks to "Dan Manges":http://www.dcmanges.com/blog.
+* Fixed bug "doc generation fails in 0.9.7 gem":http://floehopper.lighthouseapp.com/projects/22289/tickets/51.
+* Remove rdoc template incorporating google analytics from source control. The file just needs to exist locally and be ignored by source control. This should stop the warning showing up on e.g. "RunCodeRun build results":http://runcoderun.com/floehopper/mocha.

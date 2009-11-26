@@ -1,0 +1,31 @@
+--- 
+permalink: hellish-xml
+updated_at: 2006-10-17 04:35:18 +00:00
+guid: 44d84990-d693-4654-b53e-d6c8d7e6807d
+title: Hellish XML
+id: 96
+filter: 
+- erb
+- textile
+categories: []
+
+layout: blog
+created_at: 2006-10-17 03:34:27 +00:00
+keywords: xml hell ant java build test mock xunit
+---
+So now you can write test cases for "ANT":http://ant.apache.org/ _in XML_ using "AntUnit":http://ant.apache.org/antlibs/antunit/.
+
+You can even write assertions in XML ...
+
+<typo:code lang="xml">
+  <!-- the actual test case -->
+  <target name="testTouchCreatesFile">
+    <au:assertFileDoesntExist file="${foo}"/>
+    <touch file="${foo}"/>
+    <au:assertFileExists file="${foo}"/>
+  </target>
+</typo:code>
+
+... but why?
+
+Perhaps the time is ripe for an XML mocking library ;-)

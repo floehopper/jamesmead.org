@@ -1,0 +1,77 @@
+--- 
+permalink: permutations-combinations-probability
+updated_at: 2008-11-05 00:17:46 +00:00
+guid: fc58dcc2-80d6-4919-a51b-9929398b1fb0
+title: Permutations, Combinations & Probability
+id: 344
+filter: 
+- erb
+- textile
+categories: []
+
+layout: blog
+created_at: 2008-11-04 00:27:06 +00:00
+keywords: ruby permutation combination probability
+---
+This weekend I spent an enjoyable couple of hours trying to solve a very simple sounding problem...
+
+bq. Given a set of four digits chosen at random (0-9 equally likely in each case), and a second set of four digits similarly chosen at random, on average how many digits will match (order is not important).
+
+_Update: Although I said that 0-9 is equally likely in each case, I didn't make it clear that repetitions are allowed i.e. 1234 vs 5432 => 3 matches_
+
+_Update 2: I just "ran another brute force approach":http://pastie.org/307664 using randomly generated sequences and got a very similar answer (approx 1.21) which gives me a bit more faith in my other attempt_
+
+I spent quite a while trying to dredge my memory (and the web) about "permutations & combinations":http://en.wikipedia.org/wiki/Combinatorics, but never really got to grips with the problem. In the end, I hacked together a very nasty (probably inefficient & un-idiomatic) chunk of Ruby to generate all the possible permutations of eight digits and count how many duplicates there were between the first four digits and the last four digits. From these I think you can work out the probability of one match, the probability of two matches, etc. Then I think you can calculate the average number of matches by weighting each probability by the number of matches. I may well be wrong!
+
+In any case, I then generalized the Ruby to generate the results for different numbers of digits and different numeric bases (e.g. base 4 => 0, 1, 2, 3). I was hoping to see patterns in the results, so I could possibly reverse engineer a formula for the answer, but I haven't managed to spend much time on that bit. But I'm sufficiently interested to embarrass myself by posting this on the internet and hoping that someone will tell me how to do this in one line of Maths or, more likely, one line of Ruby.
+
+<typo:code lang="ruby">
+  max_places = 4 
+  puts (['base', 'places', ''] + (0..max_places).to_a).join("\t")
+
+  (2..10).each do |base|
+    (1..max_places).each do |places|
+      counts = [0] * (places + 1)
+
+      (0...(base ** (places * 2))).each do |index|
+       permutation = "%0#{places * 2}d" % index.to_s(base)
+       original = (0...places).map { |i| permutation[i].chr }
+       guess = (places...(places * 2)).map { |i| permutation[i].chr }
+       matches = 0 
+       guess.each do |g| 
+         (0...places).each do |i| 
+           if g == original[i]
+             original[i] = nil 
+             matches += 1
+             break
+           end 
+         end 
+       end 
+       counts[matches] += 1
+      end 
+
+      puts (["%2d" % base, places, ''] + counts).join("\t")
+      $stdout.flush
+    end 
+  end
+</typo:code>
+
+I think the answer for four digits between 0-9 comes out as follows:-
+
+* Exactly zero matches = 19550250
+* Exactly one match = 45608400
+* Exactly two matches = 29292120
+* Exactly three matches = 5373360
+* Exactly four matches = 175870
+
+Which gives an average number of matches = 1.21
+
+However, looking at it now, I'm wondering how there could be so many permutations with exactly four matches. Oh, well. I might as well publish anyway and find out what I've done wrong...
+
+* "Google Docs spreadsheet":http://spreadsheets.google.com/ccc?key=p_yLkue0gmhqV4ElV6pWHMQ
+* "Google Docs web page":http://spreadsheets.google.com/pub?key=p_yLkue0gmhqV4ElV6pWHMQ
+
+In amongst it all I found a couple of nice Ruby methods I hadn't come across before:-
+
+* "Fixnum#to_s(base)":http://ruby-doc.org/core/classes/Fixnum.html#M001069
+* "String#count":http://ruby-doc.org/core/classes/String.html#M000849, which I didn't use in the end.

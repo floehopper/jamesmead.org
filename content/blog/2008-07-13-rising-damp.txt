@@ -1,0 +1,44 @@
+--- 
+permalink: rising-damp
+updated_at: 2008-07-13 22:41:02 +00:00
+guid: bb313508-5904-4e33-9a07-ebe6cbe0bfaa
+title: Rising Damp
+id: 336
+filter: 
+- erb
+- textile
+categories: []
+
+layout: blog
+created_at: 2008-07-13 22:26:37 +00:00
+keywords: dry rubyonrails consistency design technical debt duplication
+---
+h2. Introduction
+
+The "Pragmatic Programmers":http://www.pragprog.com/the-pragmatic-programmer/extracts/tips and the "Ruby on Rails":http://www.rubyonrails.org/ community can take a lot of credit for introducing many developers to the "DRY principle":http://en.wikipedia.org/wiki/Don%27t_repeat_yourself (Don't Repeat Yourself). This principle is often interpreted very literally, i.e. many developers go to great lengths to avoid duplicate chunks of code in their application. Sometimes it's applied "too literally":http://blog.jayfields.com/2008/05/testing-duplicate-code-in-your-tests.html, but that's another story. However, I've noticed over the years that there are other more insidious ways that dampness can creep up on you especially as your project and team grows.
+
+h2. Insidious Dampness
+
+One such way can occur when a new library gets added to a project. If there is duplication between the new library and an existing library, you need to get your damp meter out. There are many good reasons to introduce a new library, e.g. it may allow a neater solution to the problem at hand, it may offer better performance, or it may be more actively maintained.
+
+However, there are also bad reasons to introduce a new library, e.g. the existing library (with duplicate functionality) wasn't noticed, the use of the existing library was not understood (but could have been used), the new library looked "shinier" ("neophilia":http://en.wikipedia.org/wiki/Neophilia), or "religious wars" between team members. I plead guilty to having introduced libraries for such bad reasons in the past, but I hope that I've seen the error of my ways ;-)
+
+h2. Keeping the Damp at Bay
+
+If you don't have a good reason and can't convince the rest of your team, don't introduce the new library. If you do have a good reason, *replace* the existing library with the new library and update the code that was using the existing library - don't just *add* the new library and use it only in your new code. The worst case scenario is when a new library is added, but the existing one is not removed.
+
+h2. The Value of Consistency
+
+In my opinion, the value of consistency is often under-estimated, particularly in bigger projects where you are striving for "collective code ownership":http://www.extremeprogramming.org/rules/collective.html. I think it's better to have a consistently _mediocre_ solution across the board rather than half a dozen different solutions varying from _good_ to _bad_. This is because it'll take much less effort for the team to understand and therefore maintain the code. What's more, if you want the _good_ solution, it'll be much easier to apply it to *all* the consistently _mediocre_ versions of the code at the same time.
+
+A (very) old blog post of mine about ""Big Refactoring":http://blog.floehopper.org/articles/2004/05/14/big-refactoring" makes a similar point...
+
+bq. But this approach has the disadvantage of leaving the system in an inconsistent state with parts of it working one way and other parts working another way. This isn’t so bad in itself, but when it occurs multiple times without the inconsistency being removed, it can lead to a very confusing code-base.
+
+As does ""Sometimes it's right to be wrong":http://nat.truemesh.com/archives/000250.html" by my former colleague Nat Pryce ...
+
+bq. If you cannot refactor, be consistent. Consistency makes code easier to understand and maintain, even if the code is consistently awful.
+
+h2. Conclusion
+
+A lack of consistency adds unnecessary complexity to your code. Libraries with duplicate functionality violate the DRY principle. Both of these result in an increase in "Technical Debt":http://www.martinfowler.com/bliki/TechnicalDebt.html.

@@ -1,0 +1,16 @@
+--- 
+permalink: my-third-reevoo-birthday
+updated_at: 2009-03-04 15:12:32 +00:00
+guid: a27497b7-543f-4c19-bdc3-185d9fb5f878
+title: My Third Reevoo Birthday
+id: 340
+filter: 
+- erb
+- textile
+categories: []
+
+layout: blog
+created_at: 2008-08-08 10:26:44 +00:00
+keywords: reevoo antarctica birthday
+---
+Since I blogged about my "first":http://www.floehopper.org/articles/2006/09/06/my-reevoo-birthday and "second":http://www.floehopper.org/articles/2007/10/29/twice-round-the-world-by-train-for-reevoo Reevoo birthdays, I thought I better mention that today is my third. I think I may now have been at "Reevoo":http://www.reevoo.com for longer than I was in "Antarctica":http://webdev.nerc-bas.ac.uk/cms/bas_public/about_bas/our_history/stations_and_refuges/faraday.php.

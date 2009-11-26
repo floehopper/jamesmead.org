@@ -1,0 +1,49 @@
+#!/usr/bin/env ruby
+RAILS_ENV = 'production'
+require File.join(File.dirname(__FILE__), 'config', 'environment.rb')
+
+FileUtils.mkdir_p(File.join(RAILS_ROOT, 'tmp', 'blog'))
+
+blog = Blog.find(:first)
+
+blog.articles.each_with_index do |article, index|
+  created_datestamp = article.created_at.strftime('%Y-%m-%d')
+  filename = File.join(RAILS_ROOT, 'tmp', 'blog', "#{created_datestamp}-#{article.permalink}.txt")
+  File.open(filename, 'w') do |file|
+    required_keys = %w(id guid title permalink keywords created_at updated_at)
+    attributes = article.attributes.reject { |key, value| !required_keys.include?(key) }
+    attributes['categories'] = article.categories.map(&:name)
+    attributes['filter'] = %w(erb textile)
+    attributes['layout'] = 'blog'
+    body = article.body
+    body.gsub!(Regexp.new("<typo:code>"), %{<code>})
+    body.gsub!(Regexp.new(%{<typo:code lang="([^"]+)">}), %{<code class="#{$1}">})
+    body.gsub!(Regexp.new("</typo:code>"), "</code>")
+    file.puts attributes.to_yaml
+    file.puts "---"
+    file.puts body
+  end
+  puts "#{index+1}/#{blog.articles.length}"
+end
+
+`tar cvf blog.tar tmp/blog/*`
+
+# <typo:code> => <pre class="code">
+# <typo:code lang="ruby"> => <pre class="code ruby">
+# <typo:code lang="yaml"> => <pre class="code yaml">
+# <typo:code lang="xml"> => <pre class="code xml">
+# <typo:code lang="sql"> => <pre class="code sql">
+# insert newline before any new <pre> tag
+
+# </typo:code> => </pre>
+
+# might need more regex escaping
+# <typo:code>$ ==> \n<pre class="code">
+# <typo:code lang=\"([^\"]+)\">$ ==> \n<pre class="code $1">
+# </typo:code>$ ==> \n<pre class="code">
+#
+# insert newline before all typo:code open tags: ([^\s])\n<typo:code ==> $1\n\n<typo:code
+# convert typo:code open tags to pre open tags: <typo:code lang=\"([^\"]+)\"> => <pre class="code $1">
+
+
+# <typo:code lang="ruby">\n ==> "bc.. "

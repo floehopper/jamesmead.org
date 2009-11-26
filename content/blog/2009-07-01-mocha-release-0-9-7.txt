@@ -1,0 +1,18 @@
+--- 
+permalink: mocha-release-0-9-7
+updated_at: 2009-07-01 11:52:49 +00:00
+guid: aeaa3841-a0c4-401e-8b5c-185f9ae32d31
+title: Mocha Release 0.9.7
+id: 380
+filter: 
+- erb
+- textile
+categories: 
+- mocha_release
+layout: blog
+created_at: 2009-07-01 11:52:49 +00:00
+keywords: mocha mock stub ruby testing tdd
+---
+h3. Release Notes
+
+* Although I had provided a deprecation warning for people using the now renamed "Mocha::Standalone":http://mocha.rubyforge.org/classes/Mocha/API.html, I had assumed people wouldn't be explicitly loading the @mocha/standalone.rb@ file. It turns out this assumption was incorrect at least in the case of "RSpec":http://rspec.info/. This is now fixed.

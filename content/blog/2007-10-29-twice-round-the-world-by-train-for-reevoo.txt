@@ -1,0 +1,34 @@
+--- 
+permalink: twice-round-the-world-by-train-for-reevoo
+updated_at: 2007-10-29 23:45:09 +00:00
+guid: c340daaf-3877-4ddc-bdd9-1d73d35f009a
+title: Twice round the world by train for Reevoo
+id: 297
+filter: 
+- erb
+- textile
+categories: []
+
+layout: blog
+created_at: 2007-10-29 23:45:09 +00:00
+keywords: gner train travel reevoo earth distance map google
+---
+I just realised I forgot to celebrate my second Reevoo "birthday":http://blog.floehopper.org/articles/2006/09/06/my-reevoo-birthday.
+
+So to make up for that I just worked out (not very scientifically) that in the 2 years 2 months I've been working at "Reevoo":http://www.reevoo.com, I've travelled almost twice round the world by "GNER":http://www.gner.co.uk train. And that doesn't include my travel on London commuter trains, tubes & buses...
+
+Distance from Durham to London Kings Cross = 232 miles as the crow flies[1].
+
+Journeys per week = 2
+
+Number of weeks (excluding holidays) = 48 + 48 + 8 = 104
+
+Total distance travelled = 104 * 2 * 232 = 48,256 miles
+
+"Earth's":http://en.wikipedia.org/wiki/Earth circumference = 24,901 miles according to "About.com":http://geography.about.com/library/faq/blqzcircumference.htm
+
+Twice round the world = 2 * 24,901 = 49,802 miles
+
+Anyway, I'm tired and that was tricky maths, so I've probably made a mistake. Probably time to go to bed.
+
+fn1. according to "Google Maps":http://maps.google.co.uk Distance Measurement Tool

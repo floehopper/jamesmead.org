@@ -1,0 +1,17 @@
+--- 
+permalink: keep-mocha-in-your-rails-toolbox
+updated_at: 2006-10-17 13:31:32 +00:00
+guid: 4046a0ee-0486-4852-aee5-2fb3efee3b71
+title: Keep Mocha in your Rails Toolbox
+id: 98
+filter: 
+- erb
+- textile
+categories: []
+
+layout: blog
+created_at: 2006-10-17 13:31:32 +00:00
+keywords: mocha ruby rails toolbox open source software
+---
+It's good to see that Chris on "err.the_blog":http://errtheblog.com/ regards "Mocha":http://mocha.rubyforge.org as part of his "Rails Toolbox":http://errtheblog.com/post/35 of "kickass open source software".
+

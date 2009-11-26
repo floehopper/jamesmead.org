@@ -1,0 +1,26 @@
+--- 
+permalink: big-refactoring
+updated_at: 2008-07-12 14:45:14 +00:00
+guid: c3d510a9-fbaf-4ac5-a628-dad7d001152f
+title: Big Refactoring
+id: 329
+filter: 
+- erb
+- textile
+categories: []
+
+layout: blog
+created_at: 2008-07-12 14:36:45 +00:00
+keywords: "refactoring "
+---
+When attempting a pervasive "refactoring":http://www.refactoring.com/ in a large system, it's tempting to do the full refactoring in a localized part of the system and leave other parts for another day - perhaps because you run out of time or get bored. You can assuage your conscience by marking the remaining places with todo comments or deprecating old methods.
+
+But this approach has the disadvantage of leaving the system in an inconsistent state with parts of it working one way and other parts working another way. This isn't so bad in itself, but when it occurs multiple times without the inconsistency being removed, it can lead to a very confusing codebase.
+
+I think it's much better to break the refactoring down into several smaller steps and then attempt to apply each step to the whole system one at a time. This means that you're able to build and run tests after each step. Approaching the refactoring this way may well give you deeper insights and lead you to a better end result, because it gives you more freedom to change direction mid-course.
+
+This is one application of a personal practice which I try to follow - try not to get "too far" from a "JUnit":http://junit.sourceforge.net/ "green bar":http://junit.sourceforge.net/doc/testinfected/IMG00001.GIF. By which I mean - don't have too many tests failing for too long. Ideally if you have multiple tests failing, they should be failing for a single reason.
+
+If you can't work out how to do the refactoring in lots of small steps, try a "spike":http://www.extremeprogramming.org/rules/spike.html - try out some large steps or other ideas without worrying about breaking tests. But then throw away the changes and do the refactoring in small steps keeping the tests running, making use of the insight you've gained from your "spike". If you still can't work out how to do the refactoring in small steps, you probably shouldn't be doing it!
+
+Update: I noticed that Nat Pryce has "blogged":http://nat.truemesh.com/archives/000250.html on a similar theme.

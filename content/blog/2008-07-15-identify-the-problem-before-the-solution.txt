@@ -1,0 +1,38 @@
+--- 
+permalink: identify-the-problem-before-the-solution
+updated_at: 2008-07-15 08:27:10 +00:00
+guid: 1e90fd37-25cc-46d0-b789-315ea51aa7b1
+title: Identify the Problem before the Solution
+id: 337
+filter: 
+- erb
+- textile
+categories: []
+
+layout: blog
+created_at: 2008-07-15 08:17:58 +00:00
+keywords: problem solution agile story
+---
+I was interested to read ""Hold Off On Proposing Solutions":http://www.overcomingbias.com/2007/10/hold-off-solvin.html". It seems like humans have a natural propensity to immediately start thinking about solutions...
+
+bq. From pp. 55-56 of Robyn Dawes's Rational Choice in an Uncertain World: Norman R. F. Maier noted that when a group faces a problem, the natural tendency of its members is to propose possible solutions as they begin to discuss the problem.  Consequently, the group interaction focuses on the merits and problems of the proposed solutions, people become emotionally attached to the ones they have suggested, and superior solutions are not suggested.
+
+Is this behaviour that you recognize in yourself or others? I know it's something that I'm guilty of doing. How can we try to avoid this behaviour? At the risk of sounding like a small child, Sakichi Toyoda's ""The 5 Whys":http://en.wikipedia.org/wiki/5_Whys" is one idea...
+
+bq. The five whys is a question asking method used to explore the cause/effect relationships underlying a particular problem. Ultimately, the goal of applying the 5 Whys method is to determine a root cause of a defect or problem. The technique was originally developed by Sakichi Toyoda and was later used within Toyota Motor Corporation during the evolution of their manufacturing methodologies. The tool has seen widespread use beyond Toyota, and is now also used within Six Sigma.
+
+Also see the "Ask yourself 'Why?' five times" section of ""The Toyota Production System":http://www.toyotageorgetown.com/tps.asp".
+
+In my experience some people react better than others to being challenged in this way. It's all too easy for someone to take it personally. You need a high level of mutual trust and real open-mindedness for this to work effectively.
+
+""Hold Off On Proposing Solutions":http://www.overcomingbias.com/2007/10/hold-off-solvin.html" suggests that another technique is to explicitly stop trying to think of an answer, but I suspect this is easier said than done...
+
+bq. Traditional Rationality emphasizes falsification - the ability to relinquish an initial opinion when confronted by clear evidence against it.  But once an idea gets into your head, it will probably require way too much evidence to get it out again.  Worse, we don't always have the luxury of overwhelming evidence. I suspect that a more powerful (and more difficult) method is to hold off on thinking of an answer.  To suspend, draw out, that tiny moment when we can't yet guess what our answer will be; thus giving our intelligence a longer time in which to act.
+
+Although it's not very tolerant, I have some sympathy with the following extract from "GeraldWeinberg's C2 wiki page":http://c2.com/cgi/wiki?GeraldWeinberg...
+
+bq. ""Becoming a Technical Leader":http://www.amazon.co.uk/Becoming-Technical-Leader-Problem-solving-Approach/dp/0932633021" had more impact on me than just about any book I've seen. My favorite anecdote from it goes something like this: If a group of people ask you to help them, ask them what the problem is. If they tell you about a solution, ask them again what the problem is. If they again tell you a solution, walk out of the room. There is nothing you can do to help them.
+
+bq. Not something you'd really want to do, but it points out one thing that I suspect is universally true. If people spent even an eighth as much time examining a problem as they do trying to mend flawed solutions when they are stuck, they'd be much more productive. See "HearProblemFormSolution":http://c2.com/cgi/wiki?HearProblemFormSolution. -- "MichaelFeathers":http://c2.com/cgi/wiki?MichaelFeathers
+
+Not specifying an solution is often seen as a weakness by management types. I think the opposite is the case. The ability to keep an open mind and always seek out the best solution is tremendously powerful and worth fighting for.

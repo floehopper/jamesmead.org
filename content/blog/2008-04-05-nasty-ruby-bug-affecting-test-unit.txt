@@ -1,0 +1,75 @@
+--- 
+permalink: nasty-ruby-bug-affecting-test-unit
+updated_at: 2008-04-05 00:23:50 +00:00
+guid: 3aa53475-6a90-4cf6-915b-ff8804ff5d61
+title: Nasty Ruby Bug Affecting Test::Unit
+id: 325
+filter: 
+- erb
+- textile
+categories: []
+
+layout: blog
+created_at: 2008-04-05 00:10:06 +00:00
+keywords: ruby bug test unit exit code hook testing continuous integration
+---
+h3(#introduction). Introduction
+
+Some time ago, while I was pair-programming with him, "Chris":http://blog.seagul.co.uk alerted me to a "Ruby":http://www.ruby-lang.org/ bug he'd come across which was interfering with the diagnosis of a bug in our application. Since then I've tried to find out more about it, but couldn't find much, so I've done a bit of investigation and thought I'd post it here in case it's useful to anyone else. The bug has long since been fixed, but I'm sure there are still people our there with the "affected versions":#affected-versions of Ruby 1.8.6.
+
+h3(#ruby-bug). Ruby bug
+
+As far as I understand it, the bug is in Ruby's "@Kernel.at_exit@":http://ruby-doc.org/core/classes/Kernel.html#M005958 hook. A call to "@Kernel.exit(false)@":http://ruby-doc.org/core/classes/Kernel.html#M005956 should cause the process to exit with an *exit status of 1* indicating the process did not complete successfully. The bug means that calling "@Kernel.exit(false)@":http://ruby-doc.org/core/classes/Kernel.html#M005956 from within "@Kernel.at_exit@":http://ruby-doc.org/core/classes/Kernel.html#M005958 incorrectly causes the process to exit with an *exit status of 0*.
+
+The most relevant bug report is "#9300":http://rubyforge.org/tracker/?func=detail&atid=1698&aid=9300&group_id=426 and the most relevant mailing list thread is made up of:- "[ruby-core:10746]":http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/10746, "[ruby-core:10748]":http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/10748, "[ruby-core:10760]":http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/10760.
+
+The fix seems to be in changeset 12126...
+<typo:code>
+r12126 | nobu | 2007-03-23 16:53:42 +0000 (Fri, 23 Mar 2007) | 9 lines
+
+* eval.c (ruby_cleanup): exit by SystemExit and SignalException in END
+  block.  [ruby-core:10609]
+
+* test/ruby/test_beginendblock.rb (test_should_propagate_exit_code):
+  test for exit in END block.  [ruby-core:10760]
+
+* test/ruby/test_beginendblock.rb (test_should_propagate_signaled):
+  test for signal in END block.
+</typo:code>
+
+h3(implications). Implications for Test::Unit & Rake::TestTask
+
+The "bug":#ruby-bug has some important consequences. "@Test::Unit@":http://www.ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html makes use of this mechanism to report test failures. Unfortunately, the bug means that a "@Test::Unit@":http://www.ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html process will always return an *exit status of 0* even when there have been test failures.
+
+From @test/unit.rb@:
+<typo:code lang="ruby">
+at_exit do
+  unless $! || Test::Unit.run?
+    exit Test::Unit::AutoRunner.run
+  end
+end
+</typo:code>
+
+This in turn means that a "@Rake::TestTask@":http://rake.rubyforge.org/classes/Rake/TestTask.html process will also always return an *exit status of 0* even when there have been test failures. This is significant, because many "continuous integration":http://martinfowler.com/articles/continuousIntegration.html systems rely on "@Rake::TestTask@":http://rake.rubyforge.org/classes/Rake/TestTask.html processes returning an *exit status of 1* to indicate that there have been test failures. Thus you will get false positive passing builds - not good.
+
+h3(#affected-versions). Affected versions of Ruby
+
+I've built and installed a number of versions of Ruby and run tests on them to try to establish which ones are affected. Although they aren't comprehensive, here are the results...
+
+{background:#ddd}. | affected? | version |
+|=. @N@ | @ruby 1.8.4 (2005-12-24) [i686-darwin8.10.3]@ |
+|=. @N@ | @ruby 1.8.5 (2006-08-25) [i686-darwin8.10.3]@ |
+|=. @N@ | @ruby 1.8.5 (2007-03-16 patchlevel 37) [i686-darwin8.10.3]@ |
+|=. @N@ | @ruby 1.8.5 (2008-03-03 patchlevel 115) [i686-darwin8.10.3]@ |
+{color:red}. |=. @Y@ | @ruby 1.8.6 (2007-02-17 patchlevel 0) [i686-darwin8.10.3]@ |
+{color:red}. |=. @Y@ | @ruby 1.8.6 (2007-03-13 patchlevel 0) [i686-darwin8.10.3]@ |
+{color:red}. |=. @Y@ | @ruby 1.8.6 (2007-03-16 patchlevel 2) [i686-darwin8.10.3]@ |
+{color:red}. |=. @Y@ | @ruby 1.8.6 (2007-03-19 patchlevel 4) [i686-darwin8.10.3]@ |
+{color:red}. |=. @Y@ | @ruby 1.8.6 (2007-05-22 patchlevel 5) [i686-darwin8.10.3]@ |
+{color:red}. |=. @Y@ | @ruby 1.8.6 (2007-05-22 patchlevel 6) [i686-darwin8.10.3]@ |
+{color:red}. |=. @Y@ | @ruby 1.8.6 (2007-05-22 patchlevel 7) [i686-darwin8.10.3]@ |
+|=. @N@ | @ruby 1.8.6 (2007-05-22 patchlevel 8) [i686-darwin8.10.3]@ |
+|=. @N@ | @ruby 1.8.6 (2007-05-23 patchlevel 9) [i686-darwin8.10.3]@ |
+|=. @N@ | @ruby 1.8.6 (2007-05-23 patchlevel 10) [i686-darwin8.10.3]@ |
+|=. @N@ | @ruby 1.8.6 (2007-08-22 patchlevel 50) [i686-darwin8.10.3]@ |
+|=. @N@ | @ruby 1.9.0 (2007-11-28 patchlevel 0) [i686-darwin8.10.3]@ |

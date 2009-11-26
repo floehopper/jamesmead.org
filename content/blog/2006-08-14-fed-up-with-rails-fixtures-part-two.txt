@@ -1,0 +1,57 @@
+--- 
+permalink: fed-up-with-rails-fixtures-part-two
+updated_at: 2006-12-21 05:02:06 +00:00
+guid: 3ff30e81-f934-4935-be79-8b4b3147c0ae
+title: Fed up with Rails fixtures? (part two)
+id: 30
+filter: 
+- erb
+- textile
+categories: []
+
+layout: blog
+created_at: 2006-08-14 03:27:44 +00:00
+keywords: testing ruby rails fixture test mock stub dependency injection
+---
+"Previously":http://blog.floehopper.org/articles/2006/08/10/fed-up-with-rails-fixtures-part-one I described how you can write unit tests for ActiveRecord models without using fixtures - just using models in memory. Although only a limited subset of tests can be written this way, it's often overlooked.
+
+Another technique is to use constructor-based "dependency injection":http://www.martinfowler.com/articles/injection.html (DI) in combination with "mock objects":http://www.connextra.com/aboutUs/mockobjects.pdf. However, thanks to ActiveRecord::Associations::AssociationProxy#raise_on_type_mismatch it isn't straightforward to use mocks for associated models. However, DI can be used effectively for ActionController controllers:
+
+<typo:code lang="ruby">
+class ArticleController < ApplicationController
+  def initialize(article_class = Article)
+    super()
+    @article_class = article_class
+  end
+  def show
+    @article = @article_class.find(params[:id])
+  end
+end
+</typo:code>
+
+The controller constructor defaults to using the real Article model class, but in the test we're going to inject a mock object in its place. You could use one of the "many":http://onestepback.org/software/flexmock/ "mocking":http://rspec.rubyforge.org/ "libraries":http://mockr.sanityinc.com/ for this, but I'm going to use our "home-grown":http://www.reevoo.com/blogs/reevooblog/ one, "Mocha":http://mocha.rubyforge.org, in a "functional" controller test.
+
+<typo:code lang="ruby">
+require File.dirname(__FILE__) + '/../test_helper'
+require 'article_controller'
+
+class ArticleController; def rescue_action(e) raise e end; end
+
+class ArticleControllerTest < Test::Unit::TestCase
+  def setup
+    @article_class = mock()
+    @controller = ArticleController.new(@article_class)
+    @request    = ActionController::TestRequest.new
+    @response   = ActionController::TestResponse.new
+  end 
+  def test_should_display_article
+    article = Article.new
+    @article_class.expects(:find).with('1').returns(article)
+    get :show, :id => 1
+    assert_template 'show'
+    assert_equal article, assigns(:article)
+  end
+end
+</typo:code>
+
+I wrote this at about 6am on the train from Durham to London without the aid of a coffee, so it may not make much sense!

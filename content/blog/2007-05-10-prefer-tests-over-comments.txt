@@ -1,0 +1,22 @@
+--- 
+permalink: prefer-tests-over-comments
+updated_at: 2007-05-10 16:01:06 +00:00
+guid: 9c484bf4-6cae-45d2-9ab5-c64a5bd156e0
+title: Prefer Tests Over Comments
+id: 261
+filter: 
+- erb
+- textile
+categories: []
+
+layout: blog
+created_at: 2007-05-10 16:01:06 +00:00
+keywords: test comment todo intent
+---
+One small a-ha moment in my early programming days was when someone suggested it was better to write a comment explaining why a chunk of code worked the way it did, rather than simply describing how it worked - essentially a direct translation of the code into english sentences.
+
+Since then I've become a "test-infected":http://junit.sourceforge.net/doc/testinfected/testing.htm, "test-driven":http://www.amazon.co.uk/Test-Driven-Development-Addison-Wesley-Signature/dp/0321146530 developer and now I would always choose to write a test in preference to writing a comment. But I think the same lesson still applies...
+
+I've recently been making a conscious effort to come up with better test names. The easy option is for the test name to reflect what happens in the test. But it makes the test much more valuable if you can use the test name to explain why the behaviour is the way it is.
+
+Comments are also often used as to-do items, but I think tests can be a better solution. For example, Ben mentions "leaving notes for the team in tests":http://www.reevoo.com/blogs/bengriffiths/2007/02/14/leaving-notes-for-the-team-in-tests/.

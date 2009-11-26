@@ -1,0 +1,14 @@
+---
+title: Blog
+filter:
+  - erb
+  - textile
+layout: blog
+---
+<ul>
+  <% @pages.find(:all, :in_directory => "blog", :sort_by => "created_at", :reverse => true).each do |post| %>
+    <li>
+      <a href="<%= post.url %>"><%= h(post.title) %></a>
+    </li>
+  <% end %>
+</ul>

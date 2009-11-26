@@ -1,0 +1,16 @@
+--- 
+permalink: the-ignominy-of-having-the-wrong-train-ticket
+updated_at: 2006-11-07 09:16:44 +00:00
+guid: 403c9037-b2ab-4de7-97bd-50e5a314b414
+title: The Ignominy of having the Wrong Train Ticket
+id: 104
+filter: 
+- erb
+- textile
+categories: []
+
+layout: blog
+created_at: 2006-11-07 09:16:44 +00:00
+keywords: gner ticket train ignominy
+---
+"Matt Edgar":http://me63.wordpress.com/ has written "an interesting article":http://me63.wordpress.com/2006/11/01/gee-any-arghh/ about a situation on a "GNER":http://www.gner.co.uk/ train that I find all-too-familiar. In fact I'm sure it won't be long before it happens to me. One of the issues is "the ridiculous number of ticket types available":http://blog.floehopper.org/articles/2006/08/03/a-plethora-of-train-tickets.

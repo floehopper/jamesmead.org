@@ -1,0 +1,16 @@
+--- 
+permalink: taking-a-tumble
+updated_at: 2007-08-29 18:21:16 +00:00
+guid: 23fe7750-0efd-4ff5-b54d-16d57927d774
+title: Taking a Tumble
+id: 287
+filter: 
+- erb
+- textile
+categories: []
+
+layout: blog
+created_at: 2007-08-29 12:03:48 +00:00
+keywords: tumblr tumble blog link
+---
+In a belated effort to keep up with the Joneses ("Chris":http://life.chrisroos.co.uk/, "Ben":http://tumblr.everythingbehind.com/, "Luke":http://tumble.lukeredpath.co.uk/, et al), I've started tumbling at "http://tumble.floehopper.org/":http://tumble.floehopper.org/.

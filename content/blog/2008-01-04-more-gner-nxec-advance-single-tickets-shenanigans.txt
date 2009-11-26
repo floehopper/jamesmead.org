@@ -1,0 +1,47 @@
+--- 
+permalink: more-gner-nxec-advance-single-tickets-shenanigans
+updated_at: 2009-11-26 11:40:50 +00:00
+guid: b25e1f77-525e-4a6c-97a8-56c8e364f7a0
+title: More GNER/NXEC Advance Single tickets shenanigans
+id: 309
+filter: 
+- erb
+- textile
+categories: []
+
+layout: blog
+created_at: 2008-01-04 22:37:22 +00:00
+keywords: nxec gner advance single ticket
+---
+As is "so often":http://blog.floehopper.org/articles/2007/10/29/changing-gner-advance-single-tickets "the case":http://blog.floehopper.org/articles/2007/11/08/changing-gner-advance-single-tickets-reply, today I wanted to change the date of some of my GNER Advance Single tickets. I've never written down the phone number of the "GNER":http://getsatisfaction.com/gner website support team, so I looked at a couple of the old GNER URLs to see if I could find it.
+
+Skip ahead to "The Nub of the Matter":#the-nub-of-the-matter if you're not very interested in the gory details.
+
+h3. From Pillar to Post
+
+h4. www.gner.co.uk - redirects to NXEC website and gives no phone number
+
+<a href="http://www.flickr.com/photos/jamesthecat/2166535107/" title="gner-weve-moved by floehopper, on Flickr"><img src="http://farm3.static.flickr.com/2301/2166535107_a3109f1bf5.jpg" width="500" height="133" alt="gner-weve-moved" /></a>
+
+h4. www.gnertickets.co.uk - gives the number 08457225111
+
+<a href="http://www.flickr.com/photos/jamesthecat/2167328154/" title="gnertickets-weve-moved by floehopper, on Flickr"><img src="http://farm3.static.flickr.com/2357/2167328154_f74a04d868.jpg" width="500" height="332" alt="gnertickets-weve-moved" /></a>
+
+So I rang 08457225111. It was the "NXEC":http://www.nationalexpresseastcoast.com/ customer support number. I waited on hold for a few minutes and pressed a number of option buttons as is the way of things. Eventually I spoke to a human being and asked whether they could change my tickets. They said they couldn't, but that I should ring 08700101127. So I did. This turned out to be the Virgin customer support number. After the obligatory wait and button pushing, I spoke to a human who told me I had been given the wrong number. I was given a new number - 08457225225 (option #2, followed by option #4).
+
+This got me back to "NXEC":http://www.nationalexpresseastcoast.com/ and which was decidedly annoying. They then gave me another number (08700101296) which they said was for "The Train Line" who apparently used to run the GNER website. However when I got through to them, they denied all knowledge and gave me yet another number - 08703665990. This finally got me through to GNER - hooray!
+
+I was worried that there would be complications, because the new tickets would have to be issued by "NXEC":http://www.nationalexpresseastcoast.com/, whereas the old tickets were issued by "GNER":http://getsatisfaction.com/gner. But I was pleasantly surprised to be able to change my GNER Advance Single tickets with no more pain than normal (which included giving my credit card details three times - once for each ticket - doh!). In fact the rep I spoke to was remarkably efficient.
+
+So there goes another pointless hour of my life...
+
+h3(#the-nub-of-the-matter). The Nub of the Matter
+
+If you want to change tickets purchased through:
+* the *old* GNER website - then ring 08703665990
+* the *new* (but rather transient) GNER website - then ring 08547225111
+* the "NXEC":http://www.nationalexpresseastcoast.com/ website (looks rather similar to the *new* GNER website) - then ring 08547225111
+
+h3. A Brighter Future?
+
+On a more optimistic note, it looks like the new "NXEC":http://www.nationalexpresseastcoast.com/ website allows you to change Advance Single tickets on-line up to 5 days before departure. If it works that'll be great :-)
