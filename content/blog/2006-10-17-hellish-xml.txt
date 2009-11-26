@@ -17,14 +17,12 @@ So now you can write test cases for "ANT":http://ant.apache.org/ _in XML_ using 
 
 You can even write assertions in XML ...
 
-<typo:code lang="xml">
-  <!-- the actual test case -->
-  <target name="testTouchCreatesFile">
-    <au:assertFileDoesntExist file="${foo}"/>
-    <touch file="${foo}"/>
-    <au:assertFileExists file="${foo}"/>
-  </target>
-</typo:code>
+bc(xml). <!-- the actual test case -->
+<target name="testTouchCreatesFile">
+  <au:assertFileDoesntExist file="${foo}"/>
+  <touch file="${foo}"/>
+  <au:assertFileExists file="${foo}"/>
+</target>
 
 ... but why?
 

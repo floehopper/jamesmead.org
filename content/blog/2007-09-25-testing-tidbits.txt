@@ -19,45 +19,34 @@ Firstly, James had an interesting new use of the Mocha parameter matcher "@anyth
 
 Normally @anything@ is used to determine what parameters are matched by an expectation...
 
-<typo:code lang="ruby">
-  Product.expects(:do_stuff).with('name', anything)
-</typo:code>
-
+bc(ruby). Product.expects(:do_stuff).with('name', anything)
 
 But James was passing @anything@ into a method to indicate that the value of that parameter was irrelevant in the context of the test. The kind of thing you might already do using @nil@...
 
-<typo:code lang="ruby">
-  Product.do_stuff('name', anything)
-</typo:code>
+bc(ruby). Product.do_stuff('name', anything)
 
 I wonder if this idea could be extended by having a kind of "holy hand-grenade":http://www.youtube.com/watch?v=Kk-G2twc_M4 object which "blows up" by raising an "@AssertionFailedError@":http://www.ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit/AssertionFailedError.html when any method is invoked on it...?
 
 Secondly, we were running all our tests using the default rake task when we discovered a test that was hanging. The standard rake test task output wasn't very helpful in identifying which test was stuck (just rows of dots)...
 
-<typo:code>
-Started
+bc. Started
 .....................................................................
 .....................................................................
 .....................................................................
 ......................................................
-</typo:code>
 
 Interrupting the process and examining the stack trace didn't help either (the relevant stack frames had been collapsed)...
 
-<typo:code>
-   ... 24 levels...
-  from /opt/local/lib/ruby/1.8/test/unit/autorunner.rb:216:in `run'
-  from /opt/local/lib/ruby/1.8/test/unit/autorunner.rb:12:in `run'
-  from /opt/local/lib/ruby/1.8/test/unit.rb:278
-  from /opt/local/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake/...
-</typo:code>
+bc. ... 24 levels...
+from /opt/local/lib/ruby/1.8/test/unit/autorunner.rb:216:in `run'
+from /opt/local/lib/ruby/1.8/test/unit/autorunner.rb:12:in `run'
+from /opt/local/lib/ruby/1.8/test/unit.rb:278
+from /opt/local/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake/...
 
 So we set the output to verbose which outputs the name of each test as it starts. From this we could work out which was the offending test...
 
-<typo:code>
-  TESTOPTS="-v" rake
+bc. TESTOPTS="-v" rake
 
-  test_should_do_something(NaughtyTest): .
-  test_should_do_something_else(NaughtyTest): .
-  test_should_do_something_ideally_without_hanging(NaughtyTest): .
-</typo:code>
+bc. test_should_do_something(NaughtyTest): .
+test_should_do_something_else(NaughtyTest): .
+test_should_do_something_ideally_without_hanging(NaughtyTest): .

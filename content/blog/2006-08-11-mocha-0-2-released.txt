@@ -21,50 +21,44 @@ I've just released a "new version":http://rubyforge.org/frs/?group_id=1917 of th
 
 So instead of…
 
-<typo:code lang="ruby">
-  wotsit = Mocha.new
+bc(ruby)..   wotsit = Mocha.new
   wotsit.expects(:thingummy).with(5).returns(10)
   doobrey = Doobrey.new(wotsit)
   doobrey.hoojamaflip
   wotsit.verify
-</typo:code>
+
 
 you need to do…
 
-<typo:code lang="ruby">
-  wotsit = mock()
+bc(ruby)..   wotsit = mock()
   wotsit.expects(:thingummy).with(5).returns(10)
   doobrey = Doobrey.new(wotsit)
   doobrey.hoojamaflip
   # no need to verify
-</typo:code>
+
 
 There are also shortcuts as follows…
 
 instead of…
 
-<typo:code lang="ruby">
-  wotsit = Mocha.new
+bc(ruby)..   wotsit = Mocha.new
   wotsit.expects(:thingummy).returns(10)
   wotsit.expects(:summat).returns(25)
-</typo:code>
+
 
 you can have…
 
-<typo:code lang="ruby">
-  wotsit = mock(:thingummy => 5, :summat => 25)
-</typo:code>
+bc(ruby)..   wotsit = mock(:thingummy => 5, :summat => 25)
+
 
 and instead of…
 
-<typo:code lang="ruby">
-  wotsit = Mocha.new
+bc(ruby)..   wotsit = Mocha.new
   wotsit.stubs(:thingummy).returns(10)
   wotsit.stubs(:summat).returns(25)
-</typo:code>
+
 
 you can have…
 
-<typo:code lang="ruby">
-  wotsit = stub(:thingummy => 5, :summat => 25)
-</typo:code>
+bc(ruby)..   wotsit = stub(:thingummy => 5, :summat => 25)
+

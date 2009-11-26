@@ -17,29 +17,21 @@ keywords: mock object ruby test unit stub fixture
 
 A new method @mock_model@ is defined that builds a mock object which will respond the same way as a real @ActiveRecord@ object. As I understand it, this means he can replace...
 
-<typo:code lang="ruby">
-  @campaign = mock("campaign")
-  @campaign.stub!(:is_a?).and_return(true)
-  @campaign.stub!(:new_record?).and_return(false)
-  @campaign.stub!(:id).and_return(rand(1000))
-</typo:code>
+bc(ruby). @campaign = mock("campaign")
+@campaign.stub!(:is_a?).and_return(true)
+@campaign.stub!(:new_record?).and_return(false)
+@campaign.stub!(:id).and_return(rand(1000))
 
 with...
 
-<typo:code lang="ruby">
-  mock_model :campaign
-</typo:code>
+bc(ruby). mock_model :campaign
 
 Although "I agree":http://blog.floehopper.org/articles/2006/06/27/rails-fixtures-help-or-hindrance with him that using fixtures is not a good idea, why not use a real @ActiveRecord@ object...
 
-<typo:code lang="ruby">
-  @campaign = Campaign.new
-</typo:code>
+bc(ruby). @campaign = Campaign.new
 
 Sometimes due to the way @ActiveRecord@ couples your models to the database, it becomes essential to have a model in the database and not just in memory. In which case why not just do this...
 
-<typo:code lang="ruby">
-  @campaign = Campaign.create!
-</typo:code>
+bc(ruby). @campaign = Campaign.create!
 
 I've written up a couple more thoughts "here":http://blog.floehopper.org/articles/2006/12/23/stub-queries-and-expect-commands and "here":http://blog.floehopper.org/articles/2006/12/23/tell-dont-ask.

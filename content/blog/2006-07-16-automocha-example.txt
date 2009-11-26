@@ -15,9 +15,8 @@ keywords: mock mocking stub stubbing ruby class method expectation test testing 
 ---
 Again - I'm not really very pleased with this example, but hopefully it makes some sense. It's important to realise that the test is not running in a normal "Rails":http://www.rubyonrails.org environment with the standard auto-require. In fact the first time the Comment class is encountered AutoMocha uses const_missing to supply a Mocha::Mock in its place. From that point on - any further references get the same mock object.
 
-<typo:code lang="ruby">
-  class Article
-  
+bc(ruby).. class Article
+
     attr_reader :id
 
     def accepted_comments
@@ -45,4 +44,3 @@ Again - I'm not really very pleased with this example, but hopefully it makes so
     end
 
   end
-</typo:code>

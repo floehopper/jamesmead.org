@@ -19,47 +19,41 @@ Mocha adds a couple of new methods to all objects and classes - <code>expects</c
 
 Both the <code>expects</code> and <code>stubs</code> methods actually return an "expectation":http://mocha.rubyforge.org/classes/Mocha/Expectation.html object. Relevant methods on an expectation are: <code>at_least, at_least_once, never, raises, returns, times, with, yields</code> which are hopefully fairly self-explanatory. If not there are some clues "here":http://mocha.rubyforge.org/classes/Mocha/Expectation.html
 
-*Mocking a class method*
-<typo:code lang="ruby">
-  product = Product.new
-  Product.expects(:find).with(1).returns(product)
-  assert_equal product, Product.find(1)
-</typo:code>
+h4. Mocking a class method
 
-*Mocking an instance method on a real object*
-<typo:code lang="ruby">
-  product = Product.new
-  product.expects(:save).returns(true)
-  assert product.save
-</typo:code>
+bc(ruby). product = Product.new
+Product.expects(:find).with(1).returns(product)
+assert_equal product, Product.find(1)
 
-*Stubbing instance methods on real object*
-<typo:code lang="ruby">
-  prices = [stub(:pence => 1000), stub(:pence => 2000)]
-  product = Product.new
-  product.stubs(:prices).returns(prices)
-  assert_equal [1000, 2000], product.prices.collect {|p| p.pence}
-</typo:code>
+h4. Mocking an instance method on a real object
 
-*Stubbing an instance method on all instances of a class*
-<typo:code lang="ruby">
-  Product.any_instance.stubs(:name).returns('stubbed_name')
-  product = Product.new
-  assert_equal 'stubbed_name', product.name
-</typo:code>
+bc(ruby). product = Product.new
+product.expects(:save).returns(true)
+assert product.save
 
-*Traditional mocking*
-<typo:code lang="ruby">
-  object = mock()
-  object.expects(:expected_method).with(:p1, :p2).returns(:result)
-  assert_equal :result, object.expected_method(:p1, :p2)
-</typo:code>
+h4. Stubbing instance methods on real object
 
-*Shortcuts*
-<typo:code lang="ruby">
-  object = stub(:method1 => :result1, :method2 => :result2)
-  assert_equal :result1, object.method1
-  assert_equal :result2, object.method2
-</typo:code>
+bc(ruby). prices = [stub(:pence => 1000), stub(:pence => 2000)]
+product = Product.new
+product.stubs(:prices).returns(prices)
+assert_equal [1000, 2000], product.prices.collect {|p| p.pence}
+
+h4. Stubbing an instance method on all instances of a class
+
+bc(ruby). Product.any_instance.stubs(:name).returns('stubbed_name')
+product = Product.new
+assert_equal 'stubbed_name', product.name
+
+h4. Traditional mocking
+
+bc(ruby).. object = mock()
+object.expects(:expected_method).with(:p1, :p2).returns(:result)
+assert_equal :result, object.expected_method(:p1, :p2)
+
+h4. Shortcuts
+
+bc(ruby). object = stub(:method1 => :result1, :method2 => :result2)
+assert_equal :result1, object.method1
+assert_equal :result2, object.method2
 
 fn1. I wrote these examples without checking them, so there may be some typos.

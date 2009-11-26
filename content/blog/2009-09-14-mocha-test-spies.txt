@@ -34,25 +34,23 @@ Joe correctly points out that setting up expectations before exercising the obje
 
 h4. Sharing stubs in a context
 
-<typo:code lang="ruby">
-describe PostsController, "on GET show" do
+bc(ruby).. describe PostsController, "on GET show" do
   before(:each) do
     @post = stub('a post', :to_param => '1')
     Post.stubs(:find => @post)
- 
+    
     get :show, :id => @post.to_param
   end
- 
+  
   it { should render_template(:show) }
- 
+  
   it "should find and assign the given post" do
     Post.should have_received(:find).with(@post.to_param)
     should assign_to(:post).with(@post)
   end
 end
-</typo:code>
 
-I'm going to struggle a bit when commenting on this code example for a couple of reasons :-
+p. I'm going to struggle a bit when commenting on this code example for a couple of reasons :-
 
 * I dislike the use of @setup@ methods (@before@ in this "RSpec":http://rspec.info/ example). I prefer to do my "setup in-line in the test":http://blog.jayfields.com/2007/06/testing-inline-setup.html to make the test as independent and as explicit as possible. I particularly dislike exercising the object under test within the @setup@ method. To me this seems like a more fundamental breakage of the "Four-Phase Test":http://xunitpatterns.com/Four%20Phase%20Test.html concept.
 * In this example, I would not want to assert that @Post.find@ has been called. "Nat Pryce":http://www.natpryce.com/ (one of the authors of jMock) has a rule of thumb that says: ""stub queries and expect commands":http://www.jmock.org/yoga.html". In this example, the call to @Post.find@ is clearly a query, so I would just stub it. I think about it like this: (a) stubbing @Post.find@ is setting up the environment and making the instance of @Post@ available; (b) the assertion then checks that the instance of @Post@ is assigned to the @@post@ instance variable; (c) the combination of (a) and (b) is enough to tell me that the @Post.find@ method has been called - where else would the controller have got the instance of @Post@ from?
@@ -61,8 +59,7 @@ So I'm not convinced I would need _Test Spies_ for this example.
 
 h4. Sharing stubs between tests
 
-<typo:code lang="ruby">
-module PostHelpers
+bc(ruby). module PostHelpers
   def stub_post(post_attrs = {})
     post_attrs = {
       :to_param => '1',
@@ -71,15 +68,14 @@ module PostHelpers
     }.update(post_attrs)
     stub('a post', post_attrs)
   end
- 
   def stub_post!(post_attrs = {})
     returning stub_post do |post|
       Post.stubs(:find => post)
     end
   end
 end
- 
-describe PostsController do
+
+bc(ruby). describe PostsController do
   include PostHelpers
   it "should show a published post on GET show" do
     post = stub_post!
@@ -90,8 +86,8 @@ describe PostsController do
     should assign_to(:post).with(post)
   end
 end
- 
-describe "/posts/show" do
+
+bc(ruby). describe "/posts/show" do
   include PostHelpers
   it "should display a post" do
     assigns[:post] = stub_post
@@ -99,7 +95,6 @@ describe "/posts/show" do
     template.should have_tag('h1', assigns[:post].title)
   end
 end
-</typo:code>
 
 * In this example, as above, I would stub the call to @Post.find@ rather than expect it.
 * I'd also prefer to use a real @Post@ instance rather than a stub object. I'd use some kind of "Test Data Builder":http://natpryce.com/articles/000714.html like "factory_girl":http://github.com/thoughtbot/factory_girl to remove any duplication rather than methods like those in the @PostHelpers@ module. While these @ActiveRecord@ objects aren't strictly _Value Objects_, I can't help but think that "this quote from Nat Pryce":http://markmail.org/message/v6rvuvmfygaboruf is relevant :-
@@ -110,43 +105,35 @@ bq. Some languages might allow you to *stub* a value, but what's the point? It i
 
 h4. Reusable matchers and assertions
 
-<typo:code lang="ruby">
-# post.class.should have_received(:find).with(post.to_param)
+bc(ruby).. # post.class.should have_received(:find).with(post.to_param)
 should find(post)
 # Post.should have_received(:new).with(post_attrs)
 should build(Post, post_attrs)
 # Post.should have_received(:new).with(post_attrs)
 # post.should have_received(:save)
 should build_and_save(Post, post_attrs)
-</typo:code>
 
-I'm not convinced that extracting the assertion part of an expectation is sensible, because it'll always need to be used in conjunction with the stub part of the same expectation.
+p. I'm not convinced that extracting the assertion part of an expectation is sensible, because it'll always need to be used in conjunction with the stub part of the same expectation.
 
 h3. Syntax
 
 I think the suggested syntax extension is inconsistent with the existing Mocha API and a little clunky. See "James Rosen's comment":http://groups.google.com/group/mocha-developer/msg/8d719b4aa729928f?hl=en on the "mailing list":http://groups.google.com/group/mocha-developer?hl=en. Looking at the following examples given in the documentation :-
 
-<typo:code lang="ruby">
-  assert_received(mock, :to_s)
-  assert_received(Radio, :new) {|expect| expect.with(1041) }
-  assert_received(radio, :volume) {|expect| expect.with(11).twice }
-</typo:code>
+bc(ruby). assert_received(mock, :to_s)
+assert_received(Radio, :new) {|expect| expect.with(1041) }
+assert_received(radio, :volume) {|expect| expect.with(11).twice }
 
 I think I'd prefer to see something like :-
 
-<typo:code lang="ruby">
-  assert_that mock.received(:to_s)
-  assert_that Radio.received(:new).with(1041)
-  assert_that radio.received(:volume).with(11).twice
-</typo:code>
+bc(ruby). assert_that mock.received(:to_s)
+assert_that Radio.received(:new).with(1041)
+assert_that radio.received(:volume).with(11).twice
 
 Or something like :-
 
-<typo:code lang="ruby">
-  mock.assert_received(:to_s)
-  Radio.assert_received(:new).with(1041)
-  radio.assert_received(:volume).with(11).twice
-</typo:code>
+bc(ruby). mock.assert_received(:to_s)
+Radio.assert_received(:new).with(1041)
+radio.assert_received(:volume).with(11).twice
 
 Note that I haven't completely thought through the implementation implications of these suggestions i.e. whether they are even possible!
 

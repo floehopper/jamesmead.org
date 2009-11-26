@@ -21,8 +21,7 @@ So when Nathan Zook emailed me to suggest that I might have got my previous calc
 
 h3. Nathan's Solution
 
-<typo:code lang="ruby">
-def matches(index, base)
+bc(ruby). def matches(index, base)
   counts = [0] * base
   4.times do
     counts[index % base] += 1
@@ -35,12 +34,10 @@ def matches(index, base)
   end
   count
 end
-</typo:code>
 
 h3. James' Solution
 
-<typo:code lang="ruby">
-def matches(index, base)
+bc(ruby). def matches(index, base)
   places = 4
   permutation = "%0#{places * 2}d" % index.to_s(base)
   original = (0...places).map { |i| permutation[i].chr }
@@ -57,14 +54,13 @@ def matches(index, base)
   end 
   matches
 end
-</typo:code>
+
 
 h3. Failing Tests
 
 You can see the full set of tests "here":http://pastie.org/350453, but the critical ones turn out to be the ones below. It appears that Nathan's solution doesn't work when there are duplicates. But I'm glad he pushed me into writing these tests - now I have more confidence in the answer I calculated previously.
 
-<typo:code lang="ruby">
-def test_should_have_two_duplicate_matches_in_same_positiion
+bc(ruby).. def test_should_have_two_duplicate_matches_in_same_positiion
   assert_equal 2, matches(11341178, 10)
 end
 
@@ -107,7 +103,6 @@ end
 def test_should_have_three_matches_when_digit_appears_three_times_on_lhs_but_four_times_on_rhs
   assert_equal 3, matches(11141111, 10)
 end
-</typo:code>
 
 h3. TextMate Bug
 

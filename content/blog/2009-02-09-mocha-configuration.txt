@@ -19,93 +19,84 @@ In his "recent look":http://blog.brianguthrie.com/articles/2009/02/03/ioke-mocki
 
 There are 3 levels for all of the existing conditions :-
 
-<typo:code lang="ruby">
-  # default behaviour
-  Mocha::Configuration.allow(condition)
+bc(ruby).. # default behaviour
+Mocha::Configuration.allow(condition)
 
-  # warning is displayed when condition is met
-  Mocha::Configuration.warn_when(condition)
+# warning is displayed when condition is met
+Mocha::Configuration.warn_when(condition)
 
-  # error is raised when condition is met
-  Mocha::Configuration.prevent(condition)
-</typo:code>
+# error is raised when condition is met
+Mocha::Configuration.prevent(condition)
 
 h3. Stubbing a non-existent method
 
 This is useful if you want to ensure that methods you're mocking really exist. A common criticism of unit tests with mock objects is that such a test may (incorrectly) pass when an equivalent non-mocking test would (correctly) fail. While you should always have some integration tests, particularly for critical business functionality, this Mocha configuration setting should catch scenarios when mocked methods and real methods have become misaligned.
 
-<typo:code lang="ruby">
-  Mocha::Configuration.prevent(:stubbing_non_existent_method)
-  
-  class Example
+bc(ruby).. Mocha::Configuration.prevent(:stubbing_non_existent_method)
+
+class Example
+end
+
+class ExampleTest < Test::Unit::TestCase
+  def test_example
+    example = Example.new
+    example.stubs(:method_that_doesnt_exist)
+    # => Mocha::StubbingError: stubbing non-existent method:
+    # =>   #<Example:0x593760>.method_that_doesnt_exist
   end
-  
-  class ExampleTest < Test::Unit::TestCase
-    def test_example
-      example = Example.new
-      example.stubs(:method_that_doesnt_exist)
-      # => Mocha::StubbingError: stubbing non-existent method:
-      # =>   #<Example:0x593760>.method_that_doesnt_exist
-    end
-  end
-</typo:code>
+end
 
 h3. Stubbing a method unnecessarily
 
 This is useful for identifying unused stubs. Unused stubs are often accidentally introduced when code is "refactored":http://martinfowler.com/bliki/DefinitionOfRefactoring.html.
 
-<typo:code lang="ruby">
-  Mocha::Configuration.prevent(:stubbing_method_unnecessarily)
-  
-  class ExampleTest < Test::Unit::TestCase
-    def test_example
-      example = mock('example')
-      example.stubs(:unused_stub)
-      # => Mocha::StubbingError: stubbing method unnecessarily:
-      # =>   #<Mock:example>.unused_stub(any_parameters)
-    end
+bc(ruby).. Mocha::Configuration.prevent(:stubbing_method_unnecessarily)
+
+class ExampleTest < Test::Unit::TestCase
+  def test_example
+    example = mock('example')
+    example.stubs(:unused_stub)
+    # => Mocha::StubbingError: stubbing method unnecessarily:
+    # =>   #<Mock:example>.unused_stub(any_parameters)
   end
-</typo:code>
+end
 
 h3. Stubbing a non-public method
 
 Many people think that it's good practice only to mock public methods. This is one way to prevent your tests being too tightly coupled to the internal implementation of a class. Such tests tend to be very brittle and not much use when refactoring.
 
-<typo:code lang="ruby">
-  Mocha::Configuration.prevent(:stubbing_non_public_method)
-  
-  class Example
-    def internal_method; end
-    private :internal_method
+bc(ruby).. Mocha::Configuration.prevent(:stubbing_non_public_method)
+
+class Example
+  def internal_method; end
+  private :internal_method
+end
+
+class ExampleTest < Test::Unit::TestCase
+  def test_example
+    example = Example.new
+    example.stubs(:internal_method)
+    # => Mocha::StubbingError: stubbing non-public method:
+    # =>   #<Example:0x593530>.internal_method
   end
-  
-  class ExampleTest < Test::Unit::TestCase
-    def test_example
-      example = Example.new
-      example.stubs(:internal_method)
-      # => Mocha::StubbingError: stubbing non-public method:
-      # =>   #<Example:0x593530>.internal_method
-    end
-  end
-</typo:code>
+end
 
 h3. Stubbing Method on Non-Mock Object
 
 If you like the idea of "mocking roles not objects":http://www.jmock.org/oopsla2004.pdf and "you don't like stubbing concrete classes":http://www.mockobjects.com/2007/04/test-smell-mocking-concrete-classes.html, this is the setting for you. However, while this restriction makes a lot of sense in Java with its "explicit interfaces":http://java.sun.com/docs/books/tutorial/java/concepts/interface.html, it may be moot in Ruby where roles are probably best represented as Modules. Anyway that's probably a discussion for another day.
 
-<typo:code lang="ruby">
-  Mocha::Configuration.prevent(:stubbing_method_on_non_mock_object)
-  
-  class Example
-    def example_method; end
+bc(ruby).. Mocha::Configuration.prevent(:stubbing_method_on_non_mock_object)
+
+class Example
+  def example_method; end
+end
+
+class ExampleTest < Test::Unit::TestCase
+  def test_example
+    example = Example.new
+    example.stubs(:example_method)
+    # => Mocha::StubbingError: stubbing method on non-mock object:
+    # =>   #<Example:0x593620>.example_method
   end
-  
-  class ExampleTest < Test::Unit::TestCase
-    def test_example
-      example = Example.new
-      example.stubs(:example_method)
-      # => Mocha::StubbingError: stubbing method on non-mock object:
-      # =>   #<Example:0x593620>.example_method
-    end
-  end
-</typo:code>
+end
+

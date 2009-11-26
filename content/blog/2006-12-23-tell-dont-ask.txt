@@ -19,21 +19,19 @@ Something that may be adding unnecessary complexity to the test is that the @Mes
 
 A first step to improving the design would be to have a @List#create_subscriptions@ method which would be called by @Message#generate@. We could then simplify the unit test as follows...
 
-<typo:code lang="ruby">
-  def test_should_create_email_messages_and_subscriptions_when_include_subscribers_is_true
-    list = mock()
-    campaign = Campaign.new(:people => [])
-    message = Message.new(:campaign => campaign)
-    message.stubs(:lists).returns([list])
-    message.include_subscribers = true
+bc(ruby).. def test_should_create_email_messages_and_subscriptions_when_include_subscribers_is_true
+  list = mock()
+  campaign = Campaign.new(:people => [])
+  message = Message.new(:campaign => campaign)
+  message.stubs(:lists).returns([list])
+  message.include_subscribers = true
+  
+  list.expects(:create_subscriptions)
+  
+  message.generate
+  assert_equal 1, message.email_messages
+end
 
-    list.expects(:create_subscriptions)
-
-    message.generate
-    assert_equal 1, message.email_messages
-  end
-</typo:code>
-
-Obviously we'd need to add a separate unit test for the @List#create_subscriptions@ method, but that would also be much simpler and easier to understand. In this way we have decoupled @Message@ from the structure of @List@ and are just relying on its behaviour. "Nat Pryce":http://nat.truemesh.com/ & "Steve Freeman":http://stevef.truemesh.com/ call this the "??Tell Don't Ask?? style":http://www.mockobjects.com/2006/10/tell-dont-ask-and-mock-objects.html.
+p. Obviously we'd need to add a separate unit test for the @List#create_subscriptions@ method, but that would also be much simpler and easier to understand. In this way we have decoupled @Message@ from the structure of @List@ and are just relying on its behaviour. "Nat Pryce":http://nat.truemesh.com/ & "Steve Freeman":http://stevef.truemesh.com/ call this the "??Tell Don't Ask?? style":http://www.mockobjects.com/2006/10/tell-dont-ask-and-mock-objects.html.
 
 Finally, I prefer not to have much more than "one assertion per test":http://www.artima.com/weblogs/viewpost.jsp?thread=35578 (and don't forget verifying an expectation is effectively an assertion), so I'd probably split the test into two - one to verify @create_subscriptions@ was called and one to check the @email_messages@ were created.

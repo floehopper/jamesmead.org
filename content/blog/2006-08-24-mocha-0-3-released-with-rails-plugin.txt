@@ -17,9 +17,7 @@ A new version of the "Mocha":http://mocha.rubyforge.org mocking and stubbing lib
 
 There is now a "Ruby on Rails":http://www.rubyonrails.com "plugin":http://www.agilewebdevelopment.com/plugins/mocha which can be installed like this...
 
-<typo:code>
-  $ script/plugin install svn://rubyforge.org/var/svn/mocha/trunk
-</typo:code>
+bc. $ script/plugin install svn://rubyforge.org/var/svn/mocha/trunk
 
 Here are the release notes...
 

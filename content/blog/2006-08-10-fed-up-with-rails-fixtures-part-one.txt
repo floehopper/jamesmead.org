@@ -15,8 +15,7 @@ keywords: fixtures rails test ruby testing database activerecord
 ---
 In a "previous post":http://blog.floehopper.org/articles/2006/06/27/rails-fixtures-help-or-hindrance I explained why I'm not a big fan of Rails fixtures. But how can you avoid using them and still obtain good test coverage? Try forgetting about fixtures and writing unit tests that only test a single class and nothing else. Here's an example where you hardly[1] need to involve the database at all...
 
-<typo:code lang="ruby">
-class Initial < ActiveRecord::Migration 
+bc(ruby). class Initial < ActiveRecord::Migration 
   def self.up 
     create_table :companies do |t| 
       t.column :name, :string 
@@ -28,22 +27,20 @@ class Initial < ActiveRecord::Migration
   end
 end
 
-class Company < ActiveRecord::Base
+bc(ruby). class Company < ActiveRecord::Base
   has_many :employees
   def wage_bill
     employees.inject(0) { |total, employee| total + employee.salary }
   end
 end
 
-class Employee < ActiveRecord::Base
+bc(ruby). class Employee < ActiveRecord::Base
   belongs_to :company
 end
-</typo:code>
 
-So instead of writing this...
+p. So instead of writing this...
 
-<typo:code lang="yaml">
-# companies.yml
+bc(yaml).. # companies.yml
 walmart:
   id: 1
   name: Walmart
@@ -57,21 +54,17 @@ anne:
   id: 2
   company_id: 1
   salary: 20000
-</typo:code>
-  
-<typo:code lang="ruby">
-class CompanyTest < Test::Unit::TestCase
+
+bc(ruby).. class CompanyTest < Test::Unit::TestCase
   fixtures :companies, :employees
   def test_should_calculate_wage_bill
     assert_equal 30000, companies(:walmart).wage_bill
   end
 end
-</typo:code>
 
-You can write this...
+p. You can write this...
 
-<typo:code lang="ruby">
-class CompanyTest < Test::Unit::TestCase
+bc(ruby).. class CompanyTest < Test::Unit::TestCase
   def test_should_calculate_wage_bill
     employees = []
     employees << Employee.new(:salary => 10000)
@@ -80,9 +73,8 @@ class CompanyTest < Test::Unit::TestCase
     assert_equal 10000 + 20000, company.wage_bill
   end
 end
-</typo:code>
 
-This way you home in on the behaviour of the Company#wage_bill method and avoid testing the "ActiveRecord":http://api.rubyonrails.com/classes/ActiveRecord/Base.html code and access to the database. More ways to avoid hitting the database will follow in another post.
+p. This way you home in on the behaviour of the @Company#wage_bill@ method and avoid testing the "ActiveRecord":http://api.rubyonrails.com/classes/ActiveRecord/Base.html code and access to the database. More ways to avoid hitting the database will follow in another post.
 
 
 fn1. ActiveRecord still needs to know what columns in each table e.g.

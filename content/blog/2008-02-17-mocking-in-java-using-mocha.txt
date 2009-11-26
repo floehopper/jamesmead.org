@@ -19,53 +19,50 @@ He has a couple of examples in the "Mock documentation":http://jtestr.codehaus.o
 
 The first one demonstrates using "Mocha":http://mocha.rubyforge.org to mock an interface ("Map":http://java.sun.com/j2se/1.4.2/docs/api/java/util/Map.html).
 
-<typo:code lang="ruby">
-  import java.util.Map
-  import java.util.Iterator
-  import java.util.Set
-  import java.util.HashMap
+bc(ruby).. import java.util.Map
+import java.util.Iterator
+import java.util.Set
+import java.util.HashMap
 
-  functional_tests do 
-    test "that a new HashMap can be created based on another map" do 
-      map = Map.new
-
-      map.expects(:size).returns(0)
-
-      iter = Iterator.new
-      iter.expects(:hasNext).returns(false)
-
-      set = Set.new
-      set.expects(:iterator).returns(iter)
-
-      map.expects(:entrySet).returns(set)
-
-      assert_equals 0, HashMap.new(map).size
-    end
+functional_tests do 
+  test "that a new HashMap can be created based on another map" do 
+    map = Map.new
+    
+    map.expects(:size).returns(0)
+    
+    iter = Iterator.new
+    iter.expects(:hasNext).returns(false)
+    
+    set = Set.new
+    set.expects(:iterator).returns(iter)
+    
+    map.expects(:entrySet).returns(set)
+    
+    assert_equals 0, HashMap.new(map).size
   end
-</typo:code>
+end
 
-The second example demonstrates using "Mocha":http://mocha.rubyforge.org to setup expectations on a real (non-mock) instance ("HashMap":http://java.sun.com/j2se/1.4.2/docs/api/java/util/HashMap.html)...
+p. The second example demonstrates using "Mocha":http://mocha.rubyforge.org to setup expectations on a real (non-mock) instance ("HashMap":http://java.sun.com/j2se/1.4.2/docs/api/java/util/HashMap.html)...
 
-<typo:code lang="ruby">
-  import java.util.Iterator
-  import java.util.Set
-  import java.util.HashMap
+bc(ruby).. import java.util.Iterator
+import java.util.Set
+import java.util.HashMap
 
-  functional_tests do 
-    test "that a new HashMap can be created based on another map" do 
-      map = mock(HashMap)
-
-      map.expects(:size).returns(0)
-
-      iter = Iterator.new
-      iter.expects(:hasNext).returns(false)
-
-      set = Set.new
-      set.expects(:iterator).returns(iter)
-
-      map.expects(:entrySet).returns(set)
-
-      assert_equals 0, HashMap.new(map).size
-    end
+functional_tests do 
+  test "that a new HashMap can be created based on another map" do 
+    map = mock(HashMap)
+    
+    map.expects(:size).returns(0)
+    
+    iter = Iterator.new
+    iter.expects(:hasNext).returns(false)
+    
+    set = Set.new
+    set.expects(:iterator).returns(iter)
+    
+    map.expects(:entrySet).returns(set)
+    
+    assert_equals 0, HashMap.new(map).size
   end
-</typo:code>
+end
+

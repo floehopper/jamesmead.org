@@ -19,8 +19,6 @@ In the end, I narrowed the problem down to the name of the model class which is 
 
 However, I am a bit confused why the original Sync model class definition didn't give a "superclass mismatch" "@TypeError@":http://ruby-doc.org/core/classes/TypeError.html, which is what happens if I do :-
 
-<typo:code lang="ruby">
-  script/runner "class Sync < ActiveRecord::Base; end"
-</typo:code>
+bc(ruby). script/runner "class Sync < ActiveRecord::Base; end"
 
 It must be a load order issue, since if I put the class definition in a file in app/models, I don't see the @TypeError@. It would've saved a lot of time if my @Sync@ model class definition had failed fast in this way. I might see if there's a way to make that happen.

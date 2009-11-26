@@ -24,31 +24,24 @@ As far as I understand it, the bug is in Ruby's "@Kernel.at_exit@":http://ruby-d
 The most relevant bug report is "#9300":http://rubyforge.org/tracker/?func=detail&atid=1698&aid=9300&group_id=426 and the most relevant mailing list thread is made up of:- "[ruby-core:10746]":http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/10746, "[ruby-core:10748]":http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/10748, "[ruby-core:10760]":http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/10760.
 
 The fix seems to be in changeset 12126...
-<typo:code>
-r12126 | nobu | 2007-03-23 16:53:42 +0000 (Fri, 23 Mar 2007) | 9 lines
 
-* eval.c (ruby_cleanup): exit by SystemExit and SignalException in END
-  block.  [ruby-core:10609]
+bc. r12126 | nobu | 2007-03-23 16:53:42 +0000 (Fri, 23 Mar 2007) | 9 lines
 
-* test/ruby/test_beginendblock.rb (test_should_propagate_exit_code):
-  test for exit in END block.  [ruby-core:10760]
-
-* test/ruby/test_beginendblock.rb (test_should_propagate_signaled):
-  test for signal in END block.
-</typo:code>
+bc. * eval.c (ruby_cleanup): exit by SystemExit and SignalException in END block.  [ruby-core:10609]
+* test/ruby/test_beginendblock.rb (test_should_propagate_exit_code): test for exit in END block.  [ruby-core:10760]
+* test/ruby/test_beginendblock.rb (test_should_propagate_signaled): test for signal in END block.
 
 h3(implications). Implications for Test::Unit & Rake::TestTask
 
 The "bug":#ruby-bug has some important consequences. "@Test::Unit@":http://www.ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html makes use of this mechanism to report test failures. Unfortunately, the bug means that a "@Test::Unit@":http://www.ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html process will always return an *exit status of 0* even when there have been test failures.
 
-From @test/unit.rb@:
-<typo:code lang="ruby">
-at_exit do
+From @test/unit.rb@ :-
+
+bc(ruby). at_exit do
   unless $! || Test::Unit.run?
     exit Test::Unit::AutoRunner.run
   end
 end
-</typo:code>
 
 This in turn means that a "@Rake::TestTask@":http://rake.rubyforge.org/classes/Rake/TestTask.html process will also always return an *exit status of 0* even when there have been test failures. This is significant, because many "continuous integration":http://martinfowler.com/articles/continuousIntegration.html systems rely on "@Rake::TestTask@":http://rake.rubyforge.org/classes/Rake/TestTask.html processes returning an *exit status of 1* to indicate that there have been test failures. Thus you will get false positive passing builds - not good.
 

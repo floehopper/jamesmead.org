@@ -29,21 +29,19 @@ h4. Disadvantages
 
 Can't think of any at the moment.
 
-<typo:code lang="ruby">
-  class ClassUnderTest
-    def initialize(dependency = Collaborator.new)
-      @dependency = dependency
-    end
-    def do_something
-      # use @dependency
-    end
+bc(ruby). class ClassUnderTest
+  def initialize(dependency = Collaborator.new)
+    @dependency = dependency
   end
+  def do_something
+    # use @dependency
+  end
+end
 
-  collaborator = mock('collaborator')
-  # constructor parameter injection
-  instance_under_test = ClassUnderTest.new(collaborator)
-  instance_under_test.do_something
-</typo:code>
+bc(ruby). collaborator = mock('collaborator')
+# constructor parameter injection
+instance_under_test = ClassUnderTest.new(collaborator)
+instance_under_test.do_something
 
 h3(#parameter-injection). Parameter Injection
 
@@ -57,18 +55,16 @@ h4. Disadvantages
 
 Can't think of any at the moment.
 
-<typo:code lang="ruby">
-  class ClassUnderTest
-    def do_something(local_dependency = Collaborator.new)
-      # use local_dependency
-    end
+bc(ruby). class ClassUnderTest
+  def do_something(local_dependency = Collaborator.new)
+    # use local_dependency
   end
+end
 
-  collaborator = mock('collaborator')
-  instance_under_test = ClassUnderTest.new
-  # method parameter injection
-  instance_under_test.do_something(collaborator)
-</typo:code>
+bc(ruby). collaborator = mock('collaborator')
+instance_under_test = ClassUnderTest.new
+# method parameter injection
+instance_under_test.do_something(collaborator)
 
 h3(#stubbed-new-method-injection). Stubbed New Method Injection
 
@@ -82,22 +78,20 @@ h4. Disadvantages
 
 Dependencies of the @ClassUnderTest@ are hidden and not explicit.
 
-<typo:code lang="ruby">
-  class ClassUnderTest
-    def initialize
-      @dependency = Collaborator.new
-    end
-    def do_something
-      # use @dependency
-    end
+bc(ruby). class ClassUnderTest
+  def initialize
+    @dependency = Collaborator.new
   end
+  def do_something
+    # use @dependency
+  end
+end
 
-  collaborator = mock('collaborator')
-  # stubbed new method injection
-  Collaborator.stubs(:new).returns(collaborator)
-  instance_under_test = ClassUnderTest.new
-  instance_under_test.do_something
-</typo:code>
+bc(ruby). collaborator = mock('collaborator')
+# stubbed new method injection
+Collaborator.stubs(:new).returns(collaborator)
+instance_under_test = ClassUnderTest.new
+instance_under_test.do_something
 
 h3(#writer-method-injection). Writer Method Injection
 
@@ -107,23 +101,21 @@ h4. Disadvantages
 
 The @ClassUnderTest@ has to unnecessarily expose a way to modify its internal state. The test is coupled to the implementation of the @ClassUnderTest@.
 
-<typo:code lang="ruby">
-  class ClassUnderTest
-    attr_writer :dependency
-    def initialize
-      @dependency = Collaborator.new
-    end
-    def do_something
-      # use @dependency
-    end
+bc(ruby). class ClassUnderTest
+  attr_writer :dependency
+  def initialize
+    @dependency = Collaborator.new
   end
+  def do_something
+    # use @dependency
+  end
+end
 
-  collaborator = mock('collaborator')
-  instance_under_test = ClassUnderTest.new
-  # writer method injection
-  instance_under_test.dependency = collaborator
-  instance_under_test.do_something
-</typo:code>
+bc(ruby). collaborator = mock('collaborator')
+instance_under_test = ClassUnderTest.new
+# writer method injection
+instance_under_test.dependency = collaborator
+instance_under_test.do_something
 
 h3(#stubbed-private-method-injection). Stubbed Private Method Injection
 
@@ -133,24 +125,22 @@ h4. Disadvantages
 
 The test is coupled to the implementation of the @ClassUnderTest@. The partial mocking of the @instance_under_test@ means that the test is not testing a pristine instance of the @ClassUnderTest@, but a modified one. It also means that the boundaries between test code and production code are less clear.
 
-<typo:code lang="ruby">
-  class ClassUnderTest
-    def do_something
-      local_dependency = build_collaborator()
-      # use local_dependency
-    end
-    private
-    def build_collaborator
-      Collaborator.new
-    end
+bc(ruby). class ClassUnderTest
+  def do_something
+    local_dependency = build_collaborator()
+    # use local_dependency
   end
+  private
+  def build_collaborator
+    Collaborator.new
+  end
+end
 
-  collaborator = mock('collaborator')
-  instance_under_test = ClassUnderTest.new
-  # stubbed private method injection
-  instance_under_test.stubs(:build_collaborator).returns(collaborator)
-  instance_under_test.do_something
-</typo:code>
+bc(ruby). collaborator = mock('collaborator')
+instance_under_test = ClassUnderTest.new
+# stubbed private method injection
+instance_under_test.stubs(:build_collaborator).returns(collaborator)
+instance_under_test.do_something
 
 h3(#any-instance-stub-injection). Any Instance Stub Injection
 
@@ -160,19 +150,17 @@ h4. Disadvantages
 
 The stubbed method is applied to *all* instances of the collaborating class. If the @instance_under_test@ interacts with the stubbed method on more than one instance of the collaborating class, it isn't possible to specify different behaviour for the stubbed method on each instance. Even if the @instance_under_test@ only interacts with the stubbed method on one instance of the collaborating class, the test is specifying more stubbed behaviour than strictly necessary which could lead to false positives.
 
-<typo:code lang="ruby">
-  class ClassUnderTest
-    def do_something
-      local_dependency = Collaborator.new
-      return local_dependency.do_stuff
-    end
+bc(ruby). class ClassUnderTest
+  def do_something
+    local_dependency = Collaborator.new
+    return local_dependency.do_stuff
   end
+end
 
-  # any_instance stub injection
-  Collaborator.any_instance.stubs(:do_stuff).return('something useful')
-  instance_under_test = ClassUnderTest.new
-  instance_under_test.do_something
-</typo:code>
+bc(ruby). # any_instance stub injection
+Collaborator.any_instance.stubs(:do_stuff).return('something useful')
+instance_under_test = ClassUnderTest.new
+instance_under_test.do_something
 
 h3(#instance-variable-set-injection). Instance Variable Set Injection
 
@@ -182,20 +170,17 @@ h4. Disadvantages
 
 The test is coupled to the implementation of the @ClassUnderTest@. In particular the test is coupled to the supposedly private instance variable. In my opinion, it would be more honest to expose the instance variable by adding an attribute writer and using "Writer Method Injection":#writer-method-injection.
 
-<typo:code lang="ruby">
-  class ClassUnderTest
-    def initialize
-      @dependency = Collaborator.new
-    end
-    def do_something
-      # use @dependency
-    end
+bc(ruby). class ClassUnderTest
+  def initialize
+    @dependency = Collaborator.new
   end
+  def do_something
+    # use @dependency
+  end
+end
 
-
-  collaborator = mock('collaborator')
-  instance_under_test = ClassUnderTest.new
-  # instance_variable_set injection
-  instance_under_test.instance_variable_set(:@dependency, collaborator)
-  instance_under_test.do_something
-</typo:code>
+bc(ruby). collaborator = mock('collaborator')
+instance_under_test = ClassUnderTest.new
+# instance_variable_set injection
+instance_under_test.instance_variable_set(:@dependency, collaborator)
+instance_under_test.do_something

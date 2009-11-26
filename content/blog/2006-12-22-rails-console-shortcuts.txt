@@ -17,8 +17,7 @@ A couple of quick nuggets I picked up from Amy Hoy's "Secrets of the Rails Conso
 
 Firstly, the magic @y@ method which dumps an object to YAML - much more readable than the standard @inspect@ output.
 
-<typo:code>
->> y james
+bc. >> y james
 --- !ruby/object:User 
 attributes: 
   firstname: James
@@ -26,8 +25,7 @@ attributes:
   login: floehopper
 new_record: true
 => nil
-</typo:code>
 
 Secondly, clear your console using @command + k@ (or @ctrl + l@ for those on Windows)
 
-Thanks Amy.
+Thanks, Amy.

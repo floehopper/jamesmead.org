@@ -19,8 +19,7 @@ One thing "we":http://blog.seagul.co.uk/ "were":http://po-ru.com/ talking about 
 
 A neat (non-mocking) example of how the double-entry book-keeping style can be used is a test for square rooting a number...
 
-<typo:code lang="ruby">
-class CleverMath
+bc(ruby).. class CleverMath
 
   def self.square_root(number)
     # clever square root algorithm
@@ -28,7 +27,7 @@ class CleverMath
 
 end
 
-class CleverMathTest < Test::Unit::TestCase
+bc(ruby).. class CleverMathTest < Test::Unit::TestCase
 
   def test_should_calculate_square_root_of_number
     number = 2.0
@@ -37,9 +36,8 @@ class CleverMathTest < Test::Unit::TestCase
   end
   
 end
-</typo:code>
 
-The test says something along the lines of "Think of a number, square it and then use your whizzy new algorithm to square root it - you should end up with something close to the number you first thought of."
+p. The test says something along the lines of "Think of a number, square it and then use your whizzy new algorithm to square root it - you should end up with something close to the number you first thought of."
 
 "Uncle Bob":http://www.butunclebob.com/ has a "great article":http://www.butunclebob.com/ArticleS.UncleBob.TheSensitivityProblem about the analogy between developer testing and double-entry book-keeping...
 
