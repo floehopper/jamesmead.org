@@ -17,19 +17,19 @@ If you're looking to escape the "Enterprise" world of "Java":http://www.java.com
 
 Things are really starting to hot up here at "Reevoo":http://www.reevoo.com. When you're in the middle of it all, it's easy to forget the progress we've been making. In recent months, we've...
 
- * "Secured funding":http://www.e-consultancy.com/news-blog/362376/reevoo-secures-first-round-funding.html from a "very supportive VC":http://www.edenventures.co.uk/.
- * Passed the "60 million mark":http://www.reevoo.com/blogs/reevooblog/2007/03/29/60-million-reviews-and-ratings/ on ratings and reviews served.
- * "Added Woolworths":http://www.vecosys.com/2007/04/04/woolworths-signs-reevoocom-for-customer-reviews/ among others to our already "impressive list of partners":http://www.reevoo.com/pages/about_partnering.
- * Moved into a "plush new office":http://www.reevoo.com/blogs/reevooblog/2007/04/17/reevoo-spirit/.
- * We've even hired a couple of "ThoughtWorks":http://www.thoughtworks.co.uk developers for a month-long project.
+* "Secured funding":http://www.e-consultancy.com/news-blog/362376/reevoo-secures-first-round-funding.html from a "very supportive VC":http://www.edenventures.co.uk/.
+* Passed the "60 million mark":http://www.reevoo.com/blogs/reevooblog/2007/03/29/60-million-reviews-and-ratings/ on ratings and reviews served.
+* "Added Woolworths":http://www.vecosys.com/2007/04/04/woolworths-signs-reevoocom-for-customer-reviews/ among others to our already "impressive list of partners":http://www.reevoo.com/pages/about_partnering.
+* Moved into a "plush new office":http://www.reevoo.com/blogs/reevooblog/2007/04/17/reevoo-spirit/.
+* We've even hired a couple of "ThoughtWorks":http://www.thoughtworks.co.uk developers for a month-long project.
 
 I work with a talented and friendly bunch of developers...
 
- * "Ben Griffiths":http://www.reevoo.com/blogs/bengriffiths
- * "Chris Roos":http://blog.seagul.co.uk/
- * "Paul Battley":http://po-ru.com/
- * "Ben Sales":http://everythingbehind.com/ruby/
- 
+* "Ben Griffiths":http://www.reevoo.com/blogs/bengriffiths
+* "Chris Roos":http://blog.seagul.co.uk/
+* "Paul Battley":http://po-ru.com/
+* "Ben Sales":http://everythingbehind.com/ruby/
+
 We're heavily into "Test-Driven Development":http://en.wikipedia.org/wiki/Test-driven_development, "Continuous Integration/Deployment":http://www.martinfowler.com/articles/continuousIntegration.html#AutomateDeployment and "Open Source":http://www.opensource.org/. It's an exciting and fun place to work.
 
 If you're interested, send Ben (ben_at_reevoo_dot_com) your CV and mention you saw the job here.

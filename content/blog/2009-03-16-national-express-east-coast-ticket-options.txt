@@ -56,7 +56,7 @@ h4. Southbound
 Valid on any train timed to arrive in London King's Cross 1020 or later, Monday-Friday.
 
 On a weekday, this means you can travel on the 0804 departure from Durham or any later train.
-   
+
 h3. Business Carnet
 
 * 10 Anytime Return tickets for the price of 9.

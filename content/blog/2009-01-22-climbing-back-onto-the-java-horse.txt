@@ -29,8 +29,8 @@ bq. A Java Runtime Environment (JRE) or Java Development Kit (JDK) must be avail
 
 However, I was able to run the application from the command-line, which pointed to an environment problem. Reading the "Cannot find a VM" section of "I unzipped Eclipse, but it won't start. Why?":http://wiki.eclipse.org/FAQ_I_unzipped_Eclipse%2C_but_it_won%27t_start._Why%3F, I decided I needed to explicitly specify the location of the JVM. It turned out there were a few gotchas. The OSX-specific bit of the "installation README":http://www.eclipse.org/eclipse/development/readme_eclipse_3.4.1.html#macosx explains how to edit the @eclipse.ini@ file within the Eclipse application bundle. "Eclipsepedia explains":http://wiki.eclipse.org/Eclipse.ini the format of the @-vm@ option :-
 
- * The -vm option and its value (the path) must be on separate lines.
- * The value must be the full absolute path to the Java executable, not just to the Java home directory.
+* The -vm option and its value (the path) must be on separate lines.
+* The value must be the full absolute path to the Java executable, not just to the Java home directory.
 
 So I added the following to my @eclipse.ini@ and the application started up successfully :-
 
@@ -43,10 +43,10 @@ h3. JUnit4 and jMock2
 
 Next I decided to see if I could write a test using "JUnit":http://www.junit.org/ and "jMock":http://www.jmock.org/ to "drive out the design":http://books.google.co.uk/books?id=gFgnde_vwMAC of a simple class. I downloaded the most recent stable version of jMock which was v2.5.1 and added the relevant jars to Eclipse so that they could be included in my project classpath :-
 
- * jmock-2.5.1.jar
- * hamcrest-core-1.1.jar
- * hamcrest-library-1.1.jar
- * jmock-junit4-2.5.1.jar
+* jmock-2.5.1.jar
+* hamcrest-core-1.1.jar
+* hamcrest-library-1.1.jar
+* jmock-junit4-2.5.1.jar
 
 At this point everything was going quite smoothly - especially after I side-stepped some of "Java's purgatorial nonsense":http://twitter.com/threedaymonk/status/1138794613 by re-learning the Eclipse keyboard shortcuts for "Quick Fix" and "Content Assist". But now I decided I wanted to try using JUnit Java annotations for my tests :-
 

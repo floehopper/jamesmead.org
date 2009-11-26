@@ -19,9 +19,9 @@ This works well in the small, but can quickly lead to similar manipulations happ
 
 As time marches on, I feel more and more like a "bear of very little brain":http://en.wikipedia.org/wiki/Winnie-the-Pooh who can keep less and less code in his head at any one time. As a defence against this I try to...
 
- * write or extract small classes with clear and simple responsibilities
- * limit low-level access to the internal data of the class
- * write simple unit tests clearly expressing the intent of the code.
+* write or extract small classes with clear and simple responsibilities
+* limit low-level access to the internal data of the class
+* write simple unit tests clearly expressing the intent of the code.
 
 I hope these tactics don't just help me, but help other developers who later need to understand and modify the code I've written.
 
