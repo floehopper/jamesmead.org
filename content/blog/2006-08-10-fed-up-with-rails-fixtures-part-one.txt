@@ -13,7 +13,7 @@ layout: blog
 created_at: 2006-08-10 04:09:00 +00:00
 keywords: fixtures rails test ruby testing database activerecord
 ---
-In a "previous post":http://blog.floehopper.org/articles/2006/06/27/rails-fixtures-help-or-hindrance I explained why I'm not a big fan of Rails fixtures. But how can you avoid using them and still obtain good test coverage? Try forgetting about fixtures and writing unit tests that only test a single class and nothing else. Here's an example where you hardly[1] need to involve the database at all...
+In a "previous post":/blog/2006-06-27-rails-fixtures-help-or-hindrance.html I explained why I'm not a big fan of Rails fixtures. But how can you avoid using them and still obtain good test coverage? Try forgetting about fixtures and writing unit tests that only test a single class and nothing else. Here's an example where you hardly[1] need to involve the database at all...
 
 bc(ruby). class Initial < ActiveRecord::Migration 
   def self.up 

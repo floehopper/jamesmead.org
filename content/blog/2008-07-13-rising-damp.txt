@@ -31,7 +31,7 @@ h2. The Value of Consistency
 
 In my opinion, the value of consistency is often under-estimated, particularly in bigger projects where you are striving for "collective code ownership":http://www.extremeprogramming.org/rules/collective.html. I think it's better to have a consistently _mediocre_ solution across the board rather than half a dozen different solutions varying from _good_ to _bad_. This is because it'll take much less effort for the team to understand and therefore maintain the code. What's more, if you want the _good_ solution, it'll be much easier to apply it to *all* the consistently _mediocre_ versions of the code at the same time.
 
-A (very) old blog post of mine about ""Big Refactoring":http://blog.floehopper.org/articles/2004/05/14/big-refactoring" makes a similar point...
+A (very) old blog post of mine about ""Big Refactoring":/blog/2004-05-14-big-refactoring.html" makes a similar point...
 
 bq. But this approach has the disadvantage of leaving the system in an inconsistent state with parts of it working one way and other parts working another way. This isn’t so bad in itself, but when it occurs multiple times without the inconsistency being removed, it can lead to a very confusing code-base.
 

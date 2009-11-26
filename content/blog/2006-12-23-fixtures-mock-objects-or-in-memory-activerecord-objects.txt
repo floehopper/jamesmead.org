@@ -26,7 +26,7 @@ with...
 
 bc(ruby). mock_model :campaign
 
-Although "I agree":http://blog.floehopper.org/articles/2006/06/27/rails-fixtures-help-or-hindrance with him that using fixtures is not a good idea, why not use a real @ActiveRecord@ object...
+Although "I agree":/blog/2006-06-27-rails-fixtures-help-or-hindrance.html with him that using fixtures is not a good idea, why not use a real @ActiveRecord@ object...
 
 bc(ruby). @campaign = Campaign.new
 
@@ -34,4 +34,4 @@ Sometimes due to the way @ActiveRecord@ couples your models to the database, it 
 
 bc(ruby). @campaign = Campaign.create!
 
-I've written up a couple more thoughts "here":http://blog.floehopper.org/articles/2006/12/23/stub-queries-and-expect-commands and "here":http://blog.floehopper.org/articles/2006/12/23/tell-dont-ask.
+I've written up a couple more thoughts "here":/blog/2006-12-23-stub-queries-and-expect-commands.html and "here":/blog/2006-12-23-tell-dont-ask.html.

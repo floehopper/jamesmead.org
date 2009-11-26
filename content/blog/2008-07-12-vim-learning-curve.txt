@@ -13,7 +13,7 @@ layout: blog
 created_at: 2008-07-12 22:52:35 +00:00
 keywords: vim svn diff blame syntax textile search replace testing textmate
 ---
-Because I've been doing a lot of "remote pair programming":http://blog.floehopper.org/articles/2008/03/13/remote-pair-programming using "vim":http://www.vim.org/ and "screen":http://www.gnu.org/software/screen/,  I've been making a real effort to improve my vim skills in order to be more productive and feel like I've made some progress. "Chris":http://blog.seagul.co.uk has rightly suggested that the only way to really improve is to make vim your editor of choice even when not remote pairing, so that's what I've been trying to do. I've come across a few useful but random bits and pieces which I thought I'd record in case they were useful to anyone else...
+Because I've been doing a lot of "remote pair programming":/blog/2008-03-13-remote-pair-programming.html using "vim":http://www.vim.org/ and "screen":http://www.gnu.org/software/screen/,  I've been making a real effort to improve my vim skills in order to be more productive and feel like I've made some progress. "Chris":http://blog.seagul.co.uk has rightly suggested that the only way to really improve is to make vim your editor of choice even when not remote pairing, so that's what I've been trying to do. I've come across a few useful but random bits and pieces which I thought I'd record in case they were useful to anyone else...
 
 h2. Textile
 

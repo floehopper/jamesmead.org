@@ -13,7 +13,7 @@ layout: blog
 created_at: 2009-01-22 19:20:38 +00:00
 keywords: java junit jmock eclipse osx leopard
 ---
-I took a short break from job-hunting[1] earlier today to see if I could still write "Java":http://java.sun.com/ code. After my "Java rehab":http://blog.floehopper.org/articles/2008/03/17/java-rehabilitation-clinic which consisted of 3+ years of writing "Ruby":http://www.ruby-lang.org/, I was a bit unsure how much Java I would remember. To get started, I decided to try and set up "Eclipse":http://www.eclipse.org/ on my MacBook Pro. I ran into a few problems which I thought I'd document here in case it helps anyone else.
+I took a short break from job-hunting[1] earlier today to see if I could still write "Java":http://java.sun.com/ code. After my "Java rehab":/blog/2008-03-17-java-rehabilitation-clinic.html which consisted of 3+ years of writing "Ruby":http://www.ruby-lang.org/, I was a bit unsure how much Java I would remember. To get started, I decided to try and set up "Eclipse":http://www.eclipse.org/ on my MacBook Pro. I ran into a few problems which I thought I'd document here in case it helps anyone else.
 
 h3. Installing Eclipse
 

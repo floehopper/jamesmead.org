@@ -15,7 +15,7 @@ keywords: durham london national express east coast train ticket fare nxec super
 ---
 h3. Introduction
 
-In the past, I've tended "to buy Advance Single tickets":http://blog.floehopper.org/articles/2007/01/12/finding-the-cheapest-train-fare for most of my journeys between Durham and London. This is usually the best option when booking a couple of months ahead, but when you have to book at shorter notice, I often overlook some of the return fares.
+In the past, I've tended "to buy Advance Single tickets":/blog/2007-01-12-finding-the-cheapest-train-fare.html for most of my journeys between Durham and London. This is usually the best option when booking a couple of months ahead, but when you have to book at shorter notice, I often overlook some of the return fares.
 
 Despite the supposed "simplification of UK train fares":http://www.guardian.co.uk/money/2008/may/24/consumeraffairs.railtravel, it's not straightforward to find all the relevant information in one place, so I thought I'd write it up here. I hope other people might find this useful, but please double-check with the "NXEC website":http://www.nationalexpresseastcoast.com/ or a Travel Centre before spending any money.
 

@@ -13,7 +13,7 @@ layout: blog
 created_at: 2006-08-14 03:27:44 +00:00
 keywords: testing ruby rails fixture test mock stub dependency injection
 ---
-"Previously":http://blog.floehopper.org/articles/2006/08/10/fed-up-with-rails-fixtures-part-one I described how you can write unit tests for ActiveRecord models without using fixtures - just using models in memory. Although only a limited subset of tests can be written this way, it's often overlooked.
+"Previously":/blog/2006-08-10-fed-up-with-rails-fixtures-part-one.html I described how you can write unit tests for ActiveRecord models without using fixtures - just using models in memory. Although only a limited subset of tests can be written this way, it's often overlooked.
 
 Another technique is to use constructor-based "dependency injection":http://www.martinfowler.com/articles/injection.html (DI) in combination with "mock objects":http://www.connextra.com/aboutUs/mockobjects.pdf. However, thanks to @ActiveRecord::Associations::AssociationProxy#raise_on_type_mismatch@ it isn't straightforward to use mocks for associated models. However, DI can be used effectively for ActionController controllers:
 

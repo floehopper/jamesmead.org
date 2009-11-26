@@ -13,7 +13,7 @@ layout: blog
 created_at: 2007-10-29 23:45:09 +00:00
 keywords: gner train travel reevoo earth distance map google
 ---
-I just realised I forgot to celebrate my second Reevoo "birthday":http://blog.floehopper.org/articles/2006/09/06/my-reevoo-birthday.
+I just realised I forgot to celebrate my second Reevoo "birthday":/blog/2006-09-06-my-reevoo-birthday.html.
 
 So to make up for that I just worked out (not very scientifically) that in the 2 years 2 months I've been working at "Reevoo":http://www.reevoo.com, I've travelled almost twice round the world by "GNER":http://www.gner.co.uk train. And that doesn't include my travel on London commuter trains, tubes & buses...
 

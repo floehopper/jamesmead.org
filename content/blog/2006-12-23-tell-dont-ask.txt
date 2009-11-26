@@ -13,7 +13,7 @@ layout: blog
 created_at: 2006-12-23 19:43:40 +00:00
 keywords: tell ask law demeter mock ruby test
 ---
-Following on from a couple of my "previous":http://blog.floehopper.org/articles/2006/12/23/fixtures-mock-objects-or-in-memory-activerecord-objects "posts":http://blog.floehopper.org/articles/2006/12/23/stub-queries-and-expect-commands, here are some more comments on the "Making a Mockery of ActiveRecord":http://metaclass.org/2006/12/22/making-a-mockery-of-activerecord article...
+Following on from a couple of my "previous":/blog/2006-12-23-fixtures-mock-objects-or-in-memory-activerecord-objects.html "posts":/blog/2006-12-23-stub-queries-and-expect-commands.html, here are some more comments on the "Making a Mockery of ActiveRecord":http://metaclass.org/2006/12/22/making-a-mockery-of-activerecord article...
 
 Something that may be adding unnecessary complexity to the test is that the @Message#generate@ method knows the structure of objects for which it does not have direct references. For example, it looks like the @List@ and @Person@ instances are supplied, just so that the @generate@ method can navigate to the @subscriptions@ in order to call @create@. This breaks the "Law of Demeter":http://en.wikipedia.org/wiki/Law_of_Demeter.
 
