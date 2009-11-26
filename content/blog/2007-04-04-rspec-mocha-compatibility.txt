@@ -17,6 +17,6 @@ The "RSpec":http://rspec.rubyforge.org/ team have just "announced":http://www.na
 
 Apparently...
 
-bq. You can now use "Mocha":http://mocha.rubyforge.org by saying <typo:code lang="ruby">config.mock_with :mocha</typo:code> in a <typo:code lang="ruby">spec_helper</typo:code>
+bq. You can now use "Mocha":http://mocha.rubyforge.org by saying @config.mock_with :mocha@ in a @spec_helper@
 
 Sounds good :-)

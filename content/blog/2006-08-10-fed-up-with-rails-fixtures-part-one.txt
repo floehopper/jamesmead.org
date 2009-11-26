@@ -87,4 +87,4 @@ This way you home in on the behaviour of the Company#wage_bill method and avoid 
 
 fn1. ActiveRecord still needs to know what columns in each table e.g.
 
-<typo:code lang="sql">SHOW FIELDS FROM companies</typo:code>
+bc. SHOW FIELDS FROM companies
