@@ -9,7 +9,6 @@ filter:
 - textile
 categories: 
 - mocha_release
-layout: blog
 created_at: 2006-07-16 17:32:00 +00:00
 keywords: mock mocking stub stubbing ruby rails
 ---

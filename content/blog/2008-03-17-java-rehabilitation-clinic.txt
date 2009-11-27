@@ -9,7 +9,6 @@ filter:
 - textile
 categories: []
 
-layout: blog
 created_at: 2008-03-17 09:23:26 +00:00
 keywords: java rehab clinic ruby thoughtworks
 ---

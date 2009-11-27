@@ -9,7 +9,6 @@ filter:
 - textile
 categories: []
 
-layout: blog
 created_at: 2006-10-02 13:42:22 +00:00
 keywords: mock object tdd test driven development jmock mocha
 ---

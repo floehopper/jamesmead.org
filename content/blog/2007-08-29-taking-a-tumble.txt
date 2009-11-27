@@ -9,7 +9,6 @@ filter:
 - textile
 categories: []
 
-layout: blog
 created_at: 2007-08-29 12:03:48 +00:00
 keywords: tumblr tumble blog link
 ---

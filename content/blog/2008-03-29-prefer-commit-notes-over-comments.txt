@@ -9,7 +9,6 @@ filter:
 - textile
 categories: []
 
-layout: blog
 created_at: 2008-03-29 19:05:03 +00:00
 keywords: version control commit note changeset svn vcs comment why what
 ---

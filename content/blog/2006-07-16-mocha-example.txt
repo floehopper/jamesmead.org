@@ -9,7 +9,6 @@ filter:
 - textile
 categories: []
 
-layout: blog
 created_at: 2006-07-16 18:59:00 +00:00
 keywords: mock mocking stub stubbing ruby instance method expectation test testing
 ---

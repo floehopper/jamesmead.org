@@ -9,7 +9,6 @@ filter:
 - textile
 categories: []
 
-layout: blog
 created_at: 2006-10-11 08:59:52 +00:00
 keywords: developer test accountancy kent beck math sqrt mock record playback
 ---

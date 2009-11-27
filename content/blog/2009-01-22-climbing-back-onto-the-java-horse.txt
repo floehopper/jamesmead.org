@@ -9,7 +9,6 @@ filter:
 - textile
 categories: []
 
-layout: blog
 created_at: 2009-01-22 19:20:38 +00:00
 keywords: java junit jmock eclipse osx leopard
 ---

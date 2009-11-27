@@ -9,7 +9,6 @@ filter:
 - textile
 categories: []
 
-layout: blog
 created_at: 2006-09-13 10:46:14 +00:00
 keywords: ltac railsconf jmock test automation google ruby rails conference london
 ---

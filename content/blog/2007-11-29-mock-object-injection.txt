@@ -9,7 +9,6 @@ filter:
 - textile
 categories: []
 
-layout: blog
 created_at: 2007-11-29 12:17:48 +00:00
 keywords: ruby mock object dependency injection collaborator testing
 ---

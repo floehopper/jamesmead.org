@@ -9,7 +9,6 @@ filter:
 - textile
 categories: []
 
-layout: blog
 created_at: 2007-01-02 18:48:42 +00:00
 keywords: mock objects tdd bdd rspec interaction behaviour state test
 ---

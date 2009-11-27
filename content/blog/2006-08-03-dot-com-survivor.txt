@@ -9,7 +9,6 @@ filter:
 - textile
 categories: []
 
-layout: blog
 created_at: 2006-08-03 19:21:00 +00:00
 keywords: xp agile chicago usa dotcom
 ---

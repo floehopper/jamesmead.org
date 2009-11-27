@@ -9,7 +9,6 @@ filter:
 - textile
 categories: []
 
-layout: blog
 created_at: 2009-02-03 20:49:28 +00:00
 keywords: mocha internals implementation ruby ioke
 ---

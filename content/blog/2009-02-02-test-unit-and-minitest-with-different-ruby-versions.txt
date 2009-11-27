@@ -9,7 +9,6 @@ filter:
 - textile
 categories: []
 
-layout: blog
 created_at: 2009-02-02 17:12:54 +00:00
 keywords: ruby testing testunit minitest miniunit version 1.8 1.9.0 1.9.1
 ---

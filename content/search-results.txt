@@ -1,0 +1,14 @@
+---
+title:       Search results
+filter:      haml
+---
+#cse-search-results
+
+:javascript
+  var googleSearchIframeName = "cse-search-results";
+  var googleSearchFormName = "cse-search-box";
+  var googleSearchFrameWidth = '';
+  var googleSearchDomain = "www.google.com";
+  var googleSearchPath = "/cse";
+
+%script{ :type => "text/javascript", :src => "http://www.google.com/afsonline/show_afs_search.js" }

@@ -9,7 +9,6 @@ filter:
 - textile
 categories: []
 
-layout: blog
 created_at: 2006-08-21 15:20:33 +00:00
 keywords: ski tour norway telemark flickr photo typo
 ---

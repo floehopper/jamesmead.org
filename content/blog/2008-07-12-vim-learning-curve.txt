@@ -9,7 +9,6 @@ filter:
 - textile
 categories: []
 
-layout: blog
 created_at: 2008-07-12 22:52:35 +00:00
 keywords: vim svn diff blame syntax textile search replace testing textmate
 ---

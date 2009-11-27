@@ -2,9 +2,13 @@ export comments
 disqus or equivalent for comments?
 or abandon comments?
 import sidebar stuff
-rss feeds
+rss feeds, feedburner
 search
 tags
 categories
 year, month, day pages
 redirects from old URLs
+sitemap
+webmaster tools, yahoo, etc
+google analytics, other analytics?
+

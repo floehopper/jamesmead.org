@@ -9,7 +9,6 @@ filter:
 - textile
 categories: []
 
-layout: blog
 created_at: 2006-08-14 04:00:58 +00:00
 keywords: antarctica faraday bbc scott amundsen south pole
 ---
