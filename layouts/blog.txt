@@ -19,6 +19,8 @@ filter:    erb
       <div id="hd">
       
         <div class="header">
+        
+          <%= render :partial => '/search' %>
         </div>
         
       </div>
