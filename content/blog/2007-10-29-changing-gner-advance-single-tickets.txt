@@ -12,7 +12,7 @@ categories: []
 created_at: 2007-10-29 22:54:26 +00:00
 keywords: gner advance single purchase station travel centre online web discount change date
 ---
-I had a few problems changing some of my train tickets at the weekend. I got quite frustrated and confused so I decided to "email":http://blog.floehopper.org/pages/gner-complaint the "GNER":http://www.gner.co.uk/ Customer Relations department.
+I had a few problems changing some of my train tickets at the weekend. I got quite frustrated and confused so I decided to "email":/pages/gner-complaint the "GNER":http://www.gner.co.uk/ Customer Relations department.
 
 I thought I'd also "post":http://getsatisfaction.com/gner/topics/changing_advance_single_tickets_that_were_purchased_on_line the content of my email over on "Satisfaction":http://getsatisfaction.com/.
 

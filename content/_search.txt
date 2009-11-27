@@ -3,6 +3,6 @@ filter: haml
 ---
 %form#searchForm{:action => "http://www.google.co.uk/search"}
   %div
-    %input{:type => "hidden", :name => "q", :value => "site:blog.floehopper.org"}
+    %input{:type => "hidden", :name => "q", :value => "site:#{Webby.site.host}"}
     %input{:type => "text", :name => "q", :size => "31"}
     %input{:type => "submit", :name => "sa", :value => "Search"}

@@ -1,3 +1,8 @@
+---
+layout: none
+filter: erb
+extension: js
+---
 var googleCustomSearch = {
   createHiddenField : function(name, value) {
     var field = document.createElement('input');
@@ -14,7 +19,7 @@ var googleCustomSearch = {
     var elems = form.getElementsByTagName('input');
     for (var i = 0; i < elems.length; i++) {
       var elem = elems[i];
-      if (elem.getAttribute('value') == 'site:blog.floehopper.org') {
+      if (elem.getAttribute('value') == 'site:<%= Webby.site.host %>') {
         elem.parentNode.removeChild(elem);
       }
     };

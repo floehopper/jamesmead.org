@@ -12,6 +12,6 @@ categories: []
 created_at: 2007-07-22 20:54:26 +00:00
 keywords: mock object ruby mocha stub testing lrug
 ---
-As "promised":/blog/2007-07-10-lrug-mocking-talk.html I've finally got round to making the "S5":http://meyerweb.com/eric/tools/s5/ slides of my "LRUG talk":http://www.lrug.org/meetings/2007/06/20/july-2007-meeting/ available "here":http://blog.floehopper.org/presentations/lrug-mock-objects-2007-07-09/.
+As "promised":/blog/2007-07-10-lrug-mocking-talk.html I've finally got round to making the "S5":http://meyerweb.com/eric/tools/s5/ slides of my "LRUG talk":http://www.lrug.org/meetings/2007/06/20/july-2007-meeting/ available "here":/presentations/lrug-mock-objects-2007-07-09/.
 
 You can use "various keys":http://meyerweb.com/eric/tools/s5/features.html#controlchart to navigate the presentation. If you just want to quickly scan through the content, you might find the outline view useful (press the "T" key to toggle between slideshow & outline modes).
