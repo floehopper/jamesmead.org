@@ -1,0 +1,33 @@
+---
+title: wibble
+layout: none
+extension: xml
+filter: erb
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Floehopper</title>
+  <subtitle type="html">thoughts on the bergy bits of life</subtitle>
+  <id>tag:<%= Webby.site.host %>,2005:Typo</id>
+  <generator uri="http://www.typosphere.org" version="4.0">Typo</generator>
+  <link href="http://<%= Webby.site.host %><%= @page.url %>" rel="self" type="application/atom+xml"/>
+  <link href="http://<%= Webby.site.host %>/" rel="alternate" type="text/html"/>
+  <updated><%= Time.now.xmlschema %></updated>
+  <% @pages.find(:all, :in_directory => 'blog', :sort_by => 'created_at', :reverse => true, :limit => 10).each do |article| %>
+  <entry>
+    <author>
+      <name>James Mead</name>
+    </author>
+    <id>urn:uuid:<%= article.guid %></id>
+    <published><%= article.created_at.xmlschema %></published>
+    <updated><%= article.updated_at.xmlschema %></updated>
+    <title type="html"><%= article.title %></title>
+    <link href="http://<%= Webby.site.host %><%= article.url %>" rel="alternate" type="text/html"/>
+    <summary type="html">
+    </summary>
+    <content type="html">
+      <%= h(render(article)) %>
+    </content>
+  </entry>
+  <% end %>
+</feed>
