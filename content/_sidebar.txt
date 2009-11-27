@@ -1,0 +1,35 @@
+---
+filter: textile
+---
+h3. Me
+
+* <script src="/javascripts/email.js" type="text/javascript" charset="utf-8"></script>
+* "Tumblelog":http://tumble.floehopper.org/
+* "Twitter":http://twitter.com/floehopper
+* "del.icio.us":http://del.icio.us/jamesthecat
+* "Working with Rails":http://www.workingwithrails.com/recommendation/new/person/3237-james-mead
+* "LinkedIn":http://www.linkedin.com/in/jamesmead
+* "Stack Overflow":http://stackoverflow.com/users/46850/floehopper
+* "JRoller Blog":http://www.jroller.com/jamesmead/
+
+h3. Blogroll
+
+* "Ben Griffiths":http://www.techbelly.com/
+* "Chris Roos":http://chrisroos.co.uk/
+* "Paul Battley":http://po-ru.com/
+* "Ben Sales":http://everythingbehind.com/
+* "Luke Redpath":http://www.lukeredpath.co.uk/
+* "James Adam":http://interblah.net/
+* "Alex MacCaw":http://www.eribium.org/blog/
+* "Craig Smith":http://craigmarksmith.co.uk/
+
+h3. Projects
+
+* "Mocha Documentation":http://mocha.rubyforge.org/
+* "Mocha on GitHub":http://github.com/floehopper/mocha
+* "Mocha Continuous Integration":http://runcoderun.com/floehopper/mocha
+* "Mocha Issue Tracking":http://floehopper.lighthouseapp.com/projects/22289
+* "Mocha Mailing List":http://groups.google.com/group/mocha-developer
+* "Old Mocha Mailing List":http://rubyforge.org/pipermail/mocha-developer/
+
+<a href="http://feeds.feedburner.com/floehopper-blog"><img src="http://feeds.feedburner.com/~fc/floehopper-blog?bg=99CCFF&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>

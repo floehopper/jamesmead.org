@@ -13,7 +13,7 @@ filter:    erb
 <body>
 
   <h1>
-    <%= h(@page.title) %>
+    Floehopper - thoughts on the bergy bits of life
   </h1>
   
   <p>
@@ -22,7 +22,11 @@ filter:    erb
   
   <p>
     <%= @content %>
-  </p
+  </p>
+  
+  <p>
+    <%= render :partial => '/sidebar' %>
+  </p>
 
   <script src="/javascripts/google-custom-search.js" type="text/javascript" charset="utf-8"></script>
 
