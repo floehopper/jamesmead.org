@@ -1,0 +1,23 @@
+---
+filter: erb
+extension: xml
+layout: none
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>http://<%= Webby.site.host %>/</loc>
+  </url>
+  <url>
+    <loc>http://<%= Webby.site.host %>/pages/gner-complaint.html</loc>
+  </url>
+  <url>
+    <loc>http://<%= Webby.site.host %>/presentations/lrug-mock-objects-2007-07-09/</loc>
+  </url>
+  <% @pages.find(:all, :in_directory => '/blog', :sort_by => 'created_at', :reverse => true).each do |page| %>
+  <url>
+    <loc>http://<%= Webby.site.host %><%= page.url %></loc>
+    <lastmod><%= page.updated_at.xmlschema %></lastmod>
+  </url>
+  <% end %>
+</urlset>

@@ -1,11 +1,13 @@
 ---
-title: Blog
+title: Blog Index
+created_at: 2009-11-28 16:23:13 +00:00
+updated_at: 2009-11-28 16:23:13 +00:00
 filter:
   - erb
   - textile
 ---
 <ul>
-  <% @pages.find(:all, :in_directory => "blog", :sort_by => "created_at", :reverse => true).each do |post| %>
+  <% @pages.find(:all, :in_directory => '/blog', :sort_by => 'created_at', :reverse => true).each do |post| %>
     <li>
       <%= post.created_at.strftime('%Y-%m-%d') %>
       <a href="<%= post.url %>"><%= h(post.title) %></a>

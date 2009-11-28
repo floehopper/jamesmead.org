@@ -1,5 +1,4 @@
 validate rss
-sitemap
 other files - ski videos
 think about whether to remove .html from urls
 tags (also in xml feed)
