@@ -1,5 +1,9 @@
 search
 rss feeds, feedburner, validate (articles & comments)
+sitemap
+webmaster tools, yahoo, etc
+google analytics, other analytics?
+other files - ski videos
 export comments
 disqus or equivalent for comments?
 or abandon comments?
@@ -8,10 +12,4 @@ tags (also in xml feed)
 categories (also in xml feed)
 year, month, day pages
 redirects from old URLs
-sitemap
-webmaster tools, yahoo, etc
-google analytics, other analytics?
-other files - lrug slides, ski video, etc
- - /presentations/lrug-mock-objects-2007-07-09/
- - /pages/gner-complaint
  
