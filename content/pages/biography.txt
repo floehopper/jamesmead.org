@@ -1,0 +1,7 @@
+--- 
+title: Biography
+filter: textile
+--- 
+James Mead :: floehopper.com
+
+After a couple of years as an electronic engineer on "an Antarctic research station":http://www.antarctica.ac.uk/about_bas/our_history/stations_and_refuges/faraday.php, James has spent more than a decade developing software at various "consultancies and startups":http://www.linkedin.com/in/jamesmead#experience in the UK and US. After a stint at "Thoughtworks":http://www.thoughtworks.co.uk/, he was the first employee at "Reevoo":http://www.reevoo.com/, an early adopter of "Ruby on Rails":http://rubyonrails.org/. Since going freelance earlier this year, he helped develop the website for Antony Gormley's "One & Other":http://www.oneandother.co.uk/ project. He's the author of "Mocha":http://mocha.rubyforge.org/, a popular Ruby testing framework.

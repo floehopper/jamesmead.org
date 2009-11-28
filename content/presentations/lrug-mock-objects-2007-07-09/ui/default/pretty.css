@@ -1,0 +1,144 @@
+/* Following are the presentation styles -- edit away! */
+
+body {
+  background: #000; 
+  color: #fff; 
+  font: sans-serif;
+  font-size: 2em;
+}
+
+:link, :visited {text-decoration: none; color: #00C;}
+#controls :active {color: #88A !important;}
+#controls :focus {outline: 1px dotted #227;}
+h1, h2, h3, h4 {font-size: 100%; margin: 0; padding: 0; font-weight: inherit;}
+ul, pre {margin: 0; line-height: 1em;}
+html, body {margin: 0; padding: 0;}
+
+blockquote, q {font-style: italic;}
+blockquote {text-align: center}
+blockquote p {margin: 0;}
+blockquote i {font-style: normal;}
+blockquote b {display: block; margin-top: 0.5em; font-weight: normal; font-size: smaller; font-style: normal;}
+blockquote b i {font-style: italic;}
+
+kbd {font-weight: bold; font-size: 1em;}
+sup {font-size: smaller; line-height: 1px;}
+
+.slide ul {margin-left: 5%; margin-right: 7%; list-style: disc; text-align: left}
+.slide li {margin-top: 0.75em; margin-right: 0}
+.slide ul ul {line-height: 1;}
+.slide ul ul li {margin: .2em; list-style: square;}
+.slide img.leader {display: block; margin: 0 auto;}
+
+div#header, div#footer {
+  font-family: sans-serif;
+}
+div#header {
+  display: none;
+  height: 0;
+}
+div#footer {
+  background: #ddd;
+  color: #444;
+  border-top: 1px solid #888;
+  font-size: 0.5em; 
+  font-weight: bold; 
+  padding: 0.5em 0 0;
+  height: 2em;
+}
+#footer h1, #footer h2 { padding: 0 1em; }
+#footer h1 { float: left }
+#footer h2 { float: right; font-style: italic; }
+
+div.long {font-size: 0.75em;}
+.slide h1 {
+  z-index: 1;
+  font: bold 150%/1em; 
+  color: #f80;
+  margin: 0 0 1em;
+}
+.slide {
+  width: 90%;
+  font-size: 150%;
+  display: table;
+  height: 85%;
+  padding: 4% 5%;
+  margin: 0;
+}
+.slide .content {
+  display: table-cell; 
+  vertical-align: middle;
+  text-align: center;
+}
+.slide h3 {font-size: 130%;}
+h1 abbr {font-variant: small-caps;}
+
+#currentSlide {text-align: center; font-size: 0.5em; color: #888; font-family: sans-serif;}
+
+/*#slide0 { text-align: center; background: #fff; }*/
+/*#slide0 {padding-top: 3.5em; font-size: 90%;}*/
+/*#slide0 h1 {display: none;}*/
+/*#slide0 img { width: 60%; }*/
+
+ul.urls {list-style: none; display: inline; margin: 0;}
+.urls li {display: inline; margin: 0;}
+.note {display: none;}
+.external {border-bottom: 1px dotted gray;}
+html>body .external {border-bottom: none;}
+.external:after {content: " \274F"; font-size: smaller; color: #77B;}
+
+.incremental, .incremental *, .incremental *:after {color: #DDE; visibility: visible;}
+img.incremental {visibility: hidden;}
+.slide .current {color: #B02;}
+
+pre, code {
+  font-family: monospace;
+  color: #ff8;
+}
+pre {
+  text-align: left;
+  font-size: 0.5em;
+  line-height: 1.1em;
+  white-space: pre-wrap;       /* css-3 */
+  white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+.syntax .comment { color: #aaa; font-style: italic; }
+.syntax .keyword { color: #f80; font-weight: bold; }
+.syntax .punct { color: #eee; font-weight: bold; }
+.syntax .symbol { color: #f08; }
+.syntax .string { color: #6b4; }
+.syntax .ident { color: #ff8; }
+.syntax .constant { color: #66f; }
+.syntax .regex { color: #ec6; }
+.syntax .number { color: #F99; }
+.syntax .expr { color: #227; }
+.syntax .method { color: #08f; }
+
+div#controls {
+  position: absolute; left: 50%; bottom: 0;
+  width: 50%;
+  text-align: right; 
+}
+html>body div#controls {
+  position: fixed; 
+  padding: 0 0 1em 0;
+  top: auto;
+}
+div#controls form {
+  position: absolute; bottom: 0; right: 0; 
+  width: 100%;
+  margin: 0; padding: 0;
+}
+#controls #navLinks a {
+  padding: 0; margin: 0 0.5em; 
+  background: #005; 
+  border: none; 
+  cursor: pointer;
+}
+#controls #navList {height: 1em;}
+#controls #navList #jumplist {position: absolute; bottom: 0; right: 0; background: #DDD; color: #227;}
+
+/**>* { border: 1px solid #f00 }*/
