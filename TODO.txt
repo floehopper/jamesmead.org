@@ -1,15 +1,13 @@
-search
-rss feeds, feedburner, validate (articles & comments)
+validate rss
 sitemap
-webmaster tools, yahoo, etc
-google analytics, other analytics?
 other files - ski videos
-export comments
-disqus or equivalent for comments?
-or abandon comments?
 think about whether to remove .html from urls
 tags (also in xml feed)
 categories (also in xml feed)
 year, month, day pages
 redirects from old URLs
+export comments
+disqus or equivalent for comments?
+or abandon comments?
+comments rss
  
