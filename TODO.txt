@@ -13,3 +13,4 @@ comments rss
 credits e.g. powered by webby, thanks to chris roos
 automated deployment
 howto publish new blog article
+consider adding summaries (include on feeds)
