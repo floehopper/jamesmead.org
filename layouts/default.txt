@@ -13,6 +13,8 @@ filter:    erb
   <link rel="alternate" type="application/atom+xml" title="Atom" href="http://<%= Webby.site.host %>/feedburner.xml" />
   <link rel="alternate" type="application/rss+xml" title="RSS" href="http://<%= Webby.site.host %>/feedburner.xml" />
   
+  <link rel="stylesheet" href="/style/blog.css" type="text/css" media="screen, projection" />
+  
   <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
   <meta name="y_key" content="1e092bd46e8b1f49" />
   <meta name="msvalidate.01" content="1AD1EB83FD984C37BB65640F85B262D3" />
