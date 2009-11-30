@@ -1,12 +1,15 @@
-validate rss
-other files - ski videos
 think about whether to remove .html from urls
 tags (also in xml feed)
 categories (also in xml feed)
 year, month, day pages
+paginated pages
 redirects from old URLs
+validate rss
+other files - ski videos
 export comments
 disqus or equivalent for comments?
 or abandon comments?
 comments rss
- 
+credits e.g. powered by webby, thanks to chris roos
+automated deployment
+howto publish new blog article
