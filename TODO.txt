@@ -1,4 +1,3 @@
-add presentations index page?
 ensure presentations are in sitemap
 think about whether to remove .html from urls (content negotiation, DirectoryIndex)
 add meta descriptions for each article/page
@@ -10,6 +9,7 @@ pages e.g. /pages/gner-complaint
 redirects from old URLs
 validate rss
 other files - ski videos
+navigation e.g. to presentations or blog index pages
 favicon
 export comments
 disqus or equivalent for comments?
