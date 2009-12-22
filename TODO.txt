@@ -1,4 +1,3 @@
-blog index page should not include itself
 ruby-manor slides
 ensure presentations are in sitemap
 think about whether to remove .html from urls (content negotiation, DirectoryIndex)
