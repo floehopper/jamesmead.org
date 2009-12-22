@@ -1,3 +1,5 @@
+ruby-manor slides
+ensure presentations are in sitemap
 think about whether to remove .html from urls
 tags (also in xml feed)
 categories (also in xml feed)
