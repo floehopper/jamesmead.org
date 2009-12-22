@@ -1,4 +1,5 @@
-ensure presentations are in sitemap
+should redirect to urls not ending in slash
+sitemap should have urls without html suffix
 think about whether to remove .html from urls (content negotiation, DirectoryIndex)
 add meta descriptions for each article/page
 tags (also in xml feed)
