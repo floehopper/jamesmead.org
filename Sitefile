@@ -1,4 +1,4 @@
-SITE.host = 'localhost:4331'
+SITE.host = 'floehopper.local'
 # SITE.host = 'blog.floehopper.org'
 
 task :default => :build
