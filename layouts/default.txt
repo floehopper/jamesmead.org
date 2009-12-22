@@ -10,6 +10,8 @@ filter:    erb
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <title><%= @page.title %> - Floehopper</title>
   
+  <link href='/images/favicon.gif' rel='icon' />
+  
   <link rel="alternate" type="application/atom+xml" title="Atom" href="http://<%= Webby.site.host %>/feedburner.xml" />
   <link rel="alternate" type="application/rss+xml" title="RSS" href="http://<%= Webby.site.host %>/feedburner.xml" />
   
