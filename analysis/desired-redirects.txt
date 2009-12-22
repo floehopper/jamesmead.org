@@ -1,0 +1,10 @@
+blog.floehopper.org/articles/yyyy/mm/dd/article --> jamesmead.org/blog/yyyy-mm-dd-article
+blog.floehopper.org/articles/yyyy/mm/dd/
+blog.floehopper.org/articles/yyyy/mm/
+blog.floehopper.org/articles/yyyy/
+
+blog.floehopper.org/articles/                   --> jamesmead.org/blog/
+blog.floehopper.org/articles                    --> jamesmead.org/blog/
+
+blog.floehopper.org/
+blog.floehopper.org
