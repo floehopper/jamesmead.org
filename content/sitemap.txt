@@ -17,10 +17,10 @@ layout: none
   <url>
     <loc>http://<%= Webby.site.host %>/presentations/ruby-and-cocoa-ruby-manor-2009-12-14</loc>
   </url>
-  <% @pages.find(:all, :in_directory => '/blog', :sort_by => 'created_at', :reverse => true).each do |page| %>
+  <% articles.each do |article| %>
   <url>
-    <loc>http://<%= Webby.site.host %><%= page.url %></loc>
-    <lastmod><%= page.updated_at.xmlschema %></lastmod>
+    <loc>http://<%= Webby.site.host %><%= article.url %></loc>
+    <lastmod><%= article.updated_at.xmlschema %></lastmod>
   </url>
   <% end %>
 </urlset>
