@@ -1,4 +1,4 @@
-ruby-manor slides
+add presentations index page?
 ensure presentations are in sitemap
 think about whether to remove .html from urls (content negotiation, DirectoryIndex)
 add meta descriptions for each article/page
@@ -22,3 +22,4 @@ consider adding summaries (include on feeds)
 print stylesheet - remove navigation links, sidebar, etc
 check in other browsers e.g. IE
 png is better, but versions of IE will need gif (content negotiation?)
+redirects for presentations to put date at the beginning of the url like articles
