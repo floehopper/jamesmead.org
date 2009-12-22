@@ -1,18 +1,25 @@
+blog index page should not include itself
 ruby-manor slides
 ensure presentations are in sitemap
-think about whether to remove .html from urls
+think about whether to remove .html from urls (content negotiation, DirectoryIndex)
+add meta descriptions for each article/page
 tags (also in xml feed)
 categories (also in xml feed)
-year, month, day pages
-paginated pages
+year, month, day pages e.g. /articles/2009/
+paginated pages e.g /articles/2009/page/2
+pages e.g. /pages/gner-complaint
 redirects from old URLs
 validate rss
 other files - ski videos
+favicon
 export comments
 disqus or equivalent for comments?
 or abandon comments?
 comments rss
-credits e.g. powered by webby, thanks to chris roos
+credits e.g. powered by webby, thanks to chris roos, any layout/css stuff
 automated deployment
 howto publish new blog article
 consider adding summaries (include on feeds)
+print stylesheet - remove navigation links, sidebar, etc
+check in other browsers e.g. IE
+png is better, but versions of IE will need gif (content negotiation?)
