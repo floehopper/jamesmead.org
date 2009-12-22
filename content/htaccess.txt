@@ -10,15 +10,15 @@ RewriteBase /
 # RewriteCond %{THE_REQUEST} \ /articles/[0-9]{4}/[0-9]{2}/[0-9]{2}/index\.html\ HTTP/
 # RewriteRule ^(.*)/index\.html$ $1/ [R=301,L]
 
-# Redirect /articles/<year>-<month>-<day>-<article>.html to /articles/<year>-<month>-</day-<article>
+# Redirect /articles/yyyy-mm-dd-article.html to /articles/yyyy-mm-dd-article
 # RewriteCond %{THE_REQUEST} \ /articles/[0-9]{4}-[0-9]{2}-[0-9]{2}-.+\.html\ HTTP/
 # RewriteRule ^(.*).html$ $1 [R=301,L]
 
-# Redirect /articles/<year>-<month>-<day>-<article> to /blog/<year>-<month>-</day-<article>
+# Redirect /articles/yyyy-mm-dd-article to /blog/yyyy-mm-dd-article
 # RewriteCond %{THE_REQUEST} \ /articles/[0-9]{4}-[0-9]{2}-[0-9]{2}-.+\ HTTP/
 # RewriteRule ^articles/(.*)$ blog/$1 [R=301,L]
 
-# Redirect /blog/<year>-<month>-<day>-<article>.html to /blog/<year>-<month>-</day-<article>
+# Redirect /blog/yyyy-mm-dd-article.html to /blog/yyyy-mm-dd-article
 # RewriteCond %{THE_REQUEST} \ /blog/[0-9]{4}-[0-9]{2}-[0-9]{2}-.+\.html\ HTTP/
 # RewriteRule ^(.*).html$ $1 [R=301,L]
 
