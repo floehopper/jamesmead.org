@@ -1,0 +1,5 @@
+/                                                 {:action=>"index", :controller=>"articles"}
+/articles/:year/:month/:day/:title                {:action=>"permalink", :controller=>"articles"}
+/pages/:name                                      {:action=>"view_page", :controller=>"articles"}
+/sitemap.xml                                      {:type=>"sitemap", :format=>"googlesitemap", :action=>"feed", :controller=>"xml"}
+/feedburner.xml                                   {:type=>"feed", :format=>"atom", :action=>"feed", :controller=>"xml"}
