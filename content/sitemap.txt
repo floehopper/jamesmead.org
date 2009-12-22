@@ -12,10 +12,10 @@ layout: none
     <loc>http://<%= Webby.site.host %>/pages/gner-complaint.html</loc>
   </url>
   <url>
-    <loc>http://<%= Webby.site.host %>/presentations/lrug-mock-objects-2007-07-09/</loc>
+    <loc>http://<%= Webby.site.host %>/presentations/lrug-mock-objects-2007-07-09</loc>
   </url>
   <url>
-    <loc>http://<%= Webby.site.host %>/presentations/ruby-and-cocoa-ruby-manor-2009-12-14/</loc>
+    <loc>http://<%= Webby.site.host %>/presentations/ruby-and-cocoa-ruby-manor-2009-12-14</loc>
   </url>
   <% @pages.find(:all, :in_directory => '/blog', :sort_by => 'created_at', :reverse => true).each do |page| %>
   <url>
