@@ -7,7 +7,7 @@ filter:
   - textile
 ---
 <ul>
-  <% blog_articles.each do |article| %>
+  <% sorted_pages_without_index('/blog').each do |article| %>
     <li>
       <%= article.created_at.strftime('%Y-%m-%d') %>
       <a href="<%= article.url %>"><%= h(article.title) %></a>
