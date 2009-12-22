@@ -14,6 +14,9 @@ layout: none
   <url>
     <loc>http://<%= Webby.site.host %>/presentations/lrug-mock-objects-2007-07-09/</loc>
   </url>
+  <url>
+    <loc>http://<%= Webby.site.host %>/presentations/ruby-and-cocoa-ruby-manor-2009-12-14/</loc>
+  </url>
   <% @pages.find(:all, :in_directory => '/blog', :sort_by => 'created_at', :reverse => true).each do |page| %>
   <url>
     <loc>http://<%= Webby.site.host %><%= page.url %></loc>
