@@ -12,8 +12,8 @@ filter:    erb
   
   <link href='/images/favicon.gif' rel='icon' />
   
-  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://<%= Webby.site.host %>/feedburner.xml" />
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://<%= Webby.site.host %>/feedburner.xml" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="<%= absolute_url('/feedburner.xml') %>" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="<%= absolute_url('/feedburner.xml') %>" />
   
   <link rel="stylesheet" href="/style/blog.css" type="text/css" media="screen, projection" />
   

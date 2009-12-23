@@ -6,20 +6,20 @@ layout: none
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://<%= Webby.site.host %>/</loc>
+    <loc><%= absolute_url('/') %></loc>
   </url>
   <url>
-    <loc>http://<%= Webby.site.host %>/pages/gner-complaint.html</loc>
+    <loc><%= absolute_url('/pages/gner-complaint') %></loc>
   </url>
   <url>
-    <loc>http://<%= Webby.site.host %>/presentations/lrug-mock-objects-2007-07-09</loc>
+    <loc><%= absolute_url('/presentations/lrug-mock-objects-2007-07-09') %></loc>
   </url>
   <url>
-    <loc>http://<%= Webby.site.host %>/presentations/ruby-and-cocoa-ruby-manor-2009-12-14</loc>
+    <loc><%= absolute_url('/presentations/ruby-and-cocoa-ruby-manor-2009-12-14') %></loc>
   </url>
   <% articles.each do |article| %>
   <url>
-    <loc>http://<%= Webby.site.host %><%= article.url %></loc>
+    <loc><%= absolute_url(article.url) %></loc>
     <lastmod><%= article.updated_at.xmlschema %></lastmod>
   </url>
   <% end %>
