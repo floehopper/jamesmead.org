@@ -1,4 +1,4 @@
-module LinkHelper
+module UrlHelper
   
   def absolute_url(relative_url)
     "http://#{Webby.site.host}#{relative_url}"
@@ -6,4 +6,4 @@ module LinkHelper
   
 end
 
-Webby::Helpers.register(LinkHelper)
+Webby::Helpers.register(UrlHelper)
