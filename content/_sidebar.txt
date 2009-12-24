@@ -8,8 +8,11 @@ h3. Me
 * "Twitter":http://twitter.com/floehopper
 * "del.icio.us":http://del.icio.us/jamesthecat
 * "Working with Rails":http://www.workingwithrails.com/recommendation/new/person/3237-james-mead
+* "Rails Ranking":http://railsrankings.com/coders/james-mead
+* "Rails Contributor":http://contributors.rubyonrails.org/contributors/james-mead/commits
 * "LinkedIn":http://www.linkedin.com/in/jamesmead
 * "Stack Overflow":http://stackoverflow.com/users/46850/floehopper
+* "Free Range":http://gofreerange.com/
 * "JRoller Blog":http://www.jroller.com/jamesmead/
 
 h3. Blogroll
