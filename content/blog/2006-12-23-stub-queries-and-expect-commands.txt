@@ -52,4 +52,4 @@ end
 
 p. I haven't actually run this - so it's quite likely there are errors in it, but you should get the general idea. The @person.stubs@ line is necessary to avoid the type checking that "Luke Redpath":http://www.lukeredpath.co.uk/ mentions in "his comment":http://metaclass.org/2006/12/22/making-a-mockery-of-activerecord#comment-7.
 
-More thoughts "here":/blog/2006-12-23-tell-dont-ask.html.
+More thoughts "here":/blog/2006-12-23-tell-dont-ask.

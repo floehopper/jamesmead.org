@@ -20,7 +20,7 @@ I haven't got into the MiniTest::Spec or MiniTest::Mock side of things, nor have
 
 I've included the information about Ruby 1.9.0 for completeness, but most people will only be interested in "the sections on 1.9.1":#vanilla-ruby1.9.1 which is the "first stable release of Ruby 1.9 series".
 
-As I mentioned in the "release notes":/blog/2009-02-01-mocha-release-0-9-5.html, Mocha 0.9.5 should work with Test::Unit or MiniTest in Ruby 1.8.* or Ruby 1.9.1. It does not currently work in Ruby 1.9.0, but I won't be making this a priority unless I have specific requests to do so.
+As I mentioned in the "release notes":/blog/2009-02-01-mocha-release-0-9-5, Mocha 0.9.5 should work with Test::Unit or MiniTest in Ruby 1.8.* or Ruby 1.9.1. It does not currently work in Ruby 1.9.0, but I won't be making this a priority unless I have specific requests to do so.
 
 Note that at some point MiniTest changed its name from MiniUnit.
 
