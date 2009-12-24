@@ -1,5 +1,3 @@
-think about whether to remove .html from urls (content negotiation, DirectoryIndex)
-sitemap should have urls without html suffix
 should redirect to urls not ending in slash
 add meta descriptions for each article/page
 tags (also in xml feed)
@@ -26,3 +24,4 @@ check in other browsers e.g. IE
 png is better, but versions of IE will need gif (content negotiation?)
 redirects for presentations to put date at the beginning of the url like articles
 consider using typekit font like this http://typekit.com/fonts/494
+consider moving tumblelog from tumble.floehopper.org --> ?
