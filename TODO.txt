@@ -1,6 +1,6 @@
-should redirect to urls not ending in slash
-sitemap should have urls without html suffix
 think about whether to remove .html from urls (content negotiation, DirectoryIndex)
+sitemap should have urls without html suffix
+should redirect to urls not ending in slash
 add meta descriptions for each article/page
 tags (also in xml feed)
 categories (also in xml feed)
@@ -12,6 +12,7 @@ validate rss
 other files - ski videos
 navigation e.g. to presentations or blog index pages
 favicon
+ensure we have captured all urls in sitemap
 export comments
 disqus or equivalent for comments?
 or abandon comments?
@@ -24,3 +25,4 @@ print stylesheet - remove navigation links, sidebar, etc
 check in other browsers e.g. IE
 png is better, but versions of IE will need gif (content negotiation?)
 redirects for presentations to put date at the beginning of the url like articles
+consider using typekit font like this http://typekit.com/fonts/494
