@@ -25,7 +25,7 @@ var googleCustomSearch = {
     };
   },
   setupForm : function(form) {
-    form.setAttribute('action', '/search-results.html');
+    form.setAttribute('action', '/search-results');
     form.setAttribute('id', 'cse-search-box');
   },
   loadGoogleCustomSearchJavascript : function() {
