@@ -10,7 +10,7 @@ filter:
   <% articles.each do |article| %>
     <li>
       <%= article.created_at.strftime('%Y-%m-%d') %>
-      <%= link_to article.title, article %>
+      <%= link_to article.title, friendly_url(article) %>
     </li>
   <% end %>
 </ul>
