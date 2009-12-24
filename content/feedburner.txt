@@ -9,7 +9,7 @@ filter: erb
   <title>Floehopper</title>
   <subtitle>thoughts on the bergy bits of life</subtitle>
   <id>tag:<%= Webby.site.host %>,2005:Typo</id>
-  <link href="<%= absolute_url(friendly_url(@page)) %>" rel="self" type="application/atom+xml"/>
+  <link href="<%= absolute_url(@page.url) %>" rel="self" type="application/atom+xml"/>
   <link href="<%= absolute_url('/') %>" rel="alternate" type="text/html"/>
   <updated><%= Time.now.xmlschema %></updated>
   <% articles(:limit => 10).each do |article| %>
