@@ -6,26 +6,9 @@ layout: none
 RewriteEngine On
 RewriteBase /
 
-# Redirect /articles/yyyy/mm/dd/index.html to /articles/yyyy/mm/dd/
-# RewriteCond %{THE_REQUEST} \ /articles/[0-9]{4}/[0-9]{2}/[0-9]{2}/index\.html\ HTTP/
-# RewriteRule ^(.*)/index\.html$ $1/ [R=301,L]
-
-# Redirect /articles/yyyy-mm-dd-article.html to /articles/yyyy-mm-dd-article
-# RewriteCond %{THE_REQUEST} \ /articles/[0-9]{4}-[0-9]{2}-[0-9]{2}-.+\.html\ HTTP/
-# RewriteRule ^(.*).html$ $1 [R=301,L]
-
-# Redirect /articles/yyyy-mm-dd-article to /blog/yyyy-mm-dd-article
-# RewriteCond %{THE_REQUEST} \ /articles/[0-9]{4}-[0-9]{2}-[0-9]{2}-.+\ HTTP/
-# RewriteRule ^articles/(.*)$ blog/$1 [R=301,L]
-
 # Redirect /blog/yyyy-mm-dd-article.html to /blog/yyyy-mm-dd-article
 RewriteCond %{THE_REQUEST} \ /blog/[0-9]{4}-[0-9]{2}-[0-9]{2}-.+\.html\ HTTP/
 RewriteRule ^(.*).html$ $1 [R=301,L]
-
-# Rewrite requests for new-style article URLs to render the .html version
-# RewriteCond %{REQUEST_URI} ^/blog/[0-9]{4}-[0-9]{2}-[0-9]{2}-.+$
-# RewriteCond %{REQUEST_URI} !\.html$
-# RewriteRule ^(.*)$ $1.html [L]
 
 # Redirect old style article URLs to their new style counterpart
 RewriteCond %{REQUEST_URI} ^/articles/[0-9]{4}/[0-9]{2}/[0-9]{2}/.+$
