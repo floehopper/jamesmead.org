@@ -1,17 +1,27 @@
 require 'net/http'
 
 expectations = {
-  # original typo-style URL
   'http://floehopper.local/articles/2009/11/02/activerecord-model-class-name-clash' => {
-    :url => 'http://floehopper.local/blog/2009-11-02-activerecord-model-class-name-clash',
+    :url => 'http://jamesmead.local/articles/2009/11/02/activerecord-model-class-name-clash',
     :code => '301'
   },
-  # no URLs like this should have escaped into the wild, but just in case...
-  'http://floehopper.local/blog/2009-11-02-activerecord-model-class-name-clash.html' => {
-    :url => 'http://floehopper.local/blog/2009-11-02-activerecord-model-class-name-clash',
+  'http://blog.floehopper.local/articles/2009/11/02/activerecord-model-class-name-clash' => {
+    :url => 'http://jamesmead.local/articles/2009/11/02/activerecord-model-class-name-clash',
     :code => '301'
-  }
-  'http://floehopper.local/blog/2009-11-02-activerecord-model-class-name-clash' => {
+  },
+  'http://www.floehopper.local/articles/2009/11/02/activerecord-model-class-name-clash' => {
+    :url => 'http://jamesmead.local/articles/2009/11/02/activerecord-model-class-name-clash',
+    :code => '301'
+  },
+  'http://jamesmead.local/articles/2009/11/02/activerecord-model-class-name-clash' => {
+    :url => 'http://jamesmead.local/blog/2009-11-02-activerecord-model-class-name-clash',
+    :code => '301'
+  },
+  'http://jamesmead.local/blog/2009-11-02-activerecord-model-class-name-clash.html' => {
+    :url => 'http://jamesmead.local/blog/2009-11-02-activerecord-model-class-name-clash',
+    :code => '301'
+  },
+  'http://jamesmead.local/blog/2009-11-02-activerecord-model-class-name-clash' => {
     :code => '200'
   },
 }
