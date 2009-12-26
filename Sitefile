@@ -1,5 +1,5 @@
-SITE.host = 'floehopper.local'
-# SITE.host = 'blog.floehopper.org'
+SITE.host = 'jamesmead.local'
+# SITE.host = 'jamesmead.org'
 
 task :default => :build
 
