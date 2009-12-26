@@ -17,10 +17,6 @@ expectations = {
     :url => 'http://jamesmead.local/blog/2009-11-02-activerecord-model-class-name-clash',
     :code => '301'
   },
-  'http://jamesmead.local/blog/2009-11-02-activerecord-model-class-name-clash.html' => {
-    :url => 'http://jamesmead.local/blog/2009-11-02-activerecord-model-class-name-clash',
-    :code => '301'
-  },
   'http://jamesmead.local/blog/2009-11-02-activerecord-model-class-name-clash' => {
     :code => '200'
   },

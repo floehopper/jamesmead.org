@@ -6,10 +6,6 @@ layout: none
 RewriteEngine On
 RewriteBase /
 
-# Redirect /blog/yyyy-mm-dd-article.html to /blog/yyyy-mm-dd-article
-RewriteCond %{THE_REQUEST} \ /blog/[0-9]{4}-[0-9]{2}-[0-9]{2}-.+\.html\ HTTP/
-RewriteRule ^(.*).html$ $1 [R=301,L]
-
 # Redirect old style article URLs to their new style counterpart
 RewriteCond %{REQUEST_URI} ^/articles/[0-9]{4}/[0-9]{2}/[0-9]{2}/.+$
 RewriteRule ^articles/([0-9]{4})/([0-9]{2})/([0-9]{2})/(.*)$ /blog/$1-$2-$3-$4 [R=301,L]
