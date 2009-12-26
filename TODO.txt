@@ -1,4 +1,6 @@
+look at Slicehost DNS settings and compare with /etc/hosts
 should redirect to urls not ending in slash
+missing recent articles?
 add meta descriptions for each article/page
 tags (also in xml feed)
 categories (also in xml feed)
@@ -11,6 +13,8 @@ other files - ski videos
 navigation e.g. to presentations or blog index pages
 favicon
 ensure we have captured all urls in sitemap
+compression for Y-Slow
+expiry for Y-Slow
 export comments
 disqus or equivalent for comments?
 or abandon comments?
