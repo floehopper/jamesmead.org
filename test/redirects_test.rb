@@ -1,40 +1,107 @@
+require 'test/unit'
 require 'net/http'
 
-expectations = {
-  'http://floehopper.local/articles/2009/11/02/activerecord-model-class-name-clash' => {
-    :url => 'http://jamesmead.local/articles/2009/11/02/activerecord-model-class-name-clash',
-    :code => '301'
-  },
-  'http://blog.floehopper.local/articles/2009/11/02/activerecord-model-class-name-clash' => {
-    :url => 'http://jamesmead.local/articles/2009/11/02/activerecord-model-class-name-clash',
-    :code => '301'
-  },
-  'http://www.floehopper.local/articles/2009/11/02/activerecord-model-class-name-clash' => {
-    :url => 'http://jamesmead.local/articles/2009/11/02/activerecord-model-class-name-clash',
-    :code => '301'
-  },
-  'http://jamesmead.local/articles/2009/11/02/activerecord-model-class-name-clash' => {
-    :url => 'http://jamesmead.local/blog/2009-11-02-activerecord-model-class-name-clash',
-    :code => '301'
-  },
-  'http://jamesmead.local/blog/2009-11-02-activerecord-model-class-name-clash' => {
-    :code => '200'
-  },
-}
-
-expectations.each do |request_url, expected_attributes|
-  puts "Requesting: #{request_url}"
+class RedirectsTest < Test::Unit::TestCase
   
-  url = URI.parse(request_url)
-  request = Net::HTTP::Get.new(url.path)
-  response = Net::HTTP.start(url.host, url.port) do |http|
-    http.request(request)
+  def test_home_page
+    assert_success jamesmead_org('/')
   end
   
-  if redirection_url = expected_attributes[:url]
-    raise "Expected '#{redirection_url}' in the Location header but got '#{response['Location']}'." unless redirection_url == response['Location']
+  def test_blog_index
+    assert_success jamesmead_org('/blog/')
+    assert_redirects jamesmead_org('/blog'), jamesmead_org('/blog/')
   end
-  if status_code = expected_attributes[:code]
-    raise "Expected status code of (#{status_code}) but got (#{response.code})." unless status_code == response.code
+  
+  def test_blog_article
+    assert_success jamesmead_org(new_article_path)
   end
+  
+  def test_presentations_index
+    assert_success jamesmead_org('/presentations/')
+    assert_redirects jamesmead_org('/presentations'), jamesmead_org('/presentations/')
+  end
+  
+  def test_sitemap
+    assert_success jamesmead_org('/sitemap.xml')
+  end
+  
+  def test_feedburner_source
+    assert_success jamesmead_org('/feedburner.xml')
+  end
+  
+  def test_legacy_feedburner_source
+    assert_redirects blog_floehopper_org('/feedburner.xml'), jamesmead_org('/feedburner.xml')
+  end
+  
+  def test_legacy_domain
+    assert_redirects floehopper_org('/'), jamesmead_org('/')
+  end
+  
+  def test_legacy_sub_domains
+    assert_redirects blog_floehopper_org('/'), jamesmead_org('/')
+    assert_redirects www_floehopper_org('/'), jamesmead_org('/')
+  end
+  
+  def test_legacy_blog_articles
+    assert_redirects blog_floehopper_org(old_article_path), jamesmead_org(new_article_path)
+    assert_redirects www_floehopper_org(old_article_path), jamesmead_org(new_article_path)
+    assert_redirects floehopper_org(old_article_path), jamesmead_org(new_article_path)
+  end
+  
+  def test_legacy_feeds
+    assert_redirects blog_floehopper_org('/xml/atom/feed.xml'), feeds_floehopper_org('/floehopper-blog')
+    assert_redirects blog_floehopper_org('/xml/atom10/feed.xml'), feeds_floehopper_org('/floehopper-blog')
+    assert_redirects blog_floehopper_org('/xml/rss/feed.xml'), feeds_floehopper_org('/floehopper-blog')
+    assert_redirects blog_floehopper_org('/xml/rss20/feed.xml'), feeds_floehopper_org('/floehopper-blog')
+  end
+  
+  private
+  
+  def assert_success(url)
+    response = get_response(url)
+    assert response.is_a?(Net::HTTPSuccess), "Request to #{url} failed with #{response}"
+  end
+  
+  def assert_redirects(origin_url, target_url)
+    url = origin_url
+    while (response = get_response(url)) && response.is_a?(Net::HTTPRedirection)
+      url = response['Location']
+    end
+    assert response.is_a?(Net::HTTPSuccess), "Request to #{url} failed with #{response}"
+    assert_equal(target_url, url)
+  end
+  
+  def get_response(url)
+    Net::HTTP.get_response(URI.parse(url))
+  end
+  
+  def jamesmead_org(path)
+    "http://jamesmead.local#{path}"
+  end
+  
+  def floehopper_org(path)
+    "http://floehopper.local#{path}"
+  end
+  
+  def blog_floehopper_org(path)
+    "http://blog.floehopper.local#{path}"
+  end
+  
+  def www_floehopper_org(path)
+    "http://www.floehopper.local#{path}"
+  end
+  
+  # keep .org TLD as this sub-domain points directly at feedburner domain
+  def feeds_floehopper_org(path)
+    "http://feeds.floehopper.org#{path}"
+  end
+  
+  def old_article_path
+    "/articles/2009/11/02/activerecord-model-class-name-clash"
+  end
+  
+  def new_article_path
+    "/blog/2009-11-02-activerecord-model-class-name-clash"
+  end
+  
 end
