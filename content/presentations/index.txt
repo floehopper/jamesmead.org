@@ -9,10 +9,10 @@ filter:
 <ul>
   <li>
     2009-12-14
-    <%= link_to 'Ruby & Cocoa at Ruby Manor', '/presentations/ruby-and-cocoa-ruby-manor-2009-12-14' %>
+    <%= link_to 'Ruby & Cocoa at Ruby Manor', '/presentations/ruby-and-cocoa-ruby-manor-2009-12-14/' %>
   </li>
   <li>
     2007-07-09
-    <%= link_to 'An Introduction to Mock Objects in Ruby at LRUG', '/presentations/lrug-mock-objects-2007-07-09' %>
+    <%= link_to 'An Introduction to Mock Objects in Ruby at LRUG', '/presentations/lrug-mock-objects-2007-07-09/' %>
   </li>
 </ul>

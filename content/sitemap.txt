@@ -12,10 +12,10 @@ layout: none
     <loc><%= absolute_url('/pages/gner-complaint') %></loc>
   </url>
   <url>
-    <loc><%= absolute_url('/presentations/lrug-mock-objects-2007-07-09') %></loc>
+    <loc><%= absolute_url('/presentations/lrug-mock-objects-2007-07-09/') %></loc>
   </url>
   <url>
-    <loc><%= absolute_url('/presentations/ruby-and-cocoa-ruby-manor-2009-12-14') %></loc>
+    <loc><%= absolute_url('/presentations/ruby-and-cocoa-ruby-manor-2009-12-14/') %></loc>
   </url>
   <% articles.each do |article| %>
   <url>
