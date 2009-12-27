@@ -1,0 +1,26 @@
+Name	Data	Type
+
+floehopper.org	208.78.97.102	A
+www	208.78.97.102	A
+blog	208.78.97.102	A
+cruise	208.78.97.102	A
+git	208.75.86.109	A
+
+feeds	2s1pio.feedproxy.ghs.google.com.	CNAME
+
+tumble	72.32.231.8	A
+
+google835c78466cc39885.floehopper.org.	google.com.	CNAME
+calendar	ghs.google.com.	CNAME
+docs	ghs.google.com.	CNAME
+google	ghs.google.com.	CNAME
+mail	ghs.google.com.	CNAME
+
+floehopper.org.	ASPMX3.GOOGLEMAIL.COM.	MX
+floehopper.org.	ASPMX4.GOOGLEMAIL.COM.	MX
+floehopper.org.	ASPMX5.GOOGLEMAIL.COM.	MX
+floehopper.org.	ALT2.ASPMX.L.GOOGLE.COM.	MX
+floehopper.org.	ASPMX.L.GOOGLE.COM.	MX
+floehopper.org.	ALT1.ASPMX.L.GOOGLE.COM.	MX
+floehopper.org.	ASPMX2.GOOGLEMAIL.COM.	MX
+floehopper.org.	v=spf1 include:aspmx.googlemail.com ~all	TXT
