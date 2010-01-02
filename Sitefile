@@ -1,5 +1,8 @@
 SITE.host = 'jamesmead.local'
 # SITE.host = 'jamesmead.org'
+SITE.user = 'jamesmead'
+SITE.host = 'argonaut.slice'
+SITE.remote_dir = '/var/www/jamesmead.org/'
 
 task :default => :build
 
