@@ -1,4 +1,3 @@
-why are links on blog index absolute?
 tags - add tags to delicious and suggest search to user
 tags xml feed e.g. /xml/atom/tag/apache/feed.xml
 categories - maybe implement via tags - think mocha_release is only one
@@ -9,6 +8,8 @@ navigation e.g. to presentations or blog index pages
 favicon
 consider removing xml suffix from feedburner.xml - need to check feedburner config anyway - maybe this should be in blog directory e.g. /blog/feed
 ensure we have captured all urls in sitemap
+why are links on blog index absolute?
+do we need internal redirect for non-blog pages to avoid html suffix?
 compression for Y-Slow
 expiry for Y-Slow
 syntax highlighting for code
