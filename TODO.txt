@@ -1,4 +1,4 @@
-other files - ski videos
+why are links on blog index absolute?
 tags - add tags to delicious and suggest search to user
 tags xml feed e.g. /xml/atom/tag/apache/feed.xml
 categories - maybe implement via tags - think mocha_release is only one
@@ -11,6 +11,7 @@ consider removing xml suffix from feedburner.xml - need to check feedburner conf
 ensure we have captured all urls in sitemap
 compression for Y-Slow
 expiry for Y-Slow
+syntax highlighting for code
 export comments
 disqus or equivalent for comments?
 or abandon comments?
