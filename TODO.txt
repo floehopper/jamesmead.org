@@ -1,15 +1,13 @@
-add meta descriptions for each article/page
-tags (also in xml feed)
-categories (also in xml feed)
-year, month, day pages e.g. /articles/2009/
-paginated pages e.g /articles/2009/page/2
-pages e.g. /pages/gner-complaint
-redirects from old URLs
-validate rss
 other files - ski videos
+tags - add tags to delicious and suggest search to user
+tags xml feed e.g. /xml/atom/tag/apache/feed.xml
+categories - maybe implement via tags - think mocha_release is only one
+categories xml feed e.g. /xml/atom/category/mocha_release/feed.xml
+year, month, day pages e.g. /articles/2009/ - suggest google site search
+paginated pages e.g /articles/2009/page/2
 navigation e.g. to presentations or blog index pages
 favicon
-consider removing xml suffix from feedburner.xml - need to check fedburner config anyway
+consider removing xml suffix from feedburner.xml - need to check feedburner config anyway - maybe this should be in blog directory e.g. /blog/feed
 ensure we have captured all urls in sitemap
 compression for Y-Slow
 expiry for Y-Slow
@@ -20,7 +18,7 @@ comments rss
 credits e.g. powered by webby, thanks to chris roos, any layout/css stuff
 automated deployment
 howto publish new blog article
-consider adding summaries (include on feeds)
+consider adding summaries (include on feeds) - add meta descriptions for each article/page
 print stylesheet - remove navigation links, sidebar, etc
 check in other browsers e.g. IE
 png is better, but versions of IE will need gif (content negotiation?)
