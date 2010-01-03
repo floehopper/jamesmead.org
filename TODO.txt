@@ -10,6 +10,10 @@ consider removing xml suffix from feedburner.xml - need to check feedburner conf
 ensure we have captured all urls in sitemap
 why are links on blog index absolute?
 do we need internal redirect for non-blog pages to avoid html suffix?
+google webmaster tools
+yahoo webmaster tools
+microsoft webmaster tools
+google analytics
 compression for Y-Slow
 expiry for Y-Slow
 syntax highlighting for code
