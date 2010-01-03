@@ -8,7 +8,7 @@ filter:    erb
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <title><%= @page.title %> - Floehopper</title>
+  <title><%= title(@page) %></title>
   
   <link href='/images/favicon.gif' rel='icon' />
   
@@ -21,16 +21,14 @@ filter:    erb
   <meta name="y_key" content="1e092bd46e8b1f49" />
   <meta name="msvalidate.01" content="1AD1EB83FD984C37BB65640F85B262D3" />
   
-  <meta description="Floehopper - thoughts on the bergy bits of life. Articles on Ruby, Mock Objects, Test-Driven Development, Agile Development, GNER trains, Antarctica, Ski-touring in Norway, etc." />
+  <meta description="<%= @page.description %>" />
   
   <link rel="openid.server" href="http://openid.claimid.com/server" />
   <link rel="openid.delegate" href="http://openid.claimid.com/jamesmead" />
 </head>
 <body>
 
-  <h1>
-    Floehopper - thoughts on the bergy bits of life
-  </h1>
+  <h1><%= @page.title %></h1>
   
   <p>
     <%= render :partial => '/search' %>
@@ -38,10 +36,6 @@ filter:    erb
   
   <p>
     <%= @content %>
-  </p>
-  
-  <p>
-    <%= render :partial => '/sidebar' %>
   </p>
   
   <script src="/javascripts/google-custom-search.js" type="text/javascript" charset="utf-8"></script>
