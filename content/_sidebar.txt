@@ -12,11 +12,12 @@ h3. Me
 * "Rails Contributor":http://contributors.rubyonrails.org/contributors/james-mead/commits
 * "LinkedIn":http://www.linkedin.com/in/jamesmead
 * "Stack Overflow":http://stackoverflow.com/users/46850/floehopper
-* "Free Range":http://gofreerange.com/
+* "SpeakerRate":http://speakerrate.com/floehopper
 * "JRoller Blog":http://www.jroller.com/jamesmead/
 
-h3. Blogroll
+h3. Links
 
+* "Free Range":http://gofreerange.com/
 * "Ben Griffiths":http://www.techbelly.com/
 * "Chris Roos":http://chrisroos.co.uk/
 * "Paul Battley":http://po-ru.com/
