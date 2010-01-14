@@ -10,7 +10,7 @@ filter:
 categories: []
 
 created_at: 2007-02-26 02:04:02 +00:00
-keywords: ""
+keywords: "book business success recommendation workplace"
 ---
 Some time ago, my colleague "Chris":http://blog.seagul.co.uk recommended a book called "Maverick! The Success Story Behind the World's Most Unusual Workplace":http://www.amazon.com/Maverick-Success-Behind-Unusual-Workplace/dp/0446670553 by Ricardo Semler.
 

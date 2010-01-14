@@ -10,6 +10,6 @@ filter:
 categories: []
 
 created_at: 2006-02-22 12:29:00 +00:00
-keywords: ""
+keywords: "reevoo review hreview microformat"
 ---
 If you review gadgets and gizmos on your blog, you might want to consider using the "hReview":http://www.microformats.org microformat. Here at "Reevoo":http://www.reevoo.com we're "aggregating reviews":http://www.reevoo.com/web_services/manual_ping from blogs and combining them with reviews collected by email on behalf of several uk online retailers.
