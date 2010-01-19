@@ -1,0 +1,65 @@
+--- 
+permalink: ruby-wrapper-for-the-delicious-v2-api-using-the-oauth-gem
+updated_at: 2010-01-14 13:57:03 +00:00
+guid: 333620d4-f811-41d1-bed5-21b44365c61f
+title: Ruby wrapper for the Delicious v2 API using the OAuth gem
+id: 392
+filter: 
+- erb
+- textile
+categories: []
+
+created_at: 2010-01-14 13:57:03 +00:00
+keywords: ruby delicious api v2 oauth yahoo bookmark
+---
+I've got a bit sidetracked recently while trying to convert my blog from using "Typo":http://www.typosphere.org/ to a static site using "Webby":http://webby.rubyforge.org/. Typo provides a facility to tag your blog posts. This allows visitors to find "all the articles tagged e.g. mocha":http://blog.floehopper.org/articles/tag/mocha.
+
+Generating these tag pages becomes more awkward with the Webby-based site which is generated at deploy-time. I decided I liked the approach that Chris Roos took which was "to tag his blog posts in del.icio.us":http://chrisroos.co.uk/tags so that visitors can use a del.icio.us URL to find "all the articles with a particular tag":http://delicious.com/chrisjroos/blog.seagul.co.uk+cool.
+
+Initially I used "WWW::Delicious":http://github.com/weppos/www-delicious which worked well enough with "my main del.icio.us account":http://delicious.com/jamesthecat/. But then I decided I didn't want to clutter up this account with bookmarks to all my blog posts, so I created a new account. Unfortunately since this is a new account, I have to use the v2 API with OAuth if I want to programmatically add bookmarks :-
+
+bq. To access data from accounts created using a Yahoo! ID, use the same API's as below, but change the path to /v2, and make HTTP requests using OAuth as provided by the "Yahoo! Developer Network":http://developer.yahoo.com/oauth/.
+
+I couldn't find any examples of anyone doing this using Ruby, so I decided to have a go using the "OAuth gem":http://oauth.rubyforge.org/. It was a bit of a painful process due to a lack of decent documentation, but I got there in the end. I thought I'd "share the code":http://github.com/floehopper/delicious-api-via-oauth in case it saves anyone else a bit of time.
+
+The code probably isn't very robust since it's lacking tests and it currently only offers the ability to add bookmarks which was all I needed. Probably what I should do next is integrate this code with something like WWW:Delicious to offer access to both v1 and v2 APIs, but since I can now do what I wanted, this is unlikely to happen in the near future.
+
+In order to get the example code to work, you'll need to login to a Yahoo! ID based del.icio.us account and go to your "My Projects page":https://developer.apps.yahoo.com/projects :-
+
+!http://farm5.static.flickr.com/4012/4274176876_4aa9366840.jpg!
+
+There you need to add a project and grant it read/write access to del.icio.us :-
+
+!http://farm3.static.flickr.com/2765/4274199394_8408d3f2fc.jpg!
+
+Granting access to your project will generate a Consumer Key and a Consumer Secret. These values should be used to define the @API_KEY@ and @SHARED_SECRET@ constants respectively. The @example.rb@ code does this by requiring a @constants.rb@ file which you could add.
+
+Here's the example code which creates a single bookmark. Note that the first time this is run, it will open a browser and require you to login to obtain an @oauth_verifier@ code :-
+
+!http://farm3.static.flickr.com/2744/4274208592_0066d8e0f2_o.png!
+
+!http://farm5.static.flickr.com/4010/4274217158_e0b472a781_o.png!
+
+You will need to copy and paste this code into the terminal window :-
+
+!http://farm3.static.flickr.com/2720/4273475533_0d2e7eca8c.jpg!
+
+All the relevant tokens are saved to YAML files, so that subsequent calls to the API will work without user interaction. However, you should note that an access token expires after 1 hour. It ought to be possible to refresh this token without user interaction, but I haven't been able to get that working yet, so in this case you'll probably need to delete @request_token.yml@ and @access_token.yml@ and re-run the script.
+
+bc(ruby).. $LOAD_PATH << File.join(File.dirname(__FILE__), 'oauth-extensions')
+$LOAD_PATH << File.join(File.dirname(__FILE__), 'delicious')
+
+require 'delicious/api'
+require 'constants'
+
+api = Delicious::API.new(API_KEY, SHARED_SECRET)
+api.posts_add!(
+  :url => 'http://www.google.com/',
+  :description => 'Testing 1 2 3',
+  :extended => 'Blah blah blah',
+  :tags => 'testing google blah'
+)
+
+p. Finally, here's the bookmark successfully added to my account :-
+
+!http://farm5.static.flickr.com/4054/4273486847_d685d9f56b.jpg!

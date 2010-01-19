@@ -1,0 +1,36 @@
+--- 
+permalink: mocha-on-bacon
+updated_at: 2010-01-19 11:19:09 +00:00
+guid: de0c133b-66e4-42f2-89a1-203100258108
+title: Mocha on Bacon
+id: 394
+filter: 
+- erb
+- textile
+categories: []
+
+created_at: 2010-01-19 11:16:40 +00:00
+keywords: mocha bacon testing spec should adapter mock
+---
+Some time ago, I "removed Bacon integration from Mocha":http://github.com/floehopper/mocha/commit/da24f9e93640381973b1604b8a1ff3214b0831c9 after "deciding":http://groups.google.com/group/mocha-developer/msg/fd008b21e34638df to only maintain integration with 
+"Test::Unit":http://www.ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html and "MiniTest":http://blog.zenspider.com/minitest/ which are both Ruby standard libraries.
+
+Happily "Eloy Duran":http://superalloy.nl/ has just "re-incarnated the Mocha adapter for Bacon":http://github.com/alloy/mocha-on-bacon. He's updated the code a bit and re-written the tests. Thanks, Eloy.
+
+Here's an example of what you can do with "Bacon":http://gemcutter.org/gems/bacon and "Mocha":http://mocha.rubyforge.org/ :-
+
+bc(ruby).. require File.expand_path('../spec_helper', __FILE__)
+
+describe "Bacon specs using Mocha, with a mock" do
+
+  extend MochaBaconHelper
+  
+  it "passes when all expectations were fulfilled" do
+    mockee = mock()
+    lambda do
+      mockee.expects(:blah)
+      mockee.blah
+    end.should.be satisfied
+  end
+  
+end
