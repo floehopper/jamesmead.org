@@ -52,7 +52,11 @@ end
 p. I'm going to struggle a bit when commenting on this code example for a couple of reasons :-
 
 * I dislike the use of @setup@ methods (@before@ in this "RSpec":http://rspec.info/ example). I prefer to do my "setup in-line in the test":http://blog.jayfields.com/2007/06/testing-inline-setup.html to make the test as independent and as explicit as possible. I particularly dislike exercising the object under test within the @setup@ method. To me this seems like a more fundamental breakage of the "Four-Phase Test":http://xunitpatterns.com/Four%20Phase%20Test.html concept.
-* In this example, I would not want to assert that @Post.find@ has been called. "Nat Pryce":http://www.natpryce.com/ (one of the authors of jMock) has a rule of thumb that says: ""stub queries and expect commands":http://www.jmock.org/yoga.html". In this example, the call to @Post.find@ is clearly a query, so I would just stub it. I think about it like this: (a) stubbing @Post.find@ is setting up the environment and making the instance of @Post@ available; (b) the assertion then checks that the instance of @Post@ is assigned to the @@post@ instance variable; (c) the combination of (a) and (b) is enough to tell me that the @Post.find@ method has been called - where else would the controller have got the instance of @Post@ from?
+* In this example, I would not want to assert that @Post.find@ has been called. "Nat Pryce":http://www.natpryce.com/ (one of the authors of jMock) has a rule of thumb that says: ""stub queries and expect commands":http://www.jmock.org/yoga.html". In this example, the call to @Post.find@ is clearly a query, so I would just stub it. I think about it like this :-
+
+# stubbing @Post.find@ is setting up the environment and making the instance of @Post@ available
+# the assertion then checks that the instance of @Post@ is assigned to the @@post@ instance variable
+# the combination of (1) and (2) is enough to tell me that the @Post.find@ method has been called - where else would the controller have got the instance of @Post@ from?
 
 So I'm not convinced I would need _Test Spies_ for this example.
 
