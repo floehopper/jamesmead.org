@@ -16,7 +16,7 @@ keywords: testing ruby rails fixture test mock stub dependency injection
 
 Another technique is to use constructor-based "dependency injection":http://www.martinfowler.com/articles/injection.html (DI) in combination with "mock objects":http://www.connextra.com/aboutUs/mockobjects.pdf. However, thanks to @ActiveRecord::Associations::AssociationProxy#raise_on_type_mismatch@ it isn't straightforward to use mocks for associated models. However, DI can be used effectively for ActionController controllers:
 
-bc(ruby).. class ArticleController < ApplicationController
+bc(prettyprint).. class ArticleController < ApplicationController
   def initialize(article_class = Article)
     super()
     @article_class = article_class
@@ -28,7 +28,7 @@ end
 
 p. The controller constructor defaults to using the real Article model class, but in the test we're going to inject a mock object in its place. You could use one of the "many":http://onestepback.org/software/flexmock/ "mocking":http://rspec.rubyforge.org/ "libraries":http://mockr.sanityinc.com/ for this, but I'm going to use our "home-grown":http://www.reevoo.com/blogs/reevooblog/ one, "Mocha":http://mocha.rubyforge.org, in a "functional" controller test.
 
-bc(ruby).. require File.dirname(__FILE__) + '/../test_helper'
+bc(prettyprint).. require File.dirname(__FILE__) + '/../test_helper'
 require 'article_controller'
 
 class ArticleController; def rescue_action(e) raise e end; end

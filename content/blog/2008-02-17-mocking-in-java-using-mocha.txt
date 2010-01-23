@@ -18,7 +18,7 @@ He has a couple of examples in the "Mock documentation":http://jtestr.codehaus.o
 
 The first one demonstrates using "Mocha":http://mocha.rubyforge.org to mock an interface ("Map":http://java.sun.com/j2se/1.4.2/docs/api/java/util/Map.html).
 
-bc(ruby).. import java.util.Map
+bc(prettyprint).. import java.util.Map
 import java.util.Iterator
 import java.util.Set
 import java.util.HashMap
@@ -43,7 +43,7 @@ end
 
 p. The second example demonstrates using "Mocha":http://mocha.rubyforge.org to setup expectations on a real (non-mock) instance ("HashMap":http://java.sun.com/j2se/1.4.2/docs/api/java/util/HashMap.html)...
 
-bc(ruby).. import java.util.Iterator
+bc(prettyprint).. import java.util.Iterator
 import java.util.Set
 import java.util.HashMap
 

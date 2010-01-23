@@ -14,7 +14,7 @@ keywords: mock mocking stub stubbing ruby instance method expectation test testi
 ---
 I thought I'd put the examples from the "RDoc":http://mocha.rubyforge.org README up here if only for the syntax highlighting.
 
-bc(ruby).. class Enterprise
+bc(prettyprint).. class Enterprise
 
   def initialize(dilithium)
     @dilithium = dilithium
@@ -26,7 +26,7 @@ bc(ruby).. class Enterprise
 
 end
 
-bc(ruby).. require 'rubygems'
+bc(prettyprint).. require 'rubygems'
 require 'mocha'
 require 'test/unit'
 

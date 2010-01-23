@@ -16,7 +16,7 @@ A couple of quick nuggets I picked up from Amy Hoy's "Secrets of the Rails Conso
 
 Firstly, the magic @y@ method which dumps an object to YAML - much more readable than the standard @inspect@ output.
 
-bc. >> y james
+bc(prettyprint). >> y james
 --- !ruby/object:User 
 attributes: 
   firstname: James

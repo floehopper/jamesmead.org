@@ -18,7 +18,7 @@ In his "recent look":http://blog.brianguthrie.com/articles/2009/02/03/ioke-mocki
 
 There are 3 levels for all of the existing conditions :-
 
-bc(ruby).. # default behaviour
+bc(prettyprint).. # default behaviour
 Mocha::Configuration.allow(condition)
 
 # warning is displayed when condition is met
@@ -31,7 +31,7 @@ h3. Stubbing a non-existent method
 
 This is useful if you want to ensure that methods you're mocking really exist. A common criticism of unit tests with mock objects is that such a test may (incorrectly) pass when an equivalent non-mocking test would (correctly) fail. While you should always have some integration tests, particularly for critical business functionality, this Mocha configuration setting should catch scenarios when mocked methods and real methods have become misaligned.
 
-bc(ruby).. Mocha::Configuration.prevent(:stubbing_non_existent_method)
+bc(prettyprint).. Mocha::Configuration.prevent(:stubbing_non_existent_method)
 
 class Example
 end
@@ -49,7 +49,7 @@ h3. Stubbing a method unnecessarily
 
 This is useful for identifying unused stubs. Unused stubs are often accidentally introduced when code is "refactored":http://martinfowler.com/bliki/DefinitionOfRefactoring.html.
 
-bc(ruby).. Mocha::Configuration.prevent(:stubbing_method_unnecessarily)
+bc(prettyprint).. Mocha::Configuration.prevent(:stubbing_method_unnecessarily)
 
 class ExampleTest < Test::Unit::TestCase
   def test_example
@@ -64,7 +64,7 @@ h3. Stubbing a non-public method
 
 Many people think that it's good practice only to mock public methods. This is one way to prevent your tests being too tightly coupled to the internal implementation of a class. Such tests tend to be very brittle and not much use when refactoring.
 
-bc(ruby).. Mocha::Configuration.prevent(:stubbing_non_public_method)
+bc(prettyprint).. Mocha::Configuration.prevent(:stubbing_non_public_method)
 
 class Example
   def internal_method; end
@@ -84,7 +84,7 @@ h3. Stubbing Method on Non-Mock Object
 
 If you like the idea of "mocking roles not objects":http://www.jmock.org/oopsla2004.pdf and "you don't like stubbing concrete classes":http://www.mockobjects.com/2007/04/test-smell-mocking-concrete-classes.html, this is the setting for you. However, while this restriction makes a lot of sense in Java with its "explicit interfaces":http://java.sun.com/docs/books/tutorial/java/concepts/interface.html, it may be moot in Ruby where roles are probably best represented as Modules. Anyway that's probably a discussion for another day.
 
-bc(ruby).. Mocha::Configuration.prevent(:stubbing_method_on_non_mock_object)
+bc(prettyprint).. Mocha::Configuration.prevent(:stubbing_method_on_non_mock_object)
 
 class Example
   def example_method; end

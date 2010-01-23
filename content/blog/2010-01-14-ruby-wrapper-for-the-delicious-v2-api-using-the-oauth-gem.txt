@@ -46,7 +46,7 @@ You will need to copy and paste this code into the terminal window :-
 
 All the relevant tokens are saved to YAML files, so that subsequent calls to the API will work without user interaction. However, you should note that an access token expires after 1 hour. It ought to be possible to refresh this token without user interaction, but I haven't been able to get that working yet, so in this case you'll probably need to delete @request_token.yml@ and @access_token.yml@ and re-run the script.
 
-bc(ruby).. $LOAD_PATH << File.join(File.dirname(__FILE__), 'oauth-extensions')
+bc(prettyprint).. $LOAD_PATH << File.join(File.dirname(__FILE__), 'oauth-extensions')
 $LOAD_PATH << File.join(File.dirname(__FILE__), 'delicious')
 
 require 'delicious/api'

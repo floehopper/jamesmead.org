@@ -16,7 +16,7 @@ I thought I'd compare and contrast the way "Gluttonous":http://glu.ttono.us/ was
 
 h2. Gluttonous' way
 
-bc(ruby). def test_process_exit
+bc(prettyprint). def test_process_exit
   delegate_methods_to_mock!(RailsFCGIHandler, :close_connection) do
     fcgi = flexmock()
     fcgi.should_receive(:close_connection)
@@ -28,7 +28,7 @@ end
 
 h2. Using Mocha
 
-bc(ruby). def test_process_exit
+bc(prettyprint). def test_process_exit
   @handler.expects(:close_connection)
   @handler.stubs(:when_ready).returns(:exit)
   @handler.process!

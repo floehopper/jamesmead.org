@@ -33,7 +33,7 @@ However, I was able to run the application from the command-line, which pointed 
 
 So I added the following to my @eclipse.ini@ and the application started up successfully :-
 
-bc. -vm
+bc(prettyprint). -vm
 /System/Library/Frameworks/JavaVM.framework/Versions/1.5.0
 
 _Note: I think that the @-vm option@ must come before the @-vmargs@ option._
@@ -49,7 +49,7 @@ Next I decided to see if I could write a test using "JUnit":http://www.junit.org
 
 At this point everything was going quite smoothly - especially after I side-stepped some of "Java's purgatorial nonsense":http://twitter.com/threedaymonk/status/1138794613 by re-learning the Eclipse keyboard shortcuts for "Quick Fix" and "Content Assist". But now I decided I wanted to try using JUnit Java annotations for my tests :-
 
-bc.. import org.junit.Test;
+bc(prettyprint).. import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import org.jmock.Mockery;

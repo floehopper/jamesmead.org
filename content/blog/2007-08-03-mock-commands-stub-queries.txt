@@ -14,7 +14,7 @@ keywords: mocha mock stub testing assert verify expectation command query
 ---
 "Zach Moazeni":http://www.simplechatter.com has just posted a "suggested patch":http://www.simplechatter.com/2007/8/3/mocha-and-forcing-verification for Mocha over on his blog. My understanding of the patch is that it means expectations are verified even when an assertion error occurs in the test. Here is his example...
 
-bc(ruby).. class Car
+bc(prettyprint).. class Car
 
   def initialize(parts = [])
     @parts = parts
@@ -32,7 +32,7 @@ bc(ruby).. class Car
 
 end
 
-bc(ruby).. class SomeTest < Test::Unit::TestCase
+bc(prettyprint).. class SomeTest < Test::Unit::TestCase
 
   def test_start
     engine_mock = mock("engine_mock")
@@ -46,7 +46,7 @@ end
 
 p. I've had a friendly & useful conversation with Zach about it, but I'm not convinced this is the right way to go. Using the "one assertion per test":http://www.artima.com/weblogs/viewpost.jsp?thread=35578 school of thought, you can achieve the same goal by splitting the test into two so you get a test failure for the expectation and another for the assertion...
 
-bc(ruby).. class SomeTest < Test::Unit::TestCase
+bc(prettyprint).. class SomeTest < Test::Unit::TestCase
 
   def test_should_start_engine
     engine = mock('engine')
@@ -70,7 +70,7 @@ end
 
 p. Something that makes the example less suitable for mocking is that the Car#start method is both "a command and a query":http://www.jmock.org/yoga.html. If you separate the two, testing with mocks might be easier...
 
-bc(ruby).. class Car
+bc(prettyprint).. class Car
 
   def initialize(parts = [])
     @parts = parts
@@ -86,7 +86,7 @@ bc(ruby).. class Car
 
 end
 
-bc(ruby).. class SomeOtherTest < Test::Unit::TestCase
+bc(prettyprint).. class SomeOtherTest < Test::Unit::TestCase
 
   def test_should_start_engine
     engine = mock('engine')

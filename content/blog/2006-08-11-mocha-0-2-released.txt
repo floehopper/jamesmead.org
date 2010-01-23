@@ -20,7 +20,7 @@ I've just released a "new version":http://rubyforge.org/frs/?group_id=1917 of th
 
 So instead of...
 
-bc(ruby). wotsit = Mocha.new
+bc(prettyprint). wotsit = Mocha.new
 wotsit.expects(:thingummy).with(5).returns(10)
 doobrey = Doobrey.new(wotsit)
 doobrey.hoojamaflip
@@ -28,7 +28,7 @@ wotsit.verify
 
 you need to do...
 
-bc(ruby). wotsit = mock()
+bc(prettyprint). wotsit = mock()
 wotsit.expects(:thingummy).with(5).returns(10)
 doobrey = Doobrey.new(wotsit)
 doobrey.hoojamaflip
@@ -38,20 +38,20 @@ There are also shortcuts as follows...
 
 instead of...
 
-bc(ruby). wotsit = Mocha.new
+bc(prettyprint). wotsit = Mocha.new
 wotsit.expects(:thingummy).returns(10)
 wotsit.expects(:summat).returns(25)
 
 you can have...
 
-bc(ruby). wotsit = mock(:thingummy => 5, :summat => 25)
+bc(prettyprint). wotsit = mock(:thingummy => 5, :summat => 25)
 
 and instead of...
 
-bc(ruby). wotsit = Mocha.new
+bc(prettyprint). wotsit = Mocha.new
 wotsit.stubs(:thingummy).returns(10)
 wotsit.stubs(:summat).returns(25)
 
 you can have...
 
-bc(ruby). wotsit = stub(:thingummy => 5, :summat => 25)
+bc(prettyprint). wotsit = stub(:thingummy => 5, :summat => 25)

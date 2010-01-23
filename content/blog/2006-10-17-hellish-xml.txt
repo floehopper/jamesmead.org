@@ -16,7 +16,7 @@ So now you can write test cases for "ANT":http://ant.apache.org/ _in XML_ using 
 
 You can even write assertions in XML ...
 
-bc(xml). <!-- the actual test case -->
+bc(prettyprint). <!-- the actual test case -->
 <target name="testTouchCreatesFile">
   <au:assertFileDoesntExist file="${foo}"/>
   <touch file="${foo}"/>

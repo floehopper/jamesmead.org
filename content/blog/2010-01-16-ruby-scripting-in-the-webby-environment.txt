@@ -20,7 +20,7 @@ I couldn't find any documentation about this, so with a bit of delving into the 
 
 _Note that I think this script has to run at the top level of the project._
 
-bc(ruby).. require 'webby'
+bc(prettyprint).. require 'webby'
 
 # load Sitefile, setup load path
 main = Webby::Apps::Main.new

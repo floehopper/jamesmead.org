@@ -16,7 +16,7 @@ Recently "Luke":http://www.lukeredpath.co.uk/ and I spotted a subtle bug in our 
 
 Previously I had noticed that my colleague "Paul Battley":http://po-ru.com/ tended to use "@Array#length@":http://www.ruby-doc.org/core/classes/Array.html#M002199 in preference to "@Array#size@":http://www.ruby-doc.org/core/classes/Array.html#M002244. Now I know why, or at least I know why I'm going to start using @Array#length@! If we'd used @#length@ in this case we would have seen a @NoMethodError@ instead of the spurious value, 4.
 
-bc(ruby)..   [5,6].size # => 2
+bc(prettyprint)..   [5,6].size # => 2
   1.size # => 4
   [5,6].length # => 2
   1.length # => NoMethodError: undefined method `length' for 1:Fixnum

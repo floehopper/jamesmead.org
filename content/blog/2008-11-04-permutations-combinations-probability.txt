@@ -24,7 +24,7 @@ I spent quite a while trying to dredge my memory (and the web) about "permutatio
 
 In any case, I then generalized the Ruby to generate the results for different numbers of digits and different numeric bases (e.g. base 4 => 0, 1, 2, 3). I was hoping to see patterns in the results, so I could possibly reverse engineer a formula for the answer, but I haven't managed to spend much time on that bit. But I'm sufficiently interested to embarrass myself by posting this on the internet and hoping that someone will tell me how to do this in one line of Maths or, more likely, one line of Ruby.
 
-bc(ruby).. max_places = 4 
+bc(prettyprint).. max_places = 4 
 puts (['base', 'places', ''] + (0..max_places).to_a).join("\t")
 
 (2..10).each do |base|

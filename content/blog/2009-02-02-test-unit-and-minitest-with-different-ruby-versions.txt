@@ -28,7 +28,7 @@ h3. Ruby 1.8 with Test::Unit standard library
 
 The basics.
 
-bc(ruby).. require 'test/unit'
+bc(prettyprint).. require 'test/unit'
 
 class Ruby18TestUnitTest < Test::Unit::TestCase
 
@@ -36,7 +36,7 @@ h3. Ruby 1.8 with MiniTest gem
 
 If you can't upgrade to Ruby 1.9, you can still use MiniTest by installing the gem. Note that you have to install the autorun exit hook manually for MiniTest - this is done automatically for Test::Unit when you require 'test/unit' - if you want the tests to be executed when the file run as a Ruby script.
 
-bc(ruby).. # gem install minitest
+bc(prettyprint).. # gem install minitest
 
 require 'rubygems'
 gem 'minitest'
@@ -50,7 +50,7 @@ h3(#minitest-tu-shim). Ruby 1.8 with MiniTest-Test::Unit shim
 
 This takes things a step further by installing a shim gem which makes requiring 'test/unit' behave the same way as it does in a "vanilla Ruby 1.9.1 installation":#vanilla-ruby1.9.1 i.e. Test::Unit becomes a thin wrapper around MiniTest. This means that you don't have to change your tests to inherit from MiniTest::Unit::TestCase in order to use MiniTest. However, you should note that some of Test::Unit's API (e.g. Test::Unit::TestResult) is no longer available. Note that you can reverse the effect of @use_minitest yes@ using @use_minitest no@.
 
-bc(ruby).. # sudo gem install minitest_tu_shim
+bc(prettyprint).. # sudo gem install minitest_tu_shim
 # sudo use_minitest yes
 
 require 'rubygems'
@@ -63,7 +63,7 @@ h3. Ruby 1.9.0 with Test::Unit standard library
 
 The Test::Unit standard library seems to be unchanged.
 
-bc(ruby).. require 'test/unit'
+bc(prettyprint).. require 'test/unit'
 
 class Ruby190TestUnitTest < Test::Unit::TestCase
 
@@ -71,7 +71,7 @@ h3. Ruby 1.9.0 with Mini::Test standard library
 
 An earlier version of MiniTest (i.e. Mini::Test) is also available as a standard library. Note the different directory, file, class & module names.
 
-bc(ruby).. require 'mini/test' # c.f. require 'minitest/unit' in Ruby 1.9.1
+bc(prettyprint).. require 'mini/test' # c.f. require 'minitest/unit' in Ruby 1.9.1
 
 Mini::Test.autorun
 
@@ -81,7 +81,7 @@ h3(#vanilla-ruby1.9.1). Ruby 1.9.1 with Test::Unit standard library
 
 Test::Unit is just a thin wrapper around MiniTest as described in "Ruby 1.8 with MiniTest-Test::Unit shim":#minitest-tu-shim
 
-bc(ruby).. require 'test/unit'
+bc(prettyprint).. require 'test/unit'
 
 class Ruby191TestUnitTest < Test::Unit::TestCase
 
@@ -89,7 +89,7 @@ h3. Ruby 1.9.1 with MiniTest standard library
 
 MiniTest is intended to be the default standard library to use for testing.
 
-bc(ruby).. require 'minitest/unit'
+bc(prettyprint).. require 'minitest/unit'
 
 MiniTest::Unit.autorun
 
@@ -99,7 +99,7 @@ h3. Ruby 1.9.1 with Test::Unit gem
 
 It is possible to use the _classic_ Test::Unit by installing the gem. It looks like you need to specify version 1.2.3 to avoid picking up what appears to be some more significant changes in versions >= 2.0.
 
-bc(ruby).. # sudo gem install test-unit -v 1.2.3
+bc(prettyprint).. # sudo gem install test-unit -v 1.2.3
 
 require 'rubygems'
 gem 'test-unit'

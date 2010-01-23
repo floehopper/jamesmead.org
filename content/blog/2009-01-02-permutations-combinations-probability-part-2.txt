@@ -20,7 +20,7 @@ So when Nathan Zook emailed me to suggest that I might have got my previous calc
 
 h3. Nathan's Solution
 
-bc(ruby). def matches(index, base)
+bc(prettyprint). def matches(index, base)
   counts = [0] * base
   4.times do
     counts[index % base] += 1
@@ -36,7 +36,7 @@ end
 
 h3. James' Solution
 
-bc(ruby). def matches(index, base)
+bc(prettyprint). def matches(index, base)
   places = 4
   permutation = "%0#{places * 2}d" % index.to_s(base)
   original = (0...places).map { |i| permutation[i].chr }
@@ -59,7 +59,7 @@ h3. Failing Tests
 
 You can see the full set of tests "here":http://pastie.org/350453, but the critical ones turn out to be the ones below. It appears that Nathan's solution doesn't work when there are duplicates. But I'm glad he pushed me into writing these tests - now I have more confidence in the answer I calculated previously.
 
-bc(ruby).. def test_should_have_two_duplicate_matches_in_same_positiion
+bc(prettyprint).. def test_should_have_two_duplicate_matches_in_same_positiion
   assert_equal 2, matches(11341178, 10)
 end
 

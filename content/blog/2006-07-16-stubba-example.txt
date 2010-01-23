@@ -14,7 +14,7 @@ keywords: mock mocking stub stubbing ruby class method expectation test testing
 ---
 I don't really like this example, but it's the best I've got at the moment. The any_instance bit is particularly contrived, but hopefully you get the idea.
 
-bc(ruby).. class Order
+bc(prettyprint).. class Order
   
   attr_accessor :shipped_on
 
@@ -48,7 +48,7 @@ bc(ruby).. class Order
 
 end
 
-bc(ruby).. require 'rubygems'
+bc(prettyprint).. require 'rubygems'
 require 'stubba'
 require 'test/unit'
 

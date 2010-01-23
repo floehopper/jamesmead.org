@@ -16,14 +16,14 @@ A while ago, "Chris":http://blog.seagul.co.uk/ mentioned that "we've been trying
 
 But something else we've used successfully is multi-user "GNU screen":http://www.gnu.org/software/screen/ sessions. The advantage of this technique is that much less bandwidth is required and the terminal is much more responsive. I thought I'd post the magic incantation we've been using (on "OSX":http://en.wikipedia.org/wiki/Mac_OS_X), in case anyone else finds it useful...
 
-bc. # on the server
+bc(prettyprint). # on the server
 sudo chmod u+s /usr/bin/screen
 
-bc. # first user connects to server over ssh and runs the following
+bc(prettyprint). # first user connects to server over ssh and runs the following
 screen -S <session_name>
 ctrl-A :multiuser on
 ctrl-A :acladd <client_username>
 
-bc. # second user connects to server over ssh and runs the following
+bc(prettyprint). # second user connects to server over ssh and runs the following
 screen -x <server_username>/<session_name>
 

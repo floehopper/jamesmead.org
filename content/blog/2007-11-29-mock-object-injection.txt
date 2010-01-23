@@ -28,7 +28,7 @@ h4. Disadvantages
 
 Can't think of any at the moment.
 
-bc(ruby). class ClassUnderTest
+bc(prettyprint). class ClassUnderTest
   def initialize(dependency = Collaborator.new)
     @dependency = dependency
   end
@@ -37,7 +37,7 @@ bc(ruby). class ClassUnderTest
   end
 end
 
-bc(ruby). collaborator = mock('collaborator')
+bc(prettyprint). collaborator = mock('collaborator')
 # constructor parameter injection
 instance_under_test = ClassUnderTest.new(collaborator)
 instance_under_test.do_something
@@ -54,13 +54,13 @@ h4. Disadvantages
 
 Can't think of any at the moment.
 
-bc(ruby). class ClassUnderTest
+bc(prettyprint). class ClassUnderTest
   def do_something(local_dependency = Collaborator.new)
     # use local_dependency
   end
 end
 
-bc(ruby). collaborator = mock('collaborator')
+bc(prettyprint). collaborator = mock('collaborator')
 instance_under_test = ClassUnderTest.new
 # method parameter injection
 instance_under_test.do_something(collaborator)
@@ -77,7 +77,7 @@ h4. Disadvantages
 
 Dependencies of the @ClassUnderTest@ are hidden and not explicit.
 
-bc(ruby). class ClassUnderTest
+bc(prettyprint). class ClassUnderTest
   def initialize
     @dependency = Collaborator.new
   end
@@ -86,7 +86,7 @@ bc(ruby). class ClassUnderTest
   end
 end
 
-bc(ruby). collaborator = mock('collaborator')
+bc(prettyprint). collaborator = mock('collaborator')
 # stubbed new method injection
 Collaborator.stubs(:new).returns(collaborator)
 instance_under_test = ClassUnderTest.new
@@ -100,7 +100,7 @@ h4. Disadvantages
 
 The @ClassUnderTest@ has to unnecessarily expose a way to modify its internal state. The test is coupled to the implementation of the @ClassUnderTest@.
 
-bc(ruby). class ClassUnderTest
+bc(prettyprint). class ClassUnderTest
   attr_writer :dependency
   def initialize
     @dependency = Collaborator.new
@@ -110,7 +110,7 @@ bc(ruby). class ClassUnderTest
   end
 end
 
-bc(ruby). collaborator = mock('collaborator')
+bc(prettyprint). collaborator = mock('collaborator')
 instance_under_test = ClassUnderTest.new
 # writer method injection
 instance_under_test.dependency = collaborator
@@ -124,7 +124,7 @@ h4. Disadvantages
 
 The test is coupled to the implementation of the @ClassUnderTest@. The partial mocking of the @instance_under_test@ means that the test is not testing a pristine instance of the @ClassUnderTest@, but a modified one. It also means that the boundaries between test code and production code are less clear.
 
-bc(ruby). class ClassUnderTest
+bc(prettyprint). class ClassUnderTest
   def do_something
     local_dependency = build_collaborator()
     # use local_dependency
@@ -135,7 +135,7 @@ bc(ruby). class ClassUnderTest
   end
 end
 
-bc(ruby). collaborator = mock('collaborator')
+bc(prettyprint). collaborator = mock('collaborator')
 instance_under_test = ClassUnderTest.new
 # stubbed private method injection
 instance_under_test.stubs(:build_collaborator).returns(collaborator)
@@ -149,14 +149,14 @@ h4. Disadvantages
 
 The stubbed method is applied to *all* instances of the collaborating class. If the @instance_under_test@ interacts with the stubbed method on more than one instance of the collaborating class, it isn't possible to specify different behaviour for the stubbed method on each instance. Even if the @instance_under_test@ only interacts with the stubbed method on one instance of the collaborating class, the test is specifying more stubbed behaviour than strictly necessary which could lead to false positives.
 
-bc(ruby). class ClassUnderTest
+bc(prettyprint). class ClassUnderTest
   def do_something
     local_dependency = Collaborator.new
     return local_dependency.do_stuff
   end
 end
 
-bc(ruby). # any_instance stub injection
+bc(prettyprint). # any_instance stub injection
 Collaborator.any_instance.stubs(:do_stuff).return('something useful')
 instance_under_test = ClassUnderTest.new
 instance_under_test.do_something
@@ -169,7 +169,7 @@ h4. Disadvantages
 
 The test is coupled to the implementation of the @ClassUnderTest@. In particular the test is coupled to the supposedly private instance variable. In my opinion, it would be more honest to expose the instance variable by adding an attribute writer and using "Writer Method Injection":#writer-method-injection.
 
-bc(ruby). class ClassUnderTest
+bc(prettyprint). class ClassUnderTest
   def initialize
     @dependency = Collaborator.new
   end
@@ -178,7 +178,7 @@ bc(ruby). class ClassUnderTest
   end
 end
 
-bc(ruby). collaborator = mock('collaborator')
+bc(prettyprint). collaborator = mock('collaborator')
 instance_under_test = ClassUnderTest.new
 # instance_variable_set injection
 instance_under_test.instance_variable_set(:@dependency, collaborator)

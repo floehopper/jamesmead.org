@@ -18,7 +18,7 @@ Something that may be adding unnecessary complexity to the test is that the @Mes
 
 A first step to improving the design would be to have a @List#create_subscriptions@ method which would be called by @Message#generate@. We could then simplify the unit test as follows...
 
-bc(ruby).. def test_should_create_email_messages_and_subscriptions_when_include_subscribers_is_true
+bc(prettyprint).. def test_should_create_email_messages_and_subscriptions_when_include_subscribers_is_true
   list = mock()
   campaign = Campaign.new(:people => [])
   message = Message.new(:campaign => campaign)

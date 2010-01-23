@@ -14,7 +14,7 @@ keywords: mock stub query command activerecord unit test
 ---
 In "Making a Mockery of ActiveRecord":http://metaclass.org/2006/12/22/making-a-mockery-of-activerecord, a single test has multiple expectations set up for accessor methods...
 
-bc(ruby).. specify "should create EmailMessages and Subscriptions when include_subscribers is true" do
+bc(prettyprint).. specify "should create EmailMessages and Subscriptions when include_subscribers is true" do
   @message.include_subscribers = true
   @message.should_receive(:lists).and_return([@list])
   @message.should_receive(:campaign).twice.and_return(@campaign)
@@ -35,7 +35,7 @@ A _query_ in this context is a method which does not change the state of the obj
 
 However, I prefer to use in-memory ActiveRecord objects instead of mocks or stubs wherever possible. So I'd write something more like this (using "Test::Unit":http://www.ruby-doc.org/stdlib/libdoc/test/unit/rdoc/index.html and "Mocha":http://mocha.rubyforge.org)...
 
-bc(ruby).. def test_should_create_email_messages_and_subscriptions_when_include_subscribers_is_true
+bc(prettyprint).. def test_should_create_email_messages_and_subscriptions_when_include_subscribers_is_true
   subscriptions = mock()
   person = Person.new(:campaigns => [])
   person.stubs(:subscriptions).returns(subscriptions)

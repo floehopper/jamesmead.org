@@ -24,9 +24,9 @@ The most relevant bug report is "#9300":http://rubyforge.org/tracker/?func=detai
 
 The fix seems to be in changeset 12126...
 
-bc. r12126 | nobu | 2007-03-23 16:53:42 +0000 (Fri, 23 Mar 2007) | 9 lines
+bc(prettyprint). r12126 | nobu | 2007-03-23 16:53:42 +0000 (Fri, 23 Mar 2007) | 9 lines
 
-bc. * eval.c (ruby_cleanup): exit by SystemExit and SignalException in END block.  [ruby-core:10609]
+bc(prettyprint). * eval.c (ruby_cleanup): exit by SystemExit and SignalException in END block.  [ruby-core:10609]
 * test/ruby/test_beginendblock.rb (test_should_propagate_exit_code): test for exit in END block.  [ruby-core:10760]
 * test/ruby/test_beginendblock.rb (test_should_propagate_signaled): test for signal in END block.
 
@@ -36,7 +36,7 @@ The "bug":#ruby-bug has some important consequences. "@Test::Unit@":http://www.r
 
 From @test/unit.rb@ :-
 
-bc(ruby). at_exit do
+bc(prettyprint). at_exit do
   unless $! || Test::Unit.run?
     exit Test::Unit::AutoRunner.run
   end
