@@ -2,20 +2,19 @@
 extension: html
 filter:    erb
 ---
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <title><%= title(@page) %></title>
   
-  <link href='/images/favicon.gif' rel='icon' />
-  
-  <link rel="alternate" type="application/atom+xml" title="Atom" href="<%= absolute_url('/feedburner.xml') %>" />
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="<%= absolute_url('/feedburner.xml') %>" />
-  
-  <link rel="stylesheet" href="/style/blog.css" type="text/css" media="screen, projection" />
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta name="robots" content= "ALL" />
+  <meta name="description" content= "" />
+  <meta name="keywords" content= "" />
+  <meta name="classification" content= "" />
+  <meta name="author" content= "" />
+  <meta name="reply-to" content= "" />
+  <meta name="copyright" content= "" />
   
   <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
   <meta name="y_key" content="1e092bd46e8b1f49" />
@@ -23,24 +22,35 @@ filter:    erb
   
   <meta description="<%= @page.description %>" />
   
+  <link rel="shortcut icon" href="favicon.gif" />
+  
+  <link rel="stylesheet" type="text/css" href="/style/typogridphy/style.css" media="screen" />
+  <!--[if IE]><link rel="stylesheet" type="text/css" href="/style/typogridphy/ie.css" /><![endif]-->
+  
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="<%= absolute_url('/feedburner.xml') %>" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="<%= absolute_url('/feedburner.xml') %>" />
+  
   <link rel="openid.server" href="http://openid.claimid.com/server" />
   <link rel="openid.delegate" href="http://openid.claimid.com/jamesmead" />
 </head>
-<body>
 
-  <h1><%= @page.title %></h1>
-  
-  <p>
-    <%= render :partial => '/search' %>
-  </p
-  
-  <p>
-    <%= @content %>
-  </p>
-  
+<body>
+  <div id="wrapper">
+    <div id="header">
+      <span id="nav"><a href="#" title="Home">Home</a> &middot; <a href="/blog/" title="Blog">Blog</a> &middot; <a href="#" title="About">About</a> &middot; <a href="#" title="Contact">Contact</a></span>
+      <div id="search"><%= render :partial => '/search' %></div>
+      <div id="spacer"></div>
+    </div>
+    <div id="content" class="generic nineforty">
+      <h1><%= @page.title %></h1>
+      <%= @content %>
+    </div>
+    <div class="generic nineforty">
+      <p id="footer-nav"><a href="#" title="Home">Home</a> &middot; <a href="#" title="Blog">Blog</a> &middot; <a href="#" title="About">About</a> &middot; <a href="#" title="Contact">Contact</a></p>
+    </div>
+  </div>
   <script src="/javascripts/google-custom-search.js" type="text/javascript" charset="utf-8"></script>
   
   <%= render :partial => '/analytics' %>
-  
 </body>
 </html>
