@@ -24,8 +24,11 @@ filter:    erb
   
   <link rel="shortcut icon" href="favicon.gif" />
   
-  <link rel="stylesheet" type="text/css" href="/style/typogridphy/style.css" media="screen" />
-  <!--[if IE]><link rel="stylesheet" type="text/css" href="/style/typogridphy/ie.css" /><![endif]-->
+  <link rel="stylesheet" href="/style/typogridphy/style.css" type="text/css" media="screen" />
+  <!--[if IE]><link rel="stylesheet" href="/style/typogridphy/ie.css" type="text/css" /><![endif]-->
+  
+  <link rel="stylesheet" href="/style/prettify/prettify.css" type="text/css" />
+  <script type="text/javascript" src="/javascripts/prettify/prettify.js"></script>
   
   <link rel="alternate" type="application/atom+xml" title="Atom" href="<%= absolute_url('/feedburner.xml') %>" />
   <link rel="alternate" type="application/rss+xml" title="RSS" href="<%= absolute_url('/feedburner.xml') %>" />
@@ -34,7 +37,7 @@ filter:    erb
   <link rel="openid.delegate" href="http://openid.claimid.com/jamesmead" />
 </head>
 
-<body>
+<body onload="prettyPrint()">
   <div id="wrapper">
     <div id="header">
       <span id="nav"><a href="#" title="Home">Home</a> &middot; <a href="/blog/" title="Blog">Blog</a> &middot; <a href="#" title="About">About</a> &middot; <a href="#" title="Contact">Contact</a></span>
