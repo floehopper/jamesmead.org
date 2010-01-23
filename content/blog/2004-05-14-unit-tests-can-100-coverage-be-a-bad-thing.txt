@@ -12,9 +12,9 @@ categories: []
 created_at: 2004-05-14 12:12:14 +00:00
 keywords: testing unit coverage
 ---
-Consider what happens when you have "unit" tests that go more than one unit deep (in call stack terms) i.e. tests that don’t mock out all units external to the unit under test. Although such tests may give you good coverage...
+Consider what happens when you have "unit" tests that go more than one unit deep (in call stack terms) i.e. tests that don't mock out all units external to the unit under test. Although such tests may give you good coverage...
 
-* They usually require complex setup code which means it can be hard to identify the intention of a test. It’s generally accepted that self-documenting code is a good thing - unit tests with clear intent can be one of the best ways to achieve such documentation.
+* They usually require complex setup code which means it can be hard to identify the intention of a test. It's generally accepted that self-documenting code is a good thing - unit tests with clear intent can be one of the best ways to achieve such documentation.
 * They are by definition more fragile than a true unit test, because they're vulnerable to changes in multiple units. Also, the more of these tests you have, the more likely it is that a number of tests will be vulnerable to changes in a single unit.
 * When they fail, it often proves difficult to identify the reason for the failure. This difficulty is often a consequence of the unclear intention of the test. A failure caused by an exception thrown deep in the call stack (rather than an assertion in the test) can lead to similar problems.
 * They usually take longer to run, partly by definition because they execute more code, but also because they often run against a real database or other external resource.

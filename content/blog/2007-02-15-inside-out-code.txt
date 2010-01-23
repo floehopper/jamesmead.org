@@ -26,4 +26,4 @@ I hope these tactics don't just help me, but help other developers who later nee
 
 Tim has a nice summary...
 
-bq. I don’t think that “magic tuples” are always evil, only that they’re no substitute for proper objects and meaningful data structures.
+bq. I don't think that "magic tuples" are always evil, only that they're no substitute for proper objects and meaningful data structures.

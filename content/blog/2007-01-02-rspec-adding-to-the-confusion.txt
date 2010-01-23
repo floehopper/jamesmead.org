@@ -15,9 +15,9 @@ keywords: mock objects tdd bdd rspec interaction behaviour state test
 h3. Update:
 
 
-I’ve just read Aslak's article again in the cold light of day. I now realise I have put words in his mouth, for which I apologise.
+I've just read Aslak's article again in the cold light of day. I now realise I have put words in his mouth, for which I apologise.
 
-I posted the article late at night after being annoyed by the line on the caboose blog. In hindsight, I should have waited until morning and read it through again (and then not posted it in it’s current form).
+I posted the article late at night after being annoyed by the line on the caboose blog. In hindsight, I should have waited until morning and read it through again (and then not posted it in it's current form).
 
 
 h3. Original Article:

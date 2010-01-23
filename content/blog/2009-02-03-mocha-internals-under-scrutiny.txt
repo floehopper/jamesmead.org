@@ -34,7 +34,7 @@ Mocha (particularly the internals) has changed a lot since the early releases bu
 
 As well as the welcome critique, Brian made some very pleasing comments :-
 
-bq. I’d happily recommend [Mocha] to others as a good example of how to pull off some hairy Ruby functionality without writing a whole lot of hairy Ruby code in the process.
+bq. I'd happily recommend [Mocha] to others as a good example of how to pull off some hairy Ruby functionality without writing a whole lot of hairy Ruby code in the process.
 
 bq. Much of Mocha is like that: moderately sized, neither opaque in its density or transparent in its verbosity. Nice, I suppose, for my own definition of nice.
 

@@ -24,7 +24,7 @@ So I thought people might be interested to read this excerpt I read in "an artic
 
 bq. _Is there an automated system that does this for you?_
 
-bq. Not at the moment. Yet this article is so popular, I’m exploring creating a free automated Train Ticket Calculator with live info to calculate the cheapest tickets for you.  It’s actually so complex it needs a research mathematician to build the algorithms to get it automated; but we’re getting there.  If you’re interested, keep up to date via the weekly email.
+bq. Not at the moment. Yet this article is so popular, I'm exploring creating a free automated Train Ticket Calculator with live info to calculate the cheapest tickets for you.  It's actually so complex it needs a research mathematician to build the algorithms to get it automated; but we're getting there.  If you're interested, keep up to date via the weekly email.
 
 You've got to love the fact that it needs a _research mathematician_ to build the algorithms.
 

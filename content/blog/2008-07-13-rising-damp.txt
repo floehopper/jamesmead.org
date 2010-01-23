@@ -32,7 +32,7 @@ In my opinion, the value of consistency is often under-estimated, particularly i
 
 A (very) old blog post of mine about ""Big Refactoring":/blog/2004-05-14-big-refactoring" makes a similar point...
 
-bq. But this approach has the disadvantage of leaving the system in an inconsistent state with parts of it working one way and other parts working another way. This isn’t so bad in itself, but when it occurs multiple times without the inconsistency being removed, it can lead to a very confusing code-base.
+bq. But this approach has the disadvantage of leaving the system in an inconsistent state with parts of it working one way and other parts working another way. This isn't so bad in itself, but when it occurs multiple times without the inconsistency being removed, it can lead to a very confusing code-base.
 
 As does ""Sometimes it's right to be wrong":http://nat.truemesh.com/archives/000250.html" by my former colleague Nat Pryce ...
 
