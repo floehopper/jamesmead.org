@@ -12,16 +12,13 @@ categories: []
 created_at: 2007-01-02 18:48:42 +00:00
 keywords: mock objects tdd bdd rspec interaction behaviour state test
 ---
-h3. Update:
-
+h2. Update:
 
 I've just read Aslak's article again in the cold light of day. I now realise I have put words in his mouth, for which I apologise.
 
 I posted the article late at night after being annoyed by the line on the caboose blog. In hindsight, I should have waited until morning and read it through again (and then not posted it in it's current form).
 
-
-h3. Original Article:
-
+h2. Original Article:
 
 In a "recent article":http://blog.aslakhellesoy.com/articles/2006/12/11/the-bdd-cargo-cult Aslak Hellesoy seemed to imply one of the differences between RSpec and Test::Unit was that RSpec you could do interaction-based testing using Mock Objects. I don't think this implication was intentional, but this lack of clarity isn't helpful to those just getting to grips with automated testing.
 

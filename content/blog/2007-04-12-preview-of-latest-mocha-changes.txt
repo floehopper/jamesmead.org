@@ -20,7 +20,7 @@ I've finally managed to find some time to do some serious work on "Mocha":http:/
 
 I've typed this up in a bit of a rush (about to go on holiday for a few days), so apologies if there are any mistakes.
 
-h3. Parameter Matchers
+h2. Parameter Matchers
 
 I've added a few "Hamcrest-style":http://code.google.com/p/hamcrest/wiki/Tutorial parameter matchers which are designed to be used inside "@Expectation#with@":http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000017. The following matchers are currently available: has_key(), has_value() & has_entry(). More to follow soon. The idea is eventually to get rid of the nasty @parameter_block@ option on "@Expectation#with@":http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000017.
 
@@ -34,7 +34,7 @@ object.expects(:method).with(has_key('key_1'))
 object.method('key_2' => 2)
 # verification error raised, because method was not called with Hash containing key: 'key_1'
 
-h3. Values Returned and Exceptions Raised on Consecutive Invocations
+h2. Values Returned and Exceptions Raised on Consecutive Invocations
 
 Allow multiple calls to "@Expectation#returns@":http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000019 and "@Expectation#raises@":http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000020 to build up a sequence of responses to invocations on the mock. Added syntactic sugar method @Expectation#then@ to allow more readable expectations. 
 
@@ -45,7 +45,7 @@ object.method # => 2
 object.method # => raises exception of class Exception
 object.method # => 4
 
-h3. Yields on Consecutive Invocations
+h2. Yields on Consecutive Invocations
 
 Allow multiple calls to yields on single expectation to allow yield parameters to be specified for consecutive invocations.
 
@@ -54,7 +54,7 @@ object.stubs(:method).yields(1, 2).then.yields(3)
 object.method { |*values| p values } # => [1, 2]
 object.method { |*values| p values } # => [3]
 
-h3. Multiple Yields on Single Invocation
+h2. Multiple Yields on Single Invocation
 
 Added @Expectation#multiple_yields@ to allow a mocked or stubbed method to yield multiple times for a single invocation.
 
@@ -62,7 +62,7 @@ bc(prettyprint). object = mock()
 object.stubs(:method).multiple_yields([1, 2], [3])
 object.method { |*values| p values } # => [1, 2] # => [3]
 
-h3. Invocation Dispatch
+h2. Invocation Dispatch
 
 Expectations were already being matched in reverse order i.e. the most recently defined one was being found first. This is still the case, but we now stop matching an expectation when its maximum number of expected invocations is reached. c.f. "JMock v1":http://www.jmock.org/jmock1-dispatch.html. A stub will never stop matching by default. Hopefully this means we can soon get rid of the need to pass a @Proc@ to "@Expectation#returns@":http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000019.
 
@@ -81,6 +81,6 @@ Time.now # => Mon Jan 01 00:00:00 UTC 2007
 Time.stubs(:now).returns(Time.parse('Thu Feb 01 00:00:00 UTC 2007'))
 Time.now # => Thu Feb 01 00:00:00 UTC 2007
 
-h3. Acknowledgements
+h2. Acknowledgements
 
 Thanks to David Chelimsky, Dan North, Jay Fields, Kevin Clark, Frederick Cheung, James Moore, Brian Helmkamp, Ben Griffiths, Chris Roos & Paul Battley for their input. Apologies to anybody I forgot to mention.

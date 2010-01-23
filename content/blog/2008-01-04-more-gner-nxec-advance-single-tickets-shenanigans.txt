@@ -16,13 +16,13 @@ As is "so often":/blog/2007-10-29-changing-gner-advance-single-tickets "the case
 
 Skip ahead to "The Nub of the Matter":#the-nub-of-the-matter if you're not very interested in the gory details.
 
-h3. From Pillar to Post
+h2. From Pillar to Post
 
-h4. www.gner.co.uk - redirects to NXEC website and gives no phone number
+h3. www.gner.co.uk - redirects to NXEC website and gives no phone number
 
 <a href="http://www.flickr.com/photos/jamesthecat/2166535107/" title="gner-weve-moved by floehopper, on Flickr"><img src="http://farm3.static.flickr.com/2301/2166535107_a3109f1bf5.jpg" width="500" height="133" alt="gner-weve-moved" /></a>
 
-h4. www.gnertickets.co.uk - gives the number 08457225111
+h3. www.gnertickets.co.uk - gives the number 08457225111
 
 <a href="http://www.flickr.com/photos/jamesthecat/2167328154/" title="gnertickets-weve-moved by floehopper, on Flickr"><img src="http://farm3.static.flickr.com/2357/2167328154_f74a04d868.jpg" width="500" height="332" alt="gnertickets-weve-moved" /></a>
 
@@ -34,13 +34,13 @@ I was worried that there would be complications, because the new tickets would h
 
 So there goes another pointless hour of my life...
 
-h3(#the-nub-of-the-matter). The Nub of the Matter
+h2(#the-nub-of-the-matter). The Nub of the Matter
 
 If you want to change tickets purchased through:
 * the *old* GNER website - then ring 08703665990
 * the *new* (but rather transient) GNER website - then ring 08547225111
 * the "NXEC":http://www.nationalexpresseastcoast.com/ website (looks rather similar to the *new* GNER website) - then ring 08547225111
 
-h3. A Brighter Future?
+h2. A Brighter Future?
 
 On a more optimistic note, it looks like the new "NXEC":http://www.nationalexpresseastcoast.com/ website allows you to change Advance Single tickets on-line up to 5 days before departure. If it works that'll be great :-)

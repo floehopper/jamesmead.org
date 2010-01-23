@@ -12,7 +12,7 @@ categories: []
 created_at: 2009-09-14 16:58:56 +00:00
 keywords: mocha mock stub ruby testing tdd spy fork thoughtbot
 ---
-h3. Introduction
+h2. Introduction
 
 Today I finally got round to looking at "Joe Ferris' Test Spies fork":http://github.com/jferris/mocha/commits/spies of Mocha. Joe explained how Test Spies work and why he thinks they are useful in "Spy vs spy":http://robots.thoughtbot.com/post/159805295/spy-vs-spy on the ThoughtBot blog. I apologise to Joe for not getting round to this sooner.
 
@@ -20,18 +20,18 @@ I have a number of hesitations about merging these changes into "Mocha":http://m
 
 I'd like to thank Joe for taking the time to fork Mocha and add this functionality. I'm particularly grateful that he's taken the trouble to write a "bunch of high-level acceptance tests":http://github.com/jferris/mocha/raw/spies/test/acceptance/spy_test.rb.
 
-h3. Concept
+h2. Concept
 
 In this section I've tried to write up some comments on "Joe's blog post":http://robots.thoughtbot.com/post/159805295/spy-vs-spy under roughly the same headings :-
 
-h4. Why would I let spies in my code?
+h3. Why would I let spies in my code?
 
 Joe correctly points out that setting up expectations before exercising the object under test is a bit of a departure from the traditional "Four-Phase Test":http://xunitpatterns.com/Four%20Phase%20Test.html regime. I can see how some people might see this as counter-intuitive, but it doesn't seem particularly so to me. Also the idea of "Expected Behaviour Specification":http://xunitpatterns.com/Behavior%20Verification.html#Expected%20Behavior%20Specification (i.e. setting up expectations before the Exercise phase) has a couple of advantages :-
 
 * Using "Test Spies":http://xunitpatterns.com/Test%20Spy.html, you have to (a) set up a stub so the mock object knows what value to return and (b) assert that the stubbed method was invoked the requisite number of times with the appropriate parameters. Whereas using "Expected Behaviour Specification":http://xunitpatterns.com/Behavior%20Verification.html#Expected%20Behavior%20Specification, these are combined into setting up an expectation on the mock object. I think this results in terser code with less duplication.
 * Using "Expected Behaviour Specification":http://xunitpatterns.com/Behavior%20Verification.html#Expected%20Behavior%20Specification means that the test can fail fast if an unexpected invocation is made against a mock object. Failing fast is generally a good idea, because you are more likely to be able to identify the root cause of the problem.
 
-h4. Sharing stubs in a context
+h3. Sharing stubs in a context
 
 bc(prettyprint).. describe PostsController, "on GET show" do
   before(:each) do
@@ -60,7 +60,7 @@ p. I'm going to struggle a bit when commenting on this code example for a couple
 
 So I'm not convinced I would need _Test Spies_ for this example.
 
-h4. Sharing stubs between tests
+h3. Sharing stubs between tests
 
 bc(prettyprint). module PostHelpers
   def stub_post(post_attrs = {})
@@ -106,7 +106,7 @@ bq. Some languages might allow you to *stub* a value, but what's the point? It i
 
 "Steve Freeman":http://www.m3p.co.uk/blog/ makes a similar point in "Test Smell: Everything is mocked":http://www.mockobjects.com/2007/04/test-smell-everything-is-mocked.html.
 
-h4. Reusable matchers and assertions
+h3. Reusable matchers and assertions
 
 bc(prettyprint).. # post.class.should have_received(:find).with(post.to_param)
 should find(post)
@@ -118,7 +118,7 @@ should build_and_save(Post, post_attrs)
 
 p. I'm not convinced that extracting the assertion part of an expectation is sensible, because it'll always need to be used in conjunction with the stub part of the same expectation.
 
-h3. Syntax
+h2. Syntax
 
 I think the suggested syntax extension is inconsistent with the existing Mocha API and a little clunky. See "James Rosen's comment":http://groups.google.com/group/mocha-developer/msg/8d719b4aa729928f?hl=en on the "mailing list":http://groups.google.com/group/mocha-developer?hl=en. Looking at the following examples given in the documentation :-
 
@@ -140,12 +140,12 @@ radio.assert_received(:volume).with(11).twice
 
 Note that I haven't completely thought through the implementation implications of these suggestions i.e. whether they are even possible!
 
-h3. Implementation
+h2. Implementation
 
 The code looks good and, since Joe has written acceptance tests, there shouldn't be too much difficulty in doing a bit of refactoring. I like the idea of introducing a model for an "Invocation":http://github.com/jferris/mocha/raw/spies/lib/mocha/invocation.rb , but I think the @Invocation@ instances should be stored by the relevant @Mock@ instance rather than the @Mockery@. Similarly I'd push more of the logic in the "HaveReceived":http://github.com/jferris/mocha/blob/4ba321eca2439ae5f55a611e2df716ea7af44ef4/lib/mocha/api.rb#L165 class into relevant objects. And I'd like to avoid having to make @Expectation#invocation_count@ writeable.
 
 One slight concern is what happens if someone mixes up _Expected Behaviour Specification_ expectations with _Test Spies_ stubs and assertions? I'd probably at least want some acceptance tests to convince me that there are no complications on this front.
 
-h3. Conclusion
+h2. Conclusion
 
 I'm sure that some people find the changes useful, but I'm not yet convinced I want to merge the "Test Spies":http://github.com/jferris/mocha/commits/spies changes into "Mocha":http://mocha.rubyforge.org/. Please feel free to try and convince me, either here in the "comments":#comments or in the "mailing list thread":http://groups.google.com/group/mocha-developer/browse_thread/thread/3c3fba12cf313b12?hl=en.

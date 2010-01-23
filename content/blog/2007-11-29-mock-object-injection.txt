@@ -16,15 +16,15 @@ A few months back, in my "Introduction to Mock Objects talk":/presentations/lrug
 
 I'm not sure I gave him a very convincing response and I've been meaning for ages to have a better go at explaining what I think are the pros and cons of each of the techniques I mentioned. Here's the list of techniques with the ones I like best at the top. I still haven't done a very good job, but I'd be interested to hear what other people think so that I can try and improve my understanding.
 
-h3(#constructor-injection). Constructor Injection
+h2(#constructor-injection). Constructor Injection
 
 The @ClassUnderTest@ allows its dependencies to be passed in as parameters to its constructor. A mock object is passed in as a replacement for the "real" collaborator. It may be convenient to specify the production collaborator as a default parameter value.
 
-h4. Advantages
+h3. Advantages
 
 The dependencies of the @ClassUnderTest@ are explicit.
 
-h4. Disadvantages
+h3. Disadvantages
 
 Can't think of any at the moment.
 
@@ -42,15 +42,15 @@ bc(prettyprint). collaborator = mock('collaborator')
 instance_under_test = ClassUnderTest.new(collaborator)
 instance_under_test.do_something
 
-h3(#parameter-injection). Parameter Injection
+h2(#parameter-injection). Parameter Injection
 
 The @ClassUnderTest@ allows its dependencies to be passed in as parameters to the method under test. A mock object is passed in as a replacement for the "real" collaborator. It may be convenient to specify the production collaborator as a default parameter value.
 
-h4. Advantages
+h3. Advantages
 
 The dependencies of the method under test are explicit.
 
-h4. Disadvantages
+h3. Disadvantages
 
 Can't think of any at the moment.
 
@@ -65,15 +65,15 @@ instance_under_test = ClassUnderTest.new
 # method parameter injection
 instance_under_test.do_something(collaborator)
 
-h3(#stubbed-new-method-injection). Stubbed New Method Injection
+h2(#stubbed-new-method-injection). Stubbed New Method Injection
 
 Use Mocha's "Object#stubs":http://mocha.rubyforge.org/classes/Object.html#M000003 to temporarily replace @Collaborator#new@ with a stub implementation that returns a mock object.
 
-h4. Advantages
+h3. Advantages
 
 Better than "Any Instance Stub Injection":#any-instance-stub-injection, because you can have more control over different instances of @Collaborator@.
 
-h4. Disadvantages
+h3. Disadvantages
 
 Dependencies of the @ClassUnderTest@ are hidden and not explicit.
 
@@ -92,11 +92,11 @@ Collaborator.stubs(:new).returns(collaborator)
 instance_under_test = ClassUnderTest.new
 instance_under_test.do_something
 
-h3(#writer-method-injection). Writer Method Injection
+h2(#writer-method-injection). Writer Method Injection
 
 Use an attribute writer method to replace the "real" collaborator with a mock object.
 
-h4. Disadvantages
+h3. Disadvantages
 
 The @ClassUnderTest@ has to unnecessarily expose a way to modify its internal state. The test is coupled to the implementation of the @ClassUnderTest@.
 
@@ -116,11 +116,11 @@ instance_under_test = ClassUnderTest.new
 instance_under_test.dependency = collaborator
 instance_under_test.do_something
 
-h3(#stubbed-private-method-injection). Stubbed Private Method Injection
+h2(#stubbed-private-method-injection). Stubbed Private Method Injection
 
 Use _partial mocking_ to temporarily replace a private builder method with a stubbed version of the method.
 
-h4. Disadvantages
+h3. Disadvantages
 
 The test is coupled to the implementation of the @ClassUnderTest@. The partial mocking of the @instance_under_test@ means that the test is not testing a pristine instance of the @ClassUnderTest@, but a modified one. It also means that the boundaries between test code and production code are less clear.
 
@@ -141,11 +141,11 @@ instance_under_test = ClassUnderTest.new
 instance_under_test.stubs(:build_collaborator).returns(collaborator)
 instance_under_test.do_something
 
-h3(#any-instance-stub-injection). Any Instance Stub Injection
+h2(#any-instance-stub-injection). Any Instance Stub Injection
 
 Use Mocha's "Class#any_instance":http://mocha.rubyforge.org/classes/Class.html#M000001 method to temporarily replace the method on a collaborator with a stub method.
 
-h4. Disadvantages
+h3. Disadvantages
 
 The stubbed method is applied to *all* instances of the collaborating class. If the @instance_under_test@ interacts with the stubbed method on more than one instance of the collaborating class, it isn't possible to specify different behaviour for the stubbed method on each instance. Even if the @instance_under_test@ only interacts with the stubbed method on one instance of the collaborating class, the test is specifying more stubbed behaviour than strictly necessary which could lead to false positives.
 
@@ -161,11 +161,11 @@ Collaborator.any_instance.stubs(:do_stuff).return('something useful')
 instance_under_test = ClassUnderTest.new
 instance_under_test.do_something
 
-h3(#instance-variable-set-injection). Instance Variable Set Injection
+h2(#instance-variable-set-injection). Instance Variable Set Injection
 
 Use "@Object#instance_variable_set@":http://www.ruby-doc.org/core/classes/Object.html#M000366 to replace the reference to a collaborator with a mock object.
 
-h4. Disadvantages
+h3. Disadvantages
 
 The test is coupled to the implementation of the @ClassUnderTest@. In particular the test is coupled to the supposedly private instance variable. In my opinion, it would be more honest to expose the instance variable by adding an attribute writer and using "Writer Method Injection":#writer-method-injection.
 

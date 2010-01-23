@@ -12,13 +12,13 @@ categories: []
 created_at: 2009-03-16 12:55:33 +00:00
 keywords: durham london national express east coast train ticket fare nxec super off peak anytime return
 ---
-h3. Introduction
+h2. Introduction
 
 In the past, I've tended "to buy Advance Single tickets":/blog/2007-01-12-finding-the-cheapest-train-fare for most of my journeys between Durham and London. This is usually the best option when booking a couple of months ahead, but when you have to book at shorter notice, I often overlook some of the return fares.
 
 Despite the supposed "simplification of UK train fares":http://www.guardian.co.uk/money/2008/may/24/consumeraffairs.railtravel, it's not straightforward to find all the relevant information in one place, so I thought I'd write it up here. I hope other people might find this useful, but please double-check with the "NXEC website":http://www.nationalexpresseastcoast.com/ or a Travel Centre before spending any money.
 
-h3. Fares from Durham to London
+h2. Fares from Durham to London
 
 |Ticket Type|Cost|
 |Super Off-Peak Return|105.00|
@@ -28,40 +28,40 @@ h3. Fares from Durham to London
 |First Class Anytime Return|370.00|
 
 
-h3. Super Off-Peak Return Conditions
+h2. Super Off-Peak Return Conditions
 
-h4. Northbound
+h3. Northbound
 
 Valid on any train from London King's Cross except those timed to depart before 0929 Monday-Friday and from 1457-1859 inclusive, Monday-Thursday and from 1457-1815 on Fridays.
 
 On a weekday, this means you can travel on the following _direct_ services, departing London: 0930, 1130, 1230 & 1430, 1830[1], 1900, 1930[1], 2000, 2100.
 
-h4. Southbound
+h3. Southbound
 
 Valid on any train timed to arrive in London King's Cross 1117 or later, Monday-Friday.
 
 On a weekday, this means you can travel on the 0845 departure from Durham or any later train.
 
-h3. Off-Peak Return Conditions
+h2. Off-Peak Return Conditions
 
-h4. Northbound
+h3. Northbound
 
 Valid on any train from London King's Cross except those timed to depart 0645-0815 inclusive, Monday-Friday. Outward portions also barred 1559-1745 inclusive, Monday-Friday.
 
 On a weekday, this means you can travel on the following _direct_ services, departing London: 0615, 0830, 0930, 1130, 1230 & 1430, 1530, 1820, 1830, 1900, 1930[1], 2000, 2100.
 
-h4. Southbound
+h3. Southbound
 
 Valid on any train timed to arrive in London King's Cross 1020 or later, Monday-Friday.
 
 On a weekday, this means you can travel on the 0804 departure from Durham or any later train.
 
-h3. Business Carnet
+h2. Business Carnet
 
 * 10 Anytime Return tickets for the price of 9.
 * To be used within a 3 month period.
 
-h3. References
+h2. References
 
 * "NXEC Ticket Options":http://www.nationalexpresseastcoast.com/Travel-Information/Ticket-Options1/
 * "NXEC Ticket Sales Terms and Conditions":http://www.nationalexpresseastcoast.com/Travel-Information/General-ticket-information/Ticket-Sales-Terms-and-Conditions/
