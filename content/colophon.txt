@@ -10,6 +10,8 @@ This site is powered by :-
 
 * "Ruby":http://www.ruby-lang.org/
 * "Webby":http://webby.rubyforge.org/
+* "Typogridphy":http://csswizardry.com/typogridphy/
+* "PrettyPrint":http://code.google.com/p/prettyprint/
 * "Git":http://git-scm.com/
 * "Rsync":http://samba.anu.edu.au/rsync/
 * "Ubuntu":http://www.ubuntu.com/
