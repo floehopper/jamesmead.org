@@ -1,9 +1,3 @@
-tags - add tags to delicious and suggest search to user
-tags xml feed e.g. /xml/atom/tag/apache/feed.xml
-categories - maybe implement via tags - think mocha_release is only one
-categories xml feed e.g. /xml/atom/category/mocha_release/feed.xml
-year, month, day pages e.g. /articles/2009/ - suggest google site search
-paginated pages e.g /articles/2009/page/2
 navigation e.g. to presentations or blog index pages
 favicon
 consider removing xml suffix from feedburner.xml - need to check feedburner config anyway - maybe this should be in blog directory e.g. /blog/feed
@@ -16,7 +10,12 @@ microsoft webmaster tools
 google analytics
 compression for Y-Slow
 expiry for Y-Slow
-syntax highlighting for code
+tags - add tags to delicious and suggest search to user
+categories - maybe implement via tags - think mocha_release is only one
+year, month, day pages e.g. /articles/2009/ - suggest google site search
+paginated pages e.g /articles/2009/page/2 - the pagination should be ignored by the redirects for the archive urls
+tags xml feed e.g. /xml/atom/tag/apache/feed.xml - redirect to main feed? or 404 like chrisroos?
+categories xml feed e.g. /xml/atom/category/mocha_release/feed.xml - redirect to main feed? or 404 like chrisroos?
 export comments
 disqus or equivalent for comments?
 or abandon comments?
