@@ -14,7 +14,7 @@ keywords: java junit jmock eclipse osx leopard
 ---
 I took a short break from job-hunting[1] earlier today to see if I could still write "Java":http://java.sun.com/ code. After my "Java rehab":/blog/2008-03-17-java-rehabilitation-clinic which consisted of 3+ years of writing "Ruby":http://www.ruby-lang.org/, I was a bit unsure how much Java I would remember. To get started, I decided to try and set up "Eclipse":http://www.eclipse.org/ on my MacBook Pro. I ran into a few problems which I thought I'd document here in case it helps anyone else.
 
-h3. Installing Eclipse
+h2. Installing Eclipse
 
 I downloaded the Mac OS X version of "Eclipse IDE for Java EE[2] Developers" from the "Eclipse Downloads page":http://www.eclipse.org/downloads/ and unpacked it into my Applications directory. For the record, I was running OSX 10.5.6 and downloaded version 3.4.1 of Eclipse.
 
@@ -38,7 +38,7 @@ bc(prettyprint). -vm
 
 _Note: I think that the @-vm option@ must come before the @-vmargs@ option._
 
-h3. JUnit4 and jMock2
+h2. JUnit4 and jMock2
 
 Next I decided to see if I could write a test using "JUnit":http://www.junit.org/ and "jMock":http://www.jmock.org/ to "drive out the design":http://books.google.co.uk/books?id=gFgnde_vwMAC of a simple class. I downloaded the most recent stable version of jMock which was v2.5.1 and added the relevant jars to Eclipse so that they could be included in my project classpath :-
 

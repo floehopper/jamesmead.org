@@ -14,7 +14,7 @@ keywords: mocha internals implementation ruby ioke
 ---
 I've just read Brian Guthrie's recent article entitled "Ioke mocking, Mocha as exemplar":http://blog.brianguthrie.com/articles/2009/02/03/ioke-mocking-mocha-as-exemplar. Brian has volunteered to work on a mocking framework for "Ola Bini's":http://olabini.com/ "Ioke":http://ioke.org/. I've read bits and pieces on Ola's blog about the development of Ioke, so I was very interested to see what Brian had to say. He makes some very valid comments; both about mocking in general and about the internals of "Mocha":http://mocha.rubyforge.org/.
 
-h3. Mocking in General
+h2. Mocking in General
 
 I agree with him about it being so easy to stub in prototype-based languages, but (as he says) mocking libraries offer more than just stubbing. One related problem is that different people mean different things when they talk about "mocking". "xUnit Test Patterns":http://xunitpatterns.com/ by Gerard Meszaros provides a useful breakdown of the different capabilities offered by different types of what he (more generically) calls "Test Doubles":http://xunitpatterns.com/Test%20Double%20Patterns.html :-
 
@@ -26,7 +26,7 @@ I agree with him about it being so easy to stub in prototype-based languages, bu
 
 In my "LRUG":http://lrug.org presentation: "An Introduction to Mock Objects in Ruby":/presentations/lrug-mock-objects-2007-07-09/#slide7, I translated these different types of Test Doubles into Ruby examples which people might find helpful.
 
-h3. Mocha Internals
+h2. Mocha Internals
 
 I'm glad that "Brian":http://blog.brianguthrie.com/ drew some inspiration from reading the Mocha source code - I have to admit I went through a similar exercise with the "jMock":http://www.jmock.org/ source code some time ago. So thanks to "Nat":http://www.natpryce.com/ & "Steve":http://www.m3p.co.uk/ for that.
 
@@ -38,7 +38,7 @@ bq. I'd happily recommend [Mocha] to others as a good example of how to pull off
 
 bq. Much of Mocha is like that: moderately sized, neither opaque in its density or transparent in its verbosity. Nice, I suppose, for my own definition of nice.
 
-h3. Reflections
+h2. Reflections
 
 I'm a fan of the "Pragmatic Programmers":http://www.pragprog.com/ suggestion to "learn a new programming language every year". As an extension to this, I think there is some truth in what I think is a quote from "Dan North":http://dannorth.net/ : "everyone should write a mocking framework". In any case, I certainly know that one of the most important things I've got out of writing Mocha is a deeper understanding of Ruby internals.
 

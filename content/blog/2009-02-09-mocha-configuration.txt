@@ -12,7 +12,7 @@ categories: []
 created_at: 2009-02-09 11:40:50 +00:00
 keywords: mocha mock stub ruby testing tdd configuration warning role interface coupling
 ---
-h3. Introduction
+h2. Introduction
 
 In his "recent look":http://blog.brianguthrie.com/articles/2009/02/03/ioke-mocking-mocha-as-exemplar at Mocha's internals, Brian Guthrie mentioned that he hadn't realised it was possible to configure Mocha to warn or disallow mocking of non-existent methods. So I thought it was time I explained "Mocha's configuration settings":http://mocha.rubyforge.org/classes/Mocha/Configuration.html. These configuration settings are all somewhat experimental and feedback on their effectiveness would be welcome.
 
@@ -27,7 +27,7 @@ Mocha::Configuration.warn_when(condition)
 # error is raised when condition is met
 Mocha::Configuration.prevent(condition)
 
-h3. Stubbing a non-existent method
+h2. Stubbing a non-existent method
 
 This is useful if you want to ensure that methods you're mocking really exist. A common criticism of unit tests with mock objects is that such a test may (incorrectly) pass when an equivalent non-mocking test would (correctly) fail. While you should always have some integration tests, particularly for critical business functionality, this Mocha configuration setting should catch scenarios when mocked methods and real methods have become misaligned.
 
@@ -45,7 +45,7 @@ class ExampleTest < Test::Unit::TestCase
   end
 end
 
-h3. Stubbing a method unnecessarily
+h2. Stubbing a method unnecessarily
 
 This is useful for identifying unused stubs. Unused stubs are often accidentally introduced when code is "refactored":http://martinfowler.com/bliki/DefinitionOfRefactoring.html.
 
@@ -60,7 +60,7 @@ class ExampleTest < Test::Unit::TestCase
   end
 end
 
-h3. Stubbing a non-public method
+h2. Stubbing a non-public method
 
 Many people think that it's good practice only to mock public methods. This is one way to prevent your tests being too tightly coupled to the internal implementation of a class. Such tests tend to be very brittle and not much use when refactoring.
 
@@ -80,7 +80,7 @@ class ExampleTest < Test::Unit::TestCase
   end
 end
 
-h3. Stubbing Method on Non-Mock Object
+h2. Stubbing Method on Non-Mock Object
 
 If you like the idea of "mocking roles not objects":http://www.jmock.org/oopsla2004.pdf and "you don't like stubbing concrete classes":http://www.mockobjects.com/2007/04/test-smell-mocking-concrete-classes.html, this is the setting for you. However, while this restriction makes a lot of sense in Java with its "explicit interfaces":http://java.sun.com/docs/books/tutorial/java/concepts/interface.html, it may be moot in Ruby where roles are probably best represented as Modules. Anyway that's probably a discussion for another day.
 

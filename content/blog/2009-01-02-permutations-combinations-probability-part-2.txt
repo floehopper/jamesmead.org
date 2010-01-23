@@ -12,13 +12,13 @@ categories: []
 created_at: 2009-01-02 11:15:59 +00:00
 keywords: ruby permutation combination probability
 ---
-h3. Monte Carlo Method
+h2. Monte Carlo Method
 
 I seem to be having a bit of a probability-fest at the moment. I enjoyed reading Jeff Atwood's probability puzzle earlier this week: "The Problem of the Unfinished Game":http://www.codinghorror.com/blog/archives/001203.html and the explanation: "Finishing The Game":http://www.codinghorror.com/blog/archives/001204.html. And I'm in the middle of reading "Fooled by Randomness: The Hidden Role of Chance in Life and in the Markets":http://en.wikipedia.org/wiki/Fooled_by_Randomness, a book that "Chris Roos":http://chrisroos.co.uk recommended to me a while back - I'm really enjoying it. The author is a big fan of the "Monte Carlo method":http://en.wikipedia.org/wiki/Monte_Carlo_method which is effectively how I solved the probability problem in my "previous post":/blog/2008-11-04-permutations-combinations-probability
 
 So when Nathan Zook emailed me to suggest that I might have got my previous calculation wrong, I was interested enough to do what I should have done originally i.e. write some tests to check my solution. I extracted the critical bit of logic from both my solution and from Nathan's solution and wrote tests against this method.
 
-h3. Nathan's Solution
+h2. Nathan's Solution
 
 bc(prettyprint). def matches(index, base)
   counts = [0] * base
@@ -34,7 +34,7 @@ bc(prettyprint). def matches(index, base)
   count
 end
 
-h3. James' Solution
+h2. James' Solution
 
 bc(prettyprint). def matches(index, base)
   places = 4
@@ -55,7 +55,7 @@ bc(prettyprint). def matches(index, base)
 end
 
 
-h3. Failing Tests
+h2. Failing Tests
 
 You can see the full set of tests "here":http://pastie.org/350453, but the critical ones turn out to be the ones below. It appears that Nathan's solution doesn't work when there are duplicates. But I'm glad he pushed me into writing these tests - now I have more confidence in the answer I calculated previously.
 
@@ -103,7 +103,7 @@ def test_should_have_three_matches_when_digit_appears_three_times_on_lhs_but_fou
   assert_equal 3, matches(11141111, 10)
 end
 
-h3. TextMate Bug
+h2. TextMate Bug
 
 While running these tests, I noticed a bug in TextMate's Ruby syntax highlighting, which I've now "reported":http://ticket.macromates.com/show?ticket_id=A589DA17
 

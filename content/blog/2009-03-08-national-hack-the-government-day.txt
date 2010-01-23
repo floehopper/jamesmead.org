@@ -14,7 +14,7 @@ keywords: "hack uk government rewiredstate guardian greasemonkey jquery "
 ---
 I spent yesterday in the "shiny new Guardian offices":http://www.guardian.co.uk/media/gallery/2008/dec/15/theguardian-pressandpublishing at "Rewired State":http://rewiredstate.org/ - National Hack the Government Day - which was a lot of fun, despite the "early start":http://twitter.com/floehopper/status/1291802649. There was a really friendly atmosphere and lots of interesting "projects":http://projects.rewiredstate.org/ going on.
 
-h3. ONS Graphs
+h2. ONS Graphs
 
 I teamed up with "Paul":http://po-ru.com/ to work on some improvements for the "Office for National Statistics website":http://www.statistics.gov.uk/. We'd noticed that while there are many "timeline datasets":http://www.statistics.gov.uk/statbase/tsdtimezone.asp available on the site, the only way to view graphs of the data is to download a Windows application called "Navidata":http://www.statistics.gov.uk/statbase/Navidata.asp. Although it's free, this application is pretty clunky and hard to use and doesn't generate very clear graphs. Also, rather obviously, it isn't much use to Mac or Linux users.
 
@@ -37,7 +37,7 @@ Paul presenting our hack at the end of the day :-
 
 <img src="http://farm4.static.flickr.com/3360/3336023889_96e9526bdc_d.jpg" />
 
-h3. ONS Navigation
+h2. ONS Navigation
 
 For the second part of our hack, we wanted to make a better way of navigating to the datasets. The current system uses a series of forms in a "wizard-like":http://is.gd/mnk1 experience which is quite hard to understand. Also, because of the form submissions (i.e. HTTP POSTs) required to access the datasets, there are no permanent URLs available to navigate directly to a dataset. We decided to try to remedy this by using "Mechanize":http://mechanize.rubyforge.org/mechanize/ to scrape the timeline data from the website and then build a simplified static website using only links (i.e. HTTP GETs). However, we hit a snag in automatically submitting the last form in the wizard and ran out of time. I might try and have a go at this in the future if I get time.
 
