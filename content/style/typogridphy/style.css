@@ -282,8 +282,8 @@ blockquote p{
 	font-size:1.2em!important;
 	line-height:1.5em!important;
 	margin-bottom:1.5em!important;
-	font-style:italic;
-	font-weight:bold;
+/*  font-style:italic;*/
+/*  font-weight:bold;*/
 }
 blockquote p cite{
 	font-style:normal;
@@ -464,8 +464,10 @@ ol li{
 
 pre {
   margin: 1em 0;
+  background-color: #EEEEEE;
 }
 
 blockquote {
   margin: 0 0 0 4em;
+  background-color: #EEEEEE;
 }
