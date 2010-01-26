@@ -40,7 +40,7 @@ filter:    erb
 <body onload="prettyPrint()">
   <div id="wrapper">
     <div id="header">
-      <span id="nav"><a href="#" title="Home">Home</a> &middot; <a href="/blog/" title="Blog">Blog</a> &middot; <a href="#" title="About">About</a> &middot; <a href="#" title="Contact">Contact</a></span>
+      <span id="nav"><a href="/" title="Home">Home</a> &middot; <a href="/blog/" title="Blog">Blog</a> &middot; <a href="#" title="About">About</a> &middot; <a href="#" title="Contact">Contact</a></span>
       <div id="search"><%= render :partial => '/search' %></div>
       <div id="spacer"></div>
     </div>
