@@ -1,0 +1,9 @@
+---
+title: HotCocoa Calculator
+created_at: 2010-01-26 13:41:36 +00:00
+updated_at: 2010-01-26 13:41:36 +00:00
+filter:
+  - erb
+  - textile
+---
+"Source Code":http://github.com/floehopper/hotcocoa-calculator
