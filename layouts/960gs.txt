@@ -1,0 +1,58 @@
+---
+extension: html
+filter:    erb
+---
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title><%= title(@page) %></title>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta name="robots" content= "ALL" />
+    <meta name="description" content= "" />
+    <meta name="keywords" content= "" />
+    <meta name="classification" content= "" />
+    <meta name="author" content= "" />
+    <meta name="reply-to" content= "" />
+    <meta name="copyright" content= "" />
+    
+    <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+    <meta name="y_key" content="1e092bd46e8b1f49" />
+    <meta name="msvalidate.01" content="1AD1EB83FD984C37BB65640F85B262D3" />
+    
+    <meta description="<%= @page.description %>" />
+    
+    <link rel="shortcut icon" href="favicon.gif" />
+    
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.8.0r4/build/reset-fonts/reset-fonts.css"> 
+    
+    <link rel="stylesheet" href="/style/960gs/960.css" />
+    
+    <link rel="stylesheet" href="/style/site-960gs.css" />
+    
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="<%= absolute_url('/feedburner.xml') %>" />
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="<%= absolute_url('/feedburner.xml') %>" />
+    
+    <link rel="openid.server" href="http://openid.claimid.com/server" />
+    <link rel="openid.delegate" href="http://openid.claimid.com/jamesmead" />
+  </head>
+  <body>
+    <div id="page" class="container_12">
+      <div id="header">
+        <div id="navigation">
+          <a href="#">Home</a> &middot; <a href="#">Blog</a> &middot; <a href="#">Talks</a> &middot; <a href="#">Projects</a>
+        </div>
+        <div id="search">
+          <div id="search"><%= render :partial => '/search' %></div>
+        </div>
+      </div>
+      <div id="content">
+        <h1><%= @page.title %></h1>
+      </div>
+      <div id="footer">
+        <p>footer</p>
+      </div>
+    </div>
+    <script src="/javascripts/google-custom-search.js" type="text/javascript" charset="utf-8"></script>
+  </body>
+</html>
