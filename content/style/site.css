@@ -1,0 +1,29 @@
+#nav {
+  float: left;
+}
+
+#search {
+  float: right;
+}
+
+#spacer {
+  clear: left;
+}
+
+pre {
+  margin: 1em 0;
+  background-color: #EEEEEE;
+}
+
+blockquote {
+  margin: 0 0 0 4em;
+  background-color: #EEEEEE;
+}
+
+a {
+  color: #000;
+}
+
+a:hover {
+  text-decoration:none;
+}

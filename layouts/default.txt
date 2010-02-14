@@ -8,6 +8,7 @@ filter:    erb
   <title><%= title(@page) %></title>
   
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  
   <meta name="robots" content= "ALL" />
   <meta name="description" content= "" />
   <meta name="keywords" content= "" />
@@ -24,8 +25,11 @@ filter:    erb
   
   <link rel="shortcut icon" href="favicon.gif" />
   
-  <link rel="stylesheet" href="/style/typogridphy/style.css" type="text/css" media="screen" />
-  <!--[if IE]><link rel="stylesheet" href="/style/typogridphy/ie.css" type="text/css" /><![endif]-->
+  <link rel="stylesheet" href="/style/blueprint-0.9.1/screen.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="/style/blueprint-0.9.1/print.css" type="text/css" media="print">
+  <!--[if lt IE 8]>
+    <link rel="stylesheet" href="/styles/blueprint-0.9.1/ie.css" type="text/css" media="screen, projection">
+  <![endif]-->
   
   <link rel="stylesheet" href="/style/prettify/prettify.css" type="text/css" />
   <script type="text/javascript" src="/javascripts/prettify/prettify.js"></script>
@@ -38,18 +42,34 @@ filter:    erb
 </head>
 
 <body onload="prettyPrint()">
-  <div id="wrapper">
+  <div id="page" class="container">
     <div id="header">
-      <span id="nav"><a href="/" title="Home">Home</a> &middot; <a href="/blog/" title="Blog">Blog</a> &middot; <a href="#" title="About">About</a> &middot; <a href="#" title="Contact">Contact</a></span>
+      <span id="nav">
+        <a href="/" title="Home">Home</a>
+        &middot;
+        <a href="/blog/" title="Blog">Blog</a>
+        &middot;
+        <a href="/talks/" title="Talks">Talks</a>
+        &middot;
+        <a href="/projects/" title="Projects">Projects</a>
+      </span>
       <div id="search"><%= render :partial => '/search' %></div>
       <div id="spacer"></div>
     </div>
-    <div id="content" class="generic nineforty">
+    <div id="content">
       <h1><%= @page.title %></h1>
       <%= @content %>
     </div>
-    <div class="generic nineforty">
-      <p id="footer-nav"><a href="#" title="Home">Home</a> &middot; <a href="#" title="Blog">Blog</a> &middot; <a href="#" title="About">About</a> &middot; <a href="#" title="Contact">Contact</a></p>
+    <div id="footer">
+      <p id="footer-nav">
+        <a href="/contact" title="Contact">Contact</a>
+        &middot;
+        <a href="/history" title="History">History</a>
+        &middot;
+        <a href="/colophon" title="Colophon">Colophon</a>
+        &middot;
+        <a href="/links" title="Links">Links</a>
+      </p>
     </div>
   </div>
   <script src="/javascripts/google-custom-search.js" type="text/javascript" charset="utf-8"></script>
