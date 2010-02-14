@@ -1,4 +1,6 @@
 navigation e.g. to presentations or blog index pages
+redirects for presentations to same format as blog articles
+check redirects for non-html extensions for pages other than blog articles
 favicon
 consider removing xml suffix from feedburner.xml - need to check feedburner config anyway - maybe this should be in blog directory e.g. /blog/feed
 ensure we have captured all urls in sitemap
