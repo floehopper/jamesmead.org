@@ -3,6 +3,7 @@ permalink: mocha-on-bacon
 updated_at: 2010-01-19 11:19:09 +00:00
 guid: de0c133b-66e4-42f2-89a1-203100258108
 title: Mocha on Bacon
+description: Eloy Duran has re-incarnated the Mocha adapter for Bacon.
 id: 394
 filter: 
 - erb

@@ -9,4 +9,6 @@ filter:
 ---
 <% articles.each do |article| %>
 h2. <%= link_to article.title, friendly_url(article) %>
+
+<%= article.description if article.description %>
 <% end %>

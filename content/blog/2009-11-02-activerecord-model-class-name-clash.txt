@@ -3,6 +3,7 @@ permalink: activerecord-model-class-name-clash
 updated_at: 2009-11-02 16:23:13 +00:00
 guid: 241da9d4-d57a-4197-bc68-74dfa03cc09c
 title: ActiveRecord Model Class Name Clash
+description: Validation weirdness with a class called Sync.
 id: 389
 filter: 
 - erb
