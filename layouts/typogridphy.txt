@@ -1,0 +1,60 @@
+---
+extension: html
+filter:    erb
+---
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title><%= title(@page) %></title>
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta name="robots" content= "ALL" />
+  <meta name="description" content= "" />
+  <meta name="keywords" content= "" />
+  <meta name="classification" content= "" />
+  <meta name="author" content= "" />
+  <meta name="reply-to" content= "" />
+  <meta name="copyright" content= "" />
+  
+  <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+  <meta name="y_key" content="1e092bd46e8b1f49" />
+  <meta name="msvalidate.01" content="1AD1EB83FD984C37BB65640F85B262D3" />
+  
+  <meta description="<%= @page.description %>" />
+  
+  <link rel="shortcut icon" href="favicon.gif" />
+  
+  <link rel="stylesheet" href="/style/typogridphy/style.css" type="text/css" media="screen" />
+  <!--[if IE]><link rel="stylesheet" href="/style/typogridphy/ie.css" type="text/css" /><![endif]-->
+  <link rel="stylesheet" href="/style/site.css" type="text/css" media="screen" />
+  
+  <link rel="stylesheet" href="/style/prettify/prettify.css" type="text/css" />
+  <script type="text/javascript" src="/javascripts/prettify/prettify.js"></script>
+  
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="<%= absolute_url('/feedburner.xml') %>" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="<%= absolute_url('/feedburner.xml') %>" />
+  
+  <link rel="openid.server" href="http://openid.claimid.com/server" />
+  <link rel="openid.delegate" href="http://openid.claimid.com/jamesmead" />
+</head>
+
+<body onload="prettyPrint()">
+  <div id="wrapper">
+    <div id="header">
+      <span id="nav"><a href="/" title="Home">Home</a> &middot; <a href="/blog/" title="Blog">Blog</a> &middot; <a href="/talks/" title="Talks">Talks</a> &middot; <a href="/projects/" title="Projects">Projects</a></span>
+      <div id="search"><%= render :partial => '/search' %></div>
+      <div id="spacer"></div>
+    </div>
+    <div id="content" class="generic nineforty">
+      <h1><%= @page.title %></h1>
+      <%= @content %>
+    </div>
+    <div class="generic nineforty">
+      <p id="footer-nav"><a href="/contact" title="Contact">Contact</a> &middot; <a href="/history" title="History">History</a> &middot; <a href="/colophon" title="Colophon">Colophon</a> &middot; <a href="/links" title="Links">Links</a></p>
+    </div>
+  </div>
+  <script src="/javascripts/google-custom-search.js" type="text/javascript" charset="utf-8"></script>
+  
+  <%= render :partial => '/analytics' %>
+</body>
+</html>

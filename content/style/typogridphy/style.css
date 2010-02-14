@@ -68,8 +68,8 @@ html{
 }
 body{
 	font-size:62.5%;
-	font-family:Georgia, "Times New Roman", serif;
-	color:#666;
+/*  font-family:Georgia, "Times New Roman", serif;*/
+	font-family: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif," "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;	color:#666;
 	background:/*url(images/grid.gif) top center repeat-y*/ #fff; /* Uncomment to display the grid */
 	border-top:0.5em solid #666;
 	padding:0 1em;
@@ -444,30 +444,3 @@ ol li{
 		-	Karl Pilkington
 
 */
-
-
-
-/*
-  Styles added by James Mead
-*/
-#header #nav {
-  float: left;
-}
-
-#header #search {
-  float: right;
-}
-
-#header #spacer {
-  clear: left;
-}
-
-pre {
-  margin: 1em 0;
-  background-color: #EEEEEE;
-}
-
-blockquote {
-  margin: 0 0 0 4em;
-  background-color: #EEEEEE;
-}
