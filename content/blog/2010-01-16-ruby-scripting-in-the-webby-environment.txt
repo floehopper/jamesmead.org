@@ -3,7 +3,7 @@ permalink: ruby-scripting-in-the-webby-environment
 updated_at: 2010-01-16 17:12:50 +00:00
 guid: e29f4b8e-28ad-4169-827b-3bf802c7f9c2
 title: Ruby scripting in the Webby "environment"
-description: How to load Webby:Resources into memory.
+description: How to load Webby::Resources into memory.
 id: 393
 filter: 
 - erb
