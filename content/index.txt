@@ -14,10 +14,3 @@ h2. Freelance Software Developer based in "Durham, UK":http://maps.google.com/ma
 h2. Operating as "Floehopper Ltd":http://floehopper.com/
 
 h2. A Member of the "FreeRange":http://gofreerange.com/ Co-operative.
-
-
-I've previously worked for Reevoo, ThoughtWorks, Radiant Networks, Lante, Gandaalf Software, The Technology Partnership.
-
-Links to anchors on CV page.
-
-I've developed commercial software in Delphi, C++, Java and Ruby.
