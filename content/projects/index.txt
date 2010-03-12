@@ -8,12 +8,12 @@ filter:
 ---
 h2. "Mocha":/projects/mocha
 
-!/images/mocha-website-thumb(Mocha Website Screenshot)!:/projects/mocha
+!/images/mocha-website-thumb.png(Mocha Website Screenshot)!:/projects/mocha
 
 h2. "Installd":/projects/installd
 
-!/images/installd-website-thumb(Installd Website Screenshot)!:/projects/installd
+!/images/installd-website-thumb.png(Installd Website Screenshot)!:/projects/installd
 
 h2. "HotCocoa Calculator":/projects/hotcocoa-calculator
 
-!/images/hotcocoa-calculator(HotCocoa Calculator Screenshot)!:/projects/hotcocoa-calculator
+!/images/hotcocoa-calculator.png(HotCocoa Calculator Screenshot)!:/projects/hotcocoa-calculator

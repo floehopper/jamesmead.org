@@ -12,4 +12,4 @@ h2. "Ruby & Cocoa at Ruby Manor":/talks/2009-12-14-ruby-and-cocoa-at-ruby-manor
 
 h2. "An Introduction to Mock Objects in Ruby at LRUG":/talks/2007-07-09-introduction-to-mock-objects-in-ruby-at-lrug
 
-!/images/introduction-to-mock-objects-in-ruby-at-lrug-thumb(An Introduction to Mock Objects in Ruby at LRUG)!:/talks/2007-07-09-introduction-to-mock-objects-in-ruby-at-lrug
+!/images/introduction-to-mock-objects-in-ruby-at-lrug-thumb.png(An Introduction to Mock Objects in Ruby at LRUG)!:/talks/2007-07-09-introduction-to-mock-objects-in-ruby-at-lrug

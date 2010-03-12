@@ -8,7 +8,7 @@ filter:
   - erb
   - textile
 ---
-!/images/jamesmead!
+!/images/jamesmead.png!
 
 h2. Freelance Software Developer based in "Durham, UK":http://maps.google.com/maps?q=Durham,%20County%20Durham,%20UK&z=6.
 
