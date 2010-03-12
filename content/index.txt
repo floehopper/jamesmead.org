@@ -11,6 +11,6 @@ filter:
 
 h2. Freelance Software Developer based in "Durham, UK":http://maps.google.com/maps?q=Durham,%20County%20Durham,%20UK&z=6.
 
-h2. Operating as "Floehopper Ltd":http://floehopper.com/
+h2. Operating as "Floehopper Ltd":http://floehopper.com/.
 
 h2. A Member of the "FreeRange":http://gofreerange.com/ Co-operative.
