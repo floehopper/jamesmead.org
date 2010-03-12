@@ -6,7 +6,7 @@ filter:    erb
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <title><%= title(@page) %></title>
-  
+    
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <meta name="robots" content= "ALL" />
     <meta name="description" content= "" />
@@ -15,27 +15,43 @@ filter:    erb
     <meta name="author" content= "" />
     <meta name="reply-to" content= "" />
     <meta name="copyright" content= "" />
-  
+    
     <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
     <meta name="y_key" content="1e092bd46e8b1f49" />
     <meta name="msvalidate.01" content="1AD1EB83FD984C37BB65640F85B262D3" />
-  
-    <meta description="<%= @page.description %>" />
-  
+    
+    <% if @page.description %>
+      <meta description="<%= @page.description %>" />
+    <% end %>
+    
     <link rel="shortcut icon" href="favicon.gif" />
-  
+    
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.8.0r4/build/reset-fonts-grids/reset-fonts-grids.css&2.8.0r4/build/base/base-min.css" />
     
     <link rel="stylesheet" type="text/css" href="/style/site.css" />
-  
+    
     <link rel="stylesheet" href="/style/prettify/prettify.css" type="text/css" />
     <script type="text/javascript" src="/javascripts/prettify/prettify.js"></script>
-  
+    
     <link rel="alternate" type="application/atom+xml" title="Atom" href="<%= absolute_url('/feedburner.xml') %>" />
     <link rel="alternate" type="application/rss+xml" title="RSS" href="<%= absolute_url('/feedburner.xml') %>" />
-  
+    
     <link rel="openid.server" href="http://openid.claimid.com/server" />
     <link rel="openid.delegate" href="http://openid.claimid.com/jamesmead" />
+    
+    <% pages = articles(:reverse => false) %>
+    <% if index = pages.index(@page) %>
+      <% if (index > 0) && (prev_page = pages[index - 1]) %>
+        <%= link_to nil, nil, :attrs => { :rel => "prev", :href => friendly_url(prev_page) } %>
+      <% end %>
+      <% if next_page = pages[index + 1] %>
+        <%= link_to nil, nil, :attrs => { :rel => "next", :href => friendly_url(next_page) } %>
+      <% end %>
+      <%= link_to nil, nil, :attrs => { :rel => "first", :href => friendly_url(pages.first) } %>
+      <%= link_to nil, nil, :attrs => { :rel => "last", :href => friendly_url(pages.last) } %>
+      <%= link_to nil, nil, :attrs => { :rel => "index", :href => "/blog" } %>
+    <% end %>
+    
   </head>
   <body onload="prettyPrint()">
     <div id="doc">
@@ -48,10 +64,25 @@ filter:    erb
         &middot;
         <a href="/projects/" title="Projects">Projects</a>
       </div>
+      
       <div id="bd">
         <h1><%= @page.title %></h1>
+        
         <%= @content %>
+        
+        <div id="navigation">
+          <% pages = articles(:reverse => false) %>
+          <% if index = pages.index(@page) %>
+            <% if (index > 0) && (prev_page = pages[index - 1]) %>
+              <%= link_to "< #{prev_page.title}", friendly_url(prev_page), :attrs => { :class => "previous" } %>
+            <% end %>
+            <% if next_page = pages[index + 1] %>
+              <%= link_to "#{next_page.title} >", friendly_url(next_page), :attrs => { :class => "next" } %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
+      
       <div id="ft">
         <a href="/contact" title="Contact">Contact</a>
         &middot;
