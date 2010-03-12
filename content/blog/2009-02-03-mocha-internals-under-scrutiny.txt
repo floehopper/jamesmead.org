@@ -24,7 +24,7 @@ I agree with him about it being so easy to stub in prototype-based languages, bu
 * Mock Object
 * Fake Object
 
-In my "LRUG":http://lrug.org presentation: "An Introduction to Mock Objects in Ruby":/presentations/lrug-mock-objects-2007-07-09/#slide7, I translated these different types of Test Doubles into Ruby examples which people might find helpful.
+In my "LRUG":http://lrug.org presentation: "An Introduction to Mock Objects in Ruby":/talks/2007-07-09-introduction-to-mock-objects-in-ruby-at-lrug/#slide7, I translated these different types of Test Doubles into Ruby examples which people might find helpful.
 
 h2. Mocha Internals
 

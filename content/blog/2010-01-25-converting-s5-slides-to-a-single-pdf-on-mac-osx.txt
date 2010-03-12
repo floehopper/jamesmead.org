@@ -24,7 +24,7 @@ bc(prettyprint).. #!/usr/bin/env ruby
 NUMBER_OF_SLIDES = 94
 SEQUENCE_FORMAT = "%0#{Math.log10(NUMBER_OF_SLIDES).to_i}d"
 HOST = "jamesmead.local"
-PATH = "/presentations/ruby-and-cocoa-ruby-manor-2009-12-14/"
+PATH = "/talks/2009-12-14-ruby-and-cocoa-at-ruby-manor/"
 BASE_URL = "http://#{HOST}#{PATH}"
 
 (0...NUMBER_OF_SLIDES).each do |index|

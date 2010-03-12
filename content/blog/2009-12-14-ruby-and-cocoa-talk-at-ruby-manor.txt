@@ -13,6 +13,6 @@ categories: []
 created_at: 2009-12-14 11:59:46 +00:00
 keywords: ruby cocoa macruby testing acceptance unit accessibility
 ---
-Here are the "slides":/presentations/ruby-and-cocoa-ruby-manor-2009-12-14/ from my recent talk at "Ruby Manor 2":http://rubymanor.org/harder/ on "Ruby and Cocoa".
+Here are the "slides":/talks/2009-12-14-ruby-and-cocoa-at-ruby-manor/ from my recent talk at "Ruby Manor 2":http://rubymanor.org/harder/ on "Ruby and Cocoa".
 
 And here's the "code":http://github.com/floehopper/hotcocoa-calculator for my demo of acceptance testing the "MacRuby":http://www.macruby.org/ "HotCocoa":http://www.macruby.org/trac/wiki/HotCocoa Calculator example app using the "OSX Accessibility API":http://developer.apple.com/ue/accessibility/.
