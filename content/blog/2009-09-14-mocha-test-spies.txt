@@ -23,7 +23,7 @@ I'd like to thank Joe for taking the time to fork Mocha and add this functionali
 
 h2. Concept
 
-In this section I've tried to write up some comments on "Joe's blog post":http://robots.thoughtbot.com/post/159805295/spy-vs-spy under roughly the same headings :-
+In this section I've tried to write up some comments on "Joe's blog post":http://robots.thoughtbot.com/post/159805295/spy-vs-spy. I've tried to break it down into roughly the same headings that Joe used :-
 
 h3. Why would I let spies in my code?
 
