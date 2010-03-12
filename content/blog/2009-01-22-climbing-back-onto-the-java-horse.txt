@@ -31,7 +31,7 @@ However, I was able to run the application from the command-line, which pointed 
 * The -vm option and its value (the path) must be on separate lines.
 * The value must be the full absolute path to the Java executable, not just to the Java home directory.
 
-So I added the following to my @eclipse.ini@ and the application started up successfully :-
+So I added the following two lines to my @eclipse.ini@ and the application started up successfully :-
 
 bc(prettyprint). -vm
 /System/Library/Frameworks/JavaVM.framework/Versions/1.5.0
