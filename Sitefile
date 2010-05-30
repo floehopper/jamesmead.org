@@ -2,6 +2,7 @@
 SITE.host = 'jamesmead.org'
 SITE.user = 'jamesmead'
 SITE.remote_dir = '/var/www/jamesmead.org/'
+SITE.feedburner_url = 'http://feeds.feedburner.com/floehopper-blog'
 
 task :default => :build
 
