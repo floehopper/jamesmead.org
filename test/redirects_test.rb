@@ -17,8 +17,8 @@ class RedirectsTest < Test::Unit::TestCase
   end
   
   def test_presentations_index
-    assert_success jamesmead_org('/presentations/')
-    assert_redirects jamesmead_org('/presentations'), jamesmead_org('/presentations/')
+    assert_success jamesmead_org('/talks/')
+    assert_redirects jamesmead_org('/talks'), jamesmead_org('/talks/')
   end
   
   def test_sitemap
@@ -76,24 +76,29 @@ class RedirectsTest < Test::Unit::TestCase
   end
   
   def jamesmead_org(path)
-    "http://jamesmead.local#{path}"
+    "http://jamesmead.#{tld}#{path}"
   end
   
   def floehopper_org(path)
-    "http://floehopper.local#{path}"
+    "http://floehopper.#{tld}#{path}"
   end
   
   def blog_floehopper_org(path)
-    "http://blog.floehopper.local#{path}"
+    "http://blog.floehopper.#{tld}#{path}"
   end
   
   def www_floehopper_org(path)
-    "http://www.floehopper.local#{path}"
+    "http://www.floehopper.#{tld}#{path}"
   end
   
   # keep .org TLD as this sub-domain points directly at feedburner domain
   def feeds_floehopper_org(path)
-    "http://feeds.floehopper.org#{path}"
+    "http://feeds.floehopper.#{tld}#{path}"
+  end
+  
+  def tld
+    local = !!ENV["LOCAL"]
+    local ? "local" : "org"
   end
   
   def old_article_path
