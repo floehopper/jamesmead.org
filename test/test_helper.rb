@@ -46,9 +46,12 @@ module TestHelper
     "http://feeds.feedburner.com#{path}"
   end
   
+  def feedburner_url
+    feeds_feedburner_com('/floehopper-blog')
+  end
+  
   def tld
-    local = !!ENV["LOCAL"]
-    local ? "local" : "org"
+    ENV["TLD"] || "local"
   end
   
   def old_article_path

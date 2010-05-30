@@ -6,7 +6,7 @@ class FloehopperOrgRedirectsTest < Test::Unit::TestCase
   include TestHelper
   
   def test_legacy_feedburner_source
-    assert_redirects blog_floehopper_org('/feedburner.xml'), jamesmead_org('/feedburner.xml')
+    assert_redirects blog_floehopper_org('/feedburner.xml'), jamesmead_org('/blog/index.xml')
   end
   
   def test_legacy_domain
@@ -25,10 +25,10 @@ class FloehopperOrgRedirectsTest < Test::Unit::TestCase
   end
   
   def test_legacy_feeds
-    assert_redirects blog_floehopper_org('/xml/atom/feed.xml'), feeds_feedburner_com('/floehopper-blog')
-    assert_redirects blog_floehopper_org('/xml/atom10/feed.xml'), feeds_feedburner_com('/floehopper-blog')
-    assert_redirects blog_floehopper_org('/xml/rss/feed.xml'), feeds_feedburner_com('/floehopper-blog')
-    assert_redirects blog_floehopper_org('/xml/rss20/feed.xml'), feeds_feedburner_com('/floehopper-blog')
+    assert_redirects blog_floehopper_org('/xml/atom/feed.xml'), feedburner_url
+    assert_redirects blog_floehopper_org('/xml/atom10/feed.xml'), feedburner_url
+    assert_redirects blog_floehopper_org('/xml/rss/feed.xml'), feedburner_url
+    assert_redirects blog_floehopper_org('/xml/rss20/feed.xml'), feedburner_url
   end
 
 end
