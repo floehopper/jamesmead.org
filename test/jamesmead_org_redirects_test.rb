@@ -35,5 +35,10 @@ class JamesmeadOrgRedirectsTest < Test::Unit::TestCase
   def test_feedburner_source
     assert_success jamesmead_org('/blog/index.xml')
   end
-
+  
+  def test_pages
+    assert_success jamesmead_org('/pages/biography')
+    assert_success jamesmead_org('/pages/gner-complaint')
+  end
+  
 end

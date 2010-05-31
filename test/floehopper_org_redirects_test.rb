@@ -31,18 +31,50 @@ class FloehopperOrgRedirectsTest < Test::Unit::TestCase
     assert_redirects blog_floehopper_org('/xml/rss20/feed.xml'), feedburner_url
   end
   
-  def test_archives
+  def test_legacy_daily_archives
     assert_redirects blog_floehopper_org('/articles/2009/11/02/'), jamesmead_org('/archives')
     assert_redirects blog_floehopper_org('/articles/2009/11/02'), jamesmead_org('/archives')
-    assert_redirects blog_floehopper_org('/articles/2009/11/'), jamesmead_org('/archives')
-    assert_redirects blog_floehopper_org('/articles/2009/11'), jamesmead_org('/archives')
-    assert_redirects blog_floehopper_org('/articles/2009/'), jamesmead_org('/archives')
-    assert_redirects blog_floehopper_org('/articles/2009'), jamesmead_org('/archives')
+    assert_redirects blog_floehopper_org('/articles/2009/11/02/page/1'), jamesmead_org('/archives')
+    assert_redirects blog_floehopper_org('/articles/2009/11/2/'), jamesmead_org('/archives')
+    assert_redirects blog_floehopper_org('/articles/2009/11/2'), jamesmead_org('/archives')
+    assert_redirects blog_floehopper_org('/articles/2009/11/2/page/1'), jamesmead_org('/archives')
   end
   
-  def test_articles_index
+  def test_legacy_monthly_archives
+    assert_redirects blog_floehopper_org('/articles/2009/11/'), jamesmead_org('/archives')
+    assert_redirects blog_floehopper_org('/articles/2009/11'), jamesmead_org('/archives')
+    assert_redirects blog_floehopper_org('/articles/2009/11/page/1'), jamesmead_org('/archives')
+    assert_redirects blog_floehopper_org('/articles/2009/3/'), jamesmead_org('/archives')
+    assert_redirects blog_floehopper_org('/articles/2009/3'), jamesmead_org('/archives')
+    assert_redirects blog_floehopper_org('/articles/2009/3/page/1'), jamesmead_org('/archives')
+  end
+  
+  def test_legacy_yearly_archives
+    assert_redirects blog_floehopper_org('/articles/2009/'), jamesmead_org('/archives')
+    assert_redirects blog_floehopper_org('/articles/2009'), jamesmead_org('/archives')
+    assert_redirects blog_floehopper_org('/articles/2009/page/1'), jamesmead_org('/archives')
+  end
+  
+  def test_legacy_articles_index
     assert_redirects blog_floehopper_org('/articles/'), jamesmead_org('/blog/')
     assert_redirects blog_floehopper_org('/articles'), jamesmead_org('/blog/')
+    assert_redirects blog_floehopper_org('/articles/page/1'), jamesmead_org('/blog/')
+    assert_redirects blog_floehopper_org('/articles/page/2'), jamesmead_org('/blog/')
+  end
+  
+  def test_legacy_articles_with_tags
+    assert_redirects blog_floehopper_org('/articles/tag/mocha'), jamesmead_org('/tags')
+    assert_redirects blog_floehopper_org('/articles/tag/mocha/page/1'), jamesmead_org('/tags')
+    assert_redirects blog_floehopper_org('/articles/tag/mocha/page/2'), jamesmead_org('/tags')
   end
 
+  def test_legacy_pages
+    assert_redirects blog_floehopper_org('/pages/biography'), jamesmead_org('/pages/biography')
+    assert_redirects blog_floehopper_org('/pages/gner-complaint'), jamesmead_org('/pages/gner-complaint')
+  end
+  
+  def test_legacy_textile_reference
+    assert_redirects blog_floehopper_org('/articles/markup_help/5'), 'http://redcloth.org/hobix.com/textile/'
+  end
+  
 end
