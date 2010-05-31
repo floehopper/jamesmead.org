@@ -29,7 +29,6 @@ filter:    erb
     <script type="text/javascript" src="/javascripts/prettify/prettify.js"></script>
     
     <link rel="alternate" type="application/atom+xml" title="Atom" href="<%= Webby.site.feed_url %>" />
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="<%= Webby.site.feed_url %>" />
     
     <link rel="openid.server" href="http://openid.claimid.com/server" />
     <link rel="openid.delegate" href="http://openid.claimid.com/jamesmead" />
