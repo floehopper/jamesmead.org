@@ -23,7 +23,7 @@ filter:    erb
     
     <link rel="shortcut icon" href="favicon.gif" />
     
-    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.8.0r4/build/reset-fonts-grids/reset-fonts-grids.css&2.8.0r4/build/base/base-min.css" />
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.8.0r4/build/reset-fonts-grids/reset-fonts-grids.css&amp;2.8.0r4/build/base/base-min.css" />
     <link rel="stylesheet" type="text/css" href="/style/site.css" />
     <link rel="stylesheet" href="/style/prettify/prettify.css" type="text/css" />
     <script type="text/javascript" src="/javascripts/prettify/prettify.js"></script>
@@ -36,14 +36,14 @@ filter:    erb
     <%- pages = articles(:reverse => false) -%>
     <%- if index = pages.index(@page) -%>
       <%- if (index > 0) && (prev_page = pages[index - 1]) -%>
-    <%= link_to nil, nil, :attrs => { :rel => "prev", :href => friendly_url(prev_page) } %>
+    <link rel="prev" href="<%= friendly_url(prev_page) %>" />
       <%- end -%>
       <%- if next_page = pages[index + 1] -%>
-    <%= link_to nil, nil, :attrs => { :rel => "next", :href => friendly_url(next_page) } %>
+    <link rel="next" href="<%= friendly_url(next_page) %>" />
       <%- end -%>
-    <%= link_to nil, nil, :attrs => { :rel => "first", :href => friendly_url(pages.first) } %>
-    <%= link_to nil, nil, :attrs => { :rel => "last", :href => friendly_url(pages.last) } %>
-    <%= link_to nil, nil, :attrs => { :rel => "index", :href => "/blog" } %>
+    <link rel="first" href="<%= friendly_url(pages.first) %>" />
+    <link rel="last" href="<%= friendly_url(pages.last) %>" />
+    <link rel="index" href="/blog" />
     <%- end -%>
     
   </head>
@@ -68,10 +68,10 @@ filter:    erb
           <% pages = articles(:reverse => false) %>
           <% if index = pages.index(@page) %>
             <% if (index > 0) && (prev_page = pages[index - 1]) %>
-              <%= link_to "< #{prev_page.title}", friendly_url(prev_page), :attrs => { :class => "previous" } %>
+              <%= link_to "&lt; #{prev_page.title}", friendly_url(prev_page), :attrs => { :class => "previous" } %>
             <% end %>
             <% if next_page = pages[index + 1] %>
-              <%= link_to "#{next_page.title} >", friendly_url(next_page), :attrs => { :class => "next" } %>
+              <%= link_to "#{next_page.title} &gt;", friendly_url(next_page), :attrs => { :class => "next" } %>
             <% end %>
           <% end %>
         </div>
