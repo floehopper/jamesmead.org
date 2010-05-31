@@ -6,4 +6,4 @@ filter:
   - erb
   - textile
 ---
-It used to be possible to view all posts from a certain day, month and year. Like "Chris Roos":http://chrisroos.co.uk/archives, I don't think there's any value in these pages so I've got rid of them. If you really want to find everything I posted on a given day, month or year then you can use "Google":http://www.google.com/ with the @site@ modifier e.g. searching for "site:jamesmead.org/articles/2009-12":http://www.google.com/search?q=site%3Ajamesmead.org%2Farticles%2F2009-12 would give you all posts from December 2009.
+It used to be possible to view all blog articles from a certain day, month and year. Like "Chris Roos":http://chrisroos.co.uk/archives, I don't think there's any value in these pages so I've got rid of them. If you really want to find everything I posted on a given day, month or year then you can use "Google":http://www.google.com/ with the @site@ modifier e.g. searching for "site:jamesmead.org/blog/2009-12":http://www.google.com/search?q=site%3Ajamesmead.org%2Fblog%2F2009-12 would give you all posts from December 2009.
