@@ -15,6 +15,8 @@ module TestHelper
     end
     assert response.is_a?(Net::HTTPSuccess), "Request to #{url} failed with #{response}"
     assert_equal(target_url, url, "Request to #{origin_url}")
+  rescue SocketError => e
+    raise Test::Unit::AssertionFailedError.new("Request to #{url} failed with exception #{e}")
   end
   
   def get_response(url)
@@ -37,17 +39,20 @@ module TestHelper
     "http://www.floehopper.#{tld}#{path}"
   end
   
-  # keep .org TLD as this sub-domain points directly at feedburner domain
   def feeds_floehopper_org(path)
     "http://feeds.floehopper.#{tld}#{path}"
+  end
+  
+  def feeds_jamesmead_org(path)
+    "http://feeds.jamesmead.#{tld}#{path}"
   end
   
   def feeds_feedburner_com(path)
     "http://feeds.feedburner.com#{path}"
   end
   
-  def feedburner_url
-    feeds_feedburner_com('/floehopper-blog')
+  def feed_url
+    feeds_jamesmead_org('/floehopper-blog')
   end
   
   def tld

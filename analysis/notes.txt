@@ -1,0 +1,28 @@
+Existing setup :-
+
+* alternate links
+blog.floehopper.org/xml/atom/feed.xml --> feeds.floehopper.org/floehopper-blog
+blog.floehopper.org/xml/rss20/feed.xml --> feeds.floehopper.org/floehopper-blog
+
+* articles link at top of sidebar
+blog.floehopper.org/xml/atom10/feed.xml --> feeds.floehopper.org/floehopper-blog
+
+* feedburner link at bottom of sidebar
+feeds.feedburner.com/floehopper-blog
+
+feeds.floehopper.org/floehopper-blog --> CNAME (2s1pio.feedproxy.ghs.google.com.) --> feeds.feedburner.com/floehopper-blog
+
+
+Planned setup :-
+
+* Public feed url (to be used in alternate links, normal links & feedburner badge, and in redirects from legacy feed URLs)
+feeds.jamesmead.org/floehopper-blog
+[this is now setup using MyBrand under My Account in Feedburner]
+
+* Points via CNAME to
+feeds.feedburner.com/floehopper-blog
+[this is now setup using Slicehost DNS management interface]
+
+* Sourced from 
+jamesmead.org/blog/index.xml
+[the Feedburner feed source needs to be changed to this after the new feed is available and before the old Rails app feed is taken down]

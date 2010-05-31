@@ -32,13 +32,17 @@ class JamesmeadOrgRedirectsTest < Test::Unit::TestCase
     assert_success jamesmead_org('/sitemap.xml')
   end
   
+  def test_pages
+    assert_success jamesmead_org('/pages/biography')
+    assert_success jamesmead_org('/pages/gner-complaint')
+  end
+  
   def test_feedburner_source
     assert_success jamesmead_org('/blog/index.xml')
   end
   
-  def test_pages
-    assert_success jamesmead_org('/pages/biography')
-    assert_success jamesmead_org('/pages/gner-complaint')
+  def test_feedburner_cname
+    assert_success feeds_jamesmead_org('/floehopper-blog')
   end
   
 end

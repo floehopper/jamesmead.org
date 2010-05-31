@@ -5,9 +5,11 @@ class FloehopperOrgRedirectsTest < Test::Unit::TestCase
   
   include TestHelper
   
-  def test_legacy_feedburner_source
-    assert_redirects blog_floehopper_org('/feedburner.xml'), jamesmead_org('/blog/index.xml')
-  end
+  # I don't think this is needed for now - we can just point feedburner at the new source
+  # as long as this source url has never been used externally and I think it hasn't
+  # def test_legacy_feedburner_source
+  #   assert_redirects blog_floehopper_org('/feedburner.xml'), jamesmead_org('/blog/index.xml')
+  # end
   
   def test_legacy_domain
     assert_redirects floehopper_org('/'), jamesmead_org('/')
@@ -25,10 +27,10 @@ class FloehopperOrgRedirectsTest < Test::Unit::TestCase
   end
   
   def test_legacy_feeds
-    assert_redirects blog_floehopper_org('/xml/atom/feed.xml'), feedburner_url
-    assert_redirects blog_floehopper_org('/xml/atom10/feed.xml'), feedburner_url
-    assert_redirects blog_floehopper_org('/xml/rss/feed.xml'), feedburner_url
-    assert_redirects blog_floehopper_org('/xml/rss20/feed.xml'), feedburner_url
+    assert_redirects blog_floehopper_org('/xml/atom/feed.xml'), feed_url
+    assert_redirects blog_floehopper_org('/xml/atom10/feed.xml'), feed_url
+    assert_redirects blog_floehopper_org('/xml/rss/feed.xml'), feed_url
+    assert_redirects blog_floehopper_org('/xml/rss20/feed.xml'), feed_url
   end
   
   def test_legacy_daily_archives
