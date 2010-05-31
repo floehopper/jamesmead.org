@@ -8,7 +8,7 @@ filter:
 ---
 * "Ruby":http://www.ruby-lang.org/
 * "Webby":http://webby.rubyforge.org/
-* "Typogridphy":http://csswizardry.com/typogridphy/
+* "YUI":http://developer.yahoo.com/yui/
 * "PrettyPrint":http://code.google.com/p/prettyprint/
 * "Git":http://git-scm.com/
 * "Rsync":http://samba.anu.edu.au/rsync/
