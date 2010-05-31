@@ -87,6 +87,5 @@ filter:    erb
         <a href="/links" title="Links">Links</a>
       </div>
     </div>
-    <%= render :partial => '/analytics' %>
   </body>
 </html>
