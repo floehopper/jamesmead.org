@@ -34,27 +34,27 @@ class FloehopperOrgRedirectsTest < Test::Unit::TestCase
   end
   
   def test_legacy_daily_archives
-    assert_redirects blog_floehopper_org('/articles/2009/11/02'), jamesmead_org('/archives')
-    assert_redirects blog_floehopper_org('/articles/2009/11/02/'), jamesmead_org('/archives')
-    assert_redirects blog_floehopper_org('/articles/2009/11/02/page/1'), jamesmead_org('/archives')
-    assert_redirects blog_floehopper_org('/articles/2009/11/2'), jamesmead_org('/archives')
-    assert_redirects blog_floehopper_org('/articles/2009/11/2/'), jamesmead_org('/archives')
-    assert_redirects blog_floehopper_org('/articles/2009/11/2/page/1'), jamesmead_org('/archives')
+    assert_redirects blog_floehopper_org('/articles/2009/11/02'), jamesmead_org('/legacy/archives')
+    assert_redirects blog_floehopper_org('/articles/2009/11/02/'), jamesmead_org('/legacy/archives')
+    assert_redirects blog_floehopper_org('/articles/2009/11/02/page/1'), jamesmead_org('/legacy/archives')
+    assert_redirects blog_floehopper_org('/articles/2009/11/2'), jamesmead_org('/legacy/archives')
+    assert_redirects blog_floehopper_org('/articles/2009/11/2/'), jamesmead_org('/legacy/archives')
+    assert_redirects blog_floehopper_org('/articles/2009/11/2/page/1'), jamesmead_org('/legacy/archives')
   end
   
   def test_legacy_monthly_archives
-    assert_redirects blog_floehopper_org('/articles/2009/11'), jamesmead_org('/archives')
-    assert_redirects blog_floehopper_org('/articles/2009/11/'), jamesmead_org('/archives')
-    assert_redirects blog_floehopper_org('/articles/2009/11/page/1'), jamesmead_org('/archives')
-    assert_redirects blog_floehopper_org('/articles/2009/3'), jamesmead_org('/archives')
-    assert_redirects blog_floehopper_org('/articles/2009/3/'), jamesmead_org('/archives')
-    assert_redirects blog_floehopper_org('/articles/2009/3/page/1'), jamesmead_org('/archives')
+    assert_redirects blog_floehopper_org('/articles/2009/11'), jamesmead_org('/legacy/archives')
+    assert_redirects blog_floehopper_org('/articles/2009/11/'), jamesmead_org('/legacy/archives')
+    assert_redirects blog_floehopper_org('/articles/2009/11/page/1'), jamesmead_org('/legacy/archives')
+    assert_redirects blog_floehopper_org('/articles/2009/3'), jamesmead_org('/legacy/archives')
+    assert_redirects blog_floehopper_org('/articles/2009/3/'), jamesmead_org('/legacy/archives')
+    assert_redirects blog_floehopper_org('/articles/2009/3/page/1'), jamesmead_org('/legacy/archives')
   end
   
   def test_legacy_yearly_archives
-    assert_redirects blog_floehopper_org('/articles/2009'), jamesmead_org('/archives')
-    assert_redirects blog_floehopper_org('/articles/2009/'), jamesmead_org('/archives')
-    assert_redirects blog_floehopper_org('/articles/2009/page/1'), jamesmead_org('/archives')
+    assert_redirects blog_floehopper_org('/articles/2009'), jamesmead_org('/legacy/archives')
+    assert_redirects blog_floehopper_org('/articles/2009/'), jamesmead_org('/legacy/archives')
+    assert_redirects blog_floehopper_org('/articles/2009/page/1'), jamesmead_org('/legacy/archives')
   end
   
   def test_legacy_articles_index
@@ -65,11 +65,11 @@ class FloehopperOrgRedirectsTest < Test::Unit::TestCase
   end
   
   def test_legacy_articles_with_tags
-    assert_redirects blog_floehopper_org('/articles/tag'), jamesmead_org('/tags')
-    assert_redirects blog_floehopper_org('/articles/tag/'), jamesmead_org('/tags')
-    assert_redirects blog_floehopper_org('/articles/tag/mocha'), jamesmead_org('/tags')
-    assert_redirects blog_floehopper_org('/articles/tag/mocha/page/1'), jamesmead_org('/tags')
-    assert_redirects blog_floehopper_org('/articles/tag/mocha/page/2'), jamesmead_org('/tags')
+    assert_redirects blog_floehopper_org('/articles/tag'), jamesmead_org('/legacy/tags')
+    assert_redirects blog_floehopper_org('/articles/tag/'), jamesmead_org('/legacy/tags')
+    assert_redirects blog_floehopper_org('/articles/tag/mocha'), jamesmead_org('/legacy/tags')
+    assert_redirects blog_floehopper_org('/articles/tag/mocha/page/1'), jamesmead_org('/legacy/tags')
+    assert_redirects blog_floehopper_org('/articles/tag/mocha/page/2'), jamesmead_org('/legacy/tags')
   end
 
   def test_legacy_pages
@@ -78,11 +78,11 @@ class FloehopperOrgRedirectsTest < Test::Unit::TestCase
   end
   
   def test_legacy_categories
-    assert_redirects blog_floehopper_org('/articles/category'), jamesmead_org('/categories')
-    assert_redirects blog_floehopper_org('/articles/category/'), jamesmead_org('/categories')
-    assert_redirects blog_floehopper_org('/articles/category/mocha_release'), jamesmead_org('/categories')
-    assert_redirects blog_floehopper_org('/articles/category/mocha_release/page/1'), jamesmead_org('/categories')
-    assert_redirects blog_floehopper_org('/articles/category/mocha_release/page/2'), jamesmead_org('/categories')
+    assert_redirects blog_floehopper_org('/articles/category'), jamesmead_org('/legacy/categories')
+    assert_redirects blog_floehopper_org('/articles/category/'), jamesmead_org('/legacy/categories')
+    assert_redirects blog_floehopper_org('/articles/category/mocha_release'), jamesmead_org('/legacy/categories')
+    assert_redirects blog_floehopper_org('/articles/category/mocha_release/page/1'), jamesmead_org('/legacy/categories')
+    assert_redirects blog_floehopper_org('/articles/category/mocha_release/page/2'), jamesmead_org('/legacy/categories')
   end
   
   def test_legacy_textile_reference
