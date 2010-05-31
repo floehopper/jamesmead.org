@@ -45,4 +45,8 @@ class JamesmeadOrgRedirectsTest < Test::Unit::TestCase
     assert_success feeds_jamesmead_org('/floehopper-blog')
   end
   
+  def test_subdomains
+    assert_redirects www_jamesmead_org('/'), jamesmead_org('/')
+  end
+  
 end

@@ -27,6 +27,10 @@ module TestHelper
     "http://jamesmead.#{tld}#{path}"
   end
   
+  def www_jamesmead_org(path)
+    "http://www.jamesmead.#{tld}#{path}"
+  end
+  
   def floehopper_org(path)
     "http://floehopper.#{tld}#{path}"
   end
