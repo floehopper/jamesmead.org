@@ -13,3 +13,5 @@
 * Fill in "change of address" form for blog.floehopper.org on Google Webmaster Tools
   * See http://www.google.com/support/webmasters/bin/answer.py?hl=en&answer=83106
   * Note: If you've specified a preferred domain for your original site, you should also set it for your new site.
+* Add a new profile for jamesmead.org on Google Analytics
+  * Add analytics partial with correct account number
