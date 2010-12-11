@@ -1,6 +1,6 @@
 SITE.host = "jamesmead.org"
 SITE.user = 'jamesmead'
-SITE.remote_dir = '/var/www/jamesmead.org/'
+SITE.remote_dir = '/var/apps/jamesmead.org/'
 SITE.feed_url = 'http://feeds.jamesmead.org/floehopper-blog'
 
 task :default => :build
