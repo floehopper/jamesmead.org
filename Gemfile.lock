@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/floehopper/floehopper-deploy.git
-  revision: 8ce9932c473506a6ea96d1b1c2b6d6f2ccba55d2
+  revision: cb343fd43cc0c3e94a32ec43aa7a9c986a911bb2
   specs:
     floehopper-deploy (0.1.0)
       freerange-deploy
