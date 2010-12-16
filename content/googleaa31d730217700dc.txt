@@ -1,1 +1,5 @@
+---
+extension: html
+layout: nil
+---
 google-site-verification: googleaa31d730217700dc.html
