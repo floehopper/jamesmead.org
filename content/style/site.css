@@ -63,3 +63,7 @@ h3 {
 pre {
   background-color: #EEE;
 }
+
+blockquote {
+  font-style: italic;
+}
