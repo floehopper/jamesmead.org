@@ -6,4 +6,4 @@ filter:
   - erb
   - textile
 ---
-It used to be possible to search blog articles for keywords. This is no longer possible. You can use "Google":http://www.google.com/ with the @site@ modifier e.g. searching for "site:jamesmead.org/blog/ podcast":http://www.google.com/search?q=site%3Ajamesmead.org%2Fblog%2F+podcast would give you all blog articles containing the word "podcast".
+It used to be possible to search the blog articles for keywords. This is no longer possible. You can use "Google":http://www.google.com/ with the @site@ modifier e.g. searching for "site:jamesmead.org/blog/ podcast":http://www.google.com/search?q=site%3Ajamesmead.org%2Fblog%2F+podcast would give you all blog articles containing the word "podcast".
