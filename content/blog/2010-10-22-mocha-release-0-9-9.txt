@@ -1,0 +1,31 @@
+--- 
+permalink: mocha-release-0-9-9
+updated_at: 2010-10-22 14:49:23 +00:00
+guid: 87f22b31-ba7b-471c-a090-1cafa4f25dcd
+title: Mocha Release 0.9.9
+id: 406
+filter: 
+- erb
+- textile
+categories: 
+- mocha_release
+created_at: 2010-10-22 14:35:39 +00:00
+keywords: mocha release mock object ruby testing
+---
+h2. Release Notes
+
+* Avoid loading bits of the "test-unit":http://test-unit.rubyforge.org/ gem by accident. This is an attempt at a fix for the problem that "James Adam":http://interblah.net/ "reported":http://floehopper.lighthouseapp.com/projects/22289-mocha/tickets/50#ticket-50-13. By using @load@ instead of @require@ to detect the version of @Test::Unit@, we can avoid @rubygems@ trying to load bits of the "test-unit":http://test-unit.rubyforge.org/ gem when it's not wanted.
+* Fix exception when running @rake@ without "test-unit":http://test-unit.rubyforge.org/ gem. When "test-unit":http://test-unit.rubyforge.org/ gem >=v2.0.0 was installed but the @use_test_unit_gem@ @MOCHA_OPTIONS@ was not specified, a "comparison of @Fixnum@ with @Hash@ failed" exception was being raised when running the performance tests. This was because bits of the "test-unit":http://test-unit.rubyforge.org/ gem were being loaded accidentally and a Hash was being incorrectly supplied to the @TestRunner.run@ method.
+* Explicitly require @rubygems@ for running tests via @rake@ using "test-unit":http://test-unit.rubyforge.org/ gem.
+* Handle newer versions of "test-unit":http://test-unit.rubyforge.org/ gem (v2.0.2 to v2.0.9)
+* Handle newer versions of "minitest":https://rubygems.org/gems/minitest gem (v1.4.0 to v1.6.0)
+* Added warnings about monkey-patching "test-unit":http://test-unit.rubyforge.org/ and "minitest":https://rubygems.org/gems/minitest to aid debugging. These are enabled by including @debug@ in the @MOCHA_OPTIONS@ environment variable. This is now a comma-separated list, so that we can specify multiple options e.g. @MOCHA_OPTIONS=debug,use_test_unit_gem@
+* "Eloy Duran":http://superalloy.nl/ made the unit tests run on 1.9.2dev r25249 and also improved some "MiniTest":http://blog.zenspider.com/minitest/ @TestResult@ code I'd written and got the acceptance tests running on Ruby 1.9 HEAD. There are still 4 failures because for some reason the backtrace line numbers are off by one. And the minitest_test test case does not run when the whole suite is run with "MiniTest":http://blog.zenspider.com/minitest/. These issues still need investigation.
+* Fixed some acceptance tests to run in Ruby 1.9.2 - it's no longer possible to subvert the protection of a method by calling it via "Object#send":http://ruby-doc.org/ruby-1.9/classes/Object.html#M000204.
+* Fixed @test:performance@ rake task so it runs in Ruby 1.9.2.
+* Fix test incorrectly failing under "Rubinius":http://rubini.us/ v1.0. This test imposed too many constraints. It appears that "Object#inspect":http://ruby-doc.org/core-1.8.7/classes/Object.html#M000630 legitimately calls "Object#object_id":http://ruby-doc.org/core-1.8.7/classes/Object.html#M000653 in Rubinius. But we're only interested in what @id@ methods @Mocha::ObjectMethods#mocha_inspect@ calls. By stubbing @Object#inspect@ we can relax the constraints imposed by the test.
+* "Luke Redpath":http://lukeredpath.co.uk/ added new shorthand "any_of":http://mocha.rubyforge.org/classes/Mocha/ParameterMatchers.html#M000010 and "all_of":http://mocha.rubyforge.org/classes/Mocha/ParameterMatchers.html#M000009 composite parameter matchers using "&":http://mocha.rubyforge.org/classes/Mocha/ParameterMatchers/Base.html#M000027 and "|":http://mocha.rubyforge.org/classes/Mocha/ParameterMatchers/Base.html#M000028. This provides an alternative syntax for expecting any or all matchers to pass, e.g. foo.expects(:bar).with(equals(1) | equals(2)).
+* Improved documentation for "Expectation#raises":http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000048. A number of people have suggested an extension to the API to cope with custom exceptions that have extra constructor parameters. However, since the arguments supplied to "Expectation#raises":http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000048 are just passed on to "Kernel#raise":http://ruby-doc.org/core-1.8.7/classes/Kernel.html#M001062, it's possible to pass in an instance of an exception. Thus no change to the API is required, but it does seem worthwhile pointing this out in the docs.
+* Corrected RDoc example for Expectation#never thanks to "Red David":http://redwriteshere.com/.
+* Improved RDoc including a change suggested by "Rohit Arondekar":http://www.rohitarondekar.com/.
+* Updated gemspec as requested by "Sam Woodard":http://github.com/shwoodard.

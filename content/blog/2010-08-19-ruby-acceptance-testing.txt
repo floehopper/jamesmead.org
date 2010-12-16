@@ -1,0 +1,101 @@
+--- 
+permalink: ruby-acceptance-testing
+updated_at: 2010-08-24 13:03:01 +00:00
+guid: 865a65c7-638c-4751-aea6-f2b2e5e9d554
+title: Ruby Acceptance Testing
+description: Riposte to aspects of "You're Cuking it Wrong" article by Jonas Nicklas.
+id: 399
+filter: 
+- erb
+- textile
+categories: []
+
+created_at: 2010-08-19 21:31:24 +00:00
+keywords: cucumber gherkin acceptance testing natural language abstraction readability
+---
+In his recent article "You're Cuking It Wrong":http://elabs.se/blog/15-you-re-cuking-it-wrong, Jonas Nicklas compares the following scenario which was submitted in a "Cucumber":http://cukes.info/ issue :-
+
+<typo:code>
+Scenario: Adding a subpage
+  Given I am logged in
+  Given a microsite with a Home page
+  When I click the Add Subpage button
+  And I fill in "Gallery" for "Title" within "#document_form_container"
+  And I press "Ok" within ".ui-dialog-buttonpane"
+  Then I should see /Gallery/ within "#documents"
+</typo:code>
+
+With an improved version which he has written :-
+
+<typo:code>
+Scenario: Adding a subpage
+  Given I am logged in
+  Given a microsite with a home page
+  When I press "Add subpage"
+  And I fill in "Title" with "Gallery"
+  And I press "Ok"
+  Then I should see a document called "Gallery"
+</typo:code>
+
+h2. Levels of Abstraction
+
+Jonas says :-
+
+bq. there's one crucial difference: the first feature is code, the second isn't
+
+Although I see what Jonas is getting at, neither of them are actually Ruby code - both are written in Cucumber's "Gherkin":http://wiki.github.com/aslakhellesoy/cucumber/gherkin DSL. The key difference is really the level of abstraction - the first version has a test that is less abstracted from the implementation than the second version. As Jonas correctly points out, the test in the second version is consequently more readable and is less coupled to the underlying implementation.
+
+h2. Readability
+
+Jonas also says :-
+
+bq. The argument against cucumber that's often presented is that as a programmer, plain text is unnecessary, because we can all read code.
+
+However, it's a mistake to think that making a test readable _necessarily_ means that it has to be written in a "natural language":http://en.wikipedia.org/wiki/Natural_language. We could equally well write something like this :-
+
+<typo:code lang="ruby">
+scenario "adding a subpage" {
+  given {
+    i_am_logged_in
+    a_microsite_with_a_home_page
+  }
+  when {
+    i_press "Add subpage"
+    i_fill_in "Title",:with=>"Gallery"
+    i_press "Ok"
+  }
+  then {
+    i_should_see_a_document_called "Gallery"
+  }
+}
+</typo:code>
+
+While I would agree that my version isn't as pretty as Jonas' version, I'd suggest it's almost as _readable_. The difference being this is all valid Ruby code. I once saw someone ("Nat Pryce":http://www.natpryce.com/ or "Steve Freeman":http://www.m3p.co.uk/, I think) do a neat trick where they changed the syntax highlighting in an editor to make some characters invisible and as a result made the code more readable. We could probably do something similar to make braces, underscores, etc invisible, and end up with something as good as Jonas' version :-
+
+<typo:code>
+scenario "adding a subpage"
+  given
+    i am logged in
+    a microsite with a home page
+  
+  when 
+    i press "Add subpage"
+    i fill in "Title"  with  "Gallery"
+    i press "Ok"
+  
+  then 
+    i should see a document called "Gallery"
+  
+</typo:code>
+
+h2. Overhead
+
+It seems obvious to me that Cucumber adds an overhead in writing tests. It requires me to use regular expressions to convert natural language into code. While I recognise that the overhead is often small, it does still exist and I've definitely spent time debugging this aspect of tests. Given that I think it's possible to write nicely abstracted readable tests in Ruby, it's not obvious to me that the overhead of using Cucumber is worthwhile.
+
+I'm going to try and find the time to look at frameworks like "Coulda":http://github.com/elight/coulda and "Steak":http://github.com/cavalle/steak which seem to be more in line with my favoured approach.
+
+h3. Update
+
+I thought it might be useful to include a quote from and a link to James Shore's article on "The Problems of Acceptance Testing":http://jamesshore.com/Blog/The-Problems-With-Acceptance-Testing.html
+
+bq. My experience with Fit and other agile acceptance testing tools is that they cost more than they're worth. There's a lot of value in getting concrete examples from real customers and business experts; not so much value in using "natural language" tools like Fit and similar.
