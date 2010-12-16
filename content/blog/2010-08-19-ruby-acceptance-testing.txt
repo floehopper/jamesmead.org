@@ -15,27 +15,23 @@ keywords: cucumber gherkin acceptance testing natural language abstraction reada
 ---
 In his recent article "You're Cuking It Wrong":http://elabs.se/blog/15-you-re-cuking-it-wrong, Jonas Nicklas compares the following scenario which was submitted in a "Cucumber":http://cukes.info/ issue :-
 
-<typo:code>
-Scenario: Adding a subpage
+bc(prettyprint)(lang-txt).. Scenario: Adding a subpage
   Given I am logged in
   Given a microsite with a Home page
   When I click the Add Subpage button
   And I fill in "Gallery" for "Title" within "#document_form_container"
   And I press "Ok" within ".ui-dialog-buttonpane"
   Then I should see /Gallery/ within "#documents"
-</typo:code>
 
-With an improved version which he has written :-
+p. With an improved version which he has written :-
 
-<typo:code>
-Scenario: Adding a subpage
+bc(prettyprint)(lang-txt).. Scenario: Adding a subpage
   Given I am logged in
   Given a microsite with a home page
   When I press "Add subpage"
   And I fill in "Title" with "Gallery"
   And I press "Ok"
   Then I should see a document called "Gallery"
-</typo:code>
 
 h2. Levels of Abstraction
 
@@ -53,8 +49,7 @@ bq. The argument against cucumber that's often presented is that as a programmer
 
 However, it's a mistake to think that making a test readable _necessarily_ means that it has to be written in a "natural language":http://en.wikipedia.org/wiki/Natural_language. We could equally well write something like this :-
 
-<typo:code lang="ruby">
-scenario "adding a subpage" {
+bc(prettyprint)(lang-txt).. scenario "adding a subpage" {
   given {
     i_am_logged_in
     a_microsite_with_a_home_page
@@ -68,12 +63,10 @@ scenario "adding a subpage" {
     i_should_see_a_document_called "Gallery"
   }
 }
-</typo:code>
 
-While I would agree that my version isn't as pretty as Jonas' version, I'd suggest it's almost as _readable_. The difference being this is all valid Ruby code. I once saw someone ("Nat Pryce":http://www.natpryce.com/ or "Steve Freeman":http://www.m3p.co.uk/, I think) do a neat trick where they changed the syntax highlighting in an editor to make some characters invisible and as a result made the code more readable. We could probably do something similar to make braces, underscores, etc invisible, and end up with something as good as Jonas' version :-
+p. While I would agree that my version isn't as pretty as Jonas' version, I'd suggest it's almost as _readable_. The difference being this is all valid Ruby code. I once saw someone ("Nat Pryce":http://www.natpryce.com/ or "Steve Freeman":http://www.m3p.co.uk/, I think) do a neat trick where they changed the syntax highlighting in an editor to make some characters invisible and as a result made the code more readable. We could probably do something similar to make braces, underscores, etc invisible, and end up with something as good as Jonas' version :-
 
-<typo:code>
-scenario "adding a subpage"
+bc(prettyprint)(lang-txt).. scenario "adding a subpage"
   given
     i am logged in
     a microsite with a home page
@@ -85,8 +78,6 @@ scenario "adding a subpage"
   
   then 
     i should see a document called "Gallery"
-  
-</typo:code>
 
 h2. Overhead
 
@@ -96,6 +87,6 @@ I'm going to try and find the time to look at frameworks like "Coulda":http://gi
 
 h3. Update
 
-I thought it might be useful to include a quote from and a link to James Shore's article on "The Problems of Acceptance Testing":http://jamesshore.com/Blog/The-Problems-With-Acceptance-Testing.html
+I thought it might be useful to include a quote from and a link to James Shore's article on "The Problems of Acceptance Testing":http://jamesshore.com/Blog/The-Problems-With-Acceptance-Testing.html :-
 
 bq. My experience with Fit and other agile acceptance testing tools is that they cost more than they're worth. There's a lot of value in getting concrete examples from real customers and business experts; not so much value in using "natural language" tools like Fit and similar.
