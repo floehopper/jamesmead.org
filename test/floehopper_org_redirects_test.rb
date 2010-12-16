@@ -61,7 +61,7 @@ class FloehopperOrgRedirectsTest < Test::Unit::TestCase
     assert_redirects blog_floehopper_org('/articles'), jamesmead_org('/blog/')
     assert_redirects blog_floehopper_org('/articles/'), jamesmead_org('/blog/')
     assert_redirects blog_floehopper_org('/articles/page/1'), jamesmead_org('/blog/')
-    assert_redirects blog_floehopper_org('/articles/page/2'), jamesmead_org('/blog/')
+    assert_redirects blog_floehopper_org('/articles/page/10'), jamesmead_org('/blog/')
   end
   
   def test_legacy_articles_with_tags
@@ -71,7 +71,11 @@ class FloehopperOrgRedirectsTest < Test::Unit::TestCase
     assert_redirects blog_floehopper_org('/articles/tag/mocha/page/1'), jamesmead_org('/legacy/tags')
     assert_redirects blog_floehopper_org('/articles/tag/mocha/page/2'), jamesmead_org('/legacy/tags')
   end
-
+  
+  def test_legacy_articles_search
+    assert_redirects blog_floehopper_org('/articles/search?q=junit'), jamesmead_org('/legacy/search')
+  end
+  
   def test_legacy_pages
     assert_redirects blog_floehopper_org('/pages/biography'), jamesmead_org('/pages/biography')
     assert_redirects blog_floehopper_org('/pages/gner-complaint'), jamesmead_org('/pages/gner-complaint')
