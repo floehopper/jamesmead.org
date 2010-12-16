@@ -21,7 +21,7 @@ filter:    erb
     <meta name="y_key" content="1e092bd46e8b1f49" />
     <meta name="msvalidate.01" content="1AD1EB83FD984C37BB65640F85B262D3" />
     
-    <link rel="shortcut icon" href="favicon.gif" />
+    <link rel="shortcut icon" href="/images/favicon.gif" />
     
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.8.0r4/build/reset-fonts-grids/reset-fonts-grids.css&amp;2.8.0r4/build/base/base-min.css" />
     <link rel="stylesheet" type="text/css" href="/style/site.css" />
