@@ -46,6 +46,8 @@ filter:    erb
     <link rel="index" href="/blog" />
     <%- end -%>
     
+    <%= render :partial => "/analytics" %>
+    
   </head>
   <body onload="prettyPrint()">
     <div id="doc">
