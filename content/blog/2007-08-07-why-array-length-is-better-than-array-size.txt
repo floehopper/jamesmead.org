@@ -21,8 +21,7 @@ bc(prettyprint)..   [5,6].size # => 2
   [5,6].length # => 2
   1.length # => NoMethodError: undefined method `length' for 1:Fixnum
 
-
-*Update:* Josh Susser has posted a "useful related article":http://blog.hasmanythrough.com/2008/2/27/count-length-size about the use of... 
+p. *Update:* Josh Susser has posted a "useful related article":http://blog.hasmanythrough.com/2008/2/27/count-length-size about the use of... 
 
 * "ActiveRecord::Associations::HasManyAssociation#count":http://dev.rubyonrails.org/browser/tags/rel_2-0-2/activerecord/lib/active_record/associations/has_many_association.rb?rev=8940#L18
 * "ActiveRecord::Associations::AssocationCollection#size":http://dev.rubyonrails.org/browser/tags/rel_2-0-2/activerecord/lib/active_record/associations/association_collection.rb?rev=8940#L103
