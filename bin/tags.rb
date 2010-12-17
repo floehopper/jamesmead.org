@@ -1,4 +1,12 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'bundler/setup'
+
 require 'webby'
+require 'delicious-api-via-oauth'
+require 'yaml'
+
+# See http://jamesmead.org/blog/2010-01-16-ruby-scripting-in-the-webby-environment
 
 # load Sitefile
 main = Webby::Apps::Main.new
@@ -15,19 +23,18 @@ builder = Webby::Builder.new
 builder.load_files
 @pages = Webby::Resources.pages
 
-require 'delicious_oauth'
-access_token = DeliciousOAuth.access_token
+# See http://jamesmead.org/blog/2010-01-14-ruby-wrapper-for-the-delicious-v2-api-using-the-oauth-gem
+
+credentials = YAML.load_file('yahoo-credentials.yml')
+api = Delicious::API.new(credentials[:api_key], credentials[:shared_secret])
 INTERVAL_TO_AVOID_THROTTLING = 1
 
 articles.each do |article|
-  params = {
+  api.posts_add!(
     :url => absolute_url(friendly_url(article)),
-    :title => article['title'] || '',
-    :notes => article['description'] || '',
-    :tags => (article['keywords'] || '').split(' ') + %w(jamesmead.org)
-  }
-  query = params.map { |k, v| "#{CGI.escape(k)}=#{CGI.escape(v)}" }.join('&')
-  url = "https://api.del.icio.us/v1/posts/add?" + query
-  access_token.get(url)
+    :description => article['title'] || '',
+    :extended => article['description'] || '',
+    :tags => [(article['keywords'] || ''), 'jamesmead.org', article.categories.map { |c| "category:#{c}"}.join(' ')].join(' ')
+  )
   sleep INTERVAL_TO_AVOID_THROTTLING
 end

@@ -7,3 +7,6 @@ gem 'floehopper-deploy', :git => "git://github.com/floehopper/floehopper-deploy.
 # gem 'freerange-deploy', :path => "~/Code/deploy"
 # gem 'freerange-puppet', :path => "~/Code/freerange-puppet"
 # gem 'floehopper-deploy', :path => "~/Code/floehopper-deploy"
+
+gem 'webby'
+gem 'delicious-api-via-oauth', :git => "git://github.com/floehopper/delicious-api-via-oauth.git"
