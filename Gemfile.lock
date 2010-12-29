@@ -7,9 +7,9 @@ GIT
 
 GIT
   remote: git://github.com/floehopper/floehopper-deploy.git
-  revision: 470617bea457be2dab57e07a8fb1eba6a6bf95cc
+  revision: c217075e265303f0b74e918977d0e6a71308aa37
   specs:
-    floehopper-deploy (0.1.1)
+    floehopper-deploy (0.1.2)
       freerange-deploy
       freerange-puppet
 
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: git://github.com/freerange/freerange-puppet.git
-  revision: 1793088dd18115bd13f4b390d112ab6293a5c1a1
+  revision: 3bbe029d60f90d45ac4e48f056a8f478d6e7b44d
   specs:
     freerange-puppet (1.1.9)
       capistrano
@@ -72,7 +72,7 @@ GEM
       net-ssh (>= 1.99.1)
     oauth (0.4.4)
     rake (0.8.7)
-    request-log-analyzer (1.9.8)
+    request-log-analyzer (1.9.9)
     right_aws (2.0.0)
       right_http_connection (>= 1.2.1)
     right_http_connection (1.2.4)
