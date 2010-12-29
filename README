@@ -1,0 +1,3 @@
+    cap puppet:bootstrap # only if machine hasn't been bootstrapped before
+    cap puppet:apply
+    webby deploy # rsyncs generated html to server
