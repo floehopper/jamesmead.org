@@ -1,0 +1,19 @@
+--- 
+permalink: mocha-release-0-9-12
+created_at: 2011-02-13 00:26:03 +00:00
+updated_at: 2011-02-13 00:26:03 +00:00
+title: Mocha Release 0.9.12
+description: With all tests passing in Ruby 1.9.2.
+filter: 
+- erb
+- textile
+categories: 
+- mocha_release
+keywords: mocha mock object testing ruby
+---
+h2. Release Notes
+
+* Make Mocha's tests pass under Ruby 1.9.2 i.e. using MiniTest. One of the main issues was that we were not parsing stack traces on MiniTest errors comprehensively enough.
+* Avoid 'circular require considered harmful' warning when running Mocha's tests in Ruby 1.9.2
+* Make performance tests work on Ruby 1.9.2 i.e. using MiniTest.
+* Declare rake as a *development* dependency with newer versions of Rubygems since it's only needed to carry out developer-related tasks.
