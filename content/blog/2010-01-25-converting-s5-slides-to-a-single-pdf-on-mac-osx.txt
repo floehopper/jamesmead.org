@@ -13,7 +13,7 @@ categories: []
 created_at: 2010-01-25 20:33:50 +00:00
 keywords: s5 slide pdf mac osx automator webkit png
 ---
-I used "S5":http://meyerweb.com/eric/tools/s5/ in combination with "Webby":http://webby.rubyforge.org/ for my "Ruby & Cocoa presentation":/presentations/ruby-and-cocoa-ruby-manor-2009-12-14/ at "RubyManor":http://rubymanor.org/harder/. I hate PowerPoint with a passion and haven't done enough presentations to be bothered to learn KeyNote. So I was much happier generating my slides from a plain text file marked up in "Textile":http://redcloth.org/textile.
+I used "S5":http://meyerweb.com/eric/tools/s5/ in combination with "Webby":http://webby.rubyforge.org/ for my "Ruby & Cocoa presentation":/talks/2009-12-14-ruby-and-cocoa-at-ruby-manor/ at "RubyManor":http://rubymanor.org/harder/. I hate PowerPoint with a passion and haven't done enough presentations to be bothered to learn KeyNote. So I was much happier generating my slides from a plain text file marked up in "Textile":http://redcloth.org/textile.
 
 However, like "Paul Battley":http://po-ru.com/diary/how-to-convert-an-s5-presentation-to-images/, I found that S5 doesn't work so well when someone wants to take those slides and put them in a video. Anyway, I've managed to convert my S5 slides into a single PDF using a combination of "@webkit2png@":http://www.paulhammond.org/webkit2png/ and a custom "Automator":http://www.apple.com/macosx/what-is-macosx/apps-and-utilities.html#automator workflow :-
 
