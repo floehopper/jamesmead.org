@@ -1,7 +1,7 @@
 --- 
 permalink: durham-house-for-sale
 created_at: 2011-04-28 09:28:02 +01:00
-updated_at: 2011-04-28 09:28:02 +01:00
+updated_at: 2011-05-14 18:57:02 +01:00
 title: Durham House For Sale
 description: A modern three-storey townhouse in the centre of Durham with views of the Cathedral and Castle.
 filter: 
@@ -18,3 +18,12 @@ We're planning on moving to Oxford this summer and so we're putting our "house i
 We're also interested to hear about people's experience with on-line "low cost" estate agents like "eMoov":http://www.emoov.co.uk/, "House Network":http://www.housenetwork.co.uk/, "HouseWeb":http://www.houseweb.co.uk/, etc.
 
 And if anyone has any ideas for good places to advertise, we're all ears!
+
+h3. Update
+
+We decided to go with "eMoov":http://www.emoov.co.uk/. I'll let you know how we get on.
+
+* "House listed on Rightmove":http://www.rightmove.co.uk/property-for-sale/property-18771435.html
+* "House listed on Globrix":http://www.globrix.com/property-details/32106158-briardene-durham-dh1-3_bed-terraced_house
+* "House listed on Zoopla":http://www.zoopla.co.uk/for-sale/details/14641052
+* "House listed on FinaProperty.com":http://www.findaproperty.com/displayprop.aspx?pid=8844178
