@@ -1,10 +1,10 @@
---- 
+---
 permalink: lunch-stop-on-a-norwegian-ski-tour
 updated_at: 2009-11-26 11:31:45 +00:00
 guid: 20c2051b-7194-4edf-b0e0-d46bca0a99a1
 title: Lunch stop on a Norwegian ski tour
 id: 45
-filter: 
+filter:
 - erb
 - textile
 categories: []
@@ -18,7 +18,7 @@ Just to prove that I can now blog[1] from "Flickr":http://www.flickr.com/ to my 
 
 I was seeing this error in my Typo log...
 
-bc(prettyprint). undefined method `include?' for nil:NilClass
+bc. undefined method `include?' for nil:NilClass
 ....cgi_ext/cgi_methods.rb:49:in `parse_request_parameters'
 
 p. Having found "these":http://www.typosphere.org/trac/ticket/538 "bug reports":http://dev.rubyonrails.org/ticket/5137, I applied "this patch":http://dev.rubyonrails.org/attachment/ticket/4955/rails-parse-request-parameters-with-nil-key.patch and all seems to be well.

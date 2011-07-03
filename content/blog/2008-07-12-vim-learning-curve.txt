@@ -1,10 +1,10 @@
---- 
+---
 permalink: vim-learning-curve
 updated_at: 2008-07-12 23:03:08 +00:00
 guid: c7afcd35-0c86-40a8-88c1-d0485fbc2477
 title: Vim Learning Curve
 id: 333
-filter: 
+filter:
 - erb
 - textile
 categories: []
@@ -22,11 +22,11 @@ h2. svn blame
 
 I've found Tammer Saleh's "key mapping":http://tammersaleh.com/posts/quick-vim-svn-blame-snippet for "svn blame":http://svnbook.red-bean.com/en/1.0/re02.html useful...
 
-bc(prettyprint). vmap gl :<C-U>!svn blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+bc. vmap gl :<C-U>!svn blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 
 I decided to invest a bit of time understanding how it worked and broke it down as follows...
 
-bc(prettyprint).. # key mapping for visual mode
+bc.. # key mapping for visual mode
 vmap gl
 
 # remove all characters between the cursor position and the beginning of the line
@@ -51,7 +51,7 @@ h2. Search & Replace
 
 At the end of last week, "Chris":http://blog.seagul.co.uk & I found out from Ibrahim Ahmed's blog how to "search and replace across multiple files":http://www.ibrahim-ahmed.com/2008/01/find-and-replace-in-multiple-files-in.html...
 
-bc(prettyprint).. # select file on which to operate
+bc.. # select file on which to operate
 :args path/with/wildcards
 
 # find pattern, replace with replacement, and save file
@@ -65,14 +65,14 @@ h2. Test::Unit
 
 One of the things I really want to be able to do, is run Ruby "Test::Unit":http://www.ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html tests and view the output, so I can jump to the line where an assertion failed. I haven't managed to find anything suitable on the web, so here's my first attempt...
 
-bc(prettyprint). function! Ruby_run_tests()
+bc. function! Ruby_run_tests()
   let results = tempname()
   set splitbelow
   silent execute ":! ruby % > " . results . " 2>&1 "
   silent execute ":10 sview " . results
 endfunction
 
-bc(prettyprint). map <silent> <F7> :call Ruby_run_tests()<cr>
+bc. map <silent> <F7> :call Ruby_run_tests()<cr>
 imap <silent> <F7> <ESC><F7>
 
 I'm sure this isn't the best way of doing it, but when you put this in your vimrc file, pressing the @F7@ key runs the current file using Ruby and pipes the results to a temporary file. This temporary file is opened in a read-only window 10 lines high at the bottom of the screen. By moving the cursor onto the relevant line of any stack trace, you can then use "goto file" key sequence @gf@ to goto the failing assertion. Although for some reason this only seems to work the first time round for me.

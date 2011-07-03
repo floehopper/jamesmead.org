@@ -1,11 +1,11 @@
---- 
+---
 permalink: activerecord-model-class-name-clash
 updated_at: 2009-11-02 16:23:13 +00:00
 guid: 241da9d4-d57a-4197-bc68-74dfa03cc09c
 title: ActiveRecord Model Class Name Clash
 description: Validation weirdness with a class called Sync.
 id: 389
-filter: 
+filter:
 - erb
 - textile
 categories: []
@@ -19,6 +19,6 @@ In the end, I narrowed the problem down to the name of the model class which is 
 
 However, I am a bit confused why the original Sync model class definition didn't give a "superclass mismatch" "@TypeError@":http://ruby-doc.org/core/classes/TypeError.html, which is what happens if I do :-
 
-bc(prettyprint). script/runner "class Sync < ActiveRecord::Base; end"
+bc. script/runner "class Sync < ActiveRecord::Base; end"
 
 It must be a load order issue, since if I put the class definition in a file in app/models, I don't see the @TypeError@. It would've saved a lot of time if my @Sync@ model class definition had failed fast in this way. I might see if there's a way to make that happen.

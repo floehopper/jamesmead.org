@@ -1,10 +1,10 @@
---- 
+---
 permalink: test-unit-and-minitest-with-different-ruby-versions
 updated_at: 2009-02-03 10:08:55 +00:00
 guid: 908e5794-c71e-4c1a-9f95-144c20a1f0f0
 title: Test::Unit and MiniTest with different Ruby versions
 id: 362
-filter: 
+filter:
 - erb
 - textile
 categories: []
@@ -18,7 +18,7 @@ In recent weeks, I've been trying to ensure that "Mocha":http://mocha.rubyforge.
 
 I haven't got into the MiniTest::Spec or MiniTest::Mock side of things, nor have I looked at other testing libraries like "RSpec":http://rspec.info/, "Shoulda":http://thoughtbot.com/projects/shoulda/, "Test/Spec":http://test-spec.rubyforge.org/, etc. Please let me know if you see any errors or omissions and I'll update this article.
 
-I've included the information about Ruby 1.9.0 for completeness, but most people will only be interested in "the sections on 1.9.1":#vanilla-ruby1.9.1 which is the "first stable release of Ruby 1.9 series".
+I've included the information about Ruby 1.9.0 for completeness, but most people will only be interested in "the sections on 1.9.1":#vanilla-ruby191 which is the "first stable release of Ruby 1.9 series".
 
 As I mentioned in the "release notes":/blog/2009-02-01-mocha-release-0-9-5, Mocha 0.9.5 should work with Test::Unit or MiniTest in Ruby 1.8.* or Ruby 1.9.1. It does not currently work in Ruby 1.9.0, but I won't be making this a priority unless I have specific requests to do so.
 
@@ -48,7 +48,7 @@ class Ruby18MiniTestGemTest < MiniTest::Unit::TestCase
 
 h2(#minitest-tu-shim). Ruby 1.8 with MiniTest-Test::Unit shim
 
-This takes things a step further by installing a shim gem which makes requiring 'test/unit' behave the same way as it does in a "vanilla Ruby 1.9.1 installation":#vanilla-ruby1.9.1 i.e. Test::Unit becomes a thin wrapper around MiniTest. This means that you don't have to change your tests to inherit from MiniTest::Unit::TestCase in order to use MiniTest. However, you should note that some of Test::Unit's API (e.g. Test::Unit::TestResult) is no longer available. Note that you can reverse the effect of @use_minitest yes@ using @use_minitest no@.
+This takes things a step further by installing a shim gem which makes requiring 'test/unit' behave the same way as it does in a "vanilla Ruby 1.9.1 installation":#vanilla-ruby191 i.e. Test::Unit becomes a thin wrapper around MiniTest. This means that you don't have to change your tests to inherit from MiniTest::Unit::TestCase in order to use MiniTest. However, you should note that some of Test::Unit's API (e.g. Test::Unit::TestResult) is no longer available. Note that you can reverse the effect of @use_minitest yes@ using @use_minitest no@.
 
 bc(prettyprint).. # sudo gem install minitest_tu_shim
 # sudo use_minitest yes
@@ -77,7 +77,7 @@ Mini::Test.autorun
 
 class Ruby190MiniTestTest < Mini::Test::TestCase
 
-h2(#vanilla-ruby1.9.1). Ruby 1.9.1 with Test::Unit standard library
+h2(#vanilla-ruby191). Ruby 1.9.1 with Test::Unit standard library
 
 Test::Unit is just a thin wrapper around MiniTest as described in "Ruby 1.8 with MiniTest-Test::Unit shim":#minitest-tu-shim
 

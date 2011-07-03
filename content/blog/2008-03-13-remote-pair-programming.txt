@@ -1,10 +1,10 @@
---- 
+---
 permalink: remote-pair-programming
 updated_at: 2008-03-13 09:48:22 +00:00
 guid: d04659dc-9918-4e46-8387-35eb394e538f
 title: Remote Pair Programming
 id: 315
-filter: 
+filter:
 - erb
 - textile
 categories: []
@@ -16,14 +16,14 @@ A while ago, "Chris":http://blog.seagul.co.uk/ mentioned that "we've been trying
 
 But something else we've used successfully is multi-user "GNU screen":http://www.gnu.org/software/screen/ sessions. The advantage of this technique is that much less bandwidth is required and the terminal is much more responsive. I thought I'd post the magic incantation we've been using (on "OSX":http://en.wikipedia.org/wiki/Mac_OS_X), in case anyone else finds it useful...
 
-bc(prettyprint). # on the server
+bc. # on the server
 sudo chmod u+s /usr/bin/screen
 
-bc(prettyprint). # first user connects to server over ssh and runs the following
+bc. # first user connects to server over ssh and runs the following
 screen -S <session_name>
 ctrl-A :multiuser on
 ctrl-A :acladd <client_username>
 
-bc(prettyprint). # second user connects to server over ssh and runs the following
+bc. # second user connects to server over ssh and runs the following
 screen -x <server_username>/<session_name>
 

@@ -1,10 +1,10 @@
---- 
+---
 permalink: gmail-notifier-starred-messages
 updated_at: 2006-08-11 11:06:29 +00:00
 guid: a3cfd12a-ef0d-4c1e-b88b-1d1997cdf6b7
 title: GMail Notifier - starred messages
 id: 25
-filter: 
+filter:
 - erb
 - textile
 categories: []
@@ -18,4 +18,4 @@ I'm using the "GMail Notifier":http://mail.google.com/mail/help/notifier/ on OSX
 
 I found "how":http://mail.google.com/support/bin/answer.py?answer=27663&topic=1543 to do this for labelled messages and tried it with the label name set to "starred". Sure enough it works :-)
 
-bc(prettyprint).. defaults write com.google.GmailNotifier Label -string "starred"
+bc.. defaults write com.google.GmailNotifier Label -string "starred"

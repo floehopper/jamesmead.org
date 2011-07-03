@@ -1,10 +1,10 @@
---- 
+---
 permalink: testing-tidbits
 updated_at: 2007-09-25 22:33:35 +00:00
 guid: 61189aa5-4796-4257-9c98-93b989eb2605
 title: Testing tidbits
 id: 291
-filter: 
+filter:
 - erb
 - textile
 categories: []
@@ -28,7 +28,7 @@ I wonder if this idea could be extended by having a kind of "holy hand-grenade":
 
 Secondly, we were running all our tests using the default rake task when we discovered a test that was hanging. The standard rake test task output wasn't very helpful in identifying which test was stuck (just rows of dots)...
 
-bc(prettyprint). Started
+bc. Started
 .....................................................................
 .....................................................................
 .....................................................................
@@ -36,7 +36,7 @@ bc(prettyprint). Started
 
 Interrupting the process and examining the stack trace didn't help either (the relevant stack frames had been collapsed)...
 
-bc(prettyprint). ... 24 levels...
+bc. ... 24 levels...
 from /opt/local/lib/ruby/1.8/test/unit/autorunner.rb:216:in `run'
 from /opt/local/lib/ruby/1.8/test/unit/autorunner.rb:12:in `run'
 from /opt/local/lib/ruby/1.8/test/unit.rb:278
@@ -44,8 +44,7 @@ from /opt/local/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake/...
 
 So we set the output to verbose which outputs the name of each test as it starts. From this we could work out which was the offending test...
 
-bc(prettyprint). TESTOPTS="-v" rake
-
-bc(prettyprint). test_should_do_something(NaughtyTest): .
+bc.. $ TESTOPTS="-v" rake
+test_should_do_something(NaughtyTest): .
 test_should_do_something_else(NaughtyTest): .
 test_should_do_something_ideally_without_hanging(NaughtyTest): .

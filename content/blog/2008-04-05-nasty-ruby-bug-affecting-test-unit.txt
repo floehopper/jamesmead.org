@@ -1,10 +1,10 @@
---- 
+---
 permalink: nasty-ruby-bug-affecting-test-unit
 updated_at: 2008-04-05 00:23:50 +00:00
 guid: 3aa53475-6a90-4cf6-915b-ff8804ff5d61
 title: Nasty Ruby Bug Affecting Test::Unit
 id: 325
-filter: 
+filter:
 - erb
 - textile
 categories: []
@@ -20,13 +20,16 @@ h2(#ruby-bug). Ruby bug
 
 As far as I understand it, the bug is in Ruby's "@Kernel.at_exit@":http://ruby-doc.org/core/classes/Kernel.html#M005958 hook. A call to "@Kernel.exit(false)@":http://ruby-doc.org/core/classes/Kernel.html#M005956 should cause the process to exit with an *exit status of 1* indicating the process did not complete successfully. The bug means that calling "@Kernel.exit(false)@":http://ruby-doc.org/core/classes/Kernel.html#M005956 from within "@Kernel.at_exit@":http://ruby-doc.org/core/classes/Kernel.html#M005958 incorrectly causes the process to exit with an *exit status of 0*.
 
-The most relevant bug report is "#9300":http://rubyforge.org/tracker/?func=detail&atid=1698&aid=9300&group_id=426 and the most relevant mailing list thread is made up of:- "[ruby-core:10746]":http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/10746, "[ruby-core:10748]":http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/10748, "[ruby-core:10760]":http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/10760.
+The most relevant bug report is "#9300":http://rubyforge.org/tracker/?func=detail&atid=1698&aid=9300&group_id=426 and the most relevant mailing list thread is made up of:-
+* "[ruby-core:10746]":http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/10746
+* "[ruby-core:10748]":http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/10748
+* "[ruby-core:10760]":http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/10760.
 
 The fix seems to be in changeset 12126...
 
-bc(prettyprint). r12126 | nobu | 2007-03-23 16:53:42 +0000 (Fri, 23 Mar 2007) | 9 lines
+bc. r12126 | nobu | 2007-03-23 16:53:42 +0000 (Fri, 23 Mar 2007) | 9 lines
 
-bc(prettyprint). * eval.c (ruby_cleanup): exit by SystemExit and SignalException in END block.  [ruby-core:10609]
+bc. * eval.c (ruby_cleanup): exit by SystemExit and SignalException in END block.  [ruby-core:10609]
 * test/ruby/test_beginendblock.rb (test_should_propagate_exit_code): test for exit in END block.  [ruby-core:10760]
 * test/ruby/test_beginendblock.rb (test_should_propagate_signaled): test for signal in END block.
 
