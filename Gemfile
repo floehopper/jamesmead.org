@@ -8,8 +8,10 @@ gem 'floehopper-deploy', :git => "git://github.com/floehopper/floehopper-deploy.
 # gem 'freerange-puppet', :path => "~/Code/freerange-puppet"
 # gem 'floehopper-deploy', :path => "~/Code/floehopper-deploy"
 
-gem 'webby'
-gem 'RedCloth'
-gem 'haml'
-gem 'rdiscount'
-gem 'delicious-api-via-oauth', :git => "git://github.com/floehopper/delicious-api-via-oauth.git"
+group :development do
+  gem 'webby'
+  gem 'RedCloth'
+  gem 'haml'
+  gem 'rdiscount'
+  gem 'delicious-api-via-oauth', :git => "git://github.com/floehopper/delicious-api-via-oauth.git"
+end
