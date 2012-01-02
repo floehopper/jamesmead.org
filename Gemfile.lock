@@ -118,6 +118,5 @@ DEPENDENCIES
   freerange-deploy!
   freerange-puppet!
   haml
-  logging (~> 1.5)
   rdiscount
   webby

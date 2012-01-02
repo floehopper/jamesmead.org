@@ -9,7 +9,6 @@ gem 'floehopper-deploy', :git => "git://github.com/floehopper/floehopper-deploy.
 # gem 'floehopper-deploy', :path => "~/Code/floehopper-deploy"
 
 gem 'webby'
-gem 'logging', '~>1.5'
 gem 'RedCloth'
 gem 'haml'
 gem 'rdiscount'
