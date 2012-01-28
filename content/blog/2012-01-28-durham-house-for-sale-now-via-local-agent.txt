@@ -1,0 +1,16 @@
+--- 
+permalink: durham-house-for-sale-now-via-local-agent
+created_at: 2012-01-28 17:18:00 +01:00
+updated_at: 2012-01-28 17:18:00 +01:00
+title: Durham house for sale now via local agent
+description: We haven't had much luck selling via our on-line agent.
+filter: 
+- erb
+- textile
+keywords: house for sale property durham city briardene cathedral castle view quiet central garden patio garage DH1 robinsons estate agent
+---
+!http://durham-house-for-sale.co.uk/images/rear-elevation-from-low-vantage-point.jpg(House in Briardene, Durham UK)!:http://durham-house-for-sale.co.uk/
+
+h2. Selling Privately Update
+
+We haven't had much luck "selling privately":/blog/2011-04-28-durham-house-for-sale so we're now putting the house in the hands of a local estate agent, Robinsons. In case you're interested, the house is "listed on Rightmove":http://www.rightmove.co.uk/property-for-sale/property-21666141.html.
