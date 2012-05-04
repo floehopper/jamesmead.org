@@ -15,7 +15,7 @@ keywords: mocha mock object testing ruby unstub exception
 ---
 h2. Release Notes
 
-* Added @Mocha::ObjectMethods#unstub@ method - see "GitHub issue":https://github.com/floehopper/mocha/issues#issue/6.
-* Inherit @Mocha::ExpectationError@ from @Exception@ instead of @StandardError@ to reduce the chances of a test passing by accident - thanks to "James Sanders":http://github.com/jsanders - see "GitHub issue":https://github.com/floehopper/mocha/issues#issue/15
-* Fixed "bug":https://github.com/floehopper/mocha/issues/closed#issue/11 - GitHub README page to link correctly to code examples
-* Fixed "bug":https://github.com/floehopper/mocha/issues/closed#issue/14 - @PASSTHROUGH_EXCEPTIONS@ are defined on @MiniTest::Unit::TestCase@ not in @Mocha@ - thanks to "Brian Troutwine":http://github.com/blt
+* Added @Mocha::ObjectMethods#unstub@ method - see "GitHub issue":https://github.com/freerange/mocha/issues/6.
+* Inherit @Mocha::ExpectationError@ from @Exception@ instead of @StandardError@ to reduce the chances of a test passing by accident - thanks to "James Sanders":http://github.com/jsanders - see "GitHub issue":https://github.com/freerange/mocha/issues/15
+* Fixed "bug":https://github.com/freerange/mocha/issues/11 - GitHub README page to link correctly to code examples
+* Fixed "bug":https://github.com/freerange/mocha/issues/14 - @PASSTHROUGH_EXCEPTIONS@ are defined on @MiniTest::Unit::TestCase@ not in @Mocha@ - thanks to "Brian Troutwine":http://github.com/blt
