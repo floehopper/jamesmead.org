@@ -48,7 +48,7 @@ h3. 0.10.0
 * Add Expectation#throws to allow a stubbed method to use Kernel#throw.
 * Updates for versions of Test::Unit up to and including v2.3.3 (including patch by Jens Fahnenbruck).
 * Updates for versions of MiniTest up to and including v2.5.1.
-* Since the singleton method added by Mocha masks the underlying instance method, there's no need to move it out the way and then back again. This fixes Github "issue #20":https://github.com/freerange/mocha/issues/20, because the original method is left unchanged - https://github.com/freerange/mocha/issues/20 (thanks to "@nicklewis":https://github.com/nicklewis).
+* Since the singleton method added by Mocha masks the underlying instance method, there's no need to move it out the way and then back again. This fixes Github "issue #20":https://github.com/freerange/mocha/issues/20, because the original method is left unchanged - See "issue #20":https://github.com/freerange/mocha/issues/20 (thanks to "@nicklewis":https://github.com/nicklewis).
 * Handle stubbing of a singleton method, leaving the original method unchanged after the test.
 * When stubbing an instance method that was originally defined as a singleton method, the original method should still exist after the test.
 * Fixed mis-print in Mocha::ObjectMethods#unstub documentation (patch by "@glebpom":https://github.com/glebpom).
