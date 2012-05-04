@@ -26,7 +26,7 @@ bc(prettyprint).. class ArticleController < ApplicationController
   end
 end
 
-p. The controller constructor defaults to using the real Article model class, but in the test we're going to inject a mock object in its place. You could use one of the "many":http://onestepback.org/software/flexmock/ "mocking":http://rspec.rubyforge.org/ "libraries":http://mockr.sanityinc.com/ for this, but I'm going to use our "home-grown":http://www.reevoo.com/blogs/reevooblog/ one, "Mocha":http://mocha.rubyforge.org, in a "functional" controller test.
+p. The controller constructor defaults to using the real Article model class, but in the test we're going to inject a mock object in its place. You could use one of the "many":http://onestepback.org/software/flexmock/ "mocking":http://rspec.rubyforge.org/ "libraries":http://mockr.sanityinc.com/ for this, but I'm going to use our "home-grown":http://www.reevoo.com/blogs/reevooblog/ one, "Mocha":http://gofreerange.com/mocha/docs/, in a "functional" controller test.
 
 bc(prettyprint).. require File.dirname(__FILE__) + '/../test_helper'
 require 'article_controller'
