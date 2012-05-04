@@ -35,10 +35,10 @@ h3. 0.10.2
 * Merge pull request #53. Unstubbing a method should not remove expectations for other stubbed methods. Fixes #52. Thanks to "@saikat":https://github.com/saikat.
 
 h3. 0.10.1
-* Merge "pull request #51":https://github.com/floehopper/mocha/pull/51. Use @Gem::Requirement@ & @Gem::Version@ for version comparison. Fixes "issue #50":https://github.com/freerange/mocha/issues/50. Thanks to "@meineerde":https://github.com/meineerde.
+* Merge "pull request #51":https://github.com/freerange/mocha/pull/51. Use @Gem::Requirement@ & @Gem::Version@ for version comparison. Fixes "issue #50":https://github.com/freerange/mocha/issues/50. Thanks to "@meineerde":https://github.com/meineerde.
 * Fixed typo in rdoc for @Mocha::ObjectMethods@.
 * Improve README as suggested in "issue #46":https://github.com/freerange/mocha/issues/46. Explain that Mocha must be loaded after test libraries and how to achieve this using Bundler.
-* Merge "pull request #43":https://github.com/floehopper/mocha/pull/43 - nobody expects the spanish inquisition! Thanks to "@cairo140":https://github.com/cairo140.
+* Merge "pull request #43":https://github.com/freerange/mocha/pull/43 - nobody expects the spanish inquisition! Thanks to "@cairo140":https://github.com/cairo140.
 * Fix for "issue #39":https://github.com/freerange/mocha/issues/39 - improve documentation for @Expectation#multiple_yields@.
 * Fix for "issue #38":https://github.com/freerange/mocha/issues/38 where a subtle change in test-unit v2.3.0 had been missed - only visible in verbose mode.
 * Support for MiniTest up to v2.6.2 has been verified.
