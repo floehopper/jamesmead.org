@@ -6,9 +6,10 @@ filter:
   - erb
   - textile
 ---
-* "Documentation":http://mocha.rubyforge.org/
-* "Source Code":http://github.com/floehopper/mocha
-* "Continuous Integration":http://runcoderun.com/floehopper/mocha
-* "Issue Tracking":http://floehopper.lighthouseapp.com/projects/22289
+* "Documentation":http://gofreerange.com/mocha/docs
+* "Source Code":https://github.com/freerange/mocha
+* "Continuous Integration":http://travis-ci.org/freerange/mocha
+* "Issue Tracking":https://github.com/freerange/mocha/issues
+* "Old Issue Tracking":http://floehopper.lighthouseapp.com/projects/22289
 * "Mailing List":http://groups.google.com/group/mocha-developer
 * "Old Mailing List":http://rubyforge.org/pipermail/mocha-developer/
