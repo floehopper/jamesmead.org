@@ -12,7 +12,7 @@ categories: []
 created_at: 2006-07-16 18:59:00 +00:00
 keywords: mock mocking stub stubbing ruby instance method expectation test testing
 ---
-I thought I'd put the examples from the "RDoc":http://mocha.rubyforge.org README up here if only for the syntax highlighting.
+I thought I'd put the examples from the "RDoc":http://gofreerange.com/mocha/docs/ README up here if only for the syntax highlighting.
 
 bc(prettyprint).. class Enterprise
 

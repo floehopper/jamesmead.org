@@ -24,4 +24,4 @@ Mocha and Stubba have been created by amalgamating a number of techniques develo
 
 AutoMocha is more experimental and is at an earlier stage of development. It's an attempt to make it easier to write _true_ unit tests (i.e. tests with no external dependencies).
 
-You can find examples in the "RDoc":http://mocha.rubyforge.org README and in the acceptance tests.
+You can find examples in the "RDoc":http://gofreerange.com/mocha/docs/ README and in the acceptance tests.

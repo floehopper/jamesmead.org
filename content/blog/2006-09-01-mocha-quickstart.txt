@@ -12,7 +12,7 @@ categories: []
 created_at: 2006-09-01 14:14:32 +00:00
 keywords: ruby mock rails stub testing interception class instance quickstart tutorial
 ---
-I really must get round to writing some better documentation for "Mocha":http://mocha.rubyforge.org, but in the meantime here's a quickstart guide[1].
+I really must get round to writing some better documentation for "Mocha":http://gofreerange.com/mocha/docs/, but in the meantime here's a quickstart guide[1].
 
 Mocha adds a couple of new methods to all objects and classes - @expects@ which sets up auto-verified expectations and @stubs@ which stubs the method allowing any number of calls.
 

@@ -12,7 +12,7 @@ categories:
 created_at: 2006-08-11 12:04:37 +00:00
 keywords: mocha stubba test testing mock stub mocking stubbing ruby rails
 ---
-I've just released a "new version":http://rubyforge.org/frs/?group_id=1917 of the Ruby mocking and stubbing library, "Mocha":http://mocha.rubyforge.org, that I first "mentioned":/blog/2006-07-16-mocking-and-stubbing-in-ruby a while ago. Here are the release notes: 
+I've just released a "new version":http://rubyforge.org/frs/?group_id=1917 of the Ruby mocking and stubbing library, "Mocha":http://gofreerange.com/mocha/docs/, that I first "mentioned":/blog/2006-07-16-mocking-and-stubbing-in-ruby a while ago. Here are the release notes: 
 
 * Small change to @SetupAndTeardown#teardown_stubs@ suggested by "Luke Redpath":http://www.lukeredpath.co.uk to allow use of Stubba with "RSpec":http://rspec.rubyforge.org.
 * Reorganized directory structure and extracted addition of setup and teardown methods into SmartTestCase mini-library.

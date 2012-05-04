@@ -12,7 +12,7 @@ categories: []
 created_at: 2006-09-03 18:53:40 +00:00
 keywords: mocha stubba test testing mock stub jmock coderay syntax highlight mocking stubbing ruby rails
 ---
-Spurred on by "Thorsten's comment":http://glu.ttono.us/articles/2006/09/02/mocking-models#comment-1106 on "Gluttonous' blog":http://glu.ttono.us/ and a mention of "Mocha":http://mocha.rubyforge.org in the "Top 5 Rails Stories of the Week":http://cleanair.highgroove.com/articles/2006/09/03/ruby_on_rails_enterprise_capistrano_mocked_models_class_variables_rest, I've given the Mocha "documentation":http://mocha.rubyforge.org a major overhaul.
+Spurred on by "Thorsten's comment":http://glu.ttono.us/articles/2006/09/02/mocking-models#comment-1106 on "Gluttonous' blog":http://glu.ttono.us/ and a mention of "Mocha":http://gofreerange.com/mocha/docs/ in the "Top 5 Rails Stories of the Week":http://cleanair.highgroove.com/articles/2006/09/03/ruby_on_rails_enterprise_capistrano_mocked_models_class_variables_rest, I've given the Mocha "documentation":http://gofreerange.com/mocha/docs/ a major overhaul.
 
 Now the "RDoc":http://rdoc.sourceforge.net/ only shows the public API which should hopefully improve the signal-to-noise ratio and show how simple it is to use.
 
