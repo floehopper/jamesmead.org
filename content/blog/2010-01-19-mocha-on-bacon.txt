@@ -18,7 +18,7 @@ Some time ago, I "removed Bacon integration from Mocha":http://github.com/floeho
 
 Happily "Eloy Duran":http://superalloy.nl/ has just "re-incarnated the Mocha adapter for Bacon":http://github.com/alloy/mocha-on-bacon. He's updated the code a bit and re-written the tests. Thanks, Eloy.
 
-Here's an example of what you can do with "Bacon":http://gemcutter.org/gems/bacon and "Mocha":http://mocha.rubyforge.org/ :-
+Here's an example of what you can do with "Bacon":http://gemcutter.org/gems/bacon and "Mocha":http://gofreerange.com/mocha/docs/ :-
 
 bc(prettyprint).. require File.expand_path('../spec_helper', __FILE__)
 

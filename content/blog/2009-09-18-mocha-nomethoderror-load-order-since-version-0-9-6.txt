@@ -14,7 +14,7 @@ keywords: mocha mock stub ruby testing tdd nomethoderror load order
 ---
 There have been a number of load order issues since 0.9.6 was released for which I apologise.
 
-The key message is that since 0.9.6, you must ensure that your test framework ("Test::Unit":http://www.ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html or "MiniTest":http://blog.zenspider.com/minitest/) is loaded *before* "Mocha":http://mocha.rubyforge.org/ is loaded, otherwise "Mocha":http://mocha.rubyforge.org/ will not monkey-patch the test framework and calls to the Mocha API will result in "NoMethodError":http://www.ruby-doc.org/core/classes/NoMethodError.html.
+The key message is that since 0.9.6, you must ensure that your test framework ("Test::Unit":http://www.ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html or "MiniTest":http://blog.zenspider.com/minitest/) is loaded *before* "Mocha":http://gofreerange.com/mocha/docs/ is loaded, otherwise "Mocha":http://gofreerange.com/mocha/docs/ will not monkey-patch the test framework and calls to the Mocha API will result in "NoMethodError":http://www.ruby-doc.org/core/classes/NoMethodError.html.
 
 I hope to write this up in more detail soon, but in the meantime here are a couple of useful links :- 
 

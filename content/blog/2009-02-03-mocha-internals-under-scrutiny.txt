@@ -12,7 +12,7 @@ categories: []
 created_at: 2009-02-03 20:49:28 +00:00
 keywords: mocha internals implementation ruby ioke
 ---
-I've just read Brian Guthrie's recent article entitled "Ioke mocking, Mocha as exemplar":http://blog.brianguthrie.com/articles/2009/02/03/ioke-mocking-mocha-as-exemplar. Brian has volunteered to work on a mocking framework for "Ola Bini's":http://olabini.com/ "Ioke":http://ioke.org/. I've read bits and pieces on Ola's blog about the development of Ioke, so I was very interested to see what Brian had to say. He makes some very valid comments; both about mocking in general and about the internals of "Mocha":http://mocha.rubyforge.org/.
+I've just read Brian Guthrie's recent article entitled "Ioke mocking, Mocha as exemplar":http://blog.brianguthrie.com/articles/2009/02/03/ioke-mocking-mocha-as-exemplar. Brian has volunteered to work on a mocking framework for "Ola Bini's":http://olabini.com/ "Ioke":http://ioke.org/. I've read bits and pieces on Ola's blog about the development of Ioke, so I was very interested to see what Brian had to say. He makes some very valid comments; both about mocking in general and about the internals of "Mocha":http://gofreerange.com/mocha/docs/.
 
 h2. Mocking in General
 

@@ -17,7 +17,7 @@ h2. Introduction
 
 Today I finally got round to looking at "Joe Ferris' Test Spies fork":http://github.com/jferris/mocha/commits/spies of Mocha. Joe explained how Test Spies work and why he thinks they are useful in "Spy vs spy":http://robots.thoughtbot.com/post/159805295/spy-vs-spy on the ThoughtBot blog. I apologise to Joe for not getting round to this sooner.
 
-I have a number of hesitations about merging these changes into "Mocha":http://mocha.rubyforge.org/ as they stand. My thinking hasn't really crystallized, but in these situations I often find it's useful to force myself to try and explain myself in writing. Hopefully it'll also generate some feedback.
+I have a number of hesitations about merging these changes into "Mocha":http://gofreerange.com/mocha/docs/ as they stand. My thinking hasn't really crystallized, but in these situations I often find it's useful to force myself to try and explain myself in writing. Hopefully it'll also generate some feedback.
 
 I'd like to thank Joe for taking the time to fork Mocha and add this functionality. I'm particularly grateful that he's taken the trouble to write a "bunch of high-level acceptance tests":http://github.com/jferris/mocha/raw/spies/test/acceptance/spy_test.rb.
 
@@ -149,4 +149,4 @@ One slight concern is what happens if someone mixes up _Expected Behaviour Speci
 
 h2. Conclusion
 
-I'm sure that some people find the changes useful, but I'm not yet convinced I want to merge the "Test Spies":http://github.com/jferris/mocha/commits/spies changes into "Mocha":http://mocha.rubyforge.org/. Please feel free to try and convince me, either here in the "comments":#comments or in the "mailing list thread":http://groups.google.com/group/mocha-developer/browse_thread/thread/3c3fba12cf313b12?hl=en.
+I'm sure that some people find the changes useful, but I'm not yet convinced I want to merge the "Test Spies":http://github.com/jferris/mocha/commits/spies changes into "Mocha":http://gofreerange.com/mocha/docs/. Please feel free to try and convince me, either here in the "comments":#comments or in the "mailing list thread":http://groups.google.com/group/mocha-developer/browse_thread/thread/3c3fba12cf313b12?hl=en.
