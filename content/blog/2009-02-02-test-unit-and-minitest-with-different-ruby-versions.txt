@@ -14,7 +14,7 @@ keywords: ruby testing testunit minitest miniunit version 1.8 1.9.0 1.9.1
 ---
 h2. Introduction
 
-In recent weeks, I've been trying to ensure that "Mocha":http://gofreerange.com/mocha/docs/works with the new versions of Ruby as well as "MiniTest":http://blog.zenspider.com/minitest/, the "Test::Unit":http://www.ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html replacement. I started "getting very confused":http://twitter.com/floehopper/status/1155022088 with all the different ways to write/run tests, so I made some notes for myself. In the wake of the "release of Ruby 1.9.1":http://groups.google.com/group/ruby-talk-google/browse_thread/thread/35e963933f9d0b1a, I thought these notes might be useful to others - so here they are.
+In recent weeks, I've been trying to ensure that "Mocha":http://gofreerange.com/mocha/docs/ works with the new versions of Ruby as well as "MiniTest":http://blog.zenspider.com/minitest/, the "Test::Unit":http://www.ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html replacement. I started "getting very confused":http://twitter.com/floehopper/status/1155022088 with all the different ways to write/run tests, so I made some notes for myself. In the wake of the "release of Ruby 1.9.1":http://groups.google.com/group/ruby-talk-google/browse_thread/thread/35e963933f9d0b1a, I thought these notes might be useful to others - so here they are.
 
 I haven't got into the MiniTest::Spec or MiniTest::Mock side of things, nor have I looked at other testing libraries like "RSpec":http://rspec.info/, "Shoulda":http://thoughtbot.com/projects/shoulda/, "Test/Spec":http://test-spec.rubyforge.org/, etc. Please let me know if you see any errors or omissions and I'll update this article.
 
