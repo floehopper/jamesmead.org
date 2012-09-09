@@ -10,4 +10,5 @@ set :application, 'jamesmead.org'
 
 namespace :deploy do
   task :migrate do ; end
+  task :bundle do ; end
 end
