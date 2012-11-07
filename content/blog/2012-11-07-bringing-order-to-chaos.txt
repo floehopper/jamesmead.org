@@ -33,5 +33,5 @@ While this sounds like a simple idea, it's actually had a major impact on our co
 
 ## Harmonia
 
-The Ruby script has now evolved into a web application called [Harmonia](https://harmonia.io). We started to think that others might find it useful and so we've decided to open it up for others to use. If you think it might be of interest, then please [sign up](https://harmonia.io) now, so we can send you an invitation. We'd love you to take it for a spin and give us your [feedback](https://harmonia.io).
+The Ruby script has now evolved into a web application called [Harmonia](https://harmonia.io). We started to think that others might find it useful and so we've decided to open it up for others to use. If you think it might be of interest, then please [sign up](https://harmonia.io) now, so we can send you an invitation. We'd love you to take it for a spin and give us your [feedback](https://harmonia.io/feedback).
 
