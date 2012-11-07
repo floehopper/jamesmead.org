@@ -1,5 +1,5 @@
 --- 
-permalink: harmonia
+permalink: bringing-order-to-chaos
 created_at: 2012-11-07 10:24:00 +00:00
 updated_at: 2012-11-07 10:24:00 +00:00
 title: Bringing order to the chaos
