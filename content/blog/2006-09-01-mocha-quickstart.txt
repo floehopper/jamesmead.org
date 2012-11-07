@@ -16,7 +16,7 @@ I really must get round to writing some better documentation for "Mocha":http://
 
 Mocha adds a couple of new methods to all objects and classes - @expects@ which sets up auto-verified expectations and @stubs@ which stubs the method allowing any number of calls.
 
-Both the @expects@ and @stubs@ methods actually return an "expectation":http://mocha.rubyforge.org/classes/Mocha/Expectation.html object. Relevant methods on an expectation are: @at_least@, @at_least_once@, @never@, @raises@, @returns@, @times@, @with@, @yields@ which are hopefully fairly self-explanatory. If not there are some clues "here":http://mocha.rubyforge.org/classes/Mocha/Expectation.html
+Both the @expects@ and @stubs@ methods actually return an "expectation":http://gofreerange.com/mocha/docs/Mocha/Expectation.html object. Relevant methods on an expectation are: @at_least@, @at_least_once@, @never@, @raises@, @returns@, @times@, @with@, @yields@ which are hopefully fairly self-explanatory. If not there are some clues "here":http://gofreerange.com/mocha/docs/Mocha/Expectation.html
 
 h2. Mocking a class method
 

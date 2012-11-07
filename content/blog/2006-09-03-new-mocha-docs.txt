@@ -19,12 +19,12 @@ Now the "RDoc":http://rdoc.sourceforge.net/ only shows the public API which shou
 * "Create traditional mock objects":http://mocha.rubyforge.org/classes/Mocha/AutoVerify.html
 * "Set expectations on traditional mock objects":http://mocha.rubyforge.org/classes/Mocha/MockMethods.html
 * "Set expectations on real (non-mock) classes":http://mocha.rubyforge.org/classes/Object.html
-* "Make expectations more specific or define behaviour of stub":http://mocha.rubyforge.org/classes/Mocha/Expectation.html
+* "Make expectations more specific or define behaviour of stub":http://gofreerange.com/mocha/docs/Mocha/Expectation.html
 
 I've also had a play with "CodeRay":http://coderay.rubychan.de/ and generated syntax-highlighted examples.
-* "Quick Start":http://mocha.rubyforge.org/examples/misc.html
-* "Traditional mocking":http://mocha.rubyforge.org/examples/mocha.html
-* "Setting expectations on real (non-mock) classes":http://mocha.rubyforge.org/examples/stubba.html
+* "Quick Start":http://gofreerange.com/mocha/docs/file.misc.html
+* "Traditional mocking":http://gofreerange.com/mocha/docs/file.mocha.html
+* "Setting expectations on real (non-mock) classes":http://gofreerange.com/mocha/docs/file.stubba.html
 
 Good general information on mocking...
 
