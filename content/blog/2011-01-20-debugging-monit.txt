@@ -8,6 +8,7 @@ filter:
 - erb
 - markdown
 keywords: monit linux osx
+guid: 46a1d9f1-20a5-487a-87de-72cce418122d
 ---
 
 At [GoFreeRange](http://gofreerange.com) I recently spent some time debugging a couple of [Monit](http://mmonit.com/monit/) `start program` and `stop program` commands, so I thought I'd share some notes I made in case they're of use to anyone else.

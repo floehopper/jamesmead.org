@@ -10,6 +10,7 @@ filter:
 categories: 
 - mocha_release
 keywords: mocha mock object testing ruby
+guid: ca9729ef-dde7-41d3-9bb2-7b88e5ad2117
 ---
 h2. Release Notes
 

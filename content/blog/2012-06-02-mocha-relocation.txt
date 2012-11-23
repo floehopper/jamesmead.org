@@ -8,6 +8,7 @@ filter:
 - erb
 - textile
 keywords: mocha mock object testing ruby
+guid: 0b7cc6f3-98fe-474c-abbd-9c190b343ccf
 ---
 My company, "Go Free Range":http://gofreerange.com, is now looking after "Mocha, the Ruby mocking library":http://gofreerange.com/mocha.
 

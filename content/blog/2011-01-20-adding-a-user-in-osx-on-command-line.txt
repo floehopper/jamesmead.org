@@ -8,6 +8,7 @@ filter:
 - erb
 - markdown
 keywords: mac osx add create user group dscl useradd groupadd linux
+guid: 83030ef8-7cf3-41cb-bc24-b954297d7248
 ---
 
 Heavily based on answers to this [question](http://serverfault.com/questions/20702/how-do-i-create-user-accounts-from-the-terminal-in-mac-os-x-10-5) on [serverfault.com](http://serverfault.com/).

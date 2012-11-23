@@ -8,6 +8,7 @@ filter:
 - erb
 - textile
 keywords: house for sale property durham city briardene cathedral castle view quiet central garden patio garage DH1 robinsons estate agent
+guid: 2b9a661a-932f-4a90-b6cd-925938b05d17
 ---
 !http://durham-house-for-sale.co.uk/images/rear-elevation-from-low-vantage-point.jpg(House in Briardene, Durham UK)!:http://durham-house-for-sale.co.uk/
 

@@ -8,6 +8,7 @@ filter:
 - erb
 - markdown
 keywords: harmonia chaos task random gtd democracy cooperative
+guid: d71e82be-647e-4735-807a-e7296f7dbe51
 ---
 *TL;DR - We've built a tool called [Harmonia](https://harmonia.io) to help teams get things done. We hope you'll [sign up](https://harmonia.io) so we can send you an invitation.*
 
