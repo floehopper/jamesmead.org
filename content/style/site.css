@@ -32,17 +32,17 @@
 
 p, li, span, table {
   /*16px via YUI Fonts CSS foundation*/
-  font-size: 123.1%
+  font-size: 123.1%;
 }
 
 pre code {
   /*14px via YUI Fonts CSS foundation*/
-  font-size: 108%
+  font-size: 108%;
 }
 
 sup {
   /*10px via YUI Fonts CSS foundation*/
-  font-size: 77%
+  font-size: 77%;
 }
 
 h1 {
