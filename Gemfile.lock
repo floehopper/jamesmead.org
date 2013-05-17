@@ -35,7 +35,7 @@ GIT
       capistrano-ext
 
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     RedCloth (4.2.7)
     activesupport (3.0.3)
