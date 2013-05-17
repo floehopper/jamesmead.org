@@ -19,7 +19,7 @@ h2. Director of "Go Free Range":http://gofreerange.com/
 
 h3. Latest blog posts
 
-<% articles[0..0].each do |article| %>
+<% articles[0..2].each do |article| %>
 * <%= link_to article.title, friendly_url(article) %>
 <% end %>
 * "More...":/blog
