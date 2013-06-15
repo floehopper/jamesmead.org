@@ -71,3 +71,7 @@ pre {
 blockquote {
   font-style: italic;
 }
+
+.social {
+  display: none;
+}

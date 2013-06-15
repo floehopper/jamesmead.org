@@ -23,3 +23,5 @@ h3. Latest blog posts
 * <%= link_to article.title, friendly_url(article) %>
 <% end %>
 * "More...":/blog
+
+<%= render :partial => '/social' %>
