@@ -10,7 +10,7 @@ filter:    erb
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <%- if @page.description -%>
-    <meta name="description" content="<%= @page.description %>" />
+    <meta name="description" content="<%= CGI.escapeHTML(@page.description) %>" />
     <%- end -%>
     <%- if @page.keywords -%>
     <meta name="keywords" content="<%= @page.keywords %>" />
