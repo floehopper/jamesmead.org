@@ -1,0 +1,69 @@
+---
+extension: txt
+layout: none
+---
+==================================================================
+https://keybase.io/floehopper
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://jamesmead.org
+  * I am floehopper (https://keybase.io/floehopper) on keybase.
+  * I have a public key with fingerprint B10D 919D E3B2 3B55 8FF3  80E1 CD75 D7BD 899B 8102
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "b10d919de3b23b558ff380e1cd75d7bd899b8102",
+            "host": "keybase.io",
+            "key_id": "CD75D7BD899B8102",
+            "uid": "94c958a58e931ccb300923fa745b7400",
+            "username": "floehopper"
+        },
+        "service": {
+            "hostname": "jamesmead.org",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1397320010,
+    "expire_in": 157680000,
+    "prev": "43c6e0895c5577bc551165212c3f5e094decf0ad94c3c18613bfe4268ac0a03e",
+    "seqno": 4,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG/MacGPG2 v2.0.22 (Darwin)
+Comment: GPGTools - http://gpgtools.org
+
+owE1kWtIFFEUx/dhSoq54VKGGjGEIS5257UzswmKbaWIJVhqEa1zZ+6us7o72+z6
+WHQDQwoxzRCkCKJlFSoU7QkqyNIHMc0okiIo6QGWISIoSE+6I3Y/3Ms95/f/n3M4
+valmg8n4ctpb0hfeaDfOxtehobJUKWsloCqHCUcrUY82H7fi9yAtoCn+EOEgIAlk
+gRRkREOKhizLu900DxApyRwrc1DmBQHyJKAIG1GnBnUFtoFiEOUrKo7hj0uRcfSw
+k2OdXLET88VbfONmQmAkgeVFlkcCTUoSpAEQKNotcgwLOQYAHQwizS/6EKbdDSqq
+UwMBpBERG4HjTYqE9K714luMFz9BHxLlfFXzYHlAU0OqpDbgVF0oFHDoylA4oKPN
+CLq2TFxQ8ct4dCxoQlpQUf2Eg8SkFFJ0V5IWOJoCgAQ2ArUEFA25FJ1gOTsP8NHL
+oCZsydCSHQFeYCWW5TiIb5K0sxRJSbSbRUBgZCS5gSjjuWmJ5O0kDd2Ioey8KAER
+0IjQxzrvVwkHg9sUPdgyqHj8YqhRQ0Sk05iVYDCaDInbTPryDMnbLf9XeqAq6acp
+yRVbzHhzaeR6RnJhXnqmp319JXrFWjh7uciZ8yvBPH7u0IVsa7mvot+5d6poeXmY
+H+tdqKj50rHn2LXiAaax4ONol3xi8K8r5XXl/fyl+NK91Jlsb1qs5sha9QSEtljG
+wgATzsrbcTDFEniYWP6p688I+fxbpsIeJ7IWvttarrbdNuZOTtvST43V/s6d93HP
+Ok43T/w42TfxeZV9az1Tm9c9TlWlz91ZW1w3r/SscrvP+gYfPRmuntpp2Q/iRyss
+7+BcygMxKs239XS8KKsP98ciu6zjX6MXS+XONG/3huvu+5kuznyTvNUcMUZHPxRM
+DsUf59x4NWR8WrLvHw==
+=JvUz
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/floehopper
+
+==================================================================
