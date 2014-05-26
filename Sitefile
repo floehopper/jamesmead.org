@@ -1,3 +1,5 @@
+require 'cgi'
+
 SITE.host = "jamesmead.org"
 SITE.user = 'jamesmead'
 SITE.remote_dir = '/var/apps/jamesmead.org/'
