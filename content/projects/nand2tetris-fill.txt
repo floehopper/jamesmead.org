@@ -1,0 +1,32 @@
+---
+title: Set the screen colour based on keyboard input
+created_at: 2014-11-03 20:00:00 +00:00
+updated_at: 2014-11-03 20:00:00 +00:00
+filter:
+- erb
+- textile
+---
+
+<link href="//vjs.zencdn.net/4.7.2/video-js.css" rel="stylesheet" />
+<script src="//vjs.zencdn.net/4.7.2/video.js"></script>
+
+<style>
+  .video-js {
+    padding-top: 56.25%
+  }
+  .vjs-fullscreen {
+    padding-top: 0px
+  }
+  .video-container {
+    width: 80%;
+    max-width: 640px;
+    margin: auto;
+  }
+</style>
+
+<div class="video-container">
+  <video class="video-js vjs-default-skin vjs-big-play-centered" controls preload="none" height="480" width="854" poster="http://videos.jamesmead.org/cdf4bb0b/480p-00001.png" data-setup='{}'>
+    <source src="http://videos.jamesmead.org/cdf4bb0b/480p.mp4" type="video/mp4" />
+    <source src="http://videos.jamesmead.org/cdf4bb0b/480p.webm" type="video/webm" />
+  </video>
+</div>
