@@ -7,8 +7,8 @@ filter:
 - textile
 ---
 
-<link href="//vjs.zencdn.net/4.7.2/video-js.css" rel="stylesheet" />
-<script src="//vjs.zencdn.net/4.7.2/video.js"></script>
+<link href="//vjs.zencdn.net/4.11.2/video-js.css" rel="stylesheet" />
+<script src="//vjs.zencdn.net/4.11.2/video.js"></script>
 
 <style>
   .video-js {

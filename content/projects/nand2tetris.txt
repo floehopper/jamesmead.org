@@ -1,14 +1,14 @@
---- 
+---
 title: Making a NAND gate out of two transistors
 created_at: 2014-11-03 20:00:00 +00:00
 updated_at: 2014-11-03 20:00:00 +00:00
-filter: 
+filter:
 - erb
 - textile
 ---
 
-<link href="//vjs.zencdn.net/4.7.2/video-js.css" rel="stylesheet" />
-<script src="//vjs.zencdn.net/4.7.2/video.js"></script>
+<link href="//vjs.zencdn.net/4.11.2/video-js.css" rel="stylesheet" />
+<script src="//vjs.zencdn.net/4.11.2/video.js"></script>
 
 <style>
   .video-js {
