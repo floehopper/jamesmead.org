@@ -14,4 +14,6 @@ group :development do
   gem 'haml'
   gem 'rdiscount'
   gem 'delicious-api-via-oauth', :git => "git://github.com/floehopper/delicious-api-via-oauth.git"
+  gem 'rack', '~> 1'
+  gem 'rack-rewrite'
 end
