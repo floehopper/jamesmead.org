@@ -43,3 +43,7 @@ configure :build do
   # activate :minify_javascript
   config[:feed_url] = 'http://feeds.jamesmead.org/floehopper-blog'
 end
+
+activate :blog do |blog|
+  blog.prefix = "blog"
+end
