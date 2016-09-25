@@ -1,20 +1,64 @@
-<!doctype html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <meta charset="utf-8">
-    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <title><%= current_page.data.title %></title>
 
-    <!-- Use title if it's in the page YAML frontmatter -->
-    <title><%= current_page.data.title || "Middleman" %></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+    <%- if current_page.data.description -%>
+    <meta name="description" content="<%= CGI.escapeHTML(current_page.data.description) %>" />
+    <%- end -%>
+    <%- if current_page.data.keywords -%>
+    <meta name="keywords" content="<%= current_page.data.keywords %>" />
+    <%- end -%>
+    <meta name="author" content= "James Mead" />
 
-    <%= stylesheet_link_tag :site %>
-    <%= javascript_include_tag :all %>
+    <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+    <meta name="y_key" content="5f5b0de20991e0c2" />
+    <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
+
+    <link rel="shortcut icon" href="/images/favicon.gif" />
+
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.8.0r4/build/reset-fonts-grids/reset-fonts-grids.css&amp;2.8.0r4/build/base/base-min.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/site.css" />
+    <link rel="stylesheet" href="/stylesheets/prettify/prettify.css" type="text/css" />
+    <script type="text/javascript" src="/javascripts/prettify/prettify.js"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="<%= config[:feed_url] %>" />
+
+    <link rel="openid.server" href="http://openid.claimid.com/server" />
+    <link rel="openid.delegate" href="http://openid.claimid.com/jamesmead" />
+
+    <%= partial 'analytics' %>
+
   </head>
+  <body onload="prettyPrint()">
+    <div id="doc">
+      <div id="hd">
+        <a href="/" title="Home">Home</a>
+        &middot;
+        <a href="/blog/" title="Blog">Blog</a>
+        &middot;
+        <a href="/talks/" title="Talks">Talks</a>
+        &middot;
+        <a href="/projects/" title="Projects">Projects</a>
+      </div>
 
-  <body class="<%= page_classes %>">
-    <%= yield %>
+      <div id="bd">
+        <h1><%= current_page.data.title %></h1>
+
+        <%= yield %>
+      </div>
+
+      <div id="ft">
+        <a href="/contact" title="Contact">Contact</a>
+        &middot;
+        <a href="/history" title="History">History</a>
+        &middot;
+        <a href="/colophon" title="Colophon">Colophon</a>
+        &middot;
+        <a href="/links" title="Links">Links</a>
+      </div>
+    </div>
   </body>
 </html>

@@ -41,4 +41,5 @@ configure :build do
 
   # Minify Javascript on build
   # activate :minify_javascript
+  config[:feed_url] = 'http://feeds.jamesmead.org/floehopper-blog'
 end
