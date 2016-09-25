@@ -4,8 +4,9 @@ description: Articles on Ruby, Ruby on Rails, Mock Objects, Test-Driven Developm
 created_at: 2009-11-28 16:23:13 +00:00
 updated_at: 2009-11-28 16:23:13 +00:00
 ---
-<% articles.each do |article| %>
-h2. <%= link_to article.title, friendly_url(article) %>
 
-<%= article.description if article.description %>
+<% blog.articles.each do |article| %>
+<h2><%= link_to article.title, article.url %></h2>
+
+<p><%= article.data.description if article.data.description %></p>
 <% end %>
