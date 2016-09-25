@@ -3,7 +3,7 @@ permalink: nasty-ruby-bug-affecting-test-unit
 updated_at: 2008-04-05 00:23:50 +00:00
 guid: 3aa53475-6a90-4cf6-915b-ff8804ff5d61
 title: Nasty Ruby Bug Affecting Test::Unit
-id: 325
+id: '325'
 filter:
 - erb
 - textile

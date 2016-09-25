@@ -3,7 +3,7 @@ permalink: testing-tidbits
 updated_at: 2007-09-25 22:33:35 +00:00
 guid: 61189aa5-4796-4257-9c98-93b989eb2605
 title: Testing tidbits
-id: 291
+id: '291'
 filter:
 - erb
 - textile

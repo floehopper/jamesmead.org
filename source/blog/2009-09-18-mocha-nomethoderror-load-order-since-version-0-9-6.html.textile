@@ -3,7 +3,7 @@ permalink: mocha-nomethoderror-load-order-since-version-0-9-6
 updated_at: 2009-09-18 11:35:40 +00:00
 guid: b23f8cdd-771f-46c1-a4bf-bacf541a1291
 title: Mocha NoMethodError / Load order since version 0.9.6
-id: 384
+id: '384'
 filter:
 - erb
 - textile

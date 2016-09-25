@@ -3,7 +3,7 @@ permalink: stubba-example
 updated_at: 2006-08-10 17:08:14 +00:00
 guid: b24a913d-ebcb-4b66-97b4-56564f32f1f8
 title: Stubba example
-id: 16
+id: '16'
 filter:
 - erb
 - textile

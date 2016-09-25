@@ -3,7 +3,7 @@ permalink: lrug-mocking-talk
 updated_at: 2007-07-10 09:54:51 +00:00
 guid: 7379a056-560e-43bf-a3bc-78491ea6447d
 title: LRUG Mocking Talk
-id: 273
+id: '273'
 filter:
 - erb
 - textile

@@ -3,7 +3,7 @@ permalink: mocha-0-4-released
 updated_at: 2007-01-24 04:47:45 +00:00
 guid: 21fc9eed-97c8-4ddf-9869-4c07cce42d46
 title: Mocha 0.4 released
-id: 158
+id: '158'
 filter:
 - erb
 - textile

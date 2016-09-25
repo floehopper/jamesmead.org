@@ -3,7 +3,7 @@ permalink: mocking-in-java-using-mocha
 updated_at: 2008-02-17 18:15:15 +00:00
 guid: 857791bb-b4ad-41c0-845d-69d0909d0b7c
 title: Mocking in Java using Mocha
-id: 310
+id: '310'
 filter:
 - erb
 - textile

@@ -3,7 +3,7 @@ permalink: mocha-release-0-9-8
 updated_at: 2009-09-18 11:17:45 +00:00
 guid: 61369f37-aabd-489b-b0df-12a07b6fc820
 title: Mocha Release 0.9.8
-id: 383
+id: '383'
 filter:
 - erb
 - textile

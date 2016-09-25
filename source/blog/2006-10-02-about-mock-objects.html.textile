@@ -3,7 +3,7 @@ permalink: about-mock-objects
 updated_at: 2006-10-02 13:42:22 +00:00
 guid: d05dfdc0-5bd2-415a-b9ee-9bfeeb0bd40e
 title: About Mock Objects
-id: 94
+id: '94'
 filter:
 - erb
 - textile

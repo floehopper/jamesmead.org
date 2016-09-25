@@ -3,7 +3,7 @@ permalink: rspec-mocha-compatibility
 updated_at: 2007-04-04 16:33:22 +00:00
 guid: 35f2f24f-a450-4a06-aa0e-754de3e55f0d
 title: RSpec/Mocha compatibility
-id: 196
+id: '196'
 filter:
 - erb
 - textile

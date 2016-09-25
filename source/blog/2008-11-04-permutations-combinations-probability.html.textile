@@ -3,7 +3,7 @@ permalink: permutations-combinations-probability
 updated_at: 2008-11-05 00:17:46 +00:00
 guid: fc58dcc2-80d6-4919-a51b-9929398b1fb0
 title: Permutations, Combinations & Probability
-id: 344
+id: '344'
 filter:
 - erb
 - textile

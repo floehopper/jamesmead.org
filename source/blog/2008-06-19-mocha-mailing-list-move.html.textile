@@ -3,7 +3,7 @@ permalink: mocha-mailing-list-move
 updated_at: 2008-06-19 20:32:38 +00:00
 guid: 26864534-6e14-4cbf-9863-56136e675e8b
 title: Mocha Mailing List Move
-id: 326
+id: '326'
 filter:
 - erb
 - textile

@@ -3,7 +3,7 @@ permalink: tell-dont-ask
 updated_at: 2006-12-24 08:49:17 +00:00
 guid: 8d4b111a-ca8d-47a5-af8c-bc98612f7aa2
 title: Tell Don't Ask
-id: 127
+id: '127'
 filter:
 - erb
 - textile

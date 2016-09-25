@@ -3,7 +3,7 @@ permalink: why-array-length-is-better-than-array-size
 updated_at: 2008-02-28 09:35:10 +00:00
 guid: 323bceaf-7ac2-4900-b200-2b201dbb2ff2
 title: Why Array#length is better than Array#size
-id: 283
+id: '283'
 filter:
 - erb
 - textile

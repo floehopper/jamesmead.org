@@ -3,7 +3,7 @@ permalink: vim-learning-curve
 updated_at: 2008-07-12 23:03:08 +00:00
 guid: c7afcd35-0c86-40a8-88c1-d0485fbc2477
 title: Vim Learning Curve
-id: 333
+id: '333'
 filter:
 - erb
 - textile

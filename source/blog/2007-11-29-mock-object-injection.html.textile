@@ -3,7 +3,7 @@ permalink: mock-object-injection
 updated_at: 2007-11-29 12:44:57 +00:00
 guid: 7a475c05-12b4-448c-baaa-a5e5d1854f9b
 title: Mock Object Injection
-id: 303
+id: '303'
 filter:
 - erb
 - textile

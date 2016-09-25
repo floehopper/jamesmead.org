@@ -3,7 +3,7 @@ permalink: mocha-in-java-using-bytecode-manipulation
 updated_at: 2006-09-16 14:58:33 +00:00
 guid: afe10f9a-e930-4e80-9e10-d8c65f682f4e
 title: Mocha in Java using bytecode manipulation
-id: 90
+id: '90'
 filter:
 - erb
 - textile

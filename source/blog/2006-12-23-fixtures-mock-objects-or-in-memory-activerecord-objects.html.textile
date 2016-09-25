@@ -3,7 +3,7 @@ permalink: fixtures-mock-objects-or-in-memory-activerecord-objects
 updated_at: 2006-12-23 20:14:10 +00:00
 guid: 865dc197-829e-401b-af2e-4c1e4b7b2794
 title: Fixtures, mock objects or in-memory ActiveRecord objects?
-id: 124
+id: '124'
 filter:
 - erb
 - textile

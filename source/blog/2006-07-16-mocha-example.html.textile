@@ -3,7 +3,7 @@ permalink: mocha-example
 updated_at: 2006-08-10 17:08:14 +00:00
 guid: 9562bd96-7724-40dd-8512-99ef84c3715d
 title: Mocha example
-id: 15
+id: '15'
 filter:
 - erb
 - textile

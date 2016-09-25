@@ -3,7 +3,7 @@ permalink: gadget-reviews
 updated_at: 2006-08-10 17:08:14 +00:00
 guid: 70fdbd7a-84ab-4188-abe5-aedd10427168
 title: Gadget Reviews
-id: 10
+id: '10'
 filter:
 - erb
 - textile

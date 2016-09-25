@@ -3,7 +3,7 @@ permalink: mocha-configuration
 updated_at: 2009-02-09 11:57:26 +00:00
 guid: f8a30b4f-5516-4fb1-ac63-dd68dc3ae619
 title: Mocha Configuration
-id: 364
+id: '364'
 filter:
 - erb
 - textile

@@ -4,7 +4,7 @@ updated_at: 2010-01-14 13:57:03 +00:00
 guid: 333620d4-f811-41d1-bed5-21b44365c61f
 title: Ruby wrapper for the Delicious v2 API using the OAuth gem
 description: Demonstrates how to bookmark a page from a Ruby script.
-id: 392
+id: '392'
 filter:
 - erb
 - textile

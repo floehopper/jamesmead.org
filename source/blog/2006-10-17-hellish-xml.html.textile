@@ -3,7 +3,7 @@ permalink: hellish-xml
 updated_at: 2006-10-17 04:35:18 +00:00
 guid: 44d84990-d693-4654-b53e-d6c8d7e6807d
 title: Hellish XML
-id: 96
+id: '96'
 filter:
 - erb
 - textile

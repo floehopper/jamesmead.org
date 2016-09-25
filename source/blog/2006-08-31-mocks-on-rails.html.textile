@@ -3,7 +3,7 @@ permalink: mocks-on-rails
 updated_at: 2006-08-31 05:11:48 +00:00
 guid: dac77856-ab70-4342-84e8-3e61460785b2
 title: Mocks on Rails
-id: 57
+id: '57'
 filter:
 - erb
 - textile

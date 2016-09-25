@@ -3,7 +3,7 @@ permalink: catch-22-adsl-house-move
 updated_at: 2006-08-10 17:08:14 +00:00
 guid: 610dd674-2188-48cd-9b1b-502011d1ffac
 title: Catch 22 - ADSL house move
-id: 12
+id: '12'
 filter:
 - erb
 - textile

@@ -3,7 +3,7 @@ permalink: a-plethora-of-train-tickets
 updated_at: 2006-09-03 19:09:55 +00:00
 guid: a9bab639-84cb-4e4e-bce5-224e57dff1ba
 title: A Plethora of Train Tickets
-id: 21
+id: '21'
 filter:
 - erb
 - textile

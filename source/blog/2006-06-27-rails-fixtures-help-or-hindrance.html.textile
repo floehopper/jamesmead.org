@@ -3,7 +3,7 @@ permalink: rails-fixtures-help-or-hindrance
 updated_at: 2006-08-10 17:08:14 +00:00
 guid: 7e8e5469-38a8-4618-8786-8c64d804c153
 title: Rails fixtures - help or hindrance
-id: 11
+id: '11'
 filter:
 - erb
 - textile

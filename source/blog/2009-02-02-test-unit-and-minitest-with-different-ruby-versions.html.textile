@@ -3,7 +3,7 @@ permalink: test-unit-and-minitest-with-different-ruby-versions
 updated_at: 2009-02-03 10:08:55 +00:00
 guid: 908e5794-c71e-4c1a-9f95-144c20a1f0f0
 title: Test::Unit and MiniTest with different Ruby versions
-id: 362
+id: '362'
 filter:
 - erb
 - textile

@@ -3,7 +3,7 @@ permalink: mocha-0-3-released-with-rails-plugin
 updated_at: 2007-01-24 04:48:12 +00:00
 guid: 52de41a9-e88b-48cf-afdc-41da274d5b14
 title: Mocha 0.3 released with Rails plugin
-id: 50
+id: '50'
 filter:
 - erb
 - textile

@@ -3,7 +3,7 @@ permalink: mocha-adoption
 updated_at: 2006-11-17 06:10:29 +00:00
 guid: 817daced-c711-427c-9a48-895aa6b69ecc
 title: Mocha Adoption
-id: 107
+id: '107'
 filter:
 - erb
 - textile

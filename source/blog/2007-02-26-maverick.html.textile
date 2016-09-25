@@ -3,7 +3,7 @@ permalink: maverick
 updated_at: 2007-02-26 02:06:11 +00:00
 guid: df212422-743a-4095-a001-5d5f0a8f028b
 title: Maverick
-id: 169
+id: '169'
 filter:
 - erb
 - textile

@@ -4,7 +4,7 @@ updated_at: 2010-01-25 20:37:02 +00:00
 guid: 727f29a0-185e-4f65-8c4a-263aa1d1acf7
 title: Converting S5 slides to a single PDF on Mac OSX
 description: Using a combination of webkit2png and a custom Automator workflow.
-id: 395
+id: '395'
 filter:
 - erb
 - textile

@@ -3,7 +3,7 @@ permalink: climbing-back-onto-the-java-horse
 updated_at: 2009-01-22 19:25:17 +00:00
 guid: 4839fb58-4c08-4c25-9264-3f18729fd711
 title: Climbing Back onto the Java Horse
-id: 357
+id: '357'
 filter:
 - erb
 - textile

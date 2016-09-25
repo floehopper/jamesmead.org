@@ -3,7 +3,7 @@ permalink: prefer-commit-notes-over-comments
 updated_at: 2008-03-29 19:10:18 +00:00
 guid: 11955d9f-4314-46f7-b708-dca8b3860930
 title: Prefer Commit Notes over Comments
-id: 322
+id: '322'
 filter:
 - erb
 - textile

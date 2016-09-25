@@ -4,7 +4,7 @@ updated_at: 2010-10-22 14:49:23 +00:00
 guid: 87f22b31-ba7b-471c-a090-1cafa4f25dcd
 title: Mocha Release 0.9.9
 description: Includes bug fixes for Test::Unit and MiniTest integration.
-id: 406
+id: '406'
 filter:
 - erb
 - textile

@@ -3,7 +3,7 @@ permalink: remote-pair-programming
 updated_at: 2008-03-13 09:48:22 +00:00
 guid: d04659dc-9918-4e46-8387-35eb394e538f
 title: Remote Pair Programming
-id: 315
+id: '315'
 filter:
 - erb
 - textile

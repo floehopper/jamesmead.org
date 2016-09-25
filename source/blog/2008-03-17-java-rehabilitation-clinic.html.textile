@@ -3,7 +3,7 @@ permalink: java-rehabilitation-clinic
 updated_at: 2009-11-26 11:56:14 +00:00
 guid: a40a74e5-5040-4345-951d-6f4a98be5e23
 title: Java Rehabilitation Clinic
-id: 319
+id: '319'
 filter:
 - erb
 - textile

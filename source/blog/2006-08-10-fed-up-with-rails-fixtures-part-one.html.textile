@@ -3,7 +3,7 @@ permalink: fed-up-with-rails-fixtures-part-one
 updated_at: 2006-08-11 08:00:01 +00:00
 guid: c08a6487-1400-454b-bc6e-a27fa1c65577
 title: Fed up with Rails fixtures? (part one)
-id: 23
+id: '23'
 filter:
 - erb
 - textile

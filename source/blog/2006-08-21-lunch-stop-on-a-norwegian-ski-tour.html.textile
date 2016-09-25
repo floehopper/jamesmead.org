@@ -3,7 +3,7 @@ permalink: lunch-stop-on-a-norwegian-ski-tour
 updated_at: 2009-11-26 11:31:45 +00:00
 guid: 20c2051b-7194-4edf-b0e0-d46bca0a99a1
 title: Lunch stop on a Norwegian ski tour
-id: 45
+id: '45'
 filter:
 - erb
 - textile

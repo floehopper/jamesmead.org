@@ -3,7 +3,7 @@ permalink: automocha-example
 updated_at: 2006-08-10 17:08:14 +00:00
 guid: 047345b6-c9e3-4929-9c16-1f810db0c371
 title: AutoMocha example
-id: 17
+id: '17'
 filter:
 - erb
 - textile

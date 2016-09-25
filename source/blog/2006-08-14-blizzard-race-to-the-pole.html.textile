@@ -3,7 +3,7 @@ permalink: blizzard-race-to-the-pole
 updated_at: 2006-08-14 06:21:21 +00:00
 guid: 054ba5dd-fdf5-490d-9cf8-f8334b04150d
 title: "Blizzard: Race to the Pole"
-id: 31
+id: '31'
 filter:
 - erb
 - textile

@@ -3,7 +3,7 @@ permalink: thoughtworks-team-uses-mocha
 updated_at: 2006-09-05 07:59:15 +00:00
 guid: a589217f-72aa-42f3-a160-233fbd43c51b
 title: ThoughtWorks team uses Mocha
-id: 76
+id: '76'
 filter:
 - erb
 - textile
