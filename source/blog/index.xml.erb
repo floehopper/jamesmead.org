@@ -10,7 +10,7 @@ layout: false
   <link href="<%= config[:feed_url] %>" rel="self" type="application/atom+xml"/>
   <link href="<%= absolute_url('/') %>" rel="alternate" type="text/html"/>
   <updated><%= Time.now.xmlschema %></updated>
-  <% blog.articles[0..9].each do |article| %>
+  <% articles[0..9].each do |article| %>
   <entry>
     <author>
       <name>James Mead</name>
@@ -19,7 +19,7 @@ layout: false
     <published><%= article.data.created_at.xmlschema %></published>
     <updated><%= article.data.updated_at.xmlschema %></updated>
     <title><%= article.data.title %></title>
-    <link href="<%= absolute_url(article.url) %>" rel="alternate" type="text/html"/>
+    <link href="<%= absolute_url(friendly_url(article)) %>" rel="alternate" type="text/html"/>
     <content type="html">
       <%= h(article.body) %>
     </content>

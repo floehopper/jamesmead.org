@@ -14,4 +14,11 @@ h2. Director of "Go Free Range":http://gofreerange.com/
 * Author of "Mocha":http://gofreerange.com/mocha/docs.
 * Former winterer at "Faraday Research Station":https://www.bas.ac.uk/about/about-bas/our-history/british-research-stations-and-refuges/faraday-f/, Antarctica.
 
+h3. Latest blog posts
+
+<% articles[0..2].each do |article| %>
+* <%= link_to article.data.title, friendly_url(article) %>
+<% end %>
+* "More...":/blog
+
 <%= partial 'social' %>

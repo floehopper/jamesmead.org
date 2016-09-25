@@ -1,0 +1,24 @@
+---
+layout: false
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc><%= absolute_url('/') %></loc>
+  </url>
+  <url>
+    <loc><%= absolute_url('/pages/gner-complaint') %></loc>
+  </url>
+  <url>
+    <loc><%= absolute_url('/talks/2007-07-09-introduction-to-mock-objects-in-ruby-at-lrug/') %></loc>
+  </url>
+  <url>
+    <loc><%= absolute_url('/talks/2009-12-14-ruby-and-cocoa-at-ruby-manor/') %></loc>
+  </url>
+  <%- articles.each do |article| -%>
+  <url>
+    <loc><%= absolute_url(friendly_url(article)) %></loc>
+    <lastmod><%= article.data.updated_at.xmlschema %></lastmod>
+  </url>
+  <%- end -%>
+</urlset>
