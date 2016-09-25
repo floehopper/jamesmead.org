@@ -4,10 +4,10 @@ updated_at: 2008-12-30 18:44:38 +00:00
 guid: 4c64e053-398c-4f3f-9a8b-4849610575ae
 title: Mocha Release 0.9.4
 id: 353
-filter: 
+filter:
 - erb
 - textile
-categories: 
+categories:
 - mocha_release
 created_at: 2008-12-30 18:43:32 +00:00
 keywords: mocha mock stub ruby testing tdd

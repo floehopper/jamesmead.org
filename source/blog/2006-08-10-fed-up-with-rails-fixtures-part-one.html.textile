@@ -4,7 +4,7 @@ updated_at: 2006-08-11 08:00:01 +00:00
 guid: c08a6487-1400-454b-bc6e-a27fa1c65577
 title: Fed up with Rails fixtures? (part one)
 id: 23
-filter: 
+filter:
 - erb
 - textile
 categories: []
@@ -14,10 +14,10 @@ keywords: fixtures rails test ruby testing database activerecord
 ---
 In a "previous post":/blog/2006-06-27-rails-fixtures-help-or-hindrance I explained why I'm not a big fan of Rails fixtures. But how can you avoid using them and still obtain good test coverage? Try forgetting about fixtures and writing unit tests that only test a single class and nothing else. Here's an example where you hardly[1] need to involve the database at all...
 
-bc(prettyprint). class Initial < ActiveRecord::Migration 
-  def self.up 
-    create_table :companies do |t| 
-      t.column :name, :string 
+bc(prettyprint). class Initial < ActiveRecord::Migration
+  def self.up
+    create_table :companies do |t|
+      t.column :name, :string
     end
     create_table :employees do |t|
       t.column :company_id, :integer
@@ -43,7 +43,7 @@ bc(prettyprint).. # companies.yml
 walmart:
   id: 1
   name: Walmart
-  
+
 # employees.yml
 fred:
   id: 1

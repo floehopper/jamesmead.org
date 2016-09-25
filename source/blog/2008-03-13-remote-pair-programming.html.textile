@@ -26,4 +26,3 @@ ctrl-A :acladd <client_username>
 
 bc. # second user connects to server over ssh and runs the following
 screen -x <server_username>/<session_name>
-

@@ -4,7 +4,7 @@ updated_at: 2006-08-10 17:08:14 +00:00
 guid: c3257d9e-acec-4a77-a05d-ffdc744c18ff
 title: Dot-com survivor
 id: 22
-filter: 
+filter:
 - erb
 - textile
 categories: []

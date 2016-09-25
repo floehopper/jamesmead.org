@@ -4,7 +4,7 @@ updated_at: 2007-08-03 10:11:22 +00:00
 guid: 22926b95-53c4-472e-9a92-4b08f504f9b7
 title: Mock Commands, Stub Queries
 id: 278
-filter: 
+filter:
 - erb
 - textile
 categories: []
@@ -19,14 +19,14 @@ bc(prettyprint).. class Car
   def initialize(parts = [])
     @parts = parts
   end
-  
+
   def start
     started = true
     @parts.each do | part |
       # commenting out for failure
       # started = started && part.start
     end
-    
+
     started
   end
 
@@ -37,7 +37,7 @@ bc(prettyprint).. class SomeTest < Test::Unit::TestCase
   def test_start
     engine_mock = mock("engine_mock")
     car = Car.new([engine_mock])
-    
+
     engine_mock.expects(:start).returns(false)
     assert !car.start
   end
@@ -51,18 +51,18 @@ bc(prettyprint).. class SomeTest < Test::Unit::TestCase
   def test_should_start_engine
     engine = mock('engine')
     car = Car.new([engine])
-    
+
     engine.expects(:start)
-    
+
     car.start
   end
-  
+
   def test_should_start_if_engine_starts
     engine = stub('engine')
     car = Car.new([engine])
-    
+
     engine.stubs(:start).returns(false)
-    
+
     assert !car.start
   end
 
@@ -75,11 +75,11 @@ bc(prettyprint).. class Car
   def initialize(parts = [])
     @parts = parts
   end
-  
+
   def start
     @parts.each { |part| part.start }
   end
-  
+
   def started?
     @parts.all? { |part| part.started? }
   end
@@ -91,18 +91,18 @@ bc(prettyprint).. class SomeOtherTest < Test::Unit::TestCase
   def test_should_start_engine
     engine = mock('engine')
     car = Car.new([engine])
-    
+
     engine.expects(:start)
-    
+
     car.start
   end
-  
+
   def test_should_not_be_started_if_engine_is_started
     engine = stub('engine')
     car = Car.new([engine])
-    
+
     engine.stubs(:started?).returns(false)
-    
+
     assert !car.started?
   end
 

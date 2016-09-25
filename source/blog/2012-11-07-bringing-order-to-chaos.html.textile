@@ -4,7 +4,7 @@ created_at: 2012-11-07 10:24:00 +00:00
 updated_at: 2012-11-07 10:24:00 +00:00
 title: Bringing order to the chaos
 description: We've started sending out invitations for our new product, Harmonia.
-filter: 
+filter:
 - erb
 - markdown
 keywords: harmonia chaos task random gtd democracy cooperative
@@ -35,4 +35,3 @@ While this sounds like a simple idea, it's actually had a major impact on our co
 ## Harmonia
 
 The Ruby script has now evolved into a web application called [Harmonia](https://harmonia.io). We started to think that others might find it useful and so we've decided to open it up for others to use. If you think it might be of interest, then please [sign up](https://harmonia.io) now, so we can send you an invitation. We'd love you to take it for a spin and give us your [feedback](https://harmonia.io/feedback).
-

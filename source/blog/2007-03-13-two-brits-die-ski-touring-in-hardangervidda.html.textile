@@ -4,7 +4,7 @@ updated_at: 2007-03-13 07:57:58 +00:00
 guid: fefb5d39-15ee-4148-bd7b-774e7f788fda
 title: Two Brits die ski-touring in Hardangervidda
 id: 174
-filter: 
+filter:
 - erb
 - textile
 categories: []
@@ -15,4 +15,3 @@ keywords: norway ski tour hardangervidda kjeldebu accident
 I heard about "this tragic story":http://news.bbc.co.uk/1/hi/scotland/6440353.stm last night and just found it on the "BBC news website":http://news.bbc.co.uk. This is the "same kind of trip in the same area":/blog/2006-08-21-lunch-stop-on-a-norwegian-ski-tour that I've been on a few times.
 
 The story has definitely made me think twice about going again this year.
-

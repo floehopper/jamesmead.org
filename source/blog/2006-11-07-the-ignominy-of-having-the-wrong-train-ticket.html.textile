@@ -4,7 +4,7 @@ updated_at: 2006-11-07 09:16:44 +00:00
 guid: 403c9037-b2ab-4de7-97bd-50e5a314b414
 title: The Ignominy of having the Wrong Train Ticket
 id: 104
-filter: 
+filter:
 - erb
 - textile
 categories: []

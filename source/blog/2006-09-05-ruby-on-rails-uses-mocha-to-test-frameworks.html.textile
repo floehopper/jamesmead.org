@@ -4,7 +4,7 @@ updated_at: 2006-09-05 03:41:10 +00:00
 guid: 01074226-4558-4165-9f2e-fd0805c6518a
 title: Ruby on Rails uses Mocha to test frameworks
 id: 75
-filter: 
+filter:
 - erb
 - textile
 categories: []

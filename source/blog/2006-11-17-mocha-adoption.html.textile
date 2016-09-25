@@ -4,7 +4,7 @@ updated_at: 2006-11-17 06:10:29 +00:00
 guid: 817daced-c711-427c-9a48-895aa6b69ecc
 title: Mocha Adoption
 id: 107
-filter: 
+filter:
 - erb
 - textile
 categories: []
@@ -20,4 +20,3 @@ It's great to see that so many people are finding "Mocha":http://gofreerange.com
 * LabRatZ - " Moment of Mocha Bliss":http://blog.labratz.net/articles/2006/09/11/moment-of-mocha-bliss
 * jvoorhis - "The Tooling Post: Ruby and Rails":http://www.jvoorhis.com/articles/2006/09/09/the-tooling-post-ruby-and-rails
 * t0fuu - "Tools for Ruby Development":http://t0fuu.wordpress.com/2006/09/09/tools-for-ruby-development/
-

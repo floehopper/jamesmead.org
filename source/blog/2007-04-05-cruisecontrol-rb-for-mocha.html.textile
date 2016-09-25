@@ -4,7 +4,7 @@ updated_at: 2009-11-26 11:33:39 +00:00
 guid: d9fe9606-7ecb-4640-a028-55d8e520c105
 title: CruiseControl.rb for Mocha
 id: 197
-filter: 
+filter:
 - erb
 - textile
 categories: []
@@ -21,4 +21,3 @@ I'd like to publish the url for my CruiseControl instance, but I'm concerned abo
 It would be nice if you only saw the build button if you were logged in. I feel a feature request coming on...
 
 On a related note, it's great to see that there has been some effort going into getting a "RubyOnRails CruiseControl.rb instance":http://cruisecontrolrb.thoughtworks.com/builds/RubyOnRails/ set up.
-

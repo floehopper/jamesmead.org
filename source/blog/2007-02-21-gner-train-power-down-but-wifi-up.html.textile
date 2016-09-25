@@ -4,7 +4,7 @@ updated_at: 2007-02-21 15:46:31 +00:00
 guid: 4bfbe2ad-8cd0-46d7-b0c9-8765c9b01503
 title: GNER train - Power down, but Wifi up
 id: 168
-filter: 
+filter:
 - erb
 - textile
 categories: []

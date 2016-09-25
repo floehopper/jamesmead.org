@@ -4,7 +4,7 @@ updated_at: 2006-08-14 06:21:21 +00:00
 guid: 054ba5dd-fdf5-490d-9cf8-f8334b04150d
 title: "Blizzard: Race to the Pole"
 id: 31
-filter: 
+filter:
 - erb
 - textile
 categories: []
@@ -12,7 +12,7 @@ categories: []
 created_at: 2006-08-14 04:00:58 +00:00
 keywords: antarctica faraday bbc scott amundsen south pole
 ---
-I was slightly startled, but very pleased to see my old mucker Rory O'Connor on TV last night. He was on BBC2's "programme":http://www.bbc.co.uk/bbctwo/programmes/?id=blizzard about the race to the south pole by Scott and Amundsen. He's the team doctor for the "British Team":http://www.bbc.co.uk/pressoffice/pressreleases/stories/2006/07_july/25/pole_british.shtml. 
+I was slightly startled, but very pleased to see my old mucker Rory O'Connor on TV last night. He was on BBC2's "programme":http://www.bbc.co.uk/bbctwo/programmes/?id=blizzard about the race to the south pole by Scott and Amundsen. He's the team doctor for the "British Team":http://www.bbc.co.uk/pressoffice/pressreleases/stories/2006/07_july/25/pole_british.shtml.
 
 It looks like he's been busy since I worked with him at "Faraday":http://www.antarctica.ac.uk/About_Antarctica/Heritage/Stations/faraday.html, the "British Antarctic Survey":http://www.antarctica.ac.uk research station...
 

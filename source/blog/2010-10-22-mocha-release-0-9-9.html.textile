@@ -5,10 +5,10 @@ guid: 87f22b31-ba7b-471c-a090-1cafa4f25dcd
 title: Mocha Release 0.9.9
 description: Includes bug fixes for Test::Unit and MiniTest integration.
 id: 406
-filter: 
+filter:
 - erb
 - textile
-categories: 
+categories:
 - mocha_release
 created_at: 2010-10-22 14:35:39 +00:00
 keywords: mocha release mock object ruby testing

@@ -4,7 +4,7 @@ updated_at: 2006-08-10 17:08:14 +00:00
 guid: b24a913d-ebcb-4b66-97b4-56564f32f1f8
 title: Stubba example
 id: 16
-filter: 
+filter:
 - erb
 - textile
 categories: []
@@ -15,7 +15,7 @@ keywords: mock mocking stub stubbing ruby class method expectation test testing
 I don't really like this example, but it's the best I've got at the moment. The any_instance bit is particularly contrived, but hopefully you get the idea.
 
 bc(prettyprint).. class Order
-  
+
   attr_accessor :shipped_on
 
   def total_cost
@@ -35,7 +35,7 @@ bc(prettyprint).. class Order
     def find_all
       # Database.connection.execute('select * from orders...
     end
-  
+
     def number_shipped_since(date)
       find_all.select { |order| order.shipped_on > date }.size
     end

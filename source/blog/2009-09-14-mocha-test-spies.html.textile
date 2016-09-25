@@ -5,7 +5,7 @@ guid: 4f6bf634-8f6e-44be-a5c0-76d1b3199a6a
 title: Mocha Test Spies
 description: My thoughts on Joe Ferris' fork of Mocha.
 id: 382
-filter: 
+filter:
 - erb
 - textile
 categories: []
@@ -38,12 +38,12 @@ bc(prettyprint).. describe PostsController, "on GET show" do
   before(:each) do
     @post = stub('a post', :to_param => '1')
     Post.stubs(:find => @post)
-    
+
     get :show, :id => @post.to_param
   end
-  
+
   it { should render_template(:show) }
-  
+
   it "should find and assign the given post" do
     Post.should have_received(:find).with(@post.to_param)
     should assign_to(:post).with(@post)

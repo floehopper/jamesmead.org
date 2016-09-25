@@ -4,7 +4,7 @@ updated_at: 2006-09-03 18:57:49 +00:00
 guid: d79eed64-175c-4108-887d-e122324a8696
 title: New Mocha Docs
 id: 72
-filter: 
+filter:
 - erb
 - textile
 categories: []

@@ -4,7 +4,7 @@ updated_at: 2008-02-28 09:35:10 +00:00
 guid: 323bceaf-7ac2-4900-b200-2b201dbb2ff2
 title: Why Array#length is better than Array#size
 id: 283
-filter: 
+filter:
 - erb
 - textile
 categories: []
@@ -21,7 +21,7 @@ bc(prettyprint)..   [5,6].size # => 2
   [5,6].length # => 2
   1.length # => NoMethodError: undefined method `length' for 1:Fixnum
 
-p. *Update:* Josh Susser has posted a "useful related article":http://blog.hasmanythrough.com/2008/2/27/count-length-size about the use of... 
+p. *Update:* Josh Susser has posted a "useful related article":http://blog.hasmanythrough.com/2008/2/27/count-length-size about the use of...
 
 * "ActiveRecord::Associations::HasManyAssociation#count":http://dev.rubyonrails.org/browser/tags/rel_2-0-2/activerecord/lib/active_record/associations/has_many_association.rb?rev=8940#L18
 * "ActiveRecord::Associations::AssocationCollection#size":http://dev.rubyonrails.org/browser/tags/rel_2-0-2/activerecord/lib/active_record/associations/association_collection.rb?rev=8940#L103

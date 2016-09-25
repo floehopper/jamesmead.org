@@ -4,10 +4,10 @@ created_at: 2013-03-07 17:52:00 +00:00
 updated_at: 2013-03-07 17:52:00 +00:00
 title: Mocha Release 0.13.3
 description: Various bug fixes.
-filter: 
+filter:
 - erb
 - textile
-categories: 
+categories:
 - mocha_release
 keywords: mocha mock object testing ruby
 guid: e65a8a91-c78a-4a13-93fa-2cb97dc3c656

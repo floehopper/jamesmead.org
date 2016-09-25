@@ -4,10 +4,10 @@ created_at: 2013-05-17 10:00:00 +00:00
 updated_at: 2013-05-17 10:00:00 +00:00
 title: Mocha Release 0.14.0
 description: Support for MiniTest v5.0
-filter: 
+filter:
 - erb
 - textile
-categories: 
+categories:
 - mocha_release
 keywords: mocha mock object testing ruby
 guid: 6352d087-af08-47fe-8b2c-aaee0af325e8

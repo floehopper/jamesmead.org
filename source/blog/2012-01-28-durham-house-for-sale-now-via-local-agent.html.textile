@@ -4,7 +4,7 @@ created_at: 2012-01-28 17:18:00 +01:00
 updated_at: 2012-01-28 17:18:00 +01:00
 title: Durham house for sale now via local agent
 description: We haven't had much luck selling via our on-line agent.
-filter: 
+filter:
 - erb
 - textile
 keywords: house for sale property durham city briardene cathedral castle view quiet central garden patio garage DH1 robinsons estate agent

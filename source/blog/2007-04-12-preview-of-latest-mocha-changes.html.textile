@@ -4,7 +4,7 @@ updated_at: 2007-04-12 14:49:28 +00:00
 guid: b8fe8b5f-8502-4d35-bc10-e6ba29cfddae
 title: Preview of Latest Mocha Changes
 id: 207
-filter: 
+filter:
 - erb
 - textile
 categories: []
@@ -36,7 +36,7 @@ object.method('key_2' => 2)
 
 h2. Values Returned and Exceptions Raised on Consecutive Invocations
 
-Allow multiple calls to "@Expectation#returns@":http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000019 and "@Expectation#raises@":http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000020 to build up a sequence of responses to invocations on the mock. Added syntactic sugar method @Expectation#then@ to allow more readable expectations. 
+Allow multiple calls to "@Expectation#returns@":http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000019 and "@Expectation#raises@":http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000020 to build up a sequence of responses to invocations on the mock. Added syntactic sugar method @Expectation#then@ to allow more readable expectations.
 
 bc(prettyprint). object = mock()
 object.stubs(:method).returns(1, 2).then.raises(Exception).then.returns(4)

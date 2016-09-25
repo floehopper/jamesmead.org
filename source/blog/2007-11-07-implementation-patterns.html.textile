@@ -4,7 +4,7 @@ updated_at: 2007-11-08 13:51:13 +00:00
 guid: 0e4ff1dd-c71d-4cb7-99ff-5b5786b3a595
 title: Implementation Patterns
 id: 298
-filter: 
+filter:
 - erb
 - textile
 categories: []
