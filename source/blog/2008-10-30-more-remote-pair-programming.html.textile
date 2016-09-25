@@ -4,9 +4,6 @@ updated_at: 2008-10-30 12:47:25 +00:00
 guid: 9d83daf8-565f-45d0-9191-c4be09e6d621
 title: More Remote Pair Programming
 id: '342'
-filter:
-- erb
-- textile
 categories: []
 
 created_at: 2008-10-30 12:36:33 +00:00

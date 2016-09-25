@@ -3,9 +3,6 @@ title: Blog
 description: Articles on Ruby, Ruby on Rails, Mock Objects, Test-Driven Development, Agile Development, eXtreme Programming, Trains on the East Coast mainline, Antarctica, Ski-Touring in Norway, etc.
 created_at: 2009-11-28 16:23:13 +00:00
 updated_at: 2009-11-28 16:23:13 +00:00
-filter:
-  - erb
-  - textile
 ---
 <% articles.each do |article| %>
 h2. <%= link_to article.title, friendly_url(article) %>

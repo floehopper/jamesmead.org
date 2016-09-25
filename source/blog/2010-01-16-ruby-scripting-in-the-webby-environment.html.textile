@@ -5,9 +5,6 @@ guid: e29f4b8e-28ad-4169-827b-3bf802c7f9c2
 title: Ruby scripting in the Webby "environment"
 description: How to load Webby::Resources into memory.
 id: '393'
-filter:
-- erb
-- textile
 categories: []
 
 created_at: 2010-01-16 17:07:01 +00:00

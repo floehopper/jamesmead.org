@@ -4,9 +4,6 @@ updated_at: 2008-11-27 16:26:38 +00:00
 guid: eae66595-958c-43d3-9572-5f8e48906b1b
 title: Mocha Release 0.9.3
 id: '351'
-filter:
-- erb
-- textile
 categories:
 - mocha_release
 created_at: 2008-11-27 16:26:38 +00:00

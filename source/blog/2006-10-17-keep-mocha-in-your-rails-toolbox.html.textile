@@ -4,9 +4,6 @@ updated_at: 2006-10-17 13:31:32 +00:00
 guid: 4046a0ee-0486-4852-aee5-2fb3efee3b71
 title: Keep Mocha in your Rails Toolbox
 id: '98'
-filter:
-- erb
-- textile
 categories: []
 
 created_at: 2006-10-17 13:31:32 +00:00

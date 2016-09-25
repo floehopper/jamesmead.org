@@ -4,9 +4,6 @@ updated_at: 2009-03-17 13:17:34 +00:00
 guid: 99d2c410-ff54-4643-9865-47c83bea10fb
 title: Uninstalling gems from .gem directory
 id: '365'
-filter:
-- erb
-- textile
 categories: []
 
 created_at: 2009-02-16 15:56:48 +00:00

@@ -5,9 +5,6 @@ guid: 4f6bf634-8f6e-44be-a5c0-76d1b3199a6a
 title: Mocha Test Spies
 description: My thoughts on Joe Ferris' fork of Mocha.
 id: '382'
-filter:
-- erb
-- textile
 categories: []
 
 created_at: 2009-09-14 16:58:56 +00:00

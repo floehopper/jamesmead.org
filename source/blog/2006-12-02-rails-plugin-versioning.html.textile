@@ -4,9 +4,6 @@ updated_at: 2006-12-21 04:58:30 +00:00
 guid: 7ee628bb-96af-47f0-8e6e-0f66c2a5e03f
 title: Rails Plugin Versioning
 id: '115'
-filter:
-- erb
-- textile
 categories: []
 
 created_at: 2006-12-02 10:10:26 +00:00

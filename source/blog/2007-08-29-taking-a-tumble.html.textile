@@ -4,9 +4,6 @@ updated_at: 2007-08-29 18:21:16 +00:00
 guid: 23fe7750-0efd-4ff5-b54d-16d57927d774
 title: Taking a Tumble
 id: '287'
-filter:
-- erb
-- textile
 categories: []
 
 created_at: 2007-08-29 12:03:48 +00:00

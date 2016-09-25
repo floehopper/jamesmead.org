@@ -4,9 +4,6 @@ updated_at: 2007-10-29 22:54:26 +00:00
 guid: 8ac3b161-d3cf-4a1e-8d55-5cfd02c17668
 title: Changing GNER Advance Single tickets
 id: '296'
-filter:
-- erb
-- textile
 categories: []
 
 created_at: 2007-10-29 22:54:26 +00:00

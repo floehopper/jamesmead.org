@@ -5,9 +5,6 @@ guid: de0c133b-66e4-42f2-89a1-203100258108
 title: Mocha on Bacon
 description: Eloy Duran has re-incarnated the Mocha adapter for Bacon.
 id: '394'
-filter:
-- erb
-- textile
 categories: []
 
 created_at: 2010-01-19 11:16:40 +00:00

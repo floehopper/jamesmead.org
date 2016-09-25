@@ -4,9 +4,6 @@ updated_at: 2008-07-12 14:45:14 +00:00
 guid: c3d510a9-fbaf-4ac5-a628-dad7d001152f
 title: Big Refactoring
 id: '329'
-filter:
-- erb
-- textile
 categories: []
 
 created_at: 2004-05-14 14:36:45 +00:00

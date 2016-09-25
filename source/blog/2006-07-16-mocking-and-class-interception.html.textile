@@ -4,9 +4,6 @@ updated_at: 2006-08-10 17:08:14 +00:00
 guid: 611d4579-7140-4e72-9708-70e78bbfc0e8
 title: Mocking and class interception
 id: '14'
-filter:
-- erb
-- textile
 categories: []
 
 created_at: 2006-07-16 17:51:00 +00:00

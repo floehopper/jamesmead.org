@@ -5,9 +5,6 @@ guid: d89bf636-e29a-432e-a24e-634eb515c7e5
 title: National Express East Coast Ticket Options
 description: Prices and restrictions for train journeys between Durham and London.
 id: '375'
-filter:
-- erb
-- textile
 categories: []
 
 created_at: 2009-03-16 12:55:33 +00:00

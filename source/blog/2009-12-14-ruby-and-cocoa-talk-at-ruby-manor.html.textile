@@ -5,9 +5,6 @@ guid: 7b0e92a9-fcaf-4afe-990c-d1e037363958
 title: Ruby and Cocoa talk at Ruby Manor
 description: Links to my slides and code.
 id: '391'
-filter:
-- erb
-- textile
 categories: []
 
 created_at: 2009-12-14 11:59:46 +00:00

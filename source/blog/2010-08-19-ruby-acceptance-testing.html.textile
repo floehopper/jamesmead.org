@@ -5,9 +5,6 @@ guid: 865a65c7-638c-4751-aea6-f2b2e5e9d554
 title: Ruby Acceptance Testing
 description: Riposte to aspects of "You're Cuking it Wrong" article by Jonas Nicklas.
 id: '399'
-filter:
-- erb
-- textile
 categories: []
 
 created_at: 2010-08-19 21:31:24 +00:00

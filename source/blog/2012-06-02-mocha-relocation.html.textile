@@ -4,9 +4,6 @@ created_at: 2012-06-02 11:29:00 +00:00
 updated_at: 2012-06-02 11:29:00 +00:00
 title: Mocha Relocation
 description: Source code, documentation and issues have moved to Go Free Range.
-filter:
-- erb
-- textile
 keywords: mocha mock object testing ruby
 guid: 0b7cc6f3-98fe-474c-abbd-9c190b343ccf
 ---
