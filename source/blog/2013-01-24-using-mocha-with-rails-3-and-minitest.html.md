@@ -4,9 +4,6 @@ created_at: 2013-01-24 11:24:00 +00:00
 updated_at: 2013-01-24 11:24:00 +00:00
 title: Using Mocha with Rails 3 and MiniTest
 description: Explains some of the compatibility issues.
-filter:
-- erb
-- markdown
 categories:
 keywords: mocha mock object testing ruby rails minitest compatibility
 guid: e007c429-8e44-45e2-9967-d39edafd73c8

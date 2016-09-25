@@ -4,9 +4,6 @@ created_at: 2013-01-24 11:32:00 +00:00
 updated_at: 2013-01-24 11:32:00 +00:00
 title: Using Mocha with Rails 3 and Test::Unit
 description: Explains more of the compatibility issues.
-filter:
-- erb
-- markdown
 categories:
 keywords: mocha mock object testing ruby rails testunit compatibility
 guid: 530fbbdd-7f26-4a97-b318-b3d128c6ca0a

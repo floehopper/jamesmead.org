@@ -4,9 +4,6 @@ created_at: 2012-11-07 10:24:00 +00:00
 updated_at: 2012-11-07 10:24:00 +00:00
 title: Bringing order to the chaos
 description: We've started sending out invitations for our new product, Harmonia.
-filter:
-- erb
-- markdown
 keywords: harmonia chaos task random gtd democracy cooperative
 guid: d71e82be-647e-4735-807a-e7296f7dbe51
 ---

@@ -4,9 +4,6 @@ created_at: 2011-01-20 18:13:42 +00:00
 updated_at: 2011-01-20 18:13:42 +00:00
 title: Adding a User in OSX on Command Line
 description: OSX equivalent to the Linux useradd & groupadd commands.
-filter:
-- erb
-- markdown
 keywords: mac osx add create user group dscl useradd groupadd linux
 guid: 83030ef8-7cf3-41cb-bc24-b954297d7248
 ---

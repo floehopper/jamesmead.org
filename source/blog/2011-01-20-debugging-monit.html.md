@@ -4,9 +4,6 @@ created_at: 2011-01-20 17:10:32 +00:00
 updated_at: 2011-01-20 17:10:32 +00:00
 title: Debugging Monit
 description: Notes on debugging monit start program and stop program commands.
-filter:
-- erb
-- markdown
 keywords: monit linux osx
 guid: 46a1d9f1-20a5-487a-87de-72cce418122d
 ---
