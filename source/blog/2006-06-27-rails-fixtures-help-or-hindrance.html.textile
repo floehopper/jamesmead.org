@@ -1,0 +1,30 @@
+--- 
+permalink: rails-fixtures-help-or-hindrance
+updated_at: 2006-08-10 17:08:14 +00:00
+guid: 7e8e5469-38a8-4618-8786-8c64d804c153
+title: Rails fixtures - help or hindrance
+id: 11
+filter: 
+- erb
+- textile
+categories: []
+
+created_at: 2006-06-27 20:13:00 +00:00
+keywords: rails fixture test
+---
+So it looks like "Ben":http://www.reevoo.com/blogs/bengriffiths/ has finally "shamed":http://metaatem.net/2006/06/24/railsconf-panel-thoughtworks-on-rails-with-obie-fernandez#comment-1645 me into writing my _annual_ blog entry. 
+
+My colleague "Chris":http://blog.seagul.co.uk/ recently pointed me at a "report":http://www.oreillynet.com/ruby/blog/2006/06/railsconf_2006_day_3_last_day.html from "RailsConf 2006":http://www.railsconf.org/. It didn't surprise me to read that fixtures are the part of Rails with which the core team are most unhappy -- apparently about half of them don't even use fixtures.
+
+In the early stages of developing a Rails application, the fixtures functionality built into Test::Unit::TestCase by ActiveRecord can be pretty useful. However, as the application grows it becomes harder and harder to stop fixtures getting in your way. One of the more obvious problems is your test suite taking longer and longer to run. This is often tackled by making performance improvements like using "transactional fixtures":http://clarkware.com/cgi/blosxom/2005/10/24 or using an "in-memory database":http://martinfowler.com/bliki/InMemoryTestDatabase.html. But if your application is continuing to grow, it really only buys you time.
+
+I think the "performance":http://noodlesinmysandals.com/blog/index.php/2006/05/23/mock-objects-speed-up-testing/ "problem":http://www.reevoo.com/blogs/bengriffiths/2006/05/11/more-ruby-unit-testing/ is merely the most visible symptom of a deeper malaise. Data in fixture files...
+
+* is effectively global -- unless you are _very_ strict about having a single role for each fixture record, it's very easy to share fixtures across many unrelated tests because it is convenient and not because its sensible. This is essentially a coupling problem and leads to brittle tests where changing one attribute of one fixture record breaks a bunch of tests.
+* reduces the self-contained readability of tests -- personally I dislike even having to scroll to the top of the TestCase to find the setup method, let alone having to navigate to another file.
+* leads to tedious and error-prone setup when you have complex object graphs and is just as hard to read/navigate afterwards.
+* leaves data in the database after the last test in a TestCase -- potentially interacting with a subsequent TestCase.
+* encourages unit tests that interact with the database -- although this is what slows tests down, you should also realise it means the unit that's being tested includes not only your application class, but many lines of ActiveRecord code as well as the underlying database. Given that this 3rd party code is likely to be well-tested, it seems like overkill to include it in your own application's unit tests.
+* is artificial data -- it gets directly inserted into the database bypassing all business logic and validation. So it's very easy to end up testing impossible scenarios or even getting false positives.
+
+So what's a better way to write unit tests? That'll have to wait until next year ;-)

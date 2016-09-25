@@ -1,0 +1,21 @@
+--- 
+permalink: mocha-release-0-9-10
+updated_at: 2010-11-25 16:29:36 +00:00
+guid: a7690854-0448-4171-9b47-f1ff68a384c9
+title: Mocha Release 0.9.10
+description: Includes new unstubbing functionality.
+id: 409
+filter: 
+- erb
+- textile
+categories: 
+- mocha_release
+created_at: 2010-11-25 16:29:36 +00:00
+keywords: mocha mock object testing ruby unstub exception
+---
+h2. Release Notes
+
+* Added @Mocha::ObjectMethods#unstub@ method - see "GitHub issue":https://github.com/freerange/mocha/issues/6.
+* Inherit @Mocha::ExpectationError@ from @Exception@ instead of @StandardError@ to reduce the chances of a test passing by accident - thanks to "James Sanders":http://github.com/jsanders - see "GitHub issue":https://github.com/freerange/mocha/issues/15
+* Fixed "bug":https://github.com/freerange/mocha/issues/11 - GitHub README page to link correctly to code examples
+* Fixed "bug":https://github.com/freerange/mocha/issues/14 - @PASSTHROUGH_EXCEPTIONS@ are defined on @MiniTest::Unit::TestCase@ not in @Mocha@ - thanks to "Brian Troutwine":http://github.com/blt

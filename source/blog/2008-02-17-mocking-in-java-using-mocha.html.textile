@@ -1,0 +1,67 @@
+--- 
+permalink: mocking-in-java-using-mocha
+updated_at: 2008-02-17 18:15:15 +00:00
+guid: 857791bb-b4ad-41c0-845d-69d0909d0b7c
+title: Mocking in Java using Mocha
+id: 310
+filter: 
+- erb
+- textile
+categories: []
+
+created_at: 2008-02-17 18:10:01 +00:00
+keywords: java ruby mocha test mock
+---
+"Ola Bini":http://ola-bini.blogspot.com/ one of the "JRuby":http://jruby.codehaus.org/ guys has released the "JtestR":http://jtestr.codehaus.org/ tool which allows you to write tests for "Java":http://java.sun.com/ code in "Ruby":http://www.ruby-lang.org/! Ola has bundled a number of Ruby libraries - "Mocha":http://gofreerange.com/mocha/docs/, "RSpec":http://rspec.info/, "Dust":http://dust.rubyforge.org/, "Test::Unit":http://www.ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html & "ActiveSupport":http://rubyforge.org/projects/activesupport/ - together with JRuby to allow you to write Ruby test cases that test Java code.
+
+He has a couple of examples in the "Mock documentation":http://jtestr.codehaus.org/Mocks of how to use "Mocha":http://gofreerange.com/mocha/docs/...
+
+The first one demonstrates using "Mocha":http://gofreerange.com/mocha/docs/ to mock an interface ("Map":http://java.sun.com/j2se/1.4.2/docs/api/java/util/Map.html).
+
+bc(prettyprint).. import java.util.Map
+import java.util.Iterator
+import java.util.Set
+import java.util.HashMap
+
+functional_tests do 
+  test "that a new HashMap can be created based on another map" do 
+    map = Map.new
+    
+    map.expects(:size).returns(0)
+    
+    iter = Iterator.new
+    iter.expects(:hasNext).returns(false)
+    
+    set = Set.new
+    set.expects(:iterator).returns(iter)
+    
+    map.expects(:entrySet).returns(set)
+    
+    assert_equals 0, HashMap.new(map).size
+  end
+end
+
+p. The second example demonstrates using "Mocha":http://gofreerange.com/mocha/docs/ to setup expectations on a real (non-mock) instance ("HashMap":http://java.sun.com/j2se/1.4.2/docs/api/java/util/HashMap.html)...
+
+bc(prettyprint).. import java.util.Iterator
+import java.util.Set
+import java.util.HashMap
+
+functional_tests do 
+  test "that a new HashMap can be created based on another map" do 
+    map = mock(HashMap)
+    
+    map.expects(:size).returns(0)
+    
+    iter = Iterator.new
+    iter.expects(:hasNext).returns(false)
+    
+    set = Set.new
+    set.expects(:iterator).returns(iter)
+    
+    map.expects(:entrySet).returns(set)
+    
+    assert_equals 0, HashMap.new(map).size
+  end
+end
+

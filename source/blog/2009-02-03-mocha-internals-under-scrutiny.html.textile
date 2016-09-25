@@ -1,0 +1,45 @@
+--- 
+permalink: mocha-internals-under-scrutiny
+updated_at: 2009-02-03 20:49:28 +00:00
+guid: 3e1842d7-be1c-42d9-8c2b-282f139f277b
+title: Mocha Internals under Scrutiny
+id: 363
+filter: 
+- erb
+- textile
+categories: []
+
+created_at: 2009-02-03 20:49:28 +00:00
+keywords: mocha internals implementation ruby ioke
+---
+I've just read Brian Guthrie's recent article entitled "Ioke mocking, Mocha as exemplar":http://blog.brianguthrie.com/articles/2009/02/03/ioke-mocking-mocha-as-exemplar. Brian has volunteered to work on a mocking framework for "Ola Bini's":http://olabini.com/ "Ioke":http://ioke.org/. I've read bits and pieces on Ola's blog about the development of Ioke, so I was very interested to see what Brian had to say. He makes some very valid comments; both about mocking in general and about the internals of "Mocha":http://gofreerange.com/mocha/docs/.
+
+h2. Mocking in General
+
+I agree with him about it being so easy to stub in prototype-based languages, but (as he says) mocking libraries offer more than just stubbing. One related problem is that different people mean different things when they talk about "mocking". "xUnit Test Patterns":http://xunitpatterns.com/ by Gerard Meszaros provides a useful breakdown of the different capabilities offered by different types of what he (more generically) calls "Test Doubles":http://xunitpatterns.com/Test%20Double%20Patterns.html :-
+
+* Dummy Object
+* Test Stub
+* Test Spy
+* Mock Object
+* Fake Object
+
+In my "LRUG":http://lrug.org presentation: "An Introduction to Mock Objects in Ruby":/talks/2007-07-09-introduction-to-mock-objects-in-ruby-at-lrug/#slide7, I translated these different types of Test Doubles into Ruby examples which people might find helpful.
+
+h2. Mocha Internals
+
+I'm glad that "Brian":http://blog.brianguthrie.com/ drew some inspiration from reading the Mocha source code - I have to admit I went through a similar exercise with the "jMock":http://www.jmock.org/ source code some time ago. So thanks to "Nat":http://www.natpryce.com/ & "Steve":http://www.m3p.co.uk/ for that.
+
+Mocha (particularly the internals) has changed a lot since the early releases but, as Brian mentions, the original split between the so-called Mocha and Stubba components has not really been bridged internally. Reading this critique has just helped me realise that a mock object in Ruby is, after all, just an instance of a "BlankSlate-like":http://onestepback.org/index.cgi/Tech/Ruby/BlankSlate.rdoc object and could therefore be approached with Stubba-like tactics (rather than the specialised Mocha-like tactics which are currently used). I think this could lead to a significant simplification of the code. Yay! I love open source :-)
+
+As well as the welcome critique, Brian made some very pleasing comments :-
+
+bq. I'd happily recommend [Mocha] to others as a good example of how to pull off some hairy Ruby functionality without writing a whole lot of hairy Ruby code in the process.
+
+bq. Much of Mocha is like that: moderately sized, neither opaque in its density or transparent in its verbosity. Nice, I suppose, for my own definition of nice.
+
+h2. Reflections
+
+I'm a fan of the "Pragmatic Programmers":http://www.pragprog.com/ suggestion to "learn a new programming language every year". As an extension to this, I think there is some truth in what I think is a quote from "Dan North":http://dannorth.net/ : "everyone should write a mocking framework". In any case, I certainly know that one of the most important things I've got out of writing Mocha is a deeper understanding of Ruby internals.
+
+Lastly this seems like an opportune time to thank my former colleagues at Reevoo: "Paul Battley":http://po-ru.com/, "Chris Roos":http://chrisroos.co.uk/ and especially "Ben Griffiths":http://www.techbelly.com/ for all their help and encouragement with Mocha.

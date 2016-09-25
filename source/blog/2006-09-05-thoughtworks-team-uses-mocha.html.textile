@@ -1,0 +1,17 @@
+--- 
+permalink: thoughtworks-team-uses-mocha
+updated_at: 2006-09-05 07:59:15 +00:00
+guid: a589217f-72aa-42f3-a160-233fbd43c51b
+title: ThoughtWorks team uses Mocha
+id: 76
+filter: 
+- erb
+- textile
+categories: []
+
+created_at: 2006-09-05 06:39:10 +00:00
+keywords: mocha ruby rails mock unit test thoughtworks
+---
+It's good to see that a team from "my old company":http://www.thoughtworks.com has caught the "Mocha":http://gofreerange.com/mocha/docs/ bug...
+
+"Jay Fields":http://jayfields.blogspot.com/ describes how his team have been using Mocha to achieve "Ruby on Rails Unit Testing in less than 1 second":http://jayfields.blogspot.com/2006/09/rubyrails-unit-testing-in-less-than-1.html. 

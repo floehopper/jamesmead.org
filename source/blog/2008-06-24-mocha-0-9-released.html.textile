@@ -1,0 +1,69 @@
+--- 
+permalink: mocha-0-9-released
+updated_at: 2008-06-24 19:15:07 +00:00
+guid: 22e0bfc7-8cd0-4d92-8e72-81397544c6a1
+title: Mocha 0.9 Released
+id: 327
+filter: 
+- erb
+- textile
+categories: 
+- mocha_release
+created_at: 2008-06-24 19:14:12 +00:00
+keywords: mocha mock release ruby stub testing jmock
+---
+There's been quite a bit of work going on in "Mocha":http://gofreerange.com/mocha/docs/ over recent months, but a release is long overdue. The API is now pretty stable and so this release jumps from version 0.5 to 0.9. Much of the work has been refactoring Mocha's internals to support new features and make the code more maintainable.
+
+Before attempting the refactoring, extensive acceptance tests were added. One of the benefits of this is that it should now be easier to write new acceptance tests if you want to suggest new features or illustrate a bug ;-)
+
+Here's a quick summary of the changes in the release. I'll try to post some code examples here in the near future.
+
+h2. Ordering constraints
+
+Based on the "JMock":http://jmock.org/ constraints with the same names...
+
+* Added "sequences" for constraining the order of expected invocations. See "Standalone#sequence":http://mocha.rubyforge.org/classes/Mocha/Standalone.html#M000008 and "Expectation#in_sequence":http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000049.
+* Added "states" for constraining the order of expected invocations. See "Standalone#states":http://mocha.rubyforge.org/classes/Mocha/Standalone.html#M000009, "Expectation#then":http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000047, "Expectation#when":http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000048 and "StateMachine":http://mocha.rubyforge.org/classes/Mocha/StateMachine.html.
+
+h2. Configurable warnings or errors
+
+* When a method on a non-public method is stubbed
+* When a method on a non-existent method is stubbed
+* When a method on a non-mock object is stubbed (partial mocking)
+* When a method is stubbed unnecessarily (i.e. the stubbed method is not called during the test)
+
+See "Configuration":http://mocha.rubyforge.org/classes/Mocha/Configuration.html for more details.
+
+h2. Improved error messages
+
+* A more readable and complete list of unsatisfied expectations, satisfied expectations and state machines.
+* Display more sensible failure message for any_instance expectations.
+
+h2. Parameter matchers
+
+* New to this release: "optionally":http://mocha.rubyforge.org/classes/Mocha/ParameterMatchers.html#M000024 (allows matching of optional parameters if available), "yaml_equivalent":http://mocha.rubyforge.org/classes/Mocha/ParameterMatchers.html#M000027 (allows matching of YAML that represents the specified object), "responds_with":http://mocha.rubyforge.org/classes/Mocha/ParameterMatchers.html#M000026 (tests the quack not the duck).
+* Nesting of matchers is now supported.
+
+h2. Syntax shortcut
+
+An optional block can be passed into the "Standalone#mock":http://mocha.rubyforge.org/classes/Mocha/Standalone.html#M000005 method. The block is evaluated in the context of the new mock instance and can be used as a shortcut to set up expectations.
+
+h2. Ruby & Rails compatibility
+
+Tested with Ruby 1.8.4, 1.8.5, 1.8.6 & 1.9. All related bugs and warnings believed to be fixed.
+
+Tested with Rails 1.2.3 & Rails 2.1.0.
+
+h2. Deprecation
+
+There is no longer any need to have a "require 'stubba'" statement in your code. A deprecation warning has been added to this effect, because the file will be removed in a future release.
+
+h2. Bug fixes
+
+* "18914 in revision 296":http://rubyforge.org/tracker/index.php?func=detail&aid=18914&group_id=1917&atid=7477
+* "18917 in revision 295":http://rubyforge.org/tracker/index.php?func=detail&aid=18917&group_id=1917&atid=7477
+* "18336 in revision 287":http://rubyforge.org/tracker/index.php?func=detail&aid=18336&group_id=1917&atid=7477
+* "17835 in revision 255":http://rubyforge.org/tracker/index.php?func=detail&aid=17835&group_id=1917&atid=7477
+* "17412 in revision 242":http://rubyforge.org/tracker/index.php?func=detail&aid=17412&group_id=1917&atid=7477
+* "15977 in revision 198":http://rubyforge.org/tracker/index.php?func=detail&aid=15977&group_id=1917&atid=7477
+* "11885 in revision 156":http://rubyforge.org/tracker/index.php?func=detail&aid=11885&group_id=1917&atid=7477

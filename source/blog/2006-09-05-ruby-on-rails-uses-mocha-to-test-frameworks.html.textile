@@ -1,0 +1,15 @@
+--- 
+permalink: ruby-on-rails-uses-mocha-to-test-frameworks
+updated_at: 2006-09-05 03:41:10 +00:00
+guid: 01074226-4558-4165-9f2e-fd0805c6518a
+title: Ruby on Rails uses Mocha to test frameworks
+id: 75
+filter: 
+- erb
+- textile
+categories: []
+
+created_at: 2006-09-05 03:41:10 +00:00
+keywords: mocha mock stub test rails coverage patch
+---
+So thanks to "Kev Clark's":http://glu.ttono.us/ interest and hard work, it looks like "Mocha":http://gofreerange.com/mocha/docs/ is being used to improve test coverage in some of the "Rails":http://www.rubyonrails.com/ frameworks - take a look at this "patch":http://dev.rubyonrails.org/changeset/4913.

@@ -1,0 +1,82 @@
+---
+permalink: vim-learning-curve
+updated_at: 2008-07-12 23:03:08 +00:00
+guid: c7afcd35-0c86-40a8-88c1-d0485fbc2477
+title: Vim Learning Curve
+id: 333
+filter:
+- erb
+- textile
+categories: []
+
+created_at: 2008-07-12 22:52:35 +00:00
+keywords: vim svn diff blame syntax textile search replace testing textmate
+---
+Because I've been doing a lot of "remote pair programming":/blog/2008-03-13-remote-pair-programming using "vim":http://www.vim.org/ and "screen":http://www.gnu.org/software/screen/,  I've been making a real effort to improve my vim skills in order to be more productive and feel like I've made some progress. "Chris":http://blog.seagul.co.uk has rightly suggested that the only way to really improve is to make vim your editor of choice even when not remote pairing, so that's what I've been trying to do. I've come across a few useful but random bits and pieces which I thought I'd record in case they were useful to anyone else...
+
+h2. Textile
+
+I'm using a "vim syntax file":http://rubychan.de/share/textile.vim for "Textile":http://hobix.com/textile/ written by Kornelius Kalnbach to write this article.
+
+h2. svn blame
+
+I've found Tammer Saleh's "key mapping":http://tammersaleh.com/posts/quick-vim-svn-blame-snippet for "svn blame":http://svnbook.red-bean.com/en/1.0/re02.html useful...
+
+bc. vmap gl :<C-U>!svn blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+
+I decided to invest a bit of time understanding how it worked and broke it down as follows...
+
+bc.. # key mapping for visual mode
+vmap gl
+
+# remove all characters between the cursor position and the beginning of the line
+:<C-U>
+
+# current file with full path
+<C-R>=expand("%:p") <CR>
+
+# pipe std out to sed which only outputs line N to line M
+\| sed -n N,M
+
+# line number of first line of selection
+<C-R>=line("'<") <CR>
+
+# line number of last line of selection
+<C-R>=line("'>") <CR>
+
+# print output
+p <CR>
+
+h2. Search & Replace
+
+At the end of last week, "Chris":http://blog.seagul.co.uk & I found out from Ibrahim Ahmed's blog how to "search and replace across multiple files":http://www.ibrahim-ahmed.com/2008/01/find-and-replace-in-multiple-files-in.html...
+
+bc.. # select file on which to operate
+:args path/with/wildcards
+
+# find pattern, replace with replacement, and save file
+:argdo %s/pattern/replacement/ge | update
+
+h2. vimdiff
+
+"@vimdiff@":http://www.vim.org/htmldoc/diff.html seems like a nice tool, but unfortunately it doesn't immediately play well with "@svn diff@":http://svnbook.red-bean.com/en/1.0/re09.html and its @--diff-cmd@ option. There seem to be a couple of alternatives: (a) write a "wrapper script for @vimdiff@":http://svn.haxx.se/users/archive-2005-04/1048.shtml which works with @--diff-cmd@; or (b) write a "script which uses @svn cat@ and then calls @vimdiff@":http://erik.thauvin.net/blog/comments.jsp?postid=1024.
+
+h2. Test::Unit
+
+One of the things I really want to be able to do, is run Ruby "Test::Unit":http://www.ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html tests and view the output, so I can jump to the line where an assertion failed. I haven't managed to find anything suitable on the web, so here's my first attempt...
+
+bc. function! Ruby_run_tests()
+  let results = tempname()
+  set splitbelow
+  silent execute ":! ruby % > " . results . " 2>&1 "
+  silent execute ":10 sview " . results
+endfunction
+
+bc. map <silent> <F7> :call Ruby_run_tests()<cr>
+imap <silent> <F7> <ESC><F7>
+
+I'm sure this isn't the best way of doing it, but when you put this in your vimrc file, pressing the @F7@ key runs the current file using Ruby and pipes the results to a temporary file. This temporary file is opened in a read-only window 10 lines high at the bottom of the screen. By moving the cursor onto the relevant line of any stack trace, you can then use "goto file" key sequence @gf@ to goto the failing assertion. Although for some reason this only seems to work the first time round for me.
+
+Ideally I'd like to be able to do the equivalent of "run focussed test" in "TextMate":http://macromates.com/, which should be quite straightforward, but that'll have to wait for another day.
+
+In the meantime, I'd love to hear from anyone else who has useful vim tricks for "Ruby":http://www.ruby-lang.org/ development. I'll be bookmarking any useful links I find on "del.icio.us":http://del.icio.us/jamesthecat/vim.

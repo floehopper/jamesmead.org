@@ -1,0 +1,112 @@
+--- 
+permalink: permutations-combinations-probability-part-2
+updated_at: 2009-01-02 11:27:22 +00:00
+guid: f336d287-8966-4450-8a14-149134ecc16e
+title: Permutations, Combinations & Probability (Part 2)
+id: 354
+filter: 
+- erb
+- textile
+categories: []
+
+created_at: 2009-01-02 11:15:59 +00:00
+keywords: ruby permutation combination probability
+---
+h2. Monte Carlo Method
+
+I seem to be having a bit of a probability-fest at the moment. I enjoyed reading Jeff Atwood's probability puzzle earlier this week: "The Problem of the Unfinished Game":http://www.codinghorror.com/blog/archives/001203.html and the explanation: "Finishing The Game":http://www.codinghorror.com/blog/archives/001204.html. And I'm in the middle of reading "Fooled by Randomness: The Hidden Role of Chance in Life and in the Markets":http://en.wikipedia.org/wiki/Fooled_by_Randomness, a book that "Chris Roos":http://chrisroos.co.uk recommended to me a while back - I'm really enjoying it. The author is a big fan of the "Monte Carlo method":http://en.wikipedia.org/wiki/Monte_Carlo_method which is effectively how I solved the probability problem in my "previous post":/blog/2008-11-04-permutations-combinations-probability
+
+So when Nathan Zook emailed me to suggest that I might have got my previous calculation wrong, I was interested enough to do what I should have done originally i.e. write some tests to check my solution. I extracted the critical bit of logic from both my solution and from Nathan's solution and wrote tests against this method.
+
+h2. Nathan's Solution
+
+bc(prettyprint). def matches(index, base)
+  counts = [0] * base
+  4.times do
+    counts[index % base] += 1
+    index /= base
+  end
+  count = 0
+  4.times do
+    count += counts[index % base]
+    index /= base
+  end
+  count
+end
+
+h2. James' Solution
+
+bc(prettyprint). def matches(index, base)
+  places = 4
+  permutation = "%0#{places * 2}d" % index.to_s(base)
+  original = (0...places).map { |i| permutation[i].chr }
+  guess = (places...(places * 2)).map { |i| permutation[i].chr }
+  matches = 0 
+  guess.each do |g| 
+    (0...places).each do |i| 
+      if g == original[i]
+        original[i] = nil 
+        matches += 1
+        break
+      end 
+    end 
+  end 
+  matches
+end
+
+
+h2. Failing Tests
+
+You can see the full set of tests "here":http://pastie.org/350453, but the critical ones turn out to be the ones below. It appears that Nathan's solution doesn't work when there are duplicates. But I'm glad he pushed me into writing these tests - now I have more confidence in the answer I calculated previously.
+
+bc(prettyprint).. def test_should_have_two_duplicate_matches_in_same_positiion
+  assert_equal 2, matches(11341178, 10)
+end
+
+def test_should_have_two_duplicate_matches_in_different_positiion
+  assert_equal 2, matches(11345611, 10)
+end
+
+def test_should_have_three_duplicate_matches_in_same_positiion
+  assert_equal 3, matches(11141118, 10)
+end
+
+def test_should_have_three_duplicate_matches_in_different_positiion
+  assert_equal 3, matches(11145111, 10)
+end
+
+def test_should_have_four_duplicate_matches
+  assert_equal 4, matches(11111111, 10)
+end
+
+def test_should_have_one_match_when_digit_appears_twice_on_lhs_but_once_on_rhs
+  assert_equal 1, matches(11345178, 10)
+end
+
+def test_should_have_one_match_when_digit_appears_once_on_lhs_but_twice_on_rhs
+  assert_equal 1, matches(12345118, 10)
+end
+
+def test_should_have_two_matches_when_digit_appears_three_times_on_lhs_but_twice_on_rhs
+  assert_equal 2, matches(11145118, 10)
+end
+
+def test_should_have_two_matches_when_digit_appears_twice_on_lhs_but_three_times_on_rhs
+  assert_equal 2, matches(12315111, 10)
+end
+
+def test_should_have_three_matches_when_digit_appears_four_times_on_lhs_but_three_times_on_rhs
+  assert_equal 3, matches(11115111, 10)
+end
+
+def test_should_have_three_matches_when_digit_appears_three_times_on_lhs_but_four_times_on_rhs
+  assert_equal 3, matches(11141111, 10)
+end
+
+h2. TextMate Bug
+
+While running these tests, I noticed a bug in TextMate's Ruby syntax highlighting, which I've now "reported":http://ticket.macromates.com/show?ticket_id=A589DA17
+
+<a href="http://www.flickr.com/photos/jamesthecat/3158765269/" title="textmate-ruby-syntax-highlighting-bug">
+  <img src="http://farm4.static.flickr.com/3267/3158765269_f29814f253_o.jpg" width="332" height="240" alt="textmate-ruby-syntax-highlighting-bug" />
+</a>

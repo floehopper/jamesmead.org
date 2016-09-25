@@ -1,0 +1,152 @@
+--- 
+permalink: mocha-test-spies
+updated_at: 2009-09-14 17:07:32 +00:00
+guid: 4f6bf634-8f6e-44be-a5c0-76d1b3199a6a
+title: Mocha Test Spies
+description: My thoughts on Joe Ferris' fork of Mocha.
+id: 382
+filter: 
+- erb
+- textile
+categories: []
+
+created_at: 2009-09-14 16:58:56 +00:00
+keywords: mocha mock stub ruby testing tdd spy fork thoughtbot
+---
+h2. Introduction
+
+Today I finally got round to looking at "Joe Ferris' Test Spies fork":http://github.com/jferris/mocha/commits/spies of Mocha. Joe explained how Test Spies work and why he thinks they are useful in "Spy vs spy":http://robots.thoughtbot.com/post/159805295/spy-vs-spy on the ThoughtBot blog. I apologise to Joe for not getting round to this sooner.
+
+I have a number of hesitations about merging these changes into "Mocha":http://gofreerange.com/mocha/docs/ as they stand. My thinking hasn't really crystallized, but in these situations I often find it's useful to force myself to try and explain myself in writing. Hopefully it'll also generate some feedback.
+
+I'd like to thank Joe for taking the time to fork Mocha and add this functionality. I'm particularly grateful that he's taken the trouble to write a "bunch of high-level acceptance tests":http://github.com/jferris/mocha/raw/spies/test/acceptance/spy_test.rb.
+
+h2. Concept
+
+In this section I've tried to write up some comments on "Joe's blog post":http://robots.thoughtbot.com/post/159805295/spy-vs-spy. I've tried to break it down into roughly the same headings that Joe used :-
+
+h3. Why would I let spies in my code?
+
+Joe correctly points out that setting up expectations before exercising the object under test is a bit of a departure from the traditional "Four-Phase Test":http://xunitpatterns.com/Four%20Phase%20Test.html regime. I can see how some people might see this as counter-intuitive, but it doesn't seem particularly so to me. Also the idea of "Expected Behaviour Specification":http://xunitpatterns.com/Behavior%20Verification.html#Expected%20Behavior%20Specification (i.e. setting up expectations before the Exercise phase) has a couple of advantages :-
+
+* Using "Test Spies":http://xunitpatterns.com/Test%20Spy.html, you have to (a) set up a stub so the mock object knows what value to return and (b) assert that the stubbed method was invoked the requisite number of times with the appropriate parameters. Whereas using "Expected Behaviour Specification":http://xunitpatterns.com/Behavior%20Verification.html#Expected%20Behavior%20Specification, these are combined into setting up an expectation on the mock object. I think this results in terser code with less duplication.
+* Using "Expected Behaviour Specification":http://xunitpatterns.com/Behavior%20Verification.html#Expected%20Behavior%20Specification means that the test can fail fast if an unexpected invocation is made against a mock object. Failing fast is generally a good idea, because you are more likely to be able to identify the root cause of the problem.
+
+h3. Sharing stubs in a context
+
+bc(prettyprint).. describe PostsController, "on GET show" do
+  before(:each) do
+    @post = stub('a post', :to_param => '1')
+    Post.stubs(:find => @post)
+    
+    get :show, :id => @post.to_param
+  end
+  
+  it { should render_template(:show) }
+  
+  it "should find and assign the given post" do
+    Post.should have_received(:find).with(@post.to_param)
+    should assign_to(:post).with(@post)
+  end
+end
+
+p. I'm going to struggle a bit when commenting on this code example for a couple of reasons :-
+
+* I dislike the use of @setup@ methods (@before@ in this "RSpec":http://rspec.info/ example). I prefer to do my "setup in-line in the test":http://blog.jayfields.com/2007/06/testing-inline-setup.html to make the test as independent and as explicit as possible. I particularly dislike exercising the object under test within the @setup@ method. To me this seems like a more fundamental breakage of the "Four-Phase Test":http://xunitpatterns.com/Four%20Phase%20Test.html concept.
+* In this example, I would not want to assert that @Post.find@ has been called. "Nat Pryce":http://www.natpryce.com/ (one of the authors of jMock) has a rule of thumb that says: ""stub queries and expect commands":http://www.jmock.org/yoga.html". In this example, the call to @Post.find@ is clearly a query, so I would just stub it. I think about it like this :-
+
+# stubbing @Post.find@ is setting up the environment and making the instance of @Post@ available
+# the assertion then checks that the instance of @Post@ is assigned to the @@post@ instance variable
+# the combination of (1) and (2) is enough to tell me that the @Post.find@ method has been called - where else would the controller have got the instance of @Post@ from?
+
+So I'm not convinced I would need _Test Spies_ for this example.
+
+h3. Sharing stubs between tests
+
+bc(prettyprint). module PostHelpers
+  def stub_post(post_attrs = {})
+    post_attrs = {
+      :to_param => '1',
+      :published? => true,
+      :title => 'a title'
+    }.update(post_attrs)
+    stub('a post', post_attrs)
+  end
+  def stub_post!(post_attrs = {})
+    returning stub_post do |post|
+      Post.stubs(:find => post)
+    end
+  end
+end
+
+bc(prettyprint). describe PostsController do
+  include PostHelpers
+  it "should show a published post on GET show" do
+    post = stub_post!
+    get :show, :id => post.to_param
+    Post.should have_received(:find).with(post.to_param)
+    post.should have_received(:published?)
+    should render_template(:show)
+    should assign_to(:post).with(post)
+  end
+end
+
+bc(prettyprint). describe "/posts/show" do
+  include PostHelpers
+  it "should display a post" do
+    assigns[:post] = stub_post
+    render '/posts/show'
+    template.should have_tag('h1', assigns[:post].title)
+  end
+end
+
+* In this example, as above, I would stub the call to @Post.find@ rather than expect it.
+* I'd also prefer to use a real @Post@ instance rather than a stub object. I'd use some kind of "Test Data Builder":http://natpryce.com/articles/000714.html like "factory_girl":http://github.com/thoughtbot/factory_girl to remove any duplication rather than methods like those in the @PostHelpers@ module. While these @ActiveRecord@ objects aren't strictly _Value Objects_, I can't help but think that "this quote from Nat Pryce":http://markmail.org/message/v6rvuvmfygaboruf is relevant :-
+
+bq. Some languages might allow you to *stub* a value, but what's the point? It is easier and less error prone to use the real type. If it's not easier to use the real type then, I think, you should investigate why. What can you do to make the value type easier to use?
+
+"Steve Freeman":http://www.m3p.co.uk/blog/ makes a similar point in "Test Smell: Everything is mocked":http://www.mockobjects.com/2007/04/test-smell-everything-is-mocked.html.
+
+h3. Reusable matchers and assertions
+
+bc(prettyprint).. # post.class.should have_received(:find).with(post.to_param)
+should find(post)
+# Post.should have_received(:new).with(post_attrs)
+should build(Post, post_attrs)
+# Post.should have_received(:new).with(post_attrs)
+# post.should have_received(:save)
+should build_and_save(Post, post_attrs)
+
+p. I'm not convinced that extracting the assertion part of an expectation is sensible, because it'll always need to be used in conjunction with the stub part of the same expectation.
+
+h2. Syntax
+
+I think the suggested syntax extension is inconsistent with the existing Mocha API and a little clunky. See "James Rosen's comment":http://groups.google.com/group/mocha-developer/msg/8d719b4aa729928f?hl=en on the "mailing list":http://groups.google.com/group/mocha-developer?hl=en. Looking at the following examples given in the documentation :-
+
+bc(prettyprint). assert_received(mock, :to_s)
+assert_received(Radio, :new) {|expect| expect.with(1041) }
+assert_received(radio, :volume) {|expect| expect.with(11).twice }
+
+I think I'd prefer to see something like :-
+
+bc(prettyprint). assert_that mock.received(:to_s)
+assert_that Radio.received(:new).with(1041)
+assert_that radio.received(:volume).with(11).twice
+
+Or something like :-
+
+bc(prettyprint). mock.assert_received(:to_s)
+Radio.assert_received(:new).with(1041)
+radio.assert_received(:volume).with(11).twice
+
+Note that I haven't completely thought through the implementation implications of these suggestions i.e. whether they are even possible!
+
+h2. Implementation
+
+The code looks good and, since Joe has written acceptance tests, there shouldn't be too much difficulty in doing a bit of refactoring. I like the idea of introducing a model for an "Invocation":http://github.com/jferris/mocha/raw/spies/lib/mocha/invocation.rb , but I think the @Invocation@ instances should be stored by the relevant @Mock@ instance rather than the @Mockery@. Similarly I'd push more of the logic in the "HaveReceived":http://github.com/jferris/mocha/blob/4ba321eca2439ae5f55a611e2df716ea7af44ef4/lib/mocha/api.rb#L165 class into relevant objects. And I'd like to avoid having to make @Expectation#invocation_count@ writeable.
+
+One slight concern is what happens if someone mixes up _Expected Behaviour Specification_ expectations with _Test Spies_ stubs and assertions? I'd probably at least want some acceptance tests to convince me that there are no complications on this front.
+
+h2. Conclusion
+
+I'm sure that some people find the changes useful, but I'm not yet convinced I want to merge the "Test Spies":http://github.com/jferris/mocha/commits/spies changes into "Mocha":http://gofreerange.com/mocha/docs/. Please feel free to try and convince me, either here in the "comments":#comments or in the "mailing list thread":http://groups.google.com/group/mocha-developer/browse_thread/thread/3c3fba12cf313b12?hl=en.

@@ -1,0 +1,17 @@
+--- 
+permalink: ruby-stubbing-techniques
+updated_at: 2006-09-16 15:32:19 +00:00
+guid: d6539e30-0b93-434a-b38a-c7fe24107072
+title: Ruby stubbing techniques
+id: 91
+filter: 
+- erb
+- textile
+categories: []
+
+created_at: 2006-09-16 15:26:39 +00:00
+keywords: ruby stub struct openstruct fixture test mocha
+---
+"Jay Fields":http://jayfields.blogspot.com/ is writing a great "series of articles":http://jayfields.blogspot.com/2006/09/ruby-stub-variations-struct.html about stubbing in Ruby. Many of the techniques are similar to ones we developed at "Reevoo":http://www.reevoo.com and led to the creation of "Mocha":http://gofreerange.com/mocha/docs/, although I have to admit we didn't take the use of "OpenStruct":http://www.ruby-doc.org/stdlib/libdoc/ostruct/rdoc/classes/OpenStruct.html as far as he did.
+
+A while ago I did attempt to write a "series":/blog/2006-08-10-fed-up-with-rails-fixtures-part-one of "articles":/blog/2006-08-14-fed-up-with-rails-fixtures-part-two explaining the evolution of "Mocha":http://gofreerange.com/mocha/docs/, but I got it a bit tangled up with how it could be used to avoid the use of fixtures - so it petered out. Jay's articles are much more useful.

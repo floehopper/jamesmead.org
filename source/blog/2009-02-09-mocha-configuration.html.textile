@@ -1,0 +1,101 @@
+--- 
+permalink: mocha-configuration
+updated_at: 2009-02-09 11:57:26 +00:00
+guid: f8a30b4f-5516-4fb1-ac63-dd68dc3ae619
+title: Mocha Configuration
+id: 364
+filter: 
+- erb
+- textile
+categories: []
+
+created_at: 2009-02-09 11:40:50 +00:00
+keywords: mocha mock stub ruby testing tdd configuration warning role interface coupling
+---
+h2. Introduction
+
+In his "recent look":http://blog.brianguthrie.com/articles/2009/02/03/ioke-mocking-mocha-as-exemplar at Mocha's internals, Brian Guthrie mentioned that he hadn't realised it was possible to configure Mocha to warn or disallow mocking of non-existent methods. So I thought it was time I explained "Mocha's configuration settings":http://mocha.rubyforge.org/classes/Mocha/Configuration.html. These configuration settings are all somewhat experimental and feedback on their effectiveness would be welcome.
+
+There are 3 levels for all of the existing conditions :-
+
+bc(prettyprint).. # default behaviour
+Mocha::Configuration.allow(condition)
+
+# warning is displayed when condition is met
+Mocha::Configuration.warn_when(condition)
+
+# error is raised when condition is met
+Mocha::Configuration.prevent(condition)
+
+h2. Stubbing a non-existent method
+
+This is useful if you want to ensure that methods you're mocking really exist. A common criticism of unit tests with mock objects is that such a test may (incorrectly) pass when an equivalent non-mocking test would (correctly) fail. While you should always have some integration tests, particularly for critical business functionality, this Mocha configuration setting should catch scenarios when mocked methods and real methods have become misaligned.
+
+bc(prettyprint).. Mocha::Configuration.prevent(:stubbing_non_existent_method)
+
+class Example
+end
+
+class ExampleTest < Test::Unit::TestCase
+  def test_example
+    example = Example.new
+    example.stubs(:method_that_doesnt_exist)
+    # => Mocha::StubbingError: stubbing non-existent method:
+    # =>   #<Example:0x593760>.method_that_doesnt_exist
+  end
+end
+
+h2. Stubbing a method unnecessarily
+
+This is useful for identifying unused stubs. Unused stubs are often accidentally introduced when code is "refactored":http://martinfowler.com/bliki/DefinitionOfRefactoring.html.
+
+bc(prettyprint).. Mocha::Configuration.prevent(:stubbing_method_unnecessarily)
+
+class ExampleTest < Test::Unit::TestCase
+  def test_example
+    example = mock('example')
+    example.stubs(:unused_stub)
+    # => Mocha::StubbingError: stubbing method unnecessarily:
+    # =>   #<Mock:example>.unused_stub(any_parameters)
+  end
+end
+
+h2. Stubbing a non-public method
+
+Many people think that it's good practice only to mock public methods. This is one way to prevent your tests being too tightly coupled to the internal implementation of a class. Such tests tend to be very brittle and not much use when refactoring.
+
+bc(prettyprint).. Mocha::Configuration.prevent(:stubbing_non_public_method)
+
+class Example
+  def internal_method; end
+  private :internal_method
+end
+
+class ExampleTest < Test::Unit::TestCase
+  def test_example
+    example = Example.new
+    example.stubs(:internal_method)
+    # => Mocha::StubbingError: stubbing non-public method:
+    # =>   #<Example:0x593530>.internal_method
+  end
+end
+
+h2. Stubbing Method on Non-Mock Object
+
+If you like the idea of "mocking roles not objects":http://www.jmock.org/oopsla2004.pdf and "you don't like stubbing concrete classes":http://www.mockobjects.com/2007/04/test-smell-mocking-concrete-classes.html, this is the setting for you. However, while this restriction makes a lot of sense in Java with its "explicit interfaces":http://java.sun.com/docs/books/tutorial/java/concepts/interface.html, it may be moot in Ruby where roles are probably best represented as Modules. Anyway that's probably a discussion for another day.
+
+bc(prettyprint).. Mocha::Configuration.prevent(:stubbing_method_on_non_mock_object)
+
+class Example
+  def example_method; end
+end
+
+class ExampleTest < Test::Unit::TestCase
+  def test_example
+    example = Example.new
+    example.stubs(:example_method)
+    # => Mocha::StubbingError: stubbing method on non-mock object:
+    # =>   #<Example:0x593620>.example_method
+  end
+end
+

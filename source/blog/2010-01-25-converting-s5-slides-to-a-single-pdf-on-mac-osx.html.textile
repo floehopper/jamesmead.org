@@ -1,0 +1,40 @@
+--- 
+permalink: converting-s5-slides-to-a-single-pdf-on-mac-osx
+updated_at: 2010-01-25 20:37:02 +00:00
+guid: 727f29a0-185e-4f65-8c4a-263aa1d1acf7
+title: Converting S5 slides to a single PDF on Mac OSX
+description: Using a combination of webkit2png and a custom Automator workflow.
+id: 395
+filter: 
+- erb
+- textile
+categories: []
+
+created_at: 2010-01-25 20:33:50 +00:00
+keywords: s5 slide pdf mac osx automator webkit png
+---
+I used "S5":http://meyerweb.com/eric/tools/s5/ in combination with "Webby":http://webby.rubyforge.org/ for my "Ruby & Cocoa presentation":/talks/2009-12-14-ruby-and-cocoa-at-ruby-manor/ at "RubyManor":http://rubymanor.org/harder/. I hate PowerPoint with a passion and haven't done enough presentations to be bothered to learn KeyNote. So I was much happier generating my slides from a plain text file marked up in "Textile":http://redcloth.org/textile.
+
+However, like "Paul Battley":http://po-ru.com/diary/how-to-convert-an-s5-presentation-to-images/, I found that S5 doesn't work so well when someone wants to take those slides and put them in a video. Anyway, I've managed to convert my S5 slides into a single PDF using a combination of "@webkit2png@":http://www.paulhammond.org/webkit2png/ and a custom "Automator":http://www.apple.com/macosx/what-is-macosx/apps-and-utilities.html#automator workflow :-
+
+h2. Ruby Script using @webkit2png@
+
+bc(prettyprint).. #!/usr/bin/env ruby
+
+NUMBER_OF_SLIDES = 94
+SEQUENCE_FORMAT = "%0#{Math.log10(NUMBER_OF_SLIDES).to_i}d"
+HOST = "jamesmead.local"
+PATH = "/talks/2009-12-14-ruby-and-cocoa-at-ruby-manor/"
+BASE_URL = "http://#{HOST}#{PATH}"
+
+(0...NUMBER_OF_SLIDES).each do |index|
+  anchor = "#slide#{index}"
+  url = "#{BASE_URL}#{anchor}"
+  sequence = SEQUENCE_FORMAT % index
+  puts %x[webkit2png --fullsize --filename=slide-#{sequence} #{url}]
+  raise unless $?.success?
+end
+
+h2. Custom Automator Workflow
+
+p. !http://farm3.static.flickr.com/2695/4304744036_21d9db8986.jpg!

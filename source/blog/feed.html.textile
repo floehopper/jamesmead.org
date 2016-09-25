@@ -1,0 +1,31 @@
+---
+title: Blog
+layout: none
+filename: index
+extension: xml
+filter: erb
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title><%= title(@page) %></title>
+  <subtitle>thoughts on the bergy bits of life</subtitle>
+  <id>tag:<%= Webby.site.host %>,2005:Typo</id>
+  <link href="<%= Webby.site.feed_url %>" rel="self" type="application/atom+xml"/>
+  <link href="<%= absolute_url('/') %>" rel="alternate" type="text/html"/>
+  <updated><%= Time.now.xmlschema %></updated>
+  <% articles(:limit => 10).each do |article| %>
+  <entry>
+    <author>
+      <name>James Mead</name>
+    </author>
+    <id>urn:uuid:<%= article.guid %></id>
+    <published><%= article.created_at.xmlschema %></published>
+    <updated><%= article.updated_at.xmlschema %></updated>
+    <title><%= article.title %></title>
+    <link href="<%= absolute_url(friendly_url(article)) %>" rel="alternate" type="text/html"/>
+    <content type="html">
+      <%= h(render(article)) %>
+    </content>
+  </entry>
+  <% end %>
+</feed>

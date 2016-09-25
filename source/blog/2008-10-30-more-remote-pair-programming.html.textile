@@ -1,0 +1,25 @@
+--- 
+permalink: more-remote-pair-programming
+updated_at: 2008-10-30 12:47:25 +00:00
+guid: 9d83daf8-565f-45d0-9191-c4be09e6d621
+title: More Remote Pair Programming
+id: 342
+filter: 
+- erb
+- textile
+categories: []
+
+created_at: 2008-10-30 12:36:33 +00:00
+keywords: pair programming agile xp osx leopard vnc
+---
+In a "previous article":/blog/2008-03-13-remote-pair-programming, I mentioned how we'd started using multi-user "screen":http://www.gnu.org/software/screen/ sessions and "vim":http://www.vim.org/ to do remote "pair programming":http://www.extremeprogramming.org/rules/pair.html. I alluded to the fact that we found that the combination of "Chicken of the VNC":http://sourceforge.net/projects/cotvnc/ client and "Vine VNC":http://sourceforge.net/projects/osxvnc/ server just wasn't responsive enough, especially when using it in combination with "Skype":http://www.skype.com VoIP.
+
+Once I finally got round to upgrading my work laptop to "OSX Leopard":http://www.apple.com/macosx/, "Chris":http://blog.seagul.co.uk/ and I had a go with the VNC client & server built in to Leopard. It seems much more responsive and we were able to successfully do some work in "TextMate":http://macromates.com/. However, I'm now a "vim convert":/blog/2008-07-12-vim-learning-curve so I'll probably only use this when working with someone who isn't vim-compatible, or when it's helpful to both be looking at the same (non-terminal) application e.g. a browser when making presentational changes.
+
+To use the built-in VNC server, you need to go to the Sharing preference pane and enable "Screen Sharing". You can control access by clicking the "Computer Settings..." button on this preference pane. There are a few different ways of using the built-in VNC client...
+
+* Select the remote computer under the "Shared" heading in the Finder sidebar and click the "Share Screen" button.
+* Start the "Screen Sharing" application in /System/Library/CoreServices/ and enter the IPAddress or Name.Domain.
+* Enter "vnc://[IPAddress]" or "vnc://[Name.Domain]" into the Server Address field of the "Connect to Server" dialog available from the Go menu in the Finder.
+
+Update: I've just been pairing with "Tom":http://clockworkninja.co.uk/ doing some JavaScript and Internet Explorer work and Screen Sharing worked quite nicely.

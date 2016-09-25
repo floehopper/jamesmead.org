@@ -1,0 +1,43 @@
+--- 
+permalink: changing-gner-advance-single-tickets-reply
+updated_at: 2007-11-08 20:02:18 +00:00
+guid: 74aff615-26f8-4733-b5a3-c78ea0ce71ce
+title: Changing GNER Advance Single tickets (reply)
+id: 299
+filter: 
+- erb
+- textile
+categories: []
+
+created_at: 2007-11-08 20:02:18 +00:00
+keywords: gner advance single ticket reply customer service satisfaction
+---
+I finally heard back to my "complaint":/blog/2007-10-29-changing-gner-advance-single-tickets from GNER Customer Service yesterday (7th Nov). Until then I had not even had an acknowledgment (automated or not) that they'd received my email. In their response, they acknowledge that it is possible to change tickets purchased online at a ticket office (although you may lose any "web discount").
+
+There are some slightly woolly words in the middle, but I'm pleased they do have the good grace to explicitly apologise for the fact I was "wrongly advised" by the Durham Travel Centre.
+
+I'm pleased to have had a response and it's reassuring to hear that they are taking action to improve the situation. I'm surprised how much better I feel to have had a response.
+
+For completeness, I've "posted the response":http://getsatisfaction.com/gner/topics/changing_advance_single_tickets_that_were_purchased_on_line on "getsatisfaction.com":http://getsatisfaction.com/.
+
+Here's the full text of their response with employee names removed...
+
+bq. Mr Mead,
+
+bq. Thank you for your email.
+
+bq. When making an alteration to an online booking at the station you will not receive the web discount. The web discount, is only applicable to bookings done over the internet, from beginning to end.
+
+bq. If you wish to make an alteration to your online booking, you can do this at a GNER station, however, you do need to take the full ticket into the station with you. When making an alteration to an online booking at the station, you will loose your online discount, because this ticket is not being booked online.
+
+bq. Our staff usually do an excellent job in meeting the needs of our passengers but I know that there are occasions when incidents occur which cause dissatisfaction. We ask our staff to uphold company policies wherever practical in the interest of fairness and consistency. Unfortunately, this does mean that the ability of the staff to exercise discretion and waive certain policies is very limited.
+
+bq. I am concerned that you were wrongly advised that online tickets could not be altered at the station, this was incorrect and for this I apologise.
+
+bq. I will of course forward your comments to the manager responsible for Mr X, who can address this matter directly with him.
+
+bq. If you have any further questions regarding ghtis matter, please contact me again.
+
+bq. Kind Regards
+
+bq. Customer Relations

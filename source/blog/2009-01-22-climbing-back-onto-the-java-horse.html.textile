@@ -1,0 +1,77 @@
+---
+permalink: climbing-back-onto-the-java-horse
+updated_at: 2009-01-22 19:25:17 +00:00
+guid: 4839fb58-4c08-4c25-9264-3f18729fd711
+title: Climbing Back onto the Java Horse
+id: 357
+filter:
+- erb
+- textile
+categories: []
+
+created_at: 2009-01-22 19:20:38 +00:00
+keywords: java junit jmock eclipse osx leopard
+---
+I took a short break from job-hunting[1] earlier today to see if I could still write "Java":http://java.sun.com/ code. After my "Java rehab":/blog/2008-03-17-java-rehabilitation-clinic which consisted of 3+ years of writing "Ruby":http://www.ruby-lang.org/, I was a bit unsure how much Java I would remember. To get started, I decided to try and set up "Eclipse":http://www.eclipse.org/ on my MacBook Pro. I ran into a few problems which I thought I'd document here in case it helps anyone else.
+
+h2. Installing Eclipse
+
+I downloaded the Mac OS X version of "Eclipse IDE for Java EE[2] Developers" from the "Eclipse Downloads page":http://www.eclipse.org/downloads/ and unpacked it into my Applications directory. For the record, I was running OSX 10.5.6 and downloaded version 3.4.1 of Eclipse.
+
+But when I double-clicked to start the application, I got the following error message:-
+
+<a href="http://www.flickr.com/photos/jamesthecat/3217546063/" title="eclipse-java-environment-startup-error by floehopper, on Flickr">
+  <img src="http://farm4.static.flickr.com/3335/3217546063_79751cf5c9_o.png" width="356" height="170" alt="eclipse-java-environment-startup-error" />
+</a>
+
+bq. A Java Runtime Environment (JRE) or Java Development Kit (JDK) must be available in order to run Eclipse. No virtual machine was found after searching the following locations: etc, etc.
+
+However, I was able to run the application from the command-line, which pointed to an environment problem. Reading the "Cannot find a VM" section of "I unzipped Eclipse, but it won't start. Why?":http://wiki.eclipse.org/FAQ_I_unzipped_Eclipse%2C_but_it_won%27t_start._Why%3F, I decided I needed to explicitly specify the location of the JVM. It turned out there were a few gotchas. The OSX-specific bit of the "installation README":http://www.eclipse.org/eclipse/development/readme_eclipse_3.4.1.html#macosx explains how to edit the @eclipse.ini@ file within the Eclipse application bundle. "Eclipsepedia explains":http://wiki.eclipse.org/Eclipse.ini the format of the @-vm@ option :-
+
+* The -vm option and its value (the path) must be on separate lines.
+* The value must be the full absolute path to the Java executable, not just to the Java home directory.
+
+So I added the following two lines to my @eclipse.ini@ and the application started up successfully :-
+
+bc. -vm
+/System/Library/Frameworks/JavaVM.framework/Versions/1.5.0
+
+_Note: I think that the @-vm option@ must come before the @-vmargs@ option._
+
+h2. JUnit4 and jMock2
+
+Next I decided to see if I could write a test using "JUnit":http://www.junit.org/ and "jMock":http://www.jmock.org/ to "drive out the design":http://books.google.co.uk/books?id=gFgnde_vwMAC of a simple class. I downloaded the most recent stable version of jMock which was v2.5.1 and added the relevant jars to Eclipse so that they could be included in my project classpath :-
+
+* jmock-2.5.1.jar
+* hamcrest-core-1.1.jar
+* hamcrest-library-1.1.jar
+* jmock-junit4-2.5.1.jar
+
+At this point everything was going quite smoothly - especially after I side-stepped some of "Java's purgatorial nonsense":http://twitter.com/threedaymonk/status/1138794613 by re-learning the Eclipse keyboard shortcuts for "Quick Fix" and "Content Assist". But now I decided I wanted to try using JUnit Java annotations for my tests :-
+
+bc(prettyprint).. import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import org.jmock.Mockery;
+import org.jmock.Expectations;
+import org.jmock.integration.junit4.JUnit4Mockery;
+import org.jmock.integration.junit4.JMock;
+
+@RunWith(JMock.class)
+public class PublisherTest {
+
+  Mockery context = new JUnit4Mockery();
+
+  @Test
+  public void oneSubscriberReceivesAMessage() {
+    ...
+
+p. Unfortunately I got this error around the @@RunWith(JMock.class)@ annotation :-
+
+bq. The type org.junit.internal.runners.JUnit4ClassRunner cannot be resolved. It is indirectly referenced from required .class files.
+
+After bit of "Googling":http://dertompson.com/2007/12/12/spring-25-eclipse-and-junit-44/, I worked out that I needed a newer version of JUnit than the one (v4.3.1) that came with Eclipse. So I downloaded JUnit v4.5 and swapped it into the classpath. Problem solved.
+
+fn1. I was made redundant from Reevoo at the end of last year.
+
+fn2. Because I love all that _enterprise_ goodness ;-)

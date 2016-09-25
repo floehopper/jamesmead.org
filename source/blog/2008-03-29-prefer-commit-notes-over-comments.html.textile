@@ -1,0 +1,17 @@
+--- 
+permalink: prefer-commit-notes-over-comments
+updated_at: 2008-03-29 19:10:18 +00:00
+guid: 11955d9f-4314-46f7-b708-dca8b3860930
+title: Prefer Commit Notes over Comments
+id: 322
+filter: 
+- erb
+- textile
+categories: []
+
+created_at: 2008-03-29 19:05:03 +00:00
+keywords: version control commit note changeset svn vcs comment why what
+---
+My colleague, "Chris":http://blog.seagul.co.uk/, recently posted about "what makes a good commit note":http://blog.seagul.co.uk/articles/2008/03/28/version-control-commit-note-best-practice-or-not-you-decide. His main point is that a good commit note should explain *why* the changeset exists rather than *what* it contains (which should be more self-evident). I agree with this and (as Chris mentions) it's of particular benefit when you have to do some software archeology. I'd go a step further and say that, for me, the best commit notes express the _business_ reason for the changeset. If as a developer you are struggling to explain the business case for a particular change, (imho) you should try to find out before committing - otherwise how do you know the changeset is delivering value to the business?
+
+In a previous post about "preferring tests over comments":/blog/2007-05-10-prefer-tests-over-comments, I expressed similar sentiments about using comments and tests to explain *why* rather than *what*. Chris' post prompted me to re-read that old post and I noticed that it didn't explain why I "prefer tests over comments":/blog/2007-05-10-prefer-tests-over-comments. The reason is that comments have a nasty habit of becoming out-of-date and getting left lying around to confuse the unwary, whereas you are forced to keep tests up-to-date (assuming they are part of a "continuous integration build":http://martinfowler.com/articles/continuousIntegration.html). For similar reasons I also think that commit notes are better than code comments, because they are forever associated with a snapshot of the code at the time they were written - leaving less scope for confusion.

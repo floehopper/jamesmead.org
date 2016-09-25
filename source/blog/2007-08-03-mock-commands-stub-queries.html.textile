@@ -1,0 +1,113 @@
+--- 
+permalink: mock-commands-stub-queries
+updated_at: 2007-08-03 10:11:22 +00:00
+guid: 22926b95-53c4-472e-9a92-4b08f504f9b7
+title: Mock Commands, Stub Queries
+id: 278
+filter: 
+- erb
+- textile
+categories: []
+
+created_at: 2007-08-03 10:11:22 +00:00
+keywords: mocha mock stub testing assert verify expectation command query
+---
+"Zach Moazeni":http://www.simplechatter.com has just posted a "suggested patch":http://www.simplechatter.com/2007/8/3/mocha-and-forcing-verification for Mocha over on his blog. My understanding of the patch is that it means expectations are verified even when an assertion error occurs in the test. Here is his example...
+
+bc(prettyprint).. class Car
+
+  def initialize(parts = [])
+    @parts = parts
+  end
+  
+  def start
+    started = true
+    @parts.each do | part |
+      # commenting out for failure
+      # started = started && part.start
+    end
+    
+    started
+  end
+
+end
+
+bc(prettyprint).. class SomeTest < Test::Unit::TestCase
+
+  def test_start
+    engine_mock = mock("engine_mock")
+    car = Car.new([engine_mock])
+    
+    engine_mock.expects(:start).returns(false)
+    assert !car.start
+  end
+
+end
+
+p. I've had a friendly & useful conversation with Zach about it, but I'm not convinced this is the right way to go. Using the "one assertion per test":http://www.artima.com/weblogs/viewpost.jsp?thread=35578 school of thought, you can achieve the same goal by splitting the test into two so you get a test failure for the expectation and another for the assertion...
+
+bc(prettyprint).. class SomeTest < Test::Unit::TestCase
+
+  def test_should_start_engine
+    engine = mock('engine')
+    car = Car.new([engine])
+    
+    engine.expects(:start)
+    
+    car.start
+  end
+  
+  def test_should_start_if_engine_starts
+    engine = stub('engine')
+    car = Car.new([engine])
+    
+    engine.stubs(:start).returns(false)
+    
+    assert !car.start
+  end
+
+end
+
+p. Something that makes the example less suitable for mocking is that the Car#start method is both "a command and a query":http://www.jmock.org/yoga.html. If you separate the two, testing with mocks might be easier...
+
+bc(prettyprint).. class Car
+
+  def initialize(parts = [])
+    @parts = parts
+  end
+  
+  def start
+    @parts.each { |part| part.start }
+  end
+  
+  def started?
+    @parts.all? { |part| part.started? }
+  end
+
+end
+
+bc(prettyprint).. class SomeOtherTest < Test::Unit::TestCase
+
+  def test_should_start_engine
+    engine = mock('engine')
+    car = Car.new([engine])
+    
+    engine.expects(:start)
+    
+    car.start
+  end
+  
+  def test_should_not_be_started_if_engine_is_started
+    engine = stub('engine')
+    car = Car.new([engine])
+    
+    engine.stubs(:started?).returns(false)
+    
+    assert !car.started?
+  end
+
+end
+
+p. I'd be interested to know what other people think...
+
+One thing I do agree with Zach about is that submitting a suggested patch to an open source project is a great way of initiating a constructive conversation.

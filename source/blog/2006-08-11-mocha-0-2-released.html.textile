@@ -1,0 +1,57 @@
+--- 
+permalink: mocha-0-2-released
+updated_at: 2007-01-24 04:48:43 +00:00
+guid: 295adadf-9daa-4a29-ae65-7bd0b6880d59
+title: Mocha 0.2 released
+id: 26
+filter: 
+- erb
+- textile
+categories: 
+- mocha_release
+created_at: 2006-08-11 12:04:37 +00:00
+keywords: mocha stubba test testing mock stub mocking stubbing ruby rails
+---
+I've just released a "new version":http://rubyforge.org/frs/?group_id=1917 of the Ruby mocking and stubbing library, "Mocha":http://gofreerange.com/mocha/docs/, that I first "mentioned":/blog/2006-07-16-mocking-and-stubbing-in-ruby a while ago. Here are the release notes: 
+
+* Small change to @SetupAndTeardown#teardown_stubs@ suggested by "Luke Redpath":http://www.lukeredpath.co.uk to allow use of Stubba with "RSpec":http://rspec.rubyforge.org.
+* Reorganized directory structure and extracted addition of setup and teardown methods into SmartTestCase mini-library.
+* Addition of auto-verify for Mocha (but not Stubba). This means there is more significance in the choice of expects or stubs in that any expects on a mock will automatically get verified.
+
+So instead of...
+
+bc(prettyprint). wotsit = Mocha.new
+wotsit.expects(:thingummy).with(5).returns(10)
+doobrey = Doobrey.new(wotsit)
+doobrey.hoojamaflip
+wotsit.verify
+
+you need to do...
+
+bc(prettyprint). wotsit = mock()
+wotsit.expects(:thingummy).with(5).returns(10)
+doobrey = Doobrey.new(wotsit)
+doobrey.hoojamaflip
+# no need to verify
+
+There are also shortcuts as follows...
+
+instead of...
+
+bc(prettyprint). wotsit = Mocha.new
+wotsit.expects(:thingummy).returns(10)
+wotsit.expects(:summat).returns(25)
+
+you can have...
+
+bc(prettyprint). wotsit = mock(:thingummy => 5, :summat => 25)
+
+and instead of...
+
+bc(prettyprint). wotsit = Mocha.new
+wotsit.stubs(:thingummy).returns(10)
+wotsit.stubs(:summat).returns(25)
+
+you can have...
+
+bc(prettyprint). wotsit = stub(:thingummy => 5, :summat => 25)

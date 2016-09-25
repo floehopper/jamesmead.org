@@ -1,0 +1,17 @@
+--- 
+permalink: dot-com-survivor
+updated_at: 2006-08-10 17:08:14 +00:00
+guid: c3257d9e-acec-4a77-a05d-ffdc744c18ff
+title: Dot-com survivor
+id: 22
+filter: 
+- erb
+- textile
+categories: []
+
+created_at: 2006-08-03 19:21:00 +00:00
+keywords: xp agile chicago usa dotcom
+---
+It's good to see "FirstLook":http://www.firstlook.biz for whom I did my first "eXtreme":http://www.extremeprogramming.org project while at Lante Corp in Chicago has survived the dot-com bust and is now "branching out":http://www.incisent.com.
+
+It even "looks":http://groups.yahoo.com/group/xp-jobs/message/554 as if they are still using XP.

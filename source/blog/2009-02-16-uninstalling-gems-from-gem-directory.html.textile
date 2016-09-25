@@ -1,0 +1,38 @@
+---
+permalink: uninstalling-gems-from-gem-directory
+updated_at: 2009-03-17 13:17:34 +00:00
+guid: 99d2c410-ff54-4643-9865-47c83bea10fb
+title: Uninstalling gems from .gem directory
+id: 365
+filter:
+- erb
+- textile
+categories: []
+
+created_at: 2009-02-16 15:56:48 +00:00
+keywords: ruby gem uninstall user home directory sudo superuser osx
+---
+I keep forgetting how to do this, so I thought I'd write myself some notes.
+
+In a recent version, "RubyGems":http://www.rubygems.org/ changed it's behaviour on @gem install@ so that if it doesn't have sufficient permission to install the gem files, it installs them in @~/.gem@ and generates a warning :-
+
+bc. $ gem install <gem-name>
+WARNING:  Installing to ~/.gem since /usr/local/ruby-1.8.6-p287/lib/ruby/gems/1.8 and
+  /usr/local/ruby-1.8.6-p287/bin aren't both writable.
+WARNING:  You don't have /Users/jamesmead/.gem/ruby/1.8/bin in your PATH,
+  gem executables will not run.
+
+Sometimes (e.g. when you forgot to prepend "@sudo@":http://developer.apple.com/DOCUMENTATION/DARWIN/Reference/ManPages/man8/sudo.8.html) this isn't what you want. However, it's not obvious how to uninstall the gem again to correct your mistake :-
+
+bc. $ gem uninstall <gem-name>
+ERROR:  While executing gem ... (Gem::InstallError)
+  Unknown gem <gem-name> >= 0
+
+To make this work, you need to specify the @install-dir@ option :-
+
+bc. $ gem uninstall <gem-name> --install-dir=~/.gem/ruby/1.8/
+Successfully uninstalled <gem-name>-x.y.z
+
+Note that if you are using Ruby 1.9, it looks like the RubyGems directory path includes the point release version number e.g. @1.9.0@ or @1.9.1@.
+
+*Update:* Prevention is better than cure. Coderr suggests "protecting your ~/.gem directory":http://coderrr.wordpress.com/2009/03/16/protecting-your-gem-directory/.

@@ -1,0 +1,28 @@
+--- 
+permalink: why-array-length-is-better-than-array-size
+updated_at: 2008-02-28 09:35:10 +00:00
+guid: 323bceaf-7ac2-4900-b200-2b201dbb2ff2
+title: Why Array#length is better than Array#size
+id: 283
+filter: 
+- erb
+- textile
+categories: []
+
+created_at: 2007-08-07 17:19:49 +00:00
+keywords: array ruby size length machine representation bug
+---
+Recently "Luke":http://www.lukeredpath.co.uk/ and I spotted a subtle bug in our code where we were mistakenly assuming a method returned an @Array@ when it actually returned a @Fixnum@. We were then calling the @#size@ method on the result, but interestingly "@Fixnum#size@":http://www.ruby-doc.org/core/classes/Fixnum.html#M001098 returns the number of bytes in its machine representation.
+
+Previously I had noticed that my colleague "Paul Battley":http://po-ru.com/ tended to use "@Array#length@":http://www.ruby-doc.org/core/classes/Array.html#M002199 in preference to "@Array#size@":http://www.ruby-doc.org/core/classes/Array.html#M002244. Now I know why, or at least I know why I'm going to start using @Array#length@! If we'd used @#length@ in this case we would have seen a @NoMethodError@ instead of the spurious value, 4.
+
+bc(prettyprint)..   [5,6].size # => 2
+  1.size # => 4
+  [5,6].length # => 2
+  1.length # => NoMethodError: undefined method `length' for 1:Fixnum
+
+p. *Update:* Josh Susser has posted a "useful related article":http://blog.hasmanythrough.com/2008/2/27/count-length-size about the use of... 
+
+* "ActiveRecord::Associations::HasManyAssociation#count":http://dev.rubyonrails.org/browser/tags/rel_2-0-2/activerecord/lib/active_record/associations/has_many_association.rb?rev=8940#L18
+* "ActiveRecord::Associations::AssocationCollection#size":http://dev.rubyonrails.org/browser/tags/rel_2-0-2/activerecord/lib/active_record/associations/association_collection.rb?rev=8940#L103
+* "ActiveRecord::Associations::AssocationCollection#length":http://dev.rubyonrails.org/browser/tags/rel_2-0-2/activerecord/lib/active_record/associations/association_collection.rb?rev=8940#L116.
