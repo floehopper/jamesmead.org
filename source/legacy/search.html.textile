@@ -1,0 +1,6 @@
+---
+title: Search
+created_at: 2010-01-16 17:58:00 +00:00
+updated_at: 2010-01-16 17:58:00 +00:00
+---
+It used to be possible to search the blog articles for keywords. This is no longer possible. You can use "Google":http://www.google.com/ with the @site@ modifier e.g. searching for "site:jamesmead.org/blog/ podcast":http://www.google.com/search?q=site%3Ajamesmead.org%2Fblog%2F+podcast would give you all blog articles containing the word "podcast".
