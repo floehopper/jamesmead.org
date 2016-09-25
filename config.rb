@@ -41,10 +41,12 @@ configure :build do
 
   # Minify Javascript on build
   # activate :minify_javascript
-  config[:feed_url] = 'http://feeds.jamesmead.org/floehopper-blog'
 end
 
 activate :blog do |blog|
   blog.prefix = "blog"
   blog.permalink = "{year}-{month}-{day}-{title}.html"
 end
+
+config[:feed_url] = 'http://feeds.jamesmead.org/floehopper-blog'
+config[:host] = 'jamesmead.org'

@@ -1,0 +1,28 @@
+---
+title: Blog
+layout: false
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title><%= title(current_page) %></title>
+  <subtitle>thoughts on the bergy bits of life</subtitle>
+  <id>tag:<%= config[:host] %>,2005:Typo</id>
+  <link href="<%= config[:feed_url] %>" rel="self" type="application/atom+xml"/>
+  <link href="<%= absolute_url('/') %>" rel="alternate" type="text/html"/>
+  <updated><%= Time.now.xmlschema %></updated>
+  <% blog.articles[0..9].each do |article| %>
+  <entry>
+    <author>
+      <name>James Mead</name>
+    </author>
+    <id>urn:uuid:<%= article.data.guid %></id>
+    <published><%= article.data.created_at.xmlschema %></published>
+    <updated><%= article.data.updated_at.xmlschema %></updated>
+    <title><%= article.data.title %></title>
+    <link href="<%= absolute_url(article.url) %>" rel="alternate" type="text/html"/>
+    <content type="html">
+      <%= h(article.body) %>
+    </content>
+  </entry>
+  <% end %>
+</feed>
