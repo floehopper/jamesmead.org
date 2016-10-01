@@ -112,11 +112,6 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth
-  middleman (>= 4.0.0)
+  middleman
   middleman-blog
   middleman-livereload
-  tzinfo-data
-  wdm (~> 0.1.0)
-
-BUNDLED WITH
-   1.11.2
