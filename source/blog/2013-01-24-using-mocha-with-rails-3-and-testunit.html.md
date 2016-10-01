@@ -13,7 +13,7 @@ As I mentioned in my [previous post](/blog/2013-01-24-using-mocha-with-rails-3-a
 
 Unfortunately due to Rails relying on Mocha & [Test::Unit](https://github.com/test-unit/test-unit) internals, there is a problem with using recent released versions of Rails with the latest version of Mocha and recent versions of the Test::Unit [gem](http://rubygems.org/gems/test-unit). You may see errors like these:
 
-#### Rails 3.0.x
+### Rails 3.0.x
 
 <pre>
   <code>
@@ -22,7 +22,7 @@ Unfortunately due to Rails relying on Mocha & [Test::Unit](https://github.com/te
   </code>
 </pre>
 
-#### Rails 3.1.x
+### Rails 3.1.x
 
 <pre>
   <code>
@@ -31,7 +31,7 @@ Unfortunately due to Rails relying on Mocha & [Test::Unit](https://github.com/te
   </code>
 </pre>
 
-#### Rails 3.2.x
+### Rails 3.2.x
 
 <pre>
   <code>
