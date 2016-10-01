@@ -1,9 +1,0 @@
----
-title: History
-created_at: 2010-01-03 11:20:00 +00:00
-updated_at: 2010-01-03 11:20:00 +00:00
-filter:
-  - erb
-  - textile
----
-This website started its life back in 2004 as a "JRoller blog":http://www.jroller.com/jamesmead/. When I joined "Reevoo":http://www.reevoo.com/, having started using "Ruby on Rails":http://rubyonrails.org/, I decided to setup an instance of  "Typo":http://typosphere.org/ at  "blog.floehopper.org":http://blog.floehopper.org/ hosted by "Slicehost":http://www.slicehost.com/. Although setting up my blog on Typo was a good introduction to using Rails, my installation of Typo quickly became out-of-date. I also felt that using Typo was massive overkill for what is really a very simple website. So taking inspiration from "Chris Roos":http://chrisroos.co.uk/, I decided to convert it to a static website generated using "Webby":http://webby.rubyforge.org/. At the same time I decided to move the website to "jamesmead.org":/ in an effort to centralize my presence on-line. You can now find my blog as "sub-directory":/blog/ of this website.
