@@ -6,9 +6,9 @@ filter:    erb
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <title><%= title(@page) %></title>
-    
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
+
     <%- if @page.description -%>
     <meta name="description" content="<%= CGI.escapeHTML(@page.description) %>" />
     <%- end -%>
@@ -16,23 +16,23 @@ filter:    erb
     <meta name="keywords" content="<%= @page.keywords %>" />
     <%- end -%>
     <meta name="author" content= "James Mead" />
-    
+
     <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
     <meta name="y_key" content="5f5b0de20991e0c2" />
     <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
-    
+
     <link rel="shortcut icon" href="/images/favicon.gif" />
-    
+
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.8.0r4/build/reset-fonts-grids/reset-fonts-grids.css&amp;2.8.0r4/build/base/base-min.css" />
     <link rel="stylesheet" type="text/css" href="/style/site.css" />
     <link rel="stylesheet" href="/style/prettify/prettify.css" type="text/css" />
     <script type="text/javascript" src="/javascripts/prettify/prettify.js"></script>
-    
+
     <link rel="alternate" type="application/atom+xml" title="Atom" href="<%= Webby.site.feed_url %>" />
-    
+
     <link rel="openid.server" href="http://openid.claimid.com/server" />
     <link rel="openid.delegate" href="http://openid.claimid.com/jamesmead" />
-    
+
     <%- pages = articles(:reverse => false) -%>
     <%- if index = pages.index(@page) -%>
       <%- if (index > 0) && (prev_page = pages[index - 1]) -%>
@@ -45,9 +45,9 @@ filter:    erb
     <link rel="last" href="<%= friendly_url(pages.last) %>" />
     <link rel="index" href="/blog" />
     <%- end -%>
-    
+
     <%= render :partial => "/analytics" %>
-    
+
   </head>
   <body onload="prettyPrint()">
     <div id="doc">
@@ -60,12 +60,12 @@ filter:    erb
         &middot;
         <a href="/projects/" title="Projects">Projects</a>
       </div>
-      
+
       <div id="bd">
         <h1><%= @page.title %></h1>
-        
+
         <%= @content %>
-        
+
         <div id="navigation">
           <% pages = articles(:reverse => false) %>
           <% if index = pages.index(@page) %>
@@ -78,7 +78,7 @@ filter:    erb
           <% end %>
         </div>
       </div>
-      
+
       <div id="ft">
         <a href="/contact" title="Contact">Contact</a>
         &middot;
