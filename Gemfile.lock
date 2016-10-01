@@ -124,9 +124,3 @@ DEPENDENCIES
   rack-rewrite
   rdiscount
   webby
-
-RUBY VERSION
-   ruby 1.8.7p0
-
-BUNDLED WITH
-   1.13.2
