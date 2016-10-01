@@ -11,7 +11,7 @@ keywords: gmail notifier starred mail osx mac
 ---
 Thanks to a tip from "Paul":http://po-ru.com and "Chris":http://blog.seagul.co.uk, I'm using GMail to deal with messages from a number of high traffic mailing lists e.g. "ruby-talk":http://www.ruby-lang.org/en/20020104.html and   "ruby on rails":http://lists.rubyonrails.org/mailman/listinfo/rails.
 
-I'm using the "GMail Notifier":http://mail.google.com/mail/help/notifier/ on OSX to notify me of new messages. I have a number of filters set up to automatically _star_ (!http://mail.google.com/mail/images/star_on_sm_2.gif!) potentially interesting posts and I wanted the Notifier to only tell me when I had new _starred_ messages.
+I'm using the "GMail Notifier":http://mail.google.com/mail/help/notifier/ on OSX to notify me of new messages. I have a number of filters set up to automatically _star_ (!/images/gmail-star.png!) potentially interesting posts and I wanted the Notifier to only tell me when I had new _starred_ messages.
 
 I found "how":http://mail.google.com/support/bin/answer.py?answer=27663&topic=1543 to do this for labelled messages and tried it with the label name set to "starred". Sure enough it works :-)
 
