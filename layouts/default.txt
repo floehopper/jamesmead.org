@@ -67,15 +67,15 @@ filter:    erb
         <%= @content %>
 
         <div id="navigation">
-          <% pages = articles(:reverse => false) %>
-          <% if index = pages.index(@page) %>
-            <% if (index > 0) && (prev_page = pages[index - 1]) %>
+          <%- pages = articles(:reverse => false) -%>
+          <%- if index = pages.index(@page) -%>
+            <%- if (index > 0) && (prev_page = pages[index - 1]) -%>
               <%= link_to "&lt; #{prev_page.title}", friendly_url(prev_page), :attrs => { :class => "previous" } %>
-            <% end %>
-            <% if next_page = pages[index + 1] %>
+            <%- end -%>
+            <%- if next_page = pages[index + 1] -%>
               <%= link_to "#{next_page.title} &gt;", friendly_url(next_page), :attrs => { :class => "next" } %>
-            <% end %>
-          <% end %>
+            <%- end -%>
+          <%- end -%>
         </div>
       </div>
 
