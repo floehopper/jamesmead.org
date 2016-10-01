@@ -1,10 +1,10 @@
---- 
+---
 permalink: an-introduction-to-mock-objects-in-ruby
 updated_at: 2007-07-22 21:33:33 +00:00
 guid: b30780d9-b0d5-4efb-9926-aac07f81c309
 title: Mock Objects in Ruby
 id: 276
-filter: 
+filter:
 - erb
 - textile
 categories: []

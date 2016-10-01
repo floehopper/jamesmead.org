@@ -1,10 +1,10 @@
---- 
+---
 permalink: tell-dont-ask
 updated_at: 2006-12-24 08:49:17 +00:00
 guid: 8d4b111a-ca8d-47a5-af8c-bc98612f7aa2
 title: Tell Don't Ask
 id: 127
-filter: 
+filter:
 - erb
 - textile
 categories: []
@@ -24,9 +24,9 @@ bc(prettyprint).. def test_should_create_email_messages_and_subscriptions_when_i
   message = Message.new(:campaign => campaign)
   message.stubs(:lists).returns([list])
   message.include_subscribers = true
-  
+
   list.expects(:create_subscriptions)
-  
+
   message.generate
   assert_equal 1, message.email_messages
 end

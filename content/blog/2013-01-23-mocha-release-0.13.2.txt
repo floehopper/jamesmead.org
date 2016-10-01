@@ -1,13 +1,13 @@
---- 
+---
 permalink: mocha-releases-0-13-2
 created_at: 2013-01-23 08:35:00 +00:00
 updated_at: 2013-01-23 08:35:00 +00:00
 title: Mocha Release 0.13.2
 description: Fixes bug in stubbing of methods re-declared with different visibility.
-filter: 
+filter:
 - erb
 - textile
-categories: 
+categories:
 - mocha_release
 keywords: mocha mock object testing ruby
 guid: d2d104ab-e251-4d39-9b4c-f4804f96aff8

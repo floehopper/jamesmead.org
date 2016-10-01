@@ -1,10 +1,10 @@
---- 
+---
 permalink: escape-from-the-enterprise-london-rails-jobs
 updated_at: 2007-04-25 05:56:57 +00:00
 guid: 71f1d804-5eb9-4cd8-9e36-7b477c75b651
 title: Escape from the Enterprise - London Rails Jobs
 id: 233
-filter: 
+filter:
 - erb
 - textile
 categories: []

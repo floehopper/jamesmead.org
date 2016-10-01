@@ -1,10 +1,10 @@
---- 
+---
 permalink: rails-acceptance-testing-with-selenium-rc
 updated_at: 2006-09-17 18:43:11 +00:00
 guid: d1df3662-8a4e-4b77-a88a-93cc572b4082
 title: Rails acceptance testing with Selenium RC
 id: 92
-filter: 
+filter:
 - erb
 - textile
 categories: []

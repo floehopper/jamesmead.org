@@ -1,10 +1,10 @@
---- 
+---
 permalink: changing-gner-advance-single-tickets
 updated_at: 2007-10-29 22:54:26 +00:00
 guid: 8ac3b161-d3cf-4a1e-8d55-5cfd02c17668
 title: Changing GNER Advance Single tickets
 id: 296
-filter: 
+filter:
 - erb
 - textile
 categories: []

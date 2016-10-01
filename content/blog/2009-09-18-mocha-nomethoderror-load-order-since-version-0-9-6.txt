@@ -1,10 +1,10 @@
---- 
+---
 permalink: mocha-nomethoderror-load-order-since-version-0-9-6
 updated_at: 2009-09-18 11:35:40 +00:00
 guid: b23f8cdd-771f-46c1-a4bf-bacf541a1291
 title: Mocha NoMethodError / Load order since version 0.9.6
 id: 384
-filter: 
+filter:
 - erb
 - textile
 categories: []
@@ -16,9 +16,9 @@ There have been a number of load order issues since 0.9.6 was released for which
 
 The key message is that since 0.9.6, you must ensure that your test framework ("Test::Unit":http://www.ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html or "MiniTest":http://blog.zenspider.com/minitest/) is loaded *before* "Mocha":http://gofreerange.com/mocha/docs/ is loaded, otherwise "Mocha":http://gofreerange.com/mocha/docs/ will not monkey-patch the test framework and calls to the Mocha API will result in "NoMethodError":http://www.ruby-doc.org/core/classes/NoMethodError.html.
 
-I hope to write this up in more detail soon, but in the meantime here are a couple of useful links :- 
+I hope to write this up in more detail soon, but in the meantime here are a couple of useful links :-
 
-* "Rails 2.3.3 Upgrade Notes":http://railspikes.com/2009/7/29/rails-2-3-3-upgrade-notes/ 
+* "Rails 2.3.3 Upgrade Notes":http://railspikes.com/2009/7/29/rails-2-3-3-upgrade-notes/
 * "Rails 2.3.3 + Mocha = Confusion":http://selfamusementpark.com/blog/2009/07/30/rails233mochaconfusion/
 
 Please contact us on the "mailing list":http://groups.google.com/group/mocha-developer if you have any questions.

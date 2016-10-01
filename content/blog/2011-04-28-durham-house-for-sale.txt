@@ -1,10 +1,10 @@
---- 
+---
 permalink: durham-house-for-sale
 created_at: 2011-04-28 09:28:02 +01:00
 updated_at: 2011-05-14 18:57:02 +01:00
 title: Durham House For Sale
 description: A modern three-storey townhouse in the centre of Durham with views of the Cathedral and Castle.
-filter: 
+filter:
 - erb
 - textile
 keywords: house for sale property durham city briardene cathedral castle view quiet central garden patio garage DH1

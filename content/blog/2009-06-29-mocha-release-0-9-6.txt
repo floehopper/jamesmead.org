@@ -1,13 +1,13 @@
---- 
+---
 permalink: mocha-release-0-9-6
 updated_at: 2009-06-29 16:29:54 +00:00
 guid: 7ad172d1-6afc-4867-9f2d-8a5259c6509d
 title: Mocha Release 0.9.6
 id: 378
-filter: 
+filter:
 - erb
 - textile
-categories: 
+categories:
 - mocha_release
 created_at: 2009-06-29 16:29:54 +00:00
 keywords: mocha mock stub ruby testing tdd

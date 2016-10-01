@@ -1,10 +1,10 @@
---- 
+---
 permalink: stub-queries-and-expect-commands
 updated_at: 2006-12-23 20:18:10 +00:00
 guid: 39963017-3d76-480c-a1f9-068eb78b8570
 title: Stub Queries and Expect Commands
 id: 125
-filter: 
+filter:
 - erb
 - textile
 categories: []
@@ -43,9 +43,9 @@ bc(prettyprint).. def test_should_create_email_messages_and_subscriptions_when_i
   campaign = Campaign.new(:people => [])
   message = Message.new(:lists => [list], :campaign => campaign)
   message.include_subscribers = true
-  
+
   subscriptions.expects(:create)
-  
+
   message.generate
   assert_equal 1, message.email_messages
 end

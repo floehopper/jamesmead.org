@@ -1,11 +1,11 @@
---- 
+---
 permalink: ruby-acceptance-testing
 updated_at: 2010-08-24 13:03:01 +00:00
 guid: 865a65c7-638c-4751-aea6-f2b2e5e9d554
 title: Ruby Acceptance Testing
 description: Riposte to aspects of "You're Cuking it Wrong" article by Jonas Nicklas.
 id: 399
-filter: 
+filter:
 - erb
 - textile
 categories: []
@@ -70,13 +70,13 @@ bc(prettyprint)(lang-txt).. scenario "adding a subpage"
   given
     i am logged in
     a microsite with a home page
-  
-  when 
+
+  when
     i press "Add subpage"
     i fill in "Title"  with  "Gallery"
     i press "Ok"
-  
-  then 
+
+  then
     i should see a document called "Gallery"
 
 h2. Overhead

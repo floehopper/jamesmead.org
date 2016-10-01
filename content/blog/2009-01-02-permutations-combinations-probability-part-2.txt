@@ -1,10 +1,10 @@
---- 
+---
 permalink: permutations-combinations-probability-part-2
 updated_at: 2009-01-02 11:27:22 +00:00
 guid: f336d287-8966-4450-8a14-149134ecc16e
 title: Permutations, Combinations & Probability (Part 2)
 id: 354
-filter: 
+filter:
 - erb
 - textile
 categories: []
@@ -41,16 +41,16 @@ bc(prettyprint). def matches(index, base)
   permutation = "%0#{places * 2}d" % index.to_s(base)
   original = (0...places).map { |i| permutation[i].chr }
   guess = (places...(places * 2)).map { |i| permutation[i].chr }
-  matches = 0 
-  guess.each do |g| 
-    (0...places).each do |i| 
+  matches = 0
+  guess.each do |g|
+    (0...places).each do |i|
       if g == original[i]
-        original[i] = nil 
+        original[i] = nil
         matches += 1
         break
-      end 
-    end 
-  end 
+      end
+    end
+  end
   matches
 end
 

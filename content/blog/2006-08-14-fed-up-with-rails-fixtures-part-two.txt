@@ -1,10 +1,10 @@
---- 
+---
 permalink: fed-up-with-rails-fixtures-part-two
 updated_at: 2006-12-21 05:02:06 +00:00
 guid: 3ff30e81-f934-4935-be79-8b4b3147c0ae
 title: Fed up with Rails fixtures? (part two)
 id: 30
-filter: 
+filter:
 - erb
 - textile
 categories: []
@@ -39,7 +39,7 @@ class ArticleControllerTest < Test::Unit::TestCase
     @controller = ArticleController.new(@article_class)
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
-  end 
+  end
   def test_should_display_article
     article = Article.new
     @article_class.expects(:find).with('1').returns(article)

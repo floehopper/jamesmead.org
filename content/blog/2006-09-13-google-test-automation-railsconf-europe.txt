@@ -1,10 +1,10 @@
---- 
+---
 permalink: google-test-automation-railsconf-europe
 updated_at: 2006-09-23 04:20:44 +00:00
 guid: 2d1e1d4c-ea58-4f93-b9c3-38555cedd6a0
 title: Google Test Automation & RailsConf Europe
 id: 87
-filter: 
+filter:
 - erb
 - textile
 categories: []

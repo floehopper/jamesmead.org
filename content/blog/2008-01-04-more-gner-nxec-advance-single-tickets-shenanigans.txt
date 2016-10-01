@@ -1,10 +1,10 @@
---- 
+---
 permalink: more-gner-nxec-advance-single-tickets-shenanigans
 updated_at: 2009-11-26 11:40:50 +00:00
 guid: b25e1f77-525e-4a6c-97a8-56c8e364f7a0
 title: More GNER/NXEC Advance Single tickets shenanigans
 id: 309
-filter: 
+filter:
 - erb
 - textile
 categories: []

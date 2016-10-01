@@ -1,10 +1,10 @@
---- 
+---
 permalink: ruby-stubbing-techniques
 updated_at: 2006-09-16 15:32:19 +00:00
 guid: d6539e30-0b93-434a-b38a-c7fe24107072
 title: Ruby stubbing techniques
 id: 91
-filter: 
+filter:
 - erb
 - textile
 categories: []

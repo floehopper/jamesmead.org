@@ -1,10 +1,10 @@
---- 
+---
 permalink: permutations-combinations-probability
 updated_at: 2008-11-05 00:17:46 +00:00
 guid: fc58dcc2-80d6-4919-a51b-9929398b1fb0
 title: Permutations, Combinations & Probability
 id: 344
-filter: 
+filter:
 - erb
 - textile
 categories: []
@@ -24,33 +24,33 @@ I spent quite a while trying to dredge my memory (and the web) about "permutatio
 
 In any case, I then generalized the Ruby to generate the results for different numbers of digits and different numeric bases (e.g. base 4 => 0, 1, 2, 3). I was hoping to see patterns in the results, so I could possibly reverse engineer a formula for the answer, but I haven't managed to spend much time on that bit. But I'm sufficiently interested to embarrass myself by posting this on the internet and hoping that someone will tell me how to do this in one line of Maths or, more likely, one line of Ruby.
 
-bc(prettyprint).. max_places = 4 
+bc(prettyprint).. max_places = 4
 puts (['base', 'places', ''] + (0..max_places).to_a).join("\t")
 
 (2..10).each do |base|
   (1..max_places).each do |places|
     counts = [0] * (places + 1)
-    
+
     (0...(base ** (places * 2))).each do |index|
      permutation = "%0#{places * 2}d" % index.to_s(base)
      original = (0...places).map { |i| permutation[i].chr }
      guess = (places...(places * 2)).map { |i| permutation[i].chr }
-     matches = 0 
-     guess.each do |g| 
-       (0...places).each do |i| 
+     matches = 0
+     guess.each do |g|
+       (0...places).each do |i|
          if g == original[i]
-           original[i] = nil 
+           original[i] = nil
            matches += 1
            break
-         end 
-       end 
-     end 
+         end
+       end
+     end
      counts[matches] += 1
-    end 
-    
+    end
+
     puts (["%2d" % base, places, ''] + counts).join("\t")
     $stdout.flush
-  end 
+  end
 end
 
 p. I think the answer for four digits between 0-9 comes out as follows:-

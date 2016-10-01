@@ -1,10 +1,10 @@
---- 
+---
 permalink: identify-the-problem-before-the-solution
 updated_at: 2008-07-15 08:27:10 +00:00
 guid: 1e90fd37-25cc-46d0-b789-315ea51aa7b1
 title: Identify the Problem before the Solution
 id: 337
-filter: 
+filter:
 - erb
 - textile
 categories: []

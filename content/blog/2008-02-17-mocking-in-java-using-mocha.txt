@@ -1,10 +1,10 @@
---- 
+---
 permalink: mocking-in-java-using-mocha
 updated_at: 2008-02-17 18:15:15 +00:00
 guid: 857791bb-b4ad-41c0-845d-69d0909d0b7c
 title: Mocking in Java using Mocha
 id: 310
-filter: 
+filter:
 - erb
 - textile
 categories: []
@@ -23,20 +23,20 @@ import java.util.Iterator
 import java.util.Set
 import java.util.HashMap
 
-functional_tests do 
-  test "that a new HashMap can be created based on another map" do 
+functional_tests do
+  test "that a new HashMap can be created based on another map" do
     map = Map.new
-    
+
     map.expects(:size).returns(0)
-    
+
     iter = Iterator.new
     iter.expects(:hasNext).returns(false)
-    
+
     set = Set.new
     set.expects(:iterator).returns(iter)
-    
+
     map.expects(:entrySet).returns(set)
-    
+
     assert_equals 0, HashMap.new(map).size
   end
 end
@@ -47,20 +47,20 @@ bc(prettyprint).. import java.util.Iterator
 import java.util.Set
 import java.util.HashMap
 
-functional_tests do 
-  test "that a new HashMap can be created based on another map" do 
+functional_tests do
+  test "that a new HashMap can be created based on another map" do
     map = mock(HashMap)
-    
+
     map.expects(:size).returns(0)
-    
+
     iter = Iterator.new
     iter.expects(:hasNext).returns(false)
-    
+
     set = Set.new
     set.expects(:iterator).returns(iter)
-    
+
     map.expects(:entrySet).returns(set)
-    
+
     assert_equals 0, HashMap.new(map).size
   end
 end
