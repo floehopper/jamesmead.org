@@ -1,4 +1,4 @@
---- 
+---
 permalink: using-mocha-with-rails-3-and-testunit.txt
 created_at: 2013-01-24 11:32:00 +00:00
 updated_at: 2013-01-24 11:32:00 +00:00
