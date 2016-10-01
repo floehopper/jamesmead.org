@@ -1,12 +1,12 @@
 GIT
-  remote: git://github.com/floehopper/delicious-api-via-oauth.git
+  remote: https://github.com/floehopper/delicious-api-via-oauth.git
   revision: 67401bd90e44014b186d4d9b1da5b36c8659e1e4
   specs:
     delicious-api-via-oauth (0.1.0)
       oauth
 
 GIT
-  remote: git://github.com/floehopper/floehopper-deploy.git
+  remote: https://github.com/floehopper/floehopper-deploy.git
   revision: c217075e265303f0b74e918977d0e6a71308aa37
   specs:
     floehopper-deploy (0.1.2)
@@ -14,7 +14,7 @@ GIT
       freerange-puppet
 
 GIT
-  remote: git://github.com/freerange/deploy.git
+  remote: https://github.com/freerange/deploy.git
   revision: cc6a22d55144422fef8792d3b317c67bc18d4e70
   specs:
     freerange-deploy (1.0.10)
@@ -27,7 +27,7 @@ GIT
       tinder (= 1.4.1)
 
 GIT
-  remote: git://github.com/freerange/freerange-puppet.git
+  remote: https://github.com/freerange/freerange-puppet.git
   revision: 3bbe029d60f90d45ac4e48f056a8f478d6e7b44d
   specs:
     freerange-puppet (1.1.9)
@@ -124,3 +124,9 @@ DEPENDENCIES
   rack-rewrite
   rdiscount
   webby
+
+RUBY VERSION
+   ruby 1.8.7p0
+
+BUNDLED WITH
+   1.13.2
