@@ -50,3 +50,5 @@ end
 
 config[:feed_url] = 'http://feeds.jamesmead.org/floehopper-blog'
 config[:host] = 'jamesmead.org'
+
+config[:textile] = { no_span_caps: true }
