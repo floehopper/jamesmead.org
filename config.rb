@@ -61,4 +61,5 @@ activate :deploy do |deploy|
   deploy.host = 'skua.jamesmead.org'
   deploy.path = '/var/www/jamesmead.org'
   deploy.clean = true
+  deploy.build_before = true
 end
