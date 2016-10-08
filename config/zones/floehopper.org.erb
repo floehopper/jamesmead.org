@@ -1,0 +1,26 @@
+$ORIGIN floehopper.org.
+$TTL 5m
+@ IN A 50.56.222.140
+floehopper.org IN NS a.dns.gandi.net.
+floehopper.org IN NS b.dns.gandi.net.
+floehopper.org IN NS c.dns.gandi.net.
+www IN CNAME floehopper.org.
+blog IN CNAME floehopper.org.
+google IN CNAME ghs.google.com.
+calendar IN CNAME ghs.google.com.
+docs IN CNAME ghs.google.com.
+mail IN CNAME ghs.google.com.
+<%= GOOGLE_VERIFICATION_CNAME_1 %> IN CNAME google.com.
+<%= GOOGLE_VERIFICATION_CNAME_2 %> IN CNAME google.com.
+feeds IN CNAME <%= FEEDBURNER_DOMAIN %>
+tumble IN CNAME domains.tumblr.com.
+videos IN CNAME <%= GFR_VIDEO_DOMAIN_1 %>
+@ IN MX 10 ASPMX.L.GOOGLE.COM.
+@ IN MX 20 ALT1.ASPMX.L.GOOGLE.COM.
+@ IN MX 20 ALT2.ASPMX.L.GOOGLE.COM.
+@ IN MX 30 ASPMX2.GOOGLEMAIL.COM.
+@ IN MX 30 ASPMX3.GOOGLEMAIL.COM.
+@ IN MX 30 ASPMX4.GOOGLEMAIL.COM.
+@ IN MX 30 ASPMX5.GOOGLEMAIL.COM.
+@ IN TXT "v=spf1 include:aspmx.googlemail.com ~all"
+@ IN TXT "google-site-verification=<%= GOOGLE_VERIFICATION_CODE %>"

@@ -5,3 +5,4 @@ tmp
 access_token.yml
 request_token.yml
 yahoo-credentials.yml
+.env
