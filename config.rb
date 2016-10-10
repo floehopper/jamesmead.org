@@ -55,3 +55,10 @@ config[:textile] = { no_span_caps: true }
 config[:css_dir] = 'style'
 
 config[:markdown] = { auto_ids: false }
+
+activate :deploy do |deploy|
+  deploy.deploy_method = :rsync
+  deploy.host = 'skua.jamesmead.org'
+  deploy.path = '/var/www/jamesmead.org'
+  deploy.clean = true
+end
