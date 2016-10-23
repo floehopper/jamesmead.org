@@ -8,3 +8,7 @@ gem 'middleman-blog'
 gem 'middleman-deploy', '~> 2.0.0.alpha'
 
 gem 'RedCloth'
+
+group :development do
+  gem 'travis'
+end
