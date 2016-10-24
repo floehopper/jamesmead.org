@@ -9,6 +9,7 @@ before_deploy:
 - eval "$(ssh-agent -s)"
 - chmod 600 /tmp/travisci_rsa
 - ssh-add /tmp/travisci_rsa
+- ssh -v travisci@skua.jamesmead.org
 deploy:
   provider: script
   skip_cleanup: true
