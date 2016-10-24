@@ -2,3 +2,8 @@ language: ruby
 rvm:
 - 2.3.1
 script: bundle exec middleman build
+before_deploy:
+- openssl aes-256-cbc -K $encrypted_2010d656fd11_key -iv $encrypted_2010d656fd11_iv -in travisci_rsa.enc -out /tmp/travisci_rsa -d
+- eval "$(ssh-agent -s)"
+- chmod 600 /tmp/travisci_rsa
+- ssh-add /tmp/travisci_rsa
