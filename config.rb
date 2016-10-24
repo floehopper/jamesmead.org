@@ -59,7 +59,7 @@ config[:markdown] = { auto_ids: false }
 activate :deploy do |deploy|
   deploy.deploy_method = :rsync
   deploy.host = 'skua.jamesmead.org'
+  deploy.user = 'travisci'
   deploy.path = '/var/www/jamesmead.org'
   deploy.clean = true
-  deploy.build_before = true
 end

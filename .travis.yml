@@ -7,3 +7,9 @@ before_deploy:
 - eval "$(ssh-agent -s)"
 - chmod 600 /tmp/travisci_rsa
 - ssh-add /tmp/travisci_rsa
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: rvm $TRAVIS_RUBY_VERSION do bundle exec middleman deploy
+  on:
+    branch: master
