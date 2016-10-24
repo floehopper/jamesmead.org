@@ -12,6 +12,6 @@ before_deploy:
 deploy:
   provider: script
   skip_cleanup: true
-  script: ssh -v travisci@skua.jamesmead.org "pwd"
+  script: rsync -avz build/ travisci@skua.jamesmead.org:/var/www/jamesmead.org
   on:
     branch: master
