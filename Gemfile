@@ -9,5 +9,6 @@ gem 'middleman-blog'
 gem 'RedCloth'
 
 group :development do
+  gem 'rake'
   gem 'travis'
 end
