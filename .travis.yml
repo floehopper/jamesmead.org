@@ -2,6 +2,9 @@ language: ruby
 rvm:
 - 2.3.1
 script: bundle exec middleman build
+branches:
+  only:
+  - master
 addons:
   ssh_known_hosts: skua.jamesmead.org
 before_deploy:
