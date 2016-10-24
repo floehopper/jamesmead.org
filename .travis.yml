@@ -12,6 +12,6 @@ before_deploy:
 deploy:
   provider: script
   skip_cleanup: true
-  script: rvm $TRAVIS_RUBY_VERSION do bundle exec middleman deploy
+  script: ssh -v travisci@skua.jamesmead.org "pwd"
   on:
     branch: master
