@@ -39,6 +39,11 @@ p, li, span, table {
   font-size: 123.1%;
 }
 
+li > p {
+  /*No adjustment for paragraphs already inside list item*/
+  font-size: 100.0%;
+}
+
 pre code {
   /*14px via YUI Fonts CSS foundation*/
   font-size: 108%;
