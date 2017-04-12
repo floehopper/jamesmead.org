@@ -3,4 +3,14 @@ title: History
 created_at: 2010-01-03 11:20:00 +00:00
 updated_at: 2010-01-03 11:20:00 +00:00
 ---
-This website started its life back in 2004 as a "JRoller blog":http://www.jroller.com/jamesmead/. When I joined "Reevoo":http://www.reevoo.com/, having started using "Ruby on Rails":http://rubyonrails.org/, I decided to setup an instance of  "Typo":http://typosphere.org/ at  "blog.floehopper.org":http://blog.floehopper.org/ hosted by "Slicehost":http://www.slicehost.com/. Although setting up my blog on Typo was a good introduction to using Rails, my installation of Typo quickly became out-of-date. I also felt that using Typo was massive overkill for what is really a very simple website. So taking inspiration from "Chris Roos":http://chrisroos.co.uk/, I decided to convert it to a static website generated using "Webby":http://webby.rubyforge.org/. At the same time I decided to move the website to "jamesmead.org":/ in an effort to centralize my presence on-line. You can now find my blog as "sub-directory":/blog/ of this website.
+This website started its life back in 2004 as a "JRoller blog":http://www.jroller.com/jamesmead/.
+
+When I joined "Reevoo":http://www.reevoo.com/, having started using "Ruby on Rails":http://rubyonrails.org/, I decided to setup an instance of  "Typo":http://typosphere.org/ at  "blog.floehopper.org":http://blog.floehopper.org/ hosted by "Slicehost":http://www.slicehost.com/.
+
+Although setting up my blog on Typo was a good introduction to using Rails, my installation of Typo quickly became out-of-date. I also felt that using Typo was massive overkill for what is really a very simple website. So in November 2009, taking inspiration from "Chris Roos":http://chrisroos.co.uk/, I decided to convert it to a static website generated using "Webby":http://webby.rubyforge.org/. At the same time I decided to move the website to "jamesmead.org":/ in an effort to centralize my presence on-line. I moved my blog to a "sub-directory":/blog/ of this website.
+
+In December 2010, inspired by the work "Go Free Range":http://gofreerange.com (and "Tom Ward":http://tomafro.net in particular) was doing with O2, I started using "freerange-puppet":https://github.com/freerange/freerange-puppet and "freerange/deploy":https://github.com/freerange/deploy overridden by "floehopper-deploy":https://github.com/floehopper/floehopper-deploy to provision the server and deploy the apps.
+
+"Rackspace":https://www.rackspace.com/ acquired Slicehost in October 2008, but it wasn't until January 2012 that I was forced to move this site onto a Rackspace Cloud server.
+
+In October 2016 I converted this site to use the "Middleman":https://middlemanapp.com/ static site generator instead of Webby. The latter hadn't been updated in many years and only supported Ruby v1.8. At around the same time I moved the site onto a "Linode":https://www.linode.com/ server and automated deployment from "Github":https://github.com/floehopper/jamesmead.org via "Travis CI":https://travis-ci.org/floehopper/jamesmead.org using @rsync@.
