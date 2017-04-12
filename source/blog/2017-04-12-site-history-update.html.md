@@ -1,7 +1,6 @@
 ---
 title: Site history update
 description: The blogging hiatus ends?
-permalink: blog-hiatus-ends
 created_at: 2017-04-12 13:35:00 +00:00
 updated_at: 2017-04-12 13:35:00 +00:00
 ---
