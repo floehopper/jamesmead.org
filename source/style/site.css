@@ -34,7 +34,7 @@ pre {
   overflow: auto;
 }
 
-p, li, span, table {
+p, li, table {
   /*16px via YUI Fonts CSS foundation*/
   font-size: 123.1%;
 }
