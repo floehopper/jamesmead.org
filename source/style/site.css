@@ -1,3 +1,41 @@
+/**
+ * From http://yui.yahooapis.com/2.9.0/build/base/base.css
+ */
+body {
+  /* For breathing room between content and viewport. */
+  margin:10px;
+}
+
+/**
+ * From http://yui.yahooapis.com/2.9.0/build/grids/grids.css
+ */
+#doc {
+  margin: auto;
+  text-align: left;
+  width: 57.69em;
+  *width: 56.25em;
+}
+
+/**
+ * From http://yui.yahooapis.com/2.9.0/build/grids/grids.css
+ */
+#hd:after,
+#bd:after,
+#ft:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/**
+ * From http://yui.yahooapis.com/2.9.0/build/grids/grids.css
+ */
+#hd,
+#bd,
+#ft {
+  zoom: 1;
+}
+
 #hd {
   height: 2em;
   border-bottom: 0.3em solid #666;
