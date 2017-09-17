@@ -30,6 +30,6 @@ EOF
 
 a2ensite jamesmead.dev
 
-systemctl start apache2
+systemctl restart apache2
 
 gem install bundler
