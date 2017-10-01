@@ -14,6 +14,7 @@ published: false
 * Kite skiing
 * [Joakim's family's cabin](http://valhallawebdesign.com/Trysil4Rent/)
 * [Map of Trysil with cabin location marked](https://www.openstreetmap.org/way/372219152#map=13/61.3109/12.2153)
+* [Photos taken by Joakim](http://valhallawebdesign.com/Trysil2005/)
 
 Flight number:  BA0762
 From:           Heathrow (London) Terminal 4
