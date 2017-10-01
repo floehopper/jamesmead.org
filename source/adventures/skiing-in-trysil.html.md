@@ -9,13 +9,20 @@ keywords: "skiing"
 published: false
 ---
 
-Joakim, Richard, Phil, Hannah & James
+* Joakim, Richard, Phil, Hannah & James
+* 19-26 Mar 2005
+* Kite skiing
+* [Joakim's family's cabin](http://valhallawebdesign.com/Trysil4Rent/)
+* [Map of Trysil with cabin location marked](https://www.openstreetmap.org/way/372219152#map=13/61.3109/12.2153)
 
-March/April 2005
+Flight number:  BA0762
+From:           Heathrow (London) Terminal 4
+To:             Oslo
+Depart:         19 Mar 2005 07:20
+Arrive:         19 Mar 2005 10:30
 
-Kite skiing
-
-[Joakim's family's cabin](http://valhallawebdesign.com/Trysil4Rent/)
-
-[Map of Trysil with cabin location marked](https://www.openstreetmap.org/way/372219152#map=13/61.3109/12.2153)
-
+Flight number:  BA0769
+From:           Oslo
+To:             Heathrow (London) Terminal 4
+Depart:         26 Mar 2005 20:25
+Arrive:         26 Mar 2005 21:55
