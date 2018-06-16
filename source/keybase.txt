@@ -6,56 +6,47 @@ I hereby claim:
 
   * I am an admin of http://jamesmead.org
   * I am floehopper (https://keybase.io/floehopper) on keybase.
-  * I have a public key with fingerprint B10D 919D E3B2 3B55 8FF3  80E1 CD75 D7BD 899B 8102
+  * I have a public key ASAT6zIpuajtCC9owIWgEAHtiAMbQOmibwx5epmtnNgrsQo
 
-To claim this, I am signing this object:
+To do so, I am signing this object:
 
 {
-    "body": {
-        "key": {
-            "fingerprint": "b10d919de3b23b558ff380e1cd75d7bd899b8102",
-            "host": "keybase.io",
-            "key_id": "CD75D7BD899B8102",
-            "uid": "94c958a58e931ccb300923fa745b7400",
-            "username": "floehopper"
-        },
-        "service": {
-            "hostname": "jamesmead.org",
-            "protocol": "http:"
-        },
-        "type": "web_service_binding",
-        "version": 1
+  "body": {
+    "key": {
+      "eldest_kid": "01012637506ef719f3c9614462040b641214c68cd4ed2096efb582cc520f0407098b0a",
+      "host": "keybase.io",
+      "kid": "012013eb3229b9a8ed082f68c085a01001ed88031b40e9a26f0c797a99ad9cd82bb10a",
+      "uid": "94c958a58e931ccb300923fa745b7400",
+      "username": "floehopper"
     },
-    "ctime": 1397320010,
-    "expire_in": 157680000,
-    "prev": "43c6e0895c5577bc551165212c3f5e094decf0ad94c3c18613bfe4268ac0a03e",
-    "seqno": 4,
-    "tag": "signature"
+    "merkle_root": {
+      "ctime": 1529155416,
+      "hash": "01da5a5ef659c6b0bce5e7f86b3e318a8c9a8ebe71487c50cd4aaa080c620bcbc715a0dc27f92645d03459258f1db78081103ca1f0df7088f7caf8367a20ed29",
+      "hash_meta": "785786e790b1150a2d18020593b3438d99dcd05c01520d694df6ca5e43ba7768",
+      "seqno": 3085886
+    },
+    "service": {
+      "entropy": "Niln0cZ5dGPM0bQqJPhjgCxS",
+      "hostname": "jamesmead.org",
+      "protocol": "http:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "2.0.0"
+  },
+  "ctime": 1529155429,
+  "expire_in": 504576000,
+  "prev": "e35923fb00f2e8988ed302869e330e20e18cf1dab8c67616615558066cb81805",
+  "seqno": 19,
+  "tag": "signature"
 }
 
-with the aforementioned key, yielding the PGP signature:
+which yields the signature:
 
------BEGIN PGP MESSAGE-----
-Version: GnuPG/MacGPG2 v2.0.22 (Darwin)
-Comment: GPGTools - http://gpgtools.org
-
-owE1kWtIFFEUx/dhSoq54VKGGjGEIS5257UzswmKbaWIJVhqEa1zZ+6us7o72+z6
-WHQDQwoxzRCkCKJlFSoU7QkqyNIHMc0okiIo6QGWISIoSE+6I3Y/3Ms95/f/n3M4
-valmg8n4ctpb0hfeaDfOxtehobJUKWsloCqHCUcrUY82H7fi9yAtoCn+EOEgIAlk
-gRRkREOKhizLu900DxApyRwrc1DmBQHyJKAIG1GnBnUFtoFiEOUrKo7hj0uRcfSw
-k2OdXLET88VbfONmQmAkgeVFlkcCTUoSpAEQKNotcgwLOQYAHQwizS/6EKbdDSqq
-UwMBpBERG4HjTYqE9K714luMFz9BHxLlfFXzYHlAU0OqpDbgVF0oFHDoylA4oKPN
-CLq2TFxQ8ct4dCxoQlpQUf2Eg8SkFFJ0V5IWOJoCgAQ2ArUEFA25FJ1gOTsP8NHL
-oCZsydCSHQFeYCWW5TiIb5K0sxRJSbSbRUBgZCS5gSjjuWmJ5O0kDd2Ioey8KAER
-0IjQxzrvVwkHg9sUPdgyqHj8YqhRQ0Sk05iVYDCaDInbTPryDMnbLf9XeqAq6acp
-yRVbzHhzaeR6RnJhXnqmp319JXrFWjh7uciZ8yvBPH7u0IVsa7mvot+5d6poeXmY
-H+tdqKj50rHn2LXiAaax4ONol3xi8K8r5XXl/fyl+NK91Jlsb1qs5sha9QSEtljG
-wgATzsrbcTDFEniYWP6p688I+fxbpsIeJ7IWvttarrbdNuZOTtvST43V/s6d93HP
-Ok43T/w42TfxeZV9az1Tm9c9TlWlz91ZW1w3r/SscrvP+gYfPRmuntpp2Q/iRyss
-7+BcygMxKs239XS8KKsP98ciu6zjX6MXS+XONG/3huvu+5kuznyTvNUcMUZHPxRM
-DsUf59x4NWR8WrLvHw==
-=JvUz
------END PGP MESSAGE-----
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgE+syKbmo7QgvaMCFoBAB7YgDG0Dpom8MeXqZrZzYK7EKp3BheWxvYWTESpcCE8Qg41kj+wDy6JiO0wKGnjMOIOGM8dq4xnYWYVVYBmy4GAXEIBkrOgVBUpCb5SXkfS9E56XkCglEG73gVzdJni+8SJ1vAgHCo3NpZ8RAavhoZlp4wAY+Nu0yVUfd21t8tRj/sGERfXIXBZhqTN8RzCp8rdC7DDVT9/yH7Yq+tTtpYDVF+Y4c14NiRWsADqhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIDhsXHWXCc7Q4N4ApXYXXRshFSG0Obm7n2c7gwjnZDKAo3RhZ80CAqd2ZXJzaW9uAQ==
 
 And finally, I am proving ownership of this host by posting or
 appending to this document.
