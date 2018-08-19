@@ -1,4 +1,4 @@
---- 
+---
 permalink: unit-tests-can-100-coverage-be-a-bad-thing
 updated_at: 2008-07-12 17:55:07 +00:00
 guid: 15cb09c0-2a7e-4c98-b0b9-c11dfb85bf14
@@ -19,4 +19,4 @@ Consider what happens when you have "unit" tests that go more than one unit deep
 
 I call that a bad thing!
 
-Update: I see that Tim Bacon has already "touched on this subject":http://coachspot.blogspot.com/2003_11_01_coachspot_archive.html#106758276083501884.
+Update: I see that Tim Bacon has already "touched on this subject":http://coachspot.blogspot.com/2003/11/100-test-coverage-is-not-target.html.
