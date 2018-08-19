@@ -1,4 +1,4 @@
---- 
+---
 permalink: preview-of-latest-mocha-changes
 updated_at: 2007-04-12 14:49:28 +00:00
 guid: b8fe8b5f-8502-4d35-bc10-e6ba29cfddae
@@ -15,14 +15,14 @@ keywords: ruby mocha preview mock stub return raise yield
 I've finally managed to find some time to do some serious work on "Mocha":http://gofreerange.com/mocha/docs/. Here are some code snippets showing the new functionality available in trunk (revision 128). I don't don't know how many people out there are using trunk, but it would be great to get some feedback on these changes before I make a new release. In particular I'd like to know whether...
 
 * I've broken anybody's tests.
-* Anybody has a legitimate use for @parameter_block@ in "@Expectation#with@":http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000017 that they don't think will be handled by a suitable parameter matcher i.e. using the current behaviour where the block is passed the parameters and the result of the block determines whether the expectation matches. I'm planning on deprecating this soon.
-* Anybody has a legitimate use for passing in an instance of @Proc@ to "@Expectation#returns@":http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000019 i.e. using the current behaviour where the @Proc@ gets executed to generate a return value. I'm planning on deprecating this soon as well.
+* Anybody has a legitimate use for @parameter_block@ in "@Expectation#with@":https://web.archive.org/web/20070524053033/http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000017 that they don't think will be handled by a suitable parameter matcher i.e. using the current behaviour where the block is passed the parameters and the result of the block determines whether the expectation matches. I'm planning on deprecating this soon.
+* Anybody has a legitimate use for passing in an instance of @Proc@ to "@Expectation#returns@":https://web.archive.org/web/20070524053033/http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000019 i.e. using the current behaviour where the @Proc@ gets executed to generate a return value. I'm planning on deprecating this soon as well.
 
 I've typed this up in a bit of a rush (about to go on holiday for a few days), so apologies if there are any mistakes.
 
 h2. Parameter Matchers
 
-I've added a few "Hamcrest-style":http://code.google.com/p/hamcrest/wiki/Tutorial parameter matchers which are designed to be used inside "@Expectation#with@":http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000017. The following matchers are currently available: has_key(), has_value() & has_entry(). More to follow soon. The idea is eventually to get rid of the nasty @parameter_block@ option on "@Expectation#with@":http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000017.
+I've added a few "Hamcrest-style":http://code.google.com/p/hamcrest/wiki/Tutorial parameter matchers which are designed to be used inside "@Expectation#with@":https://web.archive.org/web/20070524053033/http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000017. The following matchers are currently available: has_key(), has_value() & has_entry(). More to follow soon. The idea is eventually to get rid of the nasty @parameter_block@ option on "@Expectation#with@":https://web.archive.org/web/20070524053033/http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000017.
 
 bc(prettyprint). object = mock()
 object.expects(:method).with(has_key('key_1'))
@@ -36,7 +36,7 @@ object.method('key_2' => 2)
 
 h2. Values Returned and Exceptions Raised on Consecutive Invocations
 
-Allow multiple calls to "@Expectation#returns@":http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000019 and "@Expectation#raises@":http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000020 to build up a sequence of responses to invocations on the mock. Added syntactic sugar method @Expectation#then@ to allow more readable expectations.
+Allow multiple calls to "@Expectation#returns@":https://web.archive.org/web/20070524053033/http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000019 and "@Expectation#raises@":https://web.archive.org/web/20070524053033/http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000020 to build up a sequence of responses to invocations on the mock. Added syntactic sugar method @Expectation#then@ to allow more readable expectations.
 
 bc(prettyprint). object = mock()
 object.stubs(:method).returns(1, 2).then.raises(Exception).then.returns(4)
@@ -64,7 +64,7 @@ object.method { |*values| p values } # => [1, 2] # => [3]
 
 h2. Invocation Dispatch
 
-Expectations were already being matched in reverse order i.e. the most recently defined one was being found first. This is still the case, but we now stop matching an expectation when its maximum number of expected invocations is reached. c.f. "JMock v1":http://www.jmock.org/jmock1-dispatch.html. A stub will never stop matching by default. Hopefully this means we can soon get rid of the need to pass a @Proc@ to "@Expectation#returns@":http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000019.
+Expectations were already being matched in reverse order i.e. the most recently defined one was being found first. This is still the case, but we now stop matching an expectation when its maximum number of expected invocations is reached. c.f. "JMock v1":http://www.jmock.org/jmock1-dispatch.html. A stub will never stop matching by default. Hopefully this means we can soon get rid of the need to pass a @Proc@ to "@Expectation#returns@":https://web.archive.org/web/20070524053033/http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000019.
 
 bc(prettyprint). object = mock()
 object.stubs(:method).returns(2)

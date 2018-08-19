@@ -1,4 +1,4 @@
---- 
+---
 permalink: optional-parameters-in-mocha
 updated_at: 2008-07-12 11:33:16 +00:00
 guid: 3c633209-7be1-41ed-8b4e-a74caec54401
@@ -17,7 +17,7 @@ bc(prettyprint). def my_method(one, two, three = 3, four = 4)
   # implementation
 end
 
-We can use the new "Mocha::ParameterMatchers#optionally":http://mocha.rubyforge.org/classes/Mocha/ParameterMatchers.html#M000024 method within the call to "Expectation#with":http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000042 as follows...
+We can use the new "Mocha::ParameterMatchers#optionally":https://web.archive.org/web/20081002142639/http://mocha.rubyforge.org/classes/Mocha/ParameterMatchers.html#M000024 method within the call to "Expectation#with":https://web.archive.org/web/20080920065755/http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000042 as follows...
 
 bc(prettyprint). object = mock('object')
 object.expects(:my_method).with(1, 2, optionally(3, 4))

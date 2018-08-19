@@ -1,4 +1,4 @@
---- 
+---
 permalink: mock-object-injection
 updated_at: 2007-11-29 12:44:57 +00:00
 guid: 7a475c05-12b4-448c-baaa-a5e5d1854f9b
@@ -64,7 +64,7 @@ instance_under_test.do_something(collaborator)
 
 h2(#stubbed-new-method-injection). Stubbed New Method Injection
 
-Use Mocha's "Object#stubs":http://mocha.rubyforge.org/classes/Object.html#M000003 to temporarily replace @Collaborator#new@ with a stub implementation that returns a mock object.
+Use Mocha's "Object#stubs":https://web.archive.org/web/20080127102525/http://mocha.rubyforge.org/classes/Object.html#M000003 to temporarily replace @Collaborator#new@ with a stub implementation that returns a mock object.
 
 h3. Advantages
 
@@ -140,7 +140,7 @@ instance_under_test.do_something
 
 h2(#any-instance-stub-injection). Any Instance Stub Injection
 
-Use Mocha's "Class#any_instance":http://mocha.rubyforge.org/classes/Class.html#M000001 method to temporarily replace the method on a collaborator with a stub method.
+Use Mocha's "Class#any_instance":https://web.archive.org/web/20080215232318/http://mocha.rubyforge.org/classes/Class.html#M000001 method to temporarily replace the method on a collaborator with a stub method.
 
 h3. Disadvantages
 

@@ -1,4 +1,4 @@
---- 
+---
 permalink: mocha-release-0-9-4
 updated_at: 2008-12-30 18:44:38 +00:00
 guid: 4c64e053-398c-4f3f-9a8b-4849610575ae
@@ -13,5 +13,5 @@ h2. Release Notes
 
 * Added "mocha.gemspec":http://github.com/floehopper/mocha/tree/master/mocha.gemspec file generated with "Chad Woolley's":http://www.thewoolleyweb.com/ new rake task, so that a "floehopper-mocha gem":http://gems.github.com/list.html will get built on "GitHub":http://github.com.
 * Add rake task to update "mocha.gemspec":http://github.com/floehopper/mocha/tree/master/mocha.gemspec with unique version, which will cause gem to be auto-built on GitHub.
-* As Tobias Crawley correctly pointed out in feature request #23055 "stubs(with_hash) not working with existing object":http://rubyforge.org/tracker/index.php?func=detail&aid=23055&group_id=1917&atid=7480, following the principle of least surprise, it should be possible to call "ObjectMethods#expects":http://mocha.rubyforge.org/classes/Mocha/ObjectMethods.html#M000007 & "ObjectMethods#stubs":http://mocha.rubyforge.org/classes/Mocha/ObjectMethods.html#M000008 with a Hash of method_names vs return_values like you can with "Mock#expects":http://mocha.rubyforge.org/classes/Mocha/Mock.html#M000049 & "Mock#stubs":http://mocha.rubyforge.org/classes/Mocha/Mock.html#M000050. I've also updated & improved the docs to reflect the changes.
+* As Tobias Crawley correctly pointed out in feature request #23055 "stubs(with_hash) not working with existing object":http://rubyforge.org/tracker/index.php?func=detail&aid=23055&group_id=1917&atid=7480, following the principle of least surprise, it should be possible to call "ObjectMethods#expects":https://web.archive.org/web/20090124231509/http://mocha.rubyforge.org/classes/Mocha/ObjectMethods.html#M000007 & "ObjectMethods#stubs":https://web.archive.org/web/20090124231509/http://mocha.rubyforge.org/classes/Mocha/ObjectMethods.html#M000008 with a Hash of method_names vs return_values like you can with "Mock#expects":https://web.archive.org/web/20090201141256/http://mocha.rubyforge.org/classes/Mocha/Mock.html#M000050 & "Mock#stubs":https://web.archive.org/web/20090201141256/http://mocha.rubyforge.org/classes/Mocha/Mock.html#M000051. I've also updated & improved the docs to reflect the changes.
 * Removed deprecated gem autorequire.

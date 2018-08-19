@@ -1,4 +1,4 @@
---- 
+---
 permalink: mocha-configuration
 updated_at: 2009-02-09 11:57:26 +00:00
 guid: f8a30b4f-5516-4fb1-ac63-dd68dc3ae619
@@ -14,7 +14,7 @@ keywords: mocha mock stub ruby testing tdd configuration warning role interface 
 ---
 h2. Introduction
 
-In his "recent look":http://blog.brianguthrie.com/articles/2009/02/03/ioke-mocking-mocha-as-exemplar at Mocha's internals, Brian Guthrie mentioned that he hadn't realised it was possible to configure Mocha to warn or disallow mocking of non-existent methods. So I thought it was time I explained "Mocha's configuration settings":http://mocha.rubyforge.org/classes/Mocha/Configuration.html. These configuration settings are all somewhat experimental and feedback on their effectiveness would be welcome.
+In his "recent look":http://blog.brianguthrie.com/articles/2009/02/03/ioke-mocking-mocha-as-exemplar at Mocha's internals, Brian Guthrie mentioned that he hadn't realised it was possible to configure Mocha to warn or disallow mocking of non-existent methods. So I thought it was time I explained "Mocha's configuration settings":https://web.archive.org/web/20090329000048/http://mocha.rubyforge.org/classes/Mocha/Configuration.html. These configuration settings are all somewhat experimental and feedback on their effectiveness would be welcome.
 
 There are 3 levels for all of the existing conditions :-
 

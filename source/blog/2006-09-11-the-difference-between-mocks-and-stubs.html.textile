@@ -1,4 +1,4 @@
---- 
+---
 permalink: the-difference-between-mocks-and-stubs
 updated_at: 2006-09-11 08:05:17 +00:00
 guid: ac0cff8e-8238-4234-87e7-16fd6739d5b6
@@ -22,8 +22,8 @@ If you think about it, it's difficult (or impossible?) to do mocking without stu
 
 h2. Mocking and stubbing with Mocha
 
-To stub a method, use the "stubs":http://mocha.rubyforge.org/classes/Mocha/MockMethods.html#M000006 method.
-To mock a method, use the "expects":http://mocha.rubyforge.org/classes/Mocha/MockMethods.html#M000005 method.
+To stub a method, use the "stubs":https://web.archive.org/web/20061012051726/http://mocha.rubyforge.org/classes/Mocha/MockMethods.html#M000006 method.
+To mock a method, use the "expects":https://web.archive.org/web/20061012051726/http://mocha.rubyforge.org/classes/Mocha/MockMethods.html#M000005 method.
 
 h2. The difference between Mocha and Stubba
 

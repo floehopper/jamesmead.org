@@ -14,7 +14,7 @@ keywords: anything matcher rake test unit options verbose testopts
 ---
 A couple of useful nuggets came up while I was "pair programming":http://c2.com/cgi/wiki?PairProgramming with "James":http://interblah.net/ today.
 
-Firstly, James had an interesting new use of the Mocha parameter matcher "@anything@":http://mocha.rubyforge.org/classes/Mocha/ParameterMatchers.html#M000009, which reminded me of "Joe Walnes":http://joe.truemesh.com/ and his "Flexible JUnit assertions with assertThat()":http://joe.truemesh.com/blog//000511.html.
+Firstly, James had an interesting new use of the Mocha parameter matcher "@anything@":https://web.archive.org/web/20070705042715/http://mocha.rubyforge.org/classes/Mocha/ParameterMatchers.html#M000009, which reminded me of "Joe Walnes":http://joe.truemesh.com/ and his "Flexible JUnit assertions with assertThat()":http://joe.truemesh.com/blog//000511.html.
 
 Normally @anything@ is used to determine what parameters are matched by an expectation...
 
