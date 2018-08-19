@@ -9,4 +9,4 @@ updated_at: 2010-01-26 13:42:17 +00:00
 * "Issue Tracking":https://github.com/freerange/mocha/issues
 * "Old Issue Tracking":http://floehopper.lighthouseapp.com/projects/22289
 * "Mailing List":http://groups.google.com/group/mocha-developer
-* "Old Mailing List":http://rubyforge.org/pipermail/mocha-developer/
+* Old Mailing List (http://rubyforge.org/pipermail/mocha-developer/) no longer available
