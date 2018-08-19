@@ -9,7 +9,7 @@ categories: []
 created_at: 2006-09-17 18:35:08 +00:00
 keywords: rubyonrails selenium acceptance testing plugin google talk ltac virtualization
 ---
-My colleague "Ben":http://www.reevoo.com/blogs/bengriffiths/ has just published a "Rails plugin":http://rubyforge.org/projects/inbrowsertest/  which should simplify setting up "Selenium Remote Control":http://www.openqa.org/selenium-rc/ to run acceptance tests for your "Rails":http://www.rubyonrails.com/ app. So read "his article":http://www.reevoo.com/blogs/bengriffiths/2006/09/17/simple-selenium-testing-with-rails/ and give it a whirl.
+My colleague "Ben":http://www.reevoo.com/blogs/bengriffiths/ has just published a "Rails plugin":http://rubyforge.org/projects/inbrowsertest/  which should simplify setting up "Selenium Remote Control":http://www.openqa.org/selenium-rc/ to run acceptance tests for your "Rails":http://www.rubyonrails.org/ app. So read "his article":http://www.reevoo.com/blogs/bengriffiths/2006/09/17/simple-selenium-testing-with-rails/ and give it a whirl.
 
 Selenium tests run directly in the browser. You can run the same Selenium test against different browsers e.g. for browser compatability testing (all mainstream JavaScript-enabled browsers are supported). You can also use Selenium to test Ajax-based web applications. If you're not familiar with Selenium, have a "read about it":http://www.openqa.org/selenium-core/ and "watch some tests run":http://www.openqa.org/selenium-core/demos.html in your browser.
 

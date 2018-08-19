@@ -12,7 +12,7 @@ categories: []
 created_at: 2007-04-25 05:56:57 +00:00
 keywords: ruby rails job london reevoo enterprise java dotnet
 ---
-If you're looking to escape the "Enterprise" world of "Java":http://www.java.com and ".NET":http://www.gotdotnet.com/ for the shiny new world of "Ruby on Rails":http://www.rubyonrails.com/, take a look at "Ben's blog post":http://www.reevoo.com/blogs/bengriffiths/2007/04/03/rails-developer-job/ and "37Signals job advert":http://jobs.37signals.com/jobs/1349.
+If you're looking to escape the "Enterprise" world of "Java":http://www.java.com and ".NET":http://www.gotdotnet.com/ for the shiny new world of "Ruby on Rails":http://www.rubyonrails.org/, take a look at "Ben's blog post":http://www.reevoo.com/blogs/bengriffiths/2007/04/03/rails-developer-job/ and "37Signals job advert":http://jobs.37signals.com/jobs/1349.
 
 Things are really starting to hot up here at "Reevoo":http://www.reevoo.com. When you're in the middle of it all, it's easy to forget the progress we've been making. In recent months, we've...
 

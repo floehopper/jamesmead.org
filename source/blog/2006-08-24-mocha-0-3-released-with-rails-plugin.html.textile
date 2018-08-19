@@ -14,7 +14,7 @@ keywords: rails plugin ruby test mock stub testing mocking stubbing fixtures exp
 ---
 A new version of the "Mocha":http://gofreerange.com/mocha/docs/ mocking and stubbing library developed at "Reevoo":http://www.reevoo.com has been released.
 
-There is now a "Ruby on Rails":http://www.rubyonrails.com "plugin":http://www.agilewebdevelopment.com/plugins/mocha which can be installed like this...
+There is now a "Ruby on Rails":http://www.rubyonrails.org "plugin":http://www.agilewebdevelopment.com/plugins/mocha which can be installed like this...
 
 bc. $ script/plugin install svn://rubyforge.org/var/svn/mocha/trunk
 

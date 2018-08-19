@@ -73,7 +73,7 @@ bc(prettyprint).. class CompanyTest < Test::Unit::TestCase
   end
 end
 
-p. This way you home in on the behaviour of the @Company#wage_bill@ method and avoid testing the "ActiveRecord":http://api.rubyonrails.com/classes/ActiveRecord/Base.html code and access to the database. More ways to avoid hitting the database will follow in another post.
+p. This way you home in on the behaviour of the @Company#wage_bill@ method and avoid testing the "ActiveRecord":http://api.rubyonrails.org/classes/ActiveRecord/Base.html code and access to the database. More ways to avoid hitting the database will follow in another post.
 
 
 fn1. ActiveRecord still needs to know what columns in each table e.g.
