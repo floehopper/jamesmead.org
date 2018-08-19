@@ -3,4 +3,8 @@ title: Installd
 created_at: 2010-01-26 13:43:30 +00:00
 updated_at: 2010-01-26 13:43:30 +00:00
 ---
-"Website":http://installd.com/
+
+A social network for owners of iPhone apps. The idea was to discover useful apps used/recommended by your friends. A "RubyCocoa":https://github.com/rubycocoa/rubycocoa/ Mac desktop system tray app scanned the relevant iTunes directory and updated your list of apps on the server.
+
+* "Server repo":https://github.com/floehopper/installd
+* "Client repo":https://github.com/floehopper/installd-client
