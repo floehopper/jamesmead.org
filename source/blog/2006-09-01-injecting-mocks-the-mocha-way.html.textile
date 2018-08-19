@@ -1,4 +1,4 @@
---- 
+---
 permalink: injecting-mocks-the-mocha-way
 updated_at: 2006-09-01 14:17:38 +00:00
 guid: a9ecb1f5-c741-470a-8d59-491c92512936
@@ -12,9 +12,9 @@ categories: []
 created_at: 2006-09-01 06:40:34 +00:00
 keywords: mocha mock mocking stub stubbing ruby rails test testing fixture
 ---
-I thought I'd compare and contrast the way "Gluttonous":http://glu.ttono.us/ was "injecting mocks":http://glu.ttono.us/articles/2006/08/30/injecting-mocks-one-way-or-another and how you can do it with "Mocha":http://gofreerange.com/mocha/docs/.
+I thought I'd compare and contrast the way "Kevin Clark":https://web.archive.org/web/20080714205940/http://glu.ttono.us/ was "injecting mocks":http://glu.ttono.us/articles/2006/08/30/injecting-mocks-one-way-or-another and how you can do it with "Mocha":http://gofreerange.com/mocha/docs/.
 
-h2. Gluttonous' way
+h2. Kevin Clark's way
 
 bc(prettyprint). def test_process_exit
   delegate_methods_to_mock!(RailsFCGIHandler, :close_connection) do

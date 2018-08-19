@@ -1,4 +1,4 @@
---- 
+---
 permalink: mocha-adoption
 updated_at: 2006-11-17 06:10:29 +00:00
 guid: 817daced-c711-427c-9a48-895aa6b69ecc
@@ -13,7 +13,7 @@ It's great to see that so many people are finding "Mocha":http://gofreerange.com
 
 * err.the_blog - "Soap in my Mocha":http://errtheblog.com/post/40
 * Jay Fields - "Ruby/Rails Unit Testing in less than 1 second":http://jayfields.blogspot.com/2006/09/rubyrails-unit-testing-in-less-than-1.html
-* Gluttonous - "The Flexibility of Mocha":http://glu.ttono.us/articles/2006/09/01/the-flexibility-of-mocha
+* Gluttonous - "The Flexibility of Mocha":https://web.archive.org/web/20080705142101/http://glu.ttono.us:80/articles/2006/09/01/the-flexibility-of-mocha
 * LabRatZ - " Moment of Mocha Bliss":http://blog.labratz.net/articles/2006/09/11/moment-of-mocha-bliss
 * jvoorhis - "The Tooling Post: Ruby and Rails":http://www.jvoorhis.com/articles/2006/09/09/the-tooling-post-ruby-and-rails
 * t0fuu - "Tools for Ruby Development":http://t0fuu.wordpress.com/2006/09/09/tools-for-ruby-development/
