@@ -1,4 +1,4 @@
---- 
+---
 permalink: mock-commands-stub-queries
 updated_at: 2007-08-03 10:11:22 +00:00
 guid: 22926b95-53c4-472e-9a92-4b08f504f9b7
@@ -12,7 +12,7 @@ categories: []
 created_at: 2007-08-03 10:11:22 +00:00
 keywords: mocha mock stub testing assert verify expectation command query
 ---
-"Zach Moazeni":http://www.simplechatter.com has just posted a "suggested patch":http://www.simplechatter.com/2007/8/3/mocha-and-forcing-verification for Mocha over on his blog. My understanding of the patch is that it means expectations are verified even when an assertion error occurs in the test. Here is his example...
+"Zach Moazeni":https://github.com/zmoazeni has just posted a "suggested patch":https://web.archive.org/web/20081208044312/http://www.simplechatter.com/2007/8/3/mocha-and-forcing-verification for Mocha over on his blog. My understanding of the patch is that it means expectations are verified even when an assertion error occurs in the test. Here is his example...
 
 bc(prettyprint).. class Car
 
