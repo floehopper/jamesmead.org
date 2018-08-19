@@ -1,4 +1,4 @@
---- 
+---
 permalink: ruby-wrapper-for-the-delicious-v2-api-using-the-oauth-gem
 updated_at: 2010-01-14 13:57:03 +00:00
 guid: 333620d4-f811-41d1-bed5-21b44365c61f
@@ -10,7 +10,7 @@ categories: []
 created_at: 2010-01-14 13:57:03 +00:00
 keywords: ruby delicious api v2 oauth yahoo bookmark
 ---
-I've got a bit sidetracked recently while trying to convert my blog from using "Typo":http://www.typosphere.org/ to a static site using "Webby":http://webby.rubyforge.org/. Typo provides a facility to tag your blog posts. This allows visitors to find "all the articles tagged e.g. mocha":http://blog.floehopper.org/articles/tag/mocha.
+I've got a bit sidetracked recently while trying to convert my blog from using "Typo":http://www.typosphere.org/ to a static site using "Webby":https://rubygems.org/gems/webby. Typo provides a facility to tag your blog posts. This allows visitors to find "all the articles tagged e.g. mocha":http://blog.floehopper.org/articles/tag/mocha.
 
 Generating these tag pages becomes more awkward with the Webby-based site which is generated at deploy-time. I decided I liked the approach that Chris Roos took which was "to tag his blog posts in del.icio.us":http://chrisroos.co.uk/tags so that visitors can use a del.icio.us URL to find "all the articles with a particular tag":http://delicious.com/chrisjroos/blog.seagul.co.uk+cool.
 

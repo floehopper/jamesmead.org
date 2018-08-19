@@ -4,7 +4,7 @@ created_at: 2010-01-03 11:20:00 +00:00
 updated_at: 2010-01-03 11:20:00 +00:00
 ---
 * "Ruby":http://www.ruby-lang.org/
-* "Webby":http://webby.rubyforge.org/
+* "Webby":https://rubygems.org/gems/webby
 * "YUI":http://developer.yahoo.com/yui/
 * "PrettyPrint":http://code.google.com/p/prettyprint/
 * "Git":http://git-scm.com/
