@@ -3,7 +3,7 @@ title: History
 created_at: 2010-01-03 11:20:00 +00:00
 updated_at: 2010-01-03 11:20:00 +00:00
 ---
-This website started its life back in 2004 as a "JRoller blog":http://www.jroller.com/jamesmead/.
+This website started its life back in 2004 as a now dead JRoller blog (www.jroller.com/jamesmead/).
 
 When I joined "Reevoo":http://www.reevoo.com/, having started using "Ruby on Rails":http://rubyonrails.org/, I decided to setup an instance of  "Typo":http://typosphere.org/ at  "blog.floehopper.org":http://blog.floehopper.org/ hosted by "Slicehost":http://www.slicehost.com/.
 
