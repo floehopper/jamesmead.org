@@ -29,9 +29,6 @@
 
     <link rel="alternate" type="application/atom+xml" title="Atom" href="<%= config[:feed_url] %>" />
 
-    <link rel="openid.server" href="http://openid.claimid.com/server" />
-    <link rel="openid.delegate" href="http://openid.claimid.com/jamesmead" />
-
     <%- pages = articles.reverse -%>
     <%- if index = pages.index(current_page) -%>
       <%- if (index > 0) && (prev_page = pages[index - 1]) -%>
