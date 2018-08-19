@@ -1,4 +1,4 @@
---- 
+---
 permalink: mocha-in-java-using-bytecode-manipulation
 updated_at: 2006-09-16 14:58:33 +00:00
 guid: afe10f9a-e930-4e80-9e10-d8c65f682f4e
@@ -9,6 +9,6 @@ categories: []
 created_at: 2006-09-16 14:58:33 +00:00
 keywords: ruby java bytecode mocha mock pico unit dependency injection meta programming
 ---
-My former colleague and "bytecode":http://asm.objectweb.org/ maestro "Stacy Curl":http://digital-compulsion.blogspot.com/ has an "interesting article":http://digital-compulsion.blogspot.com/2006/09/java-mocking-without-injection-same.html explaining how it would be possible to implement "Mocha":http://gofreerange.com/mocha/docs/ in "Java":http://java.sun.com/ using experience from his "PicoUnit":http://picounit.codehaus.org/ project.
+My former colleague and "bytecode":http://asm.objectweb.org/ maestro "Stacy Curl":http://digital-compulsion.blogspot.com/ has an "interesting article":http://digital-compulsion.blogspot.com/2006/09/java-mocking-without-injection-same.html explaining how it would be possible to implement "Mocha":http://gofreerange.com/mocha/docs/ in "Java":http://java.sun.com/ using experience from his "PicoUnit":https://github.com/codehaus/picounit project.
 
 It's good to be reminded that meta-programming is possible in Java, but just a bit more effort.
