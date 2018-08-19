@@ -15,7 +15,7 @@ Some time ago, while I was pair-programming with him, "Chris":http://blog.seagul
 
 h2(#ruby-bug). Ruby bug
 
-As far as I understand it, the bug is in Ruby's "@Kernel.at_exit@":http://ruby-doc.org/core/classes/Kernel.html#M005958 hook. A call to "@Kernel.exit(false)@":http://ruby-doc.org/core/classes/Kernel.html#M005956 should cause the process to exit with an *exit status of 1* indicating the process did not complete successfully. The bug means that calling "@Kernel.exit(false)@":http://ruby-doc.org/core/classes/Kernel.html#M005956 from within "@Kernel.at_exit@":http://ruby-doc.org/core/classes/Kernel.html#M005958 incorrectly causes the process to exit with an *exit status of 0*.
+As far as I understand it, the bug is in Ruby's "@Kernel.at_exit@":https://web.archive.org/web/20090126020149/http://ruby-doc.org/core/classes/Kernel.html#M005958 hook. A call to "@Kernel.exit(false)@":http://ruby-doc.org/core/classes/Kernel.html#M005956 should cause the process to exit with an *exit status of 1* indicating the process did not complete successfully. The bug means that calling "@Kernel.exit(false)@":http://ruby-doc.org/core/classes/Kernel.html#M005956 from within "@Kernel.at_exit@":https://web.archive.org/web/20090126020149/http://ruby-doc.org/core/classes/Kernel.html#M005956 incorrectly causes the process to exit with an *exit status of 0*.
 
 The most relevant bug report is "#9300":http://rubyforge.org/tracker/?func=detail&atid=1698&aid=9300&group_id=426 and the most relevant mailing list thread is made up of:-
 * "[ruby-core:10746]":http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/10746
