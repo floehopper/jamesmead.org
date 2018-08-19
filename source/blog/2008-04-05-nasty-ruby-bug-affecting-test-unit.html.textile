@@ -32,7 +32,7 @@ bc. * eval.c (ruby_cleanup): exit by SystemExit and SignalException in END block
 
 h2(implications). Implications for Test::Unit & Rake::TestTask
 
-The "bug":#ruby-bug has some important consequences. "@Test::Unit@":http://www.ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html makes use of this mechanism to report test failures. Unfortunately, the bug means that a "@Test::Unit@":http://www.ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html process will always return an *exit status of 0* even when there have been test failures.
+The "bug":#ruby-bug has some important consequences. "@Test::Unit@":https://web.archive.org/web/20100208155315/http://ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html makes use of this mechanism to report test failures. Unfortunately, the bug means that a "@Test::Unit@":https://web.archive.org/web/20100208155315/http://ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html process will always return an *exit status of 0* even when there have been test failures.
 
 From @test/unit.rb@ :-
 

@@ -9,7 +9,7 @@ categories: []
 created_at: 2008-02-17 18:10:01 +00:00
 keywords: java ruby mocha test mock
 ---
-"Ola Bini":http://ola-bini.blogspot.com/ one of the "JRuby":http://jruby.codehaus.org/ guys has released the "JtestR":http://jtestr.codehaus.org/ tool which allows you to write tests for "Java":http://java.sun.com/ code in "Ruby":http://www.ruby-lang.org/! Ola has bundled a number of Ruby libraries - "Mocha":http://gofreerange.com/mocha/docs/, "RSpec":http://rspec.info/, "Dust":http://dust.rubyforge.org/, "Test::Unit":http://www.ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html & "ActiveSupport":http://rubyforge.org/projects/activesupport/ - together with JRuby to allow you to write Ruby test cases that test Java code.
+"Ola Bini":http://ola-bini.blogspot.com/ one of the "JRuby":http://jruby.codehaus.org/ guys has released the "JtestR":http://jtestr.codehaus.org/ tool which allows you to write tests for "Java":http://java.sun.com/ code in "Ruby":http://www.ruby-lang.org/! Ola has bundled a number of Ruby libraries - "Mocha":http://gofreerange.com/mocha/docs/, "RSpec":http://rspec.info/, "Dust":http://dust.rubyforge.org/, "Test::Unit":https://web.archive.org/web/20100208155315/http://ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html & "ActiveSupport":http://rubyforge.org/projects/activesupport/ - together with JRuby to allow you to write Ruby test cases that test Java code.
 
 He has a couple of examples in the "Mock documentation":http://jtestr.codehaus.org/Mocks of how to use "Mocha":http://gofreerange.com/mocha/docs/...
 

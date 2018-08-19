@@ -1,4 +1,4 @@
---- 
+---
 permalink: mocha-0-4-released
 updated_at: 2007-01-24 04:47:45 +00:00
 guid: 21fc9eed-97c8-4ddf-9869-4c07cce42d46
@@ -26,7 +26,7 @@ Release notes...
 * Eliminate warning: "instance variable @yield not initialized" (patch from "Xavier Shay":http://blog.rhnh.net/).
 * Restore instance methods on partial mocks (patch from "Chris Roos":http://blog.seagul.co.uk).
 * Allow stubbing of a method with non-word chars in its name (patch from "Paul Battley":http://po-ru.com).
-* Removed coupling to "Test::Unit":http://www.ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html.
+* Removed coupling to "Test::Unit":https://web.archive.org/web/20100208155315/http://ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html.
 * Allow specified exception instance to be raised (patch from "Chris Roos":http://blog.seagul.co.uk).
 * Make mock object_id appear in hex like normal Ruby inspect (patch from "Paul Battley":http://po-ru.com).
 * Fix path to object.rb in rdoc rake task (patch from "Tomas Pospisek":http://www.workingwithrails.com/person/5103-tomas-pospisek).

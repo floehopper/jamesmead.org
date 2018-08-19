@@ -60,7 +60,7 @@ h2. vimdiff
 
 h2. Test::Unit
 
-One of the things I really want to be able to do, is run Ruby "Test::Unit":http://www.ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html tests and view the output, so I can jump to the line where an assertion failed. I haven't managed to find anything suitable on the web, so here's my first attempt...
+One of the things I really want to be able to do, is run Ruby "Test::Unit":https://web.archive.org/web/20100208155315/http://ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html tests and view the output, so I can jump to the line where an assertion failed. I haven't managed to find anything suitable on the web, so here's my first attempt...
 
 bc. function! Ruby_run_tests()
   let results = tempname()
