@@ -1,4 +1,4 @@
---- 
+---
 permalink: escape-from-the-enterprise-london-rails-jobs
 updated_at: 2007-04-25 05:56:57 +00:00
 guid: 71f1d804-5eb9-4cd8-9e36-7b477c75b651
@@ -20,7 +20,7 @@ Things are really starting to hot up here at "Reevoo":http://www.reevoo.com. Whe
 * Passed the "60 million mark":http://www.reevoo.com/blogs/reevooblog/2007/03/29/60-million-reviews-and-ratings/ on ratings and reviews served.
 * "Added Woolworths":http://www.vecosys.com/2007/04/04/woolworths-signs-reevoocom-for-customer-reviews/ among others to our already "impressive list of partners":http://www.reevoo.com/pages/about_partnering.
 * Moved into a "plush new office":http://www.reevoo.com/blogs/reevooblog/2007/04/17/reevoo-spirit/.
-* We've even hired a couple of "ThoughtWorks":http://www.thoughtworks.co.uk developers for a month-long project.
+* We've even hired a couple of "ThoughtWorks":http://www.thoughtworks.com developers for a month-long project.
 
 I work with a talented and friendly bunch of developers...
 

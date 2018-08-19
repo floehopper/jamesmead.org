@@ -9,6 +9,6 @@ categories: []
 created_at: 2008-03-17 09:23:26 +00:00
 keywords: java rehab clinic ruby thoughtworks
 ---
-Not long after "Ben":http://www.techbelly.com persuaded me to join the fledgling "Reevoo":http://www.reevoo.com, we got our first big ReevooMark partners ("Dixons":http://www.dixons.co.uk & "Currys":http://www.currys.co.uk) live. To celebrate this event and my having left Java behind at "Thoughtworks":http://www.thoughtworks.co.uk, Ben bought me a "Java Rehabilitation Clinic mug":http://www.cafepress.com/javarehab.29832584. The mug has recently developed a crack. I wonder if it's trying to tell me it's time to learn another language...
+Not long after "Ben":http://www.techbelly.com persuaded me to join the fledgling "Reevoo":http://www.reevoo.com, we got our first big ReevooMark partners ("Dixons":http://www.dixons.co.uk & "Currys":http://www.currys.co.uk) live. To celebrate this event and my having left Java behind at "Thoughtworks":http://www.thoughtworks.com, Ben bought me a "Java Rehabilitation Clinic mug":http://www.cafepress.com/javarehab.29832584. The mug has recently developed a crack. I wonder if it's trying to tell me it's time to learn another language...
 
 <a href="http://www.flickr.com/photos/jamesthecat/2329269226/" title="java-rehab-clinic-mug by floehopper, on Flickr"><img src="http://farm3.static.flickr.com/2213/2329269226_55ce972807_o.jpg" width="240" height="240" alt="java-rehab-clinic-mug" /></a>
