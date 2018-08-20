@@ -1,4 +1,4 @@
---- 
+---
 permalink: google-test-automation-railsconf-europe
 updated_at: 2006-09-23 04:20:44 +00:00
 guid: 2d1e1d4c-ea58-4f93-b9c3-38555cedd6a0
@@ -11,7 +11,7 @@ keywords: ltac railsconf jmock test automation google ruby rails conference lond
 ---
 Last week I was at Google's inaugural "London Test Automation Conference":http://www.testingreflections.com/node/view/4135 where I particularly enjoyed the talk by Adam Connors and "Joe Walnes":http://joe.truemesh.com/blog/ entitled "Does my button look big in this? Building Testable AJAX Applications".  It should be out on "Google Video":http://video.google.com/ any day now (as are all the "talks":http://www.google.co.uk/intl/en/events/londontesters/speakers.html) and is well worth a look.
 
-It was also good to hear from "Nat Pryce":http://nat.truemesh.com/ and "Steve Freeman":http://stevef.truemesh.com/ about the "new developments":http://cvs.jmock.codehaus.org/browse/jmock/jmock2 in "JMock":http://www.jmock.org/
+It was also good to hear from "Nat Pryce":http://nat.truemesh.com/ and "Steve Freeman":http://stevef.truemesh.com/ about the "new developments":https://github.com/jmock-developers/jmock-library/commit/8829dba889ea10beb7b9fb04e199d70f38fe0e39 in "JMock":http://www.jmock.org/
 
 Tomorrow I'm off to "RailsConf Europe":http://europe.railsconf.org/. Should be fun.
 
