@@ -10,8 +10,8 @@ keywords: "skiing"
 
 ## Videos
 
-* content/movies/LaPlagne2009-large.m4v
-* content/movies/LaPlagne2009-small.3gp
+* content/videos/LaPlagne2009-large.m4v
+* content/videos/LaPlagne2009-small.3gp
 
 ## People
 
