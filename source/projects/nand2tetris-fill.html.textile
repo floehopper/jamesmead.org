@@ -22,8 +22,8 @@ updated_at: 2015-01-13 23:38:00 +00:00
 </style>
 
 <div class="video-container">
-  <video class="video-js vjs-default-skin vjs-big-play-centered" controls preload="none" height="auto" width="auto" poster="http://videos.jamesmead.org/cdf4bb0b/480p-00001.png" data-setup='{}'>
-    <source src="http://videos.jamesmead.org/cdf4bb0b/480p.mp4" type="video/mp4" />
-    <source src="http://videos.jamesmead.org/cdf4bb0b/480p.webm" type="video/webm" />
+  <video class="video-js vjs-default-skin vjs-big-play-centered" controls preload="none" height="auto" width="auto" poster="/videos/nand2tetris-fill-480p-00001.png" data-setup='{}'>
+    <source src="/videos/nand2tetris-fill-480p.mp4" type="video/mp4" />
+    <source src="/videos/nand2tetris-fill-480p.webm" type="video/webm" />
   </video>
 </div>
