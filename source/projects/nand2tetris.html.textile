@@ -22,8 +22,8 @@ updated_at: 2014-11-03 20:00:00 +00:00
 </style>
 
 <div class="video-container">
-  <video class="video-js vjs-default-skin vjs-big-play-centered" controls preload="none" height="auto" width="auto" poster="http://videos.jamesmead.org/054e2eb5/480p-00001.png" data-setup='{}'>
-    <source src="http://videos.jamesmead.org/054e2eb5/480p.mp4" type="video/mp4" />
-    <source src="http://videos.jamesmead.org/054e2eb5/480p.webm" type="video/webm" />
+  <video class="video-js vjs-default-skin vjs-big-play-centered" controls preload="none" height="auto" width="auto" poster="/videos/making-nand-gate-out-of-two-transistors-480p-00001.png" data-setup='{}'>
+    <source src="/videos/making-nand-gate-out-of-two-transistors-480p.mp4" type="video/mp4" />
+    <source src="/videos/making-nand-gate-out-of-two-transistors-480p.webm" type="video/webm" />
   </video>
 </div>
