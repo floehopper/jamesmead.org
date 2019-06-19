@@ -1,12 +1,9 @@
---- 
+---
 permalink: rspec-adding-to-the-confusion
 updated_at: 2007-01-03 10:59:40 +00:00
 guid: cab57c0d-0849-4467-9ac5-0cce34476c68
 title: RSpec adding to the confusion?
 id: '143'
-filter:
-- erb
-- textile
 categories: []
 
 created_at: 2007-01-02 18:48:42 +00:00

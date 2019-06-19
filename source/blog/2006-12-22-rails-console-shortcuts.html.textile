@@ -4,9 +4,6 @@ updated_at: 2006-12-22 15:28:45 +00:00
 guid: ec02dfef-3ef2-45c1-8e6e-765457272a37
 title: Rails Console Shortcuts
 id: '121'
-filter:
-- erb
-- textile
 categories: []
 
 created_at: 2006-12-22 15:28:45 +00:00

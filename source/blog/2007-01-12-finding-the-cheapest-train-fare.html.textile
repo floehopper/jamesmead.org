@@ -1,12 +1,9 @@
---- 
+---
 permalink: finding-the-cheapest-train-fare
 updated_at: 2007-01-12 11:56:43 +00:00
 guid: f54d68bb-ebef-4ac5-9392-2741638bc52a
 title: Finding the Cheapest Train Fare
 id: '155'
-filter:
-- erb
-- textile
 categories: []
 
 created_at: 2007-01-12 11:53:56 +00:00

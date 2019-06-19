@@ -1,12 +1,9 @@
---- 
+---
 permalink: developer-tests-and-double-entry-book-keeping
 updated_at: 2006-10-11 09:11:35 +00:00
 guid: d52eef16-f423-4aaf-81d1-e0721bf2d6e0
 title: Developer Tests and Double-entry Book-keeping
 id: '95'
-filter:
-- erb
-- textile
 categories: []
 
 created_at: 2006-10-11 08:59:52 +00:00

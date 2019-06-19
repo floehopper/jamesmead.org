@@ -4,9 +4,6 @@ updated_at: 2007-08-03 10:11:22 +00:00
 guid: 22926b95-53c4-472e-9a92-4b08f504f9b7
 title: Mock Commands, Stub Queries
 id: '278'
-filter:
-- erb
-- textile
 categories: []
 
 created_at: 2007-08-03 10:11:22 +00:00
