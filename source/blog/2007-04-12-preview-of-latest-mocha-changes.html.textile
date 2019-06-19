@@ -12,7 +12,7 @@ categories: []
 created_at: 2007-04-12 12:13:39 +00:00
 keywords: ruby mocha preview mock stub return raise yield
 ---
-I've finally managed to find some time to do some serious work on "Mocha":http://gofreerange.com/mocha/docs/. Here are some code snippets showing the new functionality available in trunk (revision 128). I don't don't know how many people out there are using trunk, but it would be great to get some feedback on these changes before I make a new release. In particular I'd like to know whether...
+I've finally managed to find some time to do some serious work on "Mocha":https://mocha.jamesmead.org/. Here are some code snippets showing the new functionality available in trunk (revision 128). I don't don't know how many people out there are using trunk, but it would be great to get some feedback on these changes before I make a new release. In particular I'd like to know whether...
 
 * I've broken anybody's tests.
 * Anybody has a legitimate use for @parameter_block@ in "@Expectation#with@":https://web.archive.org/web/20070524053033/http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000017 that they don't think will be handled by a suitable parameter matcher i.e. using the current behaviour where the block is passed the parameters and the result of the block determines whether the expectation matches. I'm planning on deprecating this soon.

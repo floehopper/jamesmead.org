@@ -12,7 +12,7 @@ categories:
 created_at: 2007-01-22 12:47:34 +00:00
 keywords: mocha release mock stub testing rubyforge
 ---
-So I finally got round to releasing a "new version":http://rubyforge.org/frs/?group_id=1917&release_id=9184 of "Mocha":http://gofreerange.com/mocha/docs/. Much of the functionality has been available for some time if you've been using the Rails plugin based on subversion HEAD, but now you can get it in all in a gem (or other package). The most recent changes centre around allowing mocking of Object instance methods.
+So I finally got round to releasing a "new version":http://rubyforge.org/frs/?group_id=1917&release_id=9184 of "Mocha":https://mocha.jamesmead.org/. Much of the functionality has been available for some time if you've been using the Rails plugin based on subversion HEAD, but now you can get it in all in a gem (or other package). The most recent changes centre around allowing mocking of Object instance methods.
 
 Release notes...
 

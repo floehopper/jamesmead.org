@@ -9,7 +9,7 @@ keywords: mocha mock object testing ruby rails minitest compatibility
 guid: e007c429-8e44-45e2-9967-d39edafd73c8
 ---
 
-There's been some confusion recently over which versions of [Mocha](https://github.com/freerange/mocha) are compatible with which versions of [Rails](http://rubyonrails.org/) (or more specifically, ActiveSupport). I've added some extra information to the Mocha [README](http://gofreerange.com/mocha/docs/#Rails), but for extra clarity, I thought I'd post details here.  If you're using Test::Unit instead of MiniTest, please read my [next post](/blog/2013-01-24-using-mocha-with-rails-3-and-testunit).
+There's been some confusion recently over which versions of [Mocha](https://github.com/freerange/mocha) are compatible with which versions of [Rails](http://rubyonrails.org/) (or more specifically, ActiveSupport). I've added some extra information to the Mocha [README](https://mocha.jamesmead.org/#Rails), but for extra clarity, I thought I'd post details here.  If you're using Test::Unit instead of MiniTest, please read my [next post](/blog/2013-01-24-using-mocha-with-rails-3-and-testunit).
 
 If you're loading Mocha using [Bundler](http://gembundler.com/) within a Rails application, you should ensure Mocha is not auto-required and load Mocha *manually* e.g. at the bottom of `test/test_helper.rb`.
 

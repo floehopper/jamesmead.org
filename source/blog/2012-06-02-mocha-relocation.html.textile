@@ -12,5 +12,5 @@ My company, "Go Free Range":http://gofreerange.com, is now looking after "Mocha,
 Here are the new links to Mocha resources :-
 
 * "Mocha source code":http://github.com/freerange/mocha
-* "Mocha documentation":http://gofreerange.com/mocha/docs
+* "Mocha documentation":https://mocha.jamesmead.org/
 * "Mocha issues":http://github.com/freerange/mocha/issues

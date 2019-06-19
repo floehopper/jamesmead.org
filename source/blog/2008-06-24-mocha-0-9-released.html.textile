@@ -12,7 +12,7 @@ categories:
 created_at: 2008-06-24 19:14:12 +00:00
 keywords: mocha mock release ruby stub testing jmock
 ---
-There's been quite a bit of work going on in "Mocha":http://gofreerange.com/mocha/docs/ over recent months, but a release is long overdue. The API is now pretty stable and so this release jumps from version 0.5 to 0.9. Much of the work has been refactoring Mocha's internals to support new features and make the code more maintainable.
+There's been quite a bit of work going on in "Mocha":https://mocha.jamesmead.org/ over recent months, but a release is long overdue. The API is now pretty stable and so this release jumps from version 0.5 to 0.9. Much of the work has been refactoring Mocha's internals to support new features and make the code more maintainable.
 
 Before attempting the refactoring, extensive acceptance tests were added. One of the benefits of this is that it should now be easier to write new acceptance tests if you want to suggest new features or illustrate a bug ;-)
 

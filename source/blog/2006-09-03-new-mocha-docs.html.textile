@@ -12,7 +12,7 @@ categories: []
 created_at: 2006-09-03 18:53:40 +00:00
 keywords: mocha stubba test testing mock stub jmock coderay syntax highlight mocking stubbing ruby rails
 ---
-Spurred on by "Thorsten's comment":https://web.archive.org/web/20080630064341/http://glu.ttono.us/articles/2006/09/02/mocking-models#comment-1106 on "Kevin Clark's blog":https://web.archive.org/web/20080714205940/http://glu.ttono.us/ and a mention of "Mocha":http://gofreerange.com/mocha/docs/ in the "Top 5 Rails Stories of the Week":http://cleanair.highgroove.com/articles/2006/09/03/ruby_on_rails_enterprise_capistrano_mocked_models_class_variables_rest, I've given the Mocha "documentation":http://gofreerange.com/mocha/docs/ a major overhaul.
+Spurred on by "Thorsten's comment":https://web.archive.org/web/20080630064341/http://glu.ttono.us/articles/2006/09/02/mocking-models#comment-1106 on "Kevin Clark's blog":https://web.archive.org/web/20080714205940/http://glu.ttono.us/ and a mention of "Mocha":https://mocha.jamesmead.org/ in the "Top 5 Rails Stories of the Week":http://cleanair.highgroove.com/articles/2006/09/03/ruby_on_rails_enterprise_capistrano_mocked_models_class_variables_rest, I've given the Mocha "documentation":https://mocha.jamesmead.org/ a major overhaul.
 
 Now the "RDoc":http://rdoc.sourceforge.net/ only shows the public API which should hopefully improve the signal-to-noise ratio and show how simple it is to use.
 
@@ -22,9 +22,9 @@ Now the "RDoc":http://rdoc.sourceforge.net/ only shows the public API which shou
 * "Make expectations more specific or define behaviour of stub":https://web.archive.org/web/20061012051703/http://mocha.rubyforge.org/classes/Mocha/Expectation.html
 
 I've also had a play with "CodeRay":http://coderay.rubychan.de/ and generated syntax-highlighted examples.
-* "Quick Start":http://gofreerange.com/mocha/docs/file.misc.html
-* "Traditional mocking":http://gofreerange.com/mocha/docs/file.mocha.html
-* "Setting expectations on real (non-mock) classes":http://gofreerange.com/mocha/docs/file.stubba.html
+* "Quick Start":https://mocha.jamesmead.org/file.misc.html
+* "Traditional mocking":https://mocha.jamesmead.org/file.mocha.html
+* "Setting expectations on real (non-mock) classes":https://mocha.jamesmead.org/file.stubba.html
 
 Good general information on mocking...
 

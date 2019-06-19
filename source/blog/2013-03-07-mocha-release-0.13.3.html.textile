@@ -11,7 +11,7 @@ guid: e65a8a91-c78a-4a13-93fa-2cb97dc3c656
 ---
 h2. Release Notes
 
-* Allow "@Mocha::ParameterMatchers#includes@":http://gofreerange.com/mocha/docs/Mocha/ParameterMatchers.html#includes-instance_method to accept multiple items. Thanks to "Simão Mata":https://github.com/simao.
+* Allow "@Mocha::ParameterMatchers#includes@":https://mocha.jamesmead.org/Mocha/ParameterMatchers.html#includes-instance_method to accept multiple items. Thanks to "Simão Mata":https://github.com/simao.
 * Allow stubbing of *private* @Kernel@ methods. Fixes "issue #134":https://github.com/freerange/mocha/issues/134. Thanks to "@camski":https://github.com/camski for reporting.
 * Avoid a warning when @test/unit/version@ is required by other libraries in the same project. Fixes "issue #140":https://github.com/freerange/mocha/issues/140. Thanks to "Tom Miller":https://github.com/tmiller.
 * Make auto-activation of Test::Unit integration more resilient. This change is specifically to cope with the nasty re-defining of classes that is done by the @minitest-spec-rails@ gem. Fixes "issue #143":https://github.com/freerange/mocha/issues/143. Thanks to "@tubaxenor":https://github.com/tubaxenor for reporting.

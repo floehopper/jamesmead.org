@@ -9,7 +9,7 @@ categories: []
 created_at: 2007-04-05 13:24:11 +00:00
 keywords: cruise control ruby mocha thoughtworks
 ---
-We have our own home-grown "continuous integration":http://www.martinfowler.com/articles/continuousIntegration.html application at "work":http://www.reevoo.com, but a couple of weeks ago, I decided to have a go at getting "CruiseControl.rb":http://cruisecontrolrb.thoughtworks.com/ up and running at home for "Mocha":http://gofreerange.com/mocha/docs/. It all went pretty smoothly and I'm happy with the result. Thanks are due to the CruiseControl.rb "team":http://cruisecontrolrb.thoughtworks.com/documentation/team for clear instructions and a simple-to-use application.
+We have our own home-grown "continuous integration":http://www.martinfowler.com/articles/continuousIntegration.html application at "work":http://www.reevoo.com, but a couple of weeks ago, I decided to have a go at getting "CruiseControl.rb":http://cruisecontrolrb.thoughtworks.com/ up and running at home for "Mocha":https://mocha.jamesmead.org/. It all went pretty smoothly and I'm happy with the result. Thanks are due to the CruiseControl.rb "team":http://cruisecontrolrb.thoughtworks.com/documentation/team for clear instructions and a simple-to-use application.
 
 I'd like to publish the url for my CruiseControl instance, but I'm concerned about random punters clicking the build button and loading my already creaking server, so a screenshot will have to suffice for now...
 

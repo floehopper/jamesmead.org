@@ -13,6 +13,6 @@ The "RSpec":http://rspec.rubyforge.org/ team have just "announced":http://www.na
 
 Apparently...
 
-bq. You can now use "Mocha":http://gofreerange.com/mocha/docs/ by saying @config.mock_with :mocha@ in a @spec_helper@
+bq. You can now use "Mocha":https://mocha.jamesmead.org/ by saying @config.mock_with :mocha@ in a @spec_helper@
 
 Sounds good :-)

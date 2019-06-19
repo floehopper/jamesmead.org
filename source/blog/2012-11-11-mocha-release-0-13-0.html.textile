@@ -18,6 +18,6 @@ h2. Release Notes
 * Extracted @Mocha::Hooks@ module from @Mocha::API@ and added documentation for test library authors.
 * Improvements to documentation. Much of it has been combined into the @README@ file.
 * Fix for "issue #101":https://github.com/freerange/mocha/issues/101 - @Mock#respond_to?@ doesn't work with a @String@ argument - thanks to "@urbanautomaton":https://github.com/urbanautomaton.
-* Fix for "issue #105":https://github.com/freerange/mocha/issues/105 - Travis CI link in the  "README":http://gofreerange.com/mocha/docs/ - thanks to "@cknadler":https://github.com/cknadler.
+* Fix for "issue #105":https://github.com/freerange/mocha/issues/105 - Travis CI link in the  "README":https://mocha.jamesmead.org/ - thanks to "@cknadler":https://github.com/cknadler.
 * Various improvements to automated testing of integration with test libraries.
 * Make deprecation warnings more prominent.
