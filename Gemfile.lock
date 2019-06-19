@@ -35,7 +35,7 @@ GEM
     fast_blank (1.0.0)
     fastimage (2.0.0)
       addressable (~> 2)
-    ffi (1.9.14)
+    ffi (1.11.1)
     gh (0.14.0)
       addressable
       backports
