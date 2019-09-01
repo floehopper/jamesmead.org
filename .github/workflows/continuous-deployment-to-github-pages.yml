@@ -10,6 +10,10 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@master
+      - name: Configure git user email
+        run: git config --global user.email "james@floehopper.org"
+      - name: Configure git user name
+        run: git config --global user.name "James Mead"
       - name: Setup Ruby
         uses: actions/setup-ruby@v1
         with:
