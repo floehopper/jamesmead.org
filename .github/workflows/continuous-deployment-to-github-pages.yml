@@ -21,7 +21,7 @@ jobs:
       - name: Build site
         run: bundle exec middleman build
       - name: Publish site
-        uses: peaceiris/actions-gh-pages@v1.1.0
+        uses: MikaelSmith/actions-gh-pages@fix-branching
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
