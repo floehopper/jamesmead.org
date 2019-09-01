@@ -1,3 +1,5 @@
+require 'middleman-gh-pages'
+
 desc 'builds and deploys the website'
 task 'deploy' do
   sh 'middleman build'
