@@ -18,11 +18,11 @@ jobs:
         run: gem install bundler:2.0.2
       - name: Install bundled gems
         run: bundle install
-      - name: Configure git user email
-        run: git config --global user.email "james@floehopper.org"
-      - name: Configure git user name
-        run: git config --global user.name "James Mead"
-      - name: Build & publish site
+      - name: Build site
+        run: bundle exec middleman build
+      - name: Publish site
+        uses: peaceiris/actions-gh-pages@v1.1.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: bundle exec rake publish
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: ./build
