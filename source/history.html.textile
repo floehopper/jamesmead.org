@@ -14,3 +14,5 @@ In December 2010, inspired by the work "Go Free Range":http://gofreerange.com (a
 "Rackspace":https://www.rackspace.com/ acquired Slicehost in October 2008, but it wasn't until January 2012 that I was forced to move this site onto a Rackspace Cloud server.
 
 In October 2016 I converted this site to use the "Middleman":https://middlemanapp.com/ static site generator instead of Webby. The latter hadn't been updated in many years and only supported Ruby v1.8. At around the same time I moved the site onto a "Linode":https://www.linode.com/ server and automated deployment from "Github":https://github.com/floehopper/jamesmead.org via "Travis CI":https://travis-ci.org/floehopper/jamesmead.org using @rsync@.
+
+In September 2019 I setup a "GitHub Actions":https://github.com/features/actions workflow to deploy the site automatically to "GitHub Pages":https://pages.github.com/.
