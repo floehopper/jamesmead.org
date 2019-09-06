@@ -7,7 +7,3 @@ gem 'middleman-livereload'
 gem 'middleman-blog'
 
 gem 'RedCloth'
-
-group :development do
-  gem 'travis'
-end
