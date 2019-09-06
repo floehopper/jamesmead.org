@@ -91,8 +91,6 @@ GEM
       servolux
       tilt (~> 2.0.9)
       uglifier (~> 3.0)
-    middleman-gh-pages (0.4.1)
-      rake (> 0.9.3)
     middleman-livereload (3.4.6)
       em-websocket (~> 0.5.1)
       middleman-core (>= 3.3)
@@ -151,7 +149,6 @@ DEPENDENCIES
   RedCloth
   middleman
   middleman-blog
-  middleman-gh-pages
   middleman-livereload
   rake
   travis
