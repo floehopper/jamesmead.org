@@ -150,7 +150,6 @@ DEPENDENCIES
   middleman
   middleman-blog
   middleman-livereload
-  rake
   travis
 
 RUBY VERSION
