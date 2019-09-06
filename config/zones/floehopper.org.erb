@@ -1,26 +1,24 @@
-$ORIGIN floehopper.org.
-$TTL 5m
-@ IN A 212.71.250.44
-floehopper.org IN NS a.dns.gandi.net.
-floehopper.org IN NS b.dns.gandi.net.
-floehopper.org IN NS c.dns.gandi.net.
-www IN CNAME floehopper.org.
-blog IN CNAME floehopper.org.
-google IN CNAME ghs.google.com.
-calendar IN CNAME ghs.google.com.
-docs IN CNAME ghs.google.com.
-mail IN CNAME ghs.google.com.
-<%= GOOGLE_VERIFICATION_CNAME_1 %> IN CNAME google.com.
-<%= GOOGLE_VERIFICATION_CNAME_2 %> IN CNAME google.com.
-feeds IN CNAME <%= FEEDBURNER_DOMAIN %>
-tumble IN CNAME domains.tumblr.com.
-videos IN CNAME <%= GFR_VIDEO_DOMAIN_1 %>
-@ IN MX 10 ASPMX.L.GOOGLE.COM.
-@ IN MX 20 ALT1.ASPMX.L.GOOGLE.COM.
-@ IN MX 20 ALT2.ASPMX.L.GOOGLE.COM.
-@ IN MX 30 ASPMX2.GOOGLEMAIL.COM.
-@ IN MX 30 ASPMX3.GOOGLEMAIL.COM.
-@ IN MX 30 ASPMX4.GOOGLEMAIL.COM.
-@ IN MX 30 ASPMX5.GOOGLEMAIL.COM.
-@ IN TXT "v=spf1 include:aspmx.googlemail.com ~all"
-@ IN TXT "google-site-verification=<%= GOOGLE_VERIFICATION_CODE %>"
+@ 10800 IN SOA ns1.gandi.net. hostmaster.gandi.net. 1544787663 10800 3600 604800 10800
+@ 300 IN A 212.71.250.44
+@ 300 IN MX 10 ASPMX.L.GOOGLE.COM.
+@ 300 IN MX 20 ALT1.ASPMX.L.GOOGLE.COM.
+@ 300 IN MX 20 ALT2.ASPMX.L.GOOGLE.COM.
+@ 300 IN MX 30 ASPMX2.GOOGLEMAIL.COM.
+@ 300 IN MX 30 ASPMX3.GOOGLEMAIL.COM.
+@ 300 IN MX 30 ASPMX4.GOOGLEMAIL.COM.
+@ 300 IN MX 30 ASPMX5.GOOGLEMAIL.COM.
+@ 300 IN TXT "google-site-verification=j56IZCpVonL_M2lhg4v_NRa8O8Xt6Vq2pASiiQaE4-w"
+@ 300 IN TXT "v=spf1 include:aspmx.googlemail.com ~all"
+blog 300 IN CNAME floehopper.org.
+calendar 300 IN CNAME ghs.google.com.
+docs 300 IN CNAME ghs.google.com.
+feeds 300 IN CNAME xsrc7a.feedproxy.ghs.google.com.
+floehopper.org 300 IN NS a.dns.gandi.net.
+floehopper.org 300 IN NS b.dns.gandi.net.
+floehopper.org 300 IN NS c.dns.gandi.net.
+google 300 IN CNAME ghs.google.com.
+google835c78466cc39885 300 IN CNAME google.com.
+googleffffffffaa715ec2 300 IN CNAME google.com.
+mail 300 IN CNAME ghs.google.com.
+tumble 300 IN CNAME domains.tumblr.com.
+www 300 IN CNAME floehopper.org.
