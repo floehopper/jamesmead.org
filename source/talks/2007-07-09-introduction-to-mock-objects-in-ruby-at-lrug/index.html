@@ -859,7 +859,7 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
         <pre class="syntax"><span class="comment"># stubbing instance method</span>
 
 <span class="ident">donald</span> <span class="punct">=</span> <span class="constant">Duck</span><span class="punct">.</span><span class="ident">new</span>
-<span class="ident">daffy</span><span class="punct">.</span><span class="ident">stubs</span><span class="punct">(</span><span class="symbol">:flap_wings</span><span class="punct">).</span><span class="ident">returns</span><span class="punct">(</span><span class="constant">true</span><span class="punct">)</span>
+<span class="ident">donald</span><span class="punct">.</span><span class="ident">stubs</span><span class="punct">(</span><span class="symbol">:flap_wings</span><span class="punct">).</span><span class="ident">returns</span><span class="punct">(</span><span class="constant">true</span><span class="punct">)</span>
 
 <span class="ident">daffy</span> <span class="punct">=</span> <span class="constant">Duck</span><span class="punct">.</span><span class="ident">new</span>
 <span class="ident">daffy</span><span class="punct">.</span><span class="ident">stubs</span><span class="punct">(</span><span class="symbol">:flap_wings</span><span class="punct">).</span><span class="ident">raises</span><span class="punct">(</span><span class="constant">BrokenWingError</span><span class="punct">)</span>
@@ -882,7 +882,7 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 
 <span class="comment"># original implementation unchanged</span>
 
-<span class="constant">Duck</span><span class="punct">.</span><span class="ident">bird?</span> <span class="comment"># =&gt; true</span></pre>
+<span class="constant">Duck</span><span class="punct">.</span><span class="ident">animal?</span> <span class="comment"># =&gt; true</span></pre>
       </div>
 
     </div>
