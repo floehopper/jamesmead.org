@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  
+
   <title>An Introduction to Mock Objects in Ruby - James Mead</title>
   <!-- metadata -->
   <meta name="generator" content="S5" />
@@ -37,7 +37,7 @@
 </div>
 
 <div class="presentation">
-  
+
     <div class="slide">
       <div class="content">
         <h1>An Introduction to Mock Objects in Ruby</h1>
@@ -45,9 +45,9 @@
 
 	<p>James Mead</p>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Outline</h1>
@@ -60,9 +60,9 @@
 		<li>Hints and Tips</li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Outline</h1>
@@ -75,9 +75,9 @@
 		<li>Hints and Tips</li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>What is a Mock Object?</h1>
@@ -93,9 +93,9 @@
 
 	<p>&#8212;Tim McKinnon</p>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>What is a Mock Object?</h1>
@@ -108,9 +108,9 @@
 		<li>Learn from the Java &#38; <span class="caps">TDD</span> community</li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Test Double</h1>
@@ -122,9 +122,9 @@
 		<li>Replace production object for testing purposes</li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Types of Test Doubles</h1>
@@ -138,9 +138,9 @@
 		<li>Fake Object</li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Types of Test Doubles</h1>
@@ -154,9 +154,9 @@
 		<li>Fake Object</li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Dummy Object</h1>
@@ -168,9 +168,9 @@
 		<li>e.g. <code class="syntax"><span class="constant">nil</span></code>, <code class="syntax"><span class="constant">Object</span><span class="punct">.</span><span class="ident">new</span></code></li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Types of Test Doubles</h1>
@@ -184,9 +184,9 @@
 		<li>Fake Object</li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Test Stub</h1>
@@ -197,9 +197,9 @@
 		<li>May only respond to calls needed for test</li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <pre class="syntax"><span class="keyword">class </span><span class="class">Clock</span>
@@ -207,7 +207,7 @@
   <span class="keyword">def </span><span class="method">time</span>
     <span class="constant">Time</span><span class="punct">.</span><span class="ident">now</span>
   <span class="keyword">end</span>
-  
+
 <span class="keyword">end</span>
 
 <span class="keyword">class </span><span class="class">Event</span>
@@ -215,16 +215,16 @@
   <span class="keyword">def </span><span class="method">initialize</span><span class="punct">(</span><span class="ident">start_time</span><span class="punct">)</span>
     <span class="attribute">@start_time</span> <span class="punct">=</span> <span class="ident">start_time</span>
   <span class="keyword">end</span>
-  
+
   <span class="keyword">def </span><span class="method">started?</span><span class="punct">(</span><span class="ident">clock</span> <span class="punct">=</span> <span class="constant">Clock</span><span class="punct">.</span><span class="ident">new</span><span class="punct">)</span>
     <span class="ident">clock</span><span class="punct">.</span><span class="ident">time</span> <span class="punct">&gt;</span> <span class="attribute">@start_time</span>
   <span class="keyword">end</span>
-  
+
 <span class="keyword">end</span></pre>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <pre class="syntax"><span class="keyword">class </span><span class="class">StubClock</span>
@@ -232,7 +232,7 @@
   <span class="keyword">def </span><span class="method">time</span>
     <span class="constant">Time</span><span class="punct">.</span><span class="ident">parse</span><span class="punct">('</span><span class="string">2007-07-09 19:00</span><span class="punct">')</span>
   <span class="keyword">end</span>
-  
+
 <span class="keyword">end</span>
 
 <span class="ident">clock</span> <span class="punct">=</span> <span class="constant">StubClock</span><span class="punct">.</span><span class="ident">new</span>
@@ -242,9 +242,9 @@
 <span class="ident">assert_equal</span> <span class="constant">true</span><span class="punct">,</span> <span class="ident">meeting</span><span class="punct">.</span><span class="ident">started?</span><span class="punct">(</span><span class="ident">clock</span><span class="punct">)</span>
 <span class="ident">assert_equal</span> <span class="constant">false</span><span class="punct">,</span> <span class="ident">pub</span><span class="punct">.</span><span class="ident">started?</span><span class="punct">(</span><span class="ident">clock</span><span class="punct">)</span> <span class="comment"># :-(</span></pre>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Types of Test Doubles</h1>
@@ -258,9 +258,9 @@
 		<li>Fake Object</li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Test Spy</h1>
@@ -272,9 +272,9 @@
 		<li>May incorporate behaviour of Test Stub</li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <pre class="syntax"><span class="keyword">class </span><span class="class">Bell</span>
@@ -282,7 +282,7 @@
   <span class="keyword">def </span><span class="method">start_ringing</span>
     <span class="comment"># ring, ring</span>
   <span class="keyword">end</span>
-  
+
 <span class="keyword">end</span>
 
 <span class="keyword">class </span><span class="class">Alarm</span>
@@ -290,16 +290,16 @@
   <span class="keyword">def </span><span class="method">initialize</span><span class="punct">(</span><span class="ident">bell</span> <span class="punct">=</span> <span class="constant">Bell</span><span class="punct">.</span><span class="ident">new</span><span class="punct">)</span>
     <span class="attribute">@bell</span> <span class="punct">=</span> <span class="ident">bell</span>
   <span class="keyword">end</span>
-  
+
   <span class="keyword">def </span><span class="method">trigger</span>
     <span class="attribute">@bell</span><span class="punct">.</span><span class="ident">start_ringing</span>
   <span class="keyword">end</span>
-  
+
 <span class="keyword">end</span></pre>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <pre class="syntax"><span class="keyword">class </span><span class="class">BellSpy</span>
@@ -313,7 +313,7 @@
   <span class="keyword">def </span><span class="method">start_ringing</span>
     <span class="attribute">@number_of_calls</span> <span class="punct">+=</span> <span class="number">1</span>
   <span class="keyword">end</span>
-  
+
 <span class="keyword">end</span>
 
 <span class="ident">bell</span> <span class="punct">=</span> <span class="constant">BellSpy</span><span class="punct">.</span><span class="ident">new</span>
@@ -322,9 +322,9 @@
 
 <span class="ident">assert_equal</span> <span class="number">1</span><span class="punct">,</span> <span class="ident">bell</span><span class="punct">.</span><span class="ident">number_of_calls</span></pre>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Types of Test Doubles</h1>
@@ -338,9 +338,9 @@
 		<li>Fake Object</li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Mock Object</h1>
@@ -352,9 +352,9 @@
 		<li>May incorporate behaviour of Test Stub</li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <pre class="syntax"><span class="keyword">class </span><span class="class">Track</span>
@@ -362,7 +362,7 @@
   <span class="keyword">def </span><span class="method">move</span><span class="punct">(</span><span class="ident">steps</span><span class="punct">)</span>
     <span class="comment"># drive motor</span>
   <span class="keyword">end</span>
-  
+
 <span class="keyword">end</span>
 
 <span class="keyword">class </span><span class="class">Tank</span>
@@ -370,41 +370,41 @@
   <span class="keyword">def </span><span class="method">initialize</span><span class="punct">(</span><span class="ident">left</span> <span class="punct">=</span> <span class="constant">Track</span><span class="punct">.</span><span class="ident">new</span><span class="punct">,</span> <span class="ident">right</span> <span class="punct">=</span> <span class="constant">Track</span><span class="punct">.</span><span class="ident">new</span><span class="punct">)</span>
     <span class="attribute">@left</span><span class="punct">,</span> <span class="attribute">@right</span> <span class="punct">=</span> <span class="ident">left</span><span class="punct">,</span> <span class="ident">right</span>
   <span class="keyword">end</span>
-  
+
   <span class="keyword">def </span><span class="method">turn_right</span>
     <span class="attribute">@left</span><span class="punct">.</span><span class="ident">move</span><span class="punct">(+</span><span class="number">5</span><span class="punct">)</span>
     <span class="attribute">@right</span><span class="punct">.</span><span class="ident">move</span><span class="punct">(-</span><span class="number">5</span><span class="punct">)</span>
   <span class="keyword">end</span>
-  
+
 <span class="keyword">end</span></pre>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <pre class="syntax"><span class="keyword">class </span><span class="class">MockTrack</span>
 
   <span class="ident">include</span> <span class="constant">Test</span><span class="punct">::</span><span class="constant">Unit</span><span class="punct">::</span><span class="constant">Assertions</span>
-  
+
   <span class="keyword">def </span><span class="method">initialize</span><span class="punct">(</span><span class="ident">expected_steps</span><span class="punct">)</span>
     <span class="attribute">@expected_steps</span> <span class="punct">=</span> <span class="ident">expected_steps</span>
     <span class="attribute">@actual_steps</span> <span class="punct">=</span> <span class="number">0</span>
   <span class="keyword">end</span>
-  
+
   <span class="keyword">def </span><span class="method">move</span><span class="punct">(</span><span class="ident">steps</span><span class="punct">)</span>
     <span class="attribute">@actual_steps</span> <span class="punct">+=</span> <span class="ident">steps</span>
   <span class="keyword">end</span>
-  
+
   <span class="keyword">def </span><span class="method">verify</span>
     <span class="ident">assert_equal</span> <span class="attribute">@expected_steps</span><span class="punct">,</span> <span class="attribute">@actual_steps</span>
   <span class="keyword">end</span>
-  
+
 <span class="keyword">end</span></pre>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <pre class="syntax"><span class="ident">left_track</span> <span class="punct">=</span> <span class="constant">MockTrack</span><span class="punct">.</span><span class="ident">new</span><span class="punct">(+</span><span class="number">5</span><span class="punct">)</span>
@@ -416,9 +416,9 @@
 <span class="ident">left_track</span><span class="punct">.</span><span class="ident">verify</span>
 <span class="ident">right_track</span><span class="punct">.</span><span class="ident">verify</span></pre>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Types of Test Doubles</h1>
@@ -432,9 +432,9 @@
 		<li><span style="color:red;">Fake Object</span></li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Fake Object</h1>
@@ -446,16 +446,16 @@
 		<li>e.g. in-memory database</li>
 	</ul>
       </div>
-      
+
         <div class="handout">
           <p>A Fake Object is can be used as if it were the real thing. It usually has better performance than the real thing by simplifying the implementation e.g. in-memory database is not actually persistent if its process is restarted, but it is persistent for the duration of the tests. A Fake Object also usually avoids unhelpful side effects e.g. actually emailing your customers to tell them you&#8217;ve billed them successfully.</p>
 
 
 	<p>Rails &#8220;mocks&#8221; (i.e. where classes are re-opened in files in the test/mocks directory) often fall into this category.</p>
         </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Types of Test Doubles</h1>
@@ -469,9 +469,9 @@
 		<li>Fake Object</li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Hard-coded or Configurable</h1>
@@ -485,9 +485,9 @@
 		<li>Fake Object</li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Configurable Mock Object</h1>
@@ -499,9 +499,9 @@
 		<li>Test configures expected invocations</li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <pre class="syntax"><span class="ident">left_track</span> <span class="punct">=</span> <span class="constant">Mock</span><span class="punct">.</span><span class="ident">new</span><span class="punct">('</span><span class="string">left_track</span><span class="punct">')</span>
@@ -517,9 +517,9 @@
 <span class="ident">left_track</span><span class="punct">.</span><span class="ident">verify</span>
 <span class="ident">right_track</span><span class="punct">.</span><span class="ident">verify</span></pre>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Record and Playback</h1>
@@ -531,9 +531,9 @@
 		<li>Playback &#8211; actual methods called</li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <pre class="syntax"><span class="ident">left_track</span> <span class="punct">=</span> <span class="ident">mock</span><span class="punct">('</span><span class="string">left_track</span><span class="punct">')</span>
@@ -553,14 +553,14 @@
 <span class="ident">left_track</span><span class="punct">.</span><span class="ident">verify</span>
 <span class="ident">right_track</span><span class="punct">.</span><span class="ident">verify</span></pre>
       </div>
-      
+
         <div class="handout">
           <p>The configuration stage looks quite nice, because you actually call methods on the mock in record mode to indicate what you are expecting. However, I think you lose an element of double-entry book-keeping &#8211; in that the test can look almost exactly the same as the implementation.
 Also it&#8217;s not always quite as elegant as it looks in this example, because you might also need to specify return values &#8211; EasyMock does this using a setReturnValue method.</p>
         </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Outline</h1>
@@ -573,9 +573,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 		<li>Hints and Tips</li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>If everything&#8217;s mocked, what&#8217;s actually being tested?</h1>
@@ -587,7 +587,7 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 		<li>Fake objects are more useful in integration tests</li>
 	</ul>
       </div>
-      
+
         <div class="handout">
           <p>This is a question that gets asked a lot. Mock Objects are most useful in testing a single class in isolation, helping you focus on testing the behaviour of just that one class. That one class is the real implementation not a mock &#8211; so not everything is mocked.</p>
 
@@ -597,9 +597,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 
 	<p>I&#8217;d suggest it&#8217;s best to aim for high test coverage in your unit tests, but focus test coverage in your integration/acceptance tests on critical business scenarios. This is because unit tests run fast and failures in unit tests are more easily diagnosed.</p>
         </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Behaviour vs State Verification</h1>
@@ -610,9 +610,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 		<li>State &#8211; test results of those interactions</li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <pre class="syntax"><span class="ident">left_track</span> <span class="punct">=</span> <span class="ident">mock</span><span class="punct">('</span><span class="string">left_track</span><span class="punct">')</span>
@@ -628,9 +628,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 <span class="ident">left_track</span><span class="punct">.</span><span class="ident">verify</span>
 <span class="ident">right_track</span><span class="punct">.</span><span class="ident">verify</span></pre>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <pre class="syntax"><span class="ident">tank</span> <span class="punct">=</span> <span class="constant">Tank</span><span class="punct">.</span><span class="ident">new</span>
@@ -644,9 +644,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 <span class="ident">assert_equal</span> <span class="punct">+</span><span class="number">5</span><span class="punct">,</span> <span class="ident">tank</span><span class="punct">.</span><span class="ident">left_track</span><span class="punct">.</span><span class="ident">position</span> <span class="punct">-</span> <span class="ident">initial_left_track_position</span>
 <span class="ident">assert_equal</span> <span class="punct">-</span><span class="number">5</span><span class="punct">,</span> <span class="ident">tank</span><span class="punct">.</span><span class="ident">right_track</span><span class="punct">.</span><span class="ident">position</span> <span class="punct">-</span> <span class="ident">initial_right_track_position</span></pre>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Why use Mock Objects?</h1>
@@ -661,7 +661,7 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 		<li>Enhanced <span class="caps">TDD</span></li>
 	</ul>
       </div>
-      
+
         <div class="handout">
           <p>Using Mock Objects in unit tests allows us to completely isolate object under test. A unit test for a specific class should be decoupled from the implementation of any of that class&#8217;s collaborators.</p>
 
@@ -671,9 +671,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 
 	<p>Doing test-driven development using Mock Objects, you can drive out the public interface you need for an object before you&#8217;ve implemented it.</p>
         </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Ruby Mock Object Libraries</h1>
@@ -685,9 +685,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 		<li>Flexmock</li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Mocha</h1>
@@ -701,9 +701,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 		<li>Pronounced Mokker not Moker</li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Outline</h1>
@@ -716,9 +716,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 		<li>Hints and Tips</li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Mocha Examples</h1>
@@ -729,9 +729,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 		<li>Partial Mocking</li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Mocha Examples</h1>
@@ -742,9 +742,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 		<li>Partial Mocking</li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <pre class="syntax"><span class="comment"># expect instance method</span>
@@ -757,9 +757,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 
 <span class="comment"># =&gt; verify success</span></pre>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <pre class="syntax"><span class="comment"># expect multiple invocations</span>
@@ -774,9 +774,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 
 <span class="comment"># =&gt; verify success</span></pre>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <pre class="syntax"><span class="comment"># specifying parameters</span>
@@ -789,9 +789,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 
 <span class="comment"># =&gt; verify failure</span></pre>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <pre class="syntax"><span class="comment"># specifying some parameters</span>
@@ -804,9 +804,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 
 <span class="comment"># =&gt; verify success</span></pre>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <pre class="syntax"><span class="comment"># return values and exceptions</span>
@@ -820,9 +820,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 <span class="ident">duck</span><span class="punct">.</span><span class="ident">flap_wings</span> <span class="comment"># =&gt; true</span>
 <span class="ident">duck</span><span class="punct">.</span><span class="ident">flap_wings</span> <span class="comment"># =&gt; raises BrokenWingError</span></pre>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <pre class="syntax"><span class="comment"># shortcuts</span>
@@ -838,9 +838,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 <span class="ident">duck</span><span class="punct">.</span><span class="ident">mineral?</span> <span class="comment"># =&gt; nil</span>
 <span class="ident">duck</span><span class="punct">.</span><span class="ident">bird?</span>    <span class="comment"># =&gt; true</span></pre>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Mocha Examples</h1>
@@ -851,9 +851,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 		<li><span style="color:red;">Partial Mocking</span></li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <pre class="syntax"><span class="comment"># stubbing instance method</span>
@@ -867,9 +867,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 <span class="ident">donald</span><span class="punct">.</span><span class="ident">flap_wings</span> <span class="comment"># =&gt; true</span>
 <span class="ident">daffy</span><span class="punct">.</span><span class="ident">flap_wings</span> <span class="comment"># =&gt; raises BrokenWingError</span></pre>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <pre class="syntax"><span class="comment"># stubbing class method</span>
@@ -884,9 +884,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 
 <span class="constant">Duck</span><span class="punct">.</span><span class="ident">bird?</span> <span class="comment"># =&gt; true</span></pre>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <pre class="syntax"><span class="comment"># stubbing instance method on any instance of a class</span>
@@ -902,9 +902,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 <span class="ident">donald</span> <span class="punct">=</span> <span class="constant">Duck</span><span class="punct">.</span><span class="ident">new</span>
 <span class="ident">donald</span><span class="punct">.</span><span class="ident">bird?</span> <span class="comment"># =&gt; false</span></pre>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Outline</h1>
@@ -917,9 +917,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 		<li><span style="color:red;">Hints and Tips</span></li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Mock Injection</h1>
@@ -934,9 +934,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 		<li>Use <code class="syntax"><span class="ident">instance_variable_set</span></code></li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <pre class="syntax"><span class="keyword">class </span><span class="class">ClassUnderTest</span>
@@ -944,11 +944,11 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
   <span class="keyword">def </span><span class="method">initialize</span><span class="punct">(</span><span class="ident">dependency</span> <span class="punct">=</span> <span class="constant">Collaborator</span><span class="punct">.</span><span class="ident">new</span><span class="punct">)</span>
     <span class="attribute">@dependency</span> <span class="punct">=</span> <span class="ident">dependency</span>
   <span class="keyword">end</span>
-  
+
   <span class="keyword">def </span><span class="method">do_something</span>
     <span class="comment"># use @dependency</span>
   <span class="keyword">end</span>
-  
+
 <span class="keyword">end</span>
 
 <span class="ident">collaborator</span> <span class="punct">=</span> <span class="ident">mock</span><span class="punct">('</span><span class="string">collaborator</span><span class="punct">')</span>
@@ -956,9 +956,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 <span class="ident">instance_under_test</span> <span class="punct">=</span> <span class="constant">ClassUnderTest</span><span class="punct">.</span><span class="ident">new</span><span class="punct">(</span><span class="ident">collaborator</span><span class="punct">)</span>
 <span class="ident">instance_under_test</span><span class="punct">.</span><span class="ident">do_something</span></pre>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <pre class="syntax"><span class="keyword">class </span><span class="class">ClassUnderTest</span>
@@ -966,7 +966,7 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
   <span class="keyword">def </span><span class="method">do_something</span><span class="punct">(</span><span class="ident">local_dependency</span> <span class="punct">=</span> <span class="constant">Collaborator</span><span class="punct">.</span><span class="ident">new</span><span class="punct">)</span>
     <span class="comment"># use local_dependency</span>
   <span class="keyword">end</span>
-  
+
 <span class="keyword">end</span>
 
 <span class="ident">collaborator</span> <span class="punct">=</span> <span class="ident">mock</span><span class="punct">('</span><span class="string">collaborator</span><span class="punct">')</span>
@@ -974,9 +974,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 <span class="comment"># method parameter injection</span>
 <span class="ident">instance_under_test</span><span class="punct">.</span><span class="ident">do_something</span><span class="punct">(</span><span class="ident">collaborator</span><span class="punct">)</span></pre>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <pre class="syntax"><span class="keyword">class </span><span class="class">ClassUnderTest</span>
@@ -986,11 +986,11 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
   <span class="keyword">def </span><span class="method">initialize</span>
     <span class="attribute">@dependency</span> <span class="punct">=</span> <span class="constant">Collaborator</span><span class="punct">.</span><span class="ident">new</span>
   <span class="keyword">end</span>
-  
+
   <span class="keyword">def </span><span class="method">do_something</span>
     <span class="comment"># use @dependency</span>
   <span class="keyword">end</span>
-  
+
 <span class="keyword">end</span>
 
 <span class="ident">collaborator</span> <span class="punct">=</span> <span class="ident">mock</span><span class="punct">('</span><span class="string">collaborator</span><span class="punct">')</span>
@@ -999,9 +999,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 <span class="ident">instance_under_test</span><span class="punct">.</span><span class="ident">dependency</span> <span class="punct">=</span> <span class="ident">collaborator</span>
 <span class="ident">instance_under_test</span><span class="punct">.</span><span class="ident">do_something</span></pre>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <pre class="syntax"><span class="keyword">class </span><span class="class">ClassUnderTest</span>
@@ -1009,11 +1009,11 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
   <span class="keyword">def </span><span class="method">initialize</span>
     <span class="attribute">@dependency</span> <span class="punct">=</span> <span class="constant">Collaborator</span><span class="punct">.</span><span class="ident">new</span>
   <span class="keyword">end</span>
-  
+
   <span class="keyword">def </span><span class="method">do_something</span>
     <span class="comment"># use @dependency</span>
   <span class="keyword">end</span>
-  
+
 <span class="keyword">end</span>
 
 <span class="ident">collaborator</span> <span class="punct">=</span> <span class="ident">mock</span><span class="punct">('</span><span class="string">collaborator</span><span class="punct">')</span>
@@ -1022,9 +1022,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 <span class="ident">instance_under_test</span> <span class="punct">=</span> <span class="constant">ClassUnderTest</span><span class="punct">.</span><span class="ident">new</span>
 <span class="ident">instance_under_test</span><span class="punct">.</span><span class="ident">do_something</span></pre>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <pre class="syntax"><span class="keyword">class </span><span class="class">ClassUnderTest</span>
@@ -1033,13 +1033,13 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
     <span class="ident">local_dependency</span> <span class="punct">=</span> <span class="ident">build_collaborator</span><span class="punct">()</span>
     <span class="comment"># use local_dependency</span>
   <span class="keyword">end</span>
-  
+
   <span class="ident">private</span>
-  
+
   <span class="keyword">def </span><span class="method">build_collaborator</span>
     <span class="constant">Collaborator</span><span class="punct">.</span><span class="ident">new</span>
   <span class="keyword">end</span>
-  
+
 <span class="keyword">end</span>
 
 <span class="ident">collaborator</span> <span class="punct">=</span> <span class="ident">mock</span><span class="punct">('</span><span class="string">collaborator</span><span class="punct">')</span>
@@ -1048,9 +1048,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 <span class="ident">instance_under_test</span><span class="punct">.</span><span class="ident">stubs</span><span class="punct">(</span><span class="symbol">:build_collaborator</span><span class="punct">).</span><span class="ident">returns</span><span class="punct">(</span><span class="ident">collaborator</span><span class="punct">)</span>
 <span class="ident">instance_under_test</span><span class="punct">.</span><span class="ident">do_something</span></pre>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <pre class="syntax"><span class="keyword">class </span><span class="class">ClassUnderTest</span>
@@ -1059,7 +1059,7 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
     <span class="ident">local_dependency</span> <span class="punct">=</span> <span class="constant">Collaborator</span><span class="punct">.</span><span class="ident">new</span>
     <span class="keyword">return</span> <span class="ident">local_dependency</span><span class="punct">.</span><span class="ident">do_stuff</span>
   <span class="keyword">end</span>
-  
+
 <span class="keyword">end</span>
 
 <span class="comment"># any_instance stub injection</span>
@@ -1067,9 +1067,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 <span class="ident">instance_under_test</span> <span class="punct">=</span> <span class="constant">ClassUnderTest</span><span class="punct">.</span><span class="ident">new</span>
 <span class="ident">instance_under_test</span><span class="punct">.</span><span class="ident">do_something</span></pre>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <pre class="syntax"><span class="keyword">class </span><span class="class">ClassUnderTest</span>
@@ -1077,11 +1077,11 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
   <span class="keyword">def </span><span class="method">initialize</span>
     <span class="attribute">@dependency</span> <span class="punct">=</span> <span class="constant">Collaborator</span><span class="punct">.</span><span class="ident">new</span>
   <span class="keyword">end</span>
-  
+
   <span class="keyword">def </span><span class="method">do_something</span>
     <span class="comment"># use @dependency</span>
   <span class="keyword">end</span>
-  
+
 <span class="keyword">end</span>
 
 
@@ -1091,9 +1091,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 <span class="ident">instance_under_test</span><span class="punct">.</span><span class="ident">instance_variable_set</span><span class="punct">(</span><span class="symbol">:@dependency</span><span class="punct">,</span> <span class="ident">collaborator</span><span class="punct">)</span>
 <span class="ident">instance_under_test</span><span class="punct">.</span><span class="ident">do_something</span></pre>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Command vs Query</h1>
@@ -1115,9 +1115,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 		<li>Expect commands, stub queries</li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Mocking External Services</h1>
@@ -1129,9 +1129,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 		<li>Mock the adapter</li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>Fragile Tests</h1>
@@ -1144,9 +1144,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 		<li>Specify range instead of exact value</li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>The End</h1>
@@ -1162,9 +1162,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 
 	<p>Source: C2 Wiki &#8211; Law of Demeter</p>
       </div>
-      
+
     </div>
-  
+
     <div class="slide">
       <div class="content">
         <h1>References</h1>
@@ -1177,9 +1177,9 @@ Also it&#8217;s not always quite as elegant as it looks in this example, because
 		<li>Martin Fowler (http://www.martinfowler.com)</li>
 	</ul>
       </div>
-      
+
     </div>
-  
+
 </div>
 
 </body>
