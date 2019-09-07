@@ -8,3 +8,7 @@ A social network for owners of iPhone apps. The idea was to discover useful apps
 
 * "Server repo":https://github.com/floehopper/installd
 * "Client repo":https://github.com/floehopper/installd-client
+
+h2. Screenshot of website
+
+!{width:100%}/images/installd-screenshot.jpg(Installd Website Screenshot)!
