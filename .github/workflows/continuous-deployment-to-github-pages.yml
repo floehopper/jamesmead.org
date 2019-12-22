@@ -15,7 +15,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@master
       - name: Install packages
-        run: apt-get -yqq install node.js
+        run: apt-get -yqq install nodejs
       - name: Install bundler
         run: gem install bundler:2.0.2
       - name: Install bundled gems
