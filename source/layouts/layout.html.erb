@@ -52,13 +52,15 @@
       </div>
 
       <header id="hd">
-        <a href="/">Home</a>
-        &middot;
-        <a href="/blog/">Blog</a>
-        &middot;
-        <a href="/talks/">Talks</a>
-        &middot;
-        <a href="/projects/">Projects</a>
+        <nav aria-labelledby="primary-navigation">
+          <a href="/">Home</a>
+          &middot;
+          <a href="/blog/">Blog</a>
+          &middot;
+          <a href="/talks/">Talks</a>
+          &middot;
+          <a href="/projects/">Projects</a>
+        </nav>
       </header>
 
       <main id="bd">
@@ -68,25 +70,27 @@
 
         <% pages = articles.reverse %>
         <% if index = pages.index(current_page) %>
-          <div id="navigation">
+          <nav id="navigation" aria-labelledby="inter-article-navigation">
             <% if (index > 0) && (prev_page = pages[index - 1]) %>
               <%= link_to "&lt; #{prev_page.data.title}", friendly_url(prev_page), :class => "previous" %>
             <% end %>
             <% if next_page = pages[index + 1] %>
               <%= link_to "#{next_page.data.title} &gt;", friendly_url(next_page), :class => "next" %>
             <% end %>
-          </div>
+          </nav>
         <% end %>
       </main>
 
       <footer id="ft">
-        <a href="/contact">Contact</a>
-        &middot;
-        <a href="/history">History</a>
-        &middot;
-        <a href="/colophon">Colophon</a>
-        &middot;
-        <a href="/links">Links</a>
+        <nav aria-labelledby="footer-navigation">
+          <a href="/contact">Contact</a>
+          &middot;
+          <a href="/history">History</a>
+          &middot;
+          <a href="/colophon">Colophon</a>
+          &middot;
+          <a href="/links">Links</a>
+        </nav>
       </footer>
     </div>
   </body>
