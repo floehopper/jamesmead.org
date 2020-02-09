@@ -66,17 +66,17 @@
 
         <%= yield %>
 
-        <div id="navigation">
-          <% pages = articles.reverse %>
-          <% if index = pages.index(current_page) %>
+        <% pages = articles.reverse %>
+        <% if index = pages.index(current_page) %>
+          <div id="navigation">
             <% if (index > 0) && (prev_page = pages[index - 1]) %>
               <%= link_to "&lt; #{prev_page.data.title}", friendly_url(prev_page), :class => "previous" %>
             <% end %>
             <% if next_page = pages[index + 1] %>
               <%= link_to "#{next_page.data.title} &gt;", friendly_url(next_page), :class => "next" %>
             <% end %>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </main>
 
       <footer id="ft">
