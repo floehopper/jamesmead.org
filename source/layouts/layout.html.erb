@@ -68,17 +68,7 @@
 
         <%= yield %>
 
-        <% pages = articles.reverse %>
-        <% if index = pages.index(current_page) %>
-          <nav id="navigation" aria-labelledby="inter-article-navigation">
-            <% if (index > 0) && (prev_page = pages[index - 1]) %>
-              <%= link_to "&lt; #{prev_page.data.title}", friendly_url(prev_page), :class => "previous" %>
-            <% end %>
-            <% if next_page = pages[index + 1] %>
-              <%= link_to "#{next_page.data.title} &gt;", friendly_url(next_page), :class => "next" %>
-            <% end %>
-          </nav>
-        <% end %>
+        <%= partial 'inter_article_navigation' %>
       </main>
 
       <footer id="ft">
