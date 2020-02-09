@@ -51,7 +51,7 @@
         <a href="#bd">Skip to main content</a>
       </div>
 
-      <div id="hd">
+      <header id="hd">
         <a href="/">Home</a>
         &middot;
         <a href="/blog/">Blog</a>
@@ -59,9 +59,9 @@
         <a href="/talks/">Talks</a>
         &middot;
         <a href="/projects/">Projects</a>
-      </div>
+      </header>
 
-      <div id="bd">
+      <main id="bd">
         <h1><%= current_page.data.title %></h1>
 
         <%= yield %>
@@ -77,9 +77,9 @@
             <% end %>
           <% end %>
         </div>
-      </div>
+      </main>
 
-      <div id="ft">
+      <footer id="ft">
         <a href="/contact">Contact</a>
         &middot;
         <a href="/history">History</a>
@@ -87,7 +87,7 @@
         <a href="/colophon">Colophon</a>
         &middot;
         <a href="/links">Links</a>
-      </div>
+      </footer>
     </div>
   </body>
 </html>
