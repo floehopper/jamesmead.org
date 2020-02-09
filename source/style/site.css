@@ -4,6 +4,7 @@
 body {
   /* For breathing room between content and viewport. */
   margin:10px;
+  line-height: 1.5;
 }
 
 /**
