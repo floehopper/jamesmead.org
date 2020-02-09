@@ -52,6 +52,15 @@ body {
   border-bottom: 0.3em solid #666;
 }
 
+.skip-links a {
+  position: absolute;
+  top: -100px;
+}
+
+.skip-links a:focus {
+  top: 0;
+}
+
 #navigation {
   padding-top: 1em;
 }
