@@ -1,0 +1,28 @@
+---
+title: James Mead
+description: Ruby Developer, author of Mocha, and ex-Antarctic Hero.
+keywords: floehopper software developer mocha ruby rails freerange freelance antarctica telemark testing
+created_at: 2009-11-28 16:23:13 +00:00
+updated_at: 2009-11-28 16:23:13 +00:00
+---
+<img src="/images/jamesmead.png" alt="Photo of James Mead">
+
+<h2>Member of the <a href="http://gofreerange.com/">Go Free Range worker co-operative</a></h2>
+
+<ul>
+  <li>Software Developer based in <a href="https://www.google.com/maps?q=Cambridge,+Cambs,+UK&z=7">Cambridge, UK</a>.</li>
+  <li>Previously operating as <a href="https://beta.companieshouse.gov.uk/company/06851133">Floehopper Ltd</a>.</li>
+  <li>Author of <a href="https://mocha.jamesmead.org/">Mocha</a>.</li>
+  <li>Former winterer at <a href="https://www.bas.ac.uk/about/about-bas/our-history/british-research-stations-and-refuges/faraday-f/">Faraday Research Station</a>, Antarctica.</li>
+</ul>
+
+<h3>Latest blog posts</h3>
+
+<ul>
+  <% articles[0..3].each do |article| %>
+    <li><%= link_to article.data.title, friendly_url(article) %></li>
+  <% end %>
+  <li><a href="/blog">More...</a></li>
+</ul>
+
+<%= partial 'social' %>
