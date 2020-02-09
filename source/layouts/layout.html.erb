@@ -64,9 +64,11 @@
       </header>
 
       <main id="bd">
-        <h1><%= current_page.data.title %></h1>
+        <article>
+          <h1><%= current_page.data.title %></h1>
 
-        <%= yield %>
+          <%= yield %>
+        </article>
 
         <%= partial 'inter_article_navigation' %>
       </main>
