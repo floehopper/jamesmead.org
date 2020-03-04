@@ -11,10 +11,7 @@ body {
  * From http://yui.yahooapis.com/2.9.0/build/grids/grids.css
  */
 #doc {
-  margin: auto;
   text-align: left;
-  width: 57.69em;
-  *width: 56.25em;
 }
 
 /**
@@ -127,4 +124,33 @@ blockquote {
 
 .social {
   display: none;
+}
+
+$spacing-unit:     30px !default;
+$content-width:    800px !default;
+
+$on-palm:          600px !default;
+$on-laptop:        800px !default;
+$on-medium:        $on-palm !default;
+$on-large:         $on-laptop !default;
+
+#doc {
+  max-width: calc(#{$content-width} - (#{$spacing-unit}));
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: $spacing-unit / 2;
+  padding-left: $spacing-unit / 2;
+  @extend %clearfix;
+
+  @media screen and (min-width: $on-large) {
+    max-width: calc(#{$content-width} - (#{$spacing-unit} * 2));
+    padding-right: $spacing-unit;
+    padding-left: $spacing-unit;
+  }
+}
+
+%clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
 }
