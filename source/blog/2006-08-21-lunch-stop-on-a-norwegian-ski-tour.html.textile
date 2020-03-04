@@ -9,7 +9,7 @@ categories: []
 created_at: 2006-08-21 15:20:33 +00:00
 keywords: ski tour norway telemark flickr photo typo
 ---
-<a href="http://www.flickr.com/photos/jamesthecat/221307651/" title="P045_Day2Snowhole_NJH by floehopper, on Flickr"><img src="http://farm1.static.flickr.com/70/221307651_73eb8cb0bd.jpg" width="500" height="375" alt="P045_Day2Snowhole_NJH" /></a>
+<a href="http://www.flickr.com/photos/jamesthecat/221307651/" title="P045_Day2Snowhole_NJH by floehopper, on Flickr"><img src="http://farm1.static.flickr.com/70/221307651_73eb8cb0bd.jpg" alt="P045_Day2Snowhole_NJH" /></a>
 
 Just to prove that I can now blog[1] from "Flickr":http://www.flickr.com/ to my "blog":/blog - hurrah!
 

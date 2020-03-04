@@ -1,4 +1,4 @@
---- 
+---
 permalink: bringing-order-to-chaos
 created_at: 2012-11-07 10:24:00 +00:00
 updated_at: 2012-11-07 10:24:00 +00:00
@@ -11,7 +11,7 @@ guid: d71e82be-647e-4735-807a-e7296f7dbe51
 
 I work for a company called [Go Free Range](http://gofreerange.com) which is unusual in that it's a cooperative of developers each with an equal stake in the company. The company is run on a very democratic basis - we have no CEO, no managers - in fact no bosses at all!
 
-<a href="http://www.flickr.com/photos/abeckstrom/5818099394/" title="Pointy-Haired Boss by abeckstrom, on Flickr"><img src="http://farm3.staticflickr.com/2436/5818099394_86c3bde9ab_m.jpg" width="231" height="240" alt="Pointy-Haired Boss"></a>
+<a href="http://www.flickr.com/photos/abeckstrom/5818099394/" title="Pointy-Haired Boss by abeckstrom, on Flickr"><img src="http://farm3.staticflickr.com/2436/5818099394_86c3bde9ab_m.jpg" alt="Pointy-Haired Boss"></a>
 
 While this has a lot of advantages (e.g. nobody telling you to do disagreeable things), it also has potential difficulties. One of the more obvious difficulties we face is that of making decisions.
 
@@ -25,7 +25,7 @@ Our democratic vision for the company means that decisions have to be reached by
 
 About 18 months ago, we realised that deciding who was going to do a particular administrative chore was taking up too much of our time and was distracting us from more interesting things. The most obvious solution would have been a rota, but instead my colleague, [James Adam](http://gofreerange.com/james-adam), wrote a [Ruby script](https://github.com/freerange/harmonia/commit/b13a051b6cd57e2238a047899f8d23dbb3fedd77) which selected one of us *at random* to take responsibility for invoicing our clients and announce this selection via an email to everyone.
 
-<a href="http://www.flickr.com/photos/markybon/113305662/" title="It's A Gamble by MarkyBon, on Flickr"><img src="http://farm1.staticflickr.com/34/113305662_f9e8a5b3f6_m.jpg" width="240" height="192" alt="It's A Gamble"></a>
+<a href="http://www.flickr.com/photos/markybon/113305662/" title="It's A Gamble by MarkyBon, on Flickr"><img src="http://farm1.staticflickr.com/34/113305662_f9e8a5b3f6_m.jpg" alt="It's A Gamble"></a>
 
 While this sounds like a simple idea, it's actually had a major impact on our company. We now have thirteen different recurring tasks which are assigned this way. One of the most visible effects has been the [company week-notes](http://gofreerange.com/blog). We've now written up notes for over 60 consecutive weeks, which I think is no mean feat. It's also helped streamline many of our repetitive administrative chores and freed us up to spend more of our time and energy on the more fun and creative aspects of our work.
 

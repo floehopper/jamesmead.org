@@ -1,4 +1,4 @@
---- 
+---
 permalink: permutations-combinations-probability-part-2
 updated_at: 2009-01-02 11:27:22 +00:00
 guid: f336d287-8966-4450-8a14-149134ecc16e
@@ -105,5 +105,5 @@ h2. TextMate Bug
 While running these tests, I noticed a bug in TextMate's Ruby syntax highlighting, which I've now "reported":http://ticket.macromates.com/show?ticket_id=A589DA17
 
 <a href="http://www.flickr.com/photos/jamesthecat/3158765269/" title="textmate-ruby-syntax-highlighting-bug">
-  <img src="http://farm4.static.flickr.com/3267/3158765269_f29814f253_o.jpg" width="332" height="240" alt="textmate-ruby-syntax-highlighting-bug" />
+  <img src="http://farm4.static.flickr.com/3267/3158765269_f29814f253_o.jpg" alt="textmate-ruby-syntax-highlighting-bug" />
 </a>

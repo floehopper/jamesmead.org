@@ -154,3 +154,10 @@ $on-large:         $on-laptop !default;
   display: table;
   clear: both;
 }
+
+#doc img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}

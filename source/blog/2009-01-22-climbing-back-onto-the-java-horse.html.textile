@@ -18,7 +18,7 @@ I downloaded the Mac OS X version of "Eclipse IDE for Java EE[2] Developers" fro
 But when I double-clicked to start the application, I got the following error message:-
 
 <a href="http://www.flickr.com/photos/jamesthecat/3217546063/" title="eclipse-java-environment-startup-error by floehopper, on Flickr">
-  <img src="http://farm4.static.flickr.com/3335/3217546063_79751cf5c9_o.png" width="356" height="170" alt="eclipse-java-environment-startup-error" />
+  <img src="http://farm4.static.flickr.com/3335/3217546063_79751cf5c9_o.png" alt="eclipse-java-environment-startup-error" />
 </a>
 
 bq. A Java Runtime Environment (JRE) or Java Development Kit (JDK) must be available in order to run Eclipse. No virtual machine was found after searching the following locations: etc, etc.

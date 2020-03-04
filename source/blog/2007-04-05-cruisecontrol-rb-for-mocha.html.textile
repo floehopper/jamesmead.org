@@ -1,4 +1,4 @@
---- 
+---
 permalink: cruisecontrol-rb-for-mocha
 updated_at: 2009-11-26 11:33:39 +00:00
 guid: d9fe9606-7ecb-4640-a028-55d8e520c105
@@ -13,7 +13,7 @@ We have our own home-grown "continuous integration":http://www.martinfowler.com/
 
 I'd like to publish the url for my CruiseControl instance, but I'm concerned about random punters clicking the build button and loading my already creaking server, so a screenshot will have to suffice for now...
 
-<a href="http://www.flickr.com/photos/jamesthecat/447423649/" title="Mocha-CruiseControl.rb by floehopper, on Flickr"><img src="http://farm1.static.flickr.com/215/447423649_7241b548c5.jpg" width="500" height="120" alt="Mocha-CruiseControl.rb" /></a>
+<a href="http://www.flickr.com/photos/jamesthecat/447423649/" title="Mocha-CruiseControl.rb by floehopper, on Flickr"><img src="http://farm1.static.flickr.com/215/447423649_7241b548c5.jpg" alt="Mocha-CruiseControl.rb" /></a>
 
 It would be nice if you only saw the build button if you were logged in. I feel a feature request coming on...
 
