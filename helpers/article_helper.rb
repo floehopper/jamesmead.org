@@ -1,6 +1,8 @@
 module ArticleHelper
   def article_class
     case current_page.path
+    when %r{^blog/index.html$}
+      nil
     when %r{^blog/}
       'h-entry'
     when %r{^index.html$}
@@ -12,6 +14,8 @@ module ArticleHelper
 
   def title_class
     case current_page.path
+    when %r{^blog/index.html$}
+      nil
     when %r{^blog/}
       'p-name'
     when %r{^index.html$}
