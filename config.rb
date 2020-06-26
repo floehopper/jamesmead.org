@@ -14,6 +14,18 @@ page '/*.txt', layout: false
 # With alternative layout
 # page "/path/to/file.html", layout: :otherlayout
 
+page 'index.html', layout: :home
+
+page 'blog/index.html', layout: :other
+page 'blog/*', layout: :blog
+
+page 'adventures/*', layout: :other
+page 'legacy/*', layout: :other
+page 'pages/*', layout: :other
+page 'projects/*', layout: :other
+page 'talks/*', layout: :other
+page 'wiki/*', layout: :other
+
 # Proxy pages (http://middlemanapp.com/basics/dynamic-pages/)
 # proxy "/this-page-has-no-template.html", "/template-file.html", locals: {
 #  which_fake_page: "Rendering a fake page with a local variable" }
