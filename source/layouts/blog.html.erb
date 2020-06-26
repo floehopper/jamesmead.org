@@ -13,7 +13,7 @@
 
     <footer>
       <p class="metadata">
-        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <time class="dt-published" datetime="<%= current_page.data.created_at.iso8601 %>"><%= current_page.data.created_at.to_s(:long) %></time> &middot; <a class="u-url" href="<%= absolute_url(friendly_url(current_page)) %>">Permalink</a>
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="<%= absolute_url(friendly_url(current_page)) %>"><time class="dt-published" datetime="<%= current_page.data.created_at.iso8601 %>"><%= current_page.data.created_at.to_s(:long) %></time></a>
       </p>
     </footer>
   </article>
