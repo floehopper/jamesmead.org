@@ -1,9 +1,20 @@
 <% wrap_layout :layout do %>
   <article class="h-entry">
-    <h1 class="p-name"><%= current_page.data.title %></h1>
+    <header>
+      <h1 class="p-name"><%= current_page.data.title %></h1>
+      <% if current_page.data.description %>
+        <h3 class="p-summary"><%= current_page.data.description %></h3>
+      <% end %>
+    </header>
 
-    <div class="e-content">
+    <section class="e-content">
       <%= yield %>
-    </div>
+    </section>
+
+    <footer>
+      <p class="metadata">
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <time class="dt-published" datetime="<%= current_page.data.created_at.iso8601 %>"><%= current_page.data.created_at.to_s(:long) %></time> &middot; <a class="u-url" href="<%= absolute_url(friendly_url(current_page)) %>">Permalink</a>
+      </p>
+    </footer>
   </article>
 <% end %>
