@@ -65,11 +65,7 @@
       </header>
 
       <main id="bd">
-        <article <%= css_class(current_page.data.article_class) %>>
-          <h1 <%= css_class(current_page.data.title_class) %>><%= current_page.data.title %></h1>
-
-          <%= yield %>
-        </article>
+        <%= article_tag { yield } %>
 
         <%= partial 'inter_article_navigation' %>
       </main>
