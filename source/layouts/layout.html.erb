@@ -65,8 +65,8 @@
       </header>
 
       <main id="bd">
-        <article>
-          <h1><%= current_page.data.title %></h1>
+        <article <%= css_class(current_page.data.article_class) %>>
+          <h1 <%= css_class(current_page.data.title_class) %>><%= current_page.data.title %></h1>
 
           <%= yield %>
         </article>
