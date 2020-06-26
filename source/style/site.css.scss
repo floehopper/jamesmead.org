@@ -122,10 +122,6 @@ blockquote {
   font-style: italic;
 }
 
-.social {
-  display: none;
-}
-
 $spacing-unit:     30px !default;
 $content-width:    800px !default;
 
@@ -160,4 +156,8 @@ $on-large:         $on-laptop !default;
   max-height: 100%;
   width: auto;
   height: auto;
+}
+
+.index .social {
+  display: none;
 }
