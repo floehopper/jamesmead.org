@@ -30,6 +30,8 @@
 
     <link rel="alternate" type="application/atom+xml" title="Atom" href="<%= config[:feed_url] %>" />
 
+    <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
+
     <%- pages = articles.reverse -%>
     <%- if index = pages.index(current_page) -%>
       <%- if (index > 0) && (prev_page = pages[index - 1]) -%>
