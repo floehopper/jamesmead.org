@@ -6,7 +6,9 @@
 #
 # With no layout
 page '/*.xml', layout: false
+page '/*.xml.erb', layout: false
 page '/*.json', layout: false
+page '/*.js', layout: false
 page '/*.txt', layout: false
 
 # With alternative layout

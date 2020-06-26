@@ -1,6 +1,3 @@
----
-layout: none
----
 function hivelogic_enkoder(){var kode=
 "kode=\")''(nioj.)(esrever.)''(tilps.edok=edok;\\\"kode=\\\"\\\\oked\\\\\\"+
 "\\\\\"\\\\=kode\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\r=hn%gg@frpxqh1wuzwl%hd_k+h"+
