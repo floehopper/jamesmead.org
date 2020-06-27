@@ -169,3 +169,7 @@ $on-large:         $on-laptop !default;
 .blog .metadata {
   font-style: italic;
 }
+
+.blog .webmentions p {
+  font-size: 100%;
+}
