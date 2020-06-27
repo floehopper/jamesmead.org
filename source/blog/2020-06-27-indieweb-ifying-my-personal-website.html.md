@@ -29,7 +29,7 @@ I also decided to skip the steps about posting [replies][indieweb-reply] to othe
 
 However, I did [configure my site to receive Webmentions][webmention.io-config] using the excellent hosted [webmention.io][] service. This was very easy.
 
-I then added some very basic code to [display Webmentions][display-webmentions-commit] at the bottom of each blog post closely based on [Sebastian Dedeyne's implementation][sebastiandedeyne-implementation]. For the moment, I'm using JavaScript running on the client-side, but I can see how in time this might lead to putting an unfair load on webmention.io.
+I then added some very basic code to [display Webmentions][display-webmentions-commit] at the bottom of each blog post closely based on [Sebastian De Deyne's implementation][sebastiandedeyne-implementation]. For the moment, I'm using JavaScript running on the client-side, but I can see how in time this might lead to putting an unfair load on webmention.io.
 
 A better solution might be to incorporate fetching the latest Webmentions and rendering them in HTML into the automated build, perhaps enhancing them with the latest Webmentions using JavaScript. I think this might be how the [webmention.io Jekyll plugin][] works, but that's a job for another day.
 
