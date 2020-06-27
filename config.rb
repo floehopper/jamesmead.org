@@ -64,3 +64,5 @@ config[:textile] = { no_span_caps: true }
 config[:css_dir] = 'style'
 
 config[:markdown] = { auto_ids: false }
+
+Time::DATE_FORMATS[:long] = "%d %b %Y at %H:%M"
