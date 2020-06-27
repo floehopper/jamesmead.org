@@ -15,6 +15,22 @@
       <p class="metadata">
         Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="<%= absolute_url(friendly_url(current_page)) %>"><time class="dt-published" datetime="<%= current_page.data.created_at.iso8601 %>"><%= current_page.data.created_at.to_s(:long) %></time></a>
       </p>
+
+      <div class="webmentions" data-webmentions="<%= absolute_url(friendly_url(current_page)) %>">
+        <template id="webmention-template">
+          <li class="webmention">
+            <div>
+              <a class="author">
+                <span class="author-name"></span>
+              </a>
+              <a class="action"></a>
+            </div>
+            <div class="content"></div>
+          </li>
+        </template>
+      </div>
+
+      <script src="/javascripts/webmentions.js" type="text/javascript" charset="utf-8"></script>
     </footer>
   </article>
 <% end %>
