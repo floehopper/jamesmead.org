@@ -62,7 +62,7 @@ Clearly I haven't yet fully achieved even level 2 IndieWeb compliance, but I'm p
 [h-entry-in-layout]: https://github.com/floehopper/jamesmead.org/blob/b5522b3c2529b93b3dfd07b148ecc3f911d23d4f/source/layouts/blog.html.erb#L2-L19
 [h-entry-validation]: https://indiewebify.me/validate-h-entry/?url=https%3A%2F%2Fjamesmead.org%2Fblog%2F2020-03-30-automatic-backup-of-trello-boards-to-s3-using-aws-cdk
 [webmention-gem]: https://github.com/indieweb/webmention-client-ruby
-[github-action-build]: /blog/2019-09-07-using-github-actions-to-publish-a-static-site-to-github-pages
+[github-action-build]: https://jamesmead.org/blog/2019-09-07-using-github-actions-to-publish-a-static-site-to-github-pages
 [send-webmention-using-curl]: https://indieweb.org/webmention-implementation-guide#One-liner_webmentions
 [indieweb-reply]: https://indieweb.org/reply
 [indieweb-reply-context]: https://indieweb.org/reply-context
