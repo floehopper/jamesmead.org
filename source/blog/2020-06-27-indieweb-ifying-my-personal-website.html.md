@@ -37,7 +37,13 @@ I checked that my website is receiving Webmentions OK by commenting on a blog po
 
 <img style="border: 1px dashed; display: block; margin-left: auto; margin-right: auto; width: 50%;" src="/images/webmention-comment.png" alt="comment added using commentpara.de">
 
-Clearly I haven't yet fully achieved even level 2 IndieWeb compliance, but I'm pleased with what I've done so far and, more to the point, what I've learnt in doing it.
+Clearly I haven't yet fully achieved even level 2 IndieWeb compliance, but I'm pleased with what I've done so far and, more to the point, what I've learnt in doing it. I should also mention that I found lots of useful advice in the following articles:
+
+* [Adding webmentions to my blog](https://sebastiandedeyne.com/adding-webmentions-to-my-blog/) by Sebastian De Deyne
+
+* [Displaying Webmentions on my Hugo website](https://www.jvt.me/posts/2019/03/18/displaying-webmentions/) by Jamie Tanna
+
+* [Indieweb Webmentions on Middleman or Jekyll](http://evantravers.com/articles/2019/11/14/indieweb-webmentions-on-middleman-or-jekyll/) by Evan Travers
 
 [IndieWeb]: https://indieweb.org/
 [Chris R]: http://chrisroos.co.uk/
