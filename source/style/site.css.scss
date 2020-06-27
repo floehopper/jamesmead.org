@@ -163,8 +163,7 @@ $on-large:         $on-laptop !default;
 }
 
 .blog .p-summary {
-  font-weight: normal;
-  font-style: italic;
+  display: none;
 }
 
 .blog .metadata {
