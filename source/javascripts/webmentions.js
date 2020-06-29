@@ -58,7 +58,7 @@ function renderWebmention(webmention) {
     `${action} on ${timestamp}`
   );
 
-  if (webmention.content) {
+  if (action == "replied" && webmention.content) {
     set(
       ".webmention .content",
       "innerHTML",
