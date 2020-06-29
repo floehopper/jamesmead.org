@@ -8,31 +8,14 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
 
-    container:
-      image: ruby:2.6.6
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@master
-      - name: Update package lists
-        run: apt-get update -qq
-      - name: Install packages
-        run: apt-get -yqq install nodejs
-      - name: Install bundler
-        run: gem install bundler:2.1.4
-      - name: Setup bundler cache
-        uses: actions/cache@v2
+      - uses: cachix/install-nix-action@v10
         with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
-      - name: Install bundled gems
-        run: |
-          bundle config path vendor/bundle
-          bundle install --jobs 4 --retry 3
+          nix_path: nixpkgs=channel:nixos-unstable
       - name: Build site
-        run: bundle exec middleman build
+        run: nix-shell --command 'middleman build'
       - name: Publish site
         uses: maxheld83/ghpages@v0.2.1
         env:
