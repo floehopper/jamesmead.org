@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: ruby:2.6.5
+      image: ruby:2.6.6
 
     steps:
       - name: Checkout repo
@@ -19,7 +19,7 @@ jobs:
       - name: Install packages
         run: apt-get -yqq install nodejs
       - name: Install bundler
-        run: gem install bundler:2.0.2
+        run: gem install bundler:2.1.4
       - name: Install bundled gems
         run: bundle install
       - name: Build site
