@@ -61,7 +61,6 @@ config[:feed_url] = 'http://feeds.jamesmead.org/floehopper-blog'
 config[:host] = 'jamesmead.org'
 
 config[:textile] = { no_span_caps: true }
-config[:css_dir] = 'style'
 
 config[:markdown] = { auto_ids: false }
 
