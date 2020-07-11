@@ -84,7 +84,7 @@ p, li, table {
   font-size: 123.1%;
 }
 
-li > p {
+li p {
   /*No adjustment for paragraphs already inside list item*/
   font-size: 100.0%;
 }
@@ -168,8 +168,4 @@ $on-large:         $on-laptop !default;
 
 .blog .metadata {
   font-style: italic;
-}
-
-.blog .webmentions p {
-  font-size: 100%;
 }
