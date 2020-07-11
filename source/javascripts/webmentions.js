@@ -4,27 +4,29 @@ if (container) {
   renderWebmentions(container);
 }
 
-async function renderWebmentions(container) {
-  const webmentions = await getWebmentions(container.dataset.webmentions);
+function renderWebmentions(container) {
+  getWebmentions(container.dataset.webmentions).then(
+    function (webmentions) {
+      if (webmentions.length === 0) {
+        return;
+      };
 
-  if (webmentions.length === 0) {
-    return;
-  }
+      const list = document.createElement("ul");
+      list.className = "webmentions";
 
-  const list = document.createElement("ul");
-  list.className = "webmentions";
+      webmentions.forEach(function(webmention) {
+        return list.appendChild(renderWebmention(webmention));
+      });
 
-  webmentions.forEach(webmention => {
-    list.appendChild(renderWebmention(webmention));
-  });
-
-  container.appendChild(list);
+      container.appendChild(list);
+    }
+  );
 }
 
 function getWebmentions(target) {
-  return fetch(`https://webmention.io/api/mentions.jf2?target=${target}`)
-    .then(response => response.json())
-    .then(data => data.children);
+  return fetch('https://webmention.io/api/mentions.jf2?target=' + target)
+    .then(function(response) { return response.json(); })
+    .then(function(data) { return data.children; });
 }
 
 function renderWebmention(webmention) {
@@ -49,13 +51,13 @@ function renderWebmention(webmention) {
   set(".webmention .action", "href", webmention.url);
 
   const receivedAt = new Date(webmention["wm-received"]);
-  const timestamp = `${receivedAt.toLocaleDateString(undefined, {day: 'numeric', month: 'short', year: 'numeric'})
-} at ${receivedAt.toLocaleTimeString(undefined, {hour: 'numeric', minute: 'numeric'})}`
+  const timestamp = receivedAt.toLocaleDateString(undefined, {day: 'numeric', month: 'short', year: 'numeric'})
+ + ' at ' + receivedAt.toLocaleTimeString(undefined, {hour: 'numeric', minute: 'numeric'});
 
   set(
     ".webmention .action",
     "textContent",
-    `${action} on ${timestamp}`
+    action + ' on ' + timestamp
   );
 
   if (action == "replied" && webmention.content) {
