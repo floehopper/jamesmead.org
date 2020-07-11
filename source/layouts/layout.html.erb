@@ -18,15 +18,14 @@
     <meta name="y_key" content="5f5b0de20991e0c2" />
     <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
 
-    <link rel="shortcut icon" href="/images/favicon.gif" />
+    <%= favicon_tag 'images/favicon.gif' %>
 
-    <link rel="stylesheet" type="text/css" href="/stylesheets/yui/3.18.1/cssreset-min.css">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/yui/3.18.1/cssfonts-min.css">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/yui/3.18.1/cssbase-min.css">
+    <%= stylesheet_link_tag 'yui/3.18.1/cssreset-min', 'yui/3.18.1/cssfonts-min', 'yui/3.18.1/cssbase-min.css' %>
 
-    <link rel="stylesheet" type="text/css" href="/stylesheets/site.css" />
-    <link rel="stylesheet" href="/stylesheets/prettify/prettify.css" type="text/css" />
-    <script type="text/javascript" src="/javascripts/prettify/prettify.js"></script>
+    <%= stylesheet_link_tag 'site' %>
+
+    <%= stylesheet_link_tag 'prettify/prettify' %>
+    <%= javascript_include_tag 'prettify/prettify' %>
 
     <link rel="alternate" type="application/atom+xml" title="Atom" href="<%= config[:feed_url] %>" />
 
