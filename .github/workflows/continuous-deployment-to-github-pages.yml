@@ -2,7 +2,7 @@ name: Continuous Deployment to GitHub Pages
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   build:
     name: Build
