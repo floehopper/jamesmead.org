@@ -13,7 +13,33 @@ I found [cachix/install-nix-action][] and decided to use it in my workflow along
 
 I then inserted the install-nix-action step immediately after the existing [actions/checkout][] step, removed the steps installing node.js and the bundled gems, and modified the step which built the website to run `nix-shell --command 'middleman build'`, i.e. to build the site within the shell specified by `shell.nix`.
 
-At this point slightly to my amazement, the build ran successfully! You can see all the changes I made in [this commit][use-nix-commit].
+At this point slightly to my amazement, the build ran successfully!
+
+    name: Continuous Deployment to GitHub Pages
+    on:
+      push:
+        branches:
+          - main
+    jobs:
+      build:
+        name: Build
+        runs-on: ubuntu-latest
+
+        steps:
+          - name: Checkout repo
+            uses: actions/checkout@master
+          - uses: cachix/install-nix-action@v10
+            with:
+              nix_path: nixpkgs=channel:nixos-unstable
+          - name: Build site
+            run: nix-shell --command 'middleman build'
+          - name: Publish site
+            uses: maxheld83/ghpages@v0.2.1
+            env:
+              GH_PAT: ${{ secrets.GH_PAT }}
+              BUILD_DIR: ./build
+
+You can see all the changes I made in [this commit][use-nix-commit].
 
 ### Observations
 
