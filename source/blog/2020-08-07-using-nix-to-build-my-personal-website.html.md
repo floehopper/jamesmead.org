@@ -1,5 +1,5 @@
 ---
-title: Using nix to deploy my personal website
+title: Using nix to build my personal website
 description: Modifying the existing GitHub Action workflow for building the website to use cachix/install-nix-action
 created_at: 2020-08-07 11:32:00 +00:00
 updated_at: 2020-08-07 11:32:00 +00:00
