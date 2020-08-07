@@ -1,6 +1,6 @@
 ---
 title: Using nix to deploy my personal website
-description: Using nix to build the website in a GitHub Action workflow
+description: Modifying the existing GitHub Action workflow for building the website to use cachix/install-nix-action
 created_at: 2020-08-07 11:32:00 +00:00
 updated_at: 2020-08-07 11:32:00 +00:00
 ---
@@ -26,7 +26,7 @@ I was pleasantly surprised to see that the nix-based build were significantly qu
 
 ### Next steps
 
-As I mentioned previously, I plan to try creating a development environment for a simple Rails app, probably [this one][freerange/site] which doesn't need a database.
+While this was an interesting diversion, I plan to get back on track by creating a development environment for a simple Rails app, probably [this one][freerange/site] which doesn't need a database.
 
 [nix-shell-article]: /blog/2020-07-26-a-simple-ruby-development-environment-using-nix-shell
 [cachix/install-nix-action]: https://github.com/cachix/install-nix-action
