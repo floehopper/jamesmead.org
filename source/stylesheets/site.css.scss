@@ -97,6 +97,7 @@ li p {
 pre code {
   /*14px via YUI Fonts CSS foundation*/
   font-size: 108%;
+  font-weight: 400;
 }
 
 sup {
@@ -121,6 +122,10 @@ h3 {
 
 pre {
   background-color: #f6f8fa;
+}
+
+code {
+  font-weight: 600;
 }
 
 blockquote {
