@@ -46,13 +46,13 @@ At this point I was surprised to discover that I could run `rails server` from w
 
     Completed 200 OK in 170ms (Views: 23.9ms)
 
-## Observations
+### Observations
 
 It's worth noting that early on in the shenanigans above, I got stuck for a while with the wrong version of Ruby and nothing I did would change it. In the end I deleted a bunch of things in my `/nix/store` directory to fix the problem. While this probably wasn't the _right_ way to fix it, I really appreciated the way it's relatively easy to work out how various executables are being made available to your environment, i.e. via a series of symbolic links.
 
 I also worked out that it's not possible (at least not when using `bundlerEnv`) to specify the version of bundler you want to use - it seems to be [fixed at v2.1.4][bundler-env-bundler-version].
 
-## Next steps
+### Next steps
 
 I'm still interested in working out how to have a project use a specific patch version of Ruby and to be able to lockdown the exact version of bundler. I've been reading about [nix flakes][] and although I haven't completely got my head around them, I think they _might_ be what I'm looking for, because they have a "lock file" which I believe can pin your dependencies to ensure reproducibility.
 
