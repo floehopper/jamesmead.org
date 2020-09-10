@@ -54,7 +54,7 @@ I also worked out that it's not possible (at least not when using `bundlerEnv`) 
 
 ## Next steps
 
-I'm still interested in working out how to have a project use a specific patch version of Ruby and to be able to lockdown the exact version of bundler. I've been reading about [nix flakes][] and although I haven't completely got my head around them, I think they _might_ be what I'm looking for, because they have a "lock file" which I believe can pin your dependencies to ensure reproducability.
+I'm still interested in working out how to have a project use a specific patch version of Ruby and to be able to lockdown the exact version of bundler. I've been reading about [nix flakes][] and although I haven't completely got my head around them, I think they _might_ be what I'm looking for, because they have a "lock file" which I believe can pin your dependencies to ensure reproducibility.
 
 However, I still feel as if that's a bit of a tangent. My main aim is to be able to have multiple Rails projects on the same computer with various flavours and versions of databases, etc. So I think my next step should be to setup a development environment for a Rails project which uses a database.
 
