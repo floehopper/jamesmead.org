@@ -9,7 +9,7 @@ This follows on from my previous article about setting up [a simple Ruby develop
 
 The `Gemfile` for this project specified Ruby v2.5.7 and so [as before][nix-ruby-env], I [upgraded][ruby-upgrade] it to use the latest v2.5 patch version, v2.5.8, so that I could use the ruby_2_5 package provided by nix.
 
-In a similar vein, the `Gemfile.lock` was `BUNDLED WITH` v1.17.3 of bundler; whereas the bundler version [provided by nixpkgs][nixpkgs-bundler-version] was v2.1.4. The line in `Gemfile.lock` wasn't an enforced constraint and I didn't want to break our Heroku deployment, so I compromised and upgraded to the v2 version of bundler supported by the Heroku Ruby buildpack, i.e. [v2.0.2][heroku-bundler-version].
+In a similar vein, the `Gemfile.lock` was `BUNDLED WITH` v1.17.3 of bundler; whereas the bundler version [provided by nixpkgs][nixpkgs-bundler-version] was v2.1.4. The line in `Gemfile.lock` wasn't an enforced constraint and I didn't want to break our Heroku deployment, so I compromised and upgraded to the v2 version of bundler [supported by the Heroku Ruby buildpack][heroku-bundler-version], i.e. v2.0.2.
 
 My `shell.nix` ended up like this:
 
