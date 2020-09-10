@@ -62,6 +62,4 @@ config[:host] = 'jamesmead.org'
 
 config[:textile] = { no_span_caps: true }
 
-config[:markdown] = { auto_ids: false }
-
 Time::DATE_FORMATS[:long] = "%d %b %Y at %H:%M"
