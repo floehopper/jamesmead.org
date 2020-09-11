@@ -2,7 +2,7 @@
 title: A simple Rails development environment using nix-shell
 description: This nix-shell environment provides a Ruby environment capable of running a Rails app without a database
 created_at: 2020-09-10 18:21:00 +00:00
-updated_at: 2020-09-10 18:21:00 +00:00
+updated_at: 2020-09-11 09:28:00 +00:00
 ---
 
 This follows on from my previous article about setting up [a simple Ruby development environment using nix-shell][nix-shell-article]. The next thing I wanted to try was to set up a simple Rails development environment. To this end I decided to focus on [the GFR website][] which is a Rails app, but has the advantage that it doesn't use a database.
@@ -57,6 +57,8 @@ I also worked out that it's not possible (at least not when using `bundlerEnv`) 
 I'm still interested in working out how to have a project use a specific patch version of Ruby and to be able to lockdown the exact version of bundler. I've been reading about [nix flakes][] and although I haven't completely got my head around them, I think they _might_ be what I'm looking for, because they have a "lock file" which I believe can pin your dependencies to ensure reproducibility.
 
 However, I still feel as if that's a bit of a tangent. My main aim is to be able to have multiple Rails projects on the same computer with various flavours and versions of databases, etc. So I think my next step should be to setup a development environment for a Rails project which uses a database.
+
+*Update*: I've belatedly realised that some gems in this project (e.g. nokogiri) had dependencies which were satisfied by OS packages installed in my OSX environment, i.e. I forgot to isolate the nix shell from this environment like I did when investigating the dependency on node.js in my previous article. I plan to tackle doing this soon.
 
 ### Further reading
 
