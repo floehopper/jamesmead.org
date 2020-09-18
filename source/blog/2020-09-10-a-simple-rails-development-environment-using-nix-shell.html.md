@@ -59,6 +59,7 @@ I'm still interested in working out how to have a project use a specific patch v
 However, I still feel as if that's a bit of a tangent. My main aim is to be able to have multiple Rails projects on the same computer with various flavours and versions of databases, etc. So I think my next step should be to setup a development environment for a Rails project which uses a database.
 
 *Update*: I've belatedly realised that some run-time dependencies (e.g. node.js & yarn) were satisfied by OS packages installed in my OSX environment, i.e. I forgot to isolate the nix shell from this environment like I did when investigating the dependency on node.js in my previous article. I plan to tackle doing this soon.
+{: #runtime-dependencies-update}
 
 ### Further reading
 
