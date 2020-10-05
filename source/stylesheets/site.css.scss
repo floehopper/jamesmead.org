@@ -84,6 +84,10 @@ pre {
   overflow: auto;
 }
 
+pre, code, kbd, samp, tt {
+  line-height: 1.5;
+}
+
 p, li, table {
   /*16px via YUI Fonts CSS foundation*/
   font-size: 123.1%;
