@@ -142,7 +142,7 @@ If you want to follow along at home, I've published the source code in [a GitHub
 * I discovered that in Nix Ruby packages the Rails gem is [fixed at v4.2.11.1][rails-in-nix-ruby-packages]. I didn't want to use such an old version and so I ended up using Bundler and Bundix in conjunction with a `Gemfile` to make a newer version of Rails available. If the version in Nix Ruby packages was more up-to-date, I believe I could have used something much simpler, e.g.
 
 ^
-    nix-shell -p 'ruby_2_6.gems.rails' --run 'rails new my-rails-app --skip-bundle --skip-webpack-install'
+    nix-shell -p 'ruby_2_6.gems.rails' --run 'rails new my-rails-app --skip-bundle --skip-webpack-install --database=postgresql'
 
 ### Next steps
 
