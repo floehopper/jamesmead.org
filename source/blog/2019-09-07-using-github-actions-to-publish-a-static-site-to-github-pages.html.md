@@ -3,6 +3,7 @@ title: Using GitHub Actions to publish a static site to GitHub Pages
 description: Automatically build a Middleman-generated site and push it to the gh-pages branch on every push to the master branch
 created_at: 2019-09-07 12:57:00 +00:00
 updated_at: 2019-09-07 12:57:00 +00:00
+guid: 8ebfb626-1dd5-4f39-9021-c7ccc6695ade
 ---
 
 I recently got access to the new [GitHub Actions](https://github.com/features/actions) functionality and decided to experiment with using it to automatically build and deploy [this site](/).

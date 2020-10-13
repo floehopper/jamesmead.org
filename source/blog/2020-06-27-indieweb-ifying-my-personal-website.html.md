@@ -3,6 +3,7 @@ title: IndieWeb-ifying my personal website
 description: Marking up relevant content with microformats and adding the ability to receive webmentions
 created_at: 2020-06-27 18:53:00 +00:00
 updated_at: 2020-06-27 22:34:00 +00:00
+guid: 56bfb91d-550d-41c9-9d82-295c794e8674
 ---
 
 I've been interested in the [IndieWeb][] since my colleague, [Chris R][], hosted [the first London IndieWeb meetup][london-indieweb-meetup] years ago and at various points I've played with a few bits of it on my website, e.g. [OpenID][] and [IndieAuth][]. As part of my efforts to move away from Twitter and Facebook, I recently joined the very friendly [fosstodon.org][] Mastodon instance and I noticed quite a lot of toots about the IndieWeb including one which mentioned the [indiewebify.me][] website which walks you through various levels of IndieWeb "compliance". I've been interested in finding out more about [Webmentions][] for a while and this gave me the motivation I needed to give them a try.

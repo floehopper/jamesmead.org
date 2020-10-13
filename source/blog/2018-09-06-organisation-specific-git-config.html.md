@@ -3,6 +3,7 @@ title: Organisation-specific git config
 description: Using conditional includes in your git configuration
 created_at: 2018-09-06 17:52:00 +00:00
 updated_at: 2018-09-06 17:52:00 +00:00
+guid: a186486d-172a-40c8-83d2-0ed9d3365041
 ---
 
 Recently I wanted to use a different email address in the configuration for my `git` user, but only when working on repositories relating to a particular client. I've always tended to organise my local repositories by user and organisation as follows:

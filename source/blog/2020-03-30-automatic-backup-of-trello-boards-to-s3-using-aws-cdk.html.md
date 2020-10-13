@@ -3,6 +3,7 @@ title: Automatic backup of Trello boards to S3 using the AWS CDK
 description: Replacing a cron job with a flock of AWS Lambda functions written in Ruby
 created_at: 2020-03-30 16:40:00 +00:00
 updated_at: 2020-03-30 16:40:00 +00:00
+guid: e311581f-7e95-4529-a812-38d5ecbe8c8b
 ---
 
 Over the last year or so, I've been using the [AWS CDK][] to setup AWS infrastructure for a number of internal [Go Free Range][] projects and I thought I'd try to write a bit about my experiences.

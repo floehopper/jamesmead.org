@@ -3,6 +3,7 @@ title: Git interactive rebase with the exec option
 description: How to detect accidental reintroduction of renamed classes or variables
 created_at: 2017-04-12 15:11:00 +00:00
 updated_at: 2017-04-12 15:11:00 +00:00
+guid: c65af8aa-c296-46f3-984a-fd3759ac8ab4
 ---
 
 Recently we've been doing a lot of refactoring in GDS' [manuals-publisher][] application. With three of us working on the codebase at the same time and significant renames occurring across the application, it's been tricky to avoid merge conflicts when rebasing our branches.

@@ -3,6 +3,7 @@ title: A simple Ruby development environment using nix-shell
 description: This nix-shell environment provides a Ruby environment capable of running middleman in order to build and serve my personal website locally
 created_at: 2020-07-26 14:01:00 +00:00
 updated_at: 2020-07-26 14:01:00 +00:00
+guid: 62c8f224-9da6-40c6-922e-ced9305a513f
 ---
 
 I've been playing around with the the [nix][] package manager recently. At the moment I'm mainly interested in seeing whether I can use it to configure isolated _development_ environments for various projects with varying package dependencies. The classic case of this would be two [Rails][] apps, one using [PostgreSQL][] and the other using [MySQL][]. Ideally I'd like development environments which completely specify all the projects dependencies and make *only* those dependencies available in the relevant development environment.

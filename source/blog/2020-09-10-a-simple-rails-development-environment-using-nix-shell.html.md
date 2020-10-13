@@ -3,6 +3,7 @@ title: A simple Rails development environment using nix-shell
 description: This nix-shell environment provides a Ruby environment capable of running a Rails app without a database
 created_at: 2020-09-10 18:21:00 +00:00
 updated_at: 2020-09-11 09:28:00 +00:00
+guid: ba59ac01-51b5-4916-94ea-ebd1d1dec01e
 ---
 
 This follows on from my previous article about setting up [a simple Ruby development environment using nix-shell][nix-shell-article]. The next thing I wanted to try was to set up a simple Rails development environment. To this end I decided to focus on [the GFR website][] which is a Rails app, but has the advantage that it doesn't use a database.

@@ -3,6 +3,7 @@ title: Using nix to build my personal website
 description: Modifying the existing GitHub Action workflow for building the website to use cachix/install-nix-action and nix-shell
 created_at: 2020-08-07 11:32:00 +00:00
 updated_at: 2020-08-07 11:32:00 +00:00
+guid: f20ea4f3-c444-4f85-8f31-8cc8e6b52824
 ---
 
 This is a follow-up to my previous article about setting up [a simple Ruby development environment using nix-shell][nix-shell-article] in which I mentioned I wasn't certain I'd _completely_ specified the development environment. Although it's a bit of a tangent from my main aim of configuring isolated _development_ environments, I thought it would be instructive to modify [the GitHub Action workflow that automatically publishes this website][github-actions-article] to use [nix][].

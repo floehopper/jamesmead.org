@@ -3,6 +3,7 @@ title: Site history update
 description: The blogging hiatus ends?
 created_at: 2017-04-12 13:35:00 +00:00
 updated_at: 2017-04-12 13:35:00 +00:00
+guid: 287ef25e-da7c-4f39-b37e-307c72cd39f4
 ---
 
 In a bid to get back into writing on here, I've just updated the [history of this site][history]:

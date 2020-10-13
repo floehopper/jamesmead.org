@@ -3,6 +3,7 @@ title: Generating and running a Rails app with PostgreSQL using Nix on Ubuntu
 description: Isolating a Nix environment by running on an Ubuntu VM provisioned by Vagrant
 created_at: 2020-10-12 20:20:00 +00:00
 updated_at: 2020-10-12 20:20:00 +00:00
+guid: c31f4da5-1cbb-4843-90f3-30075869abc3
 ---
 
 In my first attempt at setting up [a simple Ruby development environment][simple-ruby], I was quite careful to make sure the Nix shell environment wasn't accidentally relying on anything available from the underlying environment. In particular, I noticed that unless I specifically added `nodejs` to the list of `buildInputs`, middleman ended up using the Node version in the _underlying_ MacOS environment.

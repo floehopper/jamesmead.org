@@ -3,6 +3,7 @@ title: Automatically sending Webmentions from a static website
 description: Using Actionsflow to automate the sending of Webmentions using webmention.app
 created_at: 2020-10-13 08:29:00 +00:00
 updated_at: 2020-10-13 08:29:00 +00:00
+guid: e3390a6e-2423-4fe8-8089-7b12c3c8c3e9
 ---
 
 A few months back I wrote about [indieweb-ifying this website][]. I attempted to follow the excellent [indiewebify.me guide][], but I skipped step 2 of Level 2, i.e. [adding the ability to send Webmentions to other IndieWeb sites][level2-step2]. My [excuse][level2-step2-excuse] at the time was:
