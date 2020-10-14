@@ -83,7 +83,7 @@ It took me a while to realise that the underlying Actionsflow GitHub Action was 
 [ScheduledFargateTask]: https://docs.aws.amazon.com/cdk/api/latest/typescript/api/aws-ecs-patterns/scheduledfargatetask.html#aws_ecs_patterns_ScheduledFargateTask
 [Go Free Range]: https://gofreerange.com
 [AWS CDK]: https://aws.amazon.com/cdk/
-[buy Remy a drink]: paypal.me/rem
+[buy Remy a drink]: https://paypal.me/rem
 [Aaron Parecki]: https://aaronparecki.com/
 [brid.gy]: https://brid.gy/
 [brid.gy-cost]: https://brid.gy/about#cost
