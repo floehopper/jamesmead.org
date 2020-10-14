@@ -15,7 +15,10 @@ function renderWebmentions(container) {
       list.className = "webmentions";
 
       webmentions.forEach(function(webmention) {
-        return list.appendChild(renderWebmention(webmention));
+        const rendered = renderWebmention(webmention);
+        if (rendered) {
+          return list.appendChild(rendered);
+        };
       });
 
       container.appendChild(list);
@@ -36,6 +39,10 @@ function renderWebmention(webmention) {
     "repost-of": "reposted",
     "mention-of": "mentioned"
   }[webmention["wm-property"]];
+
+  if (!action) {
+    return null;
+  };
 
   const rendered = document.importNode(
     document.getElementById("webmention-template").content,
