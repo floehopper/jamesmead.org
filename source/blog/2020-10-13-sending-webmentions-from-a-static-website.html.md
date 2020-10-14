@@ -62,6 +62,9 @@ It took me a while to realise that the underlying Actionsflow GitHub Action was 
 
 * I'd also like to find a way to say thank you to [Aaron Parecki][] who built webmention.io and [Ryan Barrett][], [Kyle Mahan][], et al who built [brid.gy][]. However, I can't see a way to do either and, indeed, the latter [explicitly say][brid.gy-cost] "We don't need donations, promise."
 
+*Update*: Chris Aldrich [responded to my last point][chris-aldrich-reply] (appropriately enough using a Webmention):
+
+> In the past, I’ve heard many of them say to make a donation or support the [IndieWeb Open Collective][] instead". And so I've just made a donation. Thanks for the pointer, Chris!
 
 [indieweb-ifying this website]: https://jamesmead.org/blog/2020-06-27-indieweb-ifying-my-personal-website
 [indiewebify.me guide]: https://indiewebify.me/
@@ -89,3 +92,5 @@ It took me a while to realise that the underlying Actionsflow GitHub Action was 
 [brid.gy-cost]: https://brid.gy/about#cost
 [Ryan Barrett]: https://snarfed.org/
 [Kyle Mahan]: https://kylewm.com/
+[IndieWeb Open Collective]: https://opencollective.com/indieweb
+[chris-aldrich-reply]: https://boffosocko.com/2020/10/13/55778725/
