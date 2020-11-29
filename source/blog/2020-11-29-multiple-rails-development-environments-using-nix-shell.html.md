@@ -95,7 +95,7 @@ I'm particularly pleased with the unix domain socket solution, because it means 
     then
       pg_ctl start -l $PGLOG -o "--unix_socket_directories='$PGHOST' --listen_addresses='''"
     fi
-
+^
     # MySQL
     MYSQL_HOME=/home/vagrant/ruby2.6-rails6.0.3.4-mysql8.0/tmp/mysql
     MYSQL_DATA=$MYSQL_HOME/data
