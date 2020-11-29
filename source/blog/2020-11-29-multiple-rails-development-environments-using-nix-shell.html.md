@@ -75,7 +75,7 @@ I've added a [shellHook][nix-shellhook] to the development environment `shell.ni
 
 This time I've made a couple of changes to improve the level of isolation between the apps. Firstly I've configured each database to store their data in a Rails app sub-directory rather than in a global location. And secondly I've configured each database to only accept connections via a [unix domain socket][] also stored in a Rails app sub-directory.
 
-I managed to achieve the former by moving the Rails apps under the Vagrant user's home directory. This avoided the problem I had previously with hard links in a VirtualBox shared directory. Although this means the Rails app source code is not available from the guest OS, that seems like just a temporary invconvience since I'm only using the Vagrant VM to simulate a fresh machine. Eventually my aim is to run Nix natively and not use Vagrant at all.
+I managed to achieve the former by moving the Rails apps under the Vagrant user's home directory. This avoided the problem I had previously with hard links in a VirtualBox shared directory. Although this means the Rails app source code is not available from the guest OS, that seems like just a temporary inconvenience since I'm only using the Vagrant VM to simulate a fresh machine. Eventually my aim is to run Nix natively and not use Vagrant at all.
 
 I'm particularly pleased with the unix domain socket solution, because it means there's no need to identify an unused port for each Rails app to connect over TCP/IP. Here's the shellHook code for PostgreSQL and MySQL databases:
 
