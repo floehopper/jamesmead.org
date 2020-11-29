@@ -98,6 +98,11 @@ li p {
   font-size: 100.0%;
 }
 
+li * li {
+  /*No adjustment for list items inside list item */
+  font-size: 100.0%;
+}
+
 pre code {
   /*14px via YUI Fonts CSS foundation*/
   font-size: 108%;
