@@ -8,7 +8,7 @@ guid: 4276f4a5-2406-41c9-baba-2bf154e0712b
 
 I've continued to make slow but steady progress with my experiment to setup Rails development environments using nix-shell on a Vagrant VM running Ubuntu. I've now got to the stage where I have four Rails apps using combinations of Ruby v2.5 & v2.6, Rails v5.2.4.4 & v6.0.3.4, PostgreSQL v10 & v11, and MySQL v5.7 & v8.0 which I'm pretty happy about!
 
-<img style="display: block; margin-left: auto; margin-right: auto; width: 80%;" src="/images/four-rails-apps.png" alt="Four Rails apps">
+<img style="display: block; margin-left: auto; margin-right: auto; width: 100%;" src="/images/four-rails-apps.png" alt="Four Rails apps">
 
 I've continued to use bash scripts as Vagrant provisioners to do this in a reproducible way, although [the code][rails-on-nix-3c40a3fe] is currently a bit messier than I would like.
 
