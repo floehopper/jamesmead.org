@@ -79,7 +79,8 @@ I managed to achieve the former by moving the Rails apps under the Vagrant user'
 
 I'm particularly pleased with the unix domain socket solution, because it means there's no need to identify an unused port for each Rails app to connect over TCP/IP. Here's the shellHook code for PostgreSQL and MySQL databases:
 
-    # PostgreSQL
+#### PostgreSQL
+
     export PGHOST=/home/vagrant/ruby2.6-rails6.0.3.4-postgres11/tmp/postgres
     export PGDATA=$PGHOST/data
     export PGDATABASE=postgres
@@ -95,8 +96,9 @@ I'm particularly pleased with the unix domain socket solution, because it means 
     then
       pg_ctl start -l $PGLOG -o "--unix_socket_directories='$PGHOST' --listen_addresses='''"
     fi
-^
-    # MySQL
+
+#### MySQL
+
     MYSQL_HOME=/home/vagrant/ruby2.6-rails6.0.3.4-mysql8.0/tmp/mysql
     MYSQL_DATA=$MYSQL_HOME/data
     export MYSQL_UNIX_PORT=$MYSQL_HOME/mysql.sock
