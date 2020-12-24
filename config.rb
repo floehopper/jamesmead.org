@@ -53,6 +53,7 @@ configure :build do
 end
 
 activate :blog do |blog|
+  blog.name = "blog"
   blog.prefix = "blog"
   blog.permalink = "{year}-{month}-{day}-{title}.html"
 end
