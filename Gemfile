@@ -7,3 +7,4 @@ gem 'middleman-blog'
 
 gem 'rake'
 gem 'RedCloth'
+gem 'sanitize'
