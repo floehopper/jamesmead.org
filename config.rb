@@ -18,6 +18,8 @@ page 'index.html', layout: :home
 
 page 'blog/index.html', layout: :other
 page 'blog/*', layout: :blog
+page 'notes/index.html', layout: :other
+page 'notes/*', layout: :notes
 
 page 'adventures/*', layout: :other
 page 'legacy/*', layout: :other
@@ -55,6 +57,12 @@ end
 activate :blog do |blog|
   blog.name = "blog"
   blog.prefix = "blog"
+  blog.permalink = "{year}-{month}-{day}-{title}.html"
+end
+
+activate :blog do |blog|
+  blog.name = "notes"
+  blog.prefix = "notes"
   blog.permalink = "{year}-{month}-{day}-{title}.html"
 end
 

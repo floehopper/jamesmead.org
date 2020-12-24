@@ -1,0 +1,9 @@
+---
+title: Notes
+created_at: 2020-12-24 13:34:13 +00:00
+---
+<ul>
+  <% notes.each do |note| %>
+    <li><%= link_to note.url.pathmap('%n'), friendly_url(note) %></li>
+  <% end %>
+</ul>
