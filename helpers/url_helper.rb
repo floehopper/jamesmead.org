@@ -4,6 +4,6 @@ module UrlHelper
   end
 
   def friendly_url(page)
-    page.url.sub(/\.html$/, '')
+    page.url.pathmap('%X')
   end
 end
