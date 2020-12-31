@@ -24,4 +24,4 @@ google835c78466cc39885 300 IN CNAME google.com.
 googleffffffffaa715ec2 300 IN CNAME google.com.
 mail 300 IN CNAME ghs.google.com.
 tumble 300 IN CNAME domains.tumblr.com.
-www 300 IN CNAME floehopper.org.
+www 300 IN CNAME d1weg6nkmozewi.cloudfront.net.
