@@ -11,6 +11,7 @@
 @ 300 IN TXT "v=spf1 include:aspmx.googlemail.com ~all"
 blog 300 IN CNAME floehopper.org.
 _7645ef61d1ee6ecf655ee57047d777df.www 300 IN CNAME _99f80249371db9f7613e3a4fc1f6870e.rlltrpyzyf.acm-validations.aws.
+_9722afa08c3f862abad918945d549f60.blog 300 IN CNAME _81771e63f24de87ee2d769a5c614a3a4.rlltrpyzyf.acm-validations.aws.
 calendar 300 IN CNAME ghs.google.com.
 docs 300 IN CNAME ghs.google.com.
 feeds 300 IN CNAME xsrc7a.feedproxy.ghs.google.com.
