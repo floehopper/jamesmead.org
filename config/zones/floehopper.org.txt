@@ -7,6 +7,7 @@
 @ 300 IN MX 30 ASPMX3.GOOGLEMAIL.COM.
 @ 300 IN MX 30 ASPMX4.GOOGLEMAIL.COM.
 @ 300 IN MX 30 ASPMX5.GOOGLEMAIL.COM.
+@ 300 IN TXT "google-site-verification=QB_Eb59cVRyQPgKsR9ewtn_lSnnW2FIag4jLVGoCF7Q"
 @ 300 IN TXT "google-site-verification=j56IZCpVonL_M2lhg4v_NRa8O8Xt6Vq2pASiiQaE4-w"
 @ 300 IN TXT "v=spf1 include:aspmx.googlemail.com ~all"
 blog 300 IN CNAME d2gb0by98zfwxs.cloudfront.net.
