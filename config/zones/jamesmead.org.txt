@@ -1,5 +1,6 @@
 @ 10800 IN SOA ns1.gandi.net. hostmaster.gandi.net. 1567791156 10800 3600 604800 10800
 @ 300 IN ALIAS floehopper.github.io
+_7880717bc4fcee5089d34e3ed359f0b8.feeds 300 IN CNAME _45ed0f1178ddf6ed08a19f4374922844.rlltrpyzyf.acm-validations.aws.
 chaigneau 300 IN A 5.2.70.30
 feeds 300 IN CNAME xsrc7a.feedproxy.ghs.google.com.
 jamesmead.org 300 IN NS a.dns.gandi.net.
