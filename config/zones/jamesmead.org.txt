@@ -2,7 +2,7 @@
 @ 300 IN ALIAS floehopper.github.io
 _7880717bc4fcee5089d34e3ed359f0b8.feeds 300 IN CNAME _45ed0f1178ddf6ed08a19f4374922844.rlltrpyzyf.acm-validations.aws.
 chaigneau 300 IN A 5.2.70.30
-feeds 300 IN CNAME xsrc7a.feedproxy.ghs.google.com.
+feeds 300 IN CNAME d2h9ycw4o0jwu6.cloudfront.net.
 jamesmead.org 300 IN NS a.dns.gandi.net.
 jamesmead.org 300 IN NS b.dns.gandi.net.
 jamesmead.org 300 IN NS c.dns.gandi.net.
