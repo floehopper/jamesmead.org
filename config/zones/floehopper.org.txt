@@ -17,7 +17,7 @@ _fad32629025a03949904dcdd11de33a8.feeds 300 IN CNAME _fe3c97af0fea04e62941ebcd26
 blog 300 IN CNAME d2gb0by98zfwxs.cloudfront.net.
 calendar 300 IN CNAME ghs.google.com.
 docs 300 IN CNAME ghs.google.com.
-feeds 300 IN CNAME xsrc7a.feedproxy.ghs.google.com.
+feeds 300 IN CNAME d1vwor7kl5m9w1.cloudfront.net.
 floehopper.org 300 IN NS a.dns.gandi.net.
 floehopper.org 300 IN NS b.dns.gandi.net.
 floehopper.org 300 IN NS c.dns.gandi.net.
