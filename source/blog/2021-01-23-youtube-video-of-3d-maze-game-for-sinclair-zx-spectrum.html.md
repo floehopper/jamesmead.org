@@ -4,16 +4,17 @@ description: James O'Grady plays, reviews and mods a game I wrote in Z80 machine
 created_at: 2021-01-23 16:42:00 +00:00
 updated_at: 2021-01-23 16:42:00 +00:00
 guid: 8d8937e0-79a1-4e44-a1df-e37b7d43ff36
-published: false
 ---
 
 <img style="display: block; margin-left: auto; margin-right: auto; width: 33.3%; float:right; padding: 10px" src="/images/graphic-adventures-for-the-spectrum-48k.jpg" alt="Book cover for 'Graphic Adventures for the Spectrum 48K'">
 
-One evening last week I was idly browsing the web when I came across this quirky Youtube video which piqued my interest. In the video [James O'Grady][] demonstrated a 3D maze game. He'd typed in the code for the game from a familiar-sounding book called [Graphic Adventures for the Spectrum 48K][].
+One evening last week I was idly browsing the web when I came across [a quirky Youtube video](#the-youtube-video) which piqued my interest. In the video [James O'Grady][] demonstrated a 3D maze game. He'd typed in the code for the game from a familiar-sounding book called [Graphic Adventures for the Spectrum 48K][].
 
 The nominal author of this book, Richard Hurley, was one of my teachers and he included programs written by me and a number of my friends. The 3D maze game was one I wrote in about 1984 when I was 16 years old. In the video James goes on to critique the game, to explore some ways to improve it, and to read some reviews of the book from magazines of the time.
 
-The game was the first game I wrote entirely in Z80 machine code using the excellent [Zeus assembler][] and with my trusty copy of [The Complete Spectrum ROM Disassembly][]. It was closely based on the "3D Monster Maze" game by J.K. Greye Software:
+The game was the first game I wrote entirely in Z80 machine code using the excellent [Zeus assembler][] and with my trusty copy of [The Complete Spectrum ROM Disassembly][]. It was closely based on the "3D Monster Maze" game by J.K. Greye Software.
+
+### The ZX81 original
 
 <blockquote>
   <p>
@@ -39,17 +40,23 @@ The game was the first game I wrote entirely in Z80 machine code using the excel
   </p>
 </blockquote>
 
-One slight disappointment was that unlike in "3D Monster Maze" there was no "monster" in my version of the game or at least not in the version James was playing. I know that I did eventually add a Tyrannosaurus Rex to the game, but I vaguely remember having to rush for a publication deadline, so the monster might've have missed the cut! If I recall correctly, a friend with better artistic skills than me drew a T Rex for me in a series of "frames" walking towards the observer. I then traced the drawings onto graph paper and converted them into [user-defined graphic characters][]. I do half wonder whether these might be the mystery bytes which James refers to at one point in his video. Otherwise I believe the program uses calls to the ROM, e.g. [this line-drawing subroutine][], to draw the walls of the maze.
+### My version
+
+One slight disappointment was that unlike in "3D Monster Maze" there was no "monster" in my version of the game or at least not in the version James was playing. I know that I did eventually add a Tyrannosaurus Rex to the game, but I vaguely remember having to rush for a publication deadline, so the monster might've have missed the cut! If I recall correctly, a friend with better artistic skills than me drew a T Rex in a series of "frames" walking towards the observer. I then traced the drawings onto graph paper and converted them into [user-defined graphic characters][]. I do half wonder whether these might be the mystery bytes which James refers to at one point in his video. Otherwise I believe the program uses calls to the ROM, e.g. [this line-drawing subroutine][], to draw the walls of the maze.
 
 <div style="text-align: center; padding-bottom: 12px">
   <iframe width="80%" height="315" src="https://www.youtube.com/embed/Q656CqMIXLY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
+### The Youtube video
+
 James must've been incredibly patient to type in all the raw numbers for the machine code with only very rudimentary checksums. And, given that the game is written entirely in machine code and the assembler source code is lost in the mists of time, I was impressed that James managed to successfully modify the game in a couple of different ways using a load of judicious [`PEEK`s and `POKE`s][peek-and-poke] and apparently without the use of a disassembler. In particular he's written a nice maze editor program which runs on the Spectrum and allows you to design your own maze. I was quite amused to learn that the maze had to be square - I can't imagine it would've been much harder for me to have allowed rectangular ones!
 
 James is very fair in his criticisms of the game - his main observation is that it's not very interesting to play, bit it is very fast compared to other similar games. I also enjoyed reading the reviews of the book he'd found in a couple of magazines of the time. I had a lovely exchange with him in [the Youtube comments][] and he [changed the title][change-title-tweet] of the Youtube video to include my name which was a nice gesture. Anyway, this was a brilliant trip down memory lane for me and reminded me of my programming roots!
 
-If you feel as if you want the full "type it in" experience, the Portuguese (!) version of the book is available for [download][book-pdf] from [Spectrum Computing][] and you can find the game in "Labirinto" (chapter 4, page 105). Otherwise, [this GitHub repo][3s-maze-repo] includes a set of [TAP format][] files which might work in a Spectrum emulator.
+### Playing the game
+
+If you feel as if you want the full "type it in" experience, the Portuguese (!) version of the book is available for [download][book-pdf] from [Spectrum Computing][] and you can find the game in "Labirinto" (chapter 4, page 105). Otherwise, [this GitHub repo][3s-maze-repo] includes a set of [TAP format][] files which might work in a Spectrum emulator, although I haven't yet had a chance to try them myself.
 
 [James O'Grady]: https://twitter.com/JAMOGRAD
 [Graphic Adventures for the Spectrum 48K]: https://www.amazon.co.uk/dp/0744700132
