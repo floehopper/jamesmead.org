@@ -1,30 +1,22 @@
 ---
-title: Youtube video of 3D maze game for Sinclair ZX Spectrum
-description: James O'Grady plays, reviews and mods a game I wrote in Z80 machine code in 1984
-created_at: 2021-01-23 16:42:00 +00:00
-updated_at: 2021-01-23 16:42:00 +00:00
+title: Youtube video of my 3D maze game for the ZX Spectrum
+description: James O'Grady plays, reviews and mods (!) a game I wrote in Z80 machine code in 1984
+created_at: 2021-01-29 09:15:00 +00:00
+updated_at: 2021-01-29 09:15:00 +00:00
 guid: 8d8937e0-79a1-4e44-a1df-e37b7d43ff36
 ---
 
 <img style="display: block; margin-left: auto; margin-right: auto; width: 33.3%; float:right; padding: 10px" src="/images/graphic-adventures-for-the-spectrum-48k.jpg" alt="Book cover for 'Graphic Adventures for the Spectrum 48K'">
 
-One evening last week I was idly browsing the web when I came across [a quirky Youtube video](#the-youtube-video) which piqued my interest. In the video [James O'Grady][] demonstrated a 3D maze game. He'd typed in the code for the game from a familiar-sounding book called [Graphic Adventures for the Spectrum 48K][].
+I recently stumbled across [a quirky Youtube video](#the-youtube-video) which piqued my interest. In the video [James O'Grady][] demonstrated a 3D maze game. He'd typed in the code for the game from a familiar-sounding book called [Graphic Adventures for the Spectrum 48K][].
 
-The nominal author of this book, Richard Hurley, was one of my teachers and he included programs written by me and a number of my friends. The 3D maze game was one I wrote in about 1984 when I was 16 years old. In the video James goes on to critique the game, to explore some ways to improve it, and to read some reviews of the book from magazines of the time.
+The nominal author of this book, Richard Hurley, was one of my teachers and he included programs written by me and a number of my friends. The 3D maze game was one I wrote in about 1984 when I was 16. In the video James goes on to critique the game, to explore some ways to improve it, and to read some reviews of the book from magazines of the time.
 
-The game was the first game I wrote entirely in Z80 machine code using the excellent [Zeus assembler][] and with my trusty copy of [The Complete Spectrum ROM Disassembly][]. It was closely based on the "3D Monster Maze" game by J.K. Greye Software.
+In my early teens I played a lot of games on the ZX81 and then the Spectrum, but as I got older I became bored of playing the games and more interested in writing them. I learnt a lot about programming games from typing in code from magazines and books.
+
+The first games I developed were written entirely in [Sinclair BASIC][], e.g. [Sub Hunt][] which was published in [an earlier book][15-graphic-games], but I quickly realised I would need to use machine code to get the performance I wanted. Initially I wrote small bits of machine code to speed up critical bits of the games. However, the 3D Maze game in the video was the first game I wrote pretty much entirely in Z80 machine code using the excellent [Zeus assembler][] and with my trusty copy of [The Complete Spectrum ROM Disassembly][]. It was closely based on the "3D Monster Maze" game by J.K. Greye Software.
 
 ### The ZX81 original
-
-<blockquote>
-  <p>
-    A computer game developed from an idea by J.K. Greye and programmed by Malcolm Evans in 1981 for the Sinclair ZX81 platform with the 16 KB memory expansion. The game was initially released by J. K. Greye Software in early 1982 and re-released later the same year by Evans' own startup, New Generation Software. Rendered using low-resolution character block "graphics", it was one of the first 3D games for a home computer, and the first game incorporating typical elements of the genre that would later be termed survival horror.
-    &ndash;
-    <cite>
-      <a href="https://en.wikipedia.org/wiki/3D_Monster_Maze">Wikipedia: 3D Monster Maze</a>
-    </cite>
-  </p>
-</blockquote>
 
 <div style="text-align: center; padding-bottom: 12px">
   <iframe width="80%" height="315" src="https://www.youtube.com/embed/nKvd0zPfBE4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -52,7 +44,7 @@ One slight disappointment was that unlike in "3D Monster Maze" there was no "mon
 
 James must've been incredibly patient to type in all the raw numbers for the machine code with only very rudimentary checksums. And, given that the game is written entirely in machine code and the assembler source code is lost in the mists of time, I was impressed that James managed to successfully modify the game in a couple of different ways using a load of judicious [`PEEK`s and `POKE`s][peek-and-poke] and apparently without the use of a disassembler. In particular he's written a nice maze editor program which runs on the Spectrum and allows you to design your own maze. I was quite amused to learn that the maze had to be square - I can't imagine it would've been much harder for me to have allowed rectangular ones!
 
-James is very fair in his criticisms of the game - his main observation is that it's not very interesting to play, bit it is very fast compared to other similar games. I also enjoyed reading the reviews of the book he'd found in a couple of magazines of the time. I had a lovely exchange with him in [the Youtube comments][] and he [changed the title][change-title-tweet] of the Youtube video to include my name which was a nice gesture. Anyway, this was a brilliant trip down memory lane for me and reminded me of my programming roots!
+James is very fair in his criticisms of the game - his main observation is that it's not very interesting to play, but it is very fast compared to other similar games. I also enjoyed reading the reviews of the book he'd found in a couple of magazines of the time. I had a lovely exchange with him in [the Youtube comments][] and he [changed the title][change-title-tweet] of the Youtube video to include my name which was a nice gesture. Anyway, this was a brilliant trip down memory lane for me and reminded me of my programming roots!
 
 ### Playing the game
 
@@ -73,3 +65,6 @@ If you feel as if you want the full "type it in" experience, the Portuguese (!) 
 [book-pdf]: https://archive.org/download/World_of_Spectrum_June_2017_Mirror/World%20of%20Spectrum%20June%202017%20Mirror.zip/World%20of%20Spectrum%20June%202017%20Mirror/sinclair/books/g/GraphicAdventuresForTheSpectrum48K(AventurasGraficasParaOSpectrum48K)(TemposLivres).pdf
 [Spectrum Computing]: https://spectrumcomputing.co.uk/index.php?cat=96&id=2000168
 [TAP format]: https://worldofspectrum.org/faq/reference/formats.htm#TAP
+[15-graphic-games]: https://spectrumcomputing.co.uk/index.php?cat=96&id=2000461
+[Sub Hunt]: https://github.com/floehopper/sub-hunt
+[Sinclair BASIC]: https://worldofspectrum.org/ZXBasicManual/
