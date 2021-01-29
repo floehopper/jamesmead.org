@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Test::Unit and MiniTest with different Ruby versions - James Mead</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="keywords" content="ruby testing testunit minitest miniunit version 1.8 1.9.0 1.9.1" />
+    <meta name="author" content= "James Mead" />
+
+    <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+    <meta name="y_key" content="5f5b0de20991e0c2" />
+    <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
+
+    <link href="/images/favicon.gif" rel="icon" type="image/gif" />
+
+    <link href="/stylesheets/yui/3.18.1/cssreset-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssfonts-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssbase-min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+
+    <link href="/stylesheets/prettify/prettify.css" rel="stylesheet" />
+    <script src="/javascripts/prettify/prettify.js"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.jamesmead.org/floehopper-blog" />
+
+    <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
+
+    <link rel="prev" href="/blog/2009-02-01-mocha-release-0-9-5" />
+    <link rel="next" href="/blog/2009-02-03-mocha-internals-under-scrutiny" />
+    <link rel="first" href="/blog/2004-05-14-unit-tests-can-100-coverage-be-a-bad-thing" />
+    <link rel="last" href="/blog/2021-01-23-youtube-video-of-my-3d-maze-game-for-the-zx-spectrum" />
+    <link rel="index" href="/blog" />
+
+  </head>
+  <body class="blog blog_2009-02-02-test-unit-and-minitest-with-different-ruby-versions" onload="prettyPrint()">
+    <div id="doc">
+      <div class="skip-links">
+        <a href="#bd">Skip to main content</a>
+      </div>
+
+      <header id="hd">
+        <nav aria-label="Primary">
+          <a href="/">Home</a>
+          &middot;
+          <a href="/blog/">Blog</a>
+          &middot;
+          <a href="/notes/">Notes</a>
+          &middot;
+          <a href="/talks/">Talks</a>
+          &middot;
+          <a href="/projects/">Projects</a>
+        </nav>
+      </header>
+
+      <main id="bd">
+          <article class="h-entry">
+    <header>
+      <h1 class="p-name">Test::Unit and MiniTest with different Ruby versions</h1>
+    </header>
+
+    <section class="e-content">
+      <h2>Introduction</h2>
+<p>In recent weeks, I&#8217;ve been trying to ensure that <a href="https://mocha.jamesmead.org/">Mocha</a> works with the new versions of Ruby as well as <a href="http://blog.zenspider.com/minitest/">MiniTest</a>, the <a href="https://web.archive.org/web/20100208155315/http://ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html">Test::Unit</a> replacement. I started <a href="http://twitter.com/floehopper/status/1155022088">getting very confused</a> with all the different ways to write/run tests, so I made some notes for myself. In the wake of the <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/35e963933f9d0b1a">release of Ruby 1.9.1</a>, I thought these notes might be useful to others &#8211; so here they are.</p>
+<p>I haven&#8217;t got into the MiniTest::Spec or MiniTest::Mock side of things, nor have I looked at other testing libraries like <a href="http://rspec.info/">RSpec</a>, <a href="http://thoughtbot.com/projects/shoulda/">Shoulda</a>, <a href="http://test-spec.rubyforge.org/">Test/Spec</a>, etc. Please let me know if you see any errors or omissions and I&#8217;ll update this article.</p>
+<p>I&#8217;ve included the information about Ruby 1.9.0 for completeness, but most people will only be interested in <a href="#vanilla-ruby191">the sections on 1.9.1</a> which is the &#8220;first stable release of Ruby 1.9 series&#8221;.</p>
+<p>As I mentioned in the <a href="/blog/2009-02-01-mocha-release-0-9-5">release notes</a>, Mocha 0.9.5 should work with Test::Unit or MiniTest in Ruby 1.8.* or Ruby 1.9.1. It does not currently work in Ruby 1.9.0, but I won&#8217;t be making this a priority unless I have specific requests to do so.</p>
+<p>Note that at some point MiniTest changed its name from MiniUnit.</p>
+<h2>Ruby 1.8 with Test::Unit standard library</h2>
+<p>The basics.</p>
+<pre class="prettyprint"><code class="prettyprint">require 'test/unit'</code>
+
+<code class="prettyprint">class Ruby18TestUnitTest &lt; Test::Unit::TestCase</code></pre>
+<h2>Ruby 1.8 with MiniTest gem</h2>
+<p>If you can&#8217;t upgrade to Ruby 1.9, you can still use MiniTest by installing the gem. Note that you have to install the autorun exit hook manually for MiniTest &#8211; this is done automatically for Test::Unit when you require &#8216;test/unit&#8217; &#8211; if you want the tests to be executed when the file run as a Ruby script.</p>
+<pre class="prettyprint"><code class="prettyprint"># gem install minitest</code>
+
+<code class="prettyprint">require 'rubygems'
+gem 'minitest'
+require 'minitest/unit'</code>
+
+<code class="prettyprint">MiniTest::Unit.autorun</code>
+
+<code class="prettyprint">class Ruby18MiniTestGemTest &lt; MiniTest::Unit::TestCase</code></pre>
+<h2 id="minitest-tu-shim">Ruby 1.8 with MiniTest-Test::Unit shim</h2>
+<p>This takes things a step further by installing a shim gem which makes requiring &#8216;test/unit&#8217; behave the same way as it does in a <a href="#vanilla-ruby191">vanilla Ruby 1.9.1 installation</a> i.e. Test::Unit becomes a thin wrapper around MiniTest. This means that you don&#8217;t have to change your tests to inherit from MiniTest::Unit::TestCase in order to use MiniTest. However, you should note that some of Test::Unit&#8217;s API (e.g. Test::Unit::TestResult) is no longer available. Note that you can reverse the effect of <code>use_minitest yes</code> using <code>use_minitest no</code>.</p>
+<pre class="prettyprint"><code class="prettyprint"># sudo gem install minitest_tu_shim
+# sudo use_minitest yes</code>
+
+<code class="prettyprint">require 'rubygems'
+gem 'minitest'
+require 'test/unit'</code>
+
+<code class="prettyprint">class Ruby18MiniTestTUShimTest &lt; Test::Unit::TestCase</code></pre>
+<h2>Ruby 1.9.0 with Test::Unit standard library</h2>
+<p>The Test::Unit standard library seems to be unchanged.</p>
+<pre class="prettyprint"><code class="prettyprint">require 'test/unit'</code>
+
+<code class="prettyprint">class Ruby190TestUnitTest &lt; Test::Unit::TestCase</code></pre>
+<h2>Ruby 1.9.0 with Mini::Test standard library</h2>
+<p>An earlier version of MiniTest (i.e. Mini::Test) is also available as a standard library. Note the different directory, file, class &amp; module names.</p>
+<pre class="prettyprint"><code class="prettyprint">require 'mini/test' # c.f. require 'minitest/unit' in Ruby 1.9.1</code>
+
+<code class="prettyprint">Mini::Test.autorun</code>
+
+<code class="prettyprint">class Ruby190MiniTestTest &lt; Mini::Test::TestCase</code></pre>
+<h2 id="vanilla-ruby191">Ruby 1.9.1 with Test::Unit standard library</h2>
+<p>Test::Unit is just a thin wrapper around MiniTest as described in <a href="#minitest-tu-shim">Ruby 1.8 with MiniTest-Test::Unit shim</a></p>
+<pre class="prettyprint"><code class="prettyprint">require 'test/unit'</code>
+
+<code class="prettyprint">class Ruby191TestUnitTest &lt; Test::Unit::TestCase</code></pre>
+<h2>Ruby 1.9.1 with MiniTest standard library</h2>
+<p>MiniTest is intended to be the default standard library to use for testing.</p>
+<pre class="prettyprint"><code class="prettyprint">require 'minitest/unit'</code>
+
+<code class="prettyprint">MiniTest::Unit.autorun</code>
+
+<code class="prettyprint">class Ruby191MiniTestTest &lt; MiniTest::Unit::TestCase</code></pre>
+<h2>Ruby 1.9.1 with Test::Unit gem</h2>
+<p>It is possible to use the <em>classic</em> Test::Unit by installing the gem. It looks like you need to specify version 1.2.3 to avoid picking up what appears to be some more significant changes in versions &gt;= 2.0.</p>
+<pre class="prettyprint"><code class="prettyprint"># sudo gem install test-unit -v 1.2.3</code>
+
+<code class="prettyprint">require 'rubygems'
+gem 'test-unit'
+require 'test/unit'</code>
+
+<code class="prettyprint">class Ruby19TestUnitGemTest &lt; Test::Unit::TestCase</code></pre>
+<h2>Versions used for testing</h2>
+<ul>
+	<li><a href="http://www.apple.com/macosx/">OSX</a> Leopard 10.5.6</li>
+	<li>Ruby 1.8.6 (2008-08-11 patchlevel 287)</li>
+	<li>Ruby 1.9.0 (2008-10-04 revision 19669)</li>
+	<li>Ruby 1.9.1p0 (2009-01-30 revision 21907)</li>
+	<li><a href="http://blog.zenspider.com/2009/01/minitest-version-131-has-been.html">minitest</a> gem 1.3.1</li>
+	<li><a href="http://blog.zenspider.com/2008/10/minitest-tu-shim-version-130-h.html">minitest_tu_shim</a> gem 1.3.0</li>
+	<li><a href="http://test-unit.rubyforge.org/">test-unit</a> gem 1.2.3</li>
+</ul>
+<h2>References</h2>
+<ul>
+	<li><a href="http://markmail.org/message/zm5ocf3koijgrto2">test/unit and minitest</a></li>
+	<li><a href="http://groups.google.vg/group/ruby-talk-google/browse_thread/thread/317778a91b31f142/ac507e6ae948c5d3">MiniTest &amp; Test::Unit::TestResult in Ruby 1.9.1</a></li>
+	<li><a href="http://groups.google.vg/group/ruby-talk-google/browse_thread/thread/212b92cc7df43b80/dbe74a7aa8b16ab5">MiniTest / Test::Unit</a></li>
+</ul>
+    </section>
+
+    <footer>
+      <p class="metadata">
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2009-02-02-test-unit-and-minitest-with-different-ruby-versions"><time class="dt-published" datetime="2009-02-02T17:12:54+00:00">02 Feb 2009 at 17:12</time></a>
+      </p>
+      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2009-02-02-test-unit-and-minitest-with-different-ruby-versions">
+  <template id="webmention-template">
+    <li class="webmention">
+      <div>
+        <a class="author">
+          <span class="author-name"></span>
+        </a>
+        <a class="action"></a>
+      </div>
+      <div class="content"></div>
+    </li>
+  </template>
+</div>
+
+<script src="/javascripts/webmentions.js" type="text/javascript" charset="utf-8"></script>
+
+    </footer>
+  </article>
+
+
+          <nav id="navigation" aria-label="Inter-article">
+      <a href="/blog/2009-02-01-mocha-release-0-9-5" class="previous">&lt; Mocha Release 0.9.5</a>
+      <a href="/blog/2009-02-03-mocha-internals-under-scrutiny" class="next">Mocha Internals under Scrutiny &gt;</a>
+  </nav>
+
+      </main>
+
+      <footer id="ft">
+        <nav aria-label="Footer">
+          <a href="/contact">Contact</a>
+          &middot;
+          <a href="/history">History</a>
+          &middot;
+          <a href="/colophon">Colophon</a>
+          &middot;
+          <a href="/links">Links</a>
+        </nav>
+        <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">This work by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="jamesmead.org">James Mead</a> is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0<img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+      </footer>
+    </div>
+  </body>
+</html>

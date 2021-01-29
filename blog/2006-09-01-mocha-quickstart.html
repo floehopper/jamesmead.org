@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Mocha Quickstart - James Mead</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="keywords" content="ruby mock rails stub testing interception class instance quickstart tutorial" />
+    <meta name="author" content= "James Mead" />
+
+    <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+    <meta name="y_key" content="5f5b0de20991e0c2" />
+    <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
+
+    <link href="/images/favicon.gif" rel="icon" type="image/gif" />
+
+    <link href="/stylesheets/yui/3.18.1/cssreset-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssfonts-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssbase-min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+
+    <link href="/stylesheets/prettify/prettify.css" rel="stylesheet" />
+    <script src="/javascripts/prettify/prettify.js"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.jamesmead.org/floehopper-blog" />
+
+    <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
+
+    <link rel="prev" href="/blog/2006-09-01-injecting-mocks-the-mocha-way" />
+    <link rel="next" href="/blog/2006-09-03-new-mocha-docs" />
+    <link rel="first" href="/blog/2004-05-14-unit-tests-can-100-coverage-be-a-bad-thing" />
+    <link rel="last" href="/blog/2021-01-23-youtube-video-of-my-3d-maze-game-for-the-zx-spectrum" />
+    <link rel="index" href="/blog" />
+
+  </head>
+  <body class="blog blog_2006-09-01-mocha-quickstart" onload="prettyPrint()">
+    <div id="doc">
+      <div class="skip-links">
+        <a href="#bd">Skip to main content</a>
+      </div>
+
+      <header id="hd">
+        <nav aria-label="Primary">
+          <a href="/">Home</a>
+          &middot;
+          <a href="/blog/">Blog</a>
+          &middot;
+          <a href="/notes/">Notes</a>
+          &middot;
+          <a href="/talks/">Talks</a>
+          &middot;
+          <a href="/projects/">Projects</a>
+        </nav>
+      </header>
+
+      <main id="bd">
+          <article class="h-entry">
+    <header>
+      <h1 class="p-name">Mocha Quickstart</h1>
+    </header>
+
+    <section class="e-content">
+      <p>I really must get round to writing some better documentation for <a href="https://mocha.jamesmead.org/">Mocha</a>, but in the meantime here&#8217;s a quickstart guide<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>.</p>
+<p>Mocha adds a couple of new methods to all objects and classes &#8211; <code>expects</code> which sets up auto-verified expectations and <code>stubs</code> which stubs the method allowing any number of calls.</p>
+<p>Both the <code>expects</code> and <code>stubs</code> methods actually return an <a href="https://mocha.jamesmead.org/Mocha/Expectation.html">expectation</a> object. Relevant methods on an expectation are: <code>at_least</code>, <code>at_least_once</code>, <code>never</code>, <code>raises</code>, <code>returns</code>, <code>times</code>, <code>with</code>, <code>yields</code> which are hopefully fairly self-explanatory. If not there are some clues <a href="https://mocha.jamesmead.org/Mocha/Expectation.html">here</a></p>
+<h2>Mocking a class method</h2>
+<pre class="prettyprint"><code class="prettyprint">product = Product.new
+Product.expects(:find).with(1).returns(product)
+assert_equal product, Product.find(1)</code></pre>
+<h2>Mocking an instance method on a real object</h2>
+<pre class="prettyprint"><code class="prettyprint">product = Product.new
+product.expects(:save).returns(true)
+assert product.save</code></pre>
+<h2>Stubbing instance methods on real object</h2>
+<pre class="prettyprint"><code class="prettyprint">prices = [stub(:pence =&gt; 1000), stub(:pence =&gt; 2000)]
+product = Product.new
+product.stubs(:prices).returns(prices)
+assert_equal [1000, 2000], product.prices.collect {|p| p.pence}</code></pre>
+<h2>Stubbing an instance method on all instances of a class</h2>
+<pre class="prettyprint"><code class="prettyprint">Product.any_instance.stubs(:name).returns('stubbed_name')
+product = Product.new
+assert_equal 'stubbed_name', product.name</code></pre>
+<h2>Traditional mocking</h2>
+<pre class="prettyprint"><code class="prettyprint">object = mock()
+object.expects(:expected_method).with(:p1, :p2).returns(:result)
+assert_equal :result, object.expected_method(:p1, :p2)</code></pre>
+<h2>Shortcuts</h2>
+<pre class="prettyprint"><code class="prettyprint">object = stub(:method1 =&gt; :result1, :method2 =&gt; :result2)
+assert_equal :result1, object.method1
+assert_equal :result2, object.method2</code></pre>
+<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> I wrote these examples without checking them, so there may be some typos.</p>
+    </section>
+
+    <footer>
+      <p class="metadata">
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2006-09-01-mocha-quickstart"><time class="dt-published" datetime="2006-09-01T14:14:32+00:00">01 Sep 2006 at 14:14</time></a>
+      </p>
+      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2006-09-01-mocha-quickstart">
+  <template id="webmention-template">
+    <li class="webmention">
+      <div>
+        <a class="author">
+          <span class="author-name"></span>
+        </a>
+        <a class="action"></a>
+      </div>
+      <div class="content"></div>
+    </li>
+  </template>
+</div>
+
+<script src="/javascripts/webmentions.js" type="text/javascript" charset="utf-8"></script>
+
+    </footer>
+  </article>
+
+
+          <nav id="navigation" aria-label="Inter-article">
+      <a href="/blog/2006-09-01-injecting-mocks-the-mocha-way" class="previous">&lt; Injecting mocks (the Mocha way)</a>
+      <a href="/blog/2006-09-03-new-mocha-docs" class="next">New Mocha Docs &gt;</a>
+  </nav>
+
+      </main>
+
+      <footer id="ft">
+        <nav aria-label="Footer">
+          <a href="/contact">Contact</a>
+          &middot;
+          <a href="/history">History</a>
+          &middot;
+          <a href="/colophon">Colophon</a>
+          &middot;
+          <a href="/links">Links</a>
+        </nav>
+        <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">This work by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="jamesmead.org">James Mead</a> is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0<img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+      </footer>
+    </div>
+  </body>
+</html>

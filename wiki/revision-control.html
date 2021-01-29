@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Revision control - James Mead</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="author" content= "James Mead" />
+
+    <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+    <meta name="y_key" content="5f5b0de20991e0c2" />
+    <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
+
+    <link href="/images/favicon.gif" rel="icon" type="image/gif" />
+
+    <link href="/stylesheets/yui/3.18.1/cssreset-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssfonts-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssbase-min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+
+    <link href="/stylesheets/prettify/prettify.css" rel="stylesheet" />
+    <script src="/javascripts/prettify/prettify.js"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.jamesmead.org/floehopper-blog" />
+
+    <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
+
+
+  </head>
+  <body class="wiki wiki_revision-control" onload="prettyPrint()">
+    <div id="doc">
+      <div class="skip-links">
+        <a href="#bd">Skip to main content</a>
+      </div>
+
+      <header id="hd">
+        <nav aria-label="Primary">
+          <a href="/">Home</a>
+          &middot;
+          <a href="/blog/">Blog</a>
+          &middot;
+          <a href="/notes/">Notes</a>
+          &middot;
+          <a href="/talks/">Talks</a>
+          &middot;
+          <a href="/projects/">Projects</a>
+        </nav>
+      </header>
+
+      <main id="bd">
+          <article>
+    <h1>Revision control</h1>
+
+    <h2 id="atomic-commit">Atomic commit</h2>
+
+<p>Both these articles talk about atomic commits, but they don't really define what they mean by an atomic commit.</p>
+
+<p>https://about.futurelearn.com/blog/telling-stories-with-your-git-history/ - "Atomic commits" section:</p>
+
+<blockquote>
+  <p>Think of atomic commits as the smallest amount of code changed which delivers value</p>
+</blockquote>
+
+<p>http://www.annashipman.co.uk/jfdi/good-pull-requests.html</p>
+
+<p>This seems to mean different things to different people. The idea of curating commits</p>
+
+<p>Summarising a couple of sections of the relevant Wikipedia page:</p>
+
+<ul>
+  <li>A commit which does not result in merge conflicts; those that do are rejected<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote">1</a></sup>.</li>
+  <li>A small commit which only affects one aspect of the system<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote">2</a></sup>, e.g. avoid mixing formatting and functional changes in the same commit.</li>
+</ul>
+
+<p>The idea of atomicity doesn't make much sense unless you define what level of system consistency you are expecting i.e. what constitutes a valid state of the system. In this respect, even the first definition (above) is a bit ambiguous, because it doesn't specify what it means by a merge conflict.</p>
+
+<p>Git is only atomic in the sense that a commit must either completely succeed or completely fail; it's not possible for some of the changes to be accepted into the repository, but for others to be rejected. It's possible to commit changes including conflict markers into a git repository.</p>
+
+<p>My idea of an atomic commit leaves the system in a working state, i.e.</p>
+
+<p>Levels of consistency:</p>
+
+<ol>
+  <li>All changes in a commit are accepted or they are all rejected; nothing in between.</li>
+  <li>No conflict markers.</li>
+  <li>Code parses / compiles &amp; links.</li>
+  <li>Tests all pass.</li>
+</ol>
+
+<ul>
+  <li>Refactoring tools, e.g. "move method", "rename class", "extract method".</li>
+  <li>Language-aware / semantic merging.</li>
+  <li>http://martinfowler.com/bliki/SemanticDiff.html</li>
+  <li>http://martinfowler.com/bliki/SemanticConflict.html</li>
+  <li>https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History</li>
+  <li>https://en.wikipedia.org/wiki/Consistency_(database_systems)</li>
+  <li>Natural consequence of TDD</li>
+  <li>Tricks:
+    <ul>
+      <li>Implement new functionality, but don't make it visible to the user / navigable</li>
+      <li>Implement changed behaviour alongside existing behaviour, but make existing behaviour the default</li>
+      <li>Marking acceptance tests as pending</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="goldilocks-commit">Goldilocks commit</h2>
+
+<p>Not too big, not too small.</p>
+
+<h2 id="references">References</h2>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>Wikipedia: <a href="https://en.wikipedia.org/wiki/Atomic_commit#Revision_control">Atomic commit: Revision control</a> <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>Wikipedia: <a href="https://en.wikipedia.org/wiki/Atomic_commit#Atomic_commit_convention">Atomic commit: Atomic commit convention</a> <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+  </article>
+
+
+        
+      </main>
+
+      <footer id="ft">
+        <nav aria-label="Footer">
+          <a href="/contact">Contact</a>
+          &middot;
+          <a href="/history">History</a>
+          &middot;
+          <a href="/colophon">Colophon</a>
+          &middot;
+          <a href="/links">Links</a>
+        </nav>
+        <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">This work by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="jamesmead.org">James Mead</a> is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0<img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+      </footer>
+    </div>
+  </body>
+</html>

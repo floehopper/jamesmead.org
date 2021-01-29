@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Nasty Ruby Bug Affecting Test::Unit - James Mead</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="keywords" content="ruby bug test unit exit code hook testing continuous integration" />
+    <meta name="author" content= "James Mead" />
+
+    <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+    <meta name="y_key" content="5f5b0de20991e0c2" />
+    <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
+
+    <link href="/images/favicon.gif" rel="icon" type="image/gif" />
+
+    <link href="/stylesheets/yui/3.18.1/cssreset-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssfonts-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssbase-min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+
+    <link href="/stylesheets/prettify/prettify.css" rel="stylesheet" />
+    <script src="/javascripts/prettify/prettify.js"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.jamesmead.org/floehopper-blog" />
+
+    <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
+
+    <link rel="prev" href="/blog/2008-03-29-prefer-commit-notes-over-comments" />
+    <link rel="next" href="/blog/2008-06-19-mocha-mailing-list-move" />
+    <link rel="first" href="/blog/2004-05-14-unit-tests-can-100-coverage-be-a-bad-thing" />
+    <link rel="last" href="/blog/2021-01-23-youtube-video-of-my-3d-maze-game-for-the-zx-spectrum" />
+    <link rel="index" href="/blog" />
+
+  </head>
+  <body class="blog blog_2008-04-05-nasty-ruby-bug-affecting-test-unit" onload="prettyPrint()">
+    <div id="doc">
+      <div class="skip-links">
+        <a href="#bd">Skip to main content</a>
+      </div>
+
+      <header id="hd">
+        <nav aria-label="Primary">
+          <a href="/">Home</a>
+          &middot;
+          <a href="/blog/">Blog</a>
+          &middot;
+          <a href="/notes/">Notes</a>
+          &middot;
+          <a href="/talks/">Talks</a>
+          &middot;
+          <a href="/projects/">Projects</a>
+        </nav>
+      </header>
+
+      <main id="bd">
+          <article class="h-entry">
+    <header>
+      <h1 class="p-name">Nasty Ruby Bug Affecting Test::Unit</h1>
+    </header>
+
+    <section class="e-content">
+      <h2 id="introduction">Introduction</h2>
+<p>Some time ago, while I was pair-programming with him, <a href="http://blog.seagul.co.uk">Chris</a> alerted me to a <a href="http://www.ruby-lang.org/">Ruby</a> bug he&#8217;d come across which was interfering with the diagnosis of a bug in our application. Since then I&#8217;ve tried to find out more about it, but couldn&#8217;t find much, so I&#8217;ve done a bit of investigation and thought I&#8217;d post it here in case it&#8217;s useful to anyone else. The bug has long since been fixed, but I&#8217;m sure there are still people our there with the <a href="#affected-versions">affected versions</a> of Ruby 1.8.6.</p>
+<h2 id="ruby-bug">Ruby bug</h2>
+<p>As far as I understand it, the bug is in Ruby&#8217;s <a href="https://web.archive.org/web/20090126020149/http://ruby-doc.org/core/classes/Kernel.html#M005958"><code>Kernel.at_exit</code></a> hook. A call to <a href="http://ruby-doc.org/core/classes/Kernel.html#M005956"><code>Kernel.exit(false)</code></a> should cause the process to exit with an <strong>exit status of 1</strong> indicating the process did not complete successfully. The bug means that calling <a href="http://ruby-doc.org/core/classes/Kernel.html#M005956"><code>Kernel.exit(false)</code></a> from within <a href="https://web.archive.org/web/20090126020149/http://ruby-doc.org/core/classes/Kernel.html#M005956"><code>Kernel.at_exit</code></a> incorrectly causes the process to exit with an <strong>exit status of 0</strong>.</p>
+<p>The most relevant bug report is <a href="http://rubyforge.org/tracker/?func=detail&amp;atid=1698&amp;aid=9300&amp;group_id=426">#9300</a> and the most relevant mailing list thread is made up of:-</p>
+<ul>
+	<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/10746">[ruby-core:10746]</a></li>
+	<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/10748">[ruby-core:10748]</a></li>
+	<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/10760">[ruby-core:10760]</a>.</li>
+</ul>
+<p>The fix seems to be in changeset 12126&#8230;</p>
+<pre><code>r12126 | nobu | 2007-03-23 16:53:42 +0000 (Fri, 23 Mar 2007) | 9 lines</code></pre>
+<pre><code>* eval.c (ruby_cleanup): exit by SystemExit and SignalException in END block.  [ruby-core:10609]
+* test/ruby/test_beginendblock.rb (test_should_propagate_exit_code): test for exit in END block.  [ruby-core:10760]
+* test/ruby/test_beginendblock.rb (test_should_propagate_signaled): test for signal in END block.</code></pre>
+<h2 class="implications">Implications for Test::Unit &amp; Rake::TestTask</h2>
+<p>The <a href="#ruby-bug">bug</a> has some important consequences. <a href="https://web.archive.org/web/20100208155315/http://ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html"><code>Test::Unit</code></a> makes use of this mechanism to report test failures. Unfortunately, the bug means that a <a href="https://web.archive.org/web/20100208155315/http://ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html"><code>Test::Unit</code></a> process will always return an <strong>exit status of 0</strong> even when there have been test failures.</p>
+<p>From <code>test/unit.rb</code> :-</p>
+<pre class="prettyprint"><code class="prettyprint">at_exit do
+  unless $! || Test::Unit.run?
+    exit Test::Unit::AutoRunner.run
+  end
+end</code></pre>
+<p>This in turn means that a <a href="http://rake.rubyforge.org/classes/Rake/TestTask.html"><code>Rake::TestTask</code></a> process will also always return an <strong>exit status of 0</strong> even when there have been test failures. This is significant, because many <a href="http://martinfowler.com/articles/continuousIntegration.html">continuous integration</a> systems rely on <a href="http://rake.rubyforge.org/classes/Rake/TestTask.html"><code>Rake::TestTask</code></a> processes returning an <strong>exit status of 1</strong> to indicate that there have been test failures. Thus you will get false positive passing builds &#8211; not good.</p>
+<h2 id="affected-versions">Affected versions of Ruby</h2>
+<p>I&#8217;ve built and installed a number of versions of Ruby and run tests on them to try to establish which ones are affected. Although they aren&#8217;t comprehensive, here are the results&#8230;</p>
+<table>
+	<tr style="background:#ddd;">
+		<td> affected? </td>
+		<td> version </td>
+	</tr>
+	<tr>
+		<td style="text-align:center;"><code>N</code> </td>
+		<td> <code>ruby 1.8.4 (2005-12-24) [i686-darwin8.10.3]</code> </td>
+	</tr>
+	<tr>
+		<td style="text-align:center;"><code>N</code> </td>
+		<td> <code>ruby 1.8.5 (2006-08-25) [i686-darwin8.10.3]</code> </td>
+	</tr>
+	<tr>
+		<td style="text-align:center;"><code>N</code> </td>
+		<td> <code>ruby 1.8.5 (2007-03-16 patchlevel 37) [i686-darwin8.10.3]</code> </td>
+	</tr>
+	<tr>
+		<td style="text-align:center;"><code>N</code> </td>
+		<td> <code>ruby 1.8.5 (2008-03-03 patchlevel 115) [i686-darwin8.10.3]</code> </td>
+	</tr>
+	<tr style="color:red;">
+		<td style="text-align:center;"><code>Y</code> </td>
+		<td> <code>ruby 1.8.6 (2007-02-17 patchlevel 0) [i686-darwin8.10.3]</code> </td>
+	</tr>
+	<tr style="color:red;">
+		<td style="text-align:center;"><code>Y</code> </td>
+		<td> <code>ruby 1.8.6 (2007-03-13 patchlevel 0) [i686-darwin8.10.3]</code> </td>
+	</tr>
+	<tr style="color:red;">
+		<td style="text-align:center;"><code>Y</code> </td>
+		<td> <code>ruby 1.8.6 (2007-03-16 patchlevel 2) [i686-darwin8.10.3]</code> </td>
+	</tr>
+	<tr style="color:red;">
+		<td style="text-align:center;"><code>Y</code> </td>
+		<td> <code>ruby 1.8.6 (2007-03-19 patchlevel 4) [i686-darwin8.10.3]</code> </td>
+	</tr>
+	<tr style="color:red;">
+		<td style="text-align:center;"><code>Y</code> </td>
+		<td> <code>ruby 1.8.6 (2007-05-22 patchlevel 5) [i686-darwin8.10.3]</code> </td>
+	</tr>
+	<tr style="color:red;">
+		<td style="text-align:center;"><code>Y</code> </td>
+		<td> <code>ruby 1.8.6 (2007-05-22 patchlevel 6) [i686-darwin8.10.3]</code> </td>
+	</tr>
+	<tr style="color:red;">
+		<td style="text-align:center;"><code>Y</code> </td>
+		<td> <code>ruby 1.8.6 (2007-05-22 patchlevel 7) [i686-darwin8.10.3]</code> </td>
+	</tr>
+	<tr>
+		<td style="text-align:center;"><code>N</code> </td>
+		<td> <code>ruby 1.8.6 (2007-05-22 patchlevel 8) [i686-darwin8.10.3]</code> </td>
+	</tr>
+	<tr>
+		<td style="text-align:center;"><code>N</code> </td>
+		<td> <code>ruby 1.8.6 (2007-05-23 patchlevel 9) [i686-darwin8.10.3]</code> </td>
+	</tr>
+	<tr>
+		<td style="text-align:center;"><code>N</code> </td>
+		<td> <code>ruby 1.8.6 (2007-05-23 patchlevel 10) [i686-darwin8.10.3]</code> </td>
+	</tr>
+	<tr>
+		<td style="text-align:center;"><code>N</code> </td>
+		<td> <code>ruby 1.8.6 (2007-08-22 patchlevel 50) [i686-darwin8.10.3]</code> </td>
+	</tr>
+	<tr>
+		<td style="text-align:center;"><code>N</code> </td>
+		<td> <code>ruby 1.9.0 (2007-11-28 patchlevel 0) [i686-darwin8.10.3]</code> </td>
+	</tr>
+</table>
+    </section>
+
+    <footer>
+      <p class="metadata">
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2008-04-05-nasty-ruby-bug-affecting-test-unit"><time class="dt-published" datetime="2008-04-05T00:10:06+00:00">05 Apr 2008 at 00:10</time></a>
+      </p>
+      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2008-04-05-nasty-ruby-bug-affecting-test-unit">
+  <template id="webmention-template">
+    <li class="webmention">
+      <div>
+        <a class="author">
+          <span class="author-name"></span>
+        </a>
+        <a class="action"></a>
+      </div>
+      <div class="content"></div>
+    </li>
+  </template>
+</div>
+
+<script src="/javascripts/webmentions.js" type="text/javascript" charset="utf-8"></script>
+
+    </footer>
+  </article>
+
+
+          <nav id="navigation" aria-label="Inter-article">
+      <a href="/blog/2008-03-29-prefer-commit-notes-over-comments" class="previous">&lt; Prefer Commit Notes over Comments</a>
+      <a href="/blog/2008-06-19-mocha-mailing-list-move" class="next">Mocha Mailing List Move &gt;</a>
+  </nav>
+
+      </main>
+
+      <footer id="ft">
+        <nav aria-label="Footer">
+          <a href="/contact">Contact</a>
+          &middot;
+          <a href="/history">History</a>
+          &middot;
+          <a href="/colophon">Colophon</a>
+          &middot;
+          <a href="/links">Links</a>
+        </nav>
+        <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">This work by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="jamesmead.org">James Mead</a> is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0<img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+      </footer>
+    </div>
+  </body>
+</html>

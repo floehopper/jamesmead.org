@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>IndieWeb-ifying my personal website - James Mead</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Marking up relevant content with microformats and adding the ability to receive webmentions" />
+    <meta name="author" content= "James Mead" />
+
+    <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+    <meta name="y_key" content="5f5b0de20991e0c2" />
+    <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
+
+    <link href="/images/favicon.gif" rel="icon" type="image/gif" />
+
+    <link href="/stylesheets/yui/3.18.1/cssreset-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssfonts-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssbase-min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+
+    <link href="/stylesheets/prettify/prettify.css" rel="stylesheet" />
+    <script src="/javascripts/prettify/prettify.js"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.jamesmead.org/floehopper-blog" />
+
+    <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
+
+    <link rel="prev" href="/blog/2020-03-30-automatic-backup-of-trello-boards-to-s3-using-aws-cdk" />
+    <link rel="next" href="/blog/2020-07-26-a-simple-ruby-development-environment-using-nix-shell" />
+    <link rel="first" href="/blog/2004-05-14-unit-tests-can-100-coverage-be-a-bad-thing" />
+    <link rel="last" href="/blog/2021-01-23-youtube-video-of-my-3d-maze-game-for-the-zx-spectrum" />
+    <link rel="index" href="/blog" />
+
+  </head>
+  <body class="blog blog_2020-06-27-indieweb-ifying-my-personal-website" onload="prettyPrint()">
+    <div id="doc">
+      <div class="skip-links">
+        <a href="#bd">Skip to main content</a>
+      </div>
+
+      <header id="hd">
+        <nav aria-label="Primary">
+          <a href="/">Home</a>
+          &middot;
+          <a href="/blog/">Blog</a>
+          &middot;
+          <a href="/notes/">Notes</a>
+          &middot;
+          <a href="/talks/">Talks</a>
+          &middot;
+          <a href="/projects/">Projects</a>
+        </nav>
+      </header>
+
+      <main id="bd">
+          <article class="h-entry">
+    <header>
+      <h1 class="p-name">IndieWeb-ifying my personal website</h1>
+        <h2 class="p-summary">Marking up relevant content with microformats and adding the ability to receive webmentions</h2>
+    </header>
+
+    <section class="e-content">
+      <p>I've been interested in the <a href="https://indieweb.org/">IndieWeb</a> since my colleague, <a href="http://chrisroos.co.uk/">Chris R</a>, hosted <a href="https://gofreerange.com/the-first-london-indieweb-homebrew-website-club">the first London IndieWeb meetup</a> years ago and at various points I've played with a few bits of it on my website, e.g. <a href="https://en.wikipedia.org/wiki/OpenID">OpenID</a> and <a href="https://indieauth.net/">IndieAuth</a>. As part of my efforts to move away from Twitter and Facebook, I recently joined the very friendly <a href="https://fosstodon.org/">fosstodon.org</a> Mastodon instance and I noticed quite a lot of toots about the IndieWeb including one which mentioned the <a href="https://indiewebify.me">indiewebify.me</a> website which walks you through various levels of IndieWeb "compliance". I've been interested in finding out more about <a href="https://www.w3.org/TR/webmention/">Webmentions</a> for a while and this gave me the motivation I needed to give them a try.</p>
+
+<p>It turns out I had already <a href="https://github.com/floehopper/jamesmead.org/commit/7755ead416ed2e39906a1d61f692d0b83be34546">become a citizen of the IndieWeb</a>, i.e. Level 1 compliance, back in June 2013 and amazingly (to me anyway) that functionality was still working. Level 2 compliance is about publishing on the IndieWeb and Level 3 compliance is about federating IndieWeb conversations.</p>
+
+<h3 id="publishing-on-the-indieweb">Publishing on the IndieWeb</h3>
+
+<p>For level 2, the first step was to markup my home page using the <a href="http://microformats.org/wiki/h-card">h-card microformat</a>, not to be confused with the older <a href="http://microformats.org/wiki/hCard">hCard microformat</a>. I started doing this by creating separate hidden markup, but I was unhappy with the amount of duplication. And so, after faffing about with <a href="https://middlemanapp.com/">middleman</a> for a while and discovering its <a href="https://middlemanapp.com/basics/layouts/#nested-layouts">nested layouts</a>, I managed to markup some of the existing content to reduce the amount of duplication: <a href="https://github.com/floehopper/jamesmead.org/blob/6760dd64e5a3999f19726efa96f46e4d42fd9905/source/layouts/home.html.erb#L2-L6">h-card &amp; p-name</a>, <a href="https://github.com/floehopper/jamesmead.org/blob/6760dd64e5a3999f19726efa96f46e4d42fd9905/source/index.html.erb#L12-L13">p-org, p-job-title, p-locality &amp; p-country-name</a> and <a href="https://github.com/floehopper/jamesmead.org/blob/6760dd64e5a3999f19726efa96f46e4d42fd9905/source/index.html.erb#L31-L46">u-photo, p-note, u-uid &amp; u-url</a>. The validator suggested that it was <a href="https://indiewebify.me/validate-h-card/?url=https%3A%2F%2Fjamesmead.org%2F">working OK</a>. So far, so good.</p>
+
+<p><img style="display: block; margin-left: auto; margin-right: auto; width: 80%;" src="/images/h-card-validation.png" alt="h-card validation success" /></p>
+
+<p>The next step was to markup my blog posts with the <a href="http://microformats.org/wiki/h-entry">h-entry microformat</a>. This was relatively straightforward to implement now that I had a separate <a href="https://github.com/floehopper/jamesmead.org/blob/b5522b3c2529b93b3dfd07b148ecc3f911d23d4f/source/layouts/blog.html.erb#L2-L19"><code>blog</code> layout</a> and the validator suggested that it was <a href="https://indiewebify.me/validate-h-entry/?url=https%3A%2F%2Fjamesmead.org%2Fblog%2F2020-03-30-automatic-backup-of-trello-boards-to-s3-using-aws-cdk">working OK</a>.</p>
+
+<p><img style="display: block; margin-left: auto; margin-right: auto; width: 80%;" src="/images/h-entry-validation.png" alt="h-entry validation success" /></p>
+
+<p>At this point, I should have added the ability to send Webmentions to other IndieWeb sites, but it's not completely obvious to me how to do this for a static site. I <em>think</em> I could do it by hooking the <a href="https://github.com/indieweb/webmention-client-ruby"><code>webmention</code> gem</a> into my <a href="https://jamesmead.org/blog/2019-09-07-using-github-actions-to-publish-a-static-site-to-github-pages">GitHub Action-based build</a>, but I decided to skip this step for now given that it's relatively easy to <a href="https://indieweb.org/webmention-implementation-guide#One-liner_webmentions">send a Webmention manually using <code>curl</code></a> and it's not as if I currently blog that frequently!</p>
+
+<h3 id="federating-indieweb-conversations">Federating IndieWeb conversations</h3>
+
+<p>I also decided to skip the steps about posting <a href="https://indieweb.org/reply">replies</a> to other people's posts and adding <a href="https://indieweb.org/reply-context">reply contexts</a> to my own site until I actually want to reply to something someone has written.</p>
+
+<p>However, I did <a href="https://github.com/floehopper/jamesmead.org/blob/6760dd64e5a3999f19726efa96f46e4d42fd9905/source/layouts/layout.html.erb#L33">configure my site to receive Webmentions</a> using the excellent hosted <a href="https://webmention.io/">webmention.io</a> service. This was very easy.</p>
+
+<p>I then added some very basic code to <a href="https://github.com/floehopper/jamesmead.org/commit/6760dd64e5a3999f19726efa96f46e4d42fd9905">display Webmentions</a> at the bottom of each blog post closely based on <a href="https://sebastiandedeyne.com/adding-webmentions-to-my-blog/#displaying-webmentions-on-post-pages">Sebastian De Deyne's implementation</a>. For the moment, I'm using JavaScript running on the client-side, but I can see how in time this might lead to putting an unfair load on webmention.io.</p>
+
+<p>A better solution might be to incorporate fetching the latest Webmentions and rendering them in HTML into the automated build, perhaps enhancing them with the latest Webmentions using JavaScript. I think this might be how the <a href="https://github.com/aarongustafson/jekyll-webmention_io">webmention.io Jekyll plugin</a> works, but that's a job for another day.</p>
+
+<p>I checked that my website is receiving Webmentions OK by commenting on a blog post using <a href="https://commentpara.de/">commentpara.de</a>. 🎉🎉</p>
+
+<p><img style="border: 1px dashed; display: block; margin-left: auto; margin-right: auto; width: 50%;" src="/images/webmention-comment.png" alt="comment added using commentpara.de" /></p>
+
+<p>Clearly I haven't yet fully achieved even level 2 IndieWeb compliance, but I'm pleased with what I've done so far and, more to the point, what I've learnt in doing it. I should also mention that I found lots of useful advice in the following articles:</p>
+
+<ul>
+  <li>
+    <p><a href="https://sebastiandedeyne.com/adding-webmentions-to-my-blog/">Adding webmentions to my blog</a> by Sebastian De Deyne</p>
+  </li>
+  <li>
+    <p><a href="https://www.jvt.me/posts/2019/03/18/displaying-webmentions/">Displaying Webmentions on my Hugo website</a> by Jamie Tanna</p>
+  </li>
+  <li>
+    <p><a href="http://evantravers.com/articles/2019/11/14/indieweb-webmentions-on-middleman-or-jekyll/">Indieweb Webmentions on Middleman or Jekyll</a> by Evan Travers</p>
+  </li>
+</ul>
+
+
+    </section>
+
+    <footer>
+      <p class="metadata">
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2020-06-27-indieweb-ifying-my-personal-website"><time class="dt-published" datetime="2020-06-27T18:53:00+00:00">27 Jun 2020 at 18:53</time></a>
+      </p>
+      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2020-06-27-indieweb-ifying-my-personal-website">
+  <template id="webmention-template">
+    <li class="webmention">
+      <div>
+        <a class="author">
+          <span class="author-name"></span>
+        </a>
+        <a class="action"></a>
+      </div>
+      <div class="content"></div>
+    </li>
+  </template>
+</div>
+
+<script src="/javascripts/webmentions.js" type="text/javascript" charset="utf-8"></script>
+
+    </footer>
+  </article>
+
+
+          <nav id="navigation" aria-label="Inter-article">
+      <a href="/blog/2020-03-30-automatic-backup-of-trello-boards-to-s3-using-aws-cdk" class="previous">&lt; Automatic backup of Trello boards to S3 using the AWS CDK</a>
+      <a href="/blog/2020-07-26-a-simple-ruby-development-environment-using-nix-shell" class="next">A simple Ruby development environment using nix-shell &gt;</a>
+  </nav>
+
+      </main>
+
+      <footer id="ft">
+        <nav aria-label="Footer">
+          <a href="/contact">Contact</a>
+          &middot;
+          <a href="/history">History</a>
+          &middot;
+          <a href="/colophon">Colophon</a>
+          &middot;
+          <a href="/links">Links</a>
+        </nav>
+        <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">This work by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="jamesmead.org">James Mead</a> is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0<img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+      </footer>
+    </div>
+  </body>
+</html>

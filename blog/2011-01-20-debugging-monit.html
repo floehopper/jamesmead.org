@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Debugging Monit - James Mead</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Notes on debugging monit start program and stop program commands." />
+    <meta name="keywords" content="monit linux osx" />
+    <meta name="author" content= "James Mead" />
+
+    <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+    <meta name="y_key" content="5f5b0de20991e0c2" />
+    <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
+
+    <link href="/images/favicon.gif" rel="icon" type="image/gif" />
+
+    <link href="/stylesheets/yui/3.18.1/cssreset-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssfonts-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssbase-min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+
+    <link href="/stylesheets/prettify/prettify.css" rel="stylesheet" />
+    <script src="/javascripts/prettify/prettify.js"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.jamesmead.org/floehopper-blog" />
+
+    <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
+
+    <link rel="prev" href="/blog/2010-11-25-mocha-release-0-9-10" />
+    <link rel="next" href="/blog/2011-01-20-adding-a-user-in-osx-on-command-line" />
+    <link rel="first" href="/blog/2004-05-14-unit-tests-can-100-coverage-be-a-bad-thing" />
+    <link rel="last" href="/blog/2021-01-23-youtube-video-of-my-3d-maze-game-for-the-zx-spectrum" />
+    <link rel="index" href="/blog" />
+
+  </head>
+  <body class="blog blog_2011-01-20-debugging-monit" onload="prettyPrint()">
+    <div id="doc">
+      <div class="skip-links">
+        <a href="#bd">Skip to main content</a>
+      </div>
+
+      <header id="hd">
+        <nav aria-label="Primary">
+          <a href="/">Home</a>
+          &middot;
+          <a href="/blog/">Blog</a>
+          &middot;
+          <a href="/notes/">Notes</a>
+          &middot;
+          <a href="/talks/">Talks</a>
+          &middot;
+          <a href="/projects/">Projects</a>
+        </nav>
+      </header>
+
+      <main id="bd">
+          <article class="h-entry">
+    <header>
+      <h1 class="p-name">Debugging Monit</h1>
+        <h2 class="p-summary">Notes on debugging monit start program and stop program commands.</h2>
+    </header>
+
+    <section class="e-content">
+      <p>At <a href="http://gofreerange.com">GoFreeRange</a> I recently spent some time debugging a couple of <a href="http://mmonit.com/monit/">Monit</a> <code>start program</code> and <code>stop program</code> commands, so I thought I'd share some notes I made in case they're of use to anyone else.</p>
+
+<p>Although we mainly deploy to <a href="http://www.ubuntu.com/">Ubuntu</a>, I wanted to be able to debug the commands on my local <a href="http://www.apple.com/macosx/">OSX</a> machine. I found I could run Monit in non-daemon mode with verbose logging enabled, but it doesn't show the stdout/stderr generated when it runs your <code>start program</code> or <code>stop program</code> commands. So it seems the best you can do is to create an environment that mimics the Monit environment and try running the commands from there.</p>
+
+<p>According to the <a href="http://mmonit.com/monit/documentation/monit.html">documentation</a>, the Monit process runs as superuser and has only a very limited set of environment variables. Notably it only has the following <code>PATH</code> set: <code>/bin:/usr/bin:/sbin:/usr/sbin</code>.</p>
+
+<p>In our automated <a href="https://github.com/freerange/freerange-puppet">provisioning</a> and <a href="https://github.com/freerange/deploy">deployment</a> solution, we use a <a href="http://wiki.brightbox.co.uk/docs:ruby-enterprise">Brightbox Ruby Enterprise Edition package</a> which <em>replaces</em> the existing system <a href="http://www.ruby-lang.org/">Ruby</a>, so the default Monit <code>PATH</code> is enough to find the Ruby binaries.</p>
+
+<p>We use <a href="http://gembundler.com/">Bundler</a>, so we need to have the <code>bundler</code> gem installed as a system gem in the default Ruby. We use <code>bundle install</code> with the <code>--path</code> option to install project gems into a directory under the <a href="https://github.com/capistrano/capistrano">Capistrano</a> shared directory. This means that at environment load time the <code>bundler</code> gem finds the project gems based on the <code>BUNDLE_PATH</code> specified in the project's <code>.bundle/config</code>. The advantage of this is that this takes care of adding any <code>PATH</code>s to gem binaries and again we can manage with just the default Monit <code>PATH</code>.</p>
+
+<p>Next I created a <code>monitrc</code> containing the <code>start program</code> and <code>stop program</code> commands and put it in my local project root. Note that we run the commands as a specified user and group (<code>run_as_username</code> &amp; <code>run_as_group</code>) :-</p>
+
+<pre><code>check process myprocess
+  with pidfile /Users/myusername/myproject/log/myprocess.pid
+  start program = "/usr/bin/env RAILS_ENV=development /bin/sh -c \
+    'cd /Users/myusername/myproject/ &amp;&amp; script/daemon script/myscript start'" \
+    as uid run_as_username and gid run_as_group
+  stop program = "/usr/bin/env RAILS_ENV=development /bin/sh -c \
+    'cd /Users/myusername/myproject/ &amp;&amp; script/daemon script/myscript stop'" \
+    as uid run_as_username and gid run_as_group
+</code></pre>
+
+<p>Since Monit is run as superuser, I found I needed to change the ownership of this <code>monitrc</code> file so the Monit process could read it :-</p>
+
+<pre><code>$ sudo chown root:wheel /Users/myusername/myproject/monitrc
+</code></pre>
+
+<p>We try to use a standard daemon mechanism for all our background processes and so we put all the <code>pid</code> files in the log directory under the Capistrano shared directory (the project log directory in development). I found I needed to change the ownership for my local log directory to match the <code>run_as_username</code> &amp; <code>run_as_group</code> so that it can write and delete the <code>pidfile</code> :-</p>
+
+<pre><code>$ sudo chown run_as_username:run_as_group /Users/myusername/myproject/log
+</code></pre>
+
+<p>At this point I was in a position to run the <code>start program</code> command either directly in a shell environment mimicking the Monit environment or by running Monit itself. I achieved the former as follows :-</p>
+
+<pre><code>$ sudo su
+$ env -i PATH=/bin:/usr/bin:/sbin:/usr/sbin /bin/sh
+$ su run_as_username
+$ /usr/bin/env RAILS_ENV=development /bin/sh -c \
+  'cd /Users/myusername/myproject/ &amp;&amp; script/daemon script/myscript start'
+Running daemon command 'start' for 'script/myscript' with app name 'myscript'
+$ /usr/bin/env RAILS_ENV=development /bin/sh -c \
+  'cd /Users/myusername/myproject/ &amp;&amp; script/daemon script/myscript stop'
+Running daemon command 'stop' for 'script/myscript' with app name 'myscript'
+</code></pre>
+
+<p>This meant I could see stdout/stderr and diagnose any problems. Note that in my case I had to <a href="/blog/2011-01-20-adding-a-user-in-osx-on-command-line">create a new user and group</a> for <code>run_as_username</code> &amp; <code>run_as_group</code>. Once this was working, I was able to run Monit as follows :-</p>
+
+<pre><code>$ sudo su
+$ env -i PATH=/bin:/usr/bin:/sbin:/usr/sbin /bin/sh
+$ /usr/local/bin/monit -c /Users/myusername/myproject/monitrc -v
+</code></pre>
+
+<p>You should see Monit trying to start <code>myprocess</code> and checking for the existence of the <code>myprocess.pid</code> file. If this doesn't work, it will eventually timeout.</p>
+
+    </section>
+
+    <footer>
+      <p class="metadata">
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2011-01-20-debugging-monit"><time class="dt-published" datetime="2011-01-20T17:10:32+00:00">20 Jan 2011 at 17:10</time></a>
+      </p>
+      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2011-01-20-debugging-monit">
+  <template id="webmention-template">
+    <li class="webmention">
+      <div>
+        <a class="author">
+          <span class="author-name"></span>
+        </a>
+        <a class="action"></a>
+      </div>
+      <div class="content"></div>
+    </li>
+  </template>
+</div>
+
+<script src="/javascripts/webmentions.js" type="text/javascript" charset="utf-8"></script>
+
+    </footer>
+  </article>
+
+
+          <nav id="navigation" aria-label="Inter-article">
+      <a href="/blog/2010-11-25-mocha-release-0-9-10" class="previous">&lt; Mocha Release 0.9.10</a>
+      <a href="/blog/2011-01-20-adding-a-user-in-osx-on-command-line" class="next">Adding a User in OSX on Command Line &gt;</a>
+  </nav>
+
+      </main>
+
+      <footer id="ft">
+        <nav aria-label="Footer">
+          <a href="/contact">Contact</a>
+          &middot;
+          <a href="/history">History</a>
+          &middot;
+          <a href="/colophon">Colophon</a>
+          &middot;
+          <a href="/links">Links</a>
+        </nav>
+        <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">This work by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="jamesmead.org">James Mead</a> is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0<img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+      </footer>
+    </div>
+  </body>
+</html>

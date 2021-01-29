@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ActiveRecord Model Class Name Clash - James Mead</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Validation weirdness with a class called Sync." />
+    <meta name="keywords" content="activerecord model class validation twice callback collision clash" />
+    <meta name="author" content= "James Mead" />
+
+    <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+    <meta name="y_key" content="5f5b0de20991e0c2" />
+    <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
+
+    <link href="/images/favicon.gif" rel="icon" type="image/gif" />
+
+    <link href="/stylesheets/yui/3.18.1/cssreset-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssfonts-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssbase-min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+
+    <link href="/stylesheets/prettify/prettify.css" rel="stylesheet" />
+    <script src="/javascripts/prettify/prettify.js"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.jamesmead.org/floehopper-blog" />
+
+    <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
+
+    <link rel="prev" href="/blog/2009-09-18-mocha-nomethoderror-load-order-since-version-0-9-6" />
+    <link rel="next" href="/blog/2009-12-14-ruby-and-cocoa-talk-at-ruby-manor" />
+    <link rel="first" href="/blog/2004-05-14-unit-tests-can-100-coverage-be-a-bad-thing" />
+    <link rel="last" href="/blog/2021-01-23-youtube-video-of-my-3d-maze-game-for-the-zx-spectrum" />
+    <link rel="index" href="/blog" />
+
+  </head>
+  <body class="blog blog_2009-11-02-activerecord-model-class-name-clash" onload="prettyPrint()">
+    <div id="doc">
+      <div class="skip-links">
+        <a href="#bd">Skip to main content</a>
+      </div>
+
+      <header id="hd">
+        <nav aria-label="Primary">
+          <a href="/">Home</a>
+          &middot;
+          <a href="/blog/">Blog</a>
+          &middot;
+          <a href="/notes/">Notes</a>
+          &middot;
+          <a href="/talks/">Talks</a>
+          &middot;
+          <a href="/projects/">Projects</a>
+        </nav>
+      </header>
+
+      <main id="bd">
+          <article class="h-entry">
+    <header>
+      <h1 class="p-name">ActiveRecord Model Class Name Clash</h1>
+        <h2 class="p-summary">Validation weirdness with a class called Sync.</h2>
+    </header>
+
+    <section class="e-content">
+      <p>I&#8217;ve just spent way too long trying to work out why the validation callbacks were getting called twice on one of my <a href="http://api.rubyonrails.org/classes/ActiveRecord/Base.html">ActiveRecord</a> models. I thought I&#8217;d write this up in case it saves someone else some pain.</p>
+<p>In the end, I narrowed the problem down to the name of the model class which is <code>Sync</code>. I should&#8217;ve thought of this sooner, but it turns out there is a Ruby standard library class called <a href="http://ruby-doc.org/stdlib/libdoc/sync/rdoc/index.html"><code>Sync</code></a>. I haven&#8217;t delved any further into why validation was being called twice. As far as I&#8217;m concerned, once you re-open an existing Ruby class like this, it makes sense that all bets are off.</p>
+<p>However, I am a bit confused why the original Sync model class definition didn&#8217;t give a &#8220;superclass mismatch&#8221; <a href="http://ruby-doc.org/core/classes/TypeError.html"><code>TypeError</code></a>, which is what happens if I do :-</p>
+<pre><code>script/runner "class Sync &lt; ActiveRecord::Base; end"</code></pre>
+<p>It must be a load order issue, since if I put the class definition in a file in app/models, I don&#8217;t see the <code>TypeError</code>. It would&#8217;ve saved a lot of time if my <code>Sync</code> model class definition had failed fast in this way. I might see if there&#8217;s a way to make that happen.</p>
+    </section>
+
+    <footer>
+      <p class="metadata">
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2009-11-02-activerecord-model-class-name-clash"><time class="dt-published" datetime="2009-11-02T16:21:44+00:00">02 Nov 2009 at 16:21</time></a>
+      </p>
+      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2009-11-02-activerecord-model-class-name-clash">
+  <template id="webmention-template">
+    <li class="webmention">
+      <div>
+        <a class="author">
+          <span class="author-name"></span>
+        </a>
+        <a class="action"></a>
+      </div>
+      <div class="content"></div>
+    </li>
+  </template>
+</div>
+
+<script src="/javascripts/webmentions.js" type="text/javascript" charset="utf-8"></script>
+
+    </footer>
+  </article>
+
+
+          <nav id="navigation" aria-label="Inter-article">
+      <a href="/blog/2009-09-18-mocha-nomethoderror-load-order-since-version-0-9-6" class="previous">&lt; Mocha NoMethodError / Load order since version 0.9.6</a>
+      <a href="/blog/2009-12-14-ruby-and-cocoa-talk-at-ruby-manor" class="next">Ruby and Cocoa talk at Ruby Manor &gt;</a>
+  </nav>
+
+      </main>
+
+      <footer id="ft">
+        <nav aria-label="Footer">
+          <a href="/contact">Contact</a>
+          &middot;
+          <a href="/history">History</a>
+          &middot;
+          <a href="/colophon">Colophon</a>
+          &middot;
+          <a href="/links">Links</a>
+        </nav>
+        <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">This work by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="jamesmead.org">James Mead</a> is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0<img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+      </footer>
+    </div>
+  </body>
+</html>

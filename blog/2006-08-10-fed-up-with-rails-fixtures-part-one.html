@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Fed up with Rails fixtures? (part one) - James Mead</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="keywords" content="fixtures rails test ruby testing database activerecord" />
+    <meta name="author" content= "James Mead" />
+
+    <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+    <meta name="y_key" content="5f5b0de20991e0c2" />
+    <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
+
+    <link href="/images/favicon.gif" rel="icon" type="image/gif" />
+
+    <link href="/stylesheets/yui/3.18.1/cssreset-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssfonts-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssbase-min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+
+    <link href="/stylesheets/prettify/prettify.css" rel="stylesheet" />
+    <script src="/javascripts/prettify/prettify.js"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.jamesmead.org/floehopper-blog" />
+
+    <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
+
+    <link rel="prev" href="/blog/2006-08-03-dot-com-survivor" />
+    <link rel="next" href="/blog/2006-08-11-gmail-notifier-starred-messages" />
+    <link rel="first" href="/blog/2004-05-14-unit-tests-can-100-coverage-be-a-bad-thing" />
+    <link rel="last" href="/blog/2021-01-23-youtube-video-of-my-3d-maze-game-for-the-zx-spectrum" />
+    <link rel="index" href="/blog" />
+
+  </head>
+  <body class="blog blog_2006-08-10-fed-up-with-rails-fixtures-part-one" onload="prettyPrint()">
+    <div id="doc">
+      <div class="skip-links">
+        <a href="#bd">Skip to main content</a>
+      </div>
+
+      <header id="hd">
+        <nav aria-label="Primary">
+          <a href="/">Home</a>
+          &middot;
+          <a href="/blog/">Blog</a>
+          &middot;
+          <a href="/notes/">Notes</a>
+          &middot;
+          <a href="/talks/">Talks</a>
+          &middot;
+          <a href="/projects/">Projects</a>
+        </nav>
+      </header>
+
+      <main id="bd">
+          <article class="h-entry">
+    <header>
+      <h1 class="p-name">Fed up with Rails fixtures? (part one)</h1>
+    </header>
+
+    <section class="e-content">
+      <p>In a <a href="/blog/2006-06-27-rails-fixtures-help-or-hindrance">previous post</a> I explained why I&#8217;m not a big fan of Rails fixtures. But how can you avoid using them and still obtain good test coverage? Try forgetting about fixtures and writing unit tests that only test a single class and nothing else. Here&#8217;s an example where you hardly<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> need to involve the database at all&#8230;</p>
+<pre class="prettyprint"><code class="prettyprint">class Initial &lt; ActiveRecord::Migration
+  def self.up
+    create_table :companies do |t|
+      t.column :name, :string
+    end
+    create_table :employees do |t|
+      t.column :company_id, :integer
+      t.column :salary, :integer
+    end
+  end
+end</code></pre>
+<pre class="prettyprint"><code class="prettyprint">class Company &lt; ActiveRecord::Base
+  has_many :employees
+  def wage_bill
+    employees.inject(0) { |total, employee| total + employee.salary }
+  end
+end</code></pre>
+<pre class="prettyprint"><code class="prettyprint">class Employee &lt; ActiveRecord::Base
+  belongs_to :company
+end</code></pre>
+<p>So instead of writing this&#8230;</p>
+<pre class="prettyprint"><code class="prettyprint"># companies.yml
+walmart:
+  id: 1
+  name: Walmart</code>
+
+<code class="prettyprint"># employees.yml
+fred:
+  id: 1
+  company_id: 1
+  salary: 10000
+anne:
+  id: 2
+  company_id: 1
+  salary: 20000</code></pre>
+<pre class="prettyprint"><code class="prettyprint">class CompanyTest &lt; Test::Unit::TestCase
+  fixtures :companies, :employees
+  def test_should_calculate_wage_bill
+    assert_equal 30000, companies(:walmart).wage_bill
+  end
+end</code></pre>
+<p>You can write this&#8230;</p>
+<pre class="prettyprint"><code class="prettyprint">class CompanyTest &lt; Test::Unit::TestCase
+  def test_should_calculate_wage_bill
+    employees = []
+    employees &lt;&lt; Employee.new(:salary =&gt; 10000)
+    employees &lt;&lt; Employee.new(:salary =&gt; 20000)
+    company = Company.new(:employees =&gt; employees)
+    assert_equal 10000 + 20000, company.wage_bill
+  end
+end</code></pre>
+<p>This way you home in on the behaviour of the <code>Company#wage_bill</code> method and avoid testing the <a href="http://api.rubyonrails.org/classes/ActiveRecord/Base.html">ActiveRecord</a> code and access to the database. More ways to avoid hitting the database will follow in another post.</p>
+<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> ActiveRecord still needs to know what columns in each table e.g.</p>
+<pre class="prettyprint"><code class="prettyprint">SHOW FIELDS FROM companies
+</code></pre>
+    </section>
+
+    <footer>
+      <p class="metadata">
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2006-08-10-fed-up-with-rails-fixtures-part-one"><time class="dt-published" datetime="2006-08-10T04:09:00+00:00">10 Aug 2006 at 04:09</time></a>
+      </p>
+      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2006-08-10-fed-up-with-rails-fixtures-part-one">
+  <template id="webmention-template">
+    <li class="webmention">
+      <div>
+        <a class="author">
+          <span class="author-name"></span>
+        </a>
+        <a class="action"></a>
+      </div>
+      <div class="content"></div>
+    </li>
+  </template>
+</div>
+
+<script src="/javascripts/webmentions.js" type="text/javascript" charset="utf-8"></script>
+
+    </footer>
+  </article>
+
+
+          <nav id="navigation" aria-label="Inter-article">
+      <a href="/blog/2006-08-03-dot-com-survivor" class="previous">&lt; Dot-com survivor</a>
+      <a href="/blog/2006-08-11-gmail-notifier-starred-messages" class="next">GMail Notifier - starred messages &gt;</a>
+  </nav>
+
+      </main>
+
+      <footer id="ft">
+        <nav aria-label="Footer">
+          <a href="/contact">Contact</a>
+          &middot;
+          <a href="/history">History</a>
+          &middot;
+          <a href="/colophon">Colophon</a>
+          &middot;
+          <a href="/links">Links</a>
+        </nav>
+        <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">This work by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="jamesmead.org">James Mead</a> is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0<img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+      </footer>
+    </div>
+  </body>
+</html>

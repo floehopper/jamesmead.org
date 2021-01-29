@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Mocha Release 0.9.9 - James Mead</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Includes bug fixes for Test::Unit and MiniTest integration." />
+    <meta name="keywords" content="mocha release mock object ruby testing" />
+    <meta name="author" content= "James Mead" />
+
+    <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+    <meta name="y_key" content="5f5b0de20991e0c2" />
+    <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
+
+    <link href="/images/favicon.gif" rel="icon" type="image/gif" />
+
+    <link href="/stylesheets/yui/3.18.1/cssreset-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssfonts-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssbase-min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+
+    <link href="/stylesheets/prettify/prettify.css" rel="stylesheet" />
+    <script src="/javascripts/prettify/prettify.js"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.jamesmead.org/floehopper-blog" />
+
+    <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
+
+    <link rel="prev" href="/blog/2010-08-19-ruby-acceptance-testing" />
+    <link rel="next" href="/blog/2010-11-25-mocha-release-0-9-10" />
+    <link rel="first" href="/blog/2004-05-14-unit-tests-can-100-coverage-be-a-bad-thing" />
+    <link rel="last" href="/blog/2021-01-23-youtube-video-of-my-3d-maze-game-for-the-zx-spectrum" />
+    <link rel="index" href="/blog" />
+
+  </head>
+  <body class="blog blog_2010-10-22-mocha-release-0-9-9" onload="prettyPrint()">
+    <div id="doc">
+      <div class="skip-links">
+        <a href="#bd">Skip to main content</a>
+      </div>
+
+      <header id="hd">
+        <nav aria-label="Primary">
+          <a href="/">Home</a>
+          &middot;
+          <a href="/blog/">Blog</a>
+          &middot;
+          <a href="/notes/">Notes</a>
+          &middot;
+          <a href="/talks/">Talks</a>
+          &middot;
+          <a href="/projects/">Projects</a>
+        </nav>
+      </header>
+
+      <main id="bd">
+          <article class="h-entry">
+    <header>
+      <h1 class="p-name">Mocha Release 0.9.9</h1>
+        <h2 class="p-summary">Includes bug fixes for Test::Unit and MiniTest integration.</h2>
+    </header>
+
+    <section class="e-content">
+      <h2>Release Notes</h2>
+<ul>
+	<li>Avoid loading bits of the <a href="http://test-unit.rubyforge.org/">test-unit</a> gem by accident. This is an attempt at a fix for the problem that <a href="http://interblah.net/">James Adam</a> <a href="http://floehopper.lighthouseapp.com/projects/22289-mocha/tickets/50#ticket-50-13">reported</a>. By using <code>load</code> instead of <code>require</code> to detect the version of <code>Test::Unit</code>, we can avoid <code>rubygems</code> trying to load bits of the <a href="http://test-unit.rubyforge.org/">test-unit</a> gem when it&#8217;s not wanted.</li>
+	<li>Fix exception when running <code>rake</code> without <a href="http://test-unit.rubyforge.org/">test-unit</a> gem. When <a href="http://test-unit.rubyforge.org/">test-unit</a> gem &gt;=v2.0.0 was installed but the <code>use_test_unit_gem</code> <code>MOCHA_OPTIONS</code> was not specified, a &#8220;comparison of <code>Fixnum</code> with <code>Hash</code> failed&#8221; exception was being raised when running the performance tests. This was because bits of the <a href="http://test-unit.rubyforge.org/">test-unit</a> gem were being loaded accidentally and a Hash was being incorrectly supplied to the <code>TestRunner.run</code> method.</li>
+	<li>Explicitly require <code>rubygems</code> for running tests via <code>rake</code> using <a href="http://test-unit.rubyforge.org/">test-unit</a> gem.</li>
+	<li>Handle newer versions of <a href="http://test-unit.rubyforge.org/">test-unit</a> gem (v2.0.2 to v2.0.9)</li>
+	<li>Handle newer versions of <a href="https://rubygems.org/gems/minitest">minitest</a> gem (v1.4.0 to v1.6.0)</li>
+	<li>Added warnings about monkey-patching <a href="http://test-unit.rubyforge.org/">test-unit</a> and <a href="https://rubygems.org/gems/minitest">minitest</a> to aid debugging. These are enabled by including <code>debug</code> in the <code>MOCHA_OPTIONS</code> environment variable. This is now a comma-separated list, so that we can specify multiple options e.g. <code>MOCHA_OPTIONS=debug,use_test_unit_gem</code></li>
+	<li><a href="http://superalloy.nl/">Eloy Duran</a> made the unit tests run on 1.9.2dev r25249 and also improved some <a href="http://blog.zenspider.com/minitest/">MiniTest</a> <code>TestResult</code> code I&#8217;d written and got the acceptance tests running on Ruby 1.9 HEAD. There are still 4 failures because for some reason the backtrace line numbers are off by one. And the minitest_test test case does not run when the whole suite is run with <a href="http://blog.zenspider.com/minitest/">MiniTest</a>. These issues still need investigation.</li>
+	<li>Fixed some acceptance tests to run in Ruby 1.9.2 &#8211; it&#8217;s no longer possible to subvert the protection of a method by calling it via <a href="http://ruby-doc.org/ruby-1.9/classes/Object.html#M000204">Object#send</a>.</li>
+	<li>Fixed <code>test:performance</code> rake task so it runs in Ruby 1.9.2.</li>
+	<li>Fix test incorrectly failing under <a href="http://rubini.us/">Rubinius</a> v1.0. This test imposed too many constraints. It appears that <a href="http://ruby-doc.org/core-1.8.7/classes/Object.html#M000630">Object#inspect</a> legitimately calls <a href="http://ruby-doc.org/core-1.8.7/classes/Object.html#M000653">Object#object_id</a> in Rubinius. But we&#8217;re only interested in what <code>id</code> methods <code>Mocha::ObjectMethods#mocha_inspect</code> calls. By stubbing <code>Object#inspect</code> we can relax the constraints imposed by the test.</li>
+	<li><a href="http://lukeredpath.co.uk/">Luke Redpath</a> added new shorthand <a href="https://web.archive.org/web/20091002081643/http://mocha.rubyforge.org/classes/Mocha/ParameterMatchers.html#M000010">any_of</a> and <a href="https://web.archive.org/web/20091002081643/http://mocha.rubyforge.org/classes/Mocha/ParameterMatchers.html#M000009">all_of</a> composite parameter matchers using <a href="https://web.archive.org/web/20110709140146/http://mocha.rubyforge.org/classes/Mocha/ParameterMatchers/Base.html#M000029">&amp;</a> and <a href="https://web.archive.org/web/20110709140146/http://mocha.rubyforge.org/classes/Mocha/ParameterMatchers/Base.html#M000030">|</a>. This provides an alternative syntax for expecting any or all matchers to pass, e.g. foo.expects(:bar).with(equals(1) | equals(2)).</li>
+	<li>Improved documentation for <a href="https://web.archive.org/web/20100913085055/http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000046">Expectation#raises</a>. A number of people have suggested an extension to the API to cope with custom exceptions that have extra constructor parameters. However, since the arguments supplied to <a href="https://web.archive.org/web/20100913085055/http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000046">Expectation#raises</a> are just passed on to <a href="http://ruby-doc.org/core-1.8.7/classes/Kernel.html#M001062">Kernel#raise</a>, it&#8217;s possible to pass in an instance of an exception. Thus no change to the API is required, but it does seem worthwhile pointing this out in the docs.</li>
+	<li>Corrected RDoc example for Expectation#never thanks to <a href="http://redwriteshere.com/">Red David</a>.</li>
+	<li>Improved RDoc including a change suggested by <a href="http://www.rohitarondekar.com/">Rohit Arondekar</a>.</li>
+	<li>Updated gemspec as requested by <a href="http://github.com/shwoodard">Sam Woodard</a>.</li>
+</ul>
+    </section>
+
+    <footer>
+      <p class="metadata">
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2010-10-22-mocha-release-0-9-9"><time class="dt-published" datetime="2010-10-22T14:35:39+00:00">22 Oct 2010 at 14:35</time></a>
+      </p>
+      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2010-10-22-mocha-release-0-9-9">
+  <template id="webmention-template">
+    <li class="webmention">
+      <div>
+        <a class="author">
+          <span class="author-name"></span>
+        </a>
+        <a class="action"></a>
+      </div>
+      <div class="content"></div>
+    </li>
+  </template>
+</div>
+
+<script src="/javascripts/webmentions.js" type="text/javascript" charset="utf-8"></script>
+
+    </footer>
+  </article>
+
+
+          <nav id="navigation" aria-label="Inter-article">
+      <a href="/blog/2010-08-19-ruby-acceptance-testing" class="previous">&lt; Ruby Acceptance Testing</a>
+      <a href="/blog/2010-11-25-mocha-release-0-9-10" class="next">Mocha Release 0.9.10 &gt;</a>
+  </nav>
+
+      </main>
+
+      <footer id="ft">
+        <nav aria-label="Footer">
+          <a href="/contact">Contact</a>
+          &middot;
+          <a href="/history">History</a>
+          &middot;
+          <a href="/colophon">Colophon</a>
+          &middot;
+          <a href="/links">Links</a>
+        </nav>
+        <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">This work by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="jamesmead.org">James Mead</a> is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0<img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+      </footer>
+    </div>
+  </body>
+</html>

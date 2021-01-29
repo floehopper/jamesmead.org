@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Mocha Test Spies - James Mead</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="My thoughts on Joe Ferris&#39; fork of Mocha." />
+    <meta name="keywords" content="mocha mock stub ruby testing tdd spy fork thoughtbot" />
+    <meta name="author" content= "James Mead" />
+
+    <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+    <meta name="y_key" content="5f5b0de20991e0c2" />
+    <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
+
+    <link href="/images/favicon.gif" rel="icon" type="image/gif" />
+
+    <link href="/stylesheets/yui/3.18.1/cssreset-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssfonts-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssbase-min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+
+    <link href="/stylesheets/prettify/prettify.css" rel="stylesheet" />
+    <script src="/javascripts/prettify/prettify.js"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.jamesmead.org/floehopper-blog" />
+
+    <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
+
+    <link rel="prev" href="/blog/2009-07-01-mocha-release-0-9-7" />
+    <link rel="next" href="/blog/2009-09-18-mocha-release-0-9-8" />
+    <link rel="first" href="/blog/2004-05-14-unit-tests-can-100-coverage-be-a-bad-thing" />
+    <link rel="last" href="/blog/2021-01-23-youtube-video-of-my-3d-maze-game-for-the-zx-spectrum" />
+    <link rel="index" href="/blog" />
+
+  </head>
+  <body class="blog blog_2009-09-14-mocha-test-spies" onload="prettyPrint()">
+    <div id="doc">
+      <div class="skip-links">
+        <a href="#bd">Skip to main content</a>
+      </div>
+
+      <header id="hd">
+        <nav aria-label="Primary">
+          <a href="/">Home</a>
+          &middot;
+          <a href="/blog/">Blog</a>
+          &middot;
+          <a href="/notes/">Notes</a>
+          &middot;
+          <a href="/talks/">Talks</a>
+          &middot;
+          <a href="/projects/">Projects</a>
+        </nav>
+      </header>
+
+      <main id="bd">
+          <article class="h-entry">
+    <header>
+      <h1 class="p-name">Mocha Test Spies</h1>
+        <h2 class="p-summary">My thoughts on Joe Ferris' fork of Mocha.</h2>
+    </header>
+
+    <section class="e-content">
+      <h2>Introduction</h2>
+<p>Today I finally got round to looking at <a href="http://github.com/jferris/mocha/commits/spies">Joe Ferris&#8217; Test Spies fork</a> of Mocha. Joe explained how Test Spies work and why he thinks they are useful in <a href="http://robots.thoughtbot.com/post/159805295/spy-vs-spy">Spy vs spy</a> on the ThoughtBot blog. I apologise to Joe for not getting round to this sooner.</p>
+<p>I have a number of hesitations about merging these changes into <a href="https://mocha.jamesmead.org/">Mocha</a> as they stand. My thinking hasn&#8217;t really crystallized, but in these situations I often find it&#8217;s useful to force myself to try and explain myself in writing. Hopefully it&#8217;ll also generate some feedback.</p>
+<p>I&#8217;d like to thank Joe for taking the time to fork Mocha and add this functionality. I&#8217;m particularly grateful that he&#8217;s taken the trouble to write a <a href="http://github.com/jferris/mocha/raw/spies/test/acceptance/spy_test.rb">bunch of high-level acceptance tests</a>.</p>
+<h2>Concept</h2>
+<p>In this section I&#8217;ve tried to write up some comments on <a href="http://robots.thoughtbot.com/post/159805295/spy-vs-spy">Joe&#8217;s blog post</a>. I&#8217;ve tried to break it down into roughly the same headings that Joe used :-</p>
+<h3>Why would I let spies in my code?</h3>
+<p>Joe correctly points out that setting up expectations before exercising the object under test is a bit of a departure from the traditional <a href="http://xunitpatterns.com/Four%20Phase%20Test.html">Four-Phase Test</a> regime. I can see how some people might see this as counter-intuitive, but it doesn&#8217;t seem particularly so to me. Also the idea of <a href="http://xunitpatterns.com/Behavior%20Verification.html#Expected%20Behavior%20Specification">Expected Behaviour Specification</a> (i.e. setting up expectations before the Exercise phase) has a couple of advantages :-</p>
+<ul>
+	<li>Using <a href="http://xunitpatterns.com/Test%20Spy.html">Test Spies</a>, you have to (a) set up a stub so the mock object knows what value to return and (b) assert that the stubbed method was invoked the requisite number of times with the appropriate parameters. Whereas using <a href="http://xunitpatterns.com/Behavior%20Verification.html#Expected%20Behavior%20Specification">Expected Behaviour Specification</a>, these are combined into setting up an expectation on the mock object. I think this results in terser code with less duplication.</li>
+	<li>Using <a href="http://xunitpatterns.com/Behavior%20Verification.html#Expected%20Behavior%20Specification">Expected Behaviour Specification</a> means that the test can fail fast if an unexpected invocation is made against a mock object. Failing fast is generally a good idea, because you are more likely to be able to identify the root cause of the problem.</li>
+</ul>
+<h3>Sharing stubs in a context</h3>
+<pre class="prettyprint"><code class="prettyprint">describe PostsController, "on GET show" do
+  before(:each) do
+    @post = stub('a post', :to_param =&gt; '1')
+    Post.stubs(:find =&gt; @post)</code>
+
+<code class="prettyprint">    get :show, :id =&gt; @post.to_param
+  end</code>
+
+<code class="prettyprint">  it { should render_template(:show) }</code>
+
+<code class="prettyprint">  it "should find and assign the given post" do
+    Post.should have_received(:find).with(@post.to_param)
+    should assign_to(:post).with(@post)
+  end
+end</code></pre>
+<p>I&#8217;m going to struggle a bit when commenting on this code example for a couple of reasons :-</p>
+<ul>
+	<li>I dislike the use of <code>setup</code> methods (<code>before</code> in this <a href="http://rspec.info/">RSpec</a> example). I prefer to do my <a href="http://blog.jayfields.com/2007/06/testing-inline-setup.html">setup in-line in the test</a> to make the test as independent and as explicit as possible. I particularly dislike exercising the object under test within the <code>setup</code> method. To me this seems like a more fundamental breakage of the <a href="http://xunitpatterns.com/Four%20Phase%20Test.html">Four-Phase Test</a> concept.</li>
+	<li>In this example, I would not want to assert that <code>Post.find</code> has been called. <a href="http://www.natpryce.com/">Nat Pryce</a> (one of the authors of jMock) has a rule of thumb that says: &#8220;<a href="http://www.jmock.org/yoga.html">stub queries and expect commands</a>&#8221;. In this example, the call to <code>Post.find</code> is clearly a query, so I would just stub it. I think about it like this :-</li>
+</ul>
+<ol>
+	<li>stubbing <code>Post.find</code> is setting up the environment and making the instance of <code>Post</code> available</li>
+	<li>the assertion then checks that the instance of <code>Post</code> is assigned to the <code>@post</code> instance variable</li>
+	<li>the combination of (1) and (2) is enough to tell me that the <code>Post.find</code> method has been called &#8211; where else would the controller have got the instance of <code>Post</code> from?</li>
+</ol>
+<p>So I&#8217;m not convinced I would need <em>Test Spies</em> for this example.</p>
+<h3>Sharing stubs between tests</h3>
+<pre class="prettyprint"><code class="prettyprint">module PostHelpers
+  def stub_post(post_attrs = {})
+    post_attrs = {
+      :to_param =&gt; '1',
+      :published? =&gt; true,
+      :title =&gt; 'a title'
+    }.update(post_attrs)
+    stub('a post', post_attrs)
+  end
+  def stub_post!(post_attrs = {})
+    returning stub_post do |post|
+      Post.stubs(:find =&gt; post)
+    end
+  end
+end</code></pre>
+<pre class="prettyprint"><code class="prettyprint">describe PostsController do
+  include PostHelpers
+  it "should show a published post on GET show" do
+    post = stub_post!
+    get :show, :id =&gt; post.to_param
+    Post.should have_received(:find).with(post.to_param)
+    post.should have_received(:published?)
+    should render_template(:show)
+    should assign_to(:post).with(post)
+  end
+end</code></pre>
+<pre class="prettyprint"><code class="prettyprint">describe "/posts/show" do
+  include PostHelpers
+  it "should display a post" do
+    assigns[:post] = stub_post
+    render '/posts/show'
+    template.should have_tag('h1', assigns[:post].title)
+  end
+end</code></pre>
+<ul>
+	<li>In this example, as above, I would stub the call to <code>Post.find</code> rather than expect it.</li>
+	<li>I&#8217;d also prefer to use a real <code>Post</code> instance rather than a stub object. I&#8217;d use some kind of <a href="http://natpryce.com/articles/000714.html">Test Data Builder</a> like <a href="http://github.com/thoughtbot/factory_girl">factory_girl</a> to remove any duplication rather than methods like those in the <code>PostHelpers</code> module. While these <code>ActiveRecord</code> objects aren&#8217;t strictly <em>Value Objects</em>, I can&#8217;t help but think that <a href="http://markmail.org/message/v6rvuvmfygaboruf">this quote from Nat Pryce</a> is relevant :-</li>
+</ul>
+<blockquote>
+<p>Some languages might allow you to <strong>stub</strong> a value, but what&#8217;s the point? It is easier and less error prone to use the real type. If it&#8217;s not easier to use the real type then, I think, you should investigate why. What can you do to make the value type easier to use?</p>
+</blockquote>
+<p><a href="http://www.m3p.co.uk/blog/">Steve Freeman</a> makes a similar point in <a href="http://www.mockobjects.com/2007/04/test-smell-everything-is-mocked.html">Test Smell: Everything is mocked</a>.</p>
+<h3>Reusable matchers and assertions</h3>
+<pre class="prettyprint"><code class="prettyprint"># post.class.should have_received(:find).with(post.to_param)
+should find(post)
+# Post.should have_received(:new).with(post_attrs)
+should build(Post, post_attrs)
+# Post.should have_received(:new).with(post_attrs)
+# post.should have_received(:save)
+should build_and_save(Post, post_attrs)</code></pre>
+<p>I&#8217;m not convinced that extracting the assertion part of an expectation is sensible, because it&#8217;ll always need to be used in conjunction with the stub part of the same expectation.</p>
+<h2>Syntax</h2>
+<p>I think the suggested syntax extension is inconsistent with the existing Mocha API and a little clunky. See <a href="http://groups.google.com/group/mocha-developer/msg/8d719b4aa729928f?hl=en">James Rosen&#8217;s comment</a> on the <a href="http://groups.google.com/group/mocha-developer?hl=en">mailing list</a>. Looking at the following examples given in the documentation :-</p>
+<pre class="prettyprint"><code class="prettyprint">assert_received(mock, :to_s)
+assert_received(Radio, :new) {|expect| expect.with(1041) }
+assert_received(radio, :volume) {|expect| expect.with(11).twice }</code></pre>
+<p>I think I&#8217;d prefer to see something like :-</p>
+<pre class="prettyprint"><code class="prettyprint">assert_that mock.received(:to_s)
+assert_that Radio.received(:new).with(1041)
+assert_that radio.received(:volume).with(11).twice</code></pre>
+<p>Or something like :-</p>
+<pre class="prettyprint"><code class="prettyprint">mock.assert_received(:to_s)
+Radio.assert_received(:new).with(1041)
+radio.assert_received(:volume).with(11).twice</code></pre>
+<p>Note that I haven&#8217;t completely thought through the implementation implications of these suggestions i.e. whether they are even possible!</p>
+<h2>Implementation</h2>
+<p>The code looks good and, since Joe has written acceptance tests, there shouldn&#8217;t be too much difficulty in doing a bit of refactoring. I like the idea of introducing a model for an <a href="http://github.com/jferris/mocha/raw/spies/lib/mocha/invocation.rb">Invocation</a> , but I think the <code>Invocation</code> instances should be stored by the relevant <code>Mock</code> instance rather than the <code>Mockery</code>. Similarly I&#8217;d push more of the logic in the <a href="http://github.com/jferris/mocha/blob/4ba321eca2439ae5f55a611e2df716ea7af44ef4/lib/mocha/api.rb#L165">HaveReceived</a> class into relevant objects. And I&#8217;d like to avoid having to make <code>Expectation#invocation_count</code> writeable.</p>
+<p>One slight concern is what happens if someone mixes up <em>Expected Behaviour Specification</em> expectations with <em>Test Spies</em> stubs and assertions? I&#8217;d probably at least want some acceptance tests to convince me that there are no complications on this front.</p>
+<h2>Conclusion</h2>
+<p>I&#8217;m sure that some people find the changes useful, but I&#8217;m not yet convinced I want to merge the <a href="http://github.com/jferris/mocha/commits/spies">Test Spies</a> changes into <a href="https://mocha.jamesmead.org/">Mocha</a>. Please feel free to try and convince me, either here in the <a href="#comments">comments</a> or in the <a href="http://groups.google.com/group/mocha-developer/browse_thread/thread/3c3fba12cf313b12?hl=en">mailing list thread</a>.</p>
+    </section>
+
+    <footer>
+      <p class="metadata">
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2009-09-14-mocha-test-spies"><time class="dt-published" datetime="2009-09-14T16:58:56+00:00">14 Sep 2009 at 16:58</time></a>
+      </p>
+      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2009-09-14-mocha-test-spies">
+  <template id="webmention-template">
+    <li class="webmention">
+      <div>
+        <a class="author">
+          <span class="author-name"></span>
+        </a>
+        <a class="action"></a>
+      </div>
+      <div class="content"></div>
+    </li>
+  </template>
+</div>
+
+<script src="/javascripts/webmentions.js" type="text/javascript" charset="utf-8"></script>
+
+    </footer>
+  </article>
+
+
+          <nav id="navigation" aria-label="Inter-article">
+      <a href="/blog/2009-07-01-mocha-release-0-9-7" class="previous">&lt; Mocha Release 0.9.7</a>
+      <a href="/blog/2009-09-18-mocha-release-0-9-8" class="next">Mocha Release 0.9.8 &gt;</a>
+  </nav>
+
+      </main>
+
+      <footer id="ft">
+        <nav aria-label="Footer">
+          <a href="/contact">Contact</a>
+          &middot;
+          <a href="/history">History</a>
+          &middot;
+          <a href="/colophon">Colophon</a>
+          &middot;
+          <a href="/links">Links</a>
+        </nav>
+        <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">This work by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="jamesmead.org">James Mead</a> is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0<img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+      </footer>
+    </div>
+  </body>
+</html>

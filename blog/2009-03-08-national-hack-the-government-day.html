@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>National Hack the Government Day - James Mead</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Paul Battley &amp; I attempt to make the website for the Office for National Statistics more useful." />
+    <meta name="keywords" content="hack uk government rewiredstate guardian greasemonkey jquery " />
+    <meta name="author" content= "James Mead" />
+
+    <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+    <meta name="y_key" content="5f5b0de20991e0c2" />
+    <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
+
+    <link href="/images/favicon.gif" rel="icon" type="image/gif" />
+
+    <link href="/stylesheets/yui/3.18.1/cssreset-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssfonts-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssbase-min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+
+    <link href="/stylesheets/prettify/prettify.css" rel="stylesheet" />
+    <script src="/javascripts/prettify/prettify.js"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.jamesmead.org/floehopper-blog" />
+
+    <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
+
+    <link rel="prev" href="/blog/2009-02-16-uninstalling-gems-from-gem-directory" />
+    <link rel="next" href="/blog/2009-03-16-national-express-east-coast-ticket-options" />
+    <link rel="first" href="/blog/2004-05-14-unit-tests-can-100-coverage-be-a-bad-thing" />
+    <link rel="last" href="/blog/2021-01-23-youtube-video-of-my-3d-maze-game-for-the-zx-spectrum" />
+    <link rel="index" href="/blog" />
+
+  </head>
+  <body class="blog blog_2009-03-08-national-hack-the-government-day" onload="prettyPrint()">
+    <div id="doc">
+      <div class="skip-links">
+        <a href="#bd">Skip to main content</a>
+      </div>
+
+      <header id="hd">
+        <nav aria-label="Primary">
+          <a href="/">Home</a>
+          &middot;
+          <a href="/blog/">Blog</a>
+          &middot;
+          <a href="/notes/">Notes</a>
+          &middot;
+          <a href="/talks/">Talks</a>
+          &middot;
+          <a href="/projects/">Projects</a>
+        </nav>
+      </header>
+
+      <main id="bd">
+          <article class="h-entry">
+    <header>
+      <h1 class="p-name">National Hack the Government Day</h1>
+        <h2 class="p-summary">Paul Battley & I attempt to make the website for the Office for National Statistics more useful.</h2>
+    </header>
+
+    <section class="e-content">
+      <p>I spent yesterday in the <a href="http://www.guardian.co.uk/media/gallery/2008/dec/15/theguardian-pressandpublishing">shiny new Guardian offices</a> at <a href="https://web.archive.org/web/20090511073342/http://rewiredstate.org/">Rewired State</a> &#8211; National Hack the Government Day &#8211; which was a lot of fun, despite the <a href="http://twitter.com/floehopper/status/1291802649">early start</a>. There was a really friendly atmosphere and lots of interesting <a href="https://web.archive.org/web/20090410023949/http://rewiredstate.org/projects">projects</a> going on.</p>
+<h2>ONS Graphs</h2>
+<p>I teamed up with <a href="http://po-ru.com/">Paul</a> to work on some improvements for the <a href="http://www.statistics.gov.uk/">Office for National Statistics website</a>. We&#8217;d noticed that while there are many <a href="http://www.statistics.gov.uk/statbase/tsdtimezone.asp">timeline datasets</a> available on the site, the only way to view graphs of the data is to download a Windows application called <a href="http://www.statistics.gov.uk/statbase/Navidata.asp">Navidata</a>. Although it&#8217;s free, this application is pretty clunky and hard to use and doesn&#8217;t generate very clear graphs. Also, rather obviously, it isn&#8217;t much use to Mac or Linux users.</p>
+<p><strong>Update:</strong> More about our hack from Paul &#8211; <a href="http://po-ru.com/diary/greasemonkey-vs-the-ons-at-rewired-state/">GreaseMonkey vs the ONS at Rewired State</a></p>
+<p>So for the first part of our hack, in a fine example of <a href="http://www.postmodernprogramming.org/">post-modern programming</a>, we decided to use JavaScript to generate a graph in the browser using the HTML table form of the data. Thanks to an <a href="http://blog.rebeccamurphey.com/2007/12/17/graph-table-data-jquery-flot/">article by Rebecca Murphey</a>, we decided to use <a href="http://jquery.com/">jQuery</a> together with Rebecca&#8217;s <a href="http://plugins.jquery.com/files/jquery.graphTable-0.2.js.txt">graphTable</a> jQuery plugin which uses the <a href="http://code.google.com/p/flot/">flot</a> jQuery plugin to actually draw the graphs. We used the <a href="https://addons.mozilla.org/firefox/addon/748">GreaseMonkey</a>, the Firefox add-on, to write a <a href="http://github.com/threedaymonk/ons_graphs/">little script</a> to pull everything together.</p>
+<p>Here&#8217;s an example of a graph generated by the GreaseMonkey script :-</p>
+<p><img src="http://farm4.static.flickr.com/3639/3335553400_daeb0392d1_d.jpg" /></p>
+<p>So now anyone can use this script to view graphs of ONS timeline datasets :-</p>
+<ul>
+	<li>Get <a href="http://getfirefox.com/">Firefox</a></li>
+	<li>Install <a href="https://addons.mozilla.org/firefox/addon/748">GreaseMonkey</a></li>
+	<li>Install <a href="http://github.com/threedaymonk/ons_graphs/raw/3ff8362c76e3dc82e94857cd255d244af1174f78/ons_graphs.user.js">ons_graphs.user.js</a></li>
+	<li>Browse to a <a href="http://www.statistics.gov.uk/statbase/tsdtimezone.asp">timeline dataset</a>, View Table, View Series, Add to Selection, Download then View On-Screen.</li>
+</ul>
+<p>Paul presenting our hack at the end of the day :-</p>
+<p><img src="https://farm4.staticflickr.com/3300/3336992988_24914fda62_z.jpg" /></p>
+<h2>ONS Navigation</h2>
+<p>For the second part of our hack, we wanted to make a better way of navigating to the datasets. The current system uses a series of forms in a <a href="http://is.gd/mnk1">wizard-like</a> experience which is quite hard to understand. Also, because of the form submissions (i.e. HTTP POSTs) required to access the datasets, there are no permanent URLs available to navigate directly to a dataset. We decided to try to remedy this by using <a href="http://mechanize.rubyforge.org/mechanize/">Mechanize</a> to scrape the timeline data from the website and then build a simplified static website using only links (i.e. HTTP GETs). However, we hit a snag in automatically submitting the last form in the wizard and ran out of time. I might try and have a go at this in the future if I get time.</p>
+<p>We did notice that this last form had a hidden field containing what appeared to by a SQL query, making it ripe for <a href="http://en.wikipedia.org/wiki/SQL_injection">SQL injection attack</a>, but fortunately we managed to restrain ourselves.</p>
+<p>Thanks to <a href="http://bendodson.com/">Ben Dodson</a> &amp; <a href="http://po-ru.com/">Paul Battley</a> for the photos.</p>
+    </section>
+
+    <footer>
+      <p class="metadata">
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2009-03-08-national-hack-the-government-day"><time class="dt-published" datetime="2009-03-08T11:06:53+00:00">08 Mar 2009 at 11:06</time></a>
+      </p>
+      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2009-03-08-national-hack-the-government-day">
+  <template id="webmention-template">
+    <li class="webmention">
+      <div>
+        <a class="author">
+          <span class="author-name"></span>
+        </a>
+        <a class="action"></a>
+      </div>
+      <div class="content"></div>
+    </li>
+  </template>
+</div>
+
+<script src="/javascripts/webmentions.js" type="text/javascript" charset="utf-8"></script>
+
+    </footer>
+  </article>
+
+
+          <nav id="navigation" aria-label="Inter-article">
+      <a href="/blog/2009-02-16-uninstalling-gems-from-gem-directory" class="previous">&lt; Uninstalling gems from .gem directory</a>
+      <a href="/blog/2009-03-16-national-express-east-coast-ticket-options" class="next">National Express East Coast Ticket Options &gt;</a>
+  </nav>
+
+      </main>
+
+      <footer id="ft">
+        <nav aria-label="Footer">
+          <a href="/contact">Contact</a>
+          &middot;
+          <a href="/history">History</a>
+          &middot;
+          <a href="/colophon">Colophon</a>
+          &middot;
+          <a href="/links">Links</a>
+        </nav>
+        <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">This work by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="jamesmead.org">James Mead</a> is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0<img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+      </footer>
+    </div>
+  </body>
+</html>

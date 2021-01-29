@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Uninstalling gems from .gem directory - James Mead</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="keywords" content="ruby gem uninstall user home directory sudo superuser osx" />
+    <meta name="author" content= "James Mead" />
+
+    <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+    <meta name="y_key" content="5f5b0de20991e0c2" />
+    <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
+
+    <link href="/images/favicon.gif" rel="icon" type="image/gif" />
+
+    <link href="/stylesheets/yui/3.18.1/cssreset-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssfonts-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssbase-min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+
+    <link href="/stylesheets/prettify/prettify.css" rel="stylesheet" />
+    <script src="/javascripts/prettify/prettify.js"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.jamesmead.org/floehopper-blog" />
+
+    <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
+
+    <link rel="prev" href="/blog/2009-02-09-mocha-configuration" />
+    <link rel="next" href="/blog/2009-03-08-national-hack-the-government-day" />
+    <link rel="first" href="/blog/2004-05-14-unit-tests-can-100-coverage-be-a-bad-thing" />
+    <link rel="last" href="/blog/2021-01-23-youtube-video-of-my-3d-maze-game-for-the-zx-spectrum" />
+    <link rel="index" href="/blog" />
+
+  </head>
+  <body class="blog blog_2009-02-16-uninstalling-gems-from-gem-directory" onload="prettyPrint()">
+    <div id="doc">
+      <div class="skip-links">
+        <a href="#bd">Skip to main content</a>
+      </div>
+
+      <header id="hd">
+        <nav aria-label="Primary">
+          <a href="/">Home</a>
+          &middot;
+          <a href="/blog/">Blog</a>
+          &middot;
+          <a href="/notes/">Notes</a>
+          &middot;
+          <a href="/talks/">Talks</a>
+          &middot;
+          <a href="/projects/">Projects</a>
+        </nav>
+      </header>
+
+      <main id="bd">
+          <article class="h-entry">
+    <header>
+      <h1 class="p-name">Uninstalling gems from .gem directory</h1>
+    </header>
+
+    <section class="e-content">
+      <p>I keep forgetting how to do this, so I thought I&#8217;d write myself some notes.</p>
+<p>In a recent version, <a href="http://www.rubygems.org/">RubyGems</a> changed it&#8217;s behaviour on <code>gem install</code> so that if it doesn&#8217;t have sufficient permission to install the gem files, it installs them in <code>~/.gem</code> and generates a warning :-</p>
+<pre><code>$ gem install &lt;gem-name&gt;
+WARNING:  Installing to ~/.gem since /usr/local/ruby-1.8.6-p287/lib/ruby/gems/1.8 and
+  /usr/local/ruby-1.8.6-p287/bin aren't both writable.
+WARNING:  You don't have /Users/jamesmead/.gem/ruby/1.8/bin in your PATH,
+  gem executables will not run.</code></pre>
+<p>Sometimes (e.g. when you forgot to prepend <a href="http://developer.apple.com/DOCUMENTATION/DARWIN/Reference/ManPages/man8/sudo.8.html"><code>sudo</code></a>) this isn&#8217;t what you want. However, it&#8217;s not obvious how to uninstall the gem again to correct your mistake :-</p>
+<pre><code>$ gem uninstall &lt;gem-name&gt;
+ERROR:  While executing gem ... (Gem::InstallError)
+  Unknown gem &lt;gem-name&gt; &gt;= 0</code></pre>
+<p>To make this work, you need to specify the <code>install-dir</code> option :-</p>
+<pre><code>$ gem uninstall &lt;gem-name&gt; --install-dir=~/.gem/ruby/1.8/
+Successfully uninstalled &lt;gem-name&gt;-x.y.z</code></pre>
+<p>Note that if you are using Ruby 1.9, it looks like the RubyGems directory path includes the point release version number e.g. <code>1.9.0</code> or <code>1.9.1</code>.</p>
+<p><strong>Update:</strong> Prevention is better than cure. Coderr suggests <a href="http://coderrr.wordpress.com/2009/03/16/protecting-your-gem-directory/">protecting your ~/.gem directory</a>.</p>
+    </section>
+
+    <footer>
+      <p class="metadata">
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2009-02-16-uninstalling-gems-from-gem-directory"><time class="dt-published" datetime="2009-02-16T15:56:48+00:00">16 Feb 2009 at 15:56</time></a>
+      </p>
+      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2009-02-16-uninstalling-gems-from-gem-directory">
+  <template id="webmention-template">
+    <li class="webmention">
+      <div>
+        <a class="author">
+          <span class="author-name"></span>
+        </a>
+        <a class="action"></a>
+      </div>
+      <div class="content"></div>
+    </li>
+  </template>
+</div>
+
+<script src="/javascripts/webmentions.js" type="text/javascript" charset="utf-8"></script>
+
+    </footer>
+  </article>
+
+
+          <nav id="navigation" aria-label="Inter-article">
+      <a href="/blog/2009-02-09-mocha-configuration" class="previous">&lt; Mocha Configuration</a>
+      <a href="/blog/2009-03-08-national-hack-the-government-day" class="next">National Hack the Government Day &gt;</a>
+  </nav>
+
+      </main>
+
+      <footer id="ft">
+        <nav aria-label="Footer">
+          <a href="/contact">Contact</a>
+          &middot;
+          <a href="/history">History</a>
+          &middot;
+          <a href="/colophon">Colophon</a>
+          &middot;
+          <a href="/links">Links</a>
+        </nav>
+        <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">This work by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="jamesmead.org">James Mead</a> is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0<img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+      </footer>
+    </div>
+  </body>
+</html>
