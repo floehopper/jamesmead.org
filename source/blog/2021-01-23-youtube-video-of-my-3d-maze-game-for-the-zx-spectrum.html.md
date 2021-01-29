@@ -1,7 +1,7 @@
 ---
 title: Youtube video of my 3D maze game for the ZX Spectrum
 description: James O'Grady plays, reviews and mods (!) a game I wrote in Z80 machine code in 1984
-created_at: 2021-01-29 09:15:00 +00:00
+created_at: 2021-01-23 21:32:00 +00:00
 updated_at: 2021-01-29 09:15:00 +00:00
 guid: 8d8937e0-79a1-4e44-a1df-e37b7d43ff36
 ---
