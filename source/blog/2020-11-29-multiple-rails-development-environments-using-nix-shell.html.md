@@ -161,7 +161,7 @@ As usual the source code is available in [a GitHub repository][rails-on-nix] and
 
 [rails-on-nix-3c40a3fe]: https://github.com/floehopper/rails-on-nix/tree/3c40a3fe195a08dfdec54a50a2b042eae1305b64
 [nixos-forums-answer]: https://discourse.nixos.org/t/using-bundlerenv-with-non-default-version-of-ruby-v2-5/8470/4
-[nix-shellhook]: https://nixos.org/manual/nix/stable/#description-13
+[nix-shellhook]: https://nixos.org/manual/nix/stable/command-ref/nix-shell.html#description
 [unix domain socket]: https://en.wikipedia.org/wiki/Unix_domain_socket
 [rails-on-nix]: https://github.com/floehopper/rails-on-nix
 [rails-on-nix-readme]: https://github.com/floehopper/rails-on-nix/blob/main/README.md
