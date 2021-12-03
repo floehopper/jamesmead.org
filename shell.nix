@@ -1,6 +1,6 @@
 with (import <nixpkgs> {});
 let
-  ruby = ruby_2_6;
+  ruby = ruby_2_7;
   env = bundlerEnv {
     name = "jamesmead.org-bundler-env";
     inherit ruby;
