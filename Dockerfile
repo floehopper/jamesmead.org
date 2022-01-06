@@ -1,4 +1,4 @@
-FROM ruby:2.3.1
+FROM ruby:2.7.4
 
 # Get info on latest versions of packages
 RUN apt-get update
@@ -9,11 +9,8 @@ RUN apt-get install -y nodejs
 # Clean up to reduce disk usage
 RUN apt-get clean
 
-# Uninstall Bundler v1.13.6 which comes with Ruby v2.3.1p112
-RUN gem uninstall bundler --install-dir /usr/local/lib/ruby/gems/2.3.0 bundler
-
 # Install version of Bundler specified by BUNDLED WITH in Gemfile.lock
-RUN gem install bundler --version 1.11.2
+RUN gem install bundler --version 2.1.4
 
 # Specify app directory on container
 ENV APP_HOME /app
