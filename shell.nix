@@ -5,6 +5,11 @@ let
     name = "jamesmead.org-bundler-env";
     inherit ruby;
     gemdir = ./.;
+    gemConfig = pkgs.defaultGemConfig // {
+      execjs = attrs: {
+        propagatedBuildInputs = [];
+      };
+    };
   };
 in stdenv.mkDerivation {
   name = "jamesmead.org";
