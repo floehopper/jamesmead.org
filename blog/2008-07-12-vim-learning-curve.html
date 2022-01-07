@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Vim Learning Curve - James Mead</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="keywords" content="vim svn diff blame syntax textile search replace testing textmate" />
+    <meta name="author" content= "James Mead" />
+
+    <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+    <meta name="y_key" content="5f5b0de20991e0c2" />
+    <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
+
+    <link href="/images/favicon.gif" rel="icon" type="image/gif" />
+
+    <link href="/stylesheets/yui/3.18.1/cssreset-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssfonts-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssbase-min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+
+    <link href="/stylesheets/prettify/prettify.css" rel="stylesheet" />
+    <script src="/javascripts/prettify/prettify.js"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.jamesmead.org/floehopper-blog" />
+
+    <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
+
+    <link rel="prev" href="/blog/2008-07-12-optional-parameters-in-mocha" />
+    <link rel="next" href="/blog/2008-07-13-rising-damp" />
+    <link rel="first" href="/blog/2004-05-14-unit-tests-can-100-coverage-be-a-bad-thing" />
+    <link rel="last" href="/blog/2021-01-23-youtube-video-of-my-3d-maze-game-for-the-zx-spectrum" />
+    <link rel="index" href="/blog" />
+
+  </head>
+  <body class="blog blog_2008-07-12-vim-learning-curve" onload="prettyPrint()">
+    <div id="doc">
+      <div class="skip-links">
+        <a href="#bd">Skip to main content</a>
+      </div>
+
+      <header id="hd">
+        <nav aria-label="Primary">
+          <a href="/">Home</a>
+          &middot;
+          <a href="/blog/">Blog</a>
+          &middot;
+          <a href="/notes/">Notes</a>
+          &middot;
+          <a href="/talks/">Talks</a>
+          &middot;
+          <a href="/projects/">Projects</a>
+        </nav>
+      </header>
+
+      <main id="bd">
+          <article class="h-entry">
+    <header>
+      <h1 class="p-name">Vim Learning Curve</h1>
+    </header>
+
+    <section class="e-content">
+      <p>Because I&#8217;ve been doing a lot of <a href="/blog/2008-03-13-remote-pair-programming">remote pair programming</a> using <a href="http://www.vim.org/">vim</a> and <a href="http://www.gnu.org/software/screen/">screen</a>,  I&#8217;ve been making a real effort to improve my vim skills in order to be more productive and feel like I&#8217;ve made some progress. <a href="http://blog.seagul.co.uk">Chris</a> has rightly suggested that the only way to really improve is to make vim your editor of choice even when not remote pairing, so that&#8217;s what I&#8217;ve been trying to do. I&#8217;ve come across a few useful but random bits and pieces which I thought I&#8217;d record in case they were useful to anyone else&#8230;</p>
+<h2>Textile</h2>
+<p>I&#8217;m using a <a href="http://rubychan.de/share/textile.vim">vim syntax file</a> for <a href="http://hobix.com/textile/">Textile</a> written by Kornelius Kalnbach to write this article.</p>
+<h2>svn blame</h2>
+<p>I&#8217;ve found Tammer Saleh&#8217;s <a href="http://tammersaleh.com/posts/quick-vim-svn-blame-snippet">key mapping</a> for <a href="http://svnbook.red-bean.com/en/1.0/re02.html">svn blame</a> useful&#8230;</p>
+<pre><code>vmap gl :&lt;C-U&gt;!svn blame &lt;C-R&gt;=expand("%:p") &lt;CR&gt; \| sed -n &lt;C-R&gt;=line("'&lt;") &lt;CR&gt;,&lt;C-R&gt;=line("'&gt;") &lt;CR&gt;p &lt;CR&gt;</code></pre>
+<p>I decided to invest a bit of time understanding how it worked and broke it down as follows&#8230;</p>
+<pre><code># key mapping for visual mode
+vmap gl</code>
+
+<code># remove all characters between the cursor position and the beginning of the line
+:&lt;C-U&gt;</code>
+
+<code># current file with full path
+&lt;C-R&gt;=expand("%:p") &lt;CR&gt;</code>
+
+<code># pipe std out to sed which only outputs line N to line M
+\| sed -n N,M</code>
+
+<code># line number of first line of selection
+&lt;C-R&gt;=line("'&lt;") &lt;CR&gt;</code>
+
+<code># line number of last line of selection
+&lt;C-R&gt;=line("'&gt;") &lt;CR&gt;</code>
+
+<code># print output
+p &lt;CR&gt;</code></pre>
+<h2>Search &amp; Replace</h2>
+<p>At the end of last week, <a href="http://blog.seagul.co.uk">Chris</a> &amp; I found out from Ibrahim Ahmed&#8217;s blog how to <a href="http://www.ibrahim-ahmed.com/2008/01/find-and-replace-in-multiple-files-in.html">search and replace across multiple files</a>&#8230;</p>
+<pre><code># select file on which to operate
+:args path/with/wildcards</code>
+
+<code># find pattern, replace with replacement, and save file
+:argdo %s/pattern/replacement/ge | update</code></pre>
+<h2>vimdiff</h2>
+<p><a href="http://www.vim.org/htmldoc/diff.html"><code>vimdiff</code></a> seems like a nice tool, but unfortunately it doesn&#8217;t immediately play well with <a href="http://svnbook.red-bean.com/en/1.0/re09.html"><code>svn diff</code></a> and its <code>--diff-cmd</code> option. There seem to be a couple of alternatives: (a) write a <a href="http://svn.haxx.se/users/archive-2005-04/1048.shtml">wrapper script for <code>vimdiff</code></a> which works with <code>--diff-cmd</code>; or (b) write a <a href="http://erik.thauvin.net/blog/comments.jsp?postid=1024">script which uses <code>svn cat</code> and then calls <code>vimdiff</code></a>.</p>
+<h2>Test::Unit</h2>
+<p>One of the things I really want to be able to do, is run Ruby <a href="https://web.archive.org/web/20100208155315/http://ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html">Test::Unit</a> tests and view the output, so I can jump to the line where an assertion failed. I haven&#8217;t managed to find anything suitable on the web, so here&#8217;s my first attempt&#8230;</p>
+<pre><code>function! Ruby_run_tests()
+  let results = tempname()
+  set splitbelow
+  silent execute ":! ruby % &gt; " . results . " 2&gt;&amp;1 "
+  silent execute ":10 sview " . results
+endfunction</code></pre>
+<pre><code>map &lt;silent&gt; &lt;F7&gt; :call Ruby_run_tests()&lt;cr&gt;
+imap &lt;silent&gt; &lt;F7&gt; &lt;ESC&gt;&lt;F7&gt;</code></pre>
+<p>I&#8217;m sure this isn&#8217;t the best way of doing it, but when you put this in your vimrc file, pressing the <code>F7</code> key runs the current file using Ruby and pipes the results to a temporary file. This temporary file is opened in a read-only window 10 lines high at the bottom of the screen. By moving the cursor onto the relevant line of any stack trace, you can then use &#8220;goto file&#8221; key sequence <code>gf</code> to goto the failing assertion. Although for some reason this only seems to work the first time round for me.</p>
+<p>Ideally I&#8217;d like to be able to do the equivalent of &#8220;run focussed test&#8221; in <a href="http://macromates.com/">TextMate</a>, which should be quite straightforward, but that&#8217;ll have to wait for another day.</p>
+<p>In the meantime, I&#8217;d love to hear from anyone else who has useful vim tricks for <a href="http://www.ruby-lang.org/">Ruby</a> development. I&#8217;ll be bookmarking any useful links I find on <a href="http://del.icio.us/jamesthecat/vim">del.icio.us</a>.</p>
+    </section>
+
+    <footer>
+      <p class="metadata">
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2008-07-12-vim-learning-curve"><time class="dt-published" datetime="2008-07-12T22:52:35+00:00">12 Jul 2008 at 22:52</time></a>
+      </p>
+      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2008-07-12-vim-learning-curve">
+  <template id="webmention-template">
+    <li class="webmention">
+      <div>
+        <a class="author">
+          <span class="author-name"></span>
+        </a>
+        <a class="action"></a>
+      </div>
+      <div class="content"></div>
+    </li>
+  </template>
+</div>
+
+<script src="/javascripts/webmentions.js" type="text/javascript" charset="utf-8"></script>
+
+    </footer>
+  </article>
+
+
+          <nav id="navigation" aria-label="Inter-article">
+      <a href="/blog/2008-07-12-optional-parameters-in-mocha" class="previous">&lt; Optional Parameters in Mocha</a>
+      <a href="/blog/2008-07-13-rising-damp" class="next">Rising Damp &gt;</a>
+  </nav>
+
+      </main>
+
+      <footer id="ft">
+        <nav aria-label="Footer">
+          <a href="/contact">Contact</a>
+          &middot;
+          <a href="/history">History</a>
+          &middot;
+          <a href="/colophon">Colophon</a>
+          &middot;
+          <a href="/links">Links</a>
+        </nav>
+        <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">This work by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="jamesmead.org">James Mead</a> is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0<img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+      </footer>
+    </div>
+  </body>
+</html>

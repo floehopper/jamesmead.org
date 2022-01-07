@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Mocha 0.3 released with Rails plugin - James Mead</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="keywords" content="rails plugin ruby test mock stub testing mocking stubbing fixtures expectation verify" />
+    <meta name="author" content= "James Mead" />
+
+    <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+    <meta name="y_key" content="5f5b0de20991e0c2" />
+    <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
+
+    <link href="/images/favicon.gif" rel="icon" type="image/gif" />
+
+    <link href="/stylesheets/yui/3.18.1/cssreset-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssfonts-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssbase-min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+
+    <link href="/stylesheets/prettify/prettify.css" rel="stylesheet" />
+    <script src="/javascripts/prettify/prettify.js"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.jamesmead.org/floehopper-blog" />
+
+    <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
+
+    <link rel="prev" href="/blog/2006-08-21-lunch-stop-on-a-norwegian-ski-tour" />
+    <link rel="next" href="/blog/2006-08-31-mocks-on-rails" />
+    <link rel="first" href="/blog/2004-05-14-unit-tests-can-100-coverage-be-a-bad-thing" />
+    <link rel="last" href="/blog/2021-01-23-youtube-video-of-my-3d-maze-game-for-the-zx-spectrum" />
+    <link rel="index" href="/blog" />
+
+  </head>
+  <body class="blog blog_2006-08-24-mocha-0-3-released-with-rails-plugin" onload="prettyPrint()">
+    <div id="doc">
+      <div class="skip-links">
+        <a href="#bd">Skip to main content</a>
+      </div>
+
+      <header id="hd">
+        <nav aria-label="Primary">
+          <a href="/">Home</a>
+          &middot;
+          <a href="/blog/">Blog</a>
+          &middot;
+          <a href="/notes/">Notes</a>
+          &middot;
+          <a href="/talks/">Talks</a>
+          &middot;
+          <a href="/projects/">Projects</a>
+        </nav>
+      </header>
+
+      <main id="bd">
+          <article class="h-entry">
+    <header>
+      <h1 class="p-name">Mocha 0.3 released with Rails plugin</h1>
+    </header>
+
+    <section class="e-content">
+      <p>A new version of the <a href="https://mocha.jamesmead.org/">Mocha</a> mocking and stubbing library developed at <a href="http://www.reevoo.com">Reevoo</a> has been released.</p>
+<p>There is now a <a href="http://www.rubyonrails.org">Ruby on Rails</a> <a href="http://www.agilewebdevelopment.com/plugins/mocha">plugin</a> which can be installed like this&#8230;</p>
+<pre><code>$ script/plugin install svn://rubyforge.org/var/svn/mocha/trunk</code></pre>
+<p>Here are the release notes&#8230;</p>
+<ul>
+	<li>Rails plugin.</li>
+	<li>Auto-verify for all expectations, including those on concrete classes.</li>
+	<li>Include each expectation verification in the test result assertion count.</li>
+	<li>Filter out noise from assertion backtraces.</li>
+	<li>Point assertion backtrace to line where failing expectation was created.</li>
+	<li>New yields method for expectations.</li>
+	<li>Create stubs which stub all method calls.</li>
+	<li>Mocks now respond_to? expected methods.</li>
+</ul>
+<p>Thanks for patches from <a href="http://blog.seagul.co.uk">Chris</a>.</p>
+<p>Enjoy!</p>
+    </section>
+
+    <footer>
+      <p class="metadata">
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2006-08-24-mocha-0-3-released-with-rails-plugin"><time class="dt-published" datetime="2006-08-24T18:17:19+00:00">24 Aug 2006 at 18:17</time></a>
+      </p>
+      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2006-08-24-mocha-0-3-released-with-rails-plugin">
+  <template id="webmention-template">
+    <li class="webmention">
+      <div>
+        <a class="author">
+          <span class="author-name"></span>
+        </a>
+        <a class="action"></a>
+      </div>
+      <div class="content"></div>
+    </li>
+  </template>
+</div>
+
+<script src="/javascripts/webmentions.js" type="text/javascript" charset="utf-8"></script>
+
+    </footer>
+  </article>
+
+
+          <nav id="navigation" aria-label="Inter-article">
+      <a href="/blog/2006-08-21-lunch-stop-on-a-norwegian-ski-tour" class="previous">&lt; Lunch stop on a Norwegian ski tour</a>
+      <a href="/blog/2006-08-31-mocks-on-rails" class="next">Mocks on Rails &gt;</a>
+  </nav>
+
+      </main>
+
+      <footer id="ft">
+        <nav aria-label="Footer">
+          <a href="/contact">Contact</a>
+          &middot;
+          <a href="/history">History</a>
+          &middot;
+          <a href="/colophon">Colophon</a>
+          &middot;
+          <a href="/links">Links</a>
+        </nav>
+        <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">This work by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="jamesmead.org">James Mead</a> is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0<img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+      </footer>
+    </div>
+  </body>
+</html>

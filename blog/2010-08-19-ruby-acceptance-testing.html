@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Ruby Acceptance Testing - James Mead</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Riposte to aspects of &quot;You&#39;re Cuking it Wrong&quot; article by Jonas Nicklas." />
+    <meta name="keywords" content="cucumber gherkin acceptance testing natural language abstraction readability" />
+    <meta name="author" content= "James Mead" />
+
+    <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+    <meta name="y_key" content="5f5b0de20991e0c2" />
+    <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
+
+    <link href="/images/favicon.gif" rel="icon" type="image/gif" />
+
+    <link href="/stylesheets/yui/3.18.1/cssreset-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssfonts-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssbase-min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+
+    <link href="/stylesheets/prettify/prettify.css" rel="stylesheet" />
+    <script src="/javascripts/prettify/prettify.js"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.jamesmead.org/floehopper-blog" />
+
+    <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
+
+    <link rel="prev" href="/blog/2010-01-25-converting-s5-slides-to-a-single-pdf-on-mac-osx" />
+    <link rel="next" href="/blog/2010-10-22-mocha-release-0-9-9" />
+    <link rel="first" href="/blog/2004-05-14-unit-tests-can-100-coverage-be-a-bad-thing" />
+    <link rel="last" href="/blog/2021-01-23-youtube-video-of-my-3d-maze-game-for-the-zx-spectrum" />
+    <link rel="index" href="/blog" />
+
+  </head>
+  <body class="blog blog_2010-08-19-ruby-acceptance-testing" onload="prettyPrint()">
+    <div id="doc">
+      <div class="skip-links">
+        <a href="#bd">Skip to main content</a>
+      </div>
+
+      <header id="hd">
+        <nav aria-label="Primary">
+          <a href="/">Home</a>
+          &middot;
+          <a href="/blog/">Blog</a>
+          &middot;
+          <a href="/notes/">Notes</a>
+          &middot;
+          <a href="/talks/">Talks</a>
+          &middot;
+          <a href="/projects/">Projects</a>
+        </nav>
+      </header>
+
+      <main id="bd">
+          <article class="h-entry">
+    <header>
+      <h1 class="p-name">Ruby Acceptance Testing</h1>
+        <h2 class="p-summary">Riposte to aspects of "You're Cuking it Wrong" article by Jonas Nicklas.</h2>
+    </header>
+
+    <section class="e-content">
+      <p>In his recent article <a href="http://elabs.se/blog/15-you-re-cuking-it-wrong">You&#8217;re Cuking It Wrong</a>, Jonas Nicklas compares the following scenario which was submitted in a <a href="http://cukes.info/">Cucumber</a> issue :-</p>
+<pre class="lang-txt"><code class="lang-txt">Scenario: Adding a subpage
+  Given I am logged in
+  Given a microsite with a Home page
+  When I click the Add Subpage button
+  And I fill in "Gallery" for "Title" within "#document_form_container"
+  And I press "Ok" within ".ui-dialog-buttonpane"
+  Then I should see /Gallery/ within "#documents"</code></pre>
+<p>With an improved version which he has written :-</p>
+<pre class="lang-txt"><code class="lang-txt">Scenario: Adding a subpage
+  Given I am logged in
+  Given a microsite with a home page
+  When I press "Add subpage"
+  And I fill in "Title" with "Gallery"
+  And I press "Ok"
+  Then I should see a document called "Gallery"</code></pre>
+<h2>Levels of Abstraction</h2>
+<p>Jonas says :-</p>
+<blockquote>
+<p>there&#8217;s one crucial difference: the first feature is code, the second isn&#8217;t</p>
+</blockquote>
+<p>Although I see what Jonas is getting at, neither of them are actually Ruby code &#8211; both are written in Cucumber&#8217;s <a href="http://wiki.github.com/aslakhellesoy/cucumber/gherkin">Gherkin</a> DSL. The key difference is really the level of abstraction &#8211; the first version has a test that is less abstracted from the implementation than the second version. As Jonas correctly points out, the test in the second version is consequently more readable and is less coupled to the underlying implementation.</p>
+<h2>Readability</h2>
+<p>Jonas also says :-</p>
+<blockquote>
+<p>The argument against cucumber that&#8217;s often presented is that as a programmer, plain text is unnecessary, because we can all read code.</p>
+</blockquote>
+<p>However, it&#8217;s a mistake to think that making a test readable <em>necessarily</em> means that it has to be written in a <a href="http://en.wikipedia.org/wiki/Natural_language">natural language</a>. We could equally well write something like this :-</p>
+<pre class="lang-txt"><code class="lang-txt">scenario "adding a subpage" {
+  given {
+    i_am_logged_in
+    a_microsite_with_a_home_page
+  }
+  when {
+    i_press "Add subpage"
+    i_fill_in "Title",:with=&gt;"Gallery"
+    i_press "Ok"
+  }
+  then {
+    i_should_see_a_document_called "Gallery"
+  }
+}</code></pre>
+<p>While I would agree that my version isn&#8217;t as pretty as Jonas&#8217; version, I&#8217;d suggest it&#8217;s almost as <em>readable</em>. The difference being this is all valid Ruby code. I once saw someone (<a href="http://www.natpryce.com/">Nat Pryce</a> or <a href="http://www.m3p.co.uk/">Steve Freeman</a>, I think) do a neat trick where they changed the syntax highlighting in an editor to make some characters invisible and as a result made the code more readable. We could probably do something similar to make braces, underscores, etc invisible, and end up with something as good as Jonas&#8217; version :-</p>
+<pre class="lang-txt"><code class="lang-txt">scenario "adding a subpage"
+  given
+    i am logged in
+    a microsite with a home page</code>
+
+<code class="lang-txt">  when
+    i press "Add subpage"
+    i fill in "Title"  with  "Gallery"
+    i press "Ok"</code>
+
+<code class="lang-txt">  then
+    i should see a document called "Gallery"</code></pre>
+<h2>Overhead</h2>
+<p>It seems obvious to me that Cucumber adds an overhead in writing tests. It requires me to use regular expressions to convert natural language into code. While I recognise that the overhead is often small, it does still exist and I&#8217;ve definitely spent time debugging this aspect of tests. Given that I think it&#8217;s possible to write nicely abstracted readable tests in Ruby, it&#8217;s not obvious to me that the overhead of using Cucumber is worthwhile.</p>
+<p>I&#8217;m going to try and find the time to look at frameworks like <a href="http://github.com/elight/coulda">Coulda</a> and <a href="http://github.com/cavalle/steak">Steak</a> which seem to be more in line with my favoured approach.</p>
+<h3>Update</h3>
+<p>I thought it might be useful to include a quote from and a link to James Shore&#8217;s article on <a href="http://jamesshore.com/Blog/The-Problems-With-Acceptance-Testing.html">The Problems of Acceptance Testing</a> :-</p>
+<blockquote>
+<p>My experience with Fit and other agile acceptance testing tools is that they cost more than they&#8217;re worth. There&#8217;s a lot of value in getting concrete examples from real customers and business experts; not so much value in using &#8220;natural language&#8221; tools like Fit and similar.</p>
+</blockquote>
+    </section>
+
+    <footer>
+      <p class="metadata">
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2010-08-19-ruby-acceptance-testing"><time class="dt-published" datetime="2010-08-19T21:31:24+00:00">19 Aug 2010 at 21:31</time></a>
+      </p>
+      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2010-08-19-ruby-acceptance-testing">
+  <template id="webmention-template">
+    <li class="webmention">
+      <div>
+        <a class="author">
+          <span class="author-name"></span>
+        </a>
+        <a class="action"></a>
+      </div>
+      <div class="content"></div>
+    </li>
+  </template>
+</div>
+
+<script src="/javascripts/webmentions.js" type="text/javascript" charset="utf-8"></script>
+
+    </footer>
+  </article>
+
+
+          <nav id="navigation" aria-label="Inter-article">
+      <a href="/blog/2010-01-25-converting-s5-slides-to-a-single-pdf-on-mac-osx" class="previous">&lt; Converting S5 slides to a single PDF on Mac OSX</a>
+      <a href="/blog/2010-10-22-mocha-release-0-9-9" class="next">Mocha Release 0.9.9 &gt;</a>
+  </nav>
+
+      </main>
+
+      <footer id="ft">
+        <nav aria-label="Footer">
+          <a href="/contact">Contact</a>
+          &middot;
+          <a href="/history">History</a>
+          &middot;
+          <a href="/colophon">Colophon</a>
+          &middot;
+          <a href="/links">Links</a>
+        </nav>
+        <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">This work by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="jamesmead.org">James Mead</a> is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0<img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Mocha Releases 0.10.0 - 0.10.5 - James Mead</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Belated update on recent releases." />
+    <meta name="keywords" content="mocha mock object testing ruby" />
+    <meta name="author" content= "James Mead" />
+
+    <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+    <meta name="y_key" content="5f5b0de20991e0c2" />
+    <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
+
+    <link href="/images/favicon.gif" rel="icon" type="image/gif" />
+
+    <link href="/stylesheets/yui/3.18.1/cssreset-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssfonts-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssbase-min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+
+    <link href="/stylesheets/prettify/prettify.css" rel="stylesheet" />
+    <script src="/javascripts/prettify/prettify.js"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.jamesmead.org/floehopper-blog" />
+
+    <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
+
+    <link rel="prev" href="/blog/2012-01-28-durham-house-for-sale-now-via-local-agent" />
+    <link rel="next" href="/blog/2012-06-02-mocha-relocation" />
+    <link rel="first" href="/blog/2004-05-14-unit-tests-can-100-coverage-be-a-bad-thing" />
+    <link rel="last" href="/blog/2021-01-23-youtube-video-of-my-3d-maze-game-for-the-zx-spectrum" />
+    <link rel="index" href="/blog" />
+
+  </head>
+  <body class="blog blog_2012-03-09-mocha-releases-0-10" onload="prettyPrint()">
+    <div id="doc">
+      <div class="skip-links">
+        <a href="#bd">Skip to main content</a>
+      </div>
+
+      <header id="hd">
+        <nav aria-label="Primary">
+          <a href="/">Home</a>
+          &middot;
+          <a href="/blog/">Blog</a>
+          &middot;
+          <a href="/notes/">Notes</a>
+          &middot;
+          <a href="/talks/">Talks</a>
+          &middot;
+          <a href="/projects/">Projects</a>
+        </nav>
+      </header>
+
+      <main id="bd">
+          <article class="h-entry">
+    <header>
+      <h1 class="p-name">Mocha Releases 0.10.0 - 0.10.5</h1>
+        <h2 class="p-summary">Belated update on recent releases.</h2>
+    </header>
+
+    <section class="e-content">
+      <h2>Release Notes</h2>
+<h3>0.10.5</h3>
+<ul>
+	<li>Fix for <a href="https://github.com/freerange/mocha/issues/66">issue #66</a> (hopefully without regressing on <a href="https://github.com/freerange/mocha/issues/63">issue #63</a>) &#8211; <code>Mocha::Mock</code> has <code>Mocha::Mockery</code> as a dependency. Stop trying to pretend otherwise. Thanks to <a href="https://github.com/kennyj">@kennyj</a> for reporting.</li>
+	<li>Fix a bunch of warnings in Ruby 1.9. There are still the 6 test failures mentioned in <a href="https://github.com/freerange/mocha/issues/41">issue #41</a> which I suspect are due to the introspection gem not being Ruby 1.9-compatible.</li>
+	<li>Add links to README for source code &amp; issue tracker.</li>
+	<li>Fix for <a href="https://github.com/freerange/mocha/issues/67">issue #67</a> &#8211; Make the travis-ci badge visible in the README. Thanks to Diego Plentz for pull request.</li>
+	<li>Fix for <a href="https://github.com/freerange/mocha/issues/70">issue #70</a> &#8211; Rename <code>Mock#expectations</code> to <code>Mock#__expectations__</code> to avoid conflicts. Thanks to Jeremy Stephens for pull request.</li>
+</ul>
+<h3>0.10.4</h3>
+<ul>
+	<li>Fix for <a href="https://github.com/freerange/mocha/issues/65">issue #65</a> &#8211; expectations not being verified in subsequent tests.</li>
+	<li>Fix for <a href="https://github.com/freerange/mocha/issues/63">issue #63</a> &#8211; require <code>Mocha::Mockery</code> at <code>Mocha::Mock</code> class load time and not on invocation of Mock#method_missing.</li>
+	<li>Fix for <a href="https://github.com/freerange/mocha/issues/45">issue #45</a> &#8211; raise <code>ArgumentError</code> if <code>Mocha::ParameterMatchers#has_entry</code> is given<br />
+<code>Hash</code> with wrong number of entries.</li>
+	<li>Make global variable name more obscure to avoid clashes with other libraries.</li>
+	<li>Move travis-ci-related gemfiles into their own directory.</li>
+</ul>
+<h3>0.10.3</h3>
+<ul>
+	<li>Fix for <a href="https://github.com/freerange/mocha/issues/57">issue #57</a>. <code>Gem::Requirement#=~</code> was only added in rubygems v1.8.0, but <code>Object#=~</code> means the result of various monkey-patching checks is always <code>false</code> or <code>nil</code> for earlier versions of rubygems. However, the method it aliases <code>#satisfied_by?</code> has existed since <code>Gem::Dependency</code> was extracted from <code>Gem::Version</code> in rubygems v0.9.4.4, so it&#8217;s much safer to use that. Thanks to <a href="https://github.com/fguillen">@fguillen</a> for reporting and helping with diagnosis.</li>
+</ul>
+<h3>0.10.2</h3>
+<ul>
+	<li>Merge pull request #53. Unstubbing a method should not remove expectations for other stubbed methods. Fixes #52. Thanks to <a href="https://github.com/saikat">@saikat</a>.</li>
+</ul>
+<h3>0.10.1</h3>
+<ul>
+	<li>Merge <a href="https://github.com/freerange/mocha/pull/51">pull request #51</a>. Use <code>Gem::Requirement</code> &amp; <code>Gem::Version</code> for version comparison. Fixes <a href="https://github.com/freerange/mocha/issues/50">issue #50</a>. Thanks to <a href="https://github.com/meineerde">@meineerde</a>.</li>
+	<li>Fixed typo in rdoc for <code>Mocha::ObjectMethods</code>.</li>
+	<li>Improve README as suggested in <a href="https://github.com/freerange/mocha/issues/46">issue #46</a>. Explain that Mocha must be loaded after test libraries and how to achieve this using Bundler.</li>
+	<li>Merge <a href="https://github.com/freerange/mocha/pull/43">pull request #43</a> &#8211; nobody expects the spanish inquisition! Thanks to <a href="https://github.com/cairo140">@cairo140</a>.</li>
+	<li>Fix for <a href="https://github.com/freerange/mocha/issues/39">issue #39</a> &#8211; improve documentation for <code>Expectation#multiple_yields</code>.</li>
+	<li>Fix for <a href="https://github.com/freerange/mocha/issues/38">issue #38</a> where a subtle change in test-unit v2.3.0 had been missed &#8211; only visible in verbose mode.</li>
+	<li>Support for MiniTest up to v2.6.2 has been verified.</li>
+	<li>Add explicit development dependency on <code>coderay</code> for generating syntax-highlighted code examples.</li>
+</ul>
+<h3>0.10.0</h3>
+<ul>
+	<li>Add Expectation#throws to allow a stubbed method to use Kernel#throw.</li>
+	<li>Updates for versions of Test::Unit up to and including v2.3.3 (including patch by Jens Fahnenbruck).</li>
+	<li>Updates for versions of MiniTest up to and including v2.5.1.</li>
+	<li>Since the singleton method added by Mocha masks the underlying instance method, there&#8217;s no need to move it out the way and then back again. This fixes Github <a href="https://github.com/freerange/mocha/issues/20">issue #20</a>, because the original method is left unchanged &#8211; See <a href="https://github.com/freerange/mocha/issues/20">issue #20</a> (thanks to <a href="https://github.com/nicklewis">@nicklewis</a>).</li>
+	<li>Handle stubbing of a singleton method, leaving the original method unchanged after the test.</li>
+	<li>When stubbing an instance method that was originally defined as a singleton method, the original method should still exist after the test.</li>
+	<li>Fixed mis-print in Mocha::ObjectMethods#unstub documentation (patch by <a href="https://github.com/glebpom">@glebpom</a>).</li>
+	<li>Improved test coverage around stubbing of methods defined in different ways &#8211; this makes use of the newly extracted introspection gem (although this means some tests are now failing in Ruby v1.9.2).</li>
+	<li>Added configuration for Travis continuous integration.</li>
+	<li>Make the gemspec the canonical reference and stop generating it from the Rakefile.</li>
+	<li>Use the built-in Bundler rake tasks for packaging the gem.</li>
+	<li>Use the <code>release</code> rake task provided by Bundler instead of using the Rake::XForge::Release functionality.</li>
+	<li>Extract <code>Object#__metaclass__</code> into a new <code>metaclass</code> gem.</li>
+	<li>Run rake tasks without <code>bundle exec</code>.</li>
+	<li>Avoid deprecation warning for <code>rdoc</code> rake task.</li>
+	<li>Remove the <code>use_test_unit_gem</code> <code>MOCHA_OPTION</code> which hasn&#8217;t worked since we switched to bundler &#8211; we can now run the tests specifying a different <code>Gemfile</code> instead.</li>
+	<li>Use multiple Gemfiles seems to run Travis CI builds against multiple version of test-unit &amp; minitest.</li>
+</ul>
+    </section>
+
+    <footer>
+      <p class="metadata">
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2012-03-09-mocha-releases-0-10"><time class="dt-published" datetime="2012-03-09T12:05:00+00:00">09 Mar 2012 at 12:05</time></a>
+      </p>
+      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2012-03-09-mocha-releases-0-10">
+  <template id="webmention-template">
+    <li class="webmention">
+      <div>
+        <a class="author">
+          <span class="author-name"></span>
+        </a>
+        <a class="action"></a>
+      </div>
+      <div class="content"></div>
+    </li>
+  </template>
+</div>
+
+<script src="/javascripts/webmentions.js" type="text/javascript" charset="utf-8"></script>
+
+    </footer>
+  </article>
+
+
+          <nav id="navigation" aria-label="Inter-article">
+      <a href="/blog/2012-01-28-durham-house-for-sale-now-via-local-agent" class="previous">&lt; Durham house for sale now via local agent</a>
+      <a href="/blog/2012-06-02-mocha-relocation" class="next">Mocha Relocation &gt;</a>
+  </nav>
+
+      </main>
+
+      <footer id="ft">
+        <nav aria-label="Footer">
+          <a href="/contact">Contact</a>
+          &middot;
+          <a href="/history">History</a>
+          &middot;
+          <a href="/colophon">Colophon</a>
+          &middot;
+          <a href="/links">Links</a>
+        </nav>
+        <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">This work by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="jamesmead.org">James Mead</a> is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0<img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+      </footer>
+    </div>
+  </body>
+</html>

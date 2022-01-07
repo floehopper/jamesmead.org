@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Multiple Rails development environments using nix-shell - James Mead</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Four Rails apps using different versions of Ruby, Rails, PostgreSQL and MySQL" />
+    <meta name="author" content= "James Mead" />
+
+    <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+    <meta name="y_key" content="5f5b0de20991e0c2" />
+    <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
+
+    <link href="/images/favicon.gif" rel="icon" type="image/gif" />
+
+    <link href="/stylesheets/yui/3.18.1/cssreset-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssfonts-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssbase-min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+
+    <link href="/stylesheets/prettify/prettify.css" rel="stylesheet" />
+    <script src="/javascripts/prettify/prettify.js"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.jamesmead.org/floehopper-blog" />
+
+    <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
+
+    <link rel="prev" href="/blog/2020-10-13-sending-webmentions-from-a-static-website" />
+    <link rel="next" href="/blog/2021-01-17-using-lambda-edge-with-cloudfront-to-configure-redirect-rules-for-domains" />
+    <link rel="first" href="/blog/2004-05-14-unit-tests-can-100-coverage-be-a-bad-thing" />
+    <link rel="last" href="/blog/2021-01-23-youtube-video-of-my-3d-maze-game-for-the-zx-spectrum" />
+    <link rel="index" href="/blog" />
+
+  </head>
+  <body class="blog blog_2020-11-29-multiple-rails-development-environments-using-nix-shell" onload="prettyPrint()">
+    <div id="doc">
+      <div class="skip-links">
+        <a href="#bd">Skip to main content</a>
+      </div>
+
+      <header id="hd">
+        <nav aria-label="Primary">
+          <a href="/">Home</a>
+          &middot;
+          <a href="/blog/">Blog</a>
+          &middot;
+          <a href="/notes/">Notes</a>
+          &middot;
+          <a href="/talks/">Talks</a>
+          &middot;
+          <a href="/projects/">Projects</a>
+        </nav>
+      </header>
+
+      <main id="bd">
+          <article class="h-entry">
+    <header>
+      <h1 class="p-name">Multiple Rails development environments using nix-shell</h1>
+        <h2 class="p-summary">Four Rails apps using different versions of Ruby, Rails, PostgreSQL and MySQL</h2>
+    </header>
+
+    <section class="e-content">
+      <p>I've continued to make slow but steady progress with my experiment to setup Rails development environments using nix-shell on a Vagrant VM running Ubuntu. I've now got to the stage where I have four Rails apps using combinations of Ruby versions, Rails versions, PostgreSQL versions, and MySQL versions which I'm pretty happy about!</p>
+
+<ul>
+  <li>Ruby v2.5, Rails v5.2.4.4, PostgreSQL v10</li>
+  <li>Ruby v2.5, Rails v5.2.4.4, MySQL v5.7</li>
+  <li>Ruby v2.6, Rails v6.0.3.4, PostgreSQL v11</li>
+  <li>Ruby v2.6, Rails v6.0.3.4, MySQL v8.0</li>
+</ul>
+
+<p><img style="display: block; margin-left: auto; margin-right: auto; width: 100%;" src="/images/four-rails-apps.png" alt="Four Rails apps" /></p>
+
+<p>I've continued to use bash scripts as Vagrant provisioners to do this in a reproducible way, although <a href="https://github.com/floehopper/rails-on-nix/tree/3c40a3fe195a08dfdec54a50a2b042eae1305b64">the code</a> is currently a bit messier than I would like.</p>
+
+<h3 id="creating-the-rails-apps">Creating the Rails apps</h3>
+
+<p>I've improved the way that <code>rails new</code> is run so that it works correctly for different versions of Ruby. The new approach closely based on <a href="https://discourse.nixos.org/t/using-bundlerenv-with-non-default-version-of-ruby-v2-5/8470/4">this answer</a> to a question I asked on the NixOS forums.</p>
+
+<p>Some of the complications around having a suitable environment to run <code>rails new</code> for a particular version of Ruby and of Rails has reminded me that I don't have a particularly good solution for this in my current non-Nix MacOS setup.</p>
+
+<p>In fact I tend to do something analagous to what I've done with Nix, i.e. I use <code>rbenv</code> to switch to the relevant version of Ruby, create a <code>Gemfile</code> containing just a reference to the version of the Rails gem that I want, run <code>bundle install</code> and then <code>rails new</code>. I'd be interested to hear if anyone has a better/simpler way of doing this.</p>
+
+<p>At this point, it's probably instructive to show you the relevant files for one of the four Rails apps. A <code>bundler.nix</code> is used only to run <code>bundle lock</code> to generate <code>Gemfile.lock</code>. Previously I had been using <code>bundix</code> itself to generate <code>Gemfile.lock</code>, but I couldn't work out how to do this for different versions of Ruby.</p>
+
+<pre><code># Gemfile
+source 'https://rubygems.org'
+gem 'rails', '= 6.0.3.4'
+
+# bundler.nix
+with (import &lt;nixpkgs&gt; {});
+let
+  myBundler = bundler.override { ruby = ruby_2_6; };
+in
+mkShell {
+  name = "bundler-shell";
+  buildInputs = [ myBundler ];
+}
+</code></pre>
+
+<p>A <code>shell.nix</code> is used to run <code>bundix</code> to generate a <code>gemset.nix</code> and to run <code>rails new</code> using this gemset.</p>
+
+<pre><code># shell.nix
+with (import &lt;nixpkgs&gt; {});
+let
+  env = bundlerEnv {
+    name = "ruby2.6-rails6.0.3.4-mysql8.0";
+    ruby = ruby_2_6;
+    gemdir = ./.;
+  };
+in mkShell { buildInputs = [ env env.wrappedRuby ]; }
+</code></pre>
+
+<p>Inside the rails app directory there's another <code>bundler.nix</code> (exactly the same as the one above) which is again only used to run <code>bundle lock</code> and another <code>shell.nix</code> which is used both to run <code>bundix</code> and to provide the actual development environment including all the relevant dependencies:</p>
+
+<pre><code># shell.nix
+with (import &lt;nixpkgs&gt; {});
+let
+  env = bundlerEnv {
+    name = "ruby2.6-rails6.0.3.4-mysql8.0";
+    ruby = ruby_2_6;
+    gemdir = ./.;
+  };
+in mkShell {
+  buildInputs = [ env env.wrappedRuby nodejs yarn mysql80 ];
+}
+</code></pre>
+
+<p>One other thing I had to deal with to handle Rails v5 was to run <code>rails yarn:install</code> instead of <code>rails webpacker:install</code> for Rails v6 when initally setting up the app.</p>
+
+<h3 id="setting-up-databases">Setting up databases</h3>
+
+<p>I've added a <a href="https://nixos.org/manual/nix/stable/command-ref/nix-shell.html#description">shellHook</a> to the development environment <code>shell.nix</code> to configure and run an instance of a database server for each Rails app. I'm now less sure that configuring and running a database on entering the nix-shell is very sensible. I suspect it might make more sense to have a separate script to do this.</p>
+
+<p>This time I've made a couple of changes to improve the level of isolation between the apps. Firstly I've configured each database to store their data in a Rails app sub-directory rather than in a global location. And secondly I've configured each database to only accept connections via a <a href="https://en.wikipedia.org/wiki/Unix_domain_socket">unix domain socket</a> also stored in a Rails app sub-directory.</p>
+
+<p>I managed to achieve the former by moving the Rails apps under the Vagrant user's home directory. This avoided the problem I had previously with hard links in a VirtualBox shared directory. Although this means the Rails app source code is not available from the guest OS, that seems like just a temporary inconvenience since I'm only using the Vagrant VM to simulate a fresh machine. Eventually my aim is to run Nix natively and not use Vagrant at all.</p>
+
+<p>I'm particularly pleased with the unix domain socket solution, because it means there's no need to identify an unused port for each Rails app to connect over TCP/IP. Here's the shellHook code for PostgreSQL and MySQL databases:</p>
+
+<h4 id="postgresql">PostgreSQL</h4>
+
+<pre><code>export PGHOST=/home/vagrant/ruby2.6-rails6.0.3.4-postgres11/tmp/postgres
+export PGDATA=$PGHOST/data
+export PGDATABASE=postgres
+export PGLOG=$PGHOST/postgres.log
+
+mkdir -p $PGHOST
+
+if [ ! -d $PGDATA ]; then
+  initdb --auth=trust --no-locale --encoding=UTF8
+fi
+
+if ! pg_ctl status
+then
+  pg_ctl start -l $PGLOG -o "--unix_socket_directories='$PGHOST' --listen_addresses='''"
+fi
+</code></pre>
+
+<h4 id="mysql">MySQL</h4>
+
+<pre><code>MYSQL_HOME=/home/vagrant/ruby2.6-rails6.0.3.4-mysql8.0/tmp/mysql
+MYSQL_DATA=$MYSQL_HOME/data
+export MYSQL_UNIX_PORT=$MYSQL_HOME/mysql.sock
+
+mkdir -p $MYSQL_HOME
+
+if [ ! -d $MYSQL_DATA ]; then
+  mysqld --initialize-insecure --datadir=$MYSQL_DATA
+fi
+
+if ! mysqladmin status --user=root
+then
+  mysqld_safe --datadir=$MYSQL_DATA --skip-networking &amp;
+  while ! mysqladmin status --user=root; do
+    sleep 1
+  done
+fi
+</code></pre>
+
+<p>I'm definitely no expert on setting up databases, so if you can suggest any improvements, I'd love to hear from you!</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>I'm pretty happy with where I've got to. It's starting to feel as if I have a solid basis for using Nix to create decent isolated development environments using various versions of Ruby, Rails, PostgreSQL &amp; MySQL on the same machine.</p>
+
+<p>One nice side-benefit is the way dependencies on OS package are made more explicit. And I don't think it would take much more work to have reproducible configurations to share with other developers and/or for use in continuous integration and/or deployments.</p>
+
+<p>As usual the source code is available in <a href="https://github.com/floehopper/rails-on-nix">a GitHub repository</a> and there are instructions on how to run it yourself in the <a href="https://github.com/floehopper/rails-on-nix/blob/main/README.md">README</a>.</p>
+
+<h3 id="next-steps">Next steps</h3>
+
+<ul>
+  <li>
+    <p>Come up with a better way to manage each database instance, i.e. not in a shellHook - either using a separate script (or possibly using <a href="https://systemd.io/">systemd</a>?).</p>
+  </li>
+  <li>
+    <p>Use specific patch versions of Ruby or minor versions of Ruby not available in the current set of nix packages. I'm pretty confident this is possible by <a href="https://nixos.wiki/wiki/FAQ/Pinning_Nixpkgs">pinning the version of nix packages</a> or it might be worth investigating <a href="https://nixos.wiki/wiki/Flakes">nix flakes</a>.</p>
+  </li>
+  <li>
+    <p>Use specific versions of Bundler. I haven't really looked into this at all yet, because I'm not sure it's a deal-breaker.</p>
+  </li>
+  <li>
+    <p>Investigate how hard it is to upgrade a gem in one of these Rails apps, i.e. regenerating the <code>Gemfile.lock</code> and <code>gemset.nix</code> files.</p>
+  </li>
+  <li>
+    <p>Investigate using <a href="https://github.com/direnv/direnv/wiki/Nix">direnv in conjunction with nix</a> or <a href="https://github.com/target/lorri/">lorri</a> to seamlessly move between different Rails app directories without having to explicitly enter/exit the relevant nix-shell.</p>
+  </li>
+  <li>
+    <p>Investigate using Nix to somehow make Node packages available to the environment in a similar way to Bundix instead of using Yarn directly, i.e. also automatically installing any OS package dependencies.</p>
+  </li>
+  <li>
+    <p>Investigate using <a href="https://nixos.wiki/wiki/Home_Manager">Nix home-manager</a> or custom scripting to make it easy to be able to run <code>rails new</code> for a specified version of Ruby and Rails.</p>
+  </li>
+</ul>
+
+<h3 id="further-reading">Further reading</h3>
+
+<ul>
+  <li>This is the third article in a series:
+    <ol>
+      <li><a href="/blog/2020-09-10-a-simple-rails-development-environment-using-nix-shell">A simple Rails development environment using nix-shell</a></li>
+      <li><a href="/blog/2020-10-12-generating-and-running-a-rails-app-with-postgresql-using-nix-on-ubuntu">Generating and running a Rails app with PostgreSQL using Nix on Ubuntu</a></li>
+    </ol>
+  </li>
+  <li>
+    <p><a href="https://blog.sulami.xyz/posts/nix-for-developers/">Lightning Introduction to Nix for Developers</a> by Robin Schroer.</p>
+  </li>
+  <li>
+    <p><a href="https://ghedam.at/15978/an-introduction-to-nix-shell">An introduction to nix-shell</a> by Mattia Gheda.</p>
+  </li>
+  <li>
+    <p><a href="https://medium.com/better-programming/easily-reproducible-development-environments-with-nix-and-direnv-e8753f456110">Easy Reproducible Development Environments with Nix and direnv</a> by Tom Feron.</p>
+  </li>
+  <li>
+    <p><a href="https://lazamar.co.uk/nix-versions/">Nix package versions</a> by Marcelo Lazaroni. Find all versions of a package that were available in a channel and the revision you can download it from.</p>
+  </li>
+  <li><a href="https://www.mankier.com/package/nix">Man pages for Nix command line tools</a>.</li>
+</ul>
+
+
+    </section>
+
+    <footer>
+      <p class="metadata">
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2020-11-29-multiple-rails-development-environments-using-nix-shell"><time class="dt-published" datetime="2020-11-29T12:21:00+00:00">29 Nov 2020 at 12:21</time></a>
+      </p>
+      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2020-11-29-multiple-rails-development-environments-using-nix-shell">
+  <template id="webmention-template">
+    <li class="webmention">
+      <div>
+        <a class="author">
+          <span class="author-name"></span>
+        </a>
+        <a class="action"></a>
+      </div>
+      <div class="content"></div>
+    </li>
+  </template>
+</div>
+
+<script src="/javascripts/webmentions.js" type="text/javascript" charset="utf-8"></script>
+
+    </footer>
+  </article>
+
+
+          <nav id="navigation" aria-label="Inter-article">
+      <a href="/blog/2020-10-13-sending-webmentions-from-a-static-website" class="previous">&lt; Automatically sending Webmentions from a static website</a>
+      <a href="/blog/2021-01-17-using-lambda-edge-with-cloudfront-to-configure-redirect-rules-for-domains" class="next">Using Lambda@Edge with CloudFront to configure redirect rules for domains &gt;</a>
+  </nav>
+
+      </main>
+
+      <footer id="ft">
+        <nav aria-label="Footer">
+          <a href="/contact">Contact</a>
+          &middot;
+          <a href="/history">History</a>
+          &middot;
+          <a href="/colophon">Colophon</a>
+          &middot;
+          <a href="/links">Links</a>
+        </nav>
+        <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">This work by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="jamesmead.org">James Mead</a> is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0<img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+      </footer>
+    </div>
+  </body>
+</html>

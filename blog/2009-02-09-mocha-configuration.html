@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Mocha Configuration - James Mead</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="keywords" content="mocha mock stub ruby testing tdd configuration warning role interface coupling" />
+    <meta name="author" content= "James Mead" />
+
+    <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+    <meta name="y_key" content="5f5b0de20991e0c2" />
+    <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
+
+    <link href="/images/favicon.gif" rel="icon" type="image/gif" />
+
+    <link href="/stylesheets/yui/3.18.1/cssreset-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssfonts-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssbase-min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+
+    <link href="/stylesheets/prettify/prettify.css" rel="stylesheet" />
+    <script src="/javascripts/prettify/prettify.js"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.jamesmead.org/floehopper-blog" />
+
+    <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
+
+    <link rel="prev" href="/blog/2009-02-03-mocha-internals-under-scrutiny" />
+    <link rel="next" href="/blog/2009-02-16-uninstalling-gems-from-gem-directory" />
+    <link rel="first" href="/blog/2004-05-14-unit-tests-can-100-coverage-be-a-bad-thing" />
+    <link rel="last" href="/blog/2021-01-23-youtube-video-of-my-3d-maze-game-for-the-zx-spectrum" />
+    <link rel="index" href="/blog" />
+
+  </head>
+  <body class="blog blog_2009-02-09-mocha-configuration" onload="prettyPrint()">
+    <div id="doc">
+      <div class="skip-links">
+        <a href="#bd">Skip to main content</a>
+      </div>
+
+      <header id="hd">
+        <nav aria-label="Primary">
+          <a href="/">Home</a>
+          &middot;
+          <a href="/blog/">Blog</a>
+          &middot;
+          <a href="/notes/">Notes</a>
+          &middot;
+          <a href="/talks/">Talks</a>
+          &middot;
+          <a href="/projects/">Projects</a>
+        </nav>
+      </header>
+
+      <main id="bd">
+          <article class="h-entry">
+    <header>
+      <h1 class="p-name">Mocha Configuration</h1>
+    </header>
+
+    <section class="e-content">
+      <h2>Introduction</h2>
+<p>In his <a href="http://blog.brianguthrie.com/articles/2009/02/03/ioke-mocking-mocha-as-exemplar">recent look</a> at Mocha&#8217;s internals, Brian Guthrie mentioned that he hadn&#8217;t realised it was possible to configure Mocha to warn or disallow mocking of non-existent methods. So I thought it was time I explained <a href="https://web.archive.org/web/20090329000048/http://mocha.rubyforge.org/classes/Mocha/Configuration.html">Mocha&#8217;s configuration settings</a>. These configuration settings are all somewhat experimental and feedback on their effectiveness would be welcome.</p>
+<p>There are 3 levels for all of the existing conditions :-</p>
+<pre class="prettyprint"><code class="prettyprint"># default behaviour
+Mocha::Configuration.allow(condition)</code>
+
+<code class="prettyprint"># warning is displayed when condition is met
+Mocha::Configuration.warn_when(condition)</code>
+
+<code class="prettyprint"># error is raised when condition is met
+Mocha::Configuration.prevent(condition)</code></pre>
+<h2>Stubbing a non-existent method</h2>
+<p>This is useful if you want to ensure that methods you&#8217;re mocking really exist. A common criticism of unit tests with mock objects is that such a test may (incorrectly) pass when an equivalent non-mocking test would (correctly) fail. While you should always have some integration tests, particularly for critical business functionality, this Mocha configuration setting should catch scenarios when mocked methods and real methods have become misaligned.</p>
+<pre class="prettyprint"><code class="prettyprint">Mocha::Configuration.prevent(:stubbing_non_existent_method)</code>
+
+<code class="prettyprint">class Example
+end</code>
+
+<code class="prettyprint">class ExampleTest &lt; Test::Unit::TestCase
+  def test_example
+    example = Example.new
+    example.stubs(:method_that_doesnt_exist)
+    # =&gt; Mocha::StubbingError: stubbing non-existent method:
+    # =&gt;   #&lt;Example:0x593760&gt;.method_that_doesnt_exist
+  end
+end</code></pre>
+<h2>Stubbing a method unnecessarily</h2>
+<p>This is useful for identifying unused stubs. Unused stubs are often accidentally introduced when code is <a href="http://martinfowler.com/bliki/DefinitionOfRefactoring.html">refactored</a>.</p>
+<pre class="prettyprint"><code class="prettyprint">Mocha::Configuration.prevent(:stubbing_method_unnecessarily)</code>
+
+<code class="prettyprint">class ExampleTest &lt; Test::Unit::TestCase
+  def test_example
+    example = mock('example')
+    example.stubs(:unused_stub)
+    # =&gt; Mocha::StubbingError: stubbing method unnecessarily:
+    # =&gt;   #&lt;Mock:example&gt;.unused_stub(any_parameters)
+  end
+end</code></pre>
+<h2>Stubbing a non-public method</h2>
+<p>Many people think that it&#8217;s good practice only to mock public methods. This is one way to prevent your tests being too tightly coupled to the internal implementation of a class. Such tests tend to be very brittle and not much use when refactoring.</p>
+<pre class="prettyprint"><code class="prettyprint">Mocha::Configuration.prevent(:stubbing_non_public_method)</code>
+
+<code class="prettyprint">class Example
+  def internal_method; end
+  private :internal_method
+end</code>
+
+<code class="prettyprint">class ExampleTest &lt; Test::Unit::TestCase
+  def test_example
+    example = Example.new
+    example.stubs(:internal_method)
+    # =&gt; Mocha::StubbingError: stubbing non-public method:
+    # =&gt;   #&lt;Example:0x593530&gt;.internal_method
+  end
+end</code></pre>
+<h2>Stubbing Method on Non-Mock Object</h2>
+<p>If you like the idea of <a href="http://www.jmock.org/oopsla2004.pdf">mocking roles not objects</a> and <a href="http://www.mockobjects.com/2007/04/test-smell-mocking-concrete-classes.html">you don&#8217;t like stubbing concrete classes</a>, this is the setting for you. However, while this restriction makes a lot of sense in Java with its <a href="http://java.sun.com/docs/books/tutorial/java/concepts/interface.html">explicit interfaces</a>, it may be moot in Ruby where roles are probably best represented as Modules. Anyway that&#8217;s probably a discussion for another day.</p>
+<pre class="prettyprint"><code class="prettyprint">Mocha::Configuration.prevent(:stubbing_method_on_non_mock_object)</code>
+
+<code class="prettyprint">class Example
+  def example_method; end
+end</code>
+
+<code class="prettyprint">class ExampleTest &lt; Test::Unit::TestCase
+  def test_example
+    example = Example.new
+    example.stubs(:example_method)
+    # =&gt; Mocha::StubbingError: stubbing method on non-mock object:
+    # =&gt;   #&lt;Example:0x593620&gt;.example_method
+  end
+end
+</code></pre>
+    </section>
+
+    <footer>
+      <p class="metadata">
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2009-02-09-mocha-configuration"><time class="dt-published" datetime="2009-02-09T11:40:50+00:00">09 Feb 2009 at 11:40</time></a>
+      </p>
+      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2009-02-09-mocha-configuration">
+  <template id="webmention-template">
+    <li class="webmention">
+      <div>
+        <a class="author">
+          <span class="author-name"></span>
+        </a>
+        <a class="action"></a>
+      </div>
+      <div class="content"></div>
+    </li>
+  </template>
+</div>
+
+<script src="/javascripts/webmentions.js" type="text/javascript" charset="utf-8"></script>
+
+    </footer>
+  </article>
+
+
+          <nav id="navigation" aria-label="Inter-article">
+      <a href="/blog/2009-02-03-mocha-internals-under-scrutiny" class="previous">&lt; Mocha Internals under Scrutiny</a>
+      <a href="/blog/2009-02-16-uninstalling-gems-from-gem-directory" class="next">Uninstalling gems from .gem directory &gt;</a>
+  </nav>
+
+      </main>
+
+      <footer id="ft">
+        <nav aria-label="Footer">
+          <a href="/contact">Contact</a>
+          &middot;
+          <a href="/history">History</a>
+          &middot;
+          <a href="/colophon">Colophon</a>
+          &middot;
+          <a href="/links">Links</a>
+        </nav>
+        <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">This work by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="jamesmead.org">James Mead</a> is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0<img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+      </footer>
+    </div>
+  </body>
+</html>

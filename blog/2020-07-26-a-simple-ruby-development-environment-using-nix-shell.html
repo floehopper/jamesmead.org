@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>A simple Ruby development environment using nix-shell - James Mead</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="This nix-shell environment provides a Ruby environment capable of running middleman in order to build and serve my personal website locally" />
+    <meta name="author" content= "James Mead" />
+
+    <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+    <meta name="y_key" content="5f5b0de20991e0c2" />
+    <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
+
+    <link href="/images/favicon.gif" rel="icon" type="image/gif" />
+
+    <link href="/stylesheets/yui/3.18.1/cssreset-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssfonts-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssbase-min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+
+    <link href="/stylesheets/prettify/prettify.css" rel="stylesheet" />
+    <script src="/javascripts/prettify/prettify.js"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.jamesmead.org/floehopper-blog" />
+
+    <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
+
+    <link rel="prev" href="/blog/2020-06-27-indieweb-ifying-my-personal-website" />
+    <link rel="next" href="/blog/2020-08-07-using-nix-to-build-my-personal-website" />
+    <link rel="first" href="/blog/2004-05-14-unit-tests-can-100-coverage-be-a-bad-thing" />
+    <link rel="last" href="/blog/2021-01-23-youtube-video-of-my-3d-maze-game-for-the-zx-spectrum" />
+    <link rel="index" href="/blog" />
+
+  </head>
+  <body class="blog blog_2020-07-26-a-simple-ruby-development-environment-using-nix-shell" onload="prettyPrint()">
+    <div id="doc">
+      <div class="skip-links">
+        <a href="#bd">Skip to main content</a>
+      </div>
+
+      <header id="hd">
+        <nav aria-label="Primary">
+          <a href="/">Home</a>
+          &middot;
+          <a href="/blog/">Blog</a>
+          &middot;
+          <a href="/notes/">Notes</a>
+          &middot;
+          <a href="/talks/">Talks</a>
+          &middot;
+          <a href="/projects/">Projects</a>
+        </nav>
+      </header>
+
+      <main id="bd">
+          <article class="h-entry">
+    <header>
+      <h1 class="p-name">A simple Ruby development environment using nix-shell</h1>
+        <h2 class="p-summary">This nix-shell environment provides a Ruby environment capable of running middleman in order to build and serve my personal website locally</h2>
+    </header>
+
+    <section class="e-content">
+      <p>I've been playing around with the the <a href="https://nixos.org/">nix</a> package manager recently. At the moment I'm mainly interested in seeing whether I can use it to configure isolated <em>development</em> environments for various projects with varying package dependencies. The classic case of this would be two <a href="https://rubyonrails.org/">Rails</a> apps, one using <a href="https://www.postgresql.org/">PostgreSQL</a> and the other using <a href="https://www.mysql.com/">MySQL</a>. Ideally I'd like development environments which completely specify all the projects dependencies and make <em>only</em> those dependencies available in the relevant development environment.</p>
+
+<p>It's not unusual for me to need multiple versions of PostgreSQL and MySQL installed at the same time for different projects. While it is possible to do this using <a href="https://brew.sh/">Homebrew</a>, I've never found it very straightforward. At <a href="https://gofreerange.com/">Go Free Range</a>, we've often used <a href="https://www.vagrantup.com/">Vagrant</a> to tackle this problem and more recently I've had some success using <a href="https://www.docker.com/">Docker</a> and <a href="https://docs.docker.com/compose/">docker-compose</a> using a similar approach to <a href="https://evilmartians.com/chronicles/ruby-on-whales-docker-for-ruby-rails-development">the Evil Martians</a>. However, the former has always seemed like overkill and uses a lot of resources, while the latter often introduces extra orchestration complexity, because of the affordances which push you towards only having one process per container.</p>
+
+<h3 id="familiarising-myself-with-nix">Familiarising myself with nix</h3>
+
+<p>I ran into a minor hitch when installing nix on my laptop which is running MacOS Catalina, but this was soon resolved when someone <a href="https://nixos.trydiscourse.com/t/installing-nix-on-macos-catalina-with-encrypted-boot-volume/7833">answered my question in the nix forums</a>. I then spent a while watching some of the videos from Burke Libby's excellent <a href="https://www.youtube.com/playlist?list=PLRGI9KQ3_HP_OFRG6R-p4iFgMSK1t5BHs">Nixology Youtube series</a>, reading his <a href="https://engineering.shopify.com/blogs/engineering/what-is-nix">What is Nix</a> article on the Shopify engineering blog, working through some of the <a href="https://nixcloud.io/tour/">nix expression language tutorial</a> and reading bits of the <a href="https://nix.dev/">nix.dev guide</a>, all while playing around with nix in a terminal on my laptop.</p>
+
+<p>Playing around like this is all very well, but I find that I only really start learning about things when I try to use them for real. Although eventually I want to use nix to create development environments for Rails apps, I thought I'd start with something much simpler - this website which is a static site generated using the <a href="https://middlemanapp.com/">middleman</a> Ruby library.</p>
+
+<h3 id="a-ruby-development-environment-using-nix-shell">A Ruby development environment using nix-shell</h3>
+
+<p>Firstly I installed <a href="https://github.com/nix-community/bundix">bundix</a> using <code>nix-env --install bundix</code>. Since I already had a <code>Gemfile.lock</code>, I used <code>bundix --init --ruby=ruby_2_6</code> to generate a <code>gemset.nix</code> and (because of the <code>--init</code> option) a skeleton <code>shell.nix</code>. I needed to specify the Ruby version, because I didn't want the latest version, v2.7 at the time of writing.</p>
+
+<p>At this point I realised, much like with other OS-level package managers, there isn't a simple way to specify the patch version of Ruby in nix; instead you have to use whatever patch version is in your current version of <a href="https://github.com/NixOS/nixpkgs">nixpkgs</a>. So to cope with that, I upgraded the version of Ruby used in <code>Gemfile</code> &amp; <code>Gemfile.lock</code> from v2.6.5 to v2.6.6, currently the latest patch release of v2.6. I've read that it's possible to pin the version of nixpkgs to an older version if you want a specific patch version of Ruby, but I haven't tried that out yet. While I was at it, I upgraded <a href="https://bundler.io/">bundler</a> from v2.0.2 to v2.1.4, the version included in Ruby v2.6.6, and ran <code>bundle install</code> to update the version recorded against <code>BUNDLED_WITH</code> in <code>Gemfile.lock</code> before re-generating the <code>gemset.nix</code> as described above.</p>
+
+<p>I then ran <code>nix-shell</code> to see whether the development environment had been setup correctly. Running <code>which ruby</code> I discovered that it was still (incorrectly) pointing at my <a href="https://github.com/rbenv/rbenv">rbenv</a>. I fixed this by adding <code>ruby</code> to the array of <code>buildInputs</code> in <code>shell.nix</code>. Now <code>which ruby</code> was (correctly) pointing at the Ruby in the nix-store.</p>
+
+<p>Running <code>middleman build</code> triggered a <code>Bundler::GemNotFound</code> exception with the message: "Could not find RedCloth-4.3.2 in any of the sources". I fixed this by removing the <code>.bundle/config</code> file from my home directory - I normally use this to set <code>BUNDLE_PATH</code> to <code>.bundle/gems</code> and
+<code>BUNDLE_BIN</code> to <code>.bundle/bin</code> so that the bundled gems for a project are saved within a <code>.bundle</code> directory in each project directory, i.e. the gems for different projects are isolated from each other. Removing this configuration file seemed to do the trick and the website was built successfully.</p>
+
+<p>I was actually a bit surprised that the build succeeded since my Vagrant- &amp; Docker-based development environments had both <em>explicitly</em> installed <a href="https://nodejs.org/">node.js</a>. Investigating this I realised that node.js was being made available from <a href="https://github.com/nvm-sh/nvm">nvm</a> via the <a href="https://github.com/rails/execjs">execjs</a> gem and highlighted the fact that my nix-shell development environment wasn't actually very isolated, because I still had things like nvm in my <code>PATH</code>.</p>
+
+<p>When I removed the nvm config from the shell, execjs fell back to providing node.js from Homebrew, and when I removed the the Homebrew config from the shell, it fell back to prodiving node.js from the <a href="https://developer.apple.com/documentation/javascriptcore">JavaScriptCore framework</a> in MacOS! Anyway, all this convinced me that I should include an explicit dependency on node.js in my nix-shell development environment and so I added <code>nodejs</code> to the list of <code>buildInputs</code> in <code>shell.nix</code>.</p>
+
+<pre><code>with (import &lt;nixpkgs&gt; {});
+let
+  ruby = ruby_2_6;
+  env = bundlerEnv {
+    name = "jamesmead.org-bundler-env";
+    inherit ruby;
+    gemdir = ./.;
+  };
+in stdenv.mkDerivation {
+  name = "jamesmead.org";
+  buildInputs = [ env ruby nodejs ];
+}
+</code></pre>
+
+<h3 id="conclusions">Conclusions</h3>
+
+<p>At this point I was pretty convinced (although not certain) I had a completely specified development environment for my personal website and I'd learned a few things along the way…</p>
+
+<p>Although I can see why nix doesn't cater for specifying patch versions of Ruby, I feel as if I have needed this in development environments in the past and I'm not sure I'm ready to lose this capability provided by the likes of rbenv.</p>
+
+<p>As I understand it, <code>gemset.nix</code> is effectively a translation of <code>Gemfile.lock</code> into a list of nix derivations which are then included in my nix-shell environment by <code>shell.nix</code> via <code>bundlerEnv</code>. I think the effect of this is that you don't need to run <code>bundle install</code> within the nix-shell environment, but I'm wondering whether this benefit is worth the extra hassle of keeping <code>gemset.nix</code> up-to-date with <code>Gemfile.lock</code>. However, perhaps the benefits would be more apparent if you have a lot of gems, particularly some with native extensions.</p>
+
+<p>I'm now wondering whether a sensible half-way house for a development environment is to continue to use rbenv, nvm, bundler and npm in the normal way, but use nix to provide OS-level packages (e.g. PostgreSQL, MySQL, etc) as an alternative to Homebrew.</p>
+
+<h3 id="next-steps">Next steps</h3>
+
+<p>As I mentioned earlier, at this point I wasn't certain that I had a completely specified development environment. I could have tried it out on a Vagrant VM or a Docker container, but instead I decided to make use of it in the GitHub Action workflow that automatically publishes this website which I've written about <a href="/blog/2019-09-07-using-github-actions-to-publish-a-static-site-to-github-pages">previously</a>. I'll write about my experience of doing that in a separate article.</p>
+
+<p>Having tackled a relatively trivial Ruby application, I'd like to try the same approach with a simple Rails app. The most obvious candidate is the <a href="https://github.com/freerange/site">Go Free Range website</a> which is a Rails app with no database. I'll let you know how I get on.</p>
+
+<h3 id="further-reading">Further reading</h3>
+
+<p>After writing this article, I came across Farid Zakaria's article, <a href="https://fzakaria.com/2020/07/18/what-is-bundlerenv-doing.html">what is bundlerEnv doing?</a>, which I can highly recommend if you want to understand more about what's going on under the hood of the whole <code>bundix</code>, <code>gemset.nix</code> and <code>bundlerEnv</code> malarkey.</p>
+
+
+    </section>
+
+    <footer>
+      <p class="metadata">
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2020-07-26-a-simple-ruby-development-environment-using-nix-shell"><time class="dt-published" datetime="2020-07-26T14:01:00+00:00">26 Jul 2020 at 14:01</time></a>
+      </p>
+      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2020-07-26-a-simple-ruby-development-environment-using-nix-shell">
+  <template id="webmention-template">
+    <li class="webmention">
+      <div>
+        <a class="author">
+          <span class="author-name"></span>
+        </a>
+        <a class="action"></a>
+      </div>
+      <div class="content"></div>
+    </li>
+  </template>
+</div>
+
+<script src="/javascripts/webmentions.js" type="text/javascript" charset="utf-8"></script>
+
+    </footer>
+  </article>
+
+
+          <nav id="navigation" aria-label="Inter-article">
+      <a href="/blog/2020-06-27-indieweb-ifying-my-personal-website" class="previous">&lt; IndieWeb-ifying my personal website</a>
+      <a href="/blog/2020-08-07-using-nix-to-build-my-personal-website" class="next">Using nix to build my personal website &gt;</a>
+  </nav>
+
+      </main>
+
+      <footer id="ft">
+        <nav aria-label="Footer">
+          <a href="/contact">Contact</a>
+          &middot;
+          <a href="/history">History</a>
+          &middot;
+          <a href="/colophon">Colophon</a>
+          &middot;
+          <a href="/links">Links</a>
+        </nav>
+        <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">This work by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="jamesmead.org">James Mead</a> is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0<img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+      </footer>
+    </div>
+  </body>
+</html>

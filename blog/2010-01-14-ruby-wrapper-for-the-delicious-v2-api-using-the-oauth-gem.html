@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Ruby wrapper for the Delicious v2 API using the OAuth gem - James Mead</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Demonstrates how to bookmark a page from a Ruby script." />
+    <meta name="keywords" content="ruby delicious api v2 oauth yahoo bookmark" />
+    <meta name="author" content= "James Mead" />
+
+    <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+    <meta name="y_key" content="5f5b0de20991e0c2" />
+    <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
+
+    <link href="/images/favicon.gif" rel="icon" type="image/gif" />
+
+    <link href="/stylesheets/yui/3.18.1/cssreset-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssfonts-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssbase-min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+
+    <link href="/stylesheets/prettify/prettify.css" rel="stylesheet" />
+    <script src="/javascripts/prettify/prettify.js"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.jamesmead.org/floehopper-blog" />
+
+    <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
+
+    <link rel="prev" href="/blog/2009-12-14-ruby-and-cocoa-talk-at-ruby-manor" />
+    <link rel="next" href="/blog/2010-01-16-ruby-scripting-in-the-webby-environment" />
+    <link rel="first" href="/blog/2004-05-14-unit-tests-can-100-coverage-be-a-bad-thing" />
+    <link rel="last" href="/blog/2021-01-23-youtube-video-of-my-3d-maze-game-for-the-zx-spectrum" />
+    <link rel="index" href="/blog" />
+
+  </head>
+  <body class="blog blog_2010-01-14-ruby-wrapper-for-the-delicious-v2-api-using-the-oauth-gem" onload="prettyPrint()">
+    <div id="doc">
+      <div class="skip-links">
+        <a href="#bd">Skip to main content</a>
+      </div>
+
+      <header id="hd">
+        <nav aria-label="Primary">
+          <a href="/">Home</a>
+          &middot;
+          <a href="/blog/">Blog</a>
+          &middot;
+          <a href="/notes/">Notes</a>
+          &middot;
+          <a href="/talks/">Talks</a>
+          &middot;
+          <a href="/projects/">Projects</a>
+        </nav>
+      </header>
+
+      <main id="bd">
+          <article class="h-entry">
+    <header>
+      <h1 class="p-name">Ruby wrapper for the Delicious v2 API using the OAuth gem</h1>
+        <h2 class="p-summary">Demonstrates how to bookmark a page from a Ruby script.</h2>
+    </header>
+
+    <section class="e-content">
+      <p>I&#8217;ve got a bit sidetracked recently while trying to convert my blog from using <a href="http://www.typosphere.org/">Typo</a> to a static site using <a href="https://rubygems.org/gems/webby">Webby</a>. Typo provides a facility to tag your blog posts. This allows visitors to find <a href="http://blog.floehopper.org/articles/tag/mocha">all the articles tagged e.g. mocha</a>.</p>
+<p>Generating these tag pages becomes more awkward with the Webby-based site which is generated at deploy-time. I decided I liked the approach that Chris Roos took which was <a href="http://chrisroos.co.uk/tags">to tag his blog posts in del.icio.us</a> so that visitors can use a del.icio.us URL to find <a href="http://delicious.com/chrisjroos/blog.seagul.co.uk+cool">all the articles with a particular tag</a>.</p>
+<p>Initially I used <a href="http://github.com/weppos/www-delicious">WWW::Delicious</a> which worked well enough with <a href="http://delicious.com/jamesthecat/">my main del.icio.us account</a>. But then I decided I didn&#8217;t want to clutter up this account with bookmarks to all my blog posts, so I created a new account. Unfortunately since this is a new account, I have to use the v2 API with OAuth if I want to programmatically add bookmarks :-</p>
+<blockquote>
+<p>To access data from accounts created using a Yahoo! ID, use the same API&#8217;s as below, but change the path to /v2, and make HTTP requests using OAuth as provided by the <a href="http://developer.yahoo.com/oauth/">Yahoo! Developer Network</a>.</p>
+</blockquote>
+<p>I couldn&#8217;t find any examples of anyone doing this using Ruby, so I decided to have a go using the <a href="http://oauth.rubyforge.org/">OAuth gem</a>. It was a bit of a painful process due to a lack of decent documentation, but I got there in the end. I thought I&#8217;d <a href="http://github.com/floehopper/delicious-api-via-oauth">share the code</a> in case it saves anyone else a bit of time.</p>
+<p>The code probably isn&#8217;t very robust since it&#8217;s lacking tests and it currently only offers the ability to add bookmarks which was all I needed. Probably what I should do next is integrate this code with something like WWW:Delicious to offer access to both v1 and v2 APIs, but since I can now do what I wanted, this is unlikely to happen in the near future.</p>
+<p>In order to get the example code to work, you&#8217;ll need to login to a Yahoo! ID based del.icio.us account and go to your <a href="https://developer.apps.yahoo.com/projects">My Projects page</a> :-</p>
+<p><img src="http://farm5.static.flickr.com/4012/4274176876_4aa9366840.jpg" alt="" /></p>
+<p>There you need to add a project and grant it read/write access to del.icio.us :-</p>
+<p><img src="http://farm3.static.flickr.com/2765/4274199394_8408d3f2fc.jpg" alt="" /></p>
+<p>Granting access to your project will generate a Consumer Key and a Consumer Secret. These values should be used to define the <code>API_KEY</code> and <code>SHARED_SECRET</code> constants respectively. The <code>example.rb</code> code does this by requiring a <code>constants.rb</code> file which you could add.</p>
+<p>Here&#8217;s the example code which creates a single bookmark. Note that the first time this is run, it will open a browser and require you to login to obtain an <code>oauth_verifier</code> code :-</p>
+<p><img src="http://farm3.static.flickr.com/2744/4274208592_0066d8e0f2_o.png" alt="" /></p>
+<p><img src="http://farm5.static.flickr.com/4010/4274217158_e0b472a781_o.png" alt="" /></p>
+<p>You will need to copy and paste this code into the terminal window :-</p>
+<p><img src="http://farm3.static.flickr.com/2720/4273475533_0d2e7eca8c.jpg" alt="" /></p>
+<p>All the relevant tokens are saved to YAML files, so that subsequent calls to the API will work without user interaction. However, you should note that an access token expires after 1 hour. It ought to be possible to refresh this token without user interaction, but I haven&#8217;t been able to get that working yet, so in this case you&#8217;ll probably need to delete <code>request_token.yml</code> and <code>access_token.yml</code> and re-run the script.</p>
+<pre class="prettyprint"><code class="prettyprint">$LOAD_PATH &lt;&lt; File.join(File.dirname(__FILE__), 'oauth-extensions')
+$LOAD_PATH &lt;&lt; File.join(File.dirname(__FILE__), 'delicious')</code>
+
+<code class="prettyprint">require 'delicious/api'
+require 'constants'</code>
+
+<code class="prettyprint">api = Delicious::API.new(API_KEY, SHARED_SECRET)
+api.posts_add!(
+  :url =&gt; 'http://www.google.com/',
+  :description =&gt; 'Testing 1 2 3',
+  :extended =&gt; 'Blah blah blah',
+  :tags =&gt; 'testing google blah'
+)</code></pre>
+<p>Finally, here&#8217;s the bookmark successfully added to my account :-</p>
+<p><img src="http://farm5.static.flickr.com/4054/4273486847_d685d9f56b.jpg" alt="" /></p>
+    </section>
+
+    <footer>
+      <p class="metadata">
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2010-01-14-ruby-wrapper-for-the-delicious-v2-api-using-the-oauth-gem"><time class="dt-published" datetime="2010-01-14T13:57:03+00:00">14 Jan 2010 at 13:57</time></a>
+      </p>
+      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2010-01-14-ruby-wrapper-for-the-delicious-v2-api-using-the-oauth-gem">
+  <template id="webmention-template">
+    <li class="webmention">
+      <div>
+        <a class="author">
+          <span class="author-name"></span>
+        </a>
+        <a class="action"></a>
+      </div>
+      <div class="content"></div>
+    </li>
+  </template>
+</div>
+
+<script src="/javascripts/webmentions.js" type="text/javascript" charset="utf-8"></script>
+
+    </footer>
+  </article>
+
+
+          <nav id="navigation" aria-label="Inter-article">
+      <a href="/blog/2009-12-14-ruby-and-cocoa-talk-at-ruby-manor" class="previous">&lt; Ruby and Cocoa talk at Ruby Manor</a>
+      <a href="/blog/2010-01-16-ruby-scripting-in-the-webby-environment" class="next">Ruby scripting in the Webby "environment" &gt;</a>
+  </nav>
+
+      </main>
+
+      <footer id="ft">
+        <nav aria-label="Footer">
+          <a href="/contact">Contact</a>
+          &middot;
+          <a href="/history">History</a>
+          &middot;
+          <a href="/colophon">Colophon</a>
+          &middot;
+          <a href="/links">Links</a>
+        </nav>
+        <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">This work by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="jamesmead.org">James Mead</a> is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0<img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Mock Commands, Stub Queries - James Mead</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="keywords" content="mocha mock stub testing assert verify expectation command query" />
+    <meta name="author" content= "James Mead" />
+
+    <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+    <meta name="y_key" content="5f5b0de20991e0c2" />
+    <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
+
+    <link href="/images/favicon.gif" rel="icon" type="image/gif" />
+
+    <link href="/stylesheets/yui/3.18.1/cssreset-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssfonts-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssbase-min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+
+    <link href="/stylesheets/prettify/prettify.css" rel="stylesheet" />
+    <script src="/javascripts/prettify/prettify.js"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.jamesmead.org/floehopper-blog" />
+
+    <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
+
+    <link rel="prev" href="/blog/2007-07-22-an-introduction-to-mock-objects-in-ruby" />
+    <link rel="next" href="/blog/2007-08-07-why-array-length-is-better-than-array-size" />
+    <link rel="first" href="/blog/2004-05-14-unit-tests-can-100-coverage-be-a-bad-thing" />
+    <link rel="last" href="/blog/2021-01-23-youtube-video-of-my-3d-maze-game-for-the-zx-spectrum" />
+    <link rel="index" href="/blog" />
+
+  </head>
+  <body class="blog blog_2007-08-03-mock-commands-stub-queries" onload="prettyPrint()">
+    <div id="doc">
+      <div class="skip-links">
+        <a href="#bd">Skip to main content</a>
+      </div>
+
+      <header id="hd">
+        <nav aria-label="Primary">
+          <a href="/">Home</a>
+          &middot;
+          <a href="/blog/">Blog</a>
+          &middot;
+          <a href="/notes/">Notes</a>
+          &middot;
+          <a href="/talks/">Talks</a>
+          &middot;
+          <a href="/projects/">Projects</a>
+        </nav>
+      </header>
+
+      <main id="bd">
+          <article class="h-entry">
+    <header>
+      <h1 class="p-name">Mock Commands, Stub Queries</h1>
+    </header>
+
+    <section class="e-content">
+      <p><a href="https://github.com/zmoazeni">Zach Moazeni</a> has just posted a <a href="https://web.archive.org/web/20081208044312/http://www.simplechatter.com/2007/8/3/mocha-and-forcing-verification">suggested patch</a> for Mocha over on his blog. My understanding of the patch is that it means expectations are verified even when an assertion error occurs in the test. Here is his example&#8230;</p>
+<pre class="prettyprint"><code class="prettyprint">class Car</code>
+
+<code class="prettyprint">  def initialize(parts = [])
+    @parts = parts
+  end</code>
+
+<code class="prettyprint">  def start
+    started = true
+    @parts.each do | part |
+      # commenting out for failure
+      # started = started &amp;&amp; part.start
+    end</code>
+
+<code class="prettyprint">    started
+  end</code>
+
+<code class="prettyprint">end</code></pre>
+<pre class="prettyprint"><code class="prettyprint">class SomeTest &lt; Test::Unit::TestCase</code>
+
+<code class="prettyprint">  def test_start
+    engine_mock = mock("engine_mock")
+    car = Car.new([engine_mock])</code>
+
+<code class="prettyprint">    engine_mock.expects(:start).returns(false)
+    assert !car.start
+  end</code>
+
+<code class="prettyprint">end</code></pre>
+<p>I&#8217;ve had a friendly &amp; useful conversation with Zach about it, but I&#8217;m not convinced this is the right way to go. Using the <a href="http://www.artima.com/weblogs/viewpost.jsp?thread=35578">one assertion per test</a> school of thought, you can achieve the same goal by splitting the test into two so you get a test failure for the expectation and another for the assertion&#8230;</p>
+<pre class="prettyprint"><code class="prettyprint">class SomeTest &lt; Test::Unit::TestCase</code>
+
+<code class="prettyprint">  def test_should_start_engine
+    engine = mock('engine')
+    car = Car.new([engine])</code>
+
+<code class="prettyprint">    engine.expects(:start)</code>
+
+<code class="prettyprint">    car.start
+  end</code>
+
+<code class="prettyprint">  def test_should_start_if_engine_starts
+    engine = stub('engine')
+    car = Car.new([engine])</code>
+
+<code class="prettyprint">    engine.stubs(:start).returns(false)</code>
+
+<code class="prettyprint">    assert !car.start
+  end</code>
+
+<code class="prettyprint">end</code></pre>
+<p>Something that makes the example less suitable for mocking is that the Car#start method is both <a href="http://www.jmock.org/yoga.html">a command and a query</a>. If you separate the two, testing with mocks might be easier&#8230;</p>
+<pre class="prettyprint"><code class="prettyprint">class Car</code>
+
+<code class="prettyprint">  def initialize(parts = [])
+    @parts = parts
+  end</code>
+
+<code class="prettyprint">  def start
+    @parts.each { |part| part.start }
+  end</code>
+
+<code class="prettyprint">  def started?
+    @parts.all? { |part| part.started? }
+  end</code>
+
+<code class="prettyprint">end</code></pre>
+<pre class="prettyprint"><code class="prettyprint">class SomeOtherTest &lt; Test::Unit::TestCase</code>
+
+<code class="prettyprint">  def test_should_start_engine
+    engine = mock('engine')
+    car = Car.new([engine])</code>
+
+<code class="prettyprint">    engine.expects(:start)</code>
+
+<code class="prettyprint">    car.start
+  end</code>
+
+<code class="prettyprint">  def test_should_not_be_started_if_engine_is_started
+    engine = stub('engine')
+    car = Car.new([engine])</code>
+
+<code class="prettyprint">    engine.stubs(:started?).returns(false)</code>
+
+<code class="prettyprint">    assert !car.started?
+  end</code>
+
+<code class="prettyprint">end</code></pre>
+<p>I&#8217;d be interested to know what other people think&#8230;</p>
+<p>One thing I do agree with Zach about is that submitting a suggested patch to an open source project is a great way of initiating a constructive conversation.</p>
+    </section>
+
+    <footer>
+      <p class="metadata">
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2007-08-03-mock-commands-stub-queries"><time class="dt-published" datetime="2007-08-03T10:11:22+00:00">03 Aug 2007 at 10:11</time></a>
+      </p>
+      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2007-08-03-mock-commands-stub-queries">
+  <template id="webmention-template">
+    <li class="webmention">
+      <div>
+        <a class="author">
+          <span class="author-name"></span>
+        </a>
+        <a class="action"></a>
+      </div>
+      <div class="content"></div>
+    </li>
+  </template>
+</div>
+
+<script src="/javascripts/webmentions.js" type="text/javascript" charset="utf-8"></script>
+
+    </footer>
+  </article>
+
+
+          <nav id="navigation" aria-label="Inter-article">
+      <a href="/blog/2007-07-22-an-introduction-to-mock-objects-in-ruby" class="previous">&lt; Mock Objects in Ruby</a>
+      <a href="/blog/2007-08-07-why-array-length-is-better-than-array-size" class="next">Why Array#length is better than Array#size &gt;</a>
+  </nav>
+
+      </main>
+
+      <footer id="ft">
+        <nav aria-label="Footer">
+          <a href="/contact">Contact</a>
+          &middot;
+          <a href="/history">History</a>
+          &middot;
+          <a href="/colophon">Colophon</a>
+          &middot;
+          <a href="/links">Links</a>
+        </nav>
+        <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">This work by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="jamesmead.org">James Mead</a> is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0<img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+      </footer>
+    </div>
+  </body>
+</html>

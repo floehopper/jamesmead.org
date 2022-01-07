@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Mocha 0.5 released - James Mead</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="keywords" content="mocha release mock stub testing ruby" />
+    <meta name="author" content= "James Mead" />
+
+    <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+    <meta name="y_key" content="5f5b0de20991e0c2" />
+    <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
+
+    <link href="/images/favicon.gif" rel="icon" type="image/gif" />
+
+    <link href="/stylesheets/yui/3.18.1/cssreset-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssfonts-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssbase-min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+
+    <link href="/stylesheets/prettify/prettify.css" rel="stylesheet" />
+    <script src="/javascripts/prettify/prettify.js"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.jamesmead.org/floehopper-blog" />
+
+    <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
+
+    <link rel="prev" href="/blog/2007-05-10-prefer-tests-over-comments" />
+    <link rel="next" href="/blog/2007-07-10-lrug-mocking-talk" />
+    <link rel="first" href="/blog/2004-05-14-unit-tests-can-100-coverage-be-a-bad-thing" />
+    <link rel="last" href="/blog/2021-01-23-youtube-video-of-my-3d-maze-game-for-the-zx-spectrum" />
+    <link rel="index" href="/blog" />
+
+  </head>
+  <body class="blog blog_2007-06-08-mocha-0-5-released" onload="prettyPrint()">
+    <div id="doc">
+      <div class="skip-links">
+        <a href="#bd">Skip to main content</a>
+      </div>
+
+      <header id="hd">
+        <nav aria-label="Primary">
+          <a href="/">Home</a>
+          &middot;
+          <a href="/blog/">Blog</a>
+          &middot;
+          <a href="/notes/">Notes</a>
+          &middot;
+          <a href="/talks/">Talks</a>
+          &middot;
+          <a href="/projects/">Projects</a>
+        </nav>
+      </header>
+
+      <main id="bd">
+          <article class="h-entry">
+    <header>
+      <h1 class="p-name">Mocha 0.5 released</h1>
+    </header>
+
+    <section class="e-content">
+      <pre class="prettyprint"><code class="prettyprint">sudo gem install mocha</code></pre>
+<p>or <a href="http://rubyforge.org/frs/?group_id=1917">download</a> one of the latest packages from <a href="http://rubyforge.org">rubyforge</a>.</p>
+<h2>Parameter Matchers</h2>
+<p>I&#8217;ve added a few <a href="http://code.google.com/p/hamcrest/wiki/Tutorial">Hamcrest-style</a> parameter matchers which are designed to be used inside <a href="https://web.archive.org/web/20070614165422/http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000021"><code>Expectation#with</code></a>. The following matchers are currently available: <code>anything()</code>, <code>includes()</code>, <code>has_key()</code>, <code>has_value()</code>, <code>has_entry()</code>, <code>all_of()</code> &amp; <code>any_of()</code>. More to follow soon. The idea is eventually to get rid of the nasty <code>parameter_block</code> option on <a href="https://web.archive.org/web/20070614165422/http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000021"><code>Expectation#with</code></a>.</p>
+<pre class="prettyprint"><code class="prettyprint">object = mock()
+object.expects(:method).with(has_key('key_1'))
+object.method('key_1' =&gt; 1, 'key_2' =&gt; 2)
+# no verification error raised</code></pre>
+<pre class="prettyprint"><code class="prettyprint">object = mock()
+object.expects(:method).with(has_key('key_1'))
+object.method('key_2' =&gt; 2)
+# verification error raised, because method was not called with Hash containing key: 'key_1'</code></pre>
+<h2>Values Returned and Exceptions Raised on Consecutive Invocations</h2>
+<p>Allow multiple calls to <a href="https://web.archive.org/web/20070614165422/http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000024"><code>Expectation#returns</code></a> and <a href="https://web.archive.org/web/20070614165422/http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000025"><code>Expectation#raises</code></a> to build up a sequence of responses to invocations on the mock. Added syntactic sugar method <code>Expectation#then</code> to allow more readable expectations.</p>
+<pre class="prettyprint"><code class="prettyprint">object = mock()
+object.stubs(:method).returns(1, 2).then.raises(Exception).then.returns(4)
+object.method # =&gt; 1
+object.method # =&gt; 2
+object.method # =&gt; raises exception of class Exception
+object.method # =&gt; 4</code></pre>
+<h2>Yields on Consecutive Invocations</h2>
+<p>Allow multiple calls to yields on single expectation to allow yield parameters to be specified for consecutive invocations.</p>
+<pre class="prettyprint"><code class="prettyprint">object = mock()
+object.stubs(:method).yields(1, 2).then.yields(3)
+object.method { |*values| p values } # =&gt; [1, 2]
+object.method { |*values| p values } # =&gt; [3]</code></pre>
+<h2>Multiple Yields on Single Invocation</h2>
+<p>Added <a href="https://web.archive.org/web/20070614165422/http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000023"><code>Expectation#multiple_yields</code></a> to allow a mocked or stubbed method to yield multiple times for a single invocation.</p>
+<pre class="prettyprint"><code class="prettyprint">object = mock()
+object.stubs(:method).multiple_yields([1, 2], [3])
+object.method { |*values| p values } # =&gt; [1, 2] # =&gt; [3]</code></pre>
+<h2>Invocation Dispatch</h2>
+<p>Expectations were already being matched in reverse order i.e. the most recently defined one was being found first. This is still the case, but we now stop matching an expectation when its maximum number of expected invocations is reached. c.f. <a href="http://www.jmock.org/jmock1-dispatch.html">JMock v1</a>. A stub will never stop matching by default. Hopefully this means we can soon get rid of the need to pass a <code>Proc</code> to <a href="https://web.archive.org/web/20070614165422/http://mocha.rubyforge.org/classes/Mocha/Expectation.html#M000024"><code>Expectation#returns</code></a>.</p>
+<pre class="prettyprint"><code class="prettyprint">object = mock()
+object.stubs(:method).returns(2)
+object.expects(:method).once.returns(1)
+object.method # =&gt; 1
+object.method # =&gt; 2
+object.method # =&gt; 2
+# no verification error raised</code></pre>
+<p>This should still work&#8230;</p>
+<pre class="prettyprint"><code class="prettyprint">Time.stubs(:now).returns(Time.parse('Mon Jan 01 00:00:00 UTC 2007'))
+Time.now # =&gt; Mon Jan 01 00:00:00 UTC 2007
+Time.stubs(:now).returns(Time.parse('Thu Feb 01 00:00:00 UTC 2007'))
+Time.now # =&gt; Thu Feb 01 00:00:00 UTC 2007</code></pre>
+<h2>Acknowledgements</h2>
+<p>Thanks to David Chelimsky, Dan North, Jay Fields, Kevin Clark, Frederick Cheung, James Moore, Brian Helmkamp, Ben Griffiths, Chris Roos &amp; Paul Battley for their input. Apologies to anybody I forgot to mention.</p>
+    </section>
+
+    <footer>
+      <p class="metadata">
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2007-06-08-mocha-0-5-released"><time class="dt-published" datetime="2007-06-08T15:52:13+00:00">08 Jun 2007 at 15:52</time></a>
+      </p>
+      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2007-06-08-mocha-0-5-released">
+  <template id="webmention-template">
+    <li class="webmention">
+      <div>
+        <a class="author">
+          <span class="author-name"></span>
+        </a>
+        <a class="action"></a>
+      </div>
+      <div class="content"></div>
+    </li>
+  </template>
+</div>
+
+<script src="/javascripts/webmentions.js" type="text/javascript" charset="utf-8"></script>
+
+    </footer>
+  </article>
+
+
+          <nav id="navigation" aria-label="Inter-article">
+      <a href="/blog/2007-05-10-prefer-tests-over-comments" class="previous">&lt; Prefer Tests Over Comments</a>
+      <a href="/blog/2007-07-10-lrug-mocking-talk" class="next">LRUG Mocking Talk &gt;</a>
+  </nav>
+
+      </main>
+
+      <footer id="ft">
+        <nav aria-label="Footer">
+          <a href="/contact">Contact</a>
+          &middot;
+          <a href="/history">History</a>
+          &middot;
+          <a href="/colophon">Colophon</a>
+          &middot;
+          <a href="/links">Links</a>
+        </nav>
+        <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">This work by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="jamesmead.org">James Mead</a> is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0<img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+      </footer>
+    </div>
+  </body>
+</html>

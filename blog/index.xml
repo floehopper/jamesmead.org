@@ -1,0 +1,966 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Blog - James Mead</title>
+  <id>tag:jamesmead.org,2005:Typo</id>
+  <link href="http://feeds.jamesmead.org/floehopper-blog" rel="self" type="application/atom+xml"/>
+  <link href="https://jamesmead.org/" rel="alternate" type="text/html"/>
+  <updated>2022-01-07T02:23:19+00:00</updated>
+  <entry>
+    <author>
+      <name>James Mead</name>
+    </author>
+    <id>urn:uuid:8d8937e0-79a1-4e44-a1df-e37b7d43ff36</id>
+    <published>2021-01-23T21:32:00+00:00</published>
+    <updated>2021-01-29T09:15:00+00:00</updated>
+    <title>Youtube video of my 3D maze game for the ZX Spectrum</title>
+    <link href="https://jamesmead.org/blog/2021-01-23-youtube-video-of-my-3d-maze-game-for-the-zx-spectrum" rel="alternate" type="text/html"/>
+    <content type="html">
+      &lt;p&gt;&lt;img style=&quot;display: block; margin-left: auto; margin-right: auto; width: 33.3%; float:right; padding: 10px&quot; src=&quot;&#x2F;images&#x2F;graphic-adventures-for-the-spectrum-48k.jpg&quot; alt=&quot;Book cover for &#x27;Graphic Adventures for the Spectrum 48K&#x27;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+
+&lt;p&gt;I recently stumbled across &lt;a href=&quot;#the-youtube-video&quot;&gt;a quirky Youtube video&lt;&#x2F;a&gt; which piqued my interest. In the video &lt;a href=&quot;https:&#x2F;&#x2F;twitter.com&#x2F;JAMOGRAD&quot;&gt;James O&#x27;Grady&lt;&#x2F;a&gt; demonstrated a 3D maze game. He&#x27;d typed in the code for the game from a familiar-sounding book called &lt;a href=&quot;https:&#x2F;&#x2F;www.amazon.co.uk&#x2F;dp&#x2F;0744700132&quot;&gt;Graphic Adventures for the Spectrum 48K&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+
+&lt;p&gt;The nominal author of this book, Richard Hurley, was one of my teachers and he included programs written by me and a number of my friends. The 3D maze game was one I wrote in about 1984 when I was 16. In the video James goes on to critique the game, to explore some ways to improve it, and to read some reviews of the book from magazines of the time.&lt;&#x2F;p&gt;
+
+&lt;p&gt;In my early teens I played a lot of games on the ZX81 and then the Spectrum, but as I got older I became bored of playing the games and more interested in writing them. I learnt a lot about programming games from typing in code from magazines and books.&lt;&#x2F;p&gt;
+
+&lt;p&gt;The first games I developed were written entirely in &lt;a href=&quot;https:&#x2F;&#x2F;worldofspectrum.org&#x2F;ZXBasicManual&#x2F;&quot;&gt;Sinclair BASIC&lt;&#x2F;a&gt;, e.g. &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;sub-hunt&quot;&gt;Sub Hunt&lt;&#x2F;a&gt; which was published in &lt;a href=&quot;https:&#x2F;&#x2F;spectrumcomputing.co.uk&#x2F;index.php?cat=96&amp;amp;id=2000461&quot;&gt;an earlier book&lt;&#x2F;a&gt;, but I quickly realised I would need to use machine code to get the performance I wanted. Initially I wrote small bits of machine code to speed up critical bits of the games. However, the 3D Maze game in the video was the first game I wrote pretty much entirely in Z80 machine code using the excellent &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Zeus_Assembler&quot;&gt;Zeus assembler&lt;&#x2F;a&gt; and with my trusty copy of &lt;a href=&quot;https:&#x2F;&#x2F;archive.org&#x2F;details&#x2F;CompleteSpectrumROMDisassemblyThe&quot;&gt;The Complete Spectrum ROM Disassembly&lt;&#x2F;a&gt;. It was closely based on the &quot;3D Monster Maze&quot; game by J.K. Greye Software.&lt;&#x2F;p&gt;
+
+&lt;h3 id=&quot;the-zx81-original&quot;&gt;The ZX81 original&lt;&#x2F;h3&gt;
+
+&lt;div style=&quot;text-align: center; padding-bottom: 12px&quot;&gt;
+  &lt;iframe width=&quot;80%&quot; height=&quot;315&quot; src=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;embed&#x2F;nKvd0zPfBE4&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;&#x2F;iframe&gt;
+&lt;&#x2F;div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;
+    Most importantly, from the point of view of video game history, the ZX81 was the computer which hosted the world&#x27;s first ever 3D game on a home computer - JK Greye&#x27;s 3D Monster Maze. A simple labyrinth is generated, and the player has to find their way out, all the while being stalked by a Tyrannosaurus Rex. The whole experience was rendered in what is now referred to as &#x27;first person&#x27; view - ie, you see what you would see out of the eyes of the character in the maze, as pictured in the ZX81&#x27;s rather blocky but still effective graphics. A quick play of this game on an emulator is recommended to all fans of Doom, Quake, Unreal, Half Life and all the other FPSs which are now so popular, as it really is the literal grandaddy of them all. It is difficult now to describe the impact this game had on a public who had quite literally never seen anything like it.
+    &amp;ndash;
+    &lt;cite&gt;
+      &lt;a href=&quot;https:&#x2F;&#x2F;h2g2.com&#x2F;edited_entry&#x2F;A821648&quot;&gt;The Hitchhiker&#x27;s Guide to the Galaxy (Earth Edition): The Wonderful Computers of Clive Sinclair&lt;&#x2F;a&gt;
+    &lt;&#x2F;cite&gt;
+  &lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+
+&lt;h3 id=&quot;my-version&quot;&gt;My version&lt;&#x2F;h3&gt;
+
+&lt;p&gt;One slight disappointment was that unlike in &quot;3D Monster Maze&quot; there was no &quot;monster&quot; in my version of the game or at least not in the version James was playing. I know that I did eventually add a Tyrannosaurus Rex to the game, but I vaguely remember having to rush for a publication deadline, so the monster might&#x27;ve have missed the cut! If I recall correctly, a friend with better artistic skills than me drew a T Rex in a series of &quot;frames&quot; walking towards the observer. I then traced the drawings onto graph paper and converted them into &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;ZX_Spectrum_character_set&quot;&gt;user-defined graphic characters&lt;&#x2F;a&gt;. I do half wonder whether these might be the mystery bytes which James refers to at one point in his video. Otherwise I believe the program uses calls to the ROM, e.g. &lt;a href=&quot;https:&#x2F;&#x2F;speccy.xyz&#x2F;rom&#x2F;asm&#x2F;24b7&quot;&gt;this line-drawing subroutine&lt;&#x2F;a&gt;, to draw the walls of the maze.&lt;&#x2F;p&gt;
+
+&lt;div style=&quot;text-align: center; padding-bottom: 12px&quot;&gt;
+  &lt;iframe width=&quot;80%&quot; height=&quot;315&quot; src=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;embed&#x2F;Q656CqMIXLY&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;&#x2F;iframe&gt;
+&lt;&#x2F;div&gt;
+
+&lt;h3 id=&quot;the-youtube-video&quot;&gt;The Youtube video&lt;&#x2F;h3&gt;
+
+&lt;p&gt;James must&#x27;ve been incredibly patient to type in all the raw numbers for the machine code with only very rudimentary checksums. And, given that the game is written entirely in machine code and the assembler source code is lost in the mists of time, I was impressed that James managed to successfully modify the game in a couple of different ways using a load of judicious &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;PEEK_and_POKE&quot;&gt;&lt;code&gt;PEEK&lt;&#x2F;code&gt;s and &lt;code&gt;POKE&lt;&#x2F;code&gt;s&lt;&#x2F;a&gt; and apparently without the use of a disassembler. In particular he&#x27;s written a nice maze editor program which runs on the Spectrum and allows you to design your own maze. I was quite amused to learn that the maze had to be square - I can&#x27;t imagine it would&#x27;ve been much harder for me to have allowed rectangular ones!&lt;&#x2F;p&gt;
+
+&lt;p&gt;James is very fair in his criticisms of the game - his main observation is that it&#x27;s not very interesting to play, but it is very fast compared to other similar games. I also enjoyed reading the reviews of the book he&#x27;d found in a couple of magazines of the time. I had a lovely exchange with him in &lt;a href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=Q656CqMIXLY&amp;amp;lc=UgzsXaL19aLWF7T3qCp4AaABAg&quot;&gt;the Youtube comments&lt;&#x2F;a&gt; and he &lt;a href=&quot;https:&#x2F;&#x2F;twitter.com&#x2F;JAMOGRAD&#x2F;status&#x2F;1351920870621589506&quot;&gt;changed the title&lt;&#x2F;a&gt; of the Youtube video to include my name which was a nice gesture. Anyway, this was a brilliant trip down memory lane for me and reminded me of my programming roots!&lt;&#x2F;p&gt;
+
+&lt;h3 id=&quot;playing-the-game&quot;&gt;Playing the game&lt;&#x2F;h3&gt;
+
+&lt;p&gt;If you feel as if you want the full &quot;type it in&quot; experience, the Portuguese (!) version of the book is available for &lt;a href=&quot;https:&#x2F;&#x2F;archive.org&#x2F;download&#x2F;World_of_Spectrum_June_2017_Mirror&#x2F;World%20of%20Spectrum%20June%202017%20Mirror.zip&#x2F;World%20of%20Spectrum%20June%202017%20Mirror&#x2F;sinclair&#x2F;books&#x2F;g&#x2F;GraphicAdventuresForTheSpectrum48K(AventurasGraficasParaOSpectrum48K)(TemposLivres).pdf&quot;&gt;download&lt;&#x2F;a&gt; from &lt;a href=&quot;https:&#x2F;&#x2F;spectrumcomputing.co.uk&#x2F;index.php?cat=96&amp;amp;id=2000168&quot;&gt;Spectrum Computing&lt;&#x2F;a&gt; and you can find the game in &quot;Labirinto&quot; (chapter 4, page 105). Otherwise, &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;3d-maze&quot;&gt;this GitHub repo&lt;&#x2F;a&gt; includes a set of &lt;a href=&quot;https:&#x2F;&#x2F;worldofspectrum.org&#x2F;faq&#x2F;reference&#x2F;formats.htm#TAP&quot;&gt;TAP format&lt;&#x2F;a&gt; files which might work in a Spectrum emulator, although I haven&#x27;t yet had a chance to try them myself.&lt;&#x2F;p&gt;
+
+
+    </content>
+  </entry>
+  <entry>
+    <author>
+      <name>James Mead</name>
+    </author>
+    <id>urn:uuid:05fc7138-2985-481a-ab79-72a5835fecd7</id>
+    <published>2021-01-17T16:38:00+00:00</published>
+    <updated>2021-01-17T16:38:00+00:00</updated>
+    <title>Using Lambda@Edge with CloudFront to configure redirect rules for domains</title>
+    <link href="https://jamesmead.org/blog/2021-01-17-using-lambda-edge-with-cloudfront-to-configure-redirect-rules-for-domains" rel="alternate" type="text/html"/>
+    <content type="html">
+      &lt;p&gt;I&#x27;m a big fan of &lt;a href=&quot;https:&#x2F;&#x2F;www.w3.org&#x2F;Provider&#x2F;Style&#x2F;URI&quot;&gt;cool URLs&lt;&#x2F;a&gt; and not &lt;a href=&quot;https:&#x2F;&#x2F;gofreerange.com&#x2F;broken-rubyforge-urls&quot;&gt;breaking the internet&lt;&#x2F;a&gt; and so over the years I&#x27;ve accumulated a few domains for which I&#x27;ve implemented a lot of redirect rules. In recent years I&#x27;ve implemented these rules using &lt;a href=&quot;https:&#x2F;&#x2F;httpd.apache.org&#x2F;docs&#x2F;current&#x2F;mod&#x2F;mod_rewrite.html&quot;&gt;mod_rewrite&lt;&#x2F;a&gt; and run them on &lt;a href=&quot;https:&#x2F;&#x2F;httpd.apache.org&#x2F;&quot;&gt;Apache&lt;&#x2F;a&gt; and on my &lt;a href=&quot;https:&#x2F;&#x2F;www.linode.com&#x2F;&quot;&gt;Linode&lt;&#x2F;a&gt; VPS, e.g. &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;jamesmead.org&#x2F;blob&#x2F;b3db4135b3b90b96e50e99edf0551a52e0dc240f&#x2F;config&#x2F;sites-available&#x2F;blog.floehopper.org.conf&quot;&gt;the redirect rules for &lt;code&gt;blog.floehopper.org&lt;&#x2F;code&gt;&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+
+&lt;p&gt;However, in September 2019 I started &lt;a href=&quot;https:&#x2F;&#x2F;jamesmead.org&#x2F;blog&#x2F;2019-09-07-using-github-actions-to-publish-a-static-site-to-github-pages&quot;&gt;publishing this website on GitHub Pages&lt;&#x2F;a&gt; and over the intervening period I&#x27;ve removed pretty much everything else I was running on that VPS. And so I&#x27;d started thinking it would be nice to shutdown the VPS and stop paying for it! The legacy redirects mentioned above were the only things preventing me from doing this.&lt;&#x2F;p&gt;
+
+&lt;p&gt;In the last 18 months I&#x27;ve used the &lt;a href=&quot;https:&#x2F;&#x2F;aws.amazon.com&#x2F;cdk&#x2F;&quot;&gt;AWS CDK&lt;&#x2F;a&gt; quite a bit both at work and for personal projects. Unfortunately I&#x27;ve only got round to publishing &lt;a href=&quot;2020-03-30-automatic-backup-of-trello-boards-to-s3-using-aws-cdk&quot;&gt;one article about it&lt;&#x2F;a&gt; (something I hope to remedy in the not too distant future). Anyway, I&#x27;d read a bit about &lt;a href=&quot;https:&#x2F;&#x2F;aws.amazon.com&#x2F;lambda&#x2F;edge&#x2F;&quot;&gt;Lambda@Edge&lt;&#x2F;a&gt; and noticed that it was indeed supported by &lt;a href=&quot;https:&#x2F;&#x2F;aws.amazon.com&#x2F;cloudformation&#x2F;&quot;&gt;CloudFormation&lt;&#x2F;a&gt; and the AWS CDK, so I thought I&#x27;d give it a whirl.&lt;&#x2F;p&gt;
+
+&lt;p&gt;My basic idea was to create a &lt;a href=&quot;https:&#x2F;&#x2F;docs.aws.amazon.com&#x2F;cdk&#x2F;api&#x2F;latest&#x2F;docs&#x2F;@aws-cdk_aws-cloudfront.Distribution.html&quot;&gt;CloudFront distribution&lt;&#x2F;a&gt;, associate a custom domain with it, configure &lt;a href=&quot;https:&#x2F;&#x2F;docs.aws.amazon.com&#x2F;cdk&#x2F;api&#x2F;latest&#x2F;docs&#x2F;aws-cloudfront-readme.html#lambdaedge&quot;&gt;an Edge Lambda function&lt;&#x2F;a&gt; to handle all requests to that distribution and implement the appropriate redirects in JavaScript, then point the relevant DNS records at the CloudFront distribution.
+This turned out to be pretty straightforward, although I did have to use the &lt;a href=&quot;https:&#x2F;&#x2F;aws.amazon.com&#x2F;certificate-manager&#x2F;&quot;&gt;AWS Certificate Manager&lt;&#x2F;a&gt; to &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;edge-redirector&#x2F;blob&#x2F;da128e7dc42fe89b09d496a2b5e68f4aaa931f78&#x2F;create-ssl-certificate.sh&quot;&gt;create an SSL certificate&lt;&#x2F;a&gt; for the domain to get everything to work.&lt;&#x2F;p&gt;
+
+&lt;p&gt;You can find the full project source code &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;edge-redirector&quot;&gt;on GitHub&lt;&#x2F;a&gt;. I&#x27;m afraid I haven&#x27;t yet got round to updating the README from the default version generated by the AWS CDK. If you prefer, here&#x27;s a slightly cut down version of a couple of key project files illustrating how I did this for the &lt;code&gt;blog.floehopper.org&lt;&#x2F;code&gt; domain:&lt;&#x2F;p&gt;
+
+&lt;pre class=&quot;prettyprint lang-js&quot;&gt;
+  &lt;code&gt;
+    # file: lib&#x2F;edge-redirector-stack.ts
+
+    import * as cdk from &#x27;@aws-cdk&#x2F;core&#x27;;
+    import * as lambda from &#x27;@aws-cdk&#x2F;aws-lambda&#x27;;
+    import * as cloudfront from &#x27;@aws-cdk&#x2F;aws-cloudfront&#x27;;
+    import * as origins from &#x27;@aws-cdk&#x2F;aws-cloudfront-origins&#x27;;
+    import * as acm from &#x27;@aws-cdk&#x2F;aws-certificatemanager&#x27;;
+
+    export class EdgeRedirectorStack extends cdk.Stack {
+      constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
+        super(scope, id, props);
+
+        this.createDistribution(&#x27;blog.floehopper.org&#x27;, &#x27;blogFloehopperOrg&#x27;, &#x27;arn:aws:acm:us-east-1:687105911108:certificate&#x2F;aa11ee5a-54db-4a04-8307-f77330f86cb5&#x27;);
+      }
+
+      createDistribution(domain: string, handler: string, certificateArn: string) {
+        const certificate = acm.Certificate.fromCertificateArn(this, `${handler}Certificate`, certificateArn);
+        new cloudfront.Distribution(this, `${handler}Distribution`, {
+          defaultBehavior: {
+            origin: new origins.HttpOrigin(&#x27;example.com&#x27;),
+            edgeLambdas: [
+              {
+                eventType: cloudfront.LambdaEdgeEventType.VIEWER_REQUEST,
+                functionVersion: this.redirectVersion(domain, handler)
+              }
+            ]
+          },
+          domainNames: [domain],
+          certificate: certificate,
+          enableLogging: true
+        });
+      }
+
+      redirectVersion(domain: string, handler: string) : lambda.IVersion {
+        const redirectFunction = new cloudfront.experimental.EdgeFunction(this, `${handler}Redirect`, {
+          runtime: lambda.Runtime.NODEJS_12_X,
+          handler: `${handler}.handler`,
+          code: lambda.Code.fromAsset(&#x27;.&#x2F;lambdaFunctions&#x2F;redirect&#x27;)
+        });
+
+        return redirectFunction.currentVersion;
+      }
+    }
+  &lt;&#x2F;code&gt;
+&lt;&#x2F;pre&gt;
+
+&lt;pre class=&quot;prettyprint lang-js&quot;&gt;
+  &lt;code&gt;
+    # file: lambdaFunctions&#x2F;redirect&#x2F;blogFloehopperOrg.js
+
+    &#x27;use strict&#x27;;
+
+    exports.handler = function(event, context, callback) {
+      const request = event.Records[0].cf.request;
+
+      const mapping = [
+        &#x2F;&#x2F; Legacy Typo-style articles
+        [&#x27;^&#x2F;articles&#x2F;([0-9]{4})&#x2F;([0-9]{2})&#x2F;([0-9]{2})&#x2F;(.+)$&#x27;, (m) =&amp;gt; `http:&#x2F;&#x2F;jamesmead.org&#x2F;blog&#x2F;${m[1]}-${m[2]}-${m[3]}-${m[4]}`],
+
+        &#x2F;&#x2F; Redirect blog.floehopper.org -&amp;gt; jamesmead.org
+        [&#x27;^&#x2F;(.*)$&#x27;, (m) =&amp;gt; `http:&#x2F;&#x2F;jamesmead.org&#x2F;${m[1]}`],
+        [&#x27;^$&#x27;, (m) =&amp;gt; `http:&#x2F;&#x2F;jamesmead.org`],
+    ];
+
+      let redirectUrl;
+      for (const [pattern, url] of mapping) {
+        const match = request.uri.match(new RegExp(pattern));
+        if (match) {
+          if (typeof(url) == &#x27;function&#x27;) {
+            redirectUrl = url(match);
+          } else {
+            redirectUrl = url;
+          };
+          break;
+        };
+      };
+
+      let response;
+
+      if (redirectUrl) {
+        response = {
+          status: &#x27;301&#x27;,
+          statusDescription: &#x27;Moved Permanently&#x27;,
+          headers: {
+            location: [{
+              key: &#x27;Location&#x27;,
+              value: redirectUrl
+            }],
+          }
+        };
+      } else {
+        response = {
+          status: &#x27;404&#x27;,
+          statusDescription: &#x27;Not Found&#x27;
+        };
+      };
+
+      callback(null, response);
+    };
+  &lt;&#x2F;code&gt;
+&lt;&#x2F;pre&gt;
+
+
+    </content>
+  </entry>
+  <entry>
+    <author>
+      <name>James Mead</name>
+    </author>
+    <id>urn:uuid:4276f4a5-2406-41c9-baba-2bf154e0712b</id>
+    <published>2020-11-29T12:21:00+00:00</published>
+    <updated>2020-11-29T12:21:00+00:00</updated>
+    <title>Multiple Rails development environments using nix-shell</title>
+    <link href="https://jamesmead.org/blog/2020-11-29-multiple-rails-development-environments-using-nix-shell" rel="alternate" type="text/html"/>
+    <content type="html">
+      &lt;p&gt;I&#x27;ve continued to make slow but steady progress with my experiment to setup Rails development environments using nix-shell on a Vagrant VM running Ubuntu. I&#x27;ve now got to the stage where I have four Rails apps using combinations of Ruby versions, Rails versions, PostgreSQL versions, and MySQL versions which I&#x27;m pretty happy about!&lt;&#x2F;p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ruby v2.5, Rails v5.2.4.4, PostgreSQL v10&lt;&#x2F;li&gt;
+  &lt;li&gt;Ruby v2.5, Rails v5.2.4.4, MySQL v5.7&lt;&#x2F;li&gt;
+  &lt;li&gt;Ruby v2.6, Rails v6.0.3.4, PostgreSQL v11&lt;&#x2F;li&gt;
+  &lt;li&gt;Ruby v2.6, Rails v6.0.3.4, MySQL v8.0&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+
+&lt;p&gt;&lt;img style=&quot;display: block; margin-left: auto; margin-right: auto; width: 100%;&quot; src=&quot;&#x2F;images&#x2F;four-rails-apps.png&quot; alt=&quot;Four Rails apps&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+
+&lt;p&gt;I&#x27;ve continued to use bash scripts as Vagrant provisioners to do this in a reproducible way, although &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;rails-on-nix&#x2F;tree&#x2F;3c40a3fe195a08dfdec54a50a2b042eae1305b64&quot;&gt;the code&lt;&#x2F;a&gt; is currently a bit messier than I would like.&lt;&#x2F;p&gt;
+
+&lt;h3 id=&quot;creating-the-rails-apps&quot;&gt;Creating the Rails apps&lt;&#x2F;h3&gt;
+
+&lt;p&gt;I&#x27;ve improved the way that &lt;code&gt;rails new&lt;&#x2F;code&gt; is run so that it works correctly for different versions of Ruby. The new approach closely based on &lt;a href=&quot;https:&#x2F;&#x2F;discourse.nixos.org&#x2F;t&#x2F;using-bundlerenv-with-non-default-version-of-ruby-v2-5&#x2F;8470&#x2F;4&quot;&gt;this answer&lt;&#x2F;a&gt; to a question I asked on the NixOS forums.&lt;&#x2F;p&gt;
+
+&lt;p&gt;Some of the complications around having a suitable environment to run &lt;code&gt;rails new&lt;&#x2F;code&gt; for a particular version of Ruby and of Rails has reminded me that I don&#x27;t have a particularly good solution for this in my current non-Nix MacOS setup.&lt;&#x2F;p&gt;
+
+&lt;p&gt;In fact I tend to do something analagous to what I&#x27;ve done with Nix, i.e. I use &lt;code&gt;rbenv&lt;&#x2F;code&gt; to switch to the relevant version of Ruby, create a &lt;code&gt;Gemfile&lt;&#x2F;code&gt; containing just a reference to the version of the Rails gem that I want, run &lt;code&gt;bundle install&lt;&#x2F;code&gt; and then &lt;code&gt;rails new&lt;&#x2F;code&gt;. I&#x27;d be interested to hear if anyone has a better&#x2F;simpler way of doing this.&lt;&#x2F;p&gt;
+
+&lt;p&gt;At this point, it&#x27;s probably instructive to show you the relevant files for one of the four Rails apps. A &lt;code&gt;bundler.nix&lt;&#x2F;code&gt; is used only to run &lt;code&gt;bundle lock&lt;&#x2F;code&gt; to generate &lt;code&gt;Gemfile.lock&lt;&#x2F;code&gt;. Previously I had been using &lt;code&gt;bundix&lt;&#x2F;code&gt; itself to generate &lt;code&gt;Gemfile.lock&lt;&#x2F;code&gt;, but I couldn&#x27;t work out how to do this for different versions of Ruby.&lt;&#x2F;p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Gemfile
+source &#x27;https:&#x2F;&#x2F;rubygems.org&#x27;
+gem &#x27;rails&#x27;, &#x27;= 6.0.3.4&#x27;
+
+# bundler.nix
+with (import &amp;lt;nixpkgs&amp;gt; {});
+let
+  myBundler = bundler.override { ruby = ruby_2_6; };
+in
+mkShell {
+  name = &quot;bundler-shell&quot;;
+  buildInputs = [ myBundler ];
+}
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+
+&lt;p&gt;A &lt;code&gt;shell.nix&lt;&#x2F;code&gt; is used to run &lt;code&gt;bundix&lt;&#x2F;code&gt; to generate a &lt;code&gt;gemset.nix&lt;&#x2F;code&gt; and to run &lt;code&gt;rails new&lt;&#x2F;code&gt; using this gemset.&lt;&#x2F;p&gt;
+
+&lt;pre&gt;&lt;code&gt;# shell.nix
+with (import &amp;lt;nixpkgs&amp;gt; {});
+let
+  env = bundlerEnv {
+    name = &quot;ruby2.6-rails6.0.3.4-mysql8.0&quot;;
+    ruby = ruby_2_6;
+    gemdir = .&#x2F;.;
+  };
+in mkShell { buildInputs = [ env env.wrappedRuby ]; }
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+
+&lt;p&gt;Inside the rails app directory there&#x27;s another &lt;code&gt;bundler.nix&lt;&#x2F;code&gt; (exactly the same as the one above) which is again only used to run &lt;code&gt;bundle lock&lt;&#x2F;code&gt; and another &lt;code&gt;shell.nix&lt;&#x2F;code&gt; which is used both to run &lt;code&gt;bundix&lt;&#x2F;code&gt; and to provide the actual development environment including all the relevant dependencies:&lt;&#x2F;p&gt;
+
+&lt;pre&gt;&lt;code&gt;# shell.nix
+with (import &amp;lt;nixpkgs&amp;gt; {});
+let
+  env = bundlerEnv {
+    name = &quot;ruby2.6-rails6.0.3.4-mysql8.0&quot;;
+    ruby = ruby_2_6;
+    gemdir = .&#x2F;.;
+  };
+in mkShell {
+  buildInputs = [ env env.wrappedRuby nodejs yarn mysql80 ];
+}
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+
+&lt;p&gt;One other thing I had to deal with to handle Rails v5 was to run &lt;code&gt;rails yarn:install&lt;&#x2F;code&gt; instead of &lt;code&gt;rails webpacker:install&lt;&#x2F;code&gt; for Rails v6 when initally setting up the app.&lt;&#x2F;p&gt;
+
+&lt;h3 id=&quot;setting-up-databases&quot;&gt;Setting up databases&lt;&#x2F;h3&gt;
+
+&lt;p&gt;I&#x27;ve added a &lt;a href=&quot;https:&#x2F;&#x2F;nixos.org&#x2F;manual&#x2F;nix&#x2F;stable&#x2F;command-ref&#x2F;nix-shell.html#description&quot;&gt;shellHook&lt;&#x2F;a&gt; to the development environment &lt;code&gt;shell.nix&lt;&#x2F;code&gt; to configure and run an instance of a database server for each Rails app. I&#x27;m now less sure that configuring and running a database on entering the nix-shell is very sensible. I suspect it might make more sense to have a separate script to do this.&lt;&#x2F;p&gt;
+
+&lt;p&gt;This time I&#x27;ve made a couple of changes to improve the level of isolation between the apps. Firstly I&#x27;ve configured each database to store their data in a Rails app sub-directory rather than in a global location. And secondly I&#x27;ve configured each database to only accept connections via a &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Unix_domain_socket&quot;&gt;unix domain socket&lt;&#x2F;a&gt; also stored in a Rails app sub-directory.&lt;&#x2F;p&gt;
+
+&lt;p&gt;I managed to achieve the former by moving the Rails apps under the Vagrant user&#x27;s home directory. This avoided the problem I had previously with hard links in a VirtualBox shared directory. Although this means the Rails app source code is not available from the guest OS, that seems like just a temporary inconvenience since I&#x27;m only using the Vagrant VM to simulate a fresh machine. Eventually my aim is to run Nix natively and not use Vagrant at all.&lt;&#x2F;p&gt;
+
+&lt;p&gt;I&#x27;m particularly pleased with the unix domain socket solution, because it means there&#x27;s no need to identify an unused port for each Rails app to connect over TCP&#x2F;IP. Here&#x27;s the shellHook code for PostgreSQL and MySQL databases:&lt;&#x2F;p&gt;
+
+&lt;h4 id=&quot;postgresql&quot;&gt;PostgreSQL&lt;&#x2F;h4&gt;
+
+&lt;pre&gt;&lt;code&gt;export PGHOST=&#x2F;home&#x2F;vagrant&#x2F;ruby2.6-rails6.0.3.4-postgres11&#x2F;tmp&#x2F;postgres
+export PGDATA=$PGHOST&#x2F;data
+export PGDATABASE=postgres
+export PGLOG=$PGHOST&#x2F;postgres.log
+
+mkdir -p $PGHOST
+
+if [ ! -d $PGDATA ]; then
+  initdb --auth=trust --no-locale --encoding=UTF8
+fi
+
+if ! pg_ctl status
+then
+  pg_ctl start -l $PGLOG -o &quot;--unix_socket_directories=&#x27;$PGHOST&#x27; --listen_addresses=&#x27;&#x27;&#x27;&quot;
+fi
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+
+&lt;h4 id=&quot;mysql&quot;&gt;MySQL&lt;&#x2F;h4&gt;
+
+&lt;pre&gt;&lt;code&gt;MYSQL_HOME=&#x2F;home&#x2F;vagrant&#x2F;ruby2.6-rails6.0.3.4-mysql8.0&#x2F;tmp&#x2F;mysql
+MYSQL_DATA=$MYSQL_HOME&#x2F;data
+export MYSQL_UNIX_PORT=$MYSQL_HOME&#x2F;mysql.sock
+
+mkdir -p $MYSQL_HOME
+
+if [ ! -d $MYSQL_DATA ]; then
+  mysqld --initialize-insecure --datadir=$MYSQL_DATA
+fi
+
+if ! mysqladmin status --user=root
+then
+  mysqld_safe --datadir=$MYSQL_DATA --skip-networking &amp;amp;
+  while ! mysqladmin status --user=root; do
+    sleep 1
+  done
+fi
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+
+&lt;p&gt;I&#x27;m definitely no expert on setting up databases, so if you can suggest any improvements, I&#x27;d love to hear from you!&lt;&#x2F;p&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;&#x2F;h3&gt;
+
+&lt;p&gt;I&#x27;m pretty happy with where I&#x27;ve got to. It&#x27;s starting to feel as if I have a solid basis for using Nix to create decent isolated development environments using various versions of Ruby, Rails, PostgreSQL &amp;amp; MySQL on the same machine.&lt;&#x2F;p&gt;
+
+&lt;p&gt;One nice side-benefit is the way dependencies on OS package are made more explicit. And I don&#x27;t think it would take much more work to have reproducible configurations to share with other developers and&#x2F;or for use in continuous integration and&#x2F;or deployments.&lt;&#x2F;p&gt;
+
+&lt;p&gt;As usual the source code is available in &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;rails-on-nix&quot;&gt;a GitHub repository&lt;&#x2F;a&gt; and there are instructions on how to run it yourself in the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;rails-on-nix&#x2F;blob&#x2F;main&#x2F;README.md&quot;&gt;README&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+
+&lt;h3 id=&quot;next-steps&quot;&gt;Next steps&lt;&#x2F;h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Come up with a better way to manage each database instance, i.e. not in a shellHook - either using a separate script (or possibly using &lt;a href=&quot;https:&#x2F;&#x2F;systemd.io&#x2F;&quot;&gt;systemd&lt;&#x2F;a&gt;?).&lt;&#x2F;p&gt;
+  &lt;&#x2F;li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Use specific patch versions of Ruby or minor versions of Ruby not available in the current set of nix packages. I&#x27;m pretty confident this is possible by &lt;a href=&quot;https:&#x2F;&#x2F;nixos.wiki&#x2F;wiki&#x2F;FAQ&#x2F;Pinning_Nixpkgs&quot;&gt;pinning the version of nix packages&lt;&#x2F;a&gt; or it might be worth investigating &lt;a href=&quot;https:&#x2F;&#x2F;nixos.wiki&#x2F;wiki&#x2F;Flakes&quot;&gt;nix flakes&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+  &lt;&#x2F;li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Use specific versions of Bundler. I haven&#x27;t really looked into this at all yet, because I&#x27;m not sure it&#x27;s a deal-breaker.&lt;&#x2F;p&gt;
+  &lt;&#x2F;li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Investigate how hard it is to upgrade a gem in one of these Rails apps, i.e. regenerating the &lt;code&gt;Gemfile.lock&lt;&#x2F;code&gt; and &lt;code&gt;gemset.nix&lt;&#x2F;code&gt; files.&lt;&#x2F;p&gt;
+  &lt;&#x2F;li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Investigate using &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;direnv&#x2F;direnv&#x2F;wiki&#x2F;Nix&quot;&gt;direnv in conjunction with nix&lt;&#x2F;a&gt; or &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;target&#x2F;lorri&#x2F;&quot;&gt;lorri&lt;&#x2F;a&gt; to seamlessly move between different Rails app directories without having to explicitly enter&#x2F;exit the relevant nix-shell.&lt;&#x2F;p&gt;
+  &lt;&#x2F;li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Investigate using Nix to somehow make Node packages available to the environment in a similar way to Bundix instead of using Yarn directly, i.e. also automatically installing any OS package dependencies.&lt;&#x2F;p&gt;
+  &lt;&#x2F;li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Investigate using &lt;a href=&quot;https:&#x2F;&#x2F;nixos.wiki&#x2F;wiki&#x2F;Home_Manager&quot;&gt;Nix home-manager&lt;&#x2F;a&gt; or custom scripting to make it easy to be able to run &lt;code&gt;rails new&lt;&#x2F;code&gt; for a specified version of Ruby and Rails.&lt;&#x2F;p&gt;
+  &lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+
+&lt;h3 id=&quot;further-reading&quot;&gt;Further reading&lt;&#x2F;h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;This is the third article in a series:
+    &lt;ol&gt;
+      &lt;li&gt;&lt;a href=&quot;&#x2F;blog&#x2F;2020-09-10-a-simple-rails-development-environment-using-nix-shell&quot;&gt;A simple Rails development environment using nix-shell&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+      &lt;li&gt;&lt;a href=&quot;&#x2F;blog&#x2F;2020-10-12-generating-and-running-a-rails-app-with-postgresql-using-nix-on-ubuntu&quot;&gt;Generating and running a Rails app with PostgreSQL using Nix on Ubuntu&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+    &lt;&#x2F;ol&gt;
+  &lt;&#x2F;li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;blog.sulami.xyz&#x2F;posts&#x2F;nix-for-developers&#x2F;&quot;&gt;Lightning Introduction to Nix for Developers&lt;&#x2F;a&gt; by Robin Schroer.&lt;&#x2F;p&gt;
+  &lt;&#x2F;li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ghedam.at&#x2F;15978&#x2F;an-introduction-to-nix-shell&quot;&gt;An introduction to nix-shell&lt;&#x2F;a&gt; by Mattia Gheda.&lt;&#x2F;p&gt;
+  &lt;&#x2F;li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;medium.com&#x2F;better-programming&#x2F;easily-reproducible-development-environments-with-nix-and-direnv-e8753f456110&quot;&gt;Easy Reproducible Development Environments with Nix and direnv&lt;&#x2F;a&gt; by Tom Feron.&lt;&#x2F;p&gt;
+  &lt;&#x2F;li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;lazamar.co.uk&#x2F;nix-versions&#x2F;&quot;&gt;Nix package versions&lt;&#x2F;a&gt; by Marcelo Lazaroni. Find all versions of a package that were available in a channel and the revision you can download it from.&lt;&#x2F;p&gt;
+  &lt;&#x2F;li&gt;
+  &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.mankier.com&#x2F;package&#x2F;nix&quot;&gt;Man pages for Nix command line tools&lt;&#x2F;a&gt;.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+
+
+    </content>
+  </entry>
+  <entry>
+    <author>
+      <name>James Mead</name>
+    </author>
+    <id>urn:uuid:e3390a6e-2423-4fe8-8089-7b12c3c8c3e9</id>
+    <published>2020-10-13T08:29:00+00:00</published>
+    <updated>2020-10-13T08:29:00+00:00</updated>
+    <title>Automatically sending Webmentions from a static website</title>
+    <link href="https://jamesmead.org/blog/2020-10-13-sending-webmentions-from-a-static-website" rel="alternate" type="text/html"/>
+    <content type="html">
+      &lt;p&gt;A few months back I wrote about &lt;a href=&quot;https:&#x2F;&#x2F;jamesmead.org&#x2F;blog&#x2F;2020-06-27-indieweb-ifying-my-personal-website&quot;&gt;indieweb-ifying this website&lt;&#x2F;a&gt;. I attempted to follow the excellent &lt;a href=&quot;https:&#x2F;&#x2F;indiewebify.me&#x2F;&quot;&gt;indiewebify.me guide&lt;&#x2F;a&gt;, but I skipped step 2 of Level 2, i.e. &lt;a href=&quot;https:&#x2F;&#x2F;indiewebify.me&#x2F;#send-webmentions&quot;&gt;adding the ability to send Webmentions to other IndieWeb sites&lt;&#x2F;a&gt;. My &lt;a href=&quot;https:&#x2F;&#x2F;jamesmead.org&#x2F;blog&#x2F;2020-06-27-indieweb-ifying-my-personal-website#publishing-on-the-indieweb&quot;&gt;excuse&lt;&#x2F;a&gt; at the time was:&lt;&#x2F;p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;I decided to skip this step for now given that it&#x27;s relatively easy to &lt;a href=&quot;https:&#x2F;&#x2F;indieweb.org&#x2F;webmention-implementation-guide#One-liner_webmentions&quot;&gt;send a Webmention manually using &lt;code&gt;curl&lt;&#x2F;code&gt;&lt;&#x2F;a&gt; and it&#x27;s not as if I currently blog that frequently!&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+
+&lt;p&gt;Anyway a couple of recent discoveries led me to fix this omission…&lt;&#x2F;p&gt;
+
+&lt;h3 id=&quot;webmentionapp&quot;&gt;webmention.app&lt;&#x2F;h3&gt;
+
+&lt;p&gt;This lovely little &lt;a href=&quot;https:&#x2F;&#x2F;webmention.app&#x2F;&quot;&gt;service&lt;&#x2F;a&gt; built by &lt;a href=&quot;https:&#x2F;&#x2F;remysharp.com&#x2F;&quot;&gt;Remy Sharp&lt;&#x2F;a&gt;, not to be confused with &lt;a href=&quot;https:&#x2F;&#x2F;webmention.io&#x2F;&quot;&gt;webmention.io&lt;&#x2F;a&gt; which is used for &lt;em&gt;receiving&lt;&#x2F;em&gt; incoming &lt;a href=&quot;https:&#x2F;&#x2F;indieweb.org&#x2F;Webmention&quot;&gt;Webmentions&lt;&#x2F;a&gt;, makes it easy to &lt;em&gt;send&lt;&#x2F;em&gt; outgoing webmentions for all the links on a given page:&lt;&#x2F;p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;This is a platform agnostic service that will check a given URL for links to other sites, discover if they support webmentions, then send a webmention to the target.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+
+&lt;p&gt;Fortunately I still have an &lt;a href=&quot;http:&#x2F;&#x2F;feeds.jamesmead.org&#x2F;floehopper-blog&quot;&gt;RSS feed&lt;&#x2F;a&gt; for my blog and in this case the documentation &lt;a href=&quot;https:&#x2F;&#x2F;webmention.app&#x2F;docs#using-ifttt-to-trigger-checks&quot;&gt;suggests using IFTTT&lt;&#x2F;a&gt; to automate doing this each time you publish an article.&lt;&#x2F;p&gt;
+
+&lt;h3 id=&quot;actionsflow&quot;&gt;Actionsflow&lt;&#x2F;h3&gt;
+
+&lt;p&gt;Somewhat serendipitously I recently came across &lt;a href=&quot;https:&#x2F;&#x2F;actionsflow.github.io&#x2F;docs&#x2F;&quot;&gt;Actionsflow&lt;&#x2F;a&gt; which is a free Zapier&#x2F;IFTTT alternative for developers to automate workflows based on GitHub Actions.&lt;&#x2F;p&gt;
+
+&lt;p&gt;I have to admit that I was initially quite confused by the Actionsflow documentation and I tried to add my Webmention-sending workflow to &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;jamesmead.org&quot;&gt;the repo for this website&lt;&#x2F;a&gt;. However, once I realised the idea was to &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;actionsflow&#x2F;actionsflow-workflow-default&#x2F;generate&quot;&gt;create a new repo&lt;&#x2F;a&gt; based on a template, things became a little clearer.&lt;&#x2F;p&gt;
+
+&lt;h3 id=&quot;workflow-to-send-webmentions&quot;&gt;Workflow to send Webmentions&lt;&#x2F;h3&gt;
+
+&lt;p&gt;I created &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;send-webmentions&quot;&gt;this repo&lt;&#x2F;a&gt; and added &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;send-webmentions&#x2F;blob&#x2F;main&#x2F;workflows&#x2F;send-webmentions.yml&quot;&gt;this workflow&lt;&#x2F;a&gt; to poll my RSS feed and send an HTTP POST request to the webmention.app API for every new item. I was pleasantly surprised by how simple this was:&lt;&#x2F;p&gt;
+
+&lt;pre&gt;&lt;code&gt;name: Send webmentions for new blog posts
+on:
+  rss:
+    url: http:&#x2F;&#x2F;feeds.jamesmead.org&#x2F;floehopper-blog
+    config:
+      logLevel: debug
+      limit: 1
+jobs:
+  send_webmentions:
+    name: Send webmentions
+    runs-on: ubuntu-latest
+    steps:
+      - name: &#x27;Send webmentions for RSS item link&#x27;
+        uses: actionsflow&#x2F;axios@v1
+        with:
+          url: https:&#x2F;&#x2F;webmention.app&#x2F;check&#x2F;
+          method: &#x27;POST&#x27;
+          params: &#x27;{ &quot;url&quot;: &quot;${{on.rss.outputs.link}}&quot;, &quot;token&quot;: &quot;${{ secrets.WM_TOKEN }}&quot; }&#x27;
+          is_debug: true
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+
+&lt;p&gt;It took me a while to realise that the underlying Actionsflow GitHub Action was running every 5 minutes and &lt;em&gt;polling&lt;&#x2F;em&gt; my RSS feed. It seems to use the GitHub Action cache to &quot;remember&quot; which items it has seen before. Since I don&#x27;t publish blog posts very often, polling every 5 minutes seemed a bit excessive and so I decided to &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;send-webmentions&#x2F;commit&#x2F;eb5a9cb573b1c532c92143b7fb2aed260c5fa552&quot;&gt;reduce the frequency to hourly&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+
+&lt;h3 id=&quot;observations&quot;&gt;Observations&lt;&#x2F;h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;I&#x27;m not sure I like the design of Actionsflow which means creating a new repo, but perhaps this would make more sense to me if I had more than one workflow. I suppose this repo is roughly equivalent to a single IFTTT account.&lt;&#x2F;p&gt;
+  &lt;&#x2F;li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Over the course of the last year I&#x27;ve automated some backup jobs for &lt;a href=&quot;https:&#x2F;&#x2F;gofreerange.com&quot;&gt;Go Free Range&lt;&#x2F;a&gt; using the &lt;a href=&quot;https:&#x2F;&#x2F;docs.aws.amazon.com&#x2F;cdk&#x2F;api&#x2F;latest&#x2F;typescript&#x2F;api&#x2F;aws-ecs-patterns&#x2F;scheduledfargatetask.html#aws_ecs_patterns_ScheduledFargateTask&quot;&gt;&lt;code&gt;ScheduledFargateTask&lt;&#x2F;code&gt; class&lt;&#x2F;a&gt; in the &lt;a href=&quot;https:&#x2F;&#x2F;aws.amazon.com&#x2F;cdk&#x2F;&quot;&gt;AWS CDK&lt;&#x2F;a&gt; to fire up a container and run a script on a cron schedule. This has worked really well, but it&#x27;s quite tempting to port these over to Actionsflow so we don&#x27;t have to maintain anything other than the &lt;code&gt;Dockerfile&lt;&#x2F;code&gt; and associated shell scripts.&lt;&#x2F;p&gt;
+  &lt;&#x2F;li&gt;
+  &lt;li&gt;
+    &lt;p&gt;webmention.app is really nicely implemented with good documentation; it&#x27;s a classic example of an elegant solution to a tightly scoped problem. Since I&#x27;ll be making use of the API on a regular basis, I decided to &lt;a href=&quot;https:&#x2F;&#x2F;paypal.me&#x2F;rem&quot;&gt;buy Remy a drink&lt;&#x2F;a&gt; to say thank you!&lt;&#x2F;p&gt;
+  &lt;&#x2F;li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I&#x27;d also like to find a way to say thank you to &lt;a href=&quot;https:&#x2F;&#x2F;aaronparecki.com&#x2F;&quot;&gt;Aaron Parecki&lt;&#x2F;a&gt; who built webmention.io and &lt;a href=&quot;https:&#x2F;&#x2F;snarfed.org&#x2F;&quot;&gt;Ryan Barrett&lt;&#x2F;a&gt;, &lt;a href=&quot;https:&#x2F;&#x2F;kylewm.com&#x2F;&quot;&gt;Kyle Mahan&lt;&#x2F;a&gt;, et al who built &lt;a href=&quot;https:&#x2F;&#x2F;brid.gy&#x2F;&quot;&gt;brid.gy&lt;&#x2F;a&gt;. However, I can&#x27;t see a way to do either and, indeed, the latter &lt;a href=&quot;https:&#x2F;&#x2F;brid.gy&#x2F;about#cost&quot;&gt;explicitly say&lt;&#x2F;a&gt; &quot;We don&#x27;t need donations, promise.&quot;&lt;&#x2F;p&gt;
+  &lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+
+
+    </content>
+  </entry>
+  <entry>
+    <author>
+      <name>James Mead</name>
+    </author>
+    <id>urn:uuid:c31f4da5-1cbb-4843-90f3-30075869abc3</id>
+    <published>2020-10-12T20:20:00+00:00</published>
+    <updated>2020-10-12T20:20:00+00:00</updated>
+    <title>Generating and running a Rails app with PostgreSQL using Nix on Ubuntu</title>
+    <link href="https://jamesmead.org/blog/2020-10-12-generating-and-running-a-rails-app-with-postgresql-using-nix-on-ubuntu" rel="alternate" type="text/html"/>
+    <content type="html">
+      &lt;p&gt;In my first attempt at setting up &lt;a href=&quot;&#x2F;blog&#x2F;2020-07-26-a-simple-ruby-development-environment-using-nix-shell&quot;&gt;a simple Ruby development environment&lt;&#x2F;a&gt;, I was quite careful to make sure the Nix shell environment wasn&#x27;t accidentally relying on anything available from the underlying environment. In particular, I noticed that unless I specifically added &lt;code&gt;nodejs&lt;&#x2F;code&gt; to the list of &lt;code&gt;buildInputs&lt;&#x2F;code&gt;, middleman ended up using the Node version in the &lt;em&gt;underlying&lt;&#x2F;em&gt; MacOS environment.&lt;&#x2F;p&gt;
+
+&lt;p&gt;However, in my second attempt where I set up &lt;a href=&quot;&#x2F;blog&#x2F;2020-09-10-a-simple-rails-development-environment-using-nix-shell&quot;&gt;a simple Rails development environment&lt;&#x2F;a&gt;, I wasn&#x27;t so careful and &lt;a href=&quot;&#x2F;blog&#x2F;2020-09-10-a-simple-rails-development-environment-using-nix-shell#runtime-dependencies-update&quot;&gt;I didn&#x27;t do the same checks on the run-time dependencies&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+
+&lt;h3 id=&quot;ubuntu-vm-on-vagrant&quot;&gt;Ubuntu VM on Vagrant&lt;&#x2F;h3&gt;
+
+&lt;p&gt;Previously, in order to ensure full isolation, I ended up editing my &quot;dot&quot; files and even modifying environment variables in the current shell, but this was fiddly and error prone. So this time I decided to setup a completely seperate VM running Ubuntu Xenial (with minimal OS packages) using Vagrant to continue with my Nix experiments.&lt;&#x2F;p&gt;
+
+&lt;p&gt;Furthermore I decided to try to write a provisioning script for the Vagrant configuration to create a new Rails app from scratch and to complete all the steps necessary for getting both the Rails tests and the Rails server running. By doing it this way, I could easily snapshot the VM and restore the snapshot or even destroy the VM and build it again to get back to a clean slate. I found this a really productive way to tackle the problem.&lt;&#x2F;p&gt;
+
+&lt;h3 id=&quot;installing-nix&quot;&gt;Installing Nix&lt;&#x2F;h3&gt;
+
+&lt;p&gt;First I had to install Nix on the Ubuntu VM. I used the &lt;a href=&quot;https:&#x2F;&#x2F;nixos.org&#x2F;manual&#x2F;nix&#x2F;stable&#x2F;#sect-multi-user-installation&quot;&gt;Nix multi-user installation instructions&lt;&#x2F;a&gt; to write an inline provisioning script in the &lt;code&gt;Vagrantfile&lt;&#x2F;code&gt; and I even worked out how to make the script idempotent:&lt;&#x2F;p&gt;
+
+&lt;pre&gt;&lt;code&gt;nix --version
+if [ $? -eq 0 ]; then
+  echo &#x27;nix is already installed (skipping installation)&#x27;
+else
+  sh &amp;lt;(curl -L https:&#x2F;&#x2F;nixos.org&#x2F;nix&#x2F;install) --daemon
+fi
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+
+&lt;h3 id=&quot;generating-a-new-rails-app&quot;&gt;Generating a new Rails app&lt;&#x2F;h3&gt;
+
+&lt;p&gt;Next I created a nix-shell configuration that made the Rails gem specified by the &quot;outer&quot; &lt;code&gt;Gemfile&lt;&#x2F;code&gt; available:&lt;&#x2F;p&gt;
+
+&lt;pre&gt;&lt;code&gt;nix-shell -p ruby_2_6 bundler bundix --run &#x27;bundle lock &amp;amp;&amp;amp; bundix --init --ruby=ruby_2_6&#x27;
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+
+&lt;p&gt;Much like in my &lt;a href=&quot;&#x2F;blog&#x2F;2020-07-26-a-simple-ruby-development-environment-using-nix-shell&quot;&gt;previous article&lt;&#x2F;a&gt;, this generated the following files in the &quot;outer&quot; directory:&lt;&#x2F;p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;Gemfile.lock&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+  &lt;li&gt;&lt;code&gt;gemset.nix&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+  &lt;li&gt;&lt;code&gt;shell.nix&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+
+&lt;p&gt;Now that this nix-shell specified by &lt;code&gt;shell.nix&lt;&#x2F;code&gt; made the Rails gem available, I used it to generate a new Rails app in a subdirectory with the &lt;code&gt;rails new&lt;&#x2F;code&gt; command:&lt;&#x2F;p&gt;
+
+&lt;pre&gt;&lt;code&gt;nix-shell --run &#x27;rails new my-rails-app --skip-bundle --skip-webpack-install --database=postgresql&#x27;
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+
+&lt;p&gt;This step created a vanilla Rails app in the &lt;code&gt;my-rails-app&lt;&#x2F;code&gt; subdirectory. Note that I chose to skip the &lt;code&gt;bundle install&lt;&#x2F;code&gt; and &lt;code&gt;rails webpacker:install&lt;&#x2F;code&gt; steps, because at this point the nix-shell could not provide everything necessary.&lt;&#x2F;p&gt;
+
+&lt;h3 id=&quot;bundled-gems&quot;&gt;Bundled gems&lt;&#x2F;h3&gt;
+
+&lt;p&gt;I felt as if generating the Rails app was separate from setting up and running it and so I decided to create a separate nix-shell within the &quot;inner&quot; subdirectory. This was achieved much as before, but this time based on the &quot;inner&quot; &lt;code&gt;Gemfile&lt;&#x2F;code&gt; generated as part of the new Rails app:&lt;&#x2F;p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd my-rails-app
+
+nix-shell -p ruby_2_6 bundler bundix --run &#x27;bundle lock &amp;amp;&amp;amp; bundix --init --ruby=ruby_2_6&#x27;
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+
+&lt;p&gt;This generated the following files in the subdirectory:&lt;&#x2F;p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;Gemfile.lock&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+  &lt;li&gt;&lt;code&gt;gemset.nix&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+  &lt;li&gt;&lt;code&gt;shell.nix&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+
+&lt;h3 id=&quot;runtime-dependencies&quot;&gt;Runtime dependencies&lt;&#x2F;h3&gt;
+
+&lt;p&gt;While the &lt;code&gt;shell.nix&lt;&#x2F;code&gt; file in combination with the &lt;code&gt;gemset.nix&lt;&#x2F;code&gt; would make the bundled gems and their dependent OS packages available within the nix-shell, I also needed to add some runtime dependencies (&lt;code&gt;nodejs&lt;&#x2F;code&gt;, &lt;code&gt;yarn&lt;&#x2F;code&gt; &amp;amp; &lt;code&gt;ruby_2_6&lt;&#x2F;code&gt;) for subsequent steps by adding them to the list of &lt;code&gt;buildInputs&lt;&#x2F;code&gt; in &lt;code&gt;shell.nix&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+
+&lt;pre&gt;&lt;code&gt;buildInputs = [ env nodejs yarn ruby_2_6 ];
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+
+&lt;h3 id=&quot;postgresql-package&quot;&gt;PostgreSQL package&lt;&#x2F;h3&gt;
+
+&lt;p&gt;Having specified PostgreSQL as the database when I generated the Rails app, I wanted to setup and start a PostgreSQL server in the nix-shell development environment. So I also added the postgresql package to the list of &lt;code&gt;buildInputs&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+
+&lt;pre&gt;&lt;code&gt;buildInputs = [ env nodejs yarn postgresql ruby_2_6 ];
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+
+&lt;h3 id=&quot;webpacker&quot;&gt;Webpacker&lt;&#x2F;h3&gt;
+
+&lt;p&gt;The &quot;inner&quot; nix-shell was now ready to install webpacker using the &lt;code&gt;rails webpacker:install&lt;&#x2F;code&gt; command.&lt;&#x2F;p&gt;
+
+&lt;pre&gt;&lt;code&gt;nix-shell&amp;gt; rails webpacker:install
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+
+&lt;p&gt;Running the &quot;inner&quot; nix-shell for the first time resulted in the bundled gems and their OS dependencies being installed along with runtime dependencies mentioned above. I found it pretty cool seeing that e.g. the &lt;code&gt;libxml2&lt;&#x2F;code&gt; OS package was automatically installed just because &lt;code&gt;nokogiri&lt;&#x2F;code&gt; was in the bundled gems!&lt;&#x2F;p&gt;
+
+&lt;h3 id=&quot;postgresql-server&quot;&gt;PostgreSQL server&lt;&#x2F;h3&gt;
+
+&lt;p&gt;I wanted a PostgreSQL database server to be available, but only from &lt;em&gt;within&lt;&#x2F;em&gt; the nix-shell, i.e. not system-wide. To this end I added a &lt;a href=&quot;https:&#x2F;&#x2F;nixos.org&#x2F;manual&#x2F;nix&#x2F;stable&#x2F;#description-13&quot;&gt;&lt;code&gt;shellHook&lt;&#x2F;code&gt;&lt;&#x2F;a&gt; to &lt;code&gt;shell.nix&lt;&#x2F;code&gt; to idempotently configure the server and start it when entering the nix-shell:&lt;&#x2F;p&gt;
+
+&lt;pre&gt;&lt;code&gt;shellHook = &#x27;&#x27;
+  export PGHOST=$HOME&#x2F;postgres
+  export PGDATA=$PGHOST&#x2F;data
+  export PGDATABASE=postgres
+  export PGLOG=$PGHOST&#x2F;postgres.log
+
+  mkdir -p $PGHOST
+
+  if [ ! -d $PGDATA ]; then
+    initdb --auth=trust --no-locale --encoding=UTF8
+  fi
+
+  if ! pg_ctl status
+  then
+    pg_ctl start -l $PGLOG -o &quot;--unix_socket_directories=&#x27;$PGHOST&#x27;&quot;
+  fi
+&#x27;&#x27;;
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+
+&lt;p&gt;I set the database server up with minimal security to make it easy to access from &lt;code&gt;psql&lt;&#x2F;code&gt; and so the generated &lt;code&gt;database.yml&lt;&#x2F;code&gt; would just work out of the box.&lt;&#x2F;p&gt;
+
+&lt;h3 id=&quot;rails-development-environment&quot;&gt;Rails development environment&lt;&#x2F;h3&gt;
+
+&lt;p&gt;By this stage, the nix-shell Rails development environment was pretty much ready to go. To make things slightly more interesting, I decided to create the canonical simple Rails &quot;blog&quot; app using the &lt;code&gt;rails generate scaffold&lt;&#x2F;code&gt; command:&lt;&#x2F;p&gt;
+
+&lt;pre&gt;&lt;code&gt;nix-shell&amp;gt; rails generate scaffold post title:string content:text
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+
+&lt;p&gt;I then created and migrated the development and test databases for the Rails app in the usual way:&lt;&#x2F;p&gt;
+
+&lt;pre&gt;&lt;code&gt;nix-shell&amp;gt; rails db:create
+nix-shell&amp;gt; rails db:migrate
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+
+&lt;p&gt;And ran the Rails tests as follows:&lt;&#x2F;p&gt;
+
+&lt;pre&gt;&lt;code&gt;nix-shell&amp;gt; rails test
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+
+&lt;p&gt;And finally, the moment of truth (!), I ran the Rails server and opened a browser at the home page 🚀:&lt;&#x2F;p&gt;
+
+&lt;pre&gt;&lt;code&gt;nix-shell&amp;gt; rails server --binding 0.0.0.0 --daemon
+nix-shell&amp;gt; open http:&#x2F;&#x2F;localhost:3000&#x2F;
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+
+&lt;p&gt;&lt;img style=&quot;display: block; margin-left: auto; margin-right: auto; width: 80%;&quot; src=&quot;&#x2F;images&#x2F;rails-welcome.png&quot; alt=&quot;Rails welcome page&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+
+&lt;p&gt;The blogging functionality was also accessible at &lt;a href=&quot;http:&#x2F;&#x2F;localhost:3000&#x2F;posts&quot;&gt;the relevant endpoint&lt;&#x2F;a&gt; and seemed to persist new posts successfully.&lt;&#x2F;p&gt;
+
+&lt;h3 id=&quot;trying-it-yourself&quot;&gt;Trying it yourself&lt;&#x2F;h3&gt;
+
+&lt;p&gt;If you want to follow along at home, I&#x27;ve published the source code in &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;rails-on-nix&quot;&gt;a GitHub repository&lt;&#x2F;a&gt;. The steps I&#x27;ve described above are documented in the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;rails-on-nix&#x2F;blob&#x2F;main&#x2F;README.md&quot;&gt;README&lt;&#x2F;a&gt; and the corresponding code is in a couple of inline provisioning scripts within the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;rails-on-nix&#x2F;blob&#x2F;main&#x2F;Vagrantfile&quot;&gt;&lt;code&gt;Vagrantfile&lt;&#x2F;code&gt;&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+
+&lt;h3 id=&quot;observations&quot;&gt;Observations&lt;&#x2F;h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Very belatedly, I came across the &lt;code&gt;--pure&lt;&#x2F;code&gt; option for nix-shell which might&#x27;ve been a simpler way to isolate my development environment. However, &lt;a href=&quot;https:&#x2F;&#x2F;nixos.org&#x2F;manual&#x2F;nix&#x2F;stable&#x2F;#name-2&quot;&gt;the documentation&lt;&#x2F;a&gt; says: &quot;Note that &lt;code&gt;~&#x2F;.bashrc&lt;&#x2F;code&gt; and (depending on your Bash installation) &lt;code&gt;&#x2F;etc&#x2F;bashrc&lt;&#x2F;code&gt; are still sourced, so any variables set there will affect the interactive shell.&quot; The latter was the main source of my previous isolation woes, so perhaps it wouldn&#x27;t have helped that much after all.&lt;&#x2F;p&gt;
+  &lt;&#x2F;li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Initially I wanted to have the database-related directories &lt;em&gt;within&lt;&#x2F;em&gt; the Rails app project directory, but it turned out I couldn&#x27;t do this because VirtualBox doesn&#x27;t allow hard links within shared directories (at least not on MacOS). And so I put them in the user&#x27;s home directory instead. If I was doing this &quot;for real&quot;, I wouldn&#x27;t be on a VirtualBox VM and so putting them in the Rails app project directory wouldn&#x27;t be an issue.&lt;&#x2F;p&gt;
+  &lt;&#x2F;li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I decided not to worry about shutting down the database server when exiting the nix-shell, but I believe this would be fairly straightforward using the Linux &lt;code&gt;trap&lt;&#x2F;code&gt; command.&lt;&#x2F;p&gt;
+  &lt;&#x2F;li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I discovered that in Nix Ruby packages the Rails gem is &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;NixOS&#x2F;nixpkgs&#x2F;blob&#x2F;e0c48efc170866a8889b6b758aac10e6d04a4d9b&#x2F;pkgs&#x2F;top-level&#x2F;ruby-packages.nix#L1893-L1903&quot;&gt;fixed at v4.2.11.1&lt;&#x2F;a&gt;. I didn&#x27;t want to use such an old version and so I ended up using Bundler and Bundix in conjunction with a &lt;code&gt;Gemfile&lt;&#x2F;code&gt; to make a newer version of Rails available. If the version in Nix Ruby packages was more up-to-date, I believe I could have used something much simpler, e.g.&lt;&#x2F;p&gt;
+  &lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre&gt;&lt;code&gt;nix-shell -p &#x27;ruby_2_6.gems.rails&#x27; --run &#x27;rails new my-rails-app --skip-bundle --skip-webpack-install --database=postgresql&#x27;
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+
+&lt;h3 id=&quot;next-steps&quot;&gt;Next steps&lt;&#x2F;h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Multiple Rails app with different database types and versions. This is really the core issue I&#x27;m trying to solve by setting my development environment up using Nix.&lt;&#x2F;p&gt;
+  &lt;&#x2F;li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Investigate using Nix to somehow make Node packages available to the environment in a similar way to Bundix instead of using Yarn directly, i.e. also automatically installing any OS package dependencies.&lt;&#x2F;p&gt;
+  &lt;&#x2F;li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Investigate using &lt;a href=&quot;https:&#x2F;&#x2F;nixos.wiki&#x2F;wiki&#x2F;Home_Manager&quot;&gt;Nix home-manager&lt;&#x2F;a&gt; to provide a more generic environment on the VM to create the Rails app, i.e. to be able to run &lt;code&gt;rails new&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+  &lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+
+&lt;h3 id=&quot;further-reading&quot;&gt;Further reading&lt;&#x2F;h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Someone on the Nix forums pointed me at &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;NixOS&#x2F;nixpkgs&#x2F;blob&#x2F;master&#x2F;doc&#x2F;languages-frameworks&#x2F;ruby.section.md&quot;&gt;this Ruby guide for Nix&lt;&#x2F;a&gt; which for some reason hasn&#x27;t been incorporated into the main Nix documentation.&lt;&#x2F;p&gt;
+  &lt;&#x2F;li&gt;
+  &lt;li&gt;
+    &lt;p&gt;At various points I&#x27;ve found it useful to dive into the source code of the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;NixOS&#x2F;nixpkgs&#x2F;tree&#x2F;master&#x2F;pkgs&#x2F;development&#x2F;ruby-modules&quot;&gt;Nix Ruby modules&lt;&#x2F;a&gt;. This was particularly useful when I was trying to understand how Bundix worked.&lt;&#x2F;p&gt;
+  &lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+
+
+    </content>
+  </entry>
+  <entry>
+    <author>
+      <name>James Mead</name>
+    </author>
+    <id>urn:uuid:ba59ac01-51b5-4916-94ea-ebd1d1dec01e</id>
+    <published>2020-09-10T18:21:00+00:00</published>
+    <updated>2020-09-11T09:28:00+00:00</updated>
+    <title>A simple Rails development environment using nix-shell</title>
+    <link href="https://jamesmead.org/blog/2020-09-10-a-simple-rails-development-environment-using-nix-shell" rel="alternate" type="text/html"/>
+    <content type="html">
+      &lt;p&gt;This follows on from my previous article about setting up &lt;a href=&quot;&#x2F;blog&#x2F;2020-07-26-a-simple-ruby-development-environment-using-nix-shell&quot;&gt;a simple Ruby development environment using nix-shell&lt;&#x2F;a&gt;. The next thing I wanted to try was to set up a simple Rails development environment. To this end I decided to focus on &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;freerange&#x2F;site&quot;&gt;the GFR website&lt;&#x2F;a&gt; which is a Rails app, but has the advantage that it doesn&#x27;t use a database.&lt;&#x2F;p&gt;
+
+&lt;p&gt;The &lt;code&gt;Gemfile&lt;&#x2F;code&gt; for this project specified Ruby v2.5.7 and so &lt;a href=&quot;&#x2F;blog&#x2F;2020-07-26-a-simple-ruby-development-environment-using-nix-shell#a-ruby-development-environment-using-nix-shell&quot;&gt;as before&lt;&#x2F;a&gt;, I &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;freerange&#x2F;site&#x2F;commit&#x2F;75ae0e850fd0d8bf9c7abf48a543fdc9607f3dc4#diff-8b7db4d5cc4b8f6dc8feb7030baa2478&quot;&gt;upgraded&lt;&#x2F;a&gt; it to use the latest v2.5 patch version, v2.5.8, so that I could use the ruby_2_5 package provided by nix.&lt;&#x2F;p&gt;
+
+&lt;p&gt;In a similar vein, the &lt;code&gt;Gemfile.lock&lt;&#x2F;code&gt; was &lt;code&gt;BUNDLED WITH&lt;&#x2F;code&gt; v1.17.3 of bundler; whereas the bundler version &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;NixOS&#x2F;nixpkgs&#x2F;blob&#x2F;b71dc9d264ef0bad32de437ec9105000c952654d&#x2F;pkgs&#x2F;development&#x2F;ruby-modules&#x2F;bundler&#x2F;default.nix#L7&quot;&gt;provided by nixpkgs&lt;&#x2F;a&gt; was v2.1.4. The line in &lt;code&gt;Gemfile.lock&lt;&#x2F;code&gt; wasn&#x27;t an enforced constraint and I didn&#x27;t want to break our Heroku deployment, so I compromised and upgraded to the v2 version of bundler &lt;a href=&quot;https:&#x2F;&#x2F;devcenter.heroku.com&#x2F;articles&#x2F;ruby-support#libraries&quot;&gt;supported by the Heroku Ruby buildpack&lt;&#x2F;a&gt;, i.e. v2.0.2.&lt;&#x2F;p&gt;
+
+&lt;p&gt;My &lt;code&gt;shell.nix&lt;&#x2F;code&gt; ended up like this:&lt;&#x2F;p&gt;
+
+&lt;pre&gt;&lt;code&gt;with (import &amp;lt;nixpkgs&amp;gt; {});
+let
+  env = bundlerEnv {
+    name = &quot;site-bundler-env&quot;;
+    ruby = ruby_2_5;
+    gemdir  = .&#x2F;.;
+  };
+in mkShell {
+  buildInputs = [ env env.wrappedRuby ];
+}
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+
+&lt;p&gt;The full set of changes including the &lt;code&gt;gemset.nix&lt;&#x2F;code&gt; generated by bundix are in &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;freerange&#x2F;site&#x2F;commit&#x2F;8e5f37af715829d27c57e0f5e8a38e6f36b44b01&quot;&gt;this commit&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+
+&lt;p&gt;At this point I was surprised to discover that I could run &lt;code&gt;rails server&lt;&#x2F;code&gt; from within my &lt;code&gt;nix-shell&lt;&#x2F;code&gt; and everything worked perfectly! 🚀&lt;&#x2F;p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ nix-shell
+
+# ...
+
+$ rails s
+=&amp;gt; Booting Puma
+=&amp;gt; Rails 5.2.4.3 application starting in development
+=&amp;gt; Run `rails server -h` for more startup options
+
+# ...
+
+Started GET &quot;&#x2F;&quot; for ::1 at 2020-09-10 18:05:37 +0100
+Processing by PagesController#show as HTML
+
+# ...
+
+Completed 200 OK in 170ms (Views: 23.9ms)
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+
+&lt;h3 id=&quot;observations&quot;&gt;Observations&lt;&#x2F;h3&gt;
+
+&lt;p&gt;It&#x27;s worth noting that early on in the shenanigans above, I got stuck for a while with the wrong version of Ruby and nothing I did would change it. In the end I deleted a bunch of things in my &lt;code&gt;&#x2F;nix&#x2F;store&lt;&#x2F;code&gt; directory to fix the problem. While this probably wasn&#x27;t the &lt;em&gt;right&lt;&#x2F;em&gt; way to fix it, I really appreciated the way it&#x27;s relatively easy to work out how various executables are being made available to your environment, i.e. via a series of symbolic links.&lt;&#x2F;p&gt;
+
+&lt;p&gt;I also worked out that it&#x27;s not possible (at least not when using &lt;code&gt;bundlerEnv&lt;&#x2F;code&gt;) to specify the version of bundler you want to use - it seems to be &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;NixOS&#x2F;nixpkgs&#x2F;blob&#x2F;master&#x2F;pkgs&#x2F;development&#x2F;ruby-modules&#x2F;bundler&#x2F;default.nix#L7&quot;&gt;fixed at v2.1.4&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+
+&lt;h3 id=&quot;next-steps&quot;&gt;Next steps&lt;&#x2F;h3&gt;
+
+&lt;p&gt;I&#x27;m still interested in working out how to have a project use a specific patch version of Ruby and to be able to lockdown the exact version of bundler. I&#x27;ve been reading about &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;NixOS&#x2F;rfcs&#x2F;pull&#x2F;49&quot;&gt;nix flakes&lt;&#x2F;a&gt; and although I haven&#x27;t completely got my head around them, I think they &lt;em&gt;might&lt;&#x2F;em&gt; be what I&#x27;m looking for, because they have a &quot;lock file&quot; which I believe can pin your dependencies to ensure reproducibility.&lt;&#x2F;p&gt;
+
+&lt;p&gt;However, I still feel as if that&#x27;s a bit of a tangent. My main aim is to be able to have multiple Rails projects on the same computer with various flavours and versions of databases, etc. So I think my next step should be to setup a development environment for a Rails project which uses a database.&lt;&#x2F;p&gt;
+
+&lt;p id=&quot;runtime-dependencies-update&quot;&gt;&lt;em&gt;Update&lt;&#x2F;em&gt;: I&#x27;ve belatedly realised that some run-time dependencies (e.g. node.js &amp;amp; yarn) were satisfied by OS packages installed in my OSX environment, i.e. I forgot to isolate the nix shell from this environment like I did when investigating the dependency on node.js in my previous article. I plan to tackle doing this soon.&lt;&#x2F;p&gt;
+
+&lt;h3 id=&quot;further-reading&quot;&gt;Further reading&lt;&#x2F;h3&gt;
+
+&lt;p&gt;If you&#x27;d like to know more about nix flakes, I can recommend these articles by &lt;a href=&quot;https:&#x2F;&#x2F;edolstra.github.io&#x2F;&quot;&gt;Eelco Dolstra&lt;&#x2F;a&gt;:&lt;&#x2F;p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.tweag.io&#x2F;blog&#x2F;2020-05-25-flakes&#x2F;&quot;&gt;Nix Flakes, Part 1: An Introduction and Tutorial&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+  &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.tweag.io&#x2F;blog&#x2F;2020-06-25-eval-cache&#x2F;&quot;&gt;Nix Flakes, Part 2: Evaluation Caching&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+  &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.tweag.io&#x2F;blog&#x2F;2020-07-31-nixos-flakes&#x2F;&quot;&gt;Nix Flakes, Part 3: Managing NixOS Systems&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+
+
+    </content>
+  </entry>
+  <entry>
+    <author>
+      <name>James Mead</name>
+    </author>
+    <id>urn:uuid:f20ea4f3-c444-4f85-8f31-8cc8e6b52824</id>
+    <published>2020-08-07T11:32:00+00:00</published>
+    <updated>2020-08-07T11:32:00+00:00</updated>
+    <title>Using nix to build my personal website</title>
+    <link href="https://jamesmead.org/blog/2020-08-07-using-nix-to-build-my-personal-website" rel="alternate" type="text/html"/>
+    <content type="html">
+      &lt;p&gt;This is a follow-up to my previous article about setting up &lt;a href=&quot;&#x2F;blog&#x2F;2020-07-26-a-simple-ruby-development-environment-using-nix-shell&quot;&gt;a simple Ruby development environment using nix-shell&lt;&#x2F;a&gt; in which I mentioned I wasn&#x27;t certain I&#x27;d &lt;em&gt;completely&lt;&#x2F;em&gt; specified the development environment. Although it&#x27;s a bit of a tangent from my main aim of configuring isolated &lt;em&gt;development&lt;&#x2F;em&gt; environments, I thought it would be instructive to modify &lt;a href=&quot;&#x2F;blog&#x2F;2019-09-07-using-github-actions-to-publish-a-static-site-to-github-pages&quot;&gt;the GitHub Action workflow that automatically publishes this website&lt;&#x2F;a&gt; to use &lt;a href=&quot;https:&#x2F;&#x2F;nixos.org&#x2F;&quot;&gt;nix&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+
+&lt;h3 id=&quot;modifying-the-github-action-workflow-to-use-nix&quot;&gt;Modifying the GitHub action workflow to use nix&lt;&#x2F;h3&gt;
+
+&lt;p&gt;I found &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;cachix&#x2F;install-nix-action&quot;&gt;cachix&#x2F;install-nix-action&lt;&#x2F;a&gt; and decided to use it in my workflow along with the &lt;code&gt;shell.nix&lt;&#x2F;code&gt; &amp;amp; &lt;code&gt;gemset.nix&lt;&#x2F;code&gt; files I&#x27;d already created. I had to remove the specification of a &quot;ruby:2.6.6&quot; container image, because this did not include a number of packages required by the install-nix-action step to install nix. Removing this specification meant that the workflow fell back to using GitHub&#x27;s &quot;ubuntu-latest&quot; virtual environment which comes with &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;actions&#x2F;virtual-environments&#x2F;blob&#x2F;master&#x2F;images&#x2F;linux&#x2F;Ubuntu1804-README.md&quot;&gt;loads of OS packages&lt;&#x2F;a&gt; installed including those needed to install nix.&lt;&#x2F;p&gt;
+
+&lt;p&gt;I then inserted the install-nix-action step immediately after the existing &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;actions&#x2F;checkout&quot;&gt;actions&#x2F;checkout&lt;&#x2F;a&gt; step, removed the steps installing node.js and the bundled gems, and modified the step which built the website to run &lt;code&gt;nix-shell --command &#x27;middleman build&#x27;&lt;&#x2F;code&gt;, i.e. to build the site within the shell specified by &lt;code&gt;shell.nix&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+
+&lt;p&gt;At this point slightly to my amazement, the build ran successfully!&lt;&#x2F;p&gt;
+
+&lt;pre&gt;&lt;code&gt;name: Continuous Deployment to GitHub Pages
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions&#x2F;checkout@master
+      - uses: cachix&#x2F;install-nix-action@v10
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+      - name: Build site
+        run: nix-shell --command &#x27;middleman build&#x27;
+      - name: Publish site
+        uses: maxheld83&#x2F;ghpages@v0.2.1
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+          BUILD_DIR: .&#x2F;build
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+
+&lt;p&gt;You can see all the changes I made in &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;jamesmead.org&#x2F;commit&#x2F;cee581de9849fa721bf621fe58553458b17e83c5&quot;&gt;this commit&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+
+&lt;h3 id=&quot;observations&quot;&gt;Observations&lt;&#x2F;h3&gt;
+
+&lt;p&gt;As with the experience of running nix-shell on my local machine, I belatedly realised node.js was being made available by the GitHub virtual environment and not by nix-shell. I did spend a bit of time investigating this by basing the workflow on a minimal container image, but it turns out that it&#x27;s not trivial to prepare a container image suitable for installing nix. So I decided to give up at this point. Although it meant I still hadn&#x27;t definitively proved I&#x27;d &lt;em&gt;completely&lt;&#x2F;em&gt; specified the development environment, I&#x27;d convinced myself that I understood what was going on and could prove it given enough time!&lt;&#x2F;p&gt;
+
+&lt;p&gt;I was pleasantly surprised to see that the nix-based build were significantly quicker than the original build, even though the bundled gems were being cached in the latter. Some of the speed-up can be attributed to the fact that the nix-based build doesn&#x27;t have to spin up a separate container, but from a cursory look at the logs most of the gain seems to be in not having to install the bundled gems.&lt;&#x2F;p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;jamesmead.org&#x2F;actions&#x2F;runs&#x2F;183152555&quot;&gt;Building without nix-shell&lt;&#x2F;a&gt; 4 mins 48 secs&lt;&#x2F;li&gt;
+  &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;jamesmead.org&#x2F;actions&#x2F;runs&#x2F;183290575&quot;&gt;Building with nix-shell&lt;&#x2F;a&gt; 1 min 44 secs&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+
+&lt;h3 id=&quot;next-steps&quot;&gt;Next steps&lt;&#x2F;h3&gt;
+
+&lt;p&gt;While this was an interesting diversion, I plan to get back on track by creating a development environment for a simple Rails app, probably &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;freerange&#x2F;site&quot;&gt;this one&lt;&#x2F;a&gt; which doesn&#x27;t need a database.&lt;&#x2F;p&gt;
+
+
+    </content>
+  </entry>
+  <entry>
+    <author>
+      <name>James Mead</name>
+    </author>
+    <id>urn:uuid:62c8f224-9da6-40c6-922e-ced9305a513f</id>
+    <published>2020-07-26T14:01:00+00:00</published>
+    <updated>2020-07-26T14:01:00+00:00</updated>
+    <title>A simple Ruby development environment using nix-shell</title>
+    <link href="https://jamesmead.org/blog/2020-07-26-a-simple-ruby-development-environment-using-nix-shell" rel="alternate" type="text/html"/>
+    <content type="html">
+      &lt;p&gt;I&#x27;ve been playing around with the the &lt;a href=&quot;https:&#x2F;&#x2F;nixos.org&#x2F;&quot;&gt;nix&lt;&#x2F;a&gt; package manager recently. At the moment I&#x27;m mainly interested in seeing whether I can use it to configure isolated &lt;em&gt;development&lt;&#x2F;em&gt; environments for various projects with varying package dependencies. The classic case of this would be two &lt;a href=&quot;https:&#x2F;&#x2F;rubyonrails.org&#x2F;&quot;&gt;Rails&lt;&#x2F;a&gt; apps, one using &lt;a href=&quot;https:&#x2F;&#x2F;www.postgresql.org&#x2F;&quot;&gt;PostgreSQL&lt;&#x2F;a&gt; and the other using &lt;a href=&quot;https:&#x2F;&#x2F;www.mysql.com&#x2F;&quot;&gt;MySQL&lt;&#x2F;a&gt;. Ideally I&#x27;d like development environments which completely specify all the projects dependencies and make &lt;em&gt;only&lt;&#x2F;em&gt; those dependencies available in the relevant development environment.&lt;&#x2F;p&gt;
+
+&lt;p&gt;It&#x27;s not unusual for me to need multiple versions of PostgreSQL and MySQL installed at the same time for different projects. While it is possible to do this using &lt;a href=&quot;https:&#x2F;&#x2F;brew.sh&#x2F;&quot;&gt;Homebrew&lt;&#x2F;a&gt;, I&#x27;ve never found it very straightforward. At &lt;a href=&quot;https:&#x2F;&#x2F;gofreerange.com&#x2F;&quot;&gt;Go Free Range&lt;&#x2F;a&gt;, we&#x27;ve often used &lt;a href=&quot;https:&#x2F;&#x2F;www.vagrantup.com&#x2F;&quot;&gt;Vagrant&lt;&#x2F;a&gt; to tackle this problem and more recently I&#x27;ve had some success using &lt;a href=&quot;https:&#x2F;&#x2F;www.docker.com&#x2F;&quot;&gt;Docker&lt;&#x2F;a&gt; and &lt;a href=&quot;https:&#x2F;&#x2F;docs.docker.com&#x2F;compose&#x2F;&quot;&gt;docker-compose&lt;&#x2F;a&gt; using a similar approach to &lt;a href=&quot;https:&#x2F;&#x2F;evilmartians.com&#x2F;chronicles&#x2F;ruby-on-whales-docker-for-ruby-rails-development&quot;&gt;the Evil Martians&lt;&#x2F;a&gt;. However, the former has always seemed like overkill and uses a lot of resources, while the latter often introduces extra orchestration complexity, because of the affordances which push you towards only having one process per container.&lt;&#x2F;p&gt;
+
+&lt;h3 id=&quot;familiarising-myself-with-nix&quot;&gt;Familiarising myself with nix&lt;&#x2F;h3&gt;
+
+&lt;p&gt;I ran into a minor hitch when installing nix on my laptop which is running MacOS Catalina, but this was soon resolved when someone &lt;a href=&quot;https:&#x2F;&#x2F;nixos.trydiscourse.com&#x2F;t&#x2F;installing-nix-on-macos-catalina-with-encrypted-boot-volume&#x2F;7833&quot;&gt;answered my question in the nix forums&lt;&#x2F;a&gt;. I then spent a while watching some of the videos from Burke Libby&#x27;s excellent &lt;a href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;playlist?list=PLRGI9KQ3_HP_OFRG6R-p4iFgMSK1t5BHs&quot;&gt;Nixology Youtube series&lt;&#x2F;a&gt;, reading his &lt;a href=&quot;https:&#x2F;&#x2F;engineering.shopify.com&#x2F;blogs&#x2F;engineering&#x2F;what-is-nix&quot;&gt;What is Nix&lt;&#x2F;a&gt; article on the Shopify engineering blog, working through some of the &lt;a href=&quot;https:&#x2F;&#x2F;nixcloud.io&#x2F;tour&#x2F;&quot;&gt;nix expression language tutorial&lt;&#x2F;a&gt; and reading bits of the &lt;a href=&quot;https:&#x2F;&#x2F;nix.dev&#x2F;&quot;&gt;nix.dev guide&lt;&#x2F;a&gt;, all while playing around with nix in a terminal on my laptop.&lt;&#x2F;p&gt;
+
+&lt;p&gt;Playing around like this is all very well, but I find that I only really start learning about things when I try to use them for real. Although eventually I want to use nix to create development environments for Rails apps, I thought I&#x27;d start with something much simpler - this website which is a static site generated using the &lt;a href=&quot;https:&#x2F;&#x2F;middlemanapp.com&#x2F;&quot;&gt;middleman&lt;&#x2F;a&gt; Ruby library.&lt;&#x2F;p&gt;
+
+&lt;h3 id=&quot;a-ruby-development-environment-using-nix-shell&quot;&gt;A Ruby development environment using nix-shell&lt;&#x2F;h3&gt;
+
+&lt;p&gt;Firstly I installed &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nix-community&#x2F;bundix&quot;&gt;bundix&lt;&#x2F;a&gt; using &lt;code&gt;nix-env --install bundix&lt;&#x2F;code&gt;. Since I already had a &lt;code&gt;Gemfile.lock&lt;&#x2F;code&gt;, I used &lt;code&gt;bundix --init --ruby=ruby_2_6&lt;&#x2F;code&gt; to generate a &lt;code&gt;gemset.nix&lt;&#x2F;code&gt; and (because of the &lt;code&gt;--init&lt;&#x2F;code&gt; option) a skeleton &lt;code&gt;shell.nix&lt;&#x2F;code&gt;. I needed to specify the Ruby version, because I didn&#x27;t want the latest version, v2.7 at the time of writing.&lt;&#x2F;p&gt;
+
+&lt;p&gt;At this point I realised, much like with other OS-level package managers, there isn&#x27;t a simple way to specify the patch version of Ruby in nix; instead you have to use whatever patch version is in your current version of &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;NixOS&#x2F;nixpkgs&quot;&gt;nixpkgs&lt;&#x2F;a&gt;. So to cope with that, I upgraded the version of Ruby used in &lt;code&gt;Gemfile&lt;&#x2F;code&gt; &amp;amp; &lt;code&gt;Gemfile.lock&lt;&#x2F;code&gt; from v2.6.5 to v2.6.6, currently the latest patch release of v2.6. I&#x27;ve read that it&#x27;s possible to pin the version of nixpkgs to an older version if you want a specific patch version of Ruby, but I haven&#x27;t tried that out yet. While I was at it, I upgraded &lt;a href=&quot;https:&#x2F;&#x2F;bundler.io&#x2F;&quot;&gt;bundler&lt;&#x2F;a&gt; from v2.0.2 to v2.1.4, the version included in Ruby v2.6.6, and ran &lt;code&gt;bundle install&lt;&#x2F;code&gt; to update the version recorded against &lt;code&gt;BUNDLED_WITH&lt;&#x2F;code&gt; in &lt;code&gt;Gemfile.lock&lt;&#x2F;code&gt; before re-generating the &lt;code&gt;gemset.nix&lt;&#x2F;code&gt; as described above.&lt;&#x2F;p&gt;
+
+&lt;p&gt;I then ran &lt;code&gt;nix-shell&lt;&#x2F;code&gt; to see whether the development environment had been setup correctly. Running &lt;code&gt;which ruby&lt;&#x2F;code&gt; I discovered that it was still (incorrectly) pointing at my &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rbenv&#x2F;rbenv&quot;&gt;rbenv&lt;&#x2F;a&gt;. I fixed this by adding &lt;code&gt;ruby&lt;&#x2F;code&gt; to the array of &lt;code&gt;buildInputs&lt;&#x2F;code&gt; in &lt;code&gt;shell.nix&lt;&#x2F;code&gt;. Now &lt;code&gt;which ruby&lt;&#x2F;code&gt; was (correctly) pointing at the Ruby in the nix-store.&lt;&#x2F;p&gt;
+
+&lt;p&gt;Running &lt;code&gt;middleman build&lt;&#x2F;code&gt; triggered a &lt;code&gt;Bundler::GemNotFound&lt;&#x2F;code&gt; exception with the message: &quot;Could not find RedCloth-4.3.2 in any of the sources&quot;. I fixed this by removing the &lt;code&gt;.bundle&#x2F;config&lt;&#x2F;code&gt; file from my home directory - I normally use this to set &lt;code&gt;BUNDLE_PATH&lt;&#x2F;code&gt; to &lt;code&gt;.bundle&#x2F;gems&lt;&#x2F;code&gt; and
+&lt;code&gt;BUNDLE_BIN&lt;&#x2F;code&gt; to &lt;code&gt;.bundle&#x2F;bin&lt;&#x2F;code&gt; so that the bundled gems for a project are saved within a &lt;code&gt;.bundle&lt;&#x2F;code&gt; directory in each project directory, i.e. the gems for different projects are isolated from each other. Removing this configuration file seemed to do the trick and the website was built successfully.&lt;&#x2F;p&gt;
+
+&lt;p&gt;I was actually a bit surprised that the build succeeded since my Vagrant- &amp;amp; Docker-based development environments had both &lt;em&gt;explicitly&lt;&#x2F;em&gt; installed &lt;a href=&quot;https:&#x2F;&#x2F;nodejs.org&#x2F;&quot;&gt;node.js&lt;&#x2F;a&gt;. Investigating this I realised that node.js was being made available from &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nvm-sh&#x2F;nvm&quot;&gt;nvm&lt;&#x2F;a&gt; via the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rails&#x2F;execjs&quot;&gt;execjs&lt;&#x2F;a&gt; gem and highlighted the fact that my nix-shell development environment wasn&#x27;t actually very isolated, because I still had things like nvm in my &lt;code&gt;PATH&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+
+&lt;p&gt;When I removed the nvm config from the shell, execjs fell back to providing node.js from Homebrew, and when I removed the the Homebrew config from the shell, it fell back to prodiving node.js from the &lt;a href=&quot;https:&#x2F;&#x2F;developer.apple.com&#x2F;documentation&#x2F;javascriptcore&quot;&gt;JavaScriptCore framework&lt;&#x2F;a&gt; in MacOS! Anyway, all this convinced me that I should include an explicit dependency on node.js in my nix-shell development environment and so I added &lt;code&gt;nodejs&lt;&#x2F;code&gt; to the list of &lt;code&gt;buildInputs&lt;&#x2F;code&gt; in &lt;code&gt;shell.nix&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+
+&lt;pre&gt;&lt;code&gt;with (import &amp;lt;nixpkgs&amp;gt; {});
+let
+  ruby = ruby_2_6;
+  env = bundlerEnv {
+    name = &quot;jamesmead.org-bundler-env&quot;;
+    inherit ruby;
+    gemdir = .&#x2F;.;
+  };
+in stdenv.mkDerivation {
+  name = &quot;jamesmead.org&quot;;
+  buildInputs = [ env ruby nodejs ];
+}
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+
+&lt;h3 id=&quot;conclusions&quot;&gt;Conclusions&lt;&#x2F;h3&gt;
+
+&lt;p&gt;At this point I was pretty convinced (although not certain) I had a completely specified development environment for my personal website and I&#x27;d learned a few things along the way…&lt;&#x2F;p&gt;
+
+&lt;p&gt;Although I can see why nix doesn&#x27;t cater for specifying patch versions of Ruby, I feel as if I have needed this in development environments in the past and I&#x27;m not sure I&#x27;m ready to lose this capability provided by the likes of rbenv.&lt;&#x2F;p&gt;
+
+&lt;p&gt;As I understand it, &lt;code&gt;gemset.nix&lt;&#x2F;code&gt; is effectively a translation of &lt;code&gt;Gemfile.lock&lt;&#x2F;code&gt; into a list of nix derivations which are then included in my nix-shell environment by &lt;code&gt;shell.nix&lt;&#x2F;code&gt; via &lt;code&gt;bundlerEnv&lt;&#x2F;code&gt;. I think the effect of this is that you don&#x27;t need to run &lt;code&gt;bundle install&lt;&#x2F;code&gt; within the nix-shell environment, but I&#x27;m wondering whether this benefit is worth the extra hassle of keeping &lt;code&gt;gemset.nix&lt;&#x2F;code&gt; up-to-date with &lt;code&gt;Gemfile.lock&lt;&#x2F;code&gt;. However, perhaps the benefits would be more apparent if you have a lot of gems, particularly some with native extensions.&lt;&#x2F;p&gt;
+
+&lt;p&gt;I&#x27;m now wondering whether a sensible half-way house for a development environment is to continue to use rbenv, nvm, bundler and npm in the normal way, but use nix to provide OS-level packages (e.g. PostgreSQL, MySQL, etc) as an alternative to Homebrew.&lt;&#x2F;p&gt;
+
+&lt;h3 id=&quot;next-steps&quot;&gt;Next steps&lt;&#x2F;h3&gt;
+
+&lt;p&gt;As I mentioned earlier, at this point I wasn&#x27;t certain that I had a completely specified development environment. I could have tried it out on a Vagrant VM or a Docker container, but instead I decided to make use of it in the GitHub Action workflow that automatically publishes this website which I&#x27;ve written about &lt;a href=&quot;&#x2F;blog&#x2F;2019-09-07-using-github-actions-to-publish-a-static-site-to-github-pages&quot;&gt;previously&lt;&#x2F;a&gt;. I&#x27;ll write about my experience of doing that in a separate article.&lt;&#x2F;p&gt;
+
+&lt;p&gt;Having tackled a relatively trivial Ruby application, I&#x27;d like to try the same approach with a simple Rails app. The most obvious candidate is the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;freerange&#x2F;site&quot;&gt;Go Free Range website&lt;&#x2F;a&gt; which is a Rails app with no database. I&#x27;ll let you know how I get on.&lt;&#x2F;p&gt;
+
+&lt;h3 id=&quot;further-reading&quot;&gt;Further reading&lt;&#x2F;h3&gt;
+
+&lt;p&gt;After writing this article, I came across Farid Zakaria&#x27;s article, &lt;a href=&quot;https:&#x2F;&#x2F;fzakaria.com&#x2F;2020&#x2F;07&#x2F;18&#x2F;what-is-bundlerenv-doing.html&quot;&gt;what is bundlerEnv doing?&lt;&#x2F;a&gt;, which I can highly recommend if you want to understand more about what&#x27;s going on under the hood of the whole &lt;code&gt;bundix&lt;&#x2F;code&gt;, &lt;code&gt;gemset.nix&lt;&#x2F;code&gt; and &lt;code&gt;bundlerEnv&lt;&#x2F;code&gt; malarkey.&lt;&#x2F;p&gt;
+
+
+    </content>
+  </entry>
+  <entry>
+    <author>
+      <name>James Mead</name>
+    </author>
+    <id>urn:uuid:56bfb91d-550d-41c9-9d82-295c794e8674</id>
+    <published>2020-06-27T18:53:00+00:00</published>
+    <updated>2020-06-27T22:34:00+00:00</updated>
+    <title>IndieWeb-ifying my personal website</title>
+    <link href="https://jamesmead.org/blog/2020-06-27-indieweb-ifying-my-personal-website" rel="alternate" type="text/html"/>
+    <content type="html">
+      &lt;p&gt;I&#x27;ve been interested in the &lt;a href=&quot;https:&#x2F;&#x2F;indieweb.org&#x2F;&quot;&gt;IndieWeb&lt;&#x2F;a&gt; since my colleague, &lt;a href=&quot;http:&#x2F;&#x2F;chrisroos.co.uk&#x2F;&quot;&gt;Chris R&lt;&#x2F;a&gt;, hosted &lt;a href=&quot;https:&#x2F;&#x2F;gofreerange.com&#x2F;the-first-london-indieweb-homebrew-website-club&quot;&gt;the first London IndieWeb meetup&lt;&#x2F;a&gt; years ago and at various points I&#x27;ve played with a few bits of it on my website, e.g. &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;OpenID&quot;&gt;OpenID&lt;&#x2F;a&gt; and &lt;a href=&quot;https:&#x2F;&#x2F;indieauth.net&#x2F;&quot;&gt;IndieAuth&lt;&#x2F;a&gt;. As part of my efforts to move away from Twitter and Facebook, I recently joined the very friendly &lt;a href=&quot;https:&#x2F;&#x2F;fosstodon.org&#x2F;&quot;&gt;fosstodon.org&lt;&#x2F;a&gt; Mastodon instance and I noticed quite a lot of toots about the IndieWeb including one which mentioned the &lt;a href=&quot;https:&#x2F;&#x2F;indiewebify.me&quot;&gt;indiewebify.me&lt;&#x2F;a&gt; website which walks you through various levels of IndieWeb &quot;compliance&quot;. I&#x27;ve been interested in finding out more about &lt;a href=&quot;https:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;webmention&#x2F;&quot;&gt;Webmentions&lt;&#x2F;a&gt; for a while and this gave me the motivation I needed to give them a try.&lt;&#x2F;p&gt;
+
+&lt;p&gt;It turns out I had already &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;jamesmead.org&#x2F;commit&#x2F;7755ead416ed2e39906a1d61f692d0b83be34546&quot;&gt;become a citizen of the IndieWeb&lt;&#x2F;a&gt;, i.e. Level 1 compliance, back in June 2013 and amazingly (to me anyway) that functionality was still working. Level 2 compliance is about publishing on the IndieWeb and Level 3 compliance is about federating IndieWeb conversations.&lt;&#x2F;p&gt;
+
+&lt;h3 id=&quot;publishing-on-the-indieweb&quot;&gt;Publishing on the IndieWeb&lt;&#x2F;h3&gt;
+
+&lt;p&gt;For level 2, the first step was to markup my home page using the &lt;a href=&quot;http:&#x2F;&#x2F;microformats.org&#x2F;wiki&#x2F;h-card&quot;&gt;h-card microformat&lt;&#x2F;a&gt;, not to be confused with the older &lt;a href=&quot;http:&#x2F;&#x2F;microformats.org&#x2F;wiki&#x2F;hCard&quot;&gt;hCard microformat&lt;&#x2F;a&gt;. I started doing this by creating separate hidden markup, but I was unhappy with the amount of duplication. And so, after faffing about with &lt;a href=&quot;https:&#x2F;&#x2F;middlemanapp.com&#x2F;&quot;&gt;middleman&lt;&#x2F;a&gt; for a while and discovering its &lt;a href=&quot;https:&#x2F;&#x2F;middlemanapp.com&#x2F;basics&#x2F;layouts&#x2F;#nested-layouts&quot;&gt;nested layouts&lt;&#x2F;a&gt;, I managed to markup some of the existing content to reduce the amount of duplication: &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;jamesmead.org&#x2F;blob&#x2F;6760dd64e5a3999f19726efa96f46e4d42fd9905&#x2F;source&#x2F;layouts&#x2F;home.html.erb#L2-L6&quot;&gt;h-card &amp;amp; p-name&lt;&#x2F;a&gt;, &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;jamesmead.org&#x2F;blob&#x2F;6760dd64e5a3999f19726efa96f46e4d42fd9905&#x2F;source&#x2F;index.html.erb#L12-L13&quot;&gt;p-org, p-job-title, p-locality &amp;amp; p-country-name&lt;&#x2F;a&gt; and &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;jamesmead.org&#x2F;blob&#x2F;6760dd64e5a3999f19726efa96f46e4d42fd9905&#x2F;source&#x2F;index.html.erb#L31-L46&quot;&gt;u-photo, p-note, u-uid &amp;amp; u-url&lt;&#x2F;a&gt;. The validator suggested that it was &lt;a href=&quot;https:&#x2F;&#x2F;indiewebify.me&#x2F;validate-h-card&#x2F;?url=https%3A%2F%2Fjamesmead.org%2F&quot;&gt;working OK&lt;&#x2F;a&gt;. So far, so good.&lt;&#x2F;p&gt;
+
+&lt;p&gt;&lt;img style=&quot;display: block; margin-left: auto; margin-right: auto; width: 80%;&quot; src=&quot;&#x2F;images&#x2F;h-card-validation.png&quot; alt=&quot;h-card validation success&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+
+&lt;p&gt;The next step was to markup my blog posts with the &lt;a href=&quot;http:&#x2F;&#x2F;microformats.org&#x2F;wiki&#x2F;h-entry&quot;&gt;h-entry microformat&lt;&#x2F;a&gt;. This was relatively straightforward to implement now that I had a separate &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;jamesmead.org&#x2F;blob&#x2F;b5522b3c2529b93b3dfd07b148ecc3f911d23d4f&#x2F;source&#x2F;layouts&#x2F;blog.html.erb#L2-L19&quot;&gt;&lt;code&gt;blog&lt;&#x2F;code&gt; layout&lt;&#x2F;a&gt; and the validator suggested that it was &lt;a href=&quot;https:&#x2F;&#x2F;indiewebify.me&#x2F;validate-h-entry&#x2F;?url=https%3A%2F%2Fjamesmead.org%2Fblog%2F2020-03-30-automatic-backup-of-trello-boards-to-s3-using-aws-cdk&quot;&gt;working OK&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+
+&lt;p&gt;&lt;img style=&quot;display: block; margin-left: auto; margin-right: auto; width: 80%;&quot; src=&quot;&#x2F;images&#x2F;h-entry-validation.png&quot; alt=&quot;h-entry validation success&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+
+&lt;p&gt;At this point, I should have added the ability to send Webmentions to other IndieWeb sites, but it&#x27;s not completely obvious to me how to do this for a static site. I &lt;em&gt;think&lt;&#x2F;em&gt; I could do it by hooking the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;indieweb&#x2F;webmention-client-ruby&quot;&gt;&lt;code&gt;webmention&lt;&#x2F;code&gt; gem&lt;&#x2F;a&gt; into my &lt;a href=&quot;https:&#x2F;&#x2F;jamesmead.org&#x2F;blog&#x2F;2019-09-07-using-github-actions-to-publish-a-static-site-to-github-pages&quot;&gt;GitHub Action-based build&lt;&#x2F;a&gt;, but I decided to skip this step for now given that it&#x27;s relatively easy to &lt;a href=&quot;https:&#x2F;&#x2F;indieweb.org&#x2F;webmention-implementation-guide#One-liner_webmentions&quot;&gt;send a Webmention manually using &lt;code&gt;curl&lt;&#x2F;code&gt;&lt;&#x2F;a&gt; and it&#x27;s not as if I currently blog that frequently!&lt;&#x2F;p&gt;
+
+&lt;h3 id=&quot;federating-indieweb-conversations&quot;&gt;Federating IndieWeb conversations&lt;&#x2F;h3&gt;
+
+&lt;p&gt;I also decided to skip the steps about posting &lt;a href=&quot;https:&#x2F;&#x2F;indieweb.org&#x2F;reply&quot;&gt;replies&lt;&#x2F;a&gt; to other people&#x27;s posts and adding &lt;a href=&quot;https:&#x2F;&#x2F;indieweb.org&#x2F;reply-context&quot;&gt;reply contexts&lt;&#x2F;a&gt; to my own site until I actually want to reply to something someone has written.&lt;&#x2F;p&gt;
+
+&lt;p&gt;However, I did &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;jamesmead.org&#x2F;blob&#x2F;6760dd64e5a3999f19726efa96f46e4d42fd9905&#x2F;source&#x2F;layouts&#x2F;layout.html.erb#L33&quot;&gt;configure my site to receive Webmentions&lt;&#x2F;a&gt; using the excellent hosted &lt;a href=&quot;https:&#x2F;&#x2F;webmention.io&#x2F;&quot;&gt;webmention.io&lt;&#x2F;a&gt; service. This was very easy.&lt;&#x2F;p&gt;
+
+&lt;p&gt;I then added some very basic code to &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;jamesmead.org&#x2F;commit&#x2F;6760dd64e5a3999f19726efa96f46e4d42fd9905&quot;&gt;display Webmentions&lt;&#x2F;a&gt; at the bottom of each blog post closely based on &lt;a href=&quot;https:&#x2F;&#x2F;sebastiandedeyne.com&#x2F;adding-webmentions-to-my-blog&#x2F;#displaying-webmentions-on-post-pages&quot;&gt;Sebastian De Deyne&#x27;s implementation&lt;&#x2F;a&gt;. For the moment, I&#x27;m using JavaScript running on the client-side, but I can see how in time this might lead to putting an unfair load on webmention.io.&lt;&#x2F;p&gt;
+
+&lt;p&gt;A better solution might be to incorporate fetching the latest Webmentions and rendering them in HTML into the automated build, perhaps enhancing them with the latest Webmentions using JavaScript. I think this might be how the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;aarongustafson&#x2F;jekyll-webmention_io&quot;&gt;webmention.io Jekyll plugin&lt;&#x2F;a&gt; works, but that&#x27;s a job for another day.&lt;&#x2F;p&gt;
+
+&lt;p&gt;I checked that my website is receiving Webmentions OK by commenting on a blog post using &lt;a href=&quot;https:&#x2F;&#x2F;commentpara.de&#x2F;&quot;&gt;commentpara.de&lt;&#x2F;a&gt;. 🎉🎉&lt;&#x2F;p&gt;
+
+&lt;p&gt;&lt;img style=&quot;border: 1px dashed; display: block; margin-left: auto; margin-right: auto; width: 50%;&quot; src=&quot;&#x2F;images&#x2F;webmention-comment.png&quot; alt=&quot;comment added using commentpara.de&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+
+&lt;p&gt;Clearly I haven&#x27;t yet fully achieved even level 2 IndieWeb compliance, but I&#x27;m pleased with what I&#x27;ve done so far and, more to the point, what I&#x27;ve learnt in doing it. I should also mention that I found lots of useful advice in the following articles:&lt;&#x2F;p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;sebastiandedeyne.com&#x2F;adding-webmentions-to-my-blog&#x2F;&quot;&gt;Adding webmentions to my blog&lt;&#x2F;a&gt; by Sebastian De Deyne&lt;&#x2F;p&gt;
+  &lt;&#x2F;li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.jvt.me&#x2F;posts&#x2F;2019&#x2F;03&#x2F;18&#x2F;displaying-webmentions&#x2F;&quot;&gt;Displaying Webmentions on my Hugo website&lt;&#x2F;a&gt; by Jamie Tanna&lt;&#x2F;p&gt;
+  &lt;&#x2F;li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http:&#x2F;&#x2F;evantravers.com&#x2F;articles&#x2F;2019&#x2F;11&#x2F;14&#x2F;indieweb-webmentions-on-middleman-or-jekyll&#x2F;&quot;&gt;Indieweb Webmentions on Middleman or Jekyll&lt;&#x2F;a&gt; by Evan Travers&lt;&#x2F;p&gt;
+  &lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+
+
+    </content>
+  </entry>
+  <entry>
+    <author>
+      <name>James Mead</name>
+    </author>
+    <id>urn:uuid:e311581f-7e95-4529-a812-38d5ecbe8c8b</id>
+    <published>2020-03-30T16:40:00+00:00</published>
+    <updated>2020-03-30T16:40:00+00:00</updated>
+    <title>Automatic backup of Trello boards to S3 using the AWS CDK</title>
+    <link href="https://jamesmead.org/blog/2020-03-30-automatic-backup-of-trello-boards-to-s3-using-aws-cdk" rel="alternate" type="text/html"/>
+    <content type="html">
+      &lt;p&gt;Over the last year or so, I&#x27;ve been using the &lt;a href=&quot;https:&#x2F;&#x2F;docs.aws.amazon.com&#x2F;cdk&#x2F;latest&#x2F;guide&#x2F;home.html&quot;&gt;AWS CDK&lt;&#x2F;a&gt; to setup AWS infrastructure for a number of internal &lt;a href=&quot;https:&#x2F;&#x2F;gofreerange.com&#x2F;&quot;&gt;Go Free Range&lt;&#x2F;a&gt; projects and I thought I&#x27;d try to write a bit about my experiences.&lt;&#x2F;p&gt;
+
+&lt;p&gt;I started off by converting an existing project which backed up our company &lt;a href=&quot;https:&#x2F;&#x2F;trello.com&#x2F;&quot;&gt;Trello&lt;&#x2F;a&gt; boards to an AWS S3 bucket. This was originally a relatively simple Ruby script which ran as a cron job on our &lt;a href=&quot;https:&#x2F;&#x2F;www.linode.com&#x2F;&quot;&gt;Linode&lt;&#x2F;a&gt; VPS. The script used the Trello API (via &lt;code&gt;Net::HTTP&lt;&#x2F;code&gt;) to list the company boards and then downloaded a single large JSON blob for each board. It then used the the Ruby version of the &lt;a href=&quot;https:&#x2F;&#x2F;docs.aws.amazon.com&#x2F;sdk-for-ruby&#x2F;v3&#x2F;developer-guide&#x2F;welcome.html&quot;&gt;AWS SDK&lt;&#x2F;a&gt; to save each JSON blob to a file in a versioned S3 bucket.&lt;&#x2F;p&gt;
+
+&lt;p&gt;At around that time a Ruby runtime had been introduced for AWS Lambda functions, so I decided to give that a go. The first thing I had to work out was how to trigger a Lambda function to execute on a cron-like schedule. It took me a while to figure out the best way to do this, but eventually I worked out I could use a &lt;a href=&quot;https:&#x2F;&#x2F;docs.aws.amazon.com&#x2F;AmazonCloudWatch&#x2F;latest&#x2F;events&#x2F;ScheduledEvents.html&quot;&gt;Schedule Expression&lt;&#x2F;a&gt; for a CloudWatch Rule.&lt;&#x2F;p&gt;
+
+&lt;p&gt;Next I realised that I couldn&#x27;t just move the whole of the existing Ruby script into the new Lambda function, because it would almost certainly timeout. And in any case, long-running Lambda functions aren&#x27;t really in the spirit of &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Serverless_computing&quot;&gt;server-less computing&lt;&#x2F;a&gt;! Anyway, after a number of false starts, I split the script up into a function to &lt;em&gt;enumerate&lt;&#x2F;em&gt; the relevant Trello boards and another to &lt;em&gt;backup&lt;&#x2F;em&gt; an individual Trello board to S3. The former is invoked by a scheduled CloudWatch event and for each Trello board it publishes a message to an &lt;a href=&quot;https:&#x2F;&#x2F;docs.aws.amazon.com&#x2F;sdk-for-ruby&#x2F;v3&#x2F;api&#x2F;Aws&#x2F;SNS&#x2F;Topic.html&quot;&gt;SNS Topic&lt;&#x2F;a&gt; using the AWS SDK.&lt;&#x2F;p&gt;
+
+&lt;p&gt;The second Lambda function is subscribed to the SNS Topic so that an instance of the function is invoked for each Trello board. The function fetches the JSON blob for the board identified by the SNS message and saves it to an S3 bucket in much the same way as the original script did. Thus the work fans out from one initial function to multiple secondary functions.&lt;&#x2F;p&gt;
+
+&lt;p&gt;&lt;img style=&quot;display: block; margin-left: auto; margin-right: auto; width: 80%;&quot; src=&quot;&#x2F;images&#x2F;aws-cdk-trello-backup.svg&quot; alt=&quot;Automatic backup of Trello boards to S3 using the AWS CDK&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+
+&lt;p&gt;Previously if a cron job failed on our VPS, it would email us via &lt;a href=&quot;http:&#x2F;&#x2F;www.postfix.org&#x2F;&quot;&gt;Postfix&lt;&#x2F;a&gt;. While I could view the CloudWatch logs for the Lambda functions to spot any errors in the new system, I couldn&#x27;t immediately see a way to replicate the original behaviour, because with my new Lambda function &quot;fan-out&quot; architecture there was no easy way to know when all backup functions had completed successfully. However, I&#x27;ll save that for another blog post!&lt;&#x2F;p&gt;
+
+&lt;p&gt;If you&#x27;re interested you can find &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;freerange&#x2F;trello-backup&quot;&gt;the source code on GitHub&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+
+
+    </content>
+  </entry>
+</feed>

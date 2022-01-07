@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Climbing Back onto the Java Horse - James Mead</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="keywords" content="java junit jmock eclipse osx leopard" />
+    <meta name="author" content= "James Mead" />
+
+    <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+    <meta name="y_key" content="5f5b0de20991e0c2" />
+    <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
+
+    <link href="/images/favicon.gif" rel="icon" type="image/gif" />
+
+    <link href="/stylesheets/yui/3.18.1/cssreset-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssfonts-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssbase-min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+
+    <link href="/stylesheets/prettify/prettify.css" rel="stylesheet" />
+    <script src="/javascripts/prettify/prettify.js"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.jamesmead.org/floehopper-blog" />
+
+    <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
+
+    <link rel="prev" href="/blog/2009-01-02-permutations-combinations-probability-part-2" />
+    <link rel="next" href="/blog/2009-02-01-mocha-release-0-9-5" />
+    <link rel="first" href="/blog/2004-05-14-unit-tests-can-100-coverage-be-a-bad-thing" />
+    <link rel="last" href="/blog/2021-01-23-youtube-video-of-my-3d-maze-game-for-the-zx-spectrum" />
+    <link rel="index" href="/blog" />
+
+  </head>
+  <body class="blog blog_2009-01-22-climbing-back-onto-the-java-horse" onload="prettyPrint()">
+    <div id="doc">
+      <div class="skip-links">
+        <a href="#bd">Skip to main content</a>
+      </div>
+
+      <header id="hd">
+        <nav aria-label="Primary">
+          <a href="/">Home</a>
+          &middot;
+          <a href="/blog/">Blog</a>
+          &middot;
+          <a href="/notes/">Notes</a>
+          &middot;
+          <a href="/talks/">Talks</a>
+          &middot;
+          <a href="/projects/">Projects</a>
+        </nav>
+      </header>
+
+      <main id="bd">
+          <article class="h-entry">
+    <header>
+      <h1 class="p-name">Climbing Back onto the Java Horse</h1>
+    </header>
+
+    <section class="e-content">
+      <p>I took a short break from job-hunting<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> earlier today to see if I could still write <a href="http://java.sun.com/">Java</a> code. After my <a href="/blog/2008-03-17-java-rehabilitation-clinic">Java rehab</a> which consisted of 3+ years of writing <a href="http://www.ruby-lang.org/">Ruby</a>, I was a bit unsure how much Java I would remember. To get started, I decided to try and set up <a href="http://www.eclipse.org/">Eclipse</a> on my MacBook Pro. I ran into a few problems which I thought I&#8217;d document here in case it helps anyone else.</p>
+<h2>Installing Eclipse</h2>
+<p>I downloaded the Mac OS X version of &#8220;Eclipse IDE for Java EE<sup class="footnote" id="fnr2"><a href="#fn2">2</a></sup> Developers&#8221; from the <a href="http://www.eclipse.org/downloads/">Eclipse Downloads page</a> and unpacked it into my Applications directory. For the record, I was running OSX 10.5.6 and downloaded version 3.4.1 of Eclipse.</p>
+<p>But when I double-clicked to start the application, I got the following error message:-</p>
+<p><a href="http://www.flickr.com/photos/jamesthecat/3217546063/" title="eclipse-java-environment-startup-error by floehopper, on Flickr"><br />
+  <img src="http://farm4.static.flickr.com/3335/3217546063_79751cf5c9_o.png" alt="eclipse-java-environment-startup-error" /><br />
+</a></p>
+<blockquote>
+<p>A Java Runtime Environment (JRE) or Java Development Kit (JDK) must be available in order to run Eclipse. No virtual machine was found after searching the following locations: etc, etc.</p>
+</blockquote>
+<p>However, I was able to run the application from the command-line, which pointed to an environment problem. Reading the &#8220;Cannot find a VM&#8221; section of <a href="http://wiki.eclipse.org/FAQ_I_unzipped_Eclipse%2C_but_it_won%27t_start._Why%3F">I unzipped Eclipse, but it won&#8217;t start. Why?</a>, I decided I needed to explicitly specify the location of the JVM. It turned out there were a few gotchas. The OSX-specific bit of the <a href="http://www.eclipse.org/eclipse/development/readme_eclipse_3.4.1.html#macosx">installation README</a> explains how to edit the <code>eclipse.ini</code> file within the Eclipse application bundle. <a href="http://wiki.eclipse.org/Eclipse.ini">Eclipsepedia explains</a> the format of the <code>-vm</code> option :-</p>
+<ul>
+	<li>The -vm option and its value (the path) must be on separate lines.</li>
+	<li>The value must be the full absolute path to the Java executable, not just to the Java home directory.</li>
+</ul>
+<p>So I added the following two lines to my <code>eclipse.ini</code> and the application started up successfully :-</p>
+<pre><code>-vm
+/System/Library/Frameworks/JavaVM.framework/Versions/1.5.0</code></pre>
+<p><em>Note: I think that the <code>-vm option</code> must come before the <code>-vmargs</code> option.</em></p>
+<h2>JUnit4 and jMock2</h2>
+<p>Next I decided to see if I could write a test using <a href="http://www.junit.org/">JUnit</a> and <a href="http://www.jmock.org/">jMock</a> to <a href="http://books.google.co.uk/books?id=gFgnde_vwMAC">drive out the design</a> of a simple class. I downloaded the most recent stable version of jMock which was v2.5.1 and added the relevant jars to Eclipse so that they could be included in my project classpath :-</p>
+<ul>
+	<li>jmock-2.5.1.jar</li>
+	<li>hamcrest-core-1.1.jar</li>
+	<li>hamcrest-library-1.1.jar</li>
+	<li>jmock-junit4-2.5.1.jar</li>
+</ul>
+<p>At this point everything was going quite smoothly &#8211; especially after I side-stepped some of <a href="http://twitter.com/threedaymonk/status/1138794613">Java&#8217;s purgatorial nonsense</a> by re-learning the Eclipse keyboard shortcuts for &#8220;Quick Fix&#8221; and &#8220;Content Assist&#8221;. But now I decided I wanted to try using JUnit Java annotations for my tests :-</p>
+<pre class="prettyprint"><code class="prettyprint">import org.junit.Test;
+import org.junit.runner.RunWith;</code>
+
+<code class="prettyprint">import org.jmock.Mockery;
+import org.jmock.Expectations;
+import org.jmock.integration.junit4.JUnit4Mockery;
+import org.jmock.integration.junit4.JMock;</code>
+
+<code class="prettyprint">@RunWith(JMock.class)
+public class PublisherTest {</code>
+
+<code class="prettyprint">  Mockery context = new JUnit4Mockery();</code>
+
+<code class="prettyprint">  @Test
+  public void oneSubscriberReceivesAMessage() {
+    ...</code></pre>
+<p>Unfortunately I got this error around the <code>@RunWith(JMock.class)</code> annotation :-</p>
+<blockquote>
+<p>The type org.junit.internal.runners.JUnit4ClassRunner cannot be resolved. It is indirectly referenced from required .class files.</p>
+</blockquote>
+<p>After bit of <a href="http://dertompson.com/2007/12/12/spring-25-eclipse-and-junit-44/">Googling</a>, I worked out that I needed a newer version of JUnit than the one (v4.3.1) that came with Eclipse. So I downloaded JUnit v4.5 and swapped it into the classpath. Problem solved.</p>
+<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> I was made redundant from Reevoo at the end of last year.</p>
+<p class="footnote" id="fn2"><a href="#fnr2"><sup>2</sup></a> Because I love all that <em>enterprise</em> goodness ;-)</p>
+    </section>
+
+    <footer>
+      <p class="metadata">
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2009-01-22-climbing-back-onto-the-java-horse"><time class="dt-published" datetime="2009-01-22T19:20:38+00:00">22 Jan 2009 at 19:20</time></a>
+      </p>
+      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2009-01-22-climbing-back-onto-the-java-horse">
+  <template id="webmention-template">
+    <li class="webmention">
+      <div>
+        <a class="author">
+          <span class="author-name"></span>
+        </a>
+        <a class="action"></a>
+      </div>
+      <div class="content"></div>
+    </li>
+  </template>
+</div>
+
+<script src="/javascripts/webmentions.js" type="text/javascript" charset="utf-8"></script>
+
+    </footer>
+  </article>
+
+
+          <nav id="navigation" aria-label="Inter-article">
+      <a href="/blog/2009-01-02-permutations-combinations-probability-part-2" class="previous">&lt; Permutations, Combinations & Probability (Part 2)</a>
+      <a href="/blog/2009-02-01-mocha-release-0-9-5" class="next">Mocha Release 0.9.5 &gt;</a>
+  </nav>
+
+      </main>
+
+      <footer id="ft">
+        <nav aria-label="Footer">
+          <a href="/contact">Contact</a>
+          &middot;
+          <a href="/history">History</a>
+          &middot;
+          <a href="/colophon">Colophon</a>
+          &middot;
+          <a href="/links">Links</a>
+        </nav>
+        <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">This work by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="jamesmead.org">James Mead</a> is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0<img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+      </footer>
+    </div>
+  </body>
+</html>
