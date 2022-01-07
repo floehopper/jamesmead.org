@@ -1,4 +1,4 @@
-with (import <nixpkgs> {});
+with (import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/26038de2256eae025045e4646d91a73285700ed3.tar.gz") {});
 let
   ruby = ruby_2_7;
   env = bundlerEnv {
