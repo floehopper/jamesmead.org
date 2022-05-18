@@ -4,7 +4,46 @@
   <id>tag:jamesmead.org,2005:Typo</id>
   <link href="http://feeds.jamesmead.org/floehopper-blog" rel="self" type="application/atom+xml"/>
   <link href="https://jamesmead.org/" rel="alternate" type="text/html"/>
-  <updated>2022-05-17T16:43:33+00:00</updated>
+  <updated>2022-05-18T16:45:32+00:00</updated>
+  <entry>
+    <author>
+      <name>James Mead</name>
+    </author>
+    <id>urn:uuid:64e8a85a-d2c1-11ec-892c-529fc877b60a</id>
+    <published>2022-05-18T17:27:00+00:00</published>
+    <updated>2022-05-18T17:27:00+00:00</updated>
+    <title>How to backup Google Drive to S3 using the AWS CDK</title>
+    <link href="https://jamesmead.org/blog/2022-05-18-how-to-backup-google-drive-to-s3-using-the-aws-cdk" rel="alternate" type="text/html"/>
+    <content type="html">
+      &lt;p&gt;Way back in &lt;a href=&quot;https:&#x2F;&#x2F;www.urbandictionary.com&#x2F;define.php?term=The+Before+Time&quot;&gt;the Before Time&lt;&#x2F;a&gt;, I did some work to automate a couple of our recurring manual &lt;a href=&quot;https:&#x2F;&#x2F;harmonia.io&#x2F;&quot;&gt;Harmonia&lt;&#x2F;a&gt; tasks. One of these was the task to back up our shared &lt;a href=&quot;https:&#x2F;&#x2F;www.google.com&#x2F;drive&#x2F;&quot;&gt;Google Drive&lt;&#x2F;a&gt; to &lt;a href=&quot;https:&#x2F;&#x2F;aws.amazon.com&#x2F;s3&#x2F;&quot;&gt;Amazon S3&lt;&#x2F;a&gt;. Prior to this we&#x27;d been running the &lt;a href=&quot;https:&#x2F;&#x2F;rclone.org&#x2F;commands&#x2F;rclone_sync&#x2F;&quot;&gt;&lt;code&gt;rclone sync&lt;&#x2F;code&gt;&lt;&#x2F;a&gt; command manually on one of our local machines. One significant downside of this was that we each needed to have a local copy of all the files (~17GB), so I was keen to come up with an automated solution running in the cloud.&lt;&#x2F;p&gt;
+
+&lt;p&gt;Unlike with our &lt;a href=&quot;&#x2F;2020-03-30-automatic-backup-of-trello-boards-to-s3-using-aws-cdk&quot;&gt;Trello backup&lt;&#x2F;a&gt;, it wasn&#x27;t obvious to me how we could split the work up into tasks short enough to run as &lt;a href=&quot;https:&#x2F;&#x2F;aws.amazon.com&#x2F;lambda&#x2F;&quot;&gt;AWS Lambda&lt;&#x2F;a&gt; functions. Also, although it was interesting from an educational point-of-view, I felt as if the orchestration&#x2F;coordination complexities introduced by splitting up the Trello backup tasks had been overly cumbersome. So I decided to explore the idea of spinning up some compute to execute a script in one go much more like how a &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Cron&quot;&gt;cron job&lt;&#x2F;a&gt; would run on a traditional server.&lt;&#x2F;p&gt;
+
+&lt;p&gt;I was (and still am) enjoying using the &lt;a href=&quot;https:&#x2F;&#x2F;aws.amazon.com&#x2F;cdk&#x2F;&quot;&gt;AWS CDK&lt;&#x2F;a&gt; and so after a bit of research, I decided to use the &lt;a href=&quot;https:&#x2F;&#x2F;docs.aws.amazon.com&#x2F;cdk&#x2F;api&#x2F;v1&#x2F;docs&#x2F;@aws-cdk_aws-ecs-patterns.ScheduledFargateTask.html&quot;&gt;&lt;code&gt;ScheduledFargateTask&lt;&#x2F;code&gt;&lt;&#x2F;a&gt; construct which is one of the higher-level patterns made available in the CDK. This construct meant that it was relatively straightfoward to spin up a container on &lt;a href=&quot;https:&#x2F;&#x2F;aws.amazon.com&#x2F;ecs&#x2F;&quot;&gt;Amazon Elastic Container Service (ECS)&lt;&#x2F;a&gt; at regular intervals and execute a shell script on that container.&lt;&#x2F;p&gt;
+
+&lt;h2 id=&quot;scheduled-fargate-task&quot;&gt;Scheduled Fargate Task&lt;&#x2F;h2&gt;
+
+&lt;p&gt;The task needed &lt;strong&gt;access to&lt;&#x2F;strong&gt; the internet, but there was no need for it to &lt;strong&gt;be accessible from&lt;&#x2F;strong&gt; the internet. I could&#x27;ve run it on a private subnet, but this would&#x27;ve meant I&#x27;d need either a NAT Gateway (expensive) or to run a NAT Instance on &lt;a href=&quot;https:&#x2F;&#x2F;aws.amazon.com&#x2F;ec2&#x2F;&quot;&gt;Amazon EC2&lt;&#x2F;a&gt; (maintenance&#x2F;complexity overhead). Since the tasks only run for a few minutes every week I was willing to sacrifice the extra security provided by a private subnet in favour of a simpler&#x2F;cheaper system where the tasks run on a public subnet.&lt;&#x2F;p&gt;
+
+&lt;p&gt;However, at that point &lt;code&gt;ScheduledFargateTask&lt;&#x2F;code&gt; only ran if its VPC had a private subnet - if there was no private subnet available, an error was reported. So I decided to take the opportunity to contribute to the AWS CDK project and opened &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;aws&#x2F;aws-cdk&#x2F;pull&#x2F;6624&quot;&gt;a pull request to allow ECS tasks to run on a public subnet&lt;&#x2F;a&gt; which was released in &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;aws&#x2F;aws-cdk&#x2F;releases&#x2F;tag&#x2F;v1.29.0&quot;&gt;v1.29.0&lt;&#x2F;a&gt;. I really enjoy contributing to open-source projects like this - it&#x27;s a really good way to get a deeper understanding of how it all works.&lt;&#x2F;p&gt;
+
+&lt;p&gt;Having incorporated that change, I used &lt;a href=&quot;https:&#x2F;&#x2F;docs.aws.amazon.com&#x2F;cdk&#x2F;api&#x2F;v1&#x2F;docs&#x2F;@aws-cdk_aws-ecs.ContainerImage.html#static-fromwbrassetdirectory-props&quot;&gt;&lt;code&gt;ecs.ContainerImage.fromAsset&lt;&#x2F;code&gt;&lt;&#x2F;a&gt; to define the container image using &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;freerange&#x2F;google-drive-backup&#x2F;blob&#x2F;19a065b9bfebe8a7a4cbdc9f3739d628261d9f2c&#x2F;local-image&#x2F;Dockerfile&quot;&gt;a local &lt;code&gt;Dockerfile&lt;&#x2F;code&gt;&lt;&#x2F;a&gt;. This installs &lt;code&gt;rclone&lt;&#x2F;code&gt; on an Ubuntu base image and copies &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;freerange&#x2F;google-drive-backup&#x2F;blob&#x2F;ffc52080da5de7b780ba6b50352d0147ffad793e&#x2F;local-image&#x2F;home&#x2F;backup.sh&quot;&gt;a backup script&lt;&#x2F;a&gt; and associated &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;freerange&#x2F;google-drive-backup&#x2F;blob&#x2F;ffc52080da5de7b780ba6b50352d0147ffad793e&#x2F;local-image&#x2F;home&#x2F;rclone.conf&quot;&gt;rclone configuration&lt;&#x2F;a&gt; files into the home directory. This means you need the &lt;a href=&quot;https:&#x2F;&#x2F;docs.docker.com&#x2F;engine&#x2F;reference&#x2F;commandline&#x2F;cli&#x2F;&quot;&gt;Docker CLI&lt;&#x2F;a&gt; available locally when you run &lt;code&gt;cdk deploy&lt;&#x2F;code&gt; so it can build the container image and push it up to &lt;a href=&quot;https:&#x2F;&#x2F;aws.amazon.com&#x2F;ecr&#x2F;&quot;&gt;Amazon Elastic Container Registry&lt;&#x2F;a&gt; ready for use by ECS.&lt;&#x2F;p&gt;
+
+&lt;p&gt;It turned out that using the &lt;code&gt;rclone sync&lt;&#x2F;code&gt; command on a Google Drive folder containing so much data needs quite a bit of CPU and memory, but it was easy to increase this from the default of ¼vCPU &amp;amp; ½GB to &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;freerange&#x2F;google-drive-backup&#x2F;blob&#x2F;ffc52080da5de7b780ba6b50352d0147ffad793e&#x2F;lib&#x2F;google-drive-backup-stack.ts#L30-L31&quot;&gt;4vCPU &amp;amp; 16GB&lt;&#x2F;a&gt; so that the command ran very quickly. Even though this is pretty beefy, given that it only runs for a few minutes once a week, the cost is negligible.&lt;&#x2F;p&gt;
+
+&lt;p&gt;The task is scheduled using the &lt;a href=&quot;https:&#x2F;&#x2F;docs.aws.amazon.com&#x2F;cdk&#x2F;api&#x2F;latest&#x2F;docs&#x2F;@aws-cdk_aws-applicationautoscaling.CronOptions.html&quot;&gt;&lt;code&gt;CronOptions&lt;&#x2F;code&gt;&lt;&#x2F;a&gt; interface. Configuration is supplied to the container via environment variables using &lt;a href=&quot;https:&#x2F;&#x2F;www.npmjs.com&#x2F;package&#x2F;dotenv&quot;&gt;dotenv&lt;&#x2F;a&gt;. Credentials for Google Drive are supplied via &lt;a href=&quot;https:&#x2F;&#x2F;aws.amazon.com&#x2F;secrets-manager&#x2F;&quot;&gt;Secrets Manager&lt;&#x2F;a&gt;. Those for the S3 bucket are made available via the IAM role assigned to the ECS Task and used by &lt;code&gt;rclone&lt;&#x2F;code&gt; with the &lt;a href=&quot;https:&#x2F;&#x2F;rclone.org&#x2F;s3&#x2F;#authentication&quot;&gt;&lt;code&gt;env_auth&lt;&#x2F;code&gt;&lt;&#x2F;a&gt; option set to &lt;code&gt;true&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+
+&lt;p&gt;The task is monitored with the excellent &lt;a href=&quot;https:&#x2F;&#x2F;healthchecks.io&#x2F;&quot;&gt;Healthchecks&lt;&#x2F;a&gt; service which we were already using for the Trello backup. This is effectively a &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Dead_man%27s_switch&quot;&gt;dead man&#x27;s switch&lt;&#x2F;a&gt; which alerts us if the script doesn&#x27;t complete successfully at a given frequency and within a defined grace period.&lt;&#x2F;p&gt;
+
+&lt;h2 id=&quot;reflections&quot;&gt;Reflections&lt;&#x2F;h2&gt;
+
+&lt;p&gt;Two years on, I&#x27;m really happy how this turned out. Once I&#x27;d got the backup running successfully, we&#x27;ve only had one failure which was due to a recent change to the Google Drive API requiring a newer version of &lt;code&gt;rclone&lt;&#x2F;code&gt;. This meant I had to dive back into the code again to fix it, but I found it pretty easy to find my way around again partly because there&#x27;s not actually very much code!&lt;&#x2F;p&gt;
+
+&lt;p&gt;The source code for the whole CDK project is &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;freerange&#x2F;google-drive-backup&quot;&gt;available on GitHub&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+
+
+    </content>
+  </entry>
   <entry>
     <author>
       <name>James Mead</name>
@@ -930,35 +969,6 @@ in stdenv.mkDerivation {
     &lt;p&gt;&lt;a href=&quot;http:&#x2F;&#x2F;evantravers.com&#x2F;articles&#x2F;2019&#x2F;11&#x2F;14&#x2F;indieweb-webmentions-on-middleman-or-jekyll&#x2F;&quot;&gt;Indieweb Webmentions on Middleman or Jekyll&lt;&#x2F;a&gt; by Evan Travers&lt;&#x2F;p&gt;
   &lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
-
-
-    </content>
-  </entry>
-  <entry>
-    <author>
-      <name>James Mead</name>
-    </author>
-    <id>urn:uuid:e311581f-7e95-4529-a812-38d5ecbe8c8b</id>
-    <published>2020-03-30T16:40:00+00:00</published>
-    <updated>2020-03-30T16:40:00+00:00</updated>
-    <title>Automatic backup of Trello boards to S3 using the AWS CDK</title>
-    <link href="https://jamesmead.org/blog/2020-03-30-automatic-backup-of-trello-boards-to-s3-using-aws-cdk" rel="alternate" type="text/html"/>
-    <content type="html">
-      &lt;p&gt;Over the last year or so, I&#x27;ve been using the &lt;a href=&quot;https:&#x2F;&#x2F;docs.aws.amazon.com&#x2F;cdk&#x2F;latest&#x2F;guide&#x2F;home.html&quot;&gt;AWS CDK&lt;&#x2F;a&gt; to setup AWS infrastructure for a number of internal &lt;a href=&quot;https:&#x2F;&#x2F;gofreerange.com&#x2F;&quot;&gt;Go Free Range&lt;&#x2F;a&gt; projects and I thought I&#x27;d try to write a bit about my experiences.&lt;&#x2F;p&gt;
-
-&lt;p&gt;I started off by converting an existing project which backed up our company &lt;a href=&quot;https:&#x2F;&#x2F;trello.com&#x2F;&quot;&gt;Trello&lt;&#x2F;a&gt; boards to an AWS S3 bucket. This was originally a relatively simple Ruby script which ran as a cron job on our &lt;a href=&quot;https:&#x2F;&#x2F;www.linode.com&#x2F;&quot;&gt;Linode&lt;&#x2F;a&gt; VPS. The script used the Trello API (via &lt;code&gt;Net::HTTP&lt;&#x2F;code&gt;) to list the company boards and then downloaded a single large JSON blob for each board. It then used the the Ruby version of the &lt;a href=&quot;https:&#x2F;&#x2F;docs.aws.amazon.com&#x2F;sdk-for-ruby&#x2F;v3&#x2F;developer-guide&#x2F;welcome.html&quot;&gt;AWS SDK&lt;&#x2F;a&gt; to save each JSON blob to a file in a versioned S3 bucket.&lt;&#x2F;p&gt;
-
-&lt;p&gt;At around that time a Ruby runtime had been introduced for AWS Lambda functions, so I decided to give that a go. The first thing I had to work out was how to trigger a Lambda function to execute on a cron-like schedule. It took me a while to figure out the best way to do this, but eventually I worked out I could use a &lt;a href=&quot;https:&#x2F;&#x2F;docs.aws.amazon.com&#x2F;AmazonCloudWatch&#x2F;latest&#x2F;events&#x2F;ScheduledEvents.html&quot;&gt;Schedule Expression&lt;&#x2F;a&gt; for a CloudWatch Rule.&lt;&#x2F;p&gt;
-
-&lt;p&gt;Next I realised that I couldn&#x27;t just move the whole of the existing Ruby script into the new Lambda function, because it would almost certainly timeout. And in any case, long-running Lambda functions aren&#x27;t really in the spirit of &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Serverless_computing&quot;&gt;server-less computing&lt;&#x2F;a&gt;! Anyway, after a number of false starts, I split the script up into a function to &lt;em&gt;enumerate&lt;&#x2F;em&gt; the relevant Trello boards and another to &lt;em&gt;backup&lt;&#x2F;em&gt; an individual Trello board to S3. The former is invoked by a scheduled CloudWatch event and for each Trello board it publishes a message to an &lt;a href=&quot;https:&#x2F;&#x2F;docs.aws.amazon.com&#x2F;sdk-for-ruby&#x2F;v3&#x2F;api&#x2F;Aws&#x2F;SNS&#x2F;Topic.html&quot;&gt;SNS Topic&lt;&#x2F;a&gt; using the AWS SDK.&lt;&#x2F;p&gt;
-
-&lt;p&gt;The second Lambda function is subscribed to the SNS Topic so that an instance of the function is invoked for each Trello board. The function fetches the JSON blob for the board identified by the SNS message and saves it to an S3 bucket in much the same way as the original script did. Thus the work fans out from one initial function to multiple secondary functions.&lt;&#x2F;p&gt;
-
-&lt;p&gt;&lt;img style=&quot;display: block; margin-left: auto; margin-right: auto; width: 80%;&quot; src=&quot;&#x2F;images&#x2F;aws-cdk-trello-backup.svg&quot; alt=&quot;Automatic backup of Trello boards to S3 using the AWS CDK&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
-
-&lt;p&gt;Previously if a cron job failed on our VPS, it would email us via &lt;a href=&quot;http:&#x2F;&#x2F;www.postfix.org&#x2F;&quot;&gt;Postfix&lt;&#x2F;a&gt;. While I could view the CloudWatch logs for the Lambda functions to spot any errors in the new system, I couldn&#x27;t immediately see a way to replicate the original behaviour, because with my new Lambda function &quot;fan-out&quot; architecture there was no easy way to know when all backup functions had completed successfully. However, I&#x27;ll save that for another blog post!&lt;&#x2F;p&gt;
-
-&lt;p&gt;If you&#x27;re interested you can find &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;freerange&#x2F;trello-backup&quot;&gt;the source code on GitHub&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
 
 
     </content>

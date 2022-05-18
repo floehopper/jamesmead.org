@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>How to backup Google Drive to S3 using the AWS CDK - James Mead</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="An AWS CDK project to schedule the backup of a shared folder in Google Drive to Amazon S3 using a scheduled Fargate task on Amazon ECS to run `rclone sync`" />
+    <meta name="author" content= "James Mead" />
+
+    <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+    <meta name="y_key" content="5f5b0de20991e0c2" />
+    <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
+
+    <link href="/images/favicon.gif" rel="icon" type="image/gif" />
+
+    <link href="/stylesheets/yui/3.18.1/cssreset-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssfonts-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssbase-min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+
+    <link href="/stylesheets/prettify/prettify.css" rel="stylesheet" />
+    <script src="/javascripts/prettify/prettify.js"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.jamesmead.org/floehopper-blog" />
+
+    <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
+
+    <link rel="prev" href="/blog/2021-01-23-youtube-video-of-my-3d-maze-game-for-the-zx-spectrum" />
+    <link rel="first" href="/blog/2004-05-14-unit-tests-can-100-coverage-be-a-bad-thing" />
+    <link rel="last" href="/blog/2022-05-18-how-to-backup-google-drive-to-s3-using-the-aws-cdk" />
+    <link rel="index" href="/blog" />
+
+  </head>
+  <body class="blog blog_2022-05-18-how-to-backup-google-drive-to-s3-using-the-aws-cdk" onload="prettyPrint()">
+    <div id="doc">
+      <div class="skip-links">
+        <a href="#bd">Skip to main content</a>
+      </div>
+
+      <header id="hd">
+        <nav aria-label="Primary">
+          <a href="/">Home</a>
+          &middot;
+          <a href="/blog/">Blog</a>
+          &middot;
+          <a href="/notes/">Notes</a>
+          &middot;
+          <a href="/talks/">Talks</a>
+          &middot;
+          <a href="/projects/">Projects</a>
+        </nav>
+      </header>
+
+      <main id="bd">
+          <article class="h-entry">
+    <header>
+      <h1 class="p-name">How to backup Google Drive to S3 using the AWS CDK</h1>
+        <h2 class="p-summary">An AWS CDK project to schedule the backup of a shared folder in Google Drive to Amazon S3 using a scheduled Fargate task on Amazon ECS to run `rclone sync`</h2>
+    </header>
+
+    <section class="e-content">
+      <p>Way back in <a href="https://www.urbandictionary.com/define.php?term=The+Before+Time">the Before Time</a>, I did some work to automate a couple of our recurring manual <a href="https://harmonia.io/">Harmonia</a> tasks. One of these was the task to back up our shared <a href="https://www.google.com/drive/">Google Drive</a> to <a href="https://aws.amazon.com/s3/">Amazon S3</a>. Prior to this we'd been running the <a href="https://rclone.org/commands/rclone_sync/"><code>rclone sync</code></a> command manually on one of our local machines. One significant downside of this was that we each needed to have a local copy of all the files (~17GB), so I was keen to come up with an automated solution running in the cloud.</p>
+
+<p>Unlike with our <a href="/2020-03-30-automatic-backup-of-trello-boards-to-s3-using-aws-cdk">Trello backup</a>, it wasn't obvious to me how we could split the work up into tasks short enough to run as <a href="https://aws.amazon.com/lambda/">AWS Lambda</a> functions. Also, although it was interesting from an educational point-of-view, I felt as if the orchestration/coordination complexities introduced by splitting up the Trello backup tasks had been overly cumbersome. So I decided to explore the idea of spinning up some compute to execute a script in one go much more like how a <a href="https://en.wikipedia.org/wiki/Cron">cron job</a> would run on a traditional server.</p>
+
+<p>I was (and still am) enjoying using the <a href="https://aws.amazon.com/cdk/">AWS CDK</a> and so after a bit of research, I decided to use the <a href="https://docs.aws.amazon.com/cdk/api/v1/docs/@aws-cdk_aws-ecs-patterns.ScheduledFargateTask.html"><code>ScheduledFargateTask</code></a> construct which is one of the higher-level patterns made available in the CDK. This construct meant that it was relatively straightfoward to spin up a container on <a href="https://aws.amazon.com/ecs/">Amazon Elastic Container Service (ECS)</a> at regular intervals and execute a shell script on that container.</p>
+
+<h2 id="scheduled-fargate-task">Scheduled Fargate Task</h2>
+
+<p>The task needed <strong>access to</strong> the internet, but there was no need for it to <strong>be accessible from</strong> the internet. I could've run it on a private subnet, but this would've meant I'd need either a NAT Gateway (expensive) or to run a NAT Instance on <a href="https://aws.amazon.com/ec2/">Amazon EC2</a> (maintenance/complexity overhead). Since the tasks only run for a few minutes every week I was willing to sacrifice the extra security provided by a private subnet in favour of a simpler/cheaper system where the tasks run on a public subnet.</p>
+
+<p>However, at that point <code>ScheduledFargateTask</code> only ran if its VPC had a private subnet - if there was no private subnet available, an error was reported. So I decided to take the opportunity to contribute to the AWS CDK project and opened <a href="https://github.com/aws/aws-cdk/pull/6624">a pull request to allow ECS tasks to run on a public subnet</a> which was released in <a href="https://github.com/aws/aws-cdk/releases/tag/v1.29.0">v1.29.0</a>. I really enjoy contributing to open-source projects like this - it's a really good way to get a deeper understanding of how it all works.</p>
+
+<p>Having incorporated that change, I used <a href="https://docs.aws.amazon.com/cdk/api/v1/docs/@aws-cdk_aws-ecs.ContainerImage.html#static-fromwbrassetdirectory-props"><code>ecs.ContainerImage.fromAsset</code></a> to define the container image using <a href="https://github.com/freerange/google-drive-backup/blob/19a065b9bfebe8a7a4cbdc9f3739d628261d9f2c/local-image/Dockerfile">a local <code>Dockerfile</code></a>. This installs <code>rclone</code> on an Ubuntu base image and copies <a href="https://github.com/freerange/google-drive-backup/blob/ffc52080da5de7b780ba6b50352d0147ffad793e/local-image/home/backup.sh">a backup script</a> and associated <a href="https://github.com/freerange/google-drive-backup/blob/ffc52080da5de7b780ba6b50352d0147ffad793e/local-image/home/rclone.conf">rclone configuration</a> files into the home directory. This means you need the <a href="https://docs.docker.com/engine/reference/commandline/cli/">Docker CLI</a> available locally when you run <code>cdk deploy</code> so it can build the container image and push it up to <a href="https://aws.amazon.com/ecr/">Amazon Elastic Container Registry</a> ready for use by ECS.</p>
+
+<p>It turned out that using the <code>rclone sync</code> command on a Google Drive folder containing so much data needs quite a bit of CPU and memory, but it was easy to increase this from the default of ¼vCPU &amp; ½GB to <a href="https://github.com/freerange/google-drive-backup/blob/ffc52080da5de7b780ba6b50352d0147ffad793e/lib/google-drive-backup-stack.ts#L30-L31">4vCPU &amp; 16GB</a> so that the command ran very quickly. Even though this is pretty beefy, given that it only runs for a few minutes once a week, the cost is negligible.</p>
+
+<p>The task is scheduled using the <a href="https://docs.aws.amazon.com/cdk/api/latest/docs/@aws-cdk_aws-applicationautoscaling.CronOptions.html"><code>CronOptions</code></a> interface. Configuration is supplied to the container via environment variables using <a href="https://www.npmjs.com/package/dotenv">dotenv</a>. Credentials for Google Drive are supplied via <a href="https://aws.amazon.com/secrets-manager/">Secrets Manager</a>. Those for the S3 bucket are made available via the IAM role assigned to the ECS Task and used by <code>rclone</code> with the <a href="https://rclone.org/s3/#authentication"><code>env_auth</code></a> option set to <code>true</code>.</p>
+
+<p>The task is monitored with the excellent <a href="https://healthchecks.io/">Healthchecks</a> service which we were already using for the Trello backup. This is effectively a <a href="https://en.wikipedia.org/wiki/Dead_man%27s_switch">dead man's switch</a> which alerts us if the script doesn't complete successfully at a given frequency and within a defined grace period.</p>
+
+<h2 id="reflections">Reflections</h2>
+
+<p>Two years on, I'm really happy how this turned out. Once I'd got the backup running successfully, we've only had one failure which was due to a recent change to the Google Drive API requiring a newer version of <code>rclone</code>. This meant I had to dive back into the code again to fix it, but I found it pretty easy to find my way around again partly because there's not actually very much code!</p>
+
+<p>The source code for the whole CDK project is <a href="https://github.com/freerange/google-drive-backup">available on GitHub</a>.</p>
+
+
+    </section>
+
+    <footer>
+      <p class="metadata">
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2022-05-18-how-to-backup-google-drive-to-s3-using-the-aws-cdk"><time class="dt-published" datetime="2022-05-18T17:27:00+00:00">18 May 2022 at 17:27</time></a>
+      </p>
+      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2022-05-18-how-to-backup-google-drive-to-s3-using-the-aws-cdk">
+  <template id="webmention-template">
+    <li class="webmention">
+      <div>
+        <a class="author">
+          <span class="author-name"></span>
+        </a>
+        <a class="action"></a>
+      </div>
+      <div class="content"></div>
+    </li>
+  </template>
+</div>
+
+<script src="/javascripts/webmentions.js" type="text/javascript" charset="utf-8"></script>
+
+    </footer>
+  </article>
+
+
+          <nav id="navigation" aria-label="Inter-article">
+      <a href="/blog/2021-01-23-youtube-video-of-my-3d-maze-game-for-the-zx-spectrum" class="previous">&lt; Youtube video of my 3D maze game for the ZX Spectrum</a>
+  </nav>
+
+      </main>
+
+      <footer id="ft">
+        <nav aria-label="Footer">
+          <a href="/contact">Contact</a>
+          &middot;
+          <a href="/history">History</a>
+          &middot;
+          <a href="/colophon">Colophon</a>
+          &middot;
+          <a href="/links">Links</a>
+        </nav>
+        <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">This work by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="jamesmead.org">James Mead</a> is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0<img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+      </footer>
+    </div>
+  </body>
+</html>
