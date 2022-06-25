@@ -25,7 +25,7 @@
     <%= stylesheet_link_tag 'site' %>
 
     <%= stylesheet_link_tag 'prettify/prettify' %>
-    <%= javascript_include_tag 'prettify/prettify' %>
+    <%= javascript_include_tag 'prettify/prettify', defer: true %>
 
     <link rel="alternate" type="application/atom+xml" title="Atom" href="<%= config[:feed_url] %>" />
 
