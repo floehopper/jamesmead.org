@@ -6,6 +6,7 @@ categories: []
 updated_at: 2016-09-04 12:26:00 +00:00
 created_at: 2016-09-04 12:26:00 +00:00
 keywords: "skiing"
+published: false
 ---
 
 Here's our flight details assuming Gatwick isn't snowed in by Friday!
@@ -32,4 +33,3 @@ We'll be skiing at the Taos ski resort
 (http://www.skitaos.com/).
 
 [Taos Ski School - Telemark Week](https://web.archive.org/web/20050305222042/http://www.skitaos.org:80/SKI_SCHOOL/ski_weeks.php)
-
