@@ -6,4 +6,8 @@ module BlogHelper
   def notes
     blog('notes').articles.sort_by { |a| a.data.created_at }.reverse
   end
+
+  def adventures
+    blog('adventures').articles.sort_by { |a| a.data.created_at }.reverse
+  end
 end
