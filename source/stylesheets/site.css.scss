@@ -206,3 +206,19 @@ $on-large:         $on-laptop !default;
 figcaption {
   text-align: center;
 }
+
+@media screen and (min-width: $on-large) {
+  #ft {
+    nav {
+      float: left;
+    }
+
+    #indieweb-ring {
+      float: right;
+    }
+
+    #creative-commons {
+      clear: both;
+    }
+  }
+}
