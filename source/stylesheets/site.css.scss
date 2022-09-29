@@ -35,8 +35,7 @@ body {
 }
 
 #hd {
-  height: 2em;
-  border-bottom: 0.3em solid #666;
+  padding-bottom: 0.4em;
 }
 
 #hd a {
@@ -47,7 +46,7 @@ body {
 
 #bd {
   padding-bottom: 1em;
-  border-bottom: 0.3em solid #666;
+  border-top: 0.3em solid #666;
 }
 
 .skip-links a {
@@ -73,6 +72,7 @@ body {
 
 #ft {
   padding-top: 1em;
+  border-top: 0.3em solid #666;
 
   p {
     font-size: 100%;
