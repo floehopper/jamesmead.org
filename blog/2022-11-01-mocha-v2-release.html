@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Mocha v2 release - James Mead</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Expanded notes on this major version bump of the Ruby library for mocking &amp; stubbing" />
+    <meta name="author" content= "James Mead" />
+
+    <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+    <meta name="y_key" content="5f5b0de20991e0c2" />
+    <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
+
+    <link href="/images/favicon.gif" rel="icon" type="image/gif" />
+
+    <link href="/stylesheets/yui/3.18.1/cssreset-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssfonts-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssbase-min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+
+    <link href="/stylesheets/prettify/prettify.css" rel="stylesheet" />
+    <script src="/javascripts/prettify/prettify.js" defer="defer"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.jamesmead.org/floehopper-blog" />
+
+    <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
+
+    <link rel="prev" href="/blog/2022-05-18-how-to-backup-google-drive-to-s3-using-the-aws-cdk" />
+    <link rel="first" href="/blog/2004-05-14-unit-tests-can-100-coverage-be-a-bad-thing" />
+    <link rel="last" href="/blog/2022-11-01-mocha-v2-release" />
+    <link rel="index" href="/blog" />
+
+  </head>
+  <body class="blog blog_2022-11-01-mocha-v2-release" onload="prettyPrint()">
+    <div id="doc">
+      <div class="skip-links">
+        <a href="#bd">Skip to main content</a>
+      </div>
+
+      <header id="hd">
+        <nav aria-label="Primary">
+          <a href="/">Home</a>
+          &middot;
+          <a href="/blog/">Blog</a>
+          &middot;
+          <a href="/adventures/">Adventures</a>
+          &middot;
+          <a href="/notes/">Notes</a>
+          &middot;
+          <a href="/talks/">Talks</a>
+          &middot;
+          <a href="/projects/">Projects</a>
+        </nav>
+      </header>
+
+      <main id="bd">
+          <article class="h-entry">
+    <header>
+      <h1 class="p-name">Mocha v2 release</h1>
+        <h2 class="p-summary">Expanded notes on this major version bump of the Ruby library for mocking & stubbing</h2>
+    </header>
+
+    <section class="e-content">
+      <p>This major version bump of the Ruby mock object library, <a href="https://mocha.jamesmead.org/">Mocha</a>, includes some fairly significant changes. So I wanted to expand a bit on the <a href="https://github.com/freerange/mocha/blob/c5cf3249d9706f3470cbfcfd76e97b4bae87a3d0/RELEASE.md#200">release notes</a> and give some more detailed guidance on factors to consider when upgrading.</p>
+
+<ul id="markdown-toc">
+  <li><a href="#strict-keyword-argument-matching" id="markdown-toc-strict-keyword-argument-matching">Strict keyword argument matching</a></li>
+  <li><a href="#removal-of-deprecated-functionality" id="markdown-toc-removal-of-deprecated-functionality">Removal of deprecated functionality</a></li>
+  <li><a href="#dropping-of-support-for-older-versions-of-ruby-minitest--test-unit" id="markdown-toc-dropping-of-support-for-older-versions-of-ruby-minitest--test-unit">Dropping of support for older versions of Ruby, minitest &amp; test-unit</a></li>
+  <li><a href="#acknowledgements" id="markdown-toc-acknowledgements">Acknowledgements</a></li>
+</ul>
+
+<p><em>TL;DR: If you're using a non-ancient version of Ruby, you're using a non-ancient test library version, you've already upgraded to Mocha v1.16.0, and you've fixed all the Mocha deprecation warnings, then the worst that should happen when you upgrade is that you'll see some new deprecation warnings!</em></p>
+
+<h2 id="strict-keyword-argument-matching">Strict keyword argument matching</h2>
+
+<p>Previously Mocha parameter matching always considered a positional <code>Hash</code> as exactly equivalent to a set of keyword arguments. However, in Ruby v3, positional arguments and keyword arguments have been separated and, in Ruby v2.7, behaviour that would be different in Ruby v3 is flagged by deprecation warnings. See <a href="https://www.ruby-lang.org/en/news/2019/12/12/separation-of-positional-and-keyword-arguments-in-ruby-3-0">this article</a> for more details on the separation of positional and keyword arguments in Ruby v3.</p>
+
+<p>To address this a new configuration option (<a href="https://mocha.jamesmead.org/Mocha/Configuration.html#strict_keyword_argument_matching=-instance_method">Configuration#strict_keyword_argument_matching=</a>) has been introduced in Mocha v2. This option is available in Ruby v2.7 upwards.</p>
+
+<p>In Mocha v2 the configuration option defaults to <code>false</code>, but in a future version of Mocha it will default to <code>true</code>. When the option is set to <code>true</code>, Mocha parameter matching considers a positional <code>Hash</code> and a set of keyword arguments as <em>different</em> even if their "keys" and "values" are exactly the same, i.e. the parameter matching is stricter and some invocations which previously matched may no longer match.</p>
+
+<p>When the configuration option is set to <code>false</code>, parameter matching that would behave differently if the option were set to <code>true</code> is flagged by Mocha deprecation warnings. Once all these deprecation warnings are addressed, the configuration option can safely be set to <code>true</code>.</p>
+
+<p>It's important to address this issue, because otherwise you may end up with passing tests that give you a false sense of security. See the examples below.</p>
+
+<h3 id="keyword-argument-syntax">Keyword argument syntax</h3>
+
+<p>An area of possible confusion is the Ruby syntax that distinguishes between a positional <code>Hash</code> and a set of keyword arguments. In particular the use of <a href="https://en.wikipedia.org/wiki/Fat_comma">hash rockets</a> ("=&gt;") does <strong>NOT</strong> imply a positional <code>Hash</code>. Instead what matters is whether the "keys" and "values" are surrounded by braces ("{ … }").</p>
+
+<p>The following code defines a method that in Ruby v3 expects to be called with a single keyword argument. That method is then called four times, twice with the correct keyword argument and twice with a positional <code>Hash</code> including a key with the correct name. You might be surprised that the 2nd call (i.e. <code>foo(:bar =&gt; 1)</code>) is passing a keyword argument.</p>
+
+<pre>
+  <code class="prettyprint">
+    def foo(bar:); p bar; end
+
+    # Method called with correct keyword argument
+    foo(bar: 1) # =&gt; 1
+    foo(:bar =&gt; 1) # =&gt; 1
+
+    # Method called with positional Hash
+    foo({ bar: 1 }) # =&gt; ArgumentError: wrong number of arguments (given 1, expected 0; required keyword: bar)
+    foo({ :bar =&gt; 1 }) # =&gt; ArgumentError: wrong number of arguments (given 1, expected 0; required keyword: bar)
+  </code>
+</pre>
+
+<h3 id="example-with-relaxed-matching">Example with relaxed matching</h3>
+
+<p>The parameters in the expectation include a set of keyword arguments, but the parameters in the invocation include a positional <code>Hash</code>. With strict matching disabled, these parameters match the expectation and the test passes. However, when <code>Example#foo</code> is invoked in production code in Ruby v3 an <code>ArgumentError</code> is raised, i.e. the passing test does not highlight that <code>Example#foo</code> must be called with a set of keyword arguments.</p>
+
+<pre>
+  <code class="prettyprint">
+    class Example
+      def foo(a, bar:); end
+    end
+
+    class ExampleTest &lt; MiniTest::Test
+      def test_foo
+        example = Example.new
+
+        # The parameters in the expectation include a set of keyword arguments
+        example.expects(:foo).with('a', bar: 'b')
+
+        # The parameters in the invocation include a positional Hash
+        # These parameters match the expectation and the test passes
+        example.foo('a', { bar: 'b' })
+      end
+    end
+
+    example = Example.new
+    example.foo('a', { bar: 'b' }) # =&gt; ArgumentError in Ruby v3
+  </code>
+</pre>
+
+<p>Note, however, that a deprecation warning is displayed:</p>
+
+<blockquote>
+  <p>Mocha deprecation warning at example_test.rb:NN:in `test_foo': Expectation defined at example_test.rb:MM:in `test_foo' expected keyword arguments (:bar =&gt; "b"), but received positional hash ({:bar =&gt; "b"}). These will stop matching when strict keyword argument matching is enabled. See the documentation for Mocha::Configuration#strict_keyword_argument_matching=.</p>
+</blockquote>
+
+<h3 id="example-with-strict-matching">Example with strict matching</h3>
+
+<p>With strict matching enabled, the parameters no longer match the expectation and the test fails. This test failure highlights that <code>Example#foo</code> must be called with a set of keyword arguments.</p>
+
+<pre>
+  <code class="prettyprint">
+    Mocha.configure do |c|
+      c.strict_keyword_argument_matching = true
+    end
+
+    class Example
+      def foo(a, bar:); end
+    end
+
+    class ExampleTest &lt; MiniTest::Test
+      def test_foo
+        example = Example.new
+
+        # The parameters in the expectation include a set of keyword arguments
+        example.expects(:foo).with('a', bar: 'b')
+
+        # The parameters in the invocation include a positional Hash
+        # These parameters no longer match the expectation and the test fails
+        example.foo('a', { bar: 'b' })
+      end
+    end
+
+    # When Example#foo is invoked in production code:
+    example = Example.new
+    example.foo('a', { bar: 'b' }) # =&gt; ArgumentError in Ruby v3
+  </code>
+</pre>
+
+<h2 id="removal-of-deprecated-functionality">Removal of deprecated functionality</h2>
+
+<p>A bunch of deprecated functionality has been removed in Mocha v2. As long as you've previously upgraded to Mocha v1.16.0 and fixed all the deprecation warnings you shouldn't have any trouble.🤞</p>
+
+<ul>
+  <li>It's no longer possible to pass <a href="https://mocha.jamesmead.org/Mocha/API.html#mock-instance_method"><code>API#mock</code></a>, <a href="https://mocha.jamesmead.org/Mocha/API.html#stub-instance_method"><code>API#stub</code></a> or <a href="https://mocha.jamesmead.org/Mocha/API.html#stub_everything-instance_method"><code>API#stub_everything</code></a> a single symbol argument to create a mock object responding to a method named according to that symbol argument. Such an argument is used to name the mock object itself; any stubbed methods and return values should be setup by passing a <code>Hash</code> into these methods or by calling <a href="https://mocha.jamesmead.org/Mocha/Mock.html#expects-instance_method"><code>Mock#expects</code></a> or <a href="https://mocha.jamesmead.org/Mocha/Mock.html#stubs-instance_method"><code>Mock#stubs</code></a>.</li>
+  <li>If <a href="https://mocha.jamesmead.org/Mocha/Expectation.html#yields-instance_method"><code>Expectation#yields</code></a> or <a href="https://mocha.jamesmead.org/Mocha/Expectation.html#multiple_yields-instance_method"><code>Expectation#multiple_yields</code></a> have been used to specify that a stubbed method should yield then the stubbed method must be invoked with a block otherwise a <code>LocalJumpError</code> will be raised.</li>
+  <li>The <code>Configuration#reinstate_undocumented_behaviour_from_v1_9=</code> method has been removed. If you have addressed the deprecation warnings for <code>API#mock</code>, <code>API#stub</code>, <code>API#stub_everything</code>, <code>Expectation#yields</code> and <code>Expectation#multiple_yields</code> as explained above then this configuration option is redundant.</li>
+  <li>The <code>Configuration.allow</code>, <code>Configuration.warn</code> and <code>Configuration.prevent</code> methods have been removed. Use <a href="https://mocha.jamesmead.org/Mocha.html#configure-class_method"><code>Mocha.configure</code></a> and/or <a href="https://mocha.jamesmead.org/Mocha/Configuration.html#override-class_method"><code>Mocha::Configuration.override</code></a> instead.</li>
+  <li>The <code>mocha/setup.rb</code> mechanism has been removed. Use one of the <a href="https://mocha.jamesmead.org/index.html#installation">supported installation mechanisms</a> instead.</li>
+  <li>The <a href="https://rubyonrails.org/">Ruby on Rails</a> plugin mechanism has been removed. Use one of the <a href="https://mocha.jamesmead.org/index.html#installation">supported installation mechanisms</a> instead.</li>
+  <li>A <a href="https://mocha.jamesmead.org/Mocha/StubbingError.html"><code>StubbingError</code></a> is now raised when stubbed methods are invoked in a test other than the one in which they were defined. This is to avoid unintended interactions between tests and hence unexpected test failures. A test should clean up any state that it introduces.</li>
+</ul>
+
+<h2 id="dropping-of-support-for-older-versions-of-ruby-minitest--test-unit">Dropping of support for older versions of Ruby, minitest &amp; test-unit</h2>
+
+<p>Mocha v2 drops support for older versions of <a href="https://www.ruby-lang.org/">Ruby</a>, <a href="https://rubygems.org/gems/test-unit/">test-unit</a> and <a href="https://rubygems.org/gems/minitest/">minitest</a>.</p>
+
+<p>More specifically Mocha v2 only supports:</p>
+
+<ul>
+  <li>Ruby v2.0 and upwards. In particular Ruby v1.9 is no longer supported. Note that support for Ruby v1.9.3 ended on <a href="https://www.ruby-lang.org/en/news/2014/01/10/ruby-1-9-3-will-end-on-2015/">23 Feb 2015</a>.</li>
+  <li>Gem versions of test-unit from v2.5.1 (released on 05 Jul 2012) upwards. Versions of test-unit from the Ruby v1.8 standard library are no longer supported.</li>
+  <li>Versions of minitest from v3.3.0 (released on 27 Jul 2012) upwards.</li>
+</ul>
+
+<h2 id="acknowledgements">Acknowledgements</h2>
+
+<p>Many thanks to the following:</p>
+
+<ul>
+  <li><a href="https://wasabigeek.com/">Nick Koh</a> for all his hard work on the strict keyword argument matching functionality.</li>
+  <li><a href="https://po-ru.com/">Paul Battley</a> and <a href="http://hlame.com/">Murray Steele</a> for testing preview releases of Mocha v2 on sizeable codebases.</li>
+  <li><a href="https://www.chao-xian.co.uk/">Kelvin Gan</a>, <a href="https://ollie.treend.uk/">Ollie Treend</a>, <a href="https://dilwoarhussain.com/">Dilwoar Hussain</a>, and the rest of the <a href="https://gds.blog.gov.uk/">GDS</a> developer team for helping me test preview releases of Mocha v2 on the sizeable <a href="https://github.com/alphagov/whitehall">alphagov/whitehall</a> codebase.</li>
+  <li>My <a href="https://gofreerange.com/">Go Free Range</a> colleagues, <a href="https://blog.chrislowis.co.uk/">Chris Lowis</a> and <a href="https://gofreerange.com/people#chris-roos">Chris Roos</a>, for funding a lot of my time working on Mocha, for reviewing code &amp; documentation and for just generally being very supportive.</li>
+</ul>
+
+    </section>
+
+    <footer>
+      <p class="metadata">
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2022-11-01-mocha-v2-release"><time class="dt-published" datetime="2022-11-01T14:01:00+00:00">01 Nov 2022 at 14:01</time></a>
+      </p>
+      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2022-11-01-mocha-v2-release">
+  <template id="webmention-template">
+    <li class="webmention">
+      <div>
+        <a class="author">
+          <span class="author-name"></span>
+        </a>
+        <a class="action"></a>
+      </div>
+      <div class="content"></div>
+    </li>
+  </template>
+</div>
+
+<script src="/javascripts/webmentions.js" type="text/javascript" charset="utf-8" defer></script>
+
+    </footer>
+  </article>
+
+
+          <nav id="navigation" aria-label="Inter-article">
+      <a href="/blog/2022-05-18-how-to-backup-google-drive-to-s3-using-the-aws-cdk" class="previous">&lt; How to backup Google Drive to S3 using the AWS CDK</a>
+  </nav>
+
+      </main>
+
+      <footer id="ft">
+        <nav aria-label="Footer">
+          <a href="/contact">Contact</a>
+          &middot;
+          <a href="/history">History</a>
+          &middot;
+          <a href="/colophon">Colophon</a>
+          &middot;
+          <a href="/links">Links</a>
+        </nav>
+        <div id="indieweb-ring">
+          <a href="https://xn--sr8hvo.ws/%F0%9F%93%BF%F0%9F%8C%91%F0%9F%A6%82/previous">←</a>
+          An IndieWeb Webring 🕸💍
+          <a href="https://xn--sr8hvo.ws/%F0%9F%93%BF%F0%9F%8C%91%F0%9F%A6%82/next">→</a>
+        </div>
+        <p id="creative-commons" xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">
+          This work by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="jamesmead.org">James Mead</a> is licensed under
+          <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0
+            <img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" loading="lazy" alt="Creative Commons logo" />
+            <img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" loading="lazy" alt="Creative Commons Attribution icon" />
+            <img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" loading="lazy" alt="Creative Commons ShareAlike icon" />
+          </a>
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -4,7 +4,166 @@
   <id>tag:jamesmead.org,2005:Typo</id>
   <link href="http://feeds.jamesmead.org/floehopper-blog" rel="self" type="application/atom+xml"/>
   <link href="https://jamesmead.org/" rel="alternate" type="text/html"/>
-  <updated>2022-09-29T20:51:17+00:00</updated>
+  <updated>2022-11-01T14:07:54+00:00</updated>
+  <entry>
+    <author>
+      <name>James Mead</name>
+    </author>
+    <id>urn:uuid:2bfd318b-4c2a-47ce-b545-0ace0fe5caad</id>
+    <published>2022-11-01T14:01:00+00:00</published>
+    <updated>2022-11-01T14:01:00+00:00</updated>
+    <title>Mocha v2 release</title>
+    <link href="https://jamesmead.org/blog/2022-11-01-mocha-v2-release" rel="alternate" type="text/html"/>
+    <content type="html">
+      &lt;p&gt;This major version bump of the Ruby mock object library, &lt;a href=&quot;https:&#x2F;&#x2F;mocha.jamesmead.org&#x2F;&quot;&gt;Mocha&lt;&#x2F;a&gt;, includes some fairly significant changes. So I wanted to expand a bit on the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;freerange&#x2F;mocha&#x2F;blob&#x2F;c5cf3249d9706f3470cbfcfd76e97b4bae87a3d0&#x2F;RELEASE.md#200&quot;&gt;release notes&lt;&#x2F;a&gt; and give some more detailed guidance on factors to consider when upgrading.&lt;&#x2F;p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#strict-keyword-argument-matching&quot; id=&quot;markdown-toc-strict-keyword-argument-matching&quot;&gt;Strict keyword argument matching&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+  &lt;li&gt;&lt;a href=&quot;#removal-of-deprecated-functionality&quot; id=&quot;markdown-toc-removal-of-deprecated-functionality&quot;&gt;Removal of deprecated functionality&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+  &lt;li&gt;&lt;a href=&quot;#dropping-of-support-for-older-versions-of-ruby-minitest--test-unit&quot; id=&quot;markdown-toc-dropping-of-support-for-older-versions-of-ruby-minitest--test-unit&quot;&gt;Dropping of support for older versions of Ruby, minitest &amp;amp; test-unit&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+  &lt;li&gt;&lt;a href=&quot;#acknowledgements&quot; id=&quot;markdown-toc-acknowledgements&quot;&gt;Acknowledgements&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+
+&lt;p&gt;&lt;em&gt;TL;DR: If you&#x27;re using a non-ancient version of Ruby, you&#x27;re using a non-ancient test library version, you&#x27;ve already upgraded to Mocha v1.16.0, and you&#x27;ve fixed all the Mocha deprecation warnings, then the worst that should happen when you upgrade is that you&#x27;ll see some new deprecation warnings!&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+
+&lt;h2 id=&quot;strict-keyword-argument-matching&quot;&gt;Strict keyword argument matching&lt;&#x2F;h2&gt;
+
+&lt;p&gt;Previously Mocha parameter matching always considered a positional &lt;code&gt;Hash&lt;&#x2F;code&gt; as exactly equivalent to a set of keyword arguments. However, in Ruby v3, positional arguments and keyword arguments have been separated and, in Ruby v2.7, behaviour that would be different in Ruby v3 is flagged by deprecation warnings. See &lt;a href=&quot;https:&#x2F;&#x2F;www.ruby-lang.org&#x2F;en&#x2F;news&#x2F;2019&#x2F;12&#x2F;12&#x2F;separation-of-positional-and-keyword-arguments-in-ruby-3-0&quot;&gt;this article&lt;&#x2F;a&gt; for more details on the separation of positional and keyword arguments in Ruby v3.&lt;&#x2F;p&gt;
+
+&lt;p&gt;To address this a new configuration option (&lt;a href=&quot;https:&#x2F;&#x2F;mocha.jamesmead.org&#x2F;Mocha&#x2F;Configuration.html#strict_keyword_argument_matching=-instance_method&quot;&gt;Configuration#strict_keyword_argument_matching=&lt;&#x2F;a&gt;) has been introduced in Mocha v2. This option is available in Ruby v2.7 upwards.&lt;&#x2F;p&gt;
+
+&lt;p&gt;In Mocha v2 the configuration option defaults to &lt;code&gt;false&lt;&#x2F;code&gt;, but in a future version of Mocha it will default to &lt;code&gt;true&lt;&#x2F;code&gt;. When the option is set to &lt;code&gt;true&lt;&#x2F;code&gt;, Mocha parameter matching considers a positional &lt;code&gt;Hash&lt;&#x2F;code&gt; and a set of keyword arguments as &lt;em&gt;different&lt;&#x2F;em&gt; even if their &quot;keys&quot; and &quot;values&quot; are exactly the same, i.e. the parameter matching is stricter and some invocations which previously matched may no longer match.&lt;&#x2F;p&gt;
+
+&lt;p&gt;When the configuration option is set to &lt;code&gt;false&lt;&#x2F;code&gt;, parameter matching that would behave differently if the option were set to &lt;code&gt;true&lt;&#x2F;code&gt; is flagged by Mocha deprecation warnings. Once all these deprecation warnings are addressed, the configuration option can safely be set to &lt;code&gt;true&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+
+&lt;p&gt;It&#x27;s important to address this issue, because otherwise you may end up with passing tests that give you a false sense of security. See the examples below.&lt;&#x2F;p&gt;
+
+&lt;h3 id=&quot;keyword-argument-syntax&quot;&gt;Keyword argument syntax&lt;&#x2F;h3&gt;
+
+&lt;p&gt;An area of possible confusion is the Ruby syntax that distinguishes between a positional &lt;code&gt;Hash&lt;&#x2F;code&gt; and a set of keyword arguments. In particular the use of &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Fat_comma&quot;&gt;hash rockets&lt;&#x2F;a&gt; (&quot;=&amp;gt;&quot;) does &lt;strong&gt;NOT&lt;&#x2F;strong&gt; imply a positional &lt;code&gt;Hash&lt;&#x2F;code&gt;. Instead what matters is whether the &quot;keys&quot; and &quot;values&quot; are surrounded by braces (&quot;{ … }&quot;).&lt;&#x2F;p&gt;
+
+&lt;p&gt;The following code defines a method that in Ruby v3 expects to be called with a single keyword argument. That method is then called four times, twice with the correct keyword argument and twice with a positional &lt;code&gt;Hash&lt;&#x2F;code&gt; including a key with the correct name. You might be surprised that the 2nd call (i.e. &lt;code&gt;foo(:bar =&amp;gt; 1)&lt;&#x2F;code&gt;) is passing a keyword argument.&lt;&#x2F;p&gt;
+
+&lt;pre&gt;
+  &lt;code class=&quot;prettyprint&quot;&gt;
+    def foo(bar:); p bar; end
+
+    # Method called with correct keyword argument
+    foo(bar: 1) # =&amp;gt; 1
+    foo(:bar =&amp;gt; 1) # =&amp;gt; 1
+
+    # Method called with positional Hash
+    foo({ bar: 1 }) # =&amp;gt; ArgumentError: wrong number of arguments (given 1, expected 0; required keyword: bar)
+    foo({ :bar =&amp;gt; 1 }) # =&amp;gt; ArgumentError: wrong number of arguments (given 1, expected 0; required keyword: bar)
+  &lt;&#x2F;code&gt;
+&lt;&#x2F;pre&gt;
+
+&lt;h3 id=&quot;example-with-relaxed-matching&quot;&gt;Example with relaxed matching&lt;&#x2F;h3&gt;
+
+&lt;p&gt;The parameters in the expectation include a set of keyword arguments, but the parameters in the invocation include a positional &lt;code&gt;Hash&lt;&#x2F;code&gt;. With strict matching disabled, these parameters match the expectation and the test passes. However, when &lt;code&gt;Example#foo&lt;&#x2F;code&gt; is invoked in production code in Ruby v3 an &lt;code&gt;ArgumentError&lt;&#x2F;code&gt; is raised, i.e. the passing test does not highlight that &lt;code&gt;Example#foo&lt;&#x2F;code&gt; must be called with a set of keyword arguments.&lt;&#x2F;p&gt;
+
+&lt;pre&gt;
+  &lt;code class=&quot;prettyprint&quot;&gt;
+    class Example
+      def foo(a, bar:); end
+    end
+
+    class ExampleTest &amp;lt; MiniTest::Test
+      def test_foo
+        example = Example.new
+
+        # The parameters in the expectation include a set of keyword arguments
+        example.expects(:foo).with(&#x27;a&#x27;, bar: &#x27;b&#x27;)
+
+        # The parameters in the invocation include a positional Hash
+        # These parameters match the expectation and the test passes
+        example.foo(&#x27;a&#x27;, { bar: &#x27;b&#x27; })
+      end
+    end
+
+    example = Example.new
+    example.foo(&#x27;a&#x27;, { bar: &#x27;b&#x27; }) # =&amp;gt; ArgumentError in Ruby v3
+  &lt;&#x2F;code&gt;
+&lt;&#x2F;pre&gt;
+
+&lt;p&gt;Note, however, that a deprecation warning is displayed:&lt;&#x2F;p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Mocha deprecation warning at example_test.rb:NN:in `test_foo&#x27;: Expectation defined at example_test.rb:MM:in `test_foo&#x27; expected keyword arguments (:bar =&amp;gt; &quot;b&quot;), but received positional hash ({:bar =&amp;gt; &quot;b&quot;}). These will stop matching when strict keyword argument matching is enabled. See the documentation for Mocha::Configuration#strict_keyword_argument_matching=.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+
+&lt;h3 id=&quot;example-with-strict-matching&quot;&gt;Example with strict matching&lt;&#x2F;h3&gt;
+
+&lt;p&gt;With strict matching enabled, the parameters no longer match the expectation and the test fails. This test failure highlights that &lt;code&gt;Example#foo&lt;&#x2F;code&gt; must be called with a set of keyword arguments.&lt;&#x2F;p&gt;
+
+&lt;pre&gt;
+  &lt;code class=&quot;prettyprint&quot;&gt;
+    Mocha.configure do |c|
+      c.strict_keyword_argument_matching = true
+    end
+
+    class Example
+      def foo(a, bar:); end
+    end
+
+    class ExampleTest &amp;lt; MiniTest::Test
+      def test_foo
+        example = Example.new
+
+        # The parameters in the expectation include a set of keyword arguments
+        example.expects(:foo).with(&#x27;a&#x27;, bar: &#x27;b&#x27;)
+
+        # The parameters in the invocation include a positional Hash
+        # These parameters no longer match the expectation and the test fails
+        example.foo(&#x27;a&#x27;, { bar: &#x27;b&#x27; })
+      end
+    end
+
+    # When Example#foo is invoked in production code:
+    example = Example.new
+    example.foo(&#x27;a&#x27;, { bar: &#x27;b&#x27; }) # =&amp;gt; ArgumentError in Ruby v3
+  &lt;&#x2F;code&gt;
+&lt;&#x2F;pre&gt;
+
+&lt;h2 id=&quot;removal-of-deprecated-functionality&quot;&gt;Removal of deprecated functionality&lt;&#x2F;h2&gt;
+
+&lt;p&gt;A bunch of deprecated functionality has been removed in Mocha v2. As long as you&#x27;ve previously upgraded to Mocha v1.16.0 and fixed all the deprecation warnings you shouldn&#x27;t have any trouble.🤞&lt;&#x2F;p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;It&#x27;s no longer possible to pass &lt;a href=&quot;https:&#x2F;&#x2F;mocha.jamesmead.org&#x2F;Mocha&#x2F;API.html#mock-instance_method&quot;&gt;&lt;code&gt;API#mock&lt;&#x2F;code&gt;&lt;&#x2F;a&gt;, &lt;a href=&quot;https:&#x2F;&#x2F;mocha.jamesmead.org&#x2F;Mocha&#x2F;API.html#stub-instance_method&quot;&gt;&lt;code&gt;API#stub&lt;&#x2F;code&gt;&lt;&#x2F;a&gt; or &lt;a href=&quot;https:&#x2F;&#x2F;mocha.jamesmead.org&#x2F;Mocha&#x2F;API.html#stub_everything-instance_method&quot;&gt;&lt;code&gt;API#stub_everything&lt;&#x2F;code&gt;&lt;&#x2F;a&gt; a single symbol argument to create a mock object responding to a method named according to that symbol argument. Such an argument is used to name the mock object itself; any stubbed methods and return values should be setup by passing a &lt;code&gt;Hash&lt;&#x2F;code&gt; into these methods or by calling &lt;a href=&quot;https:&#x2F;&#x2F;mocha.jamesmead.org&#x2F;Mocha&#x2F;Mock.html#expects-instance_method&quot;&gt;&lt;code&gt;Mock#expects&lt;&#x2F;code&gt;&lt;&#x2F;a&gt; or &lt;a href=&quot;https:&#x2F;&#x2F;mocha.jamesmead.org&#x2F;Mocha&#x2F;Mock.html#stubs-instance_method&quot;&gt;&lt;code&gt;Mock#stubs&lt;&#x2F;code&gt;&lt;&#x2F;a&gt;.&lt;&#x2F;li&gt;
+  &lt;li&gt;If &lt;a href=&quot;https:&#x2F;&#x2F;mocha.jamesmead.org&#x2F;Mocha&#x2F;Expectation.html#yields-instance_method&quot;&gt;&lt;code&gt;Expectation#yields&lt;&#x2F;code&gt;&lt;&#x2F;a&gt; or &lt;a href=&quot;https:&#x2F;&#x2F;mocha.jamesmead.org&#x2F;Mocha&#x2F;Expectation.html#multiple_yields-instance_method&quot;&gt;&lt;code&gt;Expectation#multiple_yields&lt;&#x2F;code&gt;&lt;&#x2F;a&gt; have been used to specify that a stubbed method should yield then the stubbed method must be invoked with a block otherwise a &lt;code&gt;LocalJumpError&lt;&#x2F;code&gt; will be raised.&lt;&#x2F;li&gt;
+  &lt;li&gt;The &lt;code&gt;Configuration#reinstate_undocumented_behaviour_from_v1_9=&lt;&#x2F;code&gt; method has been removed. If you have addressed the deprecation warnings for &lt;code&gt;API#mock&lt;&#x2F;code&gt;, &lt;code&gt;API#stub&lt;&#x2F;code&gt;, &lt;code&gt;API#stub_everything&lt;&#x2F;code&gt;, &lt;code&gt;Expectation#yields&lt;&#x2F;code&gt; and &lt;code&gt;Expectation#multiple_yields&lt;&#x2F;code&gt; as explained above then this configuration option is redundant.&lt;&#x2F;li&gt;
+  &lt;li&gt;The &lt;code&gt;Configuration.allow&lt;&#x2F;code&gt;, &lt;code&gt;Configuration.warn&lt;&#x2F;code&gt; and &lt;code&gt;Configuration.prevent&lt;&#x2F;code&gt; methods have been removed. Use &lt;a href=&quot;https:&#x2F;&#x2F;mocha.jamesmead.org&#x2F;Mocha.html#configure-class_method&quot;&gt;&lt;code&gt;Mocha.configure&lt;&#x2F;code&gt;&lt;&#x2F;a&gt; and&#x2F;or &lt;a href=&quot;https:&#x2F;&#x2F;mocha.jamesmead.org&#x2F;Mocha&#x2F;Configuration.html#override-class_method&quot;&gt;&lt;code&gt;Mocha::Configuration.override&lt;&#x2F;code&gt;&lt;&#x2F;a&gt; instead.&lt;&#x2F;li&gt;
+  &lt;li&gt;The &lt;code&gt;mocha&#x2F;setup.rb&lt;&#x2F;code&gt; mechanism has been removed. Use one of the &lt;a href=&quot;https:&#x2F;&#x2F;mocha.jamesmead.org&#x2F;index.html#installation&quot;&gt;supported installation mechanisms&lt;&#x2F;a&gt; instead.&lt;&#x2F;li&gt;
+  &lt;li&gt;The &lt;a href=&quot;https:&#x2F;&#x2F;rubyonrails.org&#x2F;&quot;&gt;Ruby on Rails&lt;&#x2F;a&gt; plugin mechanism has been removed. Use one of the &lt;a href=&quot;https:&#x2F;&#x2F;mocha.jamesmead.org&#x2F;index.html#installation&quot;&gt;supported installation mechanisms&lt;&#x2F;a&gt; instead.&lt;&#x2F;li&gt;
+  &lt;li&gt;A &lt;a href=&quot;https:&#x2F;&#x2F;mocha.jamesmead.org&#x2F;Mocha&#x2F;StubbingError.html&quot;&gt;&lt;code&gt;StubbingError&lt;&#x2F;code&gt;&lt;&#x2F;a&gt; is now raised when stubbed methods are invoked in a test other than the one in which they were defined. This is to avoid unintended interactions between tests and hence unexpected test failures. A test should clean up any state that it introduces.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+
+&lt;h2 id=&quot;dropping-of-support-for-older-versions-of-ruby-minitest--test-unit&quot;&gt;Dropping of support for older versions of Ruby, minitest &amp;amp; test-unit&lt;&#x2F;h2&gt;
+
+&lt;p&gt;Mocha v2 drops support for older versions of &lt;a href=&quot;https:&#x2F;&#x2F;www.ruby-lang.org&#x2F;&quot;&gt;Ruby&lt;&#x2F;a&gt;, &lt;a href=&quot;https:&#x2F;&#x2F;rubygems.org&#x2F;gems&#x2F;test-unit&#x2F;&quot;&gt;test-unit&lt;&#x2F;a&gt; and &lt;a href=&quot;https:&#x2F;&#x2F;rubygems.org&#x2F;gems&#x2F;minitest&#x2F;&quot;&gt;minitest&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+
+&lt;p&gt;More specifically Mocha v2 only supports:&lt;&#x2F;p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ruby v2.0 and upwards. In particular Ruby v1.9 is no longer supported. Note that support for Ruby v1.9.3 ended on &lt;a href=&quot;https:&#x2F;&#x2F;www.ruby-lang.org&#x2F;en&#x2F;news&#x2F;2014&#x2F;01&#x2F;10&#x2F;ruby-1-9-3-will-end-on-2015&#x2F;&quot;&gt;23 Feb 2015&lt;&#x2F;a&gt;.&lt;&#x2F;li&gt;
+  &lt;li&gt;Gem versions of test-unit from v2.5.1 (released on 05 Jul 2012) upwards. Versions of test-unit from the Ruby v1.8 standard library are no longer supported.&lt;&#x2F;li&gt;
+  &lt;li&gt;Versions of minitest from v3.3.0 (released on 27 Jul 2012) upwards.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+
+&lt;h2 id=&quot;acknowledgements&quot;&gt;Acknowledgements&lt;&#x2F;h2&gt;
+
+&lt;p&gt;Many thanks to the following:&lt;&#x2F;p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;wasabigeek.com&#x2F;&quot;&gt;Nick Koh&lt;&#x2F;a&gt; for all his hard work on the strict keyword argument matching functionality.&lt;&#x2F;li&gt;
+  &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;po-ru.com&#x2F;&quot;&gt;Paul Battley&lt;&#x2F;a&gt; and &lt;a href=&quot;http:&#x2F;&#x2F;hlame.com&#x2F;&quot;&gt;Murray Steele&lt;&#x2F;a&gt; for testing preview releases of Mocha v2 on sizeable codebases.&lt;&#x2F;li&gt;
+  &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.chao-xian.co.uk&#x2F;&quot;&gt;Kelvin Gan&lt;&#x2F;a&gt;, &lt;a href=&quot;https:&#x2F;&#x2F;ollie.treend.uk&#x2F;&quot;&gt;Ollie Treend&lt;&#x2F;a&gt;, &lt;a href=&quot;https:&#x2F;&#x2F;dilwoarhussain.com&#x2F;&quot;&gt;Dilwoar Hussain&lt;&#x2F;a&gt;, and the rest of the &lt;a href=&quot;https:&#x2F;&#x2F;gds.blog.gov.uk&#x2F;&quot;&gt;GDS&lt;&#x2F;a&gt; developer team for helping me test preview releases of Mocha v2 on the sizeable &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;alphagov&#x2F;whitehall&quot;&gt;alphagov&#x2F;whitehall&lt;&#x2F;a&gt; codebase.&lt;&#x2F;li&gt;
+  &lt;li&gt;My &lt;a href=&quot;https:&#x2F;&#x2F;gofreerange.com&#x2F;&quot;&gt;Go Free Range&lt;&#x2F;a&gt; colleagues, &lt;a href=&quot;https:&#x2F;&#x2F;blog.chrislowis.co.uk&#x2F;&quot;&gt;Chris Lowis&lt;&#x2F;a&gt; and &lt;a href=&quot;https:&#x2F;&#x2F;gofreerange.com&#x2F;people#chris-roos&quot;&gt;Chris Roos&lt;&#x2F;a&gt;, for funding a lot of my time working on Mocha, for reviewing code &amp;amp; documentation and for just generally being very supportive.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+
+    </content>
+  </entry>
   <entry>
     <author>
       <name>James Mead</name>
@@ -912,63 +1071,6 @@ in stdenv.mkDerivation {
 &lt;h3 id=&quot;further-reading&quot;&gt;Further reading&lt;&#x2F;h3&gt;
 
 &lt;p&gt;After writing this article, I came across Farid Zakaria&#x27;s article, &lt;a href=&quot;https:&#x2F;&#x2F;fzakaria.com&#x2F;2020&#x2F;07&#x2F;18&#x2F;what-is-bundlerenv-doing.html&quot;&gt;what is bundlerEnv doing?&lt;&#x2F;a&gt;, which I can highly recommend if you want to understand more about what&#x27;s going on under the hood of the whole &lt;code&gt;bundix&lt;&#x2F;code&gt;, &lt;code&gt;gemset.nix&lt;&#x2F;code&gt; and &lt;code&gt;bundlerEnv&lt;&#x2F;code&gt; malarkey.&lt;&#x2F;p&gt;
-
-
-    </content>
-  </entry>
-  <entry>
-    <author>
-      <name>James Mead</name>
-    </author>
-    <id>urn:uuid:56bfb91d-550d-41c9-9d82-295c794e8674</id>
-    <published>2020-06-27T18:53:00+00:00</published>
-    <updated>2020-06-27T22:34:00+00:00</updated>
-    <title>IndieWeb-ifying my personal website</title>
-    <link href="https://jamesmead.org/blog/2020-06-27-indieweb-ifying-my-personal-website" rel="alternate" type="text/html"/>
-    <content type="html">
-      &lt;p&gt;I&#x27;ve been interested in the &lt;a href=&quot;https:&#x2F;&#x2F;indieweb.org&#x2F;&quot;&gt;IndieWeb&lt;&#x2F;a&gt; since my colleague, &lt;a href=&quot;http:&#x2F;&#x2F;chrisroos.co.uk&#x2F;&quot;&gt;Chris R&lt;&#x2F;a&gt;, hosted &lt;a href=&quot;https:&#x2F;&#x2F;gofreerange.com&#x2F;the-first-london-indieweb-homebrew-website-club&quot;&gt;the first London IndieWeb meetup&lt;&#x2F;a&gt; years ago and at various points I&#x27;ve played with a few bits of it on my website, e.g. &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;OpenID&quot;&gt;OpenID&lt;&#x2F;a&gt; and &lt;a href=&quot;https:&#x2F;&#x2F;indieauth.net&#x2F;&quot;&gt;IndieAuth&lt;&#x2F;a&gt;. As part of my efforts to move away from Twitter and Facebook, I recently joined the very friendly &lt;a href=&quot;https:&#x2F;&#x2F;fosstodon.org&#x2F;&quot;&gt;fosstodon.org&lt;&#x2F;a&gt; Mastodon instance and I noticed quite a lot of toots about the IndieWeb including one which mentioned the &lt;a href=&quot;https:&#x2F;&#x2F;indiewebify.me&quot;&gt;indiewebify.me&lt;&#x2F;a&gt; website which walks you through various levels of IndieWeb &quot;compliance&quot;. I&#x27;ve been interested in finding out more about &lt;a href=&quot;https:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;webmention&#x2F;&quot;&gt;Webmentions&lt;&#x2F;a&gt; for a while and this gave me the motivation I needed to give them a try.&lt;&#x2F;p&gt;
-
-&lt;p&gt;It turns out I had already &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;jamesmead.org&#x2F;commit&#x2F;7755ead416ed2e39906a1d61f692d0b83be34546&quot;&gt;become a citizen of the IndieWeb&lt;&#x2F;a&gt;, i.e. Level 1 compliance, back in June 2013 and amazingly (to me anyway) that functionality was still working. Level 2 compliance is about publishing on the IndieWeb and Level 3 compliance is about federating IndieWeb conversations.&lt;&#x2F;p&gt;
-
-&lt;h3 id=&quot;publishing-on-the-indieweb&quot;&gt;Publishing on the IndieWeb&lt;&#x2F;h3&gt;
-
-&lt;p&gt;For level 2, the first step was to markup my home page using the &lt;a href=&quot;http:&#x2F;&#x2F;microformats.org&#x2F;wiki&#x2F;h-card&quot;&gt;h-card microformat&lt;&#x2F;a&gt;, not to be confused with the older &lt;a href=&quot;http:&#x2F;&#x2F;microformats.org&#x2F;wiki&#x2F;hCard&quot;&gt;hCard microformat&lt;&#x2F;a&gt;. I started doing this by creating separate hidden markup, but I was unhappy with the amount of duplication. And so, after faffing about with &lt;a href=&quot;https:&#x2F;&#x2F;middlemanapp.com&#x2F;&quot;&gt;middleman&lt;&#x2F;a&gt; for a while and discovering its &lt;a href=&quot;https:&#x2F;&#x2F;middlemanapp.com&#x2F;basics&#x2F;layouts&#x2F;#nested-layouts&quot;&gt;nested layouts&lt;&#x2F;a&gt;, I managed to markup some of the existing content to reduce the amount of duplication: &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;jamesmead.org&#x2F;blob&#x2F;6760dd64e5a3999f19726efa96f46e4d42fd9905&#x2F;source&#x2F;layouts&#x2F;home.html.erb#L2-L6&quot;&gt;h-card &amp;amp; p-name&lt;&#x2F;a&gt;, &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;jamesmead.org&#x2F;blob&#x2F;6760dd64e5a3999f19726efa96f46e4d42fd9905&#x2F;source&#x2F;index.html.erb#L12-L13&quot;&gt;p-org, p-job-title, p-locality &amp;amp; p-country-name&lt;&#x2F;a&gt; and &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;jamesmead.org&#x2F;blob&#x2F;6760dd64e5a3999f19726efa96f46e4d42fd9905&#x2F;source&#x2F;index.html.erb#L31-L46&quot;&gt;u-photo, p-note, u-uid &amp;amp; u-url&lt;&#x2F;a&gt;. The validator suggested that it was &lt;a href=&quot;https:&#x2F;&#x2F;indiewebify.me&#x2F;validate-h-card&#x2F;?url=https%3A%2F%2Fjamesmead.org%2F&quot;&gt;working OK&lt;&#x2F;a&gt;. So far, so good.&lt;&#x2F;p&gt;
-
-&lt;p&gt;&lt;img style=&quot;display: block; margin-left: auto; margin-right: auto; width: 80%;&quot; src=&quot;&#x2F;images&#x2F;h-card-validation.png&quot; alt=&quot;h-card validation success&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
-
-&lt;p&gt;The next step was to markup my blog posts with the &lt;a href=&quot;http:&#x2F;&#x2F;microformats.org&#x2F;wiki&#x2F;h-entry&quot;&gt;h-entry microformat&lt;&#x2F;a&gt;. This was relatively straightforward to implement now that I had a separate &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;jamesmead.org&#x2F;blob&#x2F;b5522b3c2529b93b3dfd07b148ecc3f911d23d4f&#x2F;source&#x2F;layouts&#x2F;blog.html.erb#L2-L19&quot;&gt;&lt;code&gt;blog&lt;&#x2F;code&gt; layout&lt;&#x2F;a&gt; and the validator suggested that it was &lt;a href=&quot;https:&#x2F;&#x2F;indiewebify.me&#x2F;validate-h-entry&#x2F;?url=https%3A%2F%2Fjamesmead.org%2Fblog%2F2020-03-30-automatic-backup-of-trello-boards-to-s3-using-aws-cdk&quot;&gt;working OK&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
-
-&lt;p&gt;&lt;img style=&quot;display: block; margin-left: auto; margin-right: auto; width: 80%;&quot; src=&quot;&#x2F;images&#x2F;h-entry-validation.png&quot; alt=&quot;h-entry validation success&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
-
-&lt;p&gt;At this point, I should have added the ability to send Webmentions to other IndieWeb sites, but it&#x27;s not completely obvious to me how to do this for a static site. I &lt;em&gt;think&lt;&#x2F;em&gt; I could do it by hooking the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;indieweb&#x2F;webmention-client-ruby&quot;&gt;&lt;code&gt;webmention&lt;&#x2F;code&gt; gem&lt;&#x2F;a&gt; into my &lt;a href=&quot;https:&#x2F;&#x2F;jamesmead.org&#x2F;blog&#x2F;2019-09-07-using-github-actions-to-publish-a-static-site-to-github-pages&quot;&gt;GitHub Action-based build&lt;&#x2F;a&gt;, but I decided to skip this step for now given that it&#x27;s relatively easy to &lt;a href=&quot;https:&#x2F;&#x2F;indieweb.org&#x2F;webmention-implementation-guide#One-liner_webmentions&quot;&gt;send a Webmention manually using &lt;code&gt;curl&lt;&#x2F;code&gt;&lt;&#x2F;a&gt; and it&#x27;s not as if I currently blog that frequently!&lt;&#x2F;p&gt;
-
-&lt;h3 id=&quot;federating-indieweb-conversations&quot;&gt;Federating IndieWeb conversations&lt;&#x2F;h3&gt;
-
-&lt;p&gt;I also decided to skip the steps about posting &lt;a href=&quot;https:&#x2F;&#x2F;indieweb.org&#x2F;reply&quot;&gt;replies&lt;&#x2F;a&gt; to other people&#x27;s posts and adding &lt;a href=&quot;https:&#x2F;&#x2F;indieweb.org&#x2F;reply-context&quot;&gt;reply contexts&lt;&#x2F;a&gt; to my own site until I actually want to reply to something someone has written.&lt;&#x2F;p&gt;
-
-&lt;p&gt;However, I did &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;jamesmead.org&#x2F;blob&#x2F;6760dd64e5a3999f19726efa96f46e4d42fd9905&#x2F;source&#x2F;layouts&#x2F;layout.html.erb#L33&quot;&gt;configure my site to receive Webmentions&lt;&#x2F;a&gt; using the excellent hosted &lt;a href=&quot;https:&#x2F;&#x2F;webmention.io&#x2F;&quot;&gt;webmention.io&lt;&#x2F;a&gt; service. This was very easy.&lt;&#x2F;p&gt;
-
-&lt;p&gt;I then added some very basic code to &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;jamesmead.org&#x2F;commit&#x2F;6760dd64e5a3999f19726efa96f46e4d42fd9905&quot;&gt;display Webmentions&lt;&#x2F;a&gt; at the bottom of each blog post closely based on &lt;a href=&quot;https:&#x2F;&#x2F;sebastiandedeyne.com&#x2F;adding-webmentions-to-my-blog&#x2F;#displaying-webmentions-on-post-pages&quot;&gt;Sebastian De Deyne&#x27;s implementation&lt;&#x2F;a&gt;. For the moment, I&#x27;m using JavaScript running on the client-side, but I can see how in time this might lead to putting an unfair load on webmention.io.&lt;&#x2F;p&gt;
-
-&lt;p&gt;A better solution might be to incorporate fetching the latest Webmentions and rendering them in HTML into the automated build, perhaps enhancing them with the latest Webmentions using JavaScript. I think this might be how the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;aarongustafson&#x2F;jekyll-webmention_io&quot;&gt;webmention.io Jekyll plugin&lt;&#x2F;a&gt; works, but that&#x27;s a job for another day.&lt;&#x2F;p&gt;
-
-&lt;p&gt;I checked that my website is receiving Webmentions OK by commenting on a blog post using &lt;a href=&quot;https:&#x2F;&#x2F;commentpara.de&#x2F;&quot;&gt;commentpara.de&lt;&#x2F;a&gt;. 🎉🎉&lt;&#x2F;p&gt;
-
-&lt;p&gt;&lt;img style=&quot;border: 1px dashed; display: block; margin-left: auto; margin-right: auto; width: 50%;&quot; src=&quot;&#x2F;images&#x2F;webmention-comment.png&quot; alt=&quot;comment added using commentpara.de&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
-
-&lt;p&gt;Clearly I haven&#x27;t yet fully achieved even level 2 IndieWeb compliance, but I&#x27;m pleased with what I&#x27;ve done so far and, more to the point, what I&#x27;ve learnt in doing it. I should also mention that I found lots of useful advice in the following articles:&lt;&#x2F;p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;sebastiandedeyne.com&#x2F;adding-webmentions-to-my-blog&#x2F;&quot;&gt;Adding webmentions to my blog&lt;&#x2F;a&gt; by Sebastian De Deyne&lt;&#x2F;p&gt;
-  &lt;&#x2F;li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.jvt.me&#x2F;posts&#x2F;2019&#x2F;03&#x2F;18&#x2F;displaying-webmentions&#x2F;&quot;&gt;Displaying Webmentions on my Hugo website&lt;&#x2F;a&gt; by Jamie Tanna&lt;&#x2F;p&gt;
-  &lt;&#x2F;li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;http:&#x2F;&#x2F;evantravers.com&#x2F;articles&#x2F;2019&#x2F;11&#x2F;14&#x2F;indieweb-webmentions-on-middleman-or-jekyll&#x2F;&quot;&gt;Indieweb Webmentions on Middleman or Jekyll&lt;&#x2F;a&gt; by Evan Travers&lt;&#x2F;p&gt;
-  &lt;&#x2F;li&gt;
-&lt;&#x2F;ul&gt;
 
 
     </content>
