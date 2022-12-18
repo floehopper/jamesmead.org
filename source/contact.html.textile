@@ -9,10 +9,10 @@ h2. Email
 
 h2. Elsewhere on the Web
 
-* "GitHub":http://github.com/floehopper
-* "Twitter":http://twitter.com/floehopper
-* "Tumblelog":http://tumble.floehopper.org/
-* "Flickr":http://www.flickr.com/photos/jamesthecat/
-* "Rails Contributor":http://contributors.rubyonrails.org/contributors/james-mead/commits
-* "LinkedIn":http://www.linkedin.com/in/jamesmead
-* "Stack Overflow":http://stackoverflow.com/users/2025138/floehopper
+* "GitHub":https://github.com/floehopper
+* "Twitter":https://twitter.com/floehopper
+* "Tumblelog":https://tumble.floehopper.org/
+* "Flickr":https://www.flickr.com/photos/jamesthecat/
+* "Rails Contributor":https://contributors.rubyonrails.org/contributors/james-mead/commits
+* "LinkedIn":https://www.linkedin.com/in/jamesmead
+* "Stack Overflow":https://stackoverflow.com/users/2025138/floehopper
