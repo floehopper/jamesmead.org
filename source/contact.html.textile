@@ -10,7 +10,6 @@ h2. Email
 h2. Elsewhere on the Web
 
 * "GitHub":https://github.com/floehopper
-* "Twitter":https://twitter.com/floehopper
 * "mastodon.social":https://mastodon.social/@floehopper
 * "ruby.social":https://ruby.social/@floehopper
 * "fosstodon.org":https://fosstodon.org/@floehopper
