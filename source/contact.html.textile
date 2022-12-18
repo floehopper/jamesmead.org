@@ -12,10 +12,7 @@ h2. Elsewhere on the Web
 * "GitHub":http://github.com/floehopper
 * "Twitter":http://twitter.com/floehopper
 * "Tumblelog":http://tumble.floehopper.org/
-* "del.icio.us":http://del.icio.us/jamesthecat
 * "Flickr":http://www.flickr.com/photos/jamesthecat/
-* "Working with Rails":http://www.workingwithrails.com/recommendation/new/person/3237-james-mead
 * "Rails Contributor":http://contributors.rubyonrails.org/contributors/james-mead/commits
 * "LinkedIn":http://www.linkedin.com/in/jamesmead
 * "Stack Overflow":http://stackoverflow.com/users/2025138/floehopper
-* "SpeakerRate":http://speakerrate.com/floehopper
