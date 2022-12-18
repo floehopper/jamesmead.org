@@ -11,6 +11,11 @@ h2. Elsewhere on the Web
 
 * "GitHub":https://github.com/floehopper
 * "Twitter":https://twitter.com/floehopper
+* "mastodon.social":https://mastodon.social/@floehopper
+* "ruby.social":https://ruby.social/@floehopper
+* "fosstodon.org":https://fosstodon.org/@floehopper
+* "mas.to":https://mas.to/@floehopper
+* "indieweb.social":https://indieweb.social/@floehopper
 * "Tumblelog":https://tumble.floehopper.org/
 * "Flickr":https://www.flickr.com/photos/jamesthecat/
 * "Rails Contributor":https://contributors.rubyonrails.org/contributors/james-mead/commits
