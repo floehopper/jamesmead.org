@@ -1,14 +1,17 @@
-@ 10800 IN SOA ns1.gandi.net. hostmaster.gandi.net. 1567791156 10800 3600 604800 10800
-2ss 300 IN A 188.30.140.98
+@ 10800 IN SOA ns1.gandi.net. hostmaster.gandi.net. 1671795438 10800 3600 604800 10800
+2ss 300 IN A 213.31.248.179
 @ 300 IN ALIAS floehopper.github.io
 @ 300 IN TXT "google-site-verification=USUpE9lavFg8fV5jZTHA43F2lSjcorExJtYB3W7ZlyQ"
+_1cca3b1e23410b844c88fd4c8d1a8675.r 300 IN CNAME _96a09097f6c8a15a1bcd8b6e247f7749.xjncphngnr.acm-validations.aws.
 _7880717bc4fcee5089d34e3ed359f0b8.feeds 300 IN CNAME _45ed0f1178ddf6ed08a19f4374922844.rlltrpyzyf.acm-validations.aws.
 chaigneau 300 IN A 5.2.70.30
-feeds 300 IN CNAME d2h9ycw4o0jwu6.cloudfront.net.
+feeds 300 IN CNAME d2xsv7pyfcrk7x.cloudfront.net.
 jamesmead.org 300 IN NS a.dns.gandi.net.
 jamesmead.org 300 IN NS b.dns.gandi.net.
 jamesmead.org 300 IN NS c.dns.gandi.net.
 mocha 1800 IN CNAME freerange.github.io.
+r 300 IN CNAME d1dqr1mxzui4nn.cloudfront.net.
 skua 300 IN A 212.71.250.44
+twitter 3600 IN CNAME floehopper.github.io.
 vpn 300 IN A 5.2.70.30
 www 300 IN CNAME jamesmead.org.
