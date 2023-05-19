@@ -207,6 +207,13 @@ figcaption {
   text-align: center;
 }
 
+#ft {
+  #five-hundred-and-twelve-kb {
+    height: 14px;
+    margin-top: 3px;
+  }
+}
+
 @media screen and (min-width: $on-large) {
   #ft {
     nav {
@@ -218,7 +225,11 @@ figcaption {
     }
 
     #creative-commons {
-      clear: both;
+      float: left;
+    }
+
+    #five-hundred-and-twelve-kb {
+      float: right;
     }
   }
 }
