@@ -37,7 +37,7 @@ The source code for the whole CDK project is [available on GitHub].
 [Google Drive]: https://www.google.com/drive/
 [Amazon S3]: https://aws.amazon.com/s3/
 [`rclone sync`]: https://rclone.org/commands/rclone_sync/
-[Trello backup]: /2020-03-30-automatic-backup-of-trello-boards-to-s3-using-aws-cdk
+[Trello backup]: /blog/2020-03-30-automatic-backup-of-trello-boards-to-s3-using-aws-cdk
 [AWS Lambda]: https://aws.amazon.com/lambda/
 [cron job]: https://en.wikipedia.org/wiki/Cron
 [AWS CDK]: https://aws.amazon.com/cdk/
