@@ -1,4 +1,4 @@
---- 
+---
 permalink: mocha-releases-0-13-2
 created_at: 2013-01-23 08:35:00 +00:00
 updated_at: 2013-01-23 08:35:00 +00:00
@@ -16,5 +16,5 @@ h2. Release Notes
 * Make @Expectation#inspect@ less verbose and more useful. Fixes "issue #122":https://github.com/freerange/mocha/issues/122. Thanks to "stackedsax":https://github.com/stackedsax for the suggestion.
 * Make unit tests more robust to changes in environment. Fixes "issue #121":https://github.com/freerange/mocha/issues/121. Thanks to "Vít Ondruch":https://github.com/voxik for reporting.
 * Update @README@ in an attempt to head "Rails-related issues":https://mocha.jamesmead.org/#Rails off at the pass.
-* Add a Gem badge (!https://badge.fury.io/rb/mocha.png!:http://badge.fury.io/rb/mocha) to provide a link to "Mocha on Rubygems":rubygems.org/gems/mocha.
+* Add a Gem badge (!https://badge.fury.io/rb/mocha.png!:http://badge.fury.io/rb/mocha) to provide a link to "Mocha on Rubygems":https://rubygems.org/gems/mocha.
 * Make documentation example consistent with other examples.

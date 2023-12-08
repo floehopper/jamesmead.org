@@ -4,7 +4,7 @@ https://keybase.io/floehopper
 
 I hereby claim:
 
-  * I am an admin of http://jamesmead.org
+  * I am an admin of https://jamesmead.org
   * I am floehopper (https://keybase.io/floehopper) on keybase.
   * I have a public key ASAT6zIpuajtCC9owIWgEAHtiAMbQOmibwx5epmtnNgrsQo
 

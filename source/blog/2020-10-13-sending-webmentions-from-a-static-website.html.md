@@ -33,7 +33,7 @@ I created [this repo][send-webmentions-repo] and added [this workflow][send-webm
     name: Send webmentions for new blog posts
     on:
       rss:
-        url: http://feeds.jamesmead.org/floehopper-blog
+        url: https://feeds.jamesmead.org/floehopper-blog
         config:
           logLevel: debug
           limit: 1
@@ -70,7 +70,7 @@ It took me a while to realise that the underlying Actionsflow GitHub Action was 
 [send-webmention-using-curl]: https://indieweb.org/webmention-implementation-guide#One-liner_webmentions
 [Remy Sharp]: https://remysharp.com/
 [webmention.app]: https://webmention.app/
-[RSS feed]: http://feeds.jamesmead.org/floehopper-blog
+[RSS feed]: https://feeds.jamesmead.org/floehopper-blog
 [suggests using IFTTT]: https://webmention.app/docs#using-ifttt-to-trigger-checks
 [Actionsflow]: https://actionsflow.github.io/docs/
 [website-repo]: https://github.com/floehopper/jamesmead.org

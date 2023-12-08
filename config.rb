@@ -75,7 +75,7 @@ activate :blog do |blog|
   blog.permalink = "{year}-{month}-{day}-{title}.html"
 end
 
-config[:feed_url] = 'http://feeds.jamesmead.org/floehopper-blog'
+config[:feed_url] = 'https://feeds.jamesmead.org/floehopper-blog'
 config[:host] = 'jamesmead.org'
 
 config[:textile] = { no_span_caps: true }
