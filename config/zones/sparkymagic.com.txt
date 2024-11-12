@@ -1,0 +1,21 @@
+@ 10800 IN SOA ns1.gandi.net. hostmaster.gandi.net. 1720187373 10800 3600 604800 10800
+@ 300 IN ALIAS floehopper.github.io
+@ 300 IN MX 10 ASPMX.L.GOOGLE.COM.
+@ 300 IN MX 20 ALT1.ASPMX.L.GOOGLE.COM.
+@ 300 IN MX 20 ALT2.ASPMX.L.GOOGLE.COM.
+@ 300 IN MX 30 ASPMX2.GOOGLEMAIL.COM.
+@ 300 IN MX 30 ASPMX3.GOOGLEMAIL.COM.
+@ 300 IN MX 30 ASPMX4.GOOGLEMAIL.COM.
+@ 300 IN MX 30 ASPMX5.GOOGLEMAIL.COM.
+@ 10800 IN NS ns-209-c.gandi.net.
+@ 10800 IN NS ns-227-b.gandi.net.
+@ 10800 IN NS ns-60-a.gandi.net.
+calendar 300 IN CNAME ghs.google.com.
+docs 300 IN CNAME ghs.google.com.
+googleffffffffaa715ec2 300 IN CNAME google.com.
+mail 300 IN CNAME ghs.google.com.
+sites 300 IN CNAME ghs.google.com.
+sparkymagic.com 300 IN NS a.dns.gandi.net.
+sparkymagic.com 300 IN NS b.dns.gandi.net.
+sparkymagic.com 300 IN NS c.dns.gandi.net.
+www 300 IN CNAME sparkymagic.com.

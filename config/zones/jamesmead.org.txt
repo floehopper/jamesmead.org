@@ -1,17 +1,16 @@
-@ 10800 IN SOA ns1.gandi.net. hostmaster.gandi.net. 1671795438 10800 3600 604800 10800
-2ss 300 IN A 213.31.248.179
-@ 300 IN ALIAS floehopper.github.io
-@ 300 IN TXT "google-site-verification=USUpE9lavFg8fV5jZTHA43F2lSjcorExJtYB3W7ZlyQ"
-_1cca3b1e23410b844c88fd4c8d1a8675.r 300 IN CNAME _96a09097f6c8a15a1bcd8b6e247f7749.xjncphngnr.acm-validations.aws.
-_7880717bc4fcee5089d34e3ed359f0b8.feeds 300 IN CNAME _45ed0f1178ddf6ed08a19f4374922844.rlltrpyzyf.acm-validations.aws.
-chaigneau 300 IN A 5.2.70.30
-feeds 300 IN CNAME d2xsv7pyfcrk7x.cloudfront.net.
-jamesmead.org 300 IN NS a.dns.gandi.net.
-jamesmead.org 300 IN NS b.dns.gandi.net.
-jamesmead.org 300 IN NS c.dns.gandi.net.
-mocha 1800 IN CNAME freerange.github.io.
-r 300 IN CNAME d1dqr1mxzui4nn.cloudfront.net.
-skua 300 IN A 212.71.250.44
-twitter 3600 IN CNAME floehopper.github.io.
-vpn 300 IN A 5.2.70.30
-www 300 IN CNAME jamesmead.org.
+$ORIGIN jamesmead.org.
+$TTL 1h
+jamesmead.org. 3600 IN SOA ns1.dnsimple.com. admin.dnsimple.com. 1731330605 86400 7200 604800 300
+jamesmead.org. 3600 IN NS ns1.dnsimple.com.
+jamesmead.org. 3600 IN NS ns2.dnsimple-edge.net.
+jamesmead.org. 3600 IN NS ns3.dnsimple.com.
+jamesmead.org. 3600 IN NS ns4.dnsimple-edge.org.
+jamesmead.org. 3600 IN TXT "google-site-verification=USUpE9lavFg8fV5jZTHA43F2lSjcorExJtYB3W7ZlyQ"
+www.jamesmead.org. 3600 IN CNAME jamesmead.org.
+feeds.jamesmead.org. 3600 IN CNAME d2xsv7pyfcrk7x.cloudfront.net.
+mocha.jamesmead.org. 3600 IN CNAME freerange.github.io.
+r.jamesmead.org. 3600 IN CNAME d1dqr1mxzui4nn.cloudfront.net.
+twitter.jamesmead.org. 3600 IN CNAME floehopper.github.io.
+; jamesmead.org. 3600 IN ALIAS floehopper.github.io.
+_1cca3b1e23410b844c88fd4c8d1a8675.r.jamesmead.org. 3600 IN CNAME _96a09097f6c8a15a1bcd8b6e247f7749.xjncphngnr.acm-validations.aws.
+_7880717bc4fcee5089d34e3ed359f0b8.feeds.jamesmead.org. 3600 IN CNAME _45ed0f1178ddf6ed08a19f4374922844.rlltrpyzyf.acm-validations.aws.

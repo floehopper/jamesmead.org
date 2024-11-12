@@ -1,29 +1,32 @@
-@ 10800 IN SOA ns1.gandi.net. hostmaster.gandi.net. 1544787663 10800 3600 604800 10800
-@ 300 IN ALIAS dquaz562bs2fm.cloudfront.net.
-@ 300 IN MX 10 ASPMX.L.GOOGLE.COM.
-@ 300 IN MX 20 ALT1.ASPMX.L.GOOGLE.COM.
-@ 300 IN MX 20 ALT2.ASPMX.L.GOOGLE.COM.
-@ 300 IN MX 30 ASPMX2.GOOGLEMAIL.COM.
-@ 300 IN MX 30 ASPMX3.GOOGLEMAIL.COM.
-@ 300 IN MX 30 ASPMX4.GOOGLEMAIL.COM.
-@ 300 IN MX 30 ASPMX5.GOOGLEMAIL.COM.
-@ 300 IN TXT "google-site-verification=QB_Eb59cVRyQPgKsR9ewtn_lSnnW2FIag4jLVGoCF7Q"
-@ 300 IN TXT "google-site-verification=j56IZCpVonL_M2lhg4v_NRa8O8Xt6Vq2pASiiQaE4-w"
-@ 300 IN TXT "v=spf1 include:aspmx.googlemail.com ~all"
-_7645ef61d1ee6ecf655ee57047d777df.www 300 IN CNAME _99f80249371db9f7613e3a4fc1f6870e.rlltrpyzyf.acm-validations.aws.
-_9722afa08c3f862abad918945d549f60.blog 300 IN CNAME _81771e63f24de87ee2d769a5c614a3a4.rlltrpyzyf.acm-validations.aws.
-_dcbe587a46c2b9b8043bed08ae9bbada 300 IN CNAME _f55d7bc6db34524ab9095900035fe316.tfmgdnztqk.acm-validations.aws.
-_fad32629025a03949904dcdd11de33a8.feeds 300 IN CNAME _fe3c97af0fea04e62941ebcd26c76cc9.rlltrpyzyf.acm-validations.aws.
-blog 300 IN CNAME d2gb0by98zfwxs.cloudfront.net.
-calendar 300 IN CNAME ghs.google.com.
-docs 300 IN CNAME ghs.google.com.
-feeds 300 IN CNAME d1vwor7kl5m9w1.cloudfront.net.
-floehopper.org 300 IN NS a.dns.gandi.net.
-floehopper.org 300 IN NS b.dns.gandi.net.
-floehopper.org 300 IN NS c.dns.gandi.net.
-google 300 IN CNAME ghs.google.com.
-google835c78466cc39885 300 IN CNAME google.com.
-googleffffffffaa715ec2 300 IN CNAME google.com.
-mail 300 IN CNAME ghs.google.com.
-tumble 300 IN CNAME domains.tumblr.com.
-www 300 IN CNAME d1weg6nkmozewi.cloudfront.net.
+$ORIGIN floehopper.org.
+$TTL 1h
+floehopper.org. 3600 IN SOA ns1.dnsimple.com. admin.dnsimple.com. 1731330928 86400 7200 604800 300
+floehopper.org. 3600 IN NS ns1.dnsimple.com.
+floehopper.org. 3600 IN NS ns2.dnsimple-edge.net.
+floehopper.org. 3600 IN NS ns3.dnsimple.com.
+floehopper.org. 3600 IN NS ns4.dnsimple-edge.org.
+floehopper.org. 3600 IN MX 20 ALT1.ASPMX.L.GOOGLE.COM.
+floehopper.org. 3600 IN MX 10 ASPMX.L.GOOGLE.COM.
+floehopper.org. 3600 IN MX 30 ASPMX2.GOOGLEMAIL.COM.
+floehopper.org. 3600 IN MX 20 ALT2.ASPMX.L.GOOGLE.COM.
+floehopper.org. 3600 IN MX 30 ASPMX4.GOOGLEMAIL.COM.
+floehopper.org. 3600 IN MX 30 ASPMX3.GOOGLEMAIL.COM.
+floehopper.org. 3600 IN MX 30 ASPMX5.GOOGLEMAIL.COM.
+floehopper.org. 3600 IN TXT "v=spf1 include:aspmx.googlemail.com ~all"
+floehopper.org. 3600 IN TXT "google-site-verification=j56IZCpVonL_M2lhg4v_NRa8O8Xt6Vq2pASiiQaE4-w"
+floehopper.org. 3600 IN TXT "google-site-verification=QB_Eb59cVRyQPgKsR9ewtn_lSnnW2FIag4jLVGoCF7Q"
+blog.floehopper.org. 3600 IN CNAME ds9urxfjy1a0p.cloudfront.net.
+www.floehopper.org. 3600 IN CNAME d4a735r2yikd1.cloudfront.net.
+; floehopper.org. 3600 IN ALIAS dndigmipc1vgm.cloudfront.net.
+_7645ef61d1ee6ecf655ee57047d777df.www.floehopper.org. 3600 IN CNAME _99f80249371db9f7613e3a4fc1f6870e.rlltrpyzyf.acm-validations.aws.
+_9722afa08c3f862abad918945d549f60.blog.floehopper.org. 3600 IN CNAME _81771e63f24de87ee2d769a5c614a3a4.rlltrpyzyf.acm-validations.aws.
+_dcbe587a46c2b9b8043bed08ae9bbada.floehopper.org. 3600 IN CNAME _f55d7bc6db34524ab9095900035fe316.tfmgdnztqk.acm-validations.aws.
+_fad32629025a03949904dcdd11de33a8.feeds.floehopper.org. 3600 IN CNAME _fe3c97af0fea04e62941ebcd26c76cc9.rlltrpyzyf.acm-validations.aws.
+calendar.floehopper.org. 3600 IN CNAME ghs.google.com.
+docs.floehopper.org. 3600 IN CNAME ghs.google.com.
+feeds.floehopper.org. 3600 IN CNAME dyt4n40fso3l7.cloudfront.net.
+google.floehopper.org. 3600 IN CNAME ghs.google.com.
+google835c78466cc39885.floehopper.org. 3600 IN CNAME google.com.
+googleffffffffaa715ec2.floehopper.org. 3600 IN CNAME google.com.
+mail.floehopper.org. 3600 IN CNAME ghs.google.com.
+tumble.floehopper.org. 3600 IN CNAME domains.tumblr.com.

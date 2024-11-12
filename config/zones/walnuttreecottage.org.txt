@@ -1,0 +1,18 @@
+$ORIGIN walnuttreecottage.info.
+$TTL 1h
+walnuttreecottage.info. 3600 IN SOA ns1.dnsimple.com. admin.dnsimple.com. 1731317530 86400 7200 604800 300
+walnuttreecottage.info. 3600 IN NS ns1.dnsimple.com.
+walnuttreecottage.info. 3600 IN NS ns2.dnsimple-edge.net.
+walnuttreecottage.info. 3600 IN NS ns3.dnsimple.com.
+walnuttreecottage.info. 3600 IN NS ns4.dnsimple-edge.org.
+walnuttreecottage.info. 3600 IN A 217.70.184.38
+walnuttreecottage.info. 3600 IN MX 30 ASPMX5.GOOGLEMAIL.COM.
+walnuttreecottage.info. 3600 IN MX 10 ASPMX.L.GOOGLE.COM.
+walnuttreecottage.info. 3600 IN MX 30 ASPMX3.GOOGLEMAIL.COM.
+walnuttreecottage.info. 3600 IN MX 30 ASPMX2.GOOGLEMAIL.COM.
+walnuttreecottage.info. 3600 IN MX 20 ALT1.ASPMX.L.GOOGLE.COM.
+walnuttreecottage.info. 3600 IN MX 30 ASPMX4.GOOGLEMAIL.COM.
+walnuttreecottage.info. 3600 IN MX 20 ALT2.ASPMX.L.GOOGLE.COM.
+walnuttreecottage.info. 3600 IN TXT "google-site-verification=cljcgkumr2N_JjT0PBCSFtfUxKMrpPNojLj5Gf7QvUo"
+walnuttreecottage.info. 3600 IN TXT "v=spf1 include:aspmx.googlemail.com ~all"
+www.walnuttreecottage.info. 3600 IN CNAME lizmead.github.com.

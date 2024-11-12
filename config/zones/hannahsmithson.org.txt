@@ -1,0 +1,11 @@
+@ 10800 IN SOA ns1.gandi.net. hostmaster.gandi.net. 1720187400 10800 3600 604800 10800
+@ 300 IN ALIAS d9rc1kph63ymk.cloudfront.net
+@ 10800 IN NS ns-125-a.gandi.net.
+@ 10800 IN NS ns-92-b.gandi.net.
+@ 10800 IN NS ns-96-c.gandi.net.
+_23abe51caeb9e6860afcf4cc8065ea96 300 IN CNAME _92c21d56812ae1ca73751df1270529b5.hkmpvcwbzw.acm-validations.aws.
+_84bc06e221d6d337773dcbc807457bfa.www 300 IN CNAME _6f5350e2c7e6289d044af27759d54f1a.hkmpvcwbzw.acm-validations.aws.
+hannahsmithson.org 300 IN NS a.dns.gandi.net.
+hannahsmithson.org 300 IN NS b.dns.gandi.net.
+hannahsmithson.org 300 IN NS c.dns.gandi.net.
+www 300 IN CNAME d293jeb72tnoak.cloudfront.net.
