@@ -1,6 +1,6 @@
 $ORIGIN jamesmead.org.
 $TTL 1h
-jamesmead.org. 3600 IN SOA ns1.dnsimple.com. admin.dnsimple.com. 1731330605 86400 7200 604800 300
+jamesmead.org. 3600 IN SOA ns1.dnsimple.com. admin.dnsimple.com. 1731330607 86400 7200 604800 300
 jamesmead.org. 3600 IN NS ns1.dnsimple.com.
 jamesmead.org. 3600 IN NS ns2.dnsimple-edge.net.
 jamesmead.org. 3600 IN NS ns3.dnsimple.com.
@@ -14,3 +14,5 @@ twitter.jamesmead.org. 3600 IN CNAME floehopper.github.io.
 ; jamesmead.org. 3600 IN ALIAS floehopper.github.io.
 _1cca3b1e23410b844c88fd4c8d1a8675.r.jamesmead.org. 3600 IN CNAME _96a09097f6c8a15a1bcd8b6e247f7749.xjncphngnr.acm-validations.aws.
 _7880717bc4fcee5089d34e3ed359f0b8.feeds.jamesmead.org. 3600 IN CNAME _45ed0f1178ddf6ed08a19f4374922844.rlltrpyzyf.acm-validations.aws.
+jamesmead.org. 3600 IN TXT "v=spf1 -all"
+jamesmead.org. 3600 IN TXT "v=DMARC1; p=reject;"
