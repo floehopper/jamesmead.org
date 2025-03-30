@@ -19,7 +19,7 @@ Configure HTML Beautifier as [a formatter][zed-editor-formatter] for ERB files a
             {
               "external": {
                 "command": "bundle",
-                "arguments": ["exec", "htmlbeautifier", "-b", "1"]
+                "arguments": ["exec", "htmlbeautifier", "--keep-blank-lines", "1"]
               }
             }
           ]
@@ -29,7 +29,7 @@ Configure HTML Beautifier as [a formatter][zed-editor-formatter] for ERB files a
             {
               "external": {
                 "command": "bundle",
-                "arguments": ["exec", "htmlbeautifier", "-b", "1"]
+                "arguments": ["exec", "htmlbeautifier", "--keep-blank-lines", "1"]
               }
             }
           ]
