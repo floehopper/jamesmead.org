@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Mocha Mailing List Move - James Mead</title>
+    <title>Configuring Zed editor to use HTML Beautifier as a formatter in ERB templates - James Mead</title>
 
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="keywords" content="ruby mock mocha mailman google group" />
     <meta name="author" content= "James Mead" />
 
     <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
@@ -27,14 +26,13 @@
 
     <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
 
-    <link rel="prev" href="/blog/2008-04-05-nasty-ruby-bug-affecting-test-unit" />
-    <link rel="next" href="/blog/2008-06-24-mocha-0-9-released" />
+    <link rel="prev" href="/blog/2025-03-30-configuring-zed-editor-to-use-erb-lint-as-formatter" />
     <link rel="first" href="/blog/2004-05-14-unit-tests-can-100-coverage-be-a-bad-thing" />
     <link rel="last" href="/blog/2025-03-30-configuring-zed-editor-to-use-htmlbeautifier-as-formatter-in-erb-template" />
     <link rel="index" href="/blog" />
 
   </head>
-  <body class="blog blog_2008-06-19-mocha-mailing-list-move" onload="prettyPrint()">
+  <body class="blog blog_2025-03-30-configuring-zed-editor-to-use-htmlbeautifier-as-formatter-in-erb-template" onload="prettyPrint()">
     <div id="doc">
       <div class="skip-links">
         <a href="#bd">Skip to main content</a>
@@ -59,23 +57,53 @@
       <main id="bd">
           <article class="h-entry">
     <header>
-      <h1 class="p-name">Mocha Mailing List Move</h1>
+      <h1 class="p-name">Configuring Zed editor to use HTML Beautifier as a formatter in ERB templates</h1>
     </header>
 
     <section class="e-content">
-      <p>The <a href="https://mocha.jamesmead.org/">Mocha</a> Mailing List has moved to <a href="http://groups.google.com/group/mocha-developer">Google Groups</a>.</p>
-<ul>
-	<li>Group name: mocha-developer</li>
-	<li>Group home page: http://groups.google.com/group/mocha-developer</li>
-	<li>Group email address mocha-developer@googlegroups.com</li>
-</ul>
+      <p>Following on from my previous post about <a href="/blog/2025-03-30-configuring-zed-editor-to-use-erb-lint-as-formatter">configuring Zed editor to use ERB Lint as a formatter</a>, here's how to configure <a href="https://zed.dev/">Zed</a> to use <a href="https://po-ru.com/">Paul</a>'s excellent <a href="https://github.com/threedaymonk/htmlbeautifier">HTML Beautifier</a> as a formatter in ERB templates.</p>
+
+<p>Configure HTML Beautifier as <a href="https://zed.dev/docs/configuring-languages?highlight=formatter#configuring-formatters">a formatter</a> for ERB files as well as HTML files by adding the following JSON to your Zed settings, either global or project-specific:</p>
+
+<pre>
+  <code class="prettyprint">
+    {
+      "languages": {
+        "ERB": {
+          "formatter": [
+            {
+              "external": {
+                "command": "bundle",
+                "arguments": ["exec", "htmlbeautifier", "-b", "1"]
+              }
+            }
+          ]
+        },
+        "HTML": {
+          "formatter": [
+            {
+              "external": {
+                "command": "bundle",
+                "arguments": ["exec", "htmlbeautifier", "-b", "1"]
+              }
+            }
+          ]
+        }
+      }
+    }
+  </code>
+</pre>
+
+<p>Note that I've added the HTML Beautifier formatter configuration <em>after</em> the ERB Lint formatter configuration for ERB files and that seems to work well.</p>
+
+
     </section>
 
     <footer>
       <p class="metadata">
-        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2008-06-19-mocha-mailing-list-move"><time class="dt-published" datetime="2008-06-19T20:32:38+00:00">19 Jun 2008 at 20:32</time></a>
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2025-03-30-configuring-zed-editor-to-use-htmlbeautifier-as-formatter-in-erb-template"><time class="dt-published" datetime="2025-03-30T17:05:00+00:00">30 Mar 2025 at 17:05</time></a>
       </p>
-      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2008-06-19-mocha-mailing-list-move">
+      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2025-03-30-configuring-zed-editor-to-use-htmlbeautifier-as-formatter-in-erb-template">
   <template id="webmention-template">
     <li class="webmention">
       <div>
@@ -96,8 +124,7 @@
 
 
           <nav id="navigation" aria-label="Inter-article">
-      <a href="/blog/2008-04-05-nasty-ruby-bug-affecting-test-unit" class="previous">&lt; Nasty Ruby Bug Affecting Test::Unit</a>
-      <a href="/blog/2008-06-24-mocha-0-9-released" class="next">Mocha 0.9 Released &gt;</a>
+      <a href="/blog/2025-03-30-configuring-zed-editor-to-use-erb-lint-as-formatter" class="previous">&lt; Configuring Zed editor to use ERB Lint as a formatter</a>
   </nav>
 
       </main>

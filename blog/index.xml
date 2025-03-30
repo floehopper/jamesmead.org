@@ -4,7 +4,55 @@
   <id>tag:jamesmead.org,2005:Typo</id>
   <link href="https://feeds.jamesmead.org/floehopper-blog" rel="self" type="application/atom+xml"/>
   <link href="https://jamesmead.org/" rel="alternate" type="text/html"/>
-  <updated>2025-03-30T15:06:10+00:00</updated>
+  <updated>2025-03-30T16:22:48+00:00</updated>
+  <entry>
+    <author>
+      <name>James Mead</name>
+    </author>
+    <id>urn:uuid:097d2eef-e198-4274-8d7e-bdfcd4aeb145</id>
+    <published>2025-03-30T17:05:00+00:00</published>
+    <updated>2025-03-30T17:05:00+00:00</updated>
+    <title>Configuring Zed editor to use HTML Beautifier as a formatter in ERB templates</title>
+    <link href="https://jamesmead.org/blog/2025-03-30-configuring-zed-editor-to-use-htmlbeautifier-as-formatter-in-erb-template" rel="alternate" type="text/html"/>
+    <content type="html">
+      &lt;p&gt;Following on from my previous post about &lt;a href=&quot;&#x2F;blog&#x2F;2025-03-30-configuring-zed-editor-to-use-erb-lint-as-formatter&quot;&gt;configuring Zed editor to use ERB Lint as a formatter&lt;&#x2F;a&gt;, here&#x27;s how to configure &lt;a href=&quot;https:&#x2F;&#x2F;zed.dev&#x2F;&quot;&gt;Zed&lt;&#x2F;a&gt; to use &lt;a href=&quot;https:&#x2F;&#x2F;po-ru.com&#x2F;&quot;&gt;Paul&lt;&#x2F;a&gt;&#x27;s excellent &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;threedaymonk&#x2F;htmlbeautifier&quot;&gt;HTML Beautifier&lt;&#x2F;a&gt; as a formatter in ERB templates.&lt;&#x2F;p&gt;
+
+&lt;p&gt;Configure HTML Beautifier as &lt;a href=&quot;https:&#x2F;&#x2F;zed.dev&#x2F;docs&#x2F;configuring-languages?highlight=formatter#configuring-formatters&quot;&gt;a formatter&lt;&#x2F;a&gt; for ERB files as well as HTML files by adding the following JSON to your Zed settings, either global or project-specific:&lt;&#x2F;p&gt;
+
+&lt;pre&gt;
+  &lt;code class=&quot;prettyprint&quot;&gt;
+    {
+      &quot;languages&quot;: {
+        &quot;ERB&quot;: {
+          &quot;formatter&quot;: [
+            {
+              &quot;external&quot;: {
+                &quot;command&quot;: &quot;bundle&quot;,
+                &quot;arguments&quot;: [&quot;exec&quot;, &quot;htmlbeautifier&quot;, &quot;-b&quot;, &quot;1&quot;]
+              }
+            }
+          ]
+        },
+        &quot;HTML&quot;: {
+          &quot;formatter&quot;: [
+            {
+              &quot;external&quot;: {
+                &quot;command&quot;: &quot;bundle&quot;,
+                &quot;arguments&quot;: [&quot;exec&quot;, &quot;htmlbeautifier&quot;, &quot;-b&quot;, &quot;1&quot;]
+              }
+            }
+          ]
+        }
+      }
+    }
+  &lt;&#x2F;code&gt;
+&lt;&#x2F;pre&gt;
+
+&lt;p&gt;Note that I&#x27;ve added the HTML Beautifier formatter configuration &lt;em&gt;after&lt;&#x2F;em&gt; the ERB Lint formatter configuration for ERB files and that seems to work well.&lt;&#x2F;p&gt;
+
+
+    </content>
+  </entry>
   <entry>
     <author>
       <name>James Mead</name>
@@ -999,71 +1047,6 @@ Completed 200 OK in 170ms (Views: 23.9ms)
   &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.tweag.io&#x2F;blog&#x2F;2020-06-25-eval-cache&#x2F;&quot;&gt;Nix Flakes, Part 2: Evaluation Caching&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
   &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.tweag.io&#x2F;blog&#x2F;2020-07-31-nixos-flakes&#x2F;&quot;&gt;Nix Flakes, Part 3: Managing NixOS Systems&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
-
-
-    </content>
-  </entry>
-  <entry>
-    <author>
-      <name>James Mead</name>
-    </author>
-    <id>urn:uuid:f20ea4f3-c444-4f85-8f31-8cc8e6b52824</id>
-    <published>2020-08-07T11:32:00+00:00</published>
-    <updated>2020-08-07T11:32:00+00:00</updated>
-    <title>Using nix to build my personal website</title>
-    <link href="https://jamesmead.org/blog/2020-08-07-using-nix-to-build-my-personal-website" rel="alternate" type="text/html"/>
-    <content type="html">
-      &lt;p&gt;This is a follow-up to my previous article about setting up &lt;a href=&quot;&#x2F;blog&#x2F;2020-07-26-a-simple-ruby-development-environment-using-nix-shell&quot;&gt;a simple Ruby development environment using nix-shell&lt;&#x2F;a&gt; in which I mentioned I wasn&#x27;t certain I&#x27;d &lt;em&gt;completely&lt;&#x2F;em&gt; specified the development environment. Although it&#x27;s a bit of a tangent from my main aim of configuring isolated &lt;em&gt;development&lt;&#x2F;em&gt; environments, I thought it would be instructive to modify &lt;a href=&quot;&#x2F;blog&#x2F;2019-09-07-using-github-actions-to-publish-a-static-site-to-github-pages&quot;&gt;the GitHub Action workflow that automatically publishes this website&lt;&#x2F;a&gt; to use &lt;a href=&quot;https:&#x2F;&#x2F;nixos.org&#x2F;&quot;&gt;nix&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
-
-&lt;h3 id=&quot;modifying-the-github-action-workflow-to-use-nix&quot;&gt;Modifying the GitHub action workflow to use nix&lt;&#x2F;h3&gt;
-
-&lt;p&gt;I found &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;cachix&#x2F;install-nix-action&quot;&gt;cachix&#x2F;install-nix-action&lt;&#x2F;a&gt; and decided to use it in my workflow along with the &lt;code&gt;shell.nix&lt;&#x2F;code&gt; &amp;amp; &lt;code&gt;gemset.nix&lt;&#x2F;code&gt; files I&#x27;d already created. I had to remove the specification of a &quot;ruby:2.6.6&quot; container image, because this did not include a number of packages required by the install-nix-action step to install nix. Removing this specification meant that the workflow fell back to using GitHub&#x27;s &quot;ubuntu-latest&quot; virtual environment which comes with &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;actions&#x2F;virtual-environments&#x2F;blob&#x2F;master&#x2F;images&#x2F;linux&#x2F;Ubuntu1804-README.md&quot;&gt;loads of OS packages&lt;&#x2F;a&gt; installed including those needed to install nix.&lt;&#x2F;p&gt;
-
-&lt;p&gt;I then inserted the install-nix-action step immediately after the existing &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;actions&#x2F;checkout&quot;&gt;actions&#x2F;checkout&lt;&#x2F;a&gt; step, removed the steps installing node.js and the bundled gems, and modified the step which built the website to run &lt;code&gt;nix-shell --command &#x27;middleman build&#x27;&lt;&#x2F;code&gt;, i.e. to build the site within the shell specified by &lt;code&gt;shell.nix&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
-
-&lt;p&gt;At this point slightly to my amazement, the build ran successfully!&lt;&#x2F;p&gt;
-
-&lt;pre&gt;&lt;code&gt;name: Continuous Deployment to GitHub Pages
-on:
-  push:
-    branches:
-      - main
-jobs:
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repo
-        uses: actions&#x2F;checkout@master
-      - uses: cachix&#x2F;install-nix-action@v10
-        with:
-          nix_path: nixpkgs=channel:nixos-unstable
-      - name: Build site
-        run: nix-shell --command &#x27;middleman build&#x27;
-      - name: Publish site
-        uses: maxheld83&#x2F;ghpages@v0.2.1
-        env:
-          GH_PAT: ${{ secrets.GH_PAT }}
-          BUILD_DIR: .&#x2F;build
-&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-
-&lt;p&gt;You can see all the changes I made in &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;jamesmead.org&#x2F;commit&#x2F;cee581de9849fa721bf621fe58553458b17e83c5&quot;&gt;this commit&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
-
-&lt;h3 id=&quot;observations&quot;&gt;Observations&lt;&#x2F;h3&gt;
-
-&lt;p&gt;As with the experience of running nix-shell on my local machine, I belatedly realised node.js was being made available by the GitHub virtual environment and not by nix-shell. I did spend a bit of time investigating this by basing the workflow on a minimal container image, but it turns out that it&#x27;s not trivial to prepare a container image suitable for installing nix. So I decided to give up at this point. Although it meant I still hadn&#x27;t definitively proved I&#x27;d &lt;em&gt;completely&lt;&#x2F;em&gt; specified the development environment, I&#x27;d convinced myself that I understood what was going on and could prove it given enough time!&lt;&#x2F;p&gt;
-
-&lt;p&gt;I was pleasantly surprised to see that the nix-based build were significantly quicker than the original build, even though the bundled gems were being cached in the latter. Some of the speed-up can be attributed to the fact that the nix-based build doesn&#x27;t have to spin up a separate container, but from a cursory look at the logs most of the gain seems to be in not having to install the bundled gems.&lt;&#x2F;p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;jamesmead.org&#x2F;actions&#x2F;runs&#x2F;183152555&quot;&gt;Building without nix-shell&lt;&#x2F;a&gt; 4 mins 48 secs&lt;&#x2F;li&gt;
-  &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;floehopper&#x2F;jamesmead.org&#x2F;actions&#x2F;runs&#x2F;183290575&quot;&gt;Building with nix-shell&lt;&#x2F;a&gt; 1 min 44 secs&lt;&#x2F;li&gt;
-&lt;&#x2F;ul&gt;
-
-&lt;h3 id=&quot;next-steps&quot;&gt;Next steps&lt;&#x2F;h3&gt;
-
-&lt;p&gt;While this was an interesting diversion, I plan to get back on track by creating a development environment for a simple Rails app, probably &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;freerange&#x2F;site&quot;&gt;this one&lt;&#x2F;a&gt; which doesn&#x27;t need a database.&lt;&#x2F;p&gt;
 
 
     </content>
