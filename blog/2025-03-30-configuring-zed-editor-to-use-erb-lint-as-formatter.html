@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Mocha Release 0.9.10 - James Mead</title>
+    <title>Configuring Zed editor to use ERB Lint as a formatter - James Mead</title>
 
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="Includes new unstubbing functionality." />
-    <meta name="keywords" content="mocha mock object testing ruby unstub exception" />
     <meta name="author" content= "James Mead" />
 
     <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
@@ -27,14 +25,13 @@
 
     <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
 
-    <link rel="prev" href="/blog/2010-10-22-mocha-release-0-9-9" />
-    <link rel="next" href="/blog/2011-01-20-debugging-monit" />
+    <link rel="prev" href="/blog/2022-11-01-mocha-v2-release" />
     <link rel="first" href="/blog/2004-05-14-unit-tests-can-100-coverage-be-a-bad-thing" />
     <link rel="last" href="/blog/2025-03-30-configuring-zed-editor-to-use-erb-lint-as-formatter" />
     <link rel="index" href="/blog" />
 
   </head>
-  <body class="blog blog_2010-11-25-mocha-release-0-9-10" onload="prettyPrint()">
+  <body class="blog blog_2025-03-30-configuring-zed-editor-to-use-erb-lint-as-formatter" onload="prettyPrint()">
     <div id="doc">
       <div class="skip-links">
         <a href="#bd">Skip to main content</a>
@@ -59,25 +56,70 @@
       <main id="bd">
           <article class="h-entry">
     <header>
-      <h1 class="p-name">Mocha Release 0.9.10</h1>
-        <h2 class="p-summary">Includes new unstubbing functionality.</h2>
+      <h1 class="p-name">Configuring Zed editor to use ERB Lint as a formatter</h1>
     </header>
 
     <section class="e-content">
-      <h2>Release Notes</h2>
+      <p>I've recently started using the <a href="https://zed.dev/">Zed editor</a> instead of VS Code. It took me a
+while to work out how to configure <a href="https://github.com/Shopify/erb_lint">ERB Lint</a> as a formatter, so hopefully this
+will save someone else some time.</p>
+
+<p>Write a shell script to run ERB Lint as follows:</p>
+
+<pre>
+  <code class="prettyprint">
+    #!/usr/bin/env sh
+
+    bundle exec erb_lint --autocorrect --stdin $1 2&gt;/dev/null \
+      | sed '1,/^================/d'
+  </code>
+</pre>
+
 <ul>
-	<li>Added <code>Mocha::ObjectMethods#unstub</code> method &#8211; see <a href="https://github.com/freerange/mocha/issues/6">GitHub issue</a>.</li>
-	<li>Inherit <code>Mocha::ExpectationError</code> from <code>Exception</code> instead of <code>StandardError</code> to reduce the chances of a test passing by accident &#8211; thanks to <a href="http://github.com/jsanders">James Sanders</a> &#8211; see <a href="https://github.com/freerange/mocha/issues/15">GitHub issue</a></li>
-	<li>Fixed <a href="https://github.com/freerange/mocha/issues/11">bug</a> &#8211; GitHub README page to link correctly to code examples</li>
-	<li>Fixed <a href="https://github.com/freerange/mocha/issues/14">bug</a> &#8211; <code>PASSTHROUGH_EXCEPTIONS</code> are defined on <code>MiniTest::Unit::TestCase</code> not in <code>Mocha</code> &#8211; thanks to <a href="http://github.com/blt">Brian Troutwine</a></li>
+  <li>Enable the option to automatically correct linting errors (<code>--autocorrect</code>)</li>
+  <li>Read the file content from standard input and specify the path supplied in
+the first command-line argument (<code>--stdin $1</code>)</li>
+  <li>Suppress irrelevant warnings &amp; error messages (<code>2&gt;/dev/null</code>)</li>
+  <li>Remove the preamble from the output to make it suitable for a Zed editor
+formatter (<code>sed '1,/^================/d'</code>)</li>
+  <li>Ensure the script is executable (<code>chmod +x erb-lint-formatter</code>)</li>
 </ul>
+
+<p>Configure ERB Lint as <a href="https://zed.dev/docs/configuring-languages?highlight=formatter#configuring-formatters">a formatter</a> by adding the
+following JSON to your Zed settings, either global or project-specific,
+replacing <code>$PATH_TO_FORMATTER</code> with the path to the shell script you created
+above:</p>
+
+<pre>
+  <code class="prettyprint">
+    {
+      "languages": {
+        "ERB": {
+          "formatter": [
+            {
+              "external": {
+                "command": "$PATH_TO_FORMATTER/erb-lint-formatter",
+                "arguments": ["{buffer_path}"]
+              }
+            }
+          ]
+        }
+      }
+    }
+  </code>
+</pre>
+
+<p>Zed sets the <code>{buffer_path}</code> placeholder to the path of the buffer currently
+being edited.</p>
+
+
     </section>
 
     <footer>
       <p class="metadata">
-        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2010-11-25-mocha-release-0-9-10"><time class="dt-published" datetime="2010-11-25T16:29:36+00:00">25 Nov 2010 at 16:29</time></a>
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2025-03-30-configuring-zed-editor-to-use-erb-lint-as-formatter"><time class="dt-published" datetime="2025-03-30T15:46:00+00:00">30 Mar 2025 at 15:46</time></a>
       </p>
-      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2010-11-25-mocha-release-0-9-10">
+      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2025-03-30-configuring-zed-editor-to-use-erb-lint-as-formatter">
   <template id="webmention-template">
     <li class="webmention">
       <div>
@@ -98,8 +140,7 @@
 
 
           <nav id="navigation" aria-label="Inter-article">
-      <a href="/blog/2010-10-22-mocha-release-0-9-9" class="previous">&lt; Mocha Release 0.9.9</a>
-      <a href="/blog/2011-01-20-debugging-monit" class="next">Debugging Monit &gt;</a>
+      <a href="/blog/2022-11-01-mocha-v2-release" class="previous">&lt; Mocha v2 release</a>
   </nav>
 
       </main>

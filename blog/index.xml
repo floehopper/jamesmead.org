@@ -4,7 +4,72 @@
   <id>tag:jamesmead.org,2005:Typo</id>
   <link href="https://feeds.jamesmead.org/floehopper-blog" rel="self" type="application/atom+xml"/>
   <link href="https://jamesmead.org/" rel="alternate" type="text/html"/>
-  <updated>2025-01-22T13:53:03+00:00</updated>
+  <updated>2025-03-30T14:55:32+00:00</updated>
+  <entry>
+    <author>
+      <name>James Mead</name>
+    </author>
+    <id>urn:uuid:c6548610-46c8-4f3d-853f-b28d5d389475</id>
+    <published>2025-03-30T15:46:00+00:00</published>
+    <updated>2025-03-30T15:46:00+00:00</updated>
+    <title>Configuring Zed editor to use ERB Lint as a formatter</title>
+    <link href="https://jamesmead.org/blog/2025-03-30-configuring-zed-editor-to-use-erb-lint-as-formatter" rel="alternate" type="text/html"/>
+    <content type="html">
+      &lt;p&gt;I&#x27;ve recently started using the &lt;a href=&quot;https:&#x2F;&#x2F;zed.dev&#x2F;&quot;&gt;Zed editor&lt;&#x2F;a&gt; instead of VS Code. It took me a
+while to work out how to configure &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;Shopify&#x2F;erb_lint&quot;&gt;ERB Lint&lt;&#x2F;a&gt; as a formatter, so hopefully this
+will save someone else some time.&lt;&#x2F;p&gt;
+
+&lt;p&gt;Write a shell script to run ERB Lint as follows:&lt;&#x2F;p&gt;
+
+&lt;pre&gt;
+  &lt;code class=&quot;prettyprint&quot;&gt;
+    #!&#x2F;usr&#x2F;bin&#x2F;env sh
+
+    bundle exec erb_lint --autocorrect --stdin $1 2&amp;gt;&#x2F;dev&#x2F;null \
+      | sed &#x27;1,&#x2F;^================&#x2F;d&#x27;
+  &lt;&#x2F;code&gt;
+&lt;&#x2F;pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Enable the option to automatically correct linting errors (&lt;code&gt;--autocorrect&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+  &lt;li&gt;Read the file content from standard input and specify the path supplied in
+the first command-line argument (&lt;code&gt;--stdin $1&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+  &lt;li&gt;Suppress irrelevant warnings &amp;amp; error messages (&lt;code&gt;2&amp;gt;&#x2F;dev&#x2F;null&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+  &lt;li&gt;Remove the preamble from the output to make it suitable for a Zed editor
+formatter (&lt;code&gt;sed &#x27;1,&#x2F;^================&#x2F;d&#x27;&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+  &lt;li&gt;Ensure the script is executable (&lt;code&gt;chmod +x erb-lint-formatter&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+
+&lt;p&gt;Configure ERB Lint as &lt;a href=&quot;https:&#x2F;&#x2F;zed.dev&#x2F;docs&#x2F;configuring-languages?highlight=formatter#configuring-formatters&quot;&gt;a formatter&lt;&#x2F;a&gt; by adding the
+following JSON to your Zed settings, either global or project-specific,
+replacing &lt;code&gt;$PATH_TO_FORMATTER&lt;&#x2F;code&gt; with the path to the shell script you created
+above:&lt;&#x2F;p&gt;
+
+&lt;pre&gt;
+  &lt;code class=&quot;prettyprint&quot;&gt;
+    {
+      &quot;languages&quot;: {
+        &quot;ERB&quot;: {
+          &quot;formatter&quot;: [
+            {
+              &quot;external&quot;: {
+                &quot;command&quot;: &quot;$PATH_TO_FORMATTER&#x2F;erb-lint-formatter&quot;,
+                &quot;arguments&quot;: [&quot;{buffer_path}&quot;]
+              }
+            }
+          ]
+        }
+      }
+    }
+  &lt;&#x2F;code&gt;
+&lt;&#x2F;pre&gt;
+
+&lt;p&gt;Zed sets the &lt;code&gt;{buffer_path}&lt;&#x2F;code&gt; placeholder to the path of the buffer currently
+being edited.&lt;&#x2F;p&gt;
+
+
+    </content>
+  </entry>
   <entry>
     <author>
       <name>James Mead</name>
@@ -999,78 +1064,6 @@ jobs:
 &lt;h3 id=&quot;next-steps&quot;&gt;Next steps&lt;&#x2F;h3&gt;
 
 &lt;p&gt;While this was an interesting diversion, I plan to get back on track by creating a development environment for a simple Rails app, probably &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;freerange&#x2F;site&quot;&gt;this one&lt;&#x2F;a&gt; which doesn&#x27;t need a database.&lt;&#x2F;p&gt;
-
-
-    </content>
-  </entry>
-  <entry>
-    <author>
-      <name>James Mead</name>
-    </author>
-    <id>urn:uuid:62c8f224-9da6-40c6-922e-ced9305a513f</id>
-    <published>2020-07-26T14:01:00+00:00</published>
-    <updated>2020-07-26T14:01:00+00:00</updated>
-    <title>A simple Ruby development environment using nix-shell</title>
-    <link href="https://jamesmead.org/blog/2020-07-26-a-simple-ruby-development-environment-using-nix-shell" rel="alternate" type="text/html"/>
-    <content type="html">
-      &lt;p&gt;I&#x27;ve been playing around with the the &lt;a href=&quot;https:&#x2F;&#x2F;nixos.org&#x2F;&quot;&gt;nix&lt;&#x2F;a&gt; package manager recently. At the moment I&#x27;m mainly interested in seeing whether I can use it to configure isolated &lt;em&gt;development&lt;&#x2F;em&gt; environments for various projects with varying package dependencies. The classic case of this would be two &lt;a href=&quot;https:&#x2F;&#x2F;rubyonrails.org&#x2F;&quot;&gt;Rails&lt;&#x2F;a&gt; apps, one using &lt;a href=&quot;https:&#x2F;&#x2F;www.postgresql.org&#x2F;&quot;&gt;PostgreSQL&lt;&#x2F;a&gt; and the other using &lt;a href=&quot;https:&#x2F;&#x2F;www.mysql.com&#x2F;&quot;&gt;MySQL&lt;&#x2F;a&gt;. Ideally I&#x27;d like development environments which completely specify all the projects dependencies and make &lt;em&gt;only&lt;&#x2F;em&gt; those dependencies available in the relevant development environment.&lt;&#x2F;p&gt;
-
-&lt;p&gt;It&#x27;s not unusual for me to need multiple versions of PostgreSQL and MySQL installed at the same time for different projects. While it is possible to do this using &lt;a href=&quot;https:&#x2F;&#x2F;brew.sh&#x2F;&quot;&gt;Homebrew&lt;&#x2F;a&gt;, I&#x27;ve never found it very straightforward. At &lt;a href=&quot;https:&#x2F;&#x2F;gofreerange.com&#x2F;&quot;&gt;Go Free Range&lt;&#x2F;a&gt;, we&#x27;ve often used &lt;a href=&quot;https:&#x2F;&#x2F;www.vagrantup.com&#x2F;&quot;&gt;Vagrant&lt;&#x2F;a&gt; to tackle this problem and more recently I&#x27;ve had some success using &lt;a href=&quot;https:&#x2F;&#x2F;www.docker.com&#x2F;&quot;&gt;Docker&lt;&#x2F;a&gt; and &lt;a href=&quot;https:&#x2F;&#x2F;docs.docker.com&#x2F;compose&#x2F;&quot;&gt;docker-compose&lt;&#x2F;a&gt; using a similar approach to &lt;a href=&quot;https:&#x2F;&#x2F;evilmartians.com&#x2F;chronicles&#x2F;ruby-on-whales-docker-for-ruby-rails-development&quot;&gt;the Evil Martians&lt;&#x2F;a&gt;. However, the former has always seemed like overkill and uses a lot of resources, while the latter often introduces extra orchestration complexity, because of the affordances which push you towards only having one process per container.&lt;&#x2F;p&gt;
-
-&lt;h3 id=&quot;familiarising-myself-with-nix&quot;&gt;Familiarising myself with nix&lt;&#x2F;h3&gt;
-
-&lt;p&gt;I ran into a minor hitch when installing nix on my laptop which is running MacOS Catalina, but this was soon resolved when someone &lt;a href=&quot;https:&#x2F;&#x2F;nixos.trydiscourse.com&#x2F;t&#x2F;installing-nix-on-macos-catalina-with-encrypted-boot-volume&#x2F;7833&quot;&gt;answered my question in the nix forums&lt;&#x2F;a&gt;. I then spent a while watching some of the videos from Burke Libby&#x27;s excellent &lt;a href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;playlist?list=PLRGI9KQ3_HP_OFRG6R-p4iFgMSK1t5BHs&quot;&gt;Nixology Youtube series&lt;&#x2F;a&gt;, reading his &lt;a href=&quot;https:&#x2F;&#x2F;engineering.shopify.com&#x2F;blogs&#x2F;engineering&#x2F;what-is-nix&quot;&gt;What is Nix&lt;&#x2F;a&gt; article on the Shopify engineering blog, working through some of the &lt;a href=&quot;https:&#x2F;&#x2F;nixcloud.io&#x2F;tour&#x2F;&quot;&gt;nix expression language tutorial&lt;&#x2F;a&gt; and reading bits of the &lt;a href=&quot;https:&#x2F;&#x2F;nix.dev&#x2F;&quot;&gt;nix.dev guide&lt;&#x2F;a&gt;, all while playing around with nix in a terminal on my laptop.&lt;&#x2F;p&gt;
-
-&lt;p&gt;Playing around like this is all very well, but I find that I only really start learning about things when I try to use them for real. Although eventually I want to use nix to create development environments for Rails apps, I thought I&#x27;d start with something much simpler - this website which is a static site generated using the &lt;a href=&quot;https:&#x2F;&#x2F;middlemanapp.com&#x2F;&quot;&gt;middleman&lt;&#x2F;a&gt; Ruby library.&lt;&#x2F;p&gt;
-
-&lt;h3 id=&quot;a-ruby-development-environment-using-nix-shell&quot;&gt;A Ruby development environment using nix-shell&lt;&#x2F;h3&gt;
-
-&lt;p&gt;Firstly I installed &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nix-community&#x2F;bundix&quot;&gt;bundix&lt;&#x2F;a&gt; using &lt;code&gt;nix-env --install bundix&lt;&#x2F;code&gt;. Since I already had a &lt;code&gt;Gemfile.lock&lt;&#x2F;code&gt;, I used &lt;code&gt;bundix --init --ruby=ruby_2_6&lt;&#x2F;code&gt; to generate a &lt;code&gt;gemset.nix&lt;&#x2F;code&gt; and (because of the &lt;code&gt;--init&lt;&#x2F;code&gt; option) a skeleton &lt;code&gt;shell.nix&lt;&#x2F;code&gt;. I needed to specify the Ruby version, because I didn&#x27;t want the latest version, v2.7 at the time of writing.&lt;&#x2F;p&gt;
-
-&lt;p&gt;At this point I realised, much like with other OS-level package managers, there isn&#x27;t a simple way to specify the patch version of Ruby in nix; instead you have to use whatever patch version is in your current version of &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;NixOS&#x2F;nixpkgs&quot;&gt;nixpkgs&lt;&#x2F;a&gt;. So to cope with that, I upgraded the version of Ruby used in &lt;code&gt;Gemfile&lt;&#x2F;code&gt; &amp;amp; &lt;code&gt;Gemfile.lock&lt;&#x2F;code&gt; from v2.6.5 to v2.6.6, currently the latest patch release of v2.6. I&#x27;ve read that it&#x27;s possible to pin the version of nixpkgs to an older version if you want a specific patch version of Ruby, but I haven&#x27;t tried that out yet. While I was at it, I upgraded &lt;a href=&quot;https:&#x2F;&#x2F;bundler.io&#x2F;&quot;&gt;bundler&lt;&#x2F;a&gt; from v2.0.2 to v2.1.4, the version included in Ruby v2.6.6, and ran &lt;code&gt;bundle install&lt;&#x2F;code&gt; to update the version recorded against &lt;code&gt;BUNDLED_WITH&lt;&#x2F;code&gt; in &lt;code&gt;Gemfile.lock&lt;&#x2F;code&gt; before re-generating the &lt;code&gt;gemset.nix&lt;&#x2F;code&gt; as described above.&lt;&#x2F;p&gt;
-
-&lt;p&gt;I then ran &lt;code&gt;nix-shell&lt;&#x2F;code&gt; to see whether the development environment had been setup correctly. Running &lt;code&gt;which ruby&lt;&#x2F;code&gt; I discovered that it was still (incorrectly) pointing at my &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rbenv&#x2F;rbenv&quot;&gt;rbenv&lt;&#x2F;a&gt;. I fixed this by adding &lt;code&gt;ruby&lt;&#x2F;code&gt; to the array of &lt;code&gt;buildInputs&lt;&#x2F;code&gt; in &lt;code&gt;shell.nix&lt;&#x2F;code&gt;. Now &lt;code&gt;which ruby&lt;&#x2F;code&gt; was (correctly) pointing at the Ruby in the nix-store.&lt;&#x2F;p&gt;
-
-&lt;p&gt;Running &lt;code&gt;middleman build&lt;&#x2F;code&gt; triggered a &lt;code&gt;Bundler::GemNotFound&lt;&#x2F;code&gt; exception with the message: &quot;Could not find RedCloth-4.3.2 in any of the sources&quot;. I fixed this by removing the &lt;code&gt;.bundle&#x2F;config&lt;&#x2F;code&gt; file from my home directory - I normally use this to set &lt;code&gt;BUNDLE_PATH&lt;&#x2F;code&gt; to &lt;code&gt;.bundle&#x2F;gems&lt;&#x2F;code&gt; and
-&lt;code&gt;BUNDLE_BIN&lt;&#x2F;code&gt; to &lt;code&gt;.bundle&#x2F;bin&lt;&#x2F;code&gt; so that the bundled gems for a project are saved within a &lt;code&gt;.bundle&lt;&#x2F;code&gt; directory in each project directory, i.e. the gems for different projects are isolated from each other. Removing this configuration file seemed to do the trick and the website was built successfully.&lt;&#x2F;p&gt;
-
-&lt;p&gt;I was actually a bit surprised that the build succeeded since my Vagrant- &amp;amp; Docker-based development environments had both &lt;em&gt;explicitly&lt;&#x2F;em&gt; installed &lt;a href=&quot;https:&#x2F;&#x2F;nodejs.org&#x2F;&quot;&gt;node.js&lt;&#x2F;a&gt;. Investigating this I realised that node.js was being made available from &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nvm-sh&#x2F;nvm&quot;&gt;nvm&lt;&#x2F;a&gt; via the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rails&#x2F;execjs&quot;&gt;execjs&lt;&#x2F;a&gt; gem and highlighted the fact that my nix-shell development environment wasn&#x27;t actually very isolated, because I still had things like nvm in my &lt;code&gt;PATH&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
-
-&lt;p&gt;When I removed the nvm config from the shell, execjs fell back to providing node.js from Homebrew, and when I removed the the Homebrew config from the shell, it fell back to prodiving node.js from the &lt;a href=&quot;https:&#x2F;&#x2F;developer.apple.com&#x2F;documentation&#x2F;javascriptcore&quot;&gt;JavaScriptCore framework&lt;&#x2F;a&gt; in MacOS! Anyway, all this convinced me that I should include an explicit dependency on node.js in my nix-shell development environment and so I added &lt;code&gt;nodejs&lt;&#x2F;code&gt; to the list of &lt;code&gt;buildInputs&lt;&#x2F;code&gt; in &lt;code&gt;shell.nix&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
-
-&lt;pre&gt;&lt;code&gt;with (import &amp;lt;nixpkgs&amp;gt; {});
-let
-  ruby = ruby_2_6;
-  env = bundlerEnv {
-    name = &quot;jamesmead.org-bundler-env&quot;;
-    inherit ruby;
-    gemdir = .&#x2F;.;
-  };
-in stdenv.mkDerivation {
-  name = &quot;jamesmead.org&quot;;
-  buildInputs = [ env ruby nodejs ];
-}
-&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-
-&lt;h3 id=&quot;conclusions&quot;&gt;Conclusions&lt;&#x2F;h3&gt;
-
-&lt;p&gt;At this point I was pretty convinced (although not certain) I had a completely specified development environment for my personal website and I&#x27;d learned a few things along the way…&lt;&#x2F;p&gt;
-
-&lt;p&gt;Although I can see why nix doesn&#x27;t cater for specifying patch versions of Ruby, I feel as if I have needed this in development environments in the past and I&#x27;m not sure I&#x27;m ready to lose this capability provided by the likes of rbenv.&lt;&#x2F;p&gt;
-
-&lt;p&gt;As I understand it, &lt;code&gt;gemset.nix&lt;&#x2F;code&gt; is effectively a translation of &lt;code&gt;Gemfile.lock&lt;&#x2F;code&gt; into a list of nix derivations which are then included in my nix-shell environment by &lt;code&gt;shell.nix&lt;&#x2F;code&gt; via &lt;code&gt;bundlerEnv&lt;&#x2F;code&gt;. I think the effect of this is that you don&#x27;t need to run &lt;code&gt;bundle install&lt;&#x2F;code&gt; within the nix-shell environment, but I&#x27;m wondering whether this benefit is worth the extra hassle of keeping &lt;code&gt;gemset.nix&lt;&#x2F;code&gt; up-to-date with &lt;code&gt;Gemfile.lock&lt;&#x2F;code&gt;. However, perhaps the benefits would be more apparent if you have a lot of gems, particularly some with native extensions.&lt;&#x2F;p&gt;
-
-&lt;p&gt;I&#x27;m now wondering whether a sensible half-way house for a development environment is to continue to use rbenv, nvm, bundler and npm in the normal way, but use nix to provide OS-level packages (e.g. PostgreSQL, MySQL, etc) as an alternative to Homebrew.&lt;&#x2F;p&gt;
-
-&lt;h3 id=&quot;next-steps&quot;&gt;Next steps&lt;&#x2F;h3&gt;
-
-&lt;p&gt;As I mentioned earlier, at this point I wasn&#x27;t certain that I had a completely specified development environment. I could have tried it out on a Vagrant VM or a Docker container, but instead I decided to make use of it in the GitHub Action workflow that automatically publishes this website which I&#x27;ve written about &lt;a href=&quot;&#x2F;blog&#x2F;2019-09-07-using-github-actions-to-publish-a-static-site-to-github-pages&quot;&gt;previously&lt;&#x2F;a&gt;. I&#x27;ll write about my experience of doing that in a separate article.&lt;&#x2F;p&gt;
-
-&lt;p&gt;Having tackled a relatively trivial Ruby application, I&#x27;d like to try the same approach with a simple Rails app. The most obvious candidate is the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;freerange&#x2F;site&quot;&gt;Go Free Range website&lt;&#x2F;a&gt; which is a Rails app with no database. I&#x27;ll let you know how I get on.&lt;&#x2F;p&gt;
-
-&lt;h3 id=&quot;further-reading&quot;&gt;Further reading&lt;&#x2F;h3&gt;
-
-&lt;p&gt;After writing this article, I came across Farid Zakaria&#x27;s article, &lt;a href=&quot;https:&#x2F;&#x2F;fzakaria.com&#x2F;2020&#x2F;07&#x2F;18&#x2F;what-is-bundlerenv-doing.html&quot;&gt;what is bundlerEnv doing?&lt;&#x2F;a&gt;, which I can highly recommend if you want to understand more about what&#x27;s going on under the hood of the whole &lt;code&gt;bundix&lt;&#x2F;code&gt;, &lt;code&gt;gemset.nix&lt;&#x2F;code&gt; and &lt;code&gt;bundlerEnv&lt;&#x2F;code&gt; malarkey.&lt;&#x2F;p&gt;
 
 
     </content>
