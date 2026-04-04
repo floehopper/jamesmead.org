@@ -4,7 +4,24 @@
   <id>tag:jamesmead.org,2005:Typo</id>
   <link href="https://feeds.jamesmead.org/floehopper-blog" rel="self" type="application/atom+xml"/>
   <link href="https://jamesmead.org/" rel="alternate" type="text/html"/>
-  <updated>2026-03-29T11:23:40+00:00</updated>
+  <updated>2026-04-04T20:32:06+00:00</updated>
+  <entry>
+    <author>
+      <name>James Mead</name>
+    </author>
+    <id>urn:uuid:58190639-2d4e-408c-9bdb-9f0e4baf2531</id>
+    <published>2026-04-04T21:30:00+01:00</published>
+    <updated>2026-04-04T21:30:00+01:00</updated>
+    <title>Adding human.json to my website</title>
+    <link href="https://jamesmead.org/blog/2026-04-04-adding-human-json-to-my-website" rel="alternate" type="text/html"/>
+    <content type="html">
+      &lt;p&gt;Prompted by reading &lt;a href=&quot;https:&#x2F;&#x2F;tzovar.as&#x2F;maintaining-a-human-web-with-humans-json-aiblacklist&#x2F;&quot;&gt;this blog post by Bastian Tzovaras&lt;&#x2F;a&gt;, I&#x27;ve added &lt;a href=&quot;&#x2F;human.json&quot;&gt;a &lt;code&gt;human.json&lt;&#x2F;code&gt; file&lt;&#x2F;a&gt; to this website to assert my authorship of the content and vouch for the &quot;humanity&quot; of other websites. &lt;a href=&quot;https:&#x2F;&#x2F;codeberg.org&#x2F;robida&#x2F;human.json&#x2F;src&#x2F;commit&#x2F;ef5adcdea90fe935d5ac3cf983006585fbae4134&#x2F;README.md&quot;&gt;The human.json protocol&lt;&#x2F;a&gt; uses URL ownership as identity and trust propagates through a crawlable web of &quot;vouches&quot; between sites. I&#x27;ve also added &lt;a href=&quot;https:&#x2F;&#x2F;slashpages.net&#x2F;&quot;&gt;an IndieWeb slashpage&lt;&#x2F;a&gt; to explain that &lt;a href=&quot;&#x2F;ai&quot;&gt;I don&#x27;t use generative AI to create content on this website&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+
+&lt;p&gt;If we know each other and you avoid using &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Generative_AI&quot;&gt;generative AI&lt;&#x2F;a&gt; on your website, &lt;a href=&quot;&#x2F;contact&quot;&gt;let me know&lt;&#x2F;a&gt; and I&#x27;ll add a &quot;vouch&quot; for you.&lt;&#x2F;p&gt;
+
+
+    </content>
+  </entry>
   <entry>
     <author>
       <name>James Mead</name>
@@ -966,86 +983,6 @@ nix-shell&amp;gt; open http:&#x2F;&#x2F;localhost:3000&#x2F;
   &lt;li&gt;
     &lt;p&gt;At various points I&#x27;ve found it useful to dive into the source code of the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;NixOS&#x2F;nixpkgs&#x2F;tree&#x2F;master&#x2F;pkgs&#x2F;development&#x2F;ruby-modules&quot;&gt;Nix Ruby modules&lt;&#x2F;a&gt;. This was particularly useful when I was trying to understand how Bundix worked.&lt;&#x2F;p&gt;
   &lt;&#x2F;li&gt;
-&lt;&#x2F;ul&gt;
-
-
-    </content>
-  </entry>
-  <entry>
-    <author>
-      <name>James Mead</name>
-    </author>
-    <id>urn:uuid:ba59ac01-51b5-4916-94ea-ebd1d1dec01e</id>
-    <published>2020-09-10T18:21:00+00:00</published>
-    <updated>2020-09-11T09:28:00+00:00</updated>
-    <title>A simple Rails development environment using nix-shell</title>
-    <link href="https://jamesmead.org/blog/2020-09-10-a-simple-rails-development-environment-using-nix-shell" rel="alternate" type="text/html"/>
-    <content type="html">
-      &lt;p&gt;This follows on from my previous article about setting up &lt;a href=&quot;&#x2F;blog&#x2F;2020-07-26-a-simple-ruby-development-environment-using-nix-shell&quot;&gt;a simple Ruby development environment using nix-shell&lt;&#x2F;a&gt;. The next thing I wanted to try was to set up a simple Rails development environment. To this end I decided to focus on &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;freerange&#x2F;site&quot;&gt;the GFR website&lt;&#x2F;a&gt; which is a Rails app, but has the advantage that it doesn&#x27;t use a database.&lt;&#x2F;p&gt;
-
-&lt;p&gt;The &lt;code&gt;Gemfile&lt;&#x2F;code&gt; for this project specified Ruby v2.5.7 and so &lt;a href=&quot;&#x2F;blog&#x2F;2020-07-26-a-simple-ruby-development-environment-using-nix-shell#a-ruby-development-environment-using-nix-shell&quot;&gt;as before&lt;&#x2F;a&gt;, I &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;freerange&#x2F;site&#x2F;commit&#x2F;75ae0e850fd0d8bf9c7abf48a543fdc9607f3dc4#diff-8b7db4d5cc4b8f6dc8feb7030baa2478&quot;&gt;upgraded&lt;&#x2F;a&gt; it to use the latest v2.5 patch version, v2.5.8, so that I could use the ruby_2_5 package provided by nix.&lt;&#x2F;p&gt;
-
-&lt;p&gt;In a similar vein, the &lt;code&gt;Gemfile.lock&lt;&#x2F;code&gt; was &lt;code&gt;BUNDLED WITH&lt;&#x2F;code&gt; v1.17.3 of bundler; whereas the bundler version &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;NixOS&#x2F;nixpkgs&#x2F;blob&#x2F;b71dc9d264ef0bad32de437ec9105000c952654d&#x2F;pkgs&#x2F;development&#x2F;ruby-modules&#x2F;bundler&#x2F;default.nix#L7&quot;&gt;provided by nixpkgs&lt;&#x2F;a&gt; was v2.1.4. The line in &lt;code&gt;Gemfile.lock&lt;&#x2F;code&gt; wasn&#x27;t an enforced constraint and I didn&#x27;t want to break our Heroku deployment, so I compromised and upgraded to the v2 version of bundler &lt;a href=&quot;https:&#x2F;&#x2F;devcenter.heroku.com&#x2F;articles&#x2F;ruby-support#libraries&quot;&gt;supported by the Heroku Ruby buildpack&lt;&#x2F;a&gt;, i.e. v2.0.2.&lt;&#x2F;p&gt;
-
-&lt;p&gt;My &lt;code&gt;shell.nix&lt;&#x2F;code&gt; ended up like this:&lt;&#x2F;p&gt;
-
-&lt;pre&gt;&lt;code&gt;with (import &amp;lt;nixpkgs&amp;gt; {});
-let
-  env = bundlerEnv {
-    name = &quot;site-bundler-env&quot;;
-    ruby = ruby_2_5;
-    gemdir  = .&#x2F;.;
-  };
-in mkShell {
-  buildInputs = [ env env.wrappedRuby ];
-}
-&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-
-&lt;p&gt;The full set of changes including the &lt;code&gt;gemset.nix&lt;&#x2F;code&gt; generated by bundix are in &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;freerange&#x2F;site&#x2F;commit&#x2F;8e5f37af715829d27c57e0f5e8a38e6f36b44b01&quot;&gt;this commit&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
-
-&lt;p&gt;At this point I was surprised to discover that I could run &lt;code&gt;rails server&lt;&#x2F;code&gt; from within my &lt;code&gt;nix-shell&lt;&#x2F;code&gt; and everything worked perfectly! 🚀&lt;&#x2F;p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ nix-shell
-
-# ...
-
-$ rails s
-=&amp;gt; Booting Puma
-=&amp;gt; Rails 5.2.4.3 application starting in development
-=&amp;gt; Run `rails server -h` for more startup options
-
-# ...
-
-Started GET &quot;&#x2F;&quot; for ::1 at 2020-09-10 18:05:37 +0100
-Processing by PagesController#show as HTML
-
-# ...
-
-Completed 200 OK in 170ms (Views: 23.9ms)
-&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-
-&lt;h3 id=&quot;observations&quot;&gt;Observations&lt;&#x2F;h3&gt;
-
-&lt;p&gt;It&#x27;s worth noting that early on in the shenanigans above, I got stuck for a while with the wrong version of Ruby and nothing I did would change it. In the end I deleted a bunch of things in my &lt;code&gt;&#x2F;nix&#x2F;store&lt;&#x2F;code&gt; directory to fix the problem. While this probably wasn&#x27;t the &lt;em&gt;right&lt;&#x2F;em&gt; way to fix it, I really appreciated the way it&#x27;s relatively easy to work out how various executables are being made available to your environment, i.e. via a series of symbolic links.&lt;&#x2F;p&gt;
-
-&lt;p&gt;I also worked out that it&#x27;s not possible (at least not when using &lt;code&gt;bundlerEnv&lt;&#x2F;code&gt;) to specify the version of bundler you want to use - it seems to be &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;NixOS&#x2F;nixpkgs&#x2F;blob&#x2F;master&#x2F;pkgs&#x2F;development&#x2F;ruby-modules&#x2F;bundler&#x2F;default.nix#L7&quot;&gt;fixed at v2.1.4&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
-
-&lt;h3 id=&quot;next-steps&quot;&gt;Next steps&lt;&#x2F;h3&gt;
-
-&lt;p&gt;I&#x27;m still interested in working out how to have a project use a specific patch version of Ruby and to be able to lockdown the exact version of bundler. I&#x27;ve been reading about &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;NixOS&#x2F;rfcs&#x2F;pull&#x2F;49&quot;&gt;nix flakes&lt;&#x2F;a&gt; and although I haven&#x27;t completely got my head around them, I think they &lt;em&gt;might&lt;&#x2F;em&gt; be what I&#x27;m looking for, because they have a &quot;lock file&quot; which I believe can pin your dependencies to ensure reproducibility.&lt;&#x2F;p&gt;
-
-&lt;p&gt;However, I still feel as if that&#x27;s a bit of a tangent. My main aim is to be able to have multiple Rails projects on the same computer with various flavours and versions of databases, etc. So I think my next step should be to setup a development environment for a Rails project which uses a database.&lt;&#x2F;p&gt;
-
-&lt;p id=&quot;runtime-dependencies-update&quot;&gt;&lt;em&gt;Update&lt;&#x2F;em&gt;: I&#x27;ve belatedly realised that some run-time dependencies (e.g. node.js &amp;amp; yarn) were satisfied by OS packages installed in my OSX environment, i.e. I forgot to isolate the nix shell from this environment like I did when investigating the dependency on node.js in my previous article. I plan to tackle doing this soon.&lt;&#x2F;p&gt;
-
-&lt;h3 id=&quot;further-reading&quot;&gt;Further reading&lt;&#x2F;h3&gt;
-
-&lt;p&gt;If you&#x27;d like to know more about nix flakes, I can recommend these articles by &lt;a href=&quot;https:&#x2F;&#x2F;edolstra.github.io&#x2F;&quot;&gt;Eelco Dolstra&lt;&#x2F;a&gt;:&lt;&#x2F;p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.tweag.io&#x2F;blog&#x2F;2020-05-25-flakes&#x2F;&quot;&gt;Nix Flakes, Part 1: An Introduction and Tutorial&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-  &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.tweag.io&#x2F;blog&#x2F;2020-06-25-eval-cache&#x2F;&quot;&gt;Nix Flakes, Part 2: Evaluation Caching&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-  &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.tweag.io&#x2F;blog&#x2F;2020-07-31-nixos-flakes&#x2F;&quot;&gt;Nix Flakes, Part 3: Managing NixOS Systems&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 
 
