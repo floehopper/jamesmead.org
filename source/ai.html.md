@@ -16,5 +16,9 @@ No [generative AI] has been used in the making of [this website], because:
 * Big tech has such a _dystopian_ vision for the world
 * The USA already has too much _power_
 
+_Inspired_ by [On the acceptance of GenAI] by [Joep Schuurkes]
+
 [generative AI]: https://en.wikipedia.org/wiki/Generative_AI
 [this website]: /
+[On the acceptance of GenAI]: https://smallsheds.garden/blog/2026/on-the-acceptance-of-genai/
+[Joep Schuurkes]: https://smallsheds.garden/
