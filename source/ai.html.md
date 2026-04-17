@@ -6,10 +6,10 @@ updated_at: 2026-03-29 09:51:00 +01:00
 
 # Use of Generative AI
 
-No [generative AI] has been used in the making of [this website], because:
+I've made a conscious choice not to use [generative AI], because:
 
 * The models were trained on _stolen_ data
-* The data was labeled by _exploited_ workers
+* The data was labelled by _exploited_ workers
 * Running models has an enormous _environmental_ cost
 * I don't want my writing skills to _atrophy_
 * Non-profitable services are likely to be _enshittified_
@@ -19,6 +19,5 @@ No [generative AI] has been used in the making of [this website], because:
 _Inspired_ by [On the acceptance of GenAI] by [Joep Schuurkes]
 
 [generative AI]: https://en.wikipedia.org/wiki/Generative_AI
-[this website]: /
 [On the acceptance of GenAI]: https://smallsheds.garden/blog/2026/on-the-acceptance-of-genai/
 [Joep Schuurkes]: https://smallsheds.garden/
