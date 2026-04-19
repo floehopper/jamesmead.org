@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Organisation-specific git authentication and commit signing - James Mead</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Using SSH keys stored in 1Password on MacOS" />
+    <meta name="author" content= "James Mead" />
+
+    <meta name="verify-v1" content="H0rIfyqCDW+br6ieZtuZ+Hnt3ii3FpF22qFYjZmO+3E=" />
+    <meta name="y_key" content="5f5b0de20991e0c2" />
+    <meta name="msvalidate.01" content="5D5476B4F9F70AAFE14D519093E3FFA8" />
+    <meta name="fediverse:creator" content="@floehopper@ruby.social" />
+
+    <link href="/images/favicon.gif" rel="icon" type="image/gif" />
+
+    <link href="/stylesheets/yui/3.18.1/cssreset-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssfonts-min.css" rel="stylesheet" /><link href="/stylesheets/yui/3.18.1/cssbase-min.css" rel="stylesheet" />
+
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+
+    <link href="/stylesheets/prettify/prettify.css" rel="stylesheet" />
+    <script src="/javascripts/prettify/prettify.js" defer="defer"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="https://feeds.jamesmead.org/floehopper-blog" />
+
+    <link rel="human-json" href="/human.json">
+
+    <link rel="webmention" href="https://webmention.io/jamesmead.org/webmention" />
+
+    <link rel="prev" href="/blog/2026-04-04-adding-human-json-to-my-website" />
+    <link rel="first" href="/blog/2004-05-14-unit-tests-can-100-coverage-be-a-bad-thing" />
+    <link rel="last" href="/blog/2026-04-19-organisation-specific-git-authentication-and-commit-signing" />
+    <link rel="index" href="/blog" />
+
+  </head>
+  <body class="blog blog_2026-04-19-organisation-specific-git-authentication-and-commit-signing" onload="prettyPrint()">
+    <div id="doc">
+      <div class="skip-links">
+        <a href="#bd">Skip to main content</a>
+      </div>
+
+      <header id="hd">
+        <nav aria-label="Primary">
+          <a href="/">Home</a>
+          &middot;
+          <a href="/blog/">Blog</a>
+          &middot;
+          <a href="/adventures/">Adventures</a>
+          &middot;
+          <a href="/notes/">Notes</a>
+          &middot;
+          <a href="/talks/">Talks</a>
+          &middot;
+          <a href="/projects/">Projects</a>
+        </nav>
+      </header>
+
+      <main id="bd">
+          <article class="h-entry">
+    <header>
+      <h1 class="p-name">Organisation-specific git authentication and commit signing</h1>
+        <h2 class="p-summary">Using SSH keys stored in 1Password on MacOS</h2>
+    </header>
+
+    <section class="e-content">
+      <p>Recently I wanted to use a separate SSH key for work on repositories in a specific GitHub organisation, but continue to use a single GitHub user account. I already had <a href="/blog/2018-09-06-organisation-specific-git-config">some organisation-specific git configuration</a> which sets the email address used in commit notes and I've now managed to extend that to incorporate using an organisation-specific SSH key both for authentication with GitHub and for signing my commits.</p>
+
+<p>One complication was that I wanted to continue to manage my SSH keys in 1Password which I use as my <a href="https://developer.1password.com/docs/ssh/agent/">SSH agent</a>. I struggled to find a way to make the 1Password SSH agent offer the correct organisation-specific key, but eventually worked out that I could set <a href="https://git-scm.com/docs/git-config#Documentation/git-config.txt-coresshCommand"><code>core.sshCommand</code></a> in my organisation-specific git config to override the default <code>ssh</code> command and specify the relevant public key using the <code>-i</code> (identity file) option. Although this feels like a bit of a hack, the only downside I can see is that I had to export each of the public keys to my <code>~/.ssh</code> directory which effectively introduces duplication, but it's duplication that I can live with.</p>
+
+<p>While testing this configuration I came across the <a href="https://git-scm.com/docs/git-config#Documentation/git-config.txt-gpgsshallowedSignersFile"><code>gpg "ssh".allowedSignersFile</code></a> git configuration option which means you can use <code>git log --show-signature</code> to check your commits have been signed correctly..</p>
+
+<h2 id="password-configuration">1Password configuration</h2>
+
+<p><a href="https://developer.1password.com/docs/ssh/manage-keys/#generate-an-ssh-key">Using these instructions</a>:</p>
+
+<ul>
+  <li>Generate an <a href="https://en.wikipedia.org/wiki/EdDSA#Ed25519">Ed25519</a> SSH key for organisation 1</li>
+  <li>Generate an <a href="https://en.wikipedia.org/wiki/EdDSA#Ed25519">Ed25519</a> SSH key for organisation 2</li>
+</ul>
+
+<p>And then download the public key for each to:</p>
+
+<ul>
+  <li><code>~/.ssh/github-organisation-1.pub</code></li>
+  <li><code>~/.ssh/github-organisation-2.pub</code></li>
+</ul>
+
+<h2 id="github-configuration">GitHub configuration</h2>
+
+<h3 id="emails">Emails</h3>
+
+<p>In <a href="https://github.com/settings/emails">your GitHub email settings</a>:</p>
+
+<ul>
+  <li>Add &amp; verify <code>email.address@organisation-1.com</code></li>
+  <li>Add &amp; verify <code>email.address@organisation-2.com</code></li>
+</ul>
+
+<h3 id="ssh-keys">SSH keys</h3>
+
+<p>In <a href="https://github.com/settings/ssh/">your GitHub SSH key settings</a>:</p>
+
+<ul>
+  <li>Add SSH key for organisation 1 as authentication key</li>
+  <li>Add SSH key for organisation 2 as authentication key</li>
+  <li>Add SSH key for organisation 1 as signing key</li>
+  <li>Add SSH key for organisation 2 as signing key</li>
+</ul>
+
+<h2 id="ssh-configuration">SSH configuration</h2>
+
+<p>Configure ssh to use 1Password as its agent. And list allowed signers for each organisation to be used as <code>allowedSignersFile</code>.</p>
+
+<pre>
+  <code>
+    # ~/.ssh/config
+    Host *
+      IdentityAgent &lt;path-to-1password-agent.sock&gt;
+
+    # ~/.ssh/allowed_signers_for_organisation_1
+    email.address@organisation-1.com ssh-ed25519 &lt;ssh-public-key-for-organisation-1&gt;
+
+    # ~/.ssh/allowed_signers_for_organisation_2
+    email.address@organisation-2.com ssh-ed25519 &lt;ssh-public-key-for-organisation-2&gt;
+  </code>
+</pre>
+
+<h2 id="git-configuration">Git configuration</h2>
+
+<h3 id="shared">Shared</h3>
+
+<ul>
+  <li><a href="https://developer.1password.com/docs/ssh/git-commit-signing">Sign commits using SSH keys in 1Password</a></li>
+  <li><a href="/blog/2018-09-06-organisation-specific-git-config">Include organisation-specific configurations</a></li>
+</ul>
+
+<pre>
+  <code>
+    # ~/.gitconfig
+    [gpg]
+      format = ssh
+    
+    [gpg "ssh"]
+      program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+    
+    [commit]
+      gpgsign = true
+    
+    [includeIf "gitdir:~/Code/organisation-1/**"]
+      path = ~/.config/git/organisation-1.inc
+    
+    [includeIf "gitdir:~/Code/organisation-2/**"]
+      path = ~/.config/git/organisation-2.inc
+  </code>
+</pre>
+
+<h3 id="organisation-1">Organisation 1</h3>
+
+<ul>
+  <li>Use SSH key for organisation 1 to authenticate with GitHub</li>
+  <li>Use SSH key for organisation 1 to sign commits</li>
+  <li>Specify allowed signers for organisation 1 (used by e.g. <code>git log --show-signature</code>)</li>
+</ul>
+
+<pre>
+  <code>
+    # ~/.config/git/organisation-1.inc
+    
+    [user]
+      email = email.address@organisation-1.com
+      signingkey = ssh-ed25519 &lt;ssh-public-key-for-organisation-1&gt;
+    
+    [core]
+      sshCommand = "ssh -i ~/.ssh/github-organisation-1.pub"
+    
+    [gpg "ssh"]
+      allowedSignersFile = ~/.ssh/allowed_signers_for_organisation_1
+  </code>
+</pre>
+
+<h3 id="organisation-2">Organisation 2</h3>
+
+<ul>
+  <li>Use SSH key for organisation 2 to authenticate with GitHub</li>
+  <li>Use SSH key for organisation 2 to sign commits</li>
+  <li>Specify allowed signers for organisation 2 (used by e.g. <code>git log --show-signature</code>)</li>
+</ul>
+
+<pre>
+  <code>
+    # ~/.config/git/organisation-2.inc
+    [user]
+      email = email.address@organisation-2.com
+      signingkey = ssh-ed25519 &lt;ssh-public-key-for-organisation-2&gt;
+    
+    [core]
+      sshCommand = "ssh -i ~/.ssh/github-organisation-2.pub"
+    
+    [gpg "ssh"]
+      allowedSignersFile = ~/.ssh/allowed_signers_for_organisation_2
+  </code>
+</pre>
+
+
+    </section>
+
+    <footer>
+      <p class="metadata">
+        Published by <a class="p-author h-card" href="https://jamesmead.org/">James Mead</a> on <a class="u-url" href="https://jamesmead.org/blog/2026-04-19-organisation-specific-git-authentication-and-commit-signing"><time class="dt-published" datetime="2026-04-19T10:13:00+01:00">19 Apr 2026 at 10:13</time></a>
+      </p>
+      <div class="webmentions" data-webmentions="https://jamesmead.org/blog/2026-04-19-organisation-specific-git-authentication-and-commit-signing">
+  <template id="webmention-template">
+    <li class="webmention">
+      <div>
+        <a class="author">
+          <span class="author-name"></span>
+        </a>
+        <a class="action"></a>
+      </div>
+      <div class="content"></div>
+    </li>
+  </template>
+</div>
+
+<script src="/javascripts/webmentions.js" type="text/javascript" charset="utf-8" defer></script>
+
+    </footer>
+  </article>
+
+
+          <nav id="navigation" aria-label="Inter-article">
+      <a href="/blog/2026-04-04-adding-human-json-to-my-website" class="previous">&lt; Adding human.json to my website</a>
+  </nav>
+
+      </main>
+
+      <footer id="ft">
+        <nav aria-label="Footer">
+          <a href="/contact">Contact</a>
+          &middot;
+          <a href="/history">History</a>
+          &middot;
+          <a href="/colophon">Colophon</a>
+          &middot;
+          <a href="/ai">AI policy</a>
+          &middot;
+          <a href="/links">Links</a>
+        </nav>
+        <div id="indieweb-ring">
+          <a href="https://xn--sr8hvo.ws/%F0%9F%93%BF%F0%9F%8C%91%F0%9F%A6%82/previous">←</a>
+          An IndieWeb Webring 🕸💍
+          <a href="https://xn--sr8hvo.ws/%F0%9F%93%BF%F0%9F%8C%91%F0%9F%A6%82/next">→</a>
+        </div>
+        <div id="creative-commons" xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">
+          This work by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://jamesmead.org">James Mead</a> is licensed under
+          <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0
+            <img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" loading="lazy" alt="Creative Commons logo" />
+            <img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" loading="lazy" alt="Creative Commons Attribution icon" />
+            <img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" loading="lazy" alt="Creative Commons ShareAlike icon" />
+          </a>
+        </div>
+        <div id="five-hundred-and-twelve-kb">
+          <a href="https://512kb.club">
+            <img src="https://512kb.club/assets/images/green-team.svg" alt="a proud member of the green team of 512KB club" />
+          </a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
