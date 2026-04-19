@@ -4,7 +4,7 @@
   <id>tag:jamesmead.org,2005:Typo</id>
   <link href="https://feeds.jamesmead.org/floehopper-blog" rel="self" type="application/atom+xml"/>
   <link href="https://jamesmead.org/" rel="alternate" type="text/html"/>
-  <updated>2026-04-19T09:45:46+00:00</updated>
+  <updated>2026-04-19T10:11:38+00:00</updated>
   <entry>
     <author>
       <name>James Mead</name>
@@ -19,7 +19,7 @@
 
 &lt;p&gt;One complication was that I wanted to continue to manage my SSH keys in 1Password which I use as my &lt;a href=&quot;https:&#x2F;&#x2F;developer.1password.com&#x2F;docs&#x2F;ssh&#x2F;agent&#x2F;&quot;&gt;SSH agent&lt;&#x2F;a&gt;. I struggled to find a way to make the 1Password SSH agent offer the correct organisation-specific key, but eventually worked out that I could set &lt;a href=&quot;https:&#x2F;&#x2F;git-scm.com&#x2F;docs&#x2F;git-config#Documentation&#x2F;git-config.txt-coresshCommand&quot;&gt;&lt;code&gt;core.sshCommand&lt;&#x2F;code&gt;&lt;&#x2F;a&gt; in my organisation-specific git config to override the default &lt;code&gt;ssh&lt;&#x2F;code&gt; command and specify the relevant public key using the &lt;code&gt;-i&lt;&#x2F;code&gt; (identity file) option. Although this feels like a bit of a hack, the only downside I can see is that I had to export each of the public keys to my &lt;code&gt;~&#x2F;.ssh&lt;&#x2F;code&gt; directory which effectively introduces duplication, but it&#x27;s duplication that I can live with.&lt;&#x2F;p&gt;
 
-&lt;p&gt;While testing this configuration I came across the &lt;a href=&quot;https:&#x2F;&#x2F;git-scm.com&#x2F;docs&#x2F;git-config#Documentation&#x2F;git-config.txt-gpgsshallowedSignersFile&quot;&gt;&lt;code&gt;gpg &quot;ssh&quot;.allowedSignersFile&lt;&#x2F;code&gt;&lt;&#x2F;a&gt; git configuration option which means you can use &lt;code&gt;git log --show-signature&lt;&#x2F;code&gt; to check your commits have been signed correctly..&lt;&#x2F;p&gt;
+&lt;p&gt;While testing this configuration I came across the &lt;a href=&quot;https:&#x2F;&#x2F;git-scm.com&#x2F;docs&#x2F;git-config#Documentation&#x2F;git-config.txt-gpgsshallowedSignersFile&quot;&gt;&lt;code&gt;gpg &quot;ssh&quot;.allowedSignersFile&lt;&#x2F;code&gt;&lt;&#x2F;a&gt; git configuration option which means you can use &lt;code&gt;git log --show-signature&lt;&#x2F;code&gt; to check your commits have been signed correctly.&lt;&#x2F;p&gt;
 
 &lt;h2 id=&quot;password-configuration&quot;&gt;1Password configuration&lt;&#x2F;h2&gt;
 

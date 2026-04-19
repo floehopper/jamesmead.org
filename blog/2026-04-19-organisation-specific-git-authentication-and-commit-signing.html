@@ -69,7 +69,7 @@
 
 <p>One complication was that I wanted to continue to manage my SSH keys in 1Password which I use as my <a href="https://developer.1password.com/docs/ssh/agent/">SSH agent</a>. I struggled to find a way to make the 1Password SSH agent offer the correct organisation-specific key, but eventually worked out that I could set <a href="https://git-scm.com/docs/git-config#Documentation/git-config.txt-coresshCommand"><code>core.sshCommand</code></a> in my organisation-specific git config to override the default <code>ssh</code> command and specify the relevant public key using the <code>-i</code> (identity file) option. Although this feels like a bit of a hack, the only downside I can see is that I had to export each of the public keys to my <code>~/.ssh</code> directory which effectively introduces duplication, but it's duplication that I can live with.</p>
 
-<p>While testing this configuration I came across the <a href="https://git-scm.com/docs/git-config#Documentation/git-config.txt-gpgsshallowedSignersFile"><code>gpg "ssh".allowedSignersFile</code></a> git configuration option which means you can use <code>git log --show-signature</code> to check your commits have been signed correctly..</p>
+<p>While testing this configuration I came across the <a href="https://git-scm.com/docs/git-config#Documentation/git-config.txt-gpgsshallowedSignersFile"><code>gpg "ssh".allowedSignersFile</code></a> git configuration option which means you can use <code>git log --show-signature</code> to check your commits have been signed correctly.</p>
 
 <h2 id="password-configuration">1Password configuration</h2>
 
