@@ -1,3 +1,18 @@
+@media (prefers-color-scheme: dark) {
+  :root {
+    background-color: #121212;
+    color: white;
+  }
+
+  a:link {
+    color: #66B2FF;
+  }
+
+  a:visited {
+    color: #9A7BFF;
+  }
+}
+
 /**
  * From http://yui.yahooapis.com/2.9.0/build/base/base.css
  */
