@@ -33,8 +33,8 @@ An area of possible confusion is the Ruby syntax that distinguishes between a po
 
 The following code defines a method that in Ruby v3 expects to be called with a single keyword argument. That method is then called four times, twice with the correct keyword argument and twice with a positional `Hash` including a key with the correct name. You might be surprised that the 2nd call (i.e. `foo(:bar => 1)`) is passing a keyword argument.
 
-<pre>
-  <code class="prettyprint">
+<pre class="prettyprint">
+  <code>
     def foo(bar:); p bar; end
 
     # Method called with correct keyword argument
@@ -51,8 +51,8 @@ The following code defines a method that in Ruby v3 expects to be called with a 
 
 The parameters in the expectation include a set of keyword arguments, but the parameters in the invocation include a positional `Hash`. With strict matching disabled, these parameters match the expectation and the test passes. However, when `Example#foo` is invoked in production code in Ruby v3 an `ArgumentError` is raised, i.e. the passing test does not highlight that `Example#foo` must be called with a set of keyword arguments.
 
-<pre>
-  <code class="prettyprint">
+<pre class="prettyprint">
+  <code>
     class Example
       def foo(a, bar:); end
     end
@@ -83,8 +83,8 @@ The parameters in the expectation include a set of keyword arguments, but the pa
 
 With strict matching enabled, the parameters no longer match the expectation and the test fails. This test failure highlights that `Example#foo` must be called with a set of keyword arguments.
 
-<pre>
-  <code class="prettyprint">
+<pre class="prettyprint">
+  <code>
     Mocha.configure do |c|
       c.strict_keyword_argument_matching = true
     end

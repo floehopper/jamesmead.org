@@ -10,8 +10,8 @@ Following on from my previous post about [configuring Zed editor to use ERB Lint
 
 Configure HTML Beautifier as [a formatter][zed-editor-formatter] for ERB files as well as HTML files by adding the following JSON to your Zed settings, either global or project-specific:
 
-<pre>
-  <code class="prettyprint">
+<pre class="prettyprint">
+  <code>
     {
       "languages": {
         "ERB": {

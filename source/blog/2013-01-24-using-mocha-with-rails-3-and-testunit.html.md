@@ -15,7 +15,7 @@ Unfortunately due to Rails relying on Mocha & [Test::Unit](https://github.com/te
 
 ### Rails 3.0.x
 
-<pre>
+<pre class="prettyprint">
   <code>
     .../gems/ruby/1.9.1/gems/activesupport-3.0.19/lib/active_support/dependencies.rb:483:in `load_missing_constant':
       Mocha::Integration is not missing constant AssertionCounter! (ArgumentError)
@@ -24,7 +24,7 @@ Unfortunately due to Rails relying on Mocha & [Test::Unit](https://github.com/te
 
 ### Rails 3.1.x
 
-<pre>
+<pre class="prettyprint">
   <code>
     .../gems/ruby/1.9.1/gems/activesupport-3.1.10/lib/active_support/testing/setup_and_teardown.rb:108:in `retrieve_mocha_counter':
       uninitialized constant Mocha::Integration::TestUnit::AssertionCounter (NameError)
@@ -33,7 +33,7 @@ Unfortunately due to Rails relying on Mocha & [Test::Unit](https://github.com/te
 
 ### Rails 3.2.x
 
-<pre>
+<pre class="prettyprint">
   <code>
     .../gems/ruby/1.9.1/gems/activesupport-3.2.11/lib/active_support/testing/setup_and_teardown.rb:110:in `retrieve_mocha_counter':
       uninitialized constant Mocha::MonkeyPatching (NameError)
@@ -44,8 +44,8 @@ There are a couple of ways to fix these errors:
 
 ### Option 1 - Use "edge" Rails or one of the relevant "stable" branches of Rails
 
-<pre>
-  <code class="prettyprint">
+<pre class="prettyprint">
+  <code>
     # Gemfile
     gem "rails", git: "git://github.com/rails/rails.git", branch: "3-2-stable"
     group :test do
@@ -61,8 +61,8 @@ Although obviously it isn't ideal using an _unreleased_ version of Rails. You co
 
 ### Option 2 - Downgrade to Mocha 0.12.8
 
-<pre>
-  <code class="prettyprint">
+<pre class="prettyprint">
+  <code>
     # Gemfile in Rails app
     gem "mocha", "~> 0.12.8", :require => false
 
