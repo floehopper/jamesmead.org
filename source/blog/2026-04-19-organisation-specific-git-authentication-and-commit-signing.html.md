@@ -46,7 +46,7 @@ In [your GitHub SSH key settings](https://github.com/settings/ssh/):
 
 Configure ssh to use 1Password as its agent. And list allowed signers for each organisation to be used as `allowedSignersFile`.
 
-<pre>
+<pre class="prettyprint">
   <code>
     # ~/.ssh/config
     Host *
@@ -67,7 +67,7 @@ Configure ssh to use 1Password as its agent. And list allowed signers for each o
 * [Sign commits using SSH keys in 1Password](https://developer.1password.com/docs/ssh/git-commit-signing)
 * [Include organisation-specific configurations](/blog/2018-09-06-organisation-specific-git-config)
 
-<pre>
+<pre class="prettyprint">
   <code>
     # ~/.gitconfig
     [gpg]
@@ -93,7 +93,7 @@ Configure ssh to use 1Password as its agent. And list allowed signers for each o
 * Use SSH key for organisation 1 to sign commits
 * Specify allowed signers for organisation 1 (used by e.g. `git log --show-signature`)
 
-<pre>
+<pre class="prettyprint">
   <code>
     # ~/.config/git/organisation-1.inc
     
@@ -115,7 +115,7 @@ Configure ssh to use 1Password as its agent. And list allowed signers for each o
 * Use SSH key for organisation 2 to sign commits
 * Specify allowed signers for organisation 2 (used by e.g. `git log --show-signature`)
 
-<pre>
+<pre class="prettyprint">
   <code>
     # ~/.config/git/organisation-2.inc
     [user]
