@@ -4,7 +4,7 @@
   <id>tag:jamesmead.org,2005:Typo</id>
   <link href="https://feeds.jamesmead.org/floehopper-blog" rel="self" type="application/atom+xml"/>
   <link href="https://jamesmead.org/" rel="alternate" type="text/html"/>
-  <updated>2026-05-04T15:53:47+00:00</updated>
+  <updated>2026-09-18T13:07:13+00:00</updated>
   <entry>
     <author>
       <name>James Mead</name>
@@ -63,7 +63,7 @@
 
 &lt;p&gt;Configure ssh to use 1Password as its agent. And list allowed signers for each organisation to be used as &lt;code&gt;allowedSignersFile&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
 
-&lt;pre&gt;
+&lt;pre class=&quot;prettyprint&quot;&gt;
   &lt;code&gt;
     # ~&#x2F;.ssh&#x2F;config
     Host *
@@ -86,7 +86,7 @@
   &lt;li&gt;&lt;a href=&quot;&#x2F;blog&#x2F;2018-09-06-organisation-specific-git-config&quot;&gt;Include organisation-specific configurations&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 
-&lt;pre&gt;
+&lt;pre class=&quot;prettyprint&quot;&gt;
   &lt;code&gt;
     # ~&#x2F;.gitconfig
     [gpg]
@@ -114,7 +114,7 @@
   &lt;li&gt;Specify allowed signers for organisation 1 (used by e.g. &lt;code&gt;git log --show-signature&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 
-&lt;pre&gt;
+&lt;pre class=&quot;prettyprint&quot;&gt;
   &lt;code&gt;
     # ~&#x2F;.config&#x2F;git&#x2F;organisation-1.inc
     
@@ -138,7 +138,7 @@
   &lt;li&gt;Specify allowed signers for organisation 2 (used by e.g. &lt;code&gt;git log --show-signature&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 
-&lt;pre&gt;
+&lt;pre class=&quot;prettyprint&quot;&gt;
   &lt;code&gt;
     # ~&#x2F;.config&#x2F;git&#x2F;organisation-2.inc
     [user]
