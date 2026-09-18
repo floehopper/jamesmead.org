@@ -71,8 +71,8 @@ will save someone else some time.</p>
 
 <p>Write a shell script to run ERB Lint as follows:</p>
 
-<pre>
-  <code class="prettyprint">
+<pre class="prettyprint">
+  <code>
     #!/usr/bin/env sh
 
     bundle exec erb_lint --autocorrect --stdin $1 2&gt;/dev/null \
@@ -95,8 +95,8 @@ following JSON to your Zed settings, either global or project-specific,
 replacing <code>$PATH_TO_FORMATTER</code> with the path to the shell script you created
 above:</p>
 
-<pre>
-  <code class="prettyprint">
+<pre class="prettyprint">
+  <code>
     {
       "languages": {
         "ERB": {

@@ -72,8 +72,8 @@
 
 <p>If you're loading Mocha using <a href="http://gembundler.com/">Bundler</a> within a Rails application, you should ensure Mocha is not auto-required and load Mocha <em>manually</em> e.g. at the bottom of <code>test/test_helper.rb</code>.</p>
 
-<pre>
-  <code class="prettyprint">
+<pre class="prettyprint">
+  <code>
   # Gemfile in Rails app
   gem "mocha", :require =&gt; false
 
@@ -84,7 +84,7 @@
 
 <p>Note: Using the latest version of Mocha (0.13.2) with the latest versions of Rails (e.g. 3.2.11, 3.1.10, or 3.0.19), you will see the following Mocha deprecation warning:</p>
 
-<pre>
+<pre class="prettyprint">
   <code>
     *** Mocha deprecation warning: Change `require 'mocha'` to `require 'mocha/setup'`.
   </code>
@@ -104,8 +104,8 @@
 
 <h3 id="option-1---disable-mocha-deprecation-warnings-with-a-rails-initializer">Option 1 - Disable Mocha deprecation warnings with a Rails initializer</h3>
 
-<pre>
-  <code class="prettyprint">
+<pre class="prettyprint">
+  <code>
     # config/mocha.rb
     if Rails.env.test? || Rails.env.development?
       require "mocha/version"
@@ -127,8 +127,8 @@
 
 <h3 id="option-2---use-edge-rails-or-one-of-the-relevant-stable-branches-of-rails">Option 2 - Use "edge" Rails or one of the relevant "stable" branches of Rails</h3>
 
-<pre>
-  <code class="prettyprint">
+<pre class="prettyprint">
+  <code>
     # Gemfile
     gem "rails", git: "git://github.com/rails/rails.git", branch: "3-2-stable"
     group :test do
@@ -144,8 +144,8 @@
 
 <h3 id="option-3---downgrade-to-mocha-0128">Option 3 - Downgrade to Mocha 0.12.8</h3>
 
-<pre>
-  <code class="prettyprint">
+<pre class="prettyprint">
+  <code>
     # Gemfile in Rails app
     gem "mocha", "~&gt; 0.12.8", :require =&gt; false
 

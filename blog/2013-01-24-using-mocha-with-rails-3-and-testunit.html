@@ -74,7 +74,7 @@
 
 <h3 id="rails-30x">Rails 3.0.x</h3>
 
-<pre>
+<pre class="prettyprint">
   <code>
     .../gems/ruby/1.9.1/gems/activesupport-3.0.19/lib/active_support/dependencies.rb:483:in `load_missing_constant':
       Mocha::Integration is not missing constant AssertionCounter! (ArgumentError)
@@ -83,7 +83,7 @@
 
 <h3 id="rails-31x">Rails 3.1.x</h3>
 
-<pre>
+<pre class="prettyprint">
   <code>
     .../gems/ruby/1.9.1/gems/activesupport-3.1.10/lib/active_support/testing/setup_and_teardown.rb:108:in `retrieve_mocha_counter':
       uninitialized constant Mocha::Integration::TestUnit::AssertionCounter (NameError)
@@ -92,7 +92,7 @@
 
 <h3 id="rails-32x">Rails 3.2.x</h3>
 
-<pre>
+<pre class="prettyprint">
   <code>
     .../gems/ruby/1.9.1/gems/activesupport-3.2.11/lib/active_support/testing/setup_and_teardown.rb:110:in `retrieve_mocha_counter':
       uninitialized constant Mocha::MonkeyPatching (NameError)
@@ -103,8 +103,8 @@
 
 <h3 id="option-1---use-edge-rails-or-one-of-the-relevant-stable-branches-of-rails">Option 1 - Use "edge" Rails or one of the relevant "stable" branches of Rails</h3>
 
-<pre>
-  <code class="prettyprint">
+<pre class="prettyprint">
+  <code>
     # Gemfile
     gem "rails", git: "git://github.com/rails/rails.git", branch: "3-2-stable"
     group :test do
@@ -120,8 +120,8 @@
 
 <h3 id="option-2---downgrade-to-mocha-0128">Option 2 - Downgrade to Mocha 0.12.8</h3>
 
-<pre>
-  <code class="prettyprint">
+<pre class="prettyprint">
+  <code>
     # Gemfile in Rails app
     gem "mocha", "~&gt; 0.12.8", :require =&gt; false
 

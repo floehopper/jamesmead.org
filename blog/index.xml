@@ -4,7 +4,7 @@
   <id>tag:jamesmead.org,2005:Typo</id>
   <link href="https://feeds.jamesmead.org/floehopper-blog" rel="self" type="application/atom+xml"/>
   <link href="https://jamesmead.org/" rel="alternate" type="text/html"/>
-  <updated>2026-09-18T13:07:13+00:00</updated>
+  <updated>2026-09-18T13:12:28+00:00</updated>
   <entry>
     <author>
       <name>James Mead</name>
@@ -187,8 +187,8 @@
 
 &lt;p&gt;Configure HTML Beautifier as &lt;a href=&quot;https:&#x2F;&#x2F;zed.dev&#x2F;docs&#x2F;configuring-languages?highlight=formatter#configuring-formatters&quot;&gt;a formatter&lt;&#x2F;a&gt; for ERB files as well as HTML files by adding the following JSON to your Zed settings, either global or project-specific:&lt;&#x2F;p&gt;
 
-&lt;pre&gt;
-  &lt;code class=&quot;prettyprint&quot;&gt;
+&lt;pre class=&quot;prettyprint&quot;&gt;
+  &lt;code&gt;
     {
       &quot;languages&quot;: {
         &quot;ERB&quot;: {
@@ -237,8 +237,8 @@ will save someone else some time.&lt;&#x2F;p&gt;
 
 &lt;p&gt;Write a shell script to run ERB Lint as follows:&lt;&#x2F;p&gt;
 
-&lt;pre&gt;
-  &lt;code class=&quot;prettyprint&quot;&gt;
+&lt;pre class=&quot;prettyprint&quot;&gt;
+  &lt;code&gt;
     #!&#x2F;usr&#x2F;bin&#x2F;env sh
 
     bundle exec erb_lint --autocorrect --stdin $1 2&amp;gt;&#x2F;dev&#x2F;null \
@@ -261,8 +261,8 @@ following JSON to your Zed settings, either global or project-specific,
 replacing &lt;code&gt;$PATH_TO_FORMATTER&lt;&#x2F;code&gt; with the path to the shell script you created
 above:&lt;&#x2F;p&gt;
 
-&lt;pre&gt;
-  &lt;code class=&quot;prettyprint&quot;&gt;
+&lt;pre class=&quot;prettyprint&quot;&gt;
+  &lt;code&gt;
     {
       &quot;languages&quot;: {
         &quot;ERB&quot;: {
@@ -325,8 +325,8 @@ being edited.&lt;&#x2F;p&gt;
 
 &lt;p&gt;The following code defines a method that in Ruby v3 expects to be called with a single keyword argument. That method is then called four times, twice with the correct keyword argument and twice with a positional &lt;code&gt;Hash&lt;&#x2F;code&gt; including a key with the correct name. You might be surprised that the 2nd call (i.e. &lt;code&gt;foo(:bar =&amp;gt; 1)&lt;&#x2F;code&gt;) is passing a keyword argument.&lt;&#x2F;p&gt;
 
-&lt;pre&gt;
-  &lt;code class=&quot;prettyprint&quot;&gt;
+&lt;pre class=&quot;prettyprint&quot;&gt;
+  &lt;code&gt;
     def foo(bar:); p bar; end
 
     # Method called with correct keyword argument
@@ -343,8 +343,8 @@ being edited.&lt;&#x2F;p&gt;
 
 &lt;p&gt;The parameters in the expectation include a set of keyword arguments, but the parameters in the invocation include a positional &lt;code&gt;Hash&lt;&#x2F;code&gt;. With strict matching disabled, these parameters match the expectation and the test passes. However, when &lt;code&gt;Example#foo&lt;&#x2F;code&gt; is invoked in production code in Ruby v3 an &lt;code&gt;ArgumentError&lt;&#x2F;code&gt; is raised, i.e. the passing test does not highlight that &lt;code&gt;Example#foo&lt;&#x2F;code&gt; must be called with a set of keyword arguments.&lt;&#x2F;p&gt;
 
-&lt;pre&gt;
-  &lt;code class=&quot;prettyprint&quot;&gt;
+&lt;pre class=&quot;prettyprint&quot;&gt;
+  &lt;code&gt;
     class Example
       def foo(a, bar:); end
     end
@@ -377,8 +377,8 @@ being edited.&lt;&#x2F;p&gt;
 
 &lt;p&gt;With strict matching enabled, the parameters no longer match the expectation and the test fails. This test failure highlights that &lt;code&gt;Example#foo&lt;&#x2F;code&gt; must be called with a set of keyword arguments.&lt;&#x2F;p&gt;
 
-&lt;pre&gt;
-  &lt;code class=&quot;prettyprint&quot;&gt;
+&lt;pre class=&quot;prettyprint&quot;&gt;
+  &lt;code&gt;
     Mocha.configure do |c|
       c.strict_keyword_argument_matching = true
     end

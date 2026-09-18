@@ -96,8 +96,8 @@
 
 <p>The following code defines a method that in Ruby v3 expects to be called with a single keyword argument. That method is then called four times, twice with the correct keyword argument and twice with a positional <code>Hash</code> including a key with the correct name. You might be surprised that the 2nd call (i.e. <code>foo(:bar =&gt; 1)</code>) is passing a keyword argument.</p>
 
-<pre>
-  <code class="prettyprint">
+<pre class="prettyprint">
+  <code>
     def foo(bar:); p bar; end
 
     # Method called with correct keyword argument
@@ -114,8 +114,8 @@
 
 <p>The parameters in the expectation include a set of keyword arguments, but the parameters in the invocation include a positional <code>Hash</code>. With strict matching disabled, these parameters match the expectation and the test passes. However, when <code>Example#foo</code> is invoked in production code in Ruby v3 an <code>ArgumentError</code> is raised, i.e. the passing test does not highlight that <code>Example#foo</code> must be called with a set of keyword arguments.</p>
 
-<pre>
-  <code class="prettyprint">
+<pre class="prettyprint">
+  <code>
     class Example
       def foo(a, bar:); end
     end
@@ -148,8 +148,8 @@
 
 <p>With strict matching enabled, the parameters no longer match the expectation and the test fails. This test failure highlights that <code>Example#foo</code> must be called with a set of keyword arguments.</p>
 
-<pre>
-  <code class="prettyprint">
+<pre class="prettyprint">
+  <code>
     Mocha.configure do |c|
       c.strict_keyword_argument_matching = true
     end
